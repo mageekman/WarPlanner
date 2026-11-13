@@ -47,3 +47,26 @@
 .saved-list-card .list-metadata{grid-template-columns:1fr;gap:12px;margin:20px 0}.saved-list-card .list-metadata div{display:grid;grid-template-columns:90px 1fr;gap:10px}.saved-list-card dt{margin:3px 0 0}
 .imported-list{padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:12px;margin-bottom:24px}.imported-list h2{font-size:18px}.imported-list pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.7}
 @media(max-width:650px){.list-metadata{grid-template-columns:1fr;gap:14px}.list-metadata div{display:grid;grid-template-columns:100px 1fr;gap:10px}.list-metadata dt{margin:3px 0 0}.saved-list-card{padding:18px}}
+
+/* Fit the guide to the visible viewport, including mobile browser chrome. */
+.shell:has(.guide-carousel){height:100dvh;min-height:0;overflow:hidden}
+.shell:has(.guide-carousel)>main{display:flex;min-height:0;padding:20px}
+.guide-carousel{flex:1;height:auto;min-height:0;max-height:none;max-width:1100px;width:100%;margin:0 auto}
+.guide-frame{inset:0}
+.guide-frame>.guide-viewport{margin-inline:30px}
+.guide-frame>.guide-page-arrow{position:absolute;top:50%;transform:translateY(-50%);margin:0;padding:0;width:30px;height:48px;display:flex;align-items:center;justify-content:center;background:none;border:0;border-radius:0;box-shadow:none;color:var(--teal);z-index:2}
+.guide-frame>.previous-page{left:0}.guide-frame>.next-page{right:0}
+.guide-frame>.guide-page-arrow:hover{background:none;border:0;color:var(--ink)}
+.guide-frame>.guide-page-arrow:focus-visible{outline-offset:-4px;border-radius:6px}
+.guide-frame>.guide-page-arrow:disabled{opacity:.18}
+.guide-frame>.guide-page-arrow svg{width:22px;height:22px}
+@media(max-width:650px){
+ .shell:has(.guide-carousel){display:flex;flex-direction:column}
+ .shell:has(.guide-carousel)>.sidebar{flex:0 0 auto;position:relative}
+ .shell:has(.guide-carousel)>main{flex:1;min-height:0;padding:12px max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}
+ .guide-frame{inset:0;border-radius:12px}
+ .guide-frame>.guide-viewport{margin-inline:26px}
+ .guide-frame>.guide-page-arrow{width:26px;height:48px}
+ .guide-fixed-header{padding:12px 12px 0}
+ .guide-slide>.focus-layout{padding:14px 8px}
+}
