@@ -4,7 +4,7 @@
  const screen=document.querySelector('#auth-screen'), app=document.querySelector('#app');
  const form=document.querySelector('#auth-form'), email=document.querySelector('#auth-email'), password=document.querySelector('#auth-password');
  const message=document.querySelector('#auth-message'), submit=document.querySelector('#auth-submit');
- let mode='signin', busy=false;
+ let mode='signin', busy=false, accountId=null, sessionRevision=0;
  const config=window.WARPLANNER_CONFIG;
  function report(text){message.textContent=text;}
  function setMode(value){
@@ -17,14 +17,29 @@
   document.querySelector('label[for="auth-email"]').hidden=mode==='update';
   password.autocomplete=mode==='signup'||mode==='update'?'new-password':'current-password';
  }
- function showSession(session){screen.hidden=!!session;app.hidden=!session;}
+ async function showSession(session){
+  const revision=++sessionRevision;
+  if(!session){accountId=null;screen.hidden=false;app.hidden=true;window.clearWarPlannerAccount?.();return;}
+  if(accountId===session.user.id){screen.hidden=true;app.hidden=false;return;}
+  screen.hidden=false;app.hidden=true;
+  try{
+   const {data:identity,error:identityError}=await client.auth.getUser();
+   if(revision!==sessionRevision)return;
+   if(identityError||!identity.user||identity.user.id!==session.user.id)throw new Error('Please sign in again.');
+   const {data,error}=await client.from('account_armies').select('army').eq('user_id',identity.user.id).maybeSingle();
+   if(revision!==sessionRevision)return;
+   if(error)throw new Error('Could not load your army. Please reload and try again.');
+   window.setWarPlannerAccount?.(identity.user,data?.army||null);
+   accountId=identity.user.id;screen.hidden=true;app.hidden=false;
+  }catch(error){if(revision===sessionRevision){accountId=null;window.clearWarPlannerAccount?.();report(error.message);}}
+ }
  if(!config?.supabaseUrl||!window.supabase){report('Account service is unavailable. Please reload and try again.');submit.disabled=true;return;}
  const client=window.supabase.createClient(config.supabaseUrl,config.supabasePublishableKey,{auth:{storageKey:'warplanner.auth.v1',persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
  const redirectTo=new URL('./',window.location.href).href;
  // Do not use an async callback here: auth calls inside it can deadlock.
  client.auth.onAuthStateChange((event,session)=>{
   if(event==='PASSWORD_RECOVERY'){showSession(null);setMode('update');}
-  else if(mode!=='update')showSession(session);
+  else if(mode!=='update')setTimeout(()=>showSession(session),0);
  });
  client.auth.getSession().then(({data,error})=>{if(error)throw error;if(mode!=='update')showSession(data.session);}).catch(()=>{showSession(null);report('Could not restore your session. Please sign in again.');});
  document.addEventListener('click',async event=>{
@@ -50,8 +65,8 @@
    password.value='';
    if(mode==='signup'&&!result.data.session)report('Check your email to confirm your account, then sign in.');
    else if(mode==='reset')report('If an account exists for that email, you will receive a password reset link.');
-   else if(mode==='update'){setMode('signin');showSession((await client.auth.getSession()).data.session);}
-   else showSession(result.data.session);
+   else if(mode==='update'){setMode('signin');await showSession((await client.auth.getSession()).data.session);}
+   else await showSession(result.data.session);
   }catch(error){report(error.message||'Unable to complete that request. Please try again.');}
   finally{busy=false;submit.disabled=false;}
  });

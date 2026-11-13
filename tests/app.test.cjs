@@ -11,7 +11,7 @@ function app(saved,options={}){
  const viewport={clientWidth:400,children:[],append(node){this.children.push(node);}},slide=motionNode();
  const document={querySelector:s=>s==='.guide-viewport'&&options.motion?viewport:s==='.guide-slide'&&options.motion?slide:elements[s],addEventListener:(type,fn)=>listeners[type]=fn};
  if(options.motion)document.createElement=()=>motionNode();
- const context=vm.createContext({document,window:{scrollTo(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>true,setTimeout:()=>0,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
+ const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,scrollTo(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>true,setTimeout:()=>0,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
  vm.runInContext(fs.readFileSync(require.resolve('../dist/core.js'),'utf8'),context);
  context.WarPlan=context.window.WarPlan;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/lessons.js'),'utf8'),context);
@@ -19,7 +19,7 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/activations.js'),'utf8'),context);
  context.WarPlanActivations=context.window.WarPlanActivations;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
- return {elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {account:(user,army)=>context.window.setWarPlannerAccount(user,army),clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -232,4 +232,22 @@ test('import review is required and untrusted content is escaped',()=>{
  a.submit();assert.match(a.elements['#import-feedback'].innerHTML,/&lt;img/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
  a.submit();assert.equal(a.elements['#import-dialog'].open,false);assert.match(a.html(),/&lt;img/);assert.doesNotMatch(a.html(),/<script>/);
  assert.match(a.html(),/100/);assert.match(a.html(),/Imported content is preserved/);
+});
+
+test('hosted armies and progress are isolated by authenticated account',()=>{
+ const a=app(undefined,{hosted:true});
+ assert.doesNotMatch(a.html(),/Battle Focus/);
+ a.account({id:'owner'},require('../dist/core.js').sample);
+ assert.match(a.html(),/Battle Focus/);a.click({phase:'2'});
+ assert.ok(a.store.has('warplanner.account.owner.v1'));
+ a.clearAccount();a.account({id:'other'},null);
+ assert.match(a.html(),/Bring your army/);assert.doesNotMatch(a.html(),/Asurmen|Aspect Host/);
+ assert.equal(JSON.parse(a.store.get('warplanner.account.other.v1')).army.units.length,0);
+ a.account({id:'owner'},require('../dist/core.js').sample);
+ assert.match(a.html(),/id="phase-tab-2"[^>]*aria-selected="true"/);
+});
+test('hosted accounts never inherit the old shared browser roster',()=>{
+ const saved={army:require('../dist/core.js').sample,phase:0,round:1,turn:'you'};
+ const a=app([['warplan.prototype.v1',JSON.stringify(saved)]],{hosted:true});
+ a.account({id:'new'},null);assert.match(a.html(),/Bring your army/);assert.doesNotMatch(a.html(),/Aspect Host/);
 });
