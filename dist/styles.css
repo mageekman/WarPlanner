@@ -31,10 +31,10 @@
 /* Account entry uses the same quiet study-card styling as the guide. */
 [hidden]{display:none!important}
 .auth-screen{min-height:100dvh;display:grid;place-items:center;padding:24px}
-.auth-card{width:min(100%,420px);padding:30px;border:1px solid var(--border);border-radius:16px;background:#192c35}
+.auth-card{width:min(100%,420px);padding:30px;border:1px solid var(--line);border-radius:16px;background:#192c35}
 .auth-card h1{font-size:34px;margin:10px 0 25px}.auth-card h2{font-size:21px}
 .auth-card p{line-height:1.6;font-size:13px}.auth-card label{display:block;margin:16px 0 7px}
-.auth-card input{width:100%;padding:12px;background:#101b24;color:var(--text);border:1px solid #52636d;border-radius:7px;font:inherit}
+.auth-card input{width:100%;padding:12px;background:#101b24;color:var(--ink);border:1px solid #52636d;border-radius:7px;font:inherit}
 .auth-card .primary{width:100%;margin-top:20px}.auth-actions{display:flex;flex-wrap:wrap;gap:12px}
 .auth-actions button{background:none;color:var(--teal);border:0;padding:5px 0;font:inherit;font-size:12px;cursor:pointer}
 #auth-message{color:#e8bf7b;min-height:20px}

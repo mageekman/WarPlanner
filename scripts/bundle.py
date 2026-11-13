@@ -13,6 +13,7 @@ html = html.replace('<script defer src="vendor/supabase.js"></script>', '').repl
 start=html.index('<section id="auth-screen"')
 end=html.index('<div id="app" hidden></div>', start)
 html=html[:start]+html[end:].replace('<div id="app" hidden></div>', '<div id="app"></div>', 1)
+html = html.replace('Sign out</button>', 'Offline edition</button>')
 html = html.replace('</body>', ''.join('<script>' + (root / ('dist/' + name)).read_text() + '</script>' for name in ['core.js', 'lessons.js', 'activations.js', 'app.js']) + '</body>')
 (root / 'warplanner.html').write_text(html)
 with zipfile.ZipFile(root / 'warplanner-source.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
