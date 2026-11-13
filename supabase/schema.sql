@@ -11,3 +11,4 @@ create policy "Read own army" on public.account_armies for select to authenticat
 -- Personal seed records are inserted administratively and are not committed.
 
 -- Account list storage follows in account-list-storage.sql. Run both scripts for a new database.
+-- Then apply immutable-upload.sql to protect uploaded sources and legacy snapshots.

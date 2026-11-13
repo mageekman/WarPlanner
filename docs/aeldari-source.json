@@ -6,7 +6,9 @@
     "data/core/aeldari/stratagems.json": "e795e959e41308b117167c5b97526d1be1242e85656eac24868546c7056e11eb",
     "data/core/aeldari/units.json": "3ef766e3b2ba80f654ef1f550f57d599f4b3fa786941c14fe9712d900dd9e340",
     "data/enrichment/aeldari/abilities.json": "b97618362bbb08a3e72bf05ab3983c71038a23206c64b7629039225fc893b55e",
-    "data/enrichment/aeldari/phase-mappings.json": "090b1e2524cb22e5fbf7d1fabd98cdf8bb5f8c601aedba51bd4eeb9a20e634f0"
+    "data/enrichment/aeldari/phase-mappings.json": "090b1e2524cb22e5fbf7d1fabd98cdf8bb5f8c601aedba51bd4eeb9a20e634f0",
+    "data/core/aeldari/leader-attachments.json": "c3734497918e5b0b92f65f405986457a98fb2865d188f2ce180f3f0405229161",
+    "data/core/aeldari/unit-compositions.json": "d674457ba15e4c6a2646afe1296e7692887c06e98e4031fcac9bdb9cbc1eefef"
   },
   "license": "CC BY 4.0",
   "upstream": "https://github.com/wn-mitch/40kdc-data"

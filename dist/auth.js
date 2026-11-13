@@ -51,6 +51,7 @@
   const toggle=event.target.closest('[data-auth-mode]');
   if(toggle&&!busy){setMode(toggle.dataset.authMode);return;}
   if(event.target.closest('[data-auth-signout]')&&!busy){
+   if(window.hasUnsavedListDraft?.()){window.alert('Save or cancel your list edits before signing out.');return;}
    busy=true;
    try{await window.flushWarPlannerLists?.();const {error}=await client.auth.signOut();if(error)throw error;setMode('signin');showSession(null);}
    catch{window.alert('Could not finish saving or sign out. Your lists are still here; retry saving before signing out.');}

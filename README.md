@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.8
+# WarPlanner — personal study edition, v0.9
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -46,7 +46,7 @@ This follows Command Ledger’s static GitHub Pages approach. Pages publishes th
 
 Supabase project: `zmhybqzodbpshpnnopvz` (WarPlanner). Email/password authentication supports sign-up confirmation, sign-in, persistent sessions, sign-out and password recovery. Configure Authentication → URL Configuration with Site URL and Redirect URL `https://mageekman.github.io/WarPlanner/`. Keep email confirmation enabled. Configure custom SMTP before broader use; Supabase’s default sender is limited. Authentication emails and successful confirmation/recovery need a real inbox check by the owner.
 
-Account login unlocks the interface. GitHub Pages files and the repository remain public; private army lists are stored in Supabase's `saved_army_lists` table under the authenticated user ID. RLS permits only the owner to select, insert or update a row. Original exports, units, labels and import warnings are stored with each list. The previous `account_armies` seed table remains read-only for compatibility, and its seed is copied into account list storage. Apply `supabase/schema.sql` followed by `supabase/account-list-storage.sql` when setting up a new database.
+Account login unlocks the interface. GitHub Pages files and the repository remain public; private army lists are stored in Supabase's `saved_army_lists` table under the authenticated user ID. RLS permits only the owner to select, insert or update a row. Original exports, units, labels and import warnings are stored with each list. The previous `account_armies` seed table remains read-only for compatibility, and its seed is copied into account list storage. Apply `supabase/schema.sql` followed by `supabase/account-list-storage.sql` and `supabase/immutable-upload.sql` when setting up a new database.
 
 On sign-in/reload the account library is fetched from Supabase, including pagination. Existing account-scoped device lists are uploaded automatically; identical contents are deduplicated and differing legacy or concurrent versions are preserved as recovered copies. Updates use revision checks to prevent silent overwrites. A local copy remains as a recovery draft/cache; it is not the authority for lists already saved online. Failed saves show an error and Retry; sign-out waits for saves. Refresh once on each previously used device to migrate its lists. The app does not claim a device's unuploaded lists are already in the database.
 
@@ -65,3 +65,10 @@ The app now indexes the pinned source's 80 Aeldari datasheets, 16 detachments, 5
 This is **not a complete verified rules library**: 300 indexed records include 73 effect summaries and 227 reference-only entries; 97 records are explicitly provisional/approximate/stubs upstream. Timing and bearer gates are enforced where supplied, but reminders do not establish battlefield eligibility. Missing effects and mixed/unmapped triggers stay source-linked references. Eighteen new summaries were compared with the secondary export, including the one-model Tears of Isha heal and melee-only Malevolent Souls trigger. Official codex completeness and current errata remain unverified.
 
 `docs/aeldari-coverage.json` records the counts and reference-only rules. `docs/aeldari-source.json` pins upstream file hashes. To reproduce the index, check out 40kdc-data at the specified commit and run `python scripts/import-aeldari.py /path/to/40kdc-data`, then `npm run build`. Hash mismatches abort the importer. Original rulebook descriptions, lore, weapon/profile tables and upstream tools are not bundled. The generated study index and independently written overrides are committed for review.
+
+
+## List editor and on-site builder (v0.9)
+
+Use **My army → Create list** to create an Aeldari roster without an upload, or **Edit list** on a saved list to edit its working roster. Search the 80-entry unit catalog by name; add independent squad entries, choose available model counts, configure equipment notes and tokens, select enhancements, and attach leaders using source-backed bodyguard choices. List names, detachments and dispositions are editable. Disposition options show the source's detachment pairing as guidance; the editor does not validate complete army legality. The current unit picker covers Aeldari; other imported factions keep editable existing entries and metadata.
+
+Edits are drafts until Save. Cancel leaves the saved list unchanged. Saving uses the existing account sync, retry and conflict-recovery behavior. Original uploaded export text is never rewritten by the editor and is protected by a database trigger. Older starter rosters without original text keep an immutable first-edit roster snapshot instead. Site-created rosters are identified as created in WarPlanner and do not invent an uploaded source. Editing the roster resets its guide walkthrough while retaining display preferences.

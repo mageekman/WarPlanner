@@ -19,10 +19,12 @@ function app(saved,options={}){
  context.WarPlanLessons=context.window.WarPlanLessons;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/activations.js'),'utf8'),context);
  context.WarPlanActivations=context.window.WarPlanActivations;
+ vm.runInContext(fs.readFileSync(require.resolve('../dist/list-builder.js'),'utf8'),context);
+ context.WarPlannerListBuilder=context.window.WarPlannerListBuilder;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -322,4 +324,18 @@ test('migration reads only the authenticated account cache and retains all its l
  const army=require('../dist/core.js').sample;
  const a=app([['warplanner.account.owner.v1',JSON.stringify({army,phase:0,savedLists:[{id:'local',army,warnings:[],renames:{}}]})]],{hosted:true});
  assert.equal(a.localLists({id:'owner'}).length,1);assert.equal(a.localLists({id:'other'}).length,0);
+});
+
+test('site-created lists are saved separately and cancelling an edit preserves the saved version',()=>{
+ const a=app();a.click({view:'army'});a.click({action:'create-list'});assert.match(a.html(),/Create a list/);
+ a.editorInput('name','Built on site');a.editorChange('detachment','Windrider Host');a.editorChange('disposition','Disruption');a.click({addUnit:'windriders'});a.saveEditor();
+ let saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.savedLists.length,2);assert.equal(saved.army.name,'Built on site');assert.equal(saved.army.origin,'builder');assert.equal(saved.army.units[0].name,'Windriders');assert.equal(saved.army.originalExport,undefined);
+ a.click({action:'edit-list'});a.editorInput('name','Unsaved rename');a.click({action:'cancel-list-editor'});assert.match(a.html(),/<h1>Built on site<\/h1>/);
+ saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.army.name,'Built on site');
+});
+
+test('editing a legacy starter preserves the original roster separately from removed units',()=>{
+ const a=app();a.click({view:'army'});a.click({openList:'list-1'});a.click({action:'edit-list'});a.editorInput('name','Updated starter');a.click({removeUnit:'sample-17'});a.saveEditor();
+ const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.army.units.length,17);assert.equal(saved.army.originalRoster.units.length,18);
+ assert.ok(saved.army.originalRoster.units.some(u=>u.name==='Warp Spiders'));a.click({action:'view-imported-list'});assert.match(a.html(),/<pre>[\s\S]*Warp Spiders/);
 });

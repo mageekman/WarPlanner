@@ -149,13 +149,15 @@ for item,category in [(e,'enhancement') for e in E]+[(s,'stratagem') for s in S]
  aid=item.get('ability_id',item['id'])
  if aid in known:continue
  det=dets.get(item.get('detachment_id'));records.append(dict(id=aid,name=item['name'],units=[],phase=[],turn='either',window='reference',summary='No complete mechanics record is available. Open the current rules reference.',conditions=['Source coverage is incomplete.'],category=category,detachment=det['name'] if det else None,enhancement=item['name'] if category=='enhancement' else None,referenceOnly=True,provisional=True,expanded=True,sourceIds=['catalog'],status='source-reference',targetText='Check the current rule for eligible targets.'))
+attachments=load('data/core/aeldari/leader-attachments.json')
+compositions={x['unit_id']:x for x in load('data/core/aeldari/unit-compositions.json')}
 unitRecords=[]
 for u in U:
  refs=[]
  for value in u.get('ability_ids',[]):
   r=value if isinstance(value,dict) else {'id':value};refs.append(r)
- unitRecords.append(dict(id=u['id'],name=u['name'],keywords=u.get('keywords',[])+u.get('faction_keywords',[]),abilities=refs,legend=u.get('is_legend',False)))
-pack=dict(pin=pin,units=unitRecords,detachments=[dict(id=d['id'],name=d['name'],rules=d.get('detachment_rule_ids',[d.get('detachment_rule_id')]),enhancements=d.get('enhancement_ids',[]),stratagems=d.get('stratagem_ids',[]),gameModes=d.get('game_modes',[])) for d in D],rules=records)
+ unitRecords.append(dict(id=u['id'],name=u['name'],keywords=u.get('keywords',[])+u.get('faction_keywords',[]),abilities=refs,legend=u.get('is_legend',False),modelCounts=sorted({sum(m.get(k,0) for m in t.get('models',[])) for t in compositions.get(u['id'],{}).get('tiers',[]) for k in ['min','max']}|{v for v in (u.get('model_count')or{}).values() if isinstance(v,int)}),bodyguardIds=next((x['eligible_bodyguard_ids'] for x in attachments if x['leader_id']==u['id']),[])))
+pack=dict(pin=pin,units=unitRecords,enhancements=[dict(id=e['id'],name=e['name'],detachmentId=e.get('detachment_id'),keywords=e.get('keyword_restrictions',[]),restrictions=e.get('datasheet_restriction_groups',[]),upgrade=e.get('upgrade_tag',False)) for e in E],detachments=[dict(id=d['id'],name=d['name'],rules=d.get('detachment_rule_ids',[d.get('detachment_rule_id')]),enhancements=d.get('enhancement_ids',[]),stratagems=d.get('stratagem_ids',[]),gameModes=d.get('game_modes',[]),dispositions=d.get('force_dispositions',[])) for d in D],rules=records)
 (root/'dist/aeldari-data.js').write_text('/* Derived study index; 40kdc community mechanics, CC BY 4.0. See CREDITS.md. */\n(function(root){const data='+json.dumps(pack,separators=(',',':'),ensure_ascii=False)+';if(typeof module!=="undefined"&&module.exports)module.exports=data;else root.WarPlannerAeldariData=data;})(typeof window!=="undefined"?window:globalThis);\n')
 report=dict(source_commit=pin,units=len(U),detachments=len(D),enhancements=len(E),stratagems=len(S),indexed_rules=len(records),mechanical_summaries=sum(not a['referenceOnly'] for a in records),reference_only=sum(a['referenceOnly'] for a in records),provisional=sum(a['provisional'] for a in records),reference_only_rules=[dict(id=a['id'],name=a['name'],provisional=a['provisional']) for a in records if a['referenceOnly']])
 (root/'docs/aeldari-coverage.json').write_text(json.dumps(report,indent=2)+'\n');print({k:v for k,v in report.items() if k!='reference_only_rules'})
