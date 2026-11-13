@@ -1,11 +1,11 @@
 {
   "name": "warplanner",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "description": "WarPlanner personal study companion with source-aware lessons",
   "scripts": {
-    "test": "node tests/core.test.cjs && node tests/lessons.test.cjs && node tests/activations.test.cjs && node tests/app.test.cjs && node tests/auth.test.cjs && node tests/aeldari.test.cjs",
-    "check": "node --check dist/core.js && node --check dist/lessons.js && node --check dist/activations.js && node --check dist/app.js && node --check dist/auth.js && node --check dist/aeldari-data.js",
+    "test": "node tests/core.test.cjs && node tests/lessons.test.cjs && node tests/activations.test.cjs && node tests/app.test.cjs && node tests/auth.test.cjs && node tests/aeldari.test.cjs && node tests/cloud-lists.test.cjs",
+    "check": "node --check dist/core.js && node --check dist/lessons.js && node --check dist/activations.js && node --check dist/app.js && node --check dist/auth.js && node --check dist/aeldari-data.js && node --check dist/cloud-lists.js",
     "bundle": "python scripts/bundle.py",
     "build": "python scripts/build.py"
   },

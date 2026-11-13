@@ -22,7 +22,7 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -307,4 +307,19 @@ test('font preference persists across reload and guide reset without changing th
  b.click({action:'reset-guide'});b.start();assert.match(b.html(),/data-font-size="large"/);
  b.change('guide-font-size','unexpected');assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).guideFontSize,'large');
  b.change('guide-font-size','medium');assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).guideFontSize,'medium');
+});
+
+test('account storage loads server lists over a stale cache and submits changes through its service',()=>{
+ const army=require('../dist/core.js').sample,old={...army,name:'Old device copy'};
+ const cached={army:old,phase:0,activeListId:'a',savedLists:[{id:'a',army:old,warnings:[],renames:{}}]};
+ const a=app([['warplanner.account.owner.v1',JSON.stringify(cached)]],{hosted:true,setup:true});
+ const calls=[],service={schedule:lists=>calls.push(structuredClone(lists)),dispose(){},flush:()=>Promise.resolve()};
+ a.cloudAccount({id:'owner'},[{id:'a',army:{...army,name:'Account version'},warnings:[],renames:{},cloudRevision:2}],service);
+ a.click({view:'army'});assert.match(a.html(),/Account version/);assert.doesNotMatch(a.html(),/Old device copy/);assert.match(a.html(),/Lists saved to account/);assert.ok(calls.length>0);
+ a.cloudStatus('error');a.click({view:'army'});assert.match(a.html(),/Your lists have not saved to your account yet/);assert.match(a.html(),/data-action="retry-list-save"/);
+});
+test('migration reads only the authenticated account cache and retains all its local lists',()=>{
+ const army=require('../dist/core.js').sample;
+ const a=app([['warplanner.account.owner.v1',JSON.stringify({army,phase:0,savedLists:[{id:'local',army,warnings:[],renames:{}}]})]],{hosted:true});
+ assert.equal(a.localLists({id:'owner'}).length,1);assert.equal(a.localLists({id:'other'}).length,0);
 });

@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.7
+# WarPlanner — personal study edition, v0.8
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -28,7 +28,7 @@ Core sequences were compared with the June 2026 official 11th-edition PDF on 13 
 
 The program does not guarantee latest-errata completeness or validate a roster. It cannot infer ranges, visibility, casualties, remaining tokens, passengers, reserve assignments, or whether a leader is still leading. It shows possible reminders, not legal activations. Stratagem cards point to timing opportunities and intentionally require the complete current reference for cost and full resolution. Mission scoring, weapon-by-weapon lessons, some passive/damaged-profile details and tournament-specific rulings remain outside coverage.
 
-This is personal-use software, not a cleared public product. The earlier source/IP assessment remains in `/workspace/war-plan-research`; research evidence and official rulebook PDFs are not shipped in this app. Supabase Auth handles accounts; GitHub Pages serves the app. No telemetry or bundled upstream rules library is included. Prepared app content is local after download; there is no PWA service worker or cross-device synchronization yet. Browser storage can be unavailable under file URLs and is removed by clearing browser data.
+This is personal-use software, not a cleared public product. The earlier source/IP assessment remains in `/workspace/war-plan-research`; research evidence and official rulebook PDFs are not shipped in this app. Supabase Auth handles accounts; GitHub Pages serves the app. No telemetry or bundled upstream rules library is included. Prepared app content is local after download; there is no PWA service worker. Browser storage can be unavailable under file URLs and is removed by clearing browser data.
 
 ## Checks
 
@@ -46,12 +46,16 @@ This follows Command Ledger’s static GitHub Pages approach. Pages publishes th
 
 Supabase project: `zmhybqzodbpshpnnopvz` (WarPlanner). Email/password authentication supports sign-up confirmation, sign-in, persistent sessions, sign-out and password recovery. Configure Authentication → URL Configuration with Site URL and Redirect URL `https://mageekman.github.io/WarPlanner/`. Keep email confirmation enabled. Configure custom SMTP before broader use; Supabase’s default sender is limited. Authentication emails and successful confirmation/recovery need a real inbox check by the owner.
 
-Account login currently unlocks the interface. GitHub Pages files and the repository remain public; login cannot make static rule summaries private. The `account_armies` table holds an administratively seeded roster for its owner, protected by a SELECT policy matching `auth.uid()` to `user_id`. Other accounts receive an empty army and an import prompt. The user-specific seed is not committed in SQL. Imported edits and study progress are still local; full cross-device synchronization is not implemented. See `supabase/schema.sql`. Armies and progress are stored locally under the authenticated user ID. Signing out clears the active roster from the interface, and switching accounts loads a separate saved state. The old shared `warplan.prototype.v1` key is used only by the offline edition; hosted accounts never inherit it. The offline single-file bundle has no account gate and remains available for personal use.
+Account login unlocks the interface. GitHub Pages files and the repository remain public; private army lists are stored in Supabase's `saved_army_lists` table under the authenticated user ID. RLS permits only the owner to select, insert or update a row. Original exports, units, labels and import warnings are stored with each list. The previous `account_armies` seed table remains read-only for compatibility, and its seed is copied into account list storage. Apply `supabase/schema.sql` followed by `supabase/account-list-storage.sql` when setting up a new database.
+
+On sign-in/reload the account library is fetched from Supabase, including pagination. Existing account-scoped device lists are uploaded automatically; identical contents are deduplicated and differing legacy or concurrent versions are preserved as recovered copies. Updates use revision checks to prevent silent overwrites. A local copy remains as a recovery draft/cache; it is not the authority for lists already saved online. Failed saves show an error and Retry; sign-out waits for saves. Refresh once on each previously used device to migrate its lists. The app does not claim a device's unuploaded lists are already in the database.
+
+Guide progress, display settings and active-list selection remain device-local. Changes made on another device appear on sign-in/reload; this release does not use Realtime subscriptions. Signing out clears the active roster from the interface. Hosted accounts never inherit the offline edition's shared `warplan.prototype.v1` key. The offline single-file bundle remains a separate, device-only personal-use edition.
 
 
 ## Saved-list library
 
-My army opens account-specific saved lists. Existing single-army saves migrate into the library automatically. Importing appends a list, and opening a list makes it active for the guide. Each list retains its unit labels and original export when provided. Switching active lists starts a fresh walkthrough. Summary cards show roster, detachment and disposition rather than point values; the original export retains its point values verbatim when opened. The older starter roster has no original export, so its import panel explicitly shows the saved roster instead. Lists and imported changes remain local to the signed-in account on that device.
+My army opens account-specific saved lists. Existing single-army saves migrate into the library automatically. Importing appends a list, and opening a list makes it active for the guide. Each list retains its unit labels and original export when provided. Switching active lists starts a fresh walkthrough. Summary cards show roster, detachment and disposition rather than point values; the original export retains its point values verbatim when opened. The older starter roster has no original export, so its import panel explicitly shows the saved roster instead. Hosted lists, their imports and unit labels are saved to the signed-in Supabase account and load on other devices.
 
 
 ## Aeldari source expansion (v0.7)

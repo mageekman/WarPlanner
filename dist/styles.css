@@ -166,3 +166,7 @@
 .army-rules-reference>summary{font-size:13px;cursor:pointer;color:var(--teal)}
 .army-rules-reference>p{font-size:11px;margin:12px 0}
 .unit-lessons>.reference-details{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:6px}
+
+.list-sync-banner{display:flex;align-items:center;gap:12px;border:1px solid #8c7246;border-radius:8px;padding:12px;margin-bottom:10px;color:#e8bf7b;font-size:12px;flex-shrink:0}
+.list-sync-banner button{margin-left:auto;background:none;border:1px solid currentColor;border-radius:5px;color:inherit;padding:8px 12px}
+.shell:has(.guide-carousel)>main{flex-direction:column}

@@ -5,7 +5,7 @@ import zipfile
 root = Path(__file__).resolve().parents[1]
 html = (root / 'dist/index.html').read_text()
 html = html.replace('<link rel="stylesheet" href="styles.css">', '<style>' + (root / 'dist/styles.css').read_text() + '</style>')
-html = html.replace('<script defer src="core.js"></script>', '')
+html = html.replace('<script defer src="core.js"></script>', '').replace('<script defer src="cloud-lists.js"></script>', '')
 html = html.replace('<script defer src="app.js"></script>', '')
 html = html.replace('<script defer src="lessons.js"></script>', '').replace('<script defer src="aeldari-data.js"></script>', '')
 html = html.replace('<script defer src="activations.js"></script>', '')

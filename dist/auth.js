@@ -4,7 +4,7 @@
  const screen=document.querySelector('#auth-screen'), app=document.querySelector('#app');
  const form=document.querySelector('#auth-form'), email=document.querySelector('#auth-email'), password=document.querySelector('#auth-password');
  const message=document.querySelector('#auth-message'), submit=document.querySelector('#auth-submit');
- let mode='signin', busy=false, accountId=null, sessionRevision=0;
+ let mode='signin', busy=false, accountId=null, sessionRevision=0, loadingLibrary=null;
  const config=window.WARPLANNER_CONFIG;
  function report(text){message.textContent=text;}
  function setMode(value){
@@ -19,19 +19,24 @@
  }
  async function showSession(session){
   const revision=++sessionRevision;
-  if(!session){accountId=null;screen.hidden=false;app.hidden=true;window.clearWarPlannerAccount?.();return;}
+  if(!session){loadingLibrary?.dispose();loadingLibrary=null;accountId=null;screen.hidden=false;app.hidden=true;window.clearWarPlannerAccount?.();return;}
   if(accountId===session.user.id){screen.hidden=true;app.hidden=false;return;}
-  screen.hidden=false;app.hidden=true;
+  screen.hidden=false;app.hidden=true;loadingLibrary?.dispose();loadingLibrary=null;
+  let service=null;
   try{
    const {data:identity,error:identityError}=await client.auth.getUser();
    if(revision!==sessionRevision)return;
    if(identityError||!identity.user||identity.user.id!==session.user.id)throw new Error('Please sign in again.');
-   const {data,error}=await client.from('account_armies').select('army').eq('user_id',identity.user.id).maybeSingle();
-   if(revision!==sessionRevision)return;
-   if(error)throw new Error('Could not load your army. Please reload and try again.');
-   window.setWarPlannerAccount?.(identity.user,data?.army||null);
+   report('Loading your account lists…');
+   service=window.WarPlannerCloudLists.create(client,identity.user.id,{status:status=>window.setWarPlannerCloudStatus?.(status),saved:result=>window.applyWarPlannerCloudSave?.(result)});
+   loadingLibrary=service;
+   const local=window.getWarPlannerLocalLists?.(identity.user)||[];
+   const {lists,idMap}=await service.load(local);
+   if(revision!==sessionRevision){service.dispose();return;}
+   window.setWarPlannerAccount?.(identity.user,lists,service,idMap);loadingLibrary=null;
+   report('');
    accountId=identity.user.id;screen.hidden=true;app.hidden=false;
-  }catch(error){if(revision===sessionRevision){accountId=null;window.clearWarPlannerAccount?.();report(error.message);}}
+  }catch(error){service?.dispose();if(revision===sessionRevision){accountId=null;window.clearWarPlannerAccount?.();report(error.message||'Could not load your account lists. Please reload and try again.');}}
  }
  if(!config?.supabaseUrl||!window.supabase){report('Account service is unavailable. Please reload and try again.');submit.disabled=true;return;}
  const client=window.supabase.createClient(config.supabaseUrl,config.supabasePublishableKey,{auth:{storageKey:'warplanner.auth.v1',persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
@@ -47,8 +52,8 @@
   if(toggle&&!busy){setMode(toggle.dataset.authMode);return;}
   if(event.target.closest('[data-auth-signout]')&&!busy){
    busy=true;
-   try{const {error}=await client.auth.signOut();if(error)throw error;setMode('signin');showSession(null);}
-   catch{window.alert('Sign out failed. Please try again.');}
+   try{await window.flushWarPlannerLists?.();const {error}=await client.auth.signOut();if(error)throw error;setMode('signin');showSession(null);}
+   catch{window.alert('Could not finish saving or sign out. Your lists are still here; retry saving before signing out.');}
    finally{busy=false;}
   }
  });

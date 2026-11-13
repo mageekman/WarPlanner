@@ -9,3 +9,5 @@ grant select on public.account_armies to authenticated;
 create policy "Read own army" on public.account_armies for select to authenticated
  using ((select auth.uid()) = user_id);
 -- Personal seed records are inserted administratively and are not committed.
+
+-- Account list storage follows in account-list-storage.sql. Run both scripts for a new database.

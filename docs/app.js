@@ -1,6 +1,7 @@
 'use strict';
 const {phases,sample,parseArmy,next}=WarPlan;
 let KEY=null;
+let cloudLists=null,cloudStatus='loading';
 const EMPTY_ARMY={name:'No army imported',faction:'',detachment:'',points:0,limit:2000,version:'',units:[]};
 const Library=WarPlanLessons;
 const Activations=WarPlanActivations;
@@ -18,7 +19,7 @@ function syncActiveList(){const list=state.savedLists?.find(l=>l.id===state.acti
 function openSavedList(id){
  const list=state.savedLists.find(l=>l.id===id);if(!list)return;
  syncActiveList();
- if(state.activeListId!==id)Object.assign(state,{guideStarted:false,guideFontSize:'medium',army:structuredClone(list.army),activeListId:id,renames:{...list.renames},warnings:[...(list.warnings||[])],completed:{},revealed:{},history:[],round:1,turn:state.firstPlayer,phase:0,open:0});
+ if(state.activeListId!==id)Object.assign(state,{guideStarted:false,army:structuredClone(list.army),activeListId:id,renames:{...list.renames},warnings:[...(list.warnings||[])],completed:{},revealed:{},history:[],round:1,turn:state.firstPlayer,phase:0,open:0});
  state.setupListId=id;state.selectedListId=id;state.showImportedList=false;state.view='army';render();
 }
 function loadAccountState(key,army){KEY=key;state=initialState(army);storageOK=true;
@@ -29,7 +30,36 @@ if(!window.WARPLANNER_CONFIG)loadAccountState('warplan.prototype.v1',sample);
 
 const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function save(){syncActiveList();if(!KEY)return;try{localStorage.setItem(KEY,JSON.stringify(state));}catch{storageOK=false;}}
+function persistStateCache(){if(!KEY)return;try{localStorage.setItem(KEY,JSON.stringify(state));}catch{storageOK=false;}}
+function save(){syncActiveList();if(!KEY)return;persistStateCache();cloudLists?.schedule(state.savedLists||[]);}
+function listSaveStatus(){return cloudLists?({loading:'Loading account lists…',saving:'Saving lists to account…',saved:'Lists saved to account',error:'Lists not saved — retry'}[cloudStatus]||'Saving lists…'):window.WARPLANNER_CONFIG?'Loading account lists…':storageOK?'Saved on this device':'Browser storage unavailable';}
+function updateCloudUI(){
+ for(const label of document.querySelectorAll?.('[data-list-sync-status]')||[])label.textContent=listSaveStatus();
+ const banner=$('#list-sync-banner');if(banner)banner.hidden=cloudStatus!=='error';
+}
+window.setWarPlannerCloudStatus=status=>{cloudStatus=status;updateCloudUI();};
+window.applyWarPlannerCloudSave=result=>{
+ const local=state.savedLists?.find(l=>l.id===result.previousId);if(!local)return;
+ if(result.list.id!==local.id){
+  const old=local.id;local.id=result.list.id;local.army.name=result.list.army.name;
+  for(const key of ['activeListId','setupListId','selectedListId'])if(state[key]===old)state[key]=local.id;
+  if(state.activeListId===local.id)state.army.name=local.army.name;
+  if(result.remote&&!state.savedLists.some(l=>l.id===result.remote.id))state.savedLists.push(result.remote);
+  toast('This list changed elsewhere. Your changes were saved as a recovered copy.');
+ }
+ local.cloudRevision=result.list.cloudRevision;local.cloudBase=result.list.cloudBase;persistStateCache();
+};
+window.getWarPlannerLocalLists=user=>{
+ try{const saved=JSON.parse(localStorage.getItem('warplanner.account.'+user.id+'.v1'));if(!saved)return [];
+ const lists=Array.isArray(saved.savedLists)?saved.savedLists:saved.army?.units?.length?[{id:'list-1',army:saved.army,warnings:saved.warnings||[],renames:saved.renames||{}}]:[];
+ const active=lists.find(l=>l.id===saved.activeListId);if(active&&saved.army){active.army=saved.army;active.renames=saved.renames||{};active.warnings=saved.warnings||[];}
+ return lists;
+ }catch{return [];}
+};
+window.flushWarPlannerLists=()=>cloudLists?cloudLists.flush():Promise.resolve();
+window.addEventListener?.('online',()=>{if(cloudLists?.dirty)void cloudLists.flush().catch(()=>{});});
+window.addEventListener?.('beforeunload',event=>{if(cloudLists?.dirty){event.preventDefault();event.returnValue='';}});
+
 let toastTimer;
 function toast(message){$('#toast').textContent=message;$('#toast').style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').style.display='none',3000);}
 function unitName(u){if(state.renames[u.id])return state.renames[u.id];const same=state.army.units.filter(x=>x.name===u.name);return u.name+(same.length>1?' '+(same.findIndex(x=>x.id===u.id)+1):'');}
@@ -52,7 +82,7 @@ function refreshUnitPreviews(){
 window.addEventListener?.('resize',refreshUnitPreviews);
 document.fonts?.ready?.then(refreshUnitPreviews);
 document.fonts?.addEventListener?.('loadingdone',refreshUnitPreviews);
-function render(focusLesson=false){cancelGuideMotion();save();const nav=[['overview','⌂','Study home'],['guide','▤','Guided play'],['army','◇','My army'],['practice','✧','Practice']];$('#app').innerHTML=`<div class="shell"><aside class="sidebar"><div class="brand"><div class="mark"><span>⌁</span></div>WARPLANNER</div><div class="tagline">KNOW YOUR NEXT MOVE.</div><div class="nav-label">YOUR FIELD GUIDE</div><nav class="nav" aria-label="Main navigation">${nav.map(([id,icon,label])=>`<button data-view="${id}" class="${state.view===id?'active':''}" ${state.view===id?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span>${label}${id==='practice'?'<span class="soon">LATER</span>':''}</button>`).join('')}<button type="button" data-auth-signout><span class="nav-icon" aria-hidden="true">↪</span>Sign out</button></nav><div class="sidebar-bottom"><div class="private">◈ &nbsp; A personal study companion<br>Made for the way you learn.</div><div class="profile"><div class="avatar">WP</div><div><strong>Your study space</strong><small>Personal study · v0.7</small></div></div></div></aside><main>${state.view==='guide'?'':`<div class="topbar"><span>YOUR STUDY SPACE &nbsp; / &nbsp; <strong>${state.view==='guide'?'Guided play':state.view==='army'?'My army':state.view==='practice'?'Practice':'Study home'}</strong></span><span class="top-status"><span class="dot"></span>${storageOK?'Saved on this device':'Browser storage unavailable'}</span></div>`}${state.view==='guide'?guide():state.view==='army'?armyView():state.view==='practice'?practiceView():overview()}</main></div>`;refreshUnitPreviews();if(focusLesson)document.querySelector('#lesson-title')?.focus({preventScroll:true});}
+function render(focusLesson=false){cancelGuideMotion();save();const nav=[['overview','⌂','Study home'],['guide','▤','Guided play'],['army','◇','My army'],['practice','✧','Practice']];$('#app').innerHTML=`<div class="shell"><aside class="sidebar"><div class="brand"><div class="mark"><span>⌁</span></div>WARPLANNER</div><div class="tagline">KNOW YOUR NEXT MOVE.</div><div class="nav-label">YOUR FIELD GUIDE</div><nav class="nav" aria-label="Main navigation">${nav.map(([id,icon,label])=>`<button data-view="${id}" class="${state.view===id?'active':''}" ${state.view===id?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span>${label}${id==='practice'?'<span class="soon">LATER</span>':''}</button>`).join('')}<button type="button" data-auth-signout><span class="nav-icon" aria-hidden="true">↪</span>Sign out</button></nav><div class="sidebar-bottom"><div class="private">◈ &nbsp; A personal study companion<br>Made for the way you learn.</div><div class="profile"><div class="avatar">WP</div><div><strong>Your study space</strong><small>Personal study · v0.8</small></div></div></div></aside><main><div id="list-sync-banner" class="list-sync-banner" ${cloudStatus==='error'?'':'hidden'} role="status"><span>Your lists have not saved to your account yet. Keep this page open and retry.</span><button type="button" data-action="retry-list-save">Retry</button></div>${state.view==='guide'?'':`<div class="topbar"><span>YOUR STUDY SPACE &nbsp; / &nbsp; <strong>${state.view==='guide'?'Guided play':state.view==='army'?'My army':state.view==='practice'?'Practice':'Study home'}</strong></span><span class="top-status"><span class="dot"></span><span data-list-sync-status>${listSaveStatus()}</span></span></div>`}${state.view==='guide'?guide():state.view==='army'?armyView():state.view==='practice'?practiceView():overview()}</main></div>`;refreshUnitPreviews();updateCloudUI();if(focusLesson)document.querySelector('#lesson-title')?.focus({preventScroll:true});}
 function armyStrip(){return `<div class="army-strip"><div class="army-sigil" aria-hidden="true">⋈</div><div><h3>${escapeHTML(state.army.faction)} <span class="muted">/</span> ${escapeHTML(state.army.detachment)}</h3><p>${state.army.units.length} units · ${escapeHTML(state.army.disposition||'Disposition not provided')}</p></div><div class="strip-right"><span class="pill">${!state.army.units.length?'No army imported':state.army.units[0]?.id.startsWith('sample')?'Saved roster':'Imported roster'}</span><button class="text-button" data-view="army">View army ↗</button></div></div>`;}
 function referenceDetails(item){
  const confirmation=state.confirmed[Library.revision+'-'+item.id];
@@ -322,6 +352,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.dataset.reveal!==undefined){const k=stepKey(Number(b.dataset.reveal));state.revealed[k]=!state.revealed[k];render();}
  if(b.dataset.complete!==undefined){const i=Number(b.dataset.complete),k=stepKey(i);state.completed[k]=!state.completed[k];if(state.completed[k]&&i<lessons().steps.length-1)state.open=i+1;render();}
  switch(b.dataset.action){
+ case 'retry-list-save':void window.flushWarPlannerLists().catch(()=>{});break;
  case 'reset-guide':showGuideStart(true);break;
  case 'choose-guide-army':showGuideStart();break;
  case 'list-library':state.selectedListId=null;state.showImportedList=false;render();break;
@@ -352,16 +383,29 @@ document.addEventListener('keydown',event=>{
 document.addEventListener('input',e=>{if(e.target.id==='unit-search'){const q=e.target.value.toLowerCase();document.querySelectorAll('.unit-card').forEach(c=>c.hidden=!c.dataset.unitName.includes(q)&&!c.querySelector('h3').textContent.toLowerCase().includes(q));}if(e.target.id==='army-text'){pendingImport=null;$('#import-feedback').innerHTML='';$('#import-form button[type=submit]').innerHTML='Review army <span>→</span>';}});
 document.addEventListener('change',e=>{if(e.target.id==='guide-font-size'&&['small','medium','large'].includes(e.target.value)){state.guideFontSize=e.target.value;save();const guide=$('.guide-carousel');if(guide)guide.dataset.fontSize=state.guideFontSize;refreshUnitPreviews();}if(e.target.id==='guide-army-list'){state.setupListId=e.target.value;save();}if(e.target.id==='guide-first-player'){state.setupFirstPlayer=e.target.value;save();}if(e.target.dataset.rename){const value=e.target.value.trim();if(value){state.renames[e.target.dataset.rename]=value;save();e.target.closest('.unit-card').querySelector('h3').textContent=value;}else e.target.value=unitName(state.army.units.find(u=>u.id===e.target.dataset.rename));}});
 document.addEventListener('submit',e=>{if(e.target.id==='guide-start-form'){e.preventDefault();startGuide();}});
-$('#import-form').addEventListener('submit',e=>{e.preventDefault();if(pendingImport){syncActiveList();const id='list-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);state.savedLists.push({id,army:pendingImport.army,warnings:pendingImport.warnings,renames:{}});state.guideStarted=false;state.setupListId=id;state.activeListId=id;state.selectedListId=id;state.showImportedList=false;state.army=pendingImport.army;state.warnings=pendingImport.warnings;state.renames={};state.completed={};state.revealed={};state.history=[];state.phase=0;state.round=1;state.turn=state.firstPlayer;state.open=0;state.view='army';$('#import-dialog').close();pendingImport=null;render();toast('Army saved. Review your units before studying.');return;}try{pendingImport=parseArmy($('#army-text').value);$('#import-feedback').innerHTML=`<div class="banner" style="margin:15px 0 0">${pendingImport.army.units.length} entries found<br>${pendingImport.warnings.map(escapeHTML).join('<br>')}</div><div class="review-list">${pendingImport.army.units.map(u=>`<div class="review-row"><span>${escapeHTML(u.name)}${u.group?' · group '+escapeHTML(u.group):''}</span><span>${escapeHTML(u.role||'Unit')}</span></div>`).join('')}</div>`;$('#import-form button[type=submit]').innerHTML='Use this army <span>→</span>';}catch(error){$('#import-feedback').textContent=error.message;}});
+$('#import-form').addEventListener('submit',e=>{e.preventDefault();if(pendingImport){syncActiveList();const id='list-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);state.savedLists.push({id,army:pendingImport.army,warnings:pendingImport.warnings,renames:{}});state.guideStarted=false;state.setupListId=id;state.activeListId=id;state.selectedListId=id;state.showImportedList=false;state.army=pendingImport.army;state.warnings=pendingImport.warnings;state.renames={};state.completed={};state.revealed={};state.history=[];state.phase=0;state.round=1;state.turn=state.firstPlayer;state.open=0;state.view='army';$('#import-dialog').close();pendingImport=null;render();toast(cloudLists?'Saving your list to your account…':'Army saved. Review your units before studying.');return;}try{pendingImport=parseArmy($('#army-text').value);$('#import-feedback').innerHTML=`<div class="banner" style="margin:15px 0 0">${pendingImport.army.units.length} entries found<br>${pendingImport.warnings.map(escapeHTML).join('<br>')}</div><div class="review-list">${pendingImport.army.units.map(u=>`<div class="review-row"><span>${escapeHTML(u.name)}${u.group?' · group '+escapeHTML(u.group):''}</span><span>${escapeHTML(u.role||'Unit')}</span></div>`).join('')}</div>`;$('#import-form button[type=submit]').innerHTML='Use this army <span>→</span>';}catch(error){$('#import-feedback').textContent=error.message;}});
 render();
 
-window.setWarPlannerAccount=(user,army)=>{
- loadAccountState('warplanner.account.'+user.id+'.v1',army||EMPTY_ARMY);
+window.setWarPlannerAccount=(user,library,service=null,idMap={})=>{
+ cloudLists?.dispose();cloudLists=null;
+ loadAccountState('warplanner.account.'+user.id+'.v1',Array.isArray(library)?EMPTY_ARMY:library||EMPTY_ARMY);
+ if(Array.isArray(library)){
+  const priorId=idMap[state.activeListId]||state.activeListId,priorArmy=JSON.stringify(state.army);
+  state.savedLists=library;
+  state.selectedListId=idMap[state.selectedListId]||state.selectedListId;state.setupListId=idMap[state.setupListId]||state.setupListId;
+  const active=library.find(l=>l.id===priorId)||library[0];state.activeListId=active?.id;
+  state.army=structuredClone(active?.army||EMPTY_ARMY);state.renames={...(active?.renames||{})};state.warnings=[...(active?.warnings||[])];
+  if(!library.some(l=>l.id===state.selectedListId))state.selectedListId=null;
+  if(priorId!==state.activeListId||priorArmy!==JSON.stringify(state.army)){state.guideStarted=false;state.phase=0;state.open=0;state.round=1;state.history=[];state.completed={};}
+  normalizeLists();
+ }
+ cloudLists=service;cloudStatus=service?'saved':'loading';
  pendingImport=null;$('#import-dialog').close();$('#army-text').value='';$('#import-feedback').innerHTML='';
  if(!state.army.units.length)state.view='army';
  render();
 };
 window.clearWarPlannerAccount=()=>{
+ cloudLists?.dispose();cloudLists=null;cloudStatus='loading';
  KEY=null;state=initialState(EMPTY_ARMY);pendingImport=null;
  $('#import-dialog').close();$('#army-text').value='';$('#import-feedback').innerHTML='';render();
 };
