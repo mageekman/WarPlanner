@@ -77,10 +77,26 @@
 .guide-start-button{width:100%;display:flex;justify-content:space-between;margin-top:26px}.guide-start-button:disabled{opacity:.4;cursor:default}
 .guide-start-page .focus-footer{margin-top:26px;line-height:1.6}.guide-start-page .focus-footer p{font-size:11px}
 .guide-fixed-header{position:relative}
-.guide-settings{position:absolute;left:10px;top:13px;z-index:4}
+.guide-settings{position:absolute;right:10px;top:13px;z-index:4}
 .guide-settings>summary{list-style:none;display:grid;place-items:center;width:32px;height:32px;cursor:pointer;color:var(--muted);border-radius:6px}
 .guide-settings>summary::-webkit-details-marker{display:none}.guide-settings>summary:hover{color:var(--teal)}
 .guide-settings svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.guide-settings-menu{position:absolute;left:0;top:38px;min-width:190px;padding:5px;background:#10212b;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px #0005}
+.guide-settings-menu{position:absolute;right:0;top:38px;min-width:190px;padding:5px;background:#10212b;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px #0005}
 .guide-settings-menu button{display:block;text-align:left;background:none;border:0;width:100%;padding:12px;font-size:12px;border-radius:5px}.guide-settings-menu button:hover{background:#233b3b}
-@media(max-width:650px){.guide-start-page{padding:20px}.guide-start-page h1{font-size:25px;margin-bottom:20px}.guide-settings{left:7px;top:13px}}
+@media(max-width:650px){.guide-start-page{padding:20px}.guide-start-page h1{font-size:25px;margin-bottom:20px}.guide-settings{right:7px;top:13px}}
+
+
+.guide-font-label{display:block;padding:9px 12px 6px;font-size:11px;color:var(--muted)}
+#guide-font-size{display:block;width:calc(100% - 24px);margin:0 12px 8px;padding:8px;background:#192c35;border:1px solid #425a60;border-radius:5px;color:var(--ink);color-scheme:dark;font:inherit;font-size:12px}
+.guide-carousel[data-font-size="small"]{--guide-font-scale:.88}
+.guide-carousel[data-font-size="large"]{--guide-font-scale:1.18}
+/* Medium inherits every existing type size unchanged. Scale guide text only. */
+.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) .lesson-focus h2{font-size:calc(24px * var(--guide-font-scale))}
+.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) :is(.lesson-instruction,.flash-title-row h3){font-size:calc(14px * var(--guide-font-scale))}
+.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) .think-details p{font-size:calc(13px * var(--guide-font-scale))}
+.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) :is(.flash-fact,.flash-rule h4,.flash-details h4,.think-details,.think-details summary,.sequence-outline button){font-size:calc(12px * var(--guide-font-scale))}
+.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) :is(.flash-preview,.flash-target p,.flash-details li,.flash-unit-list li,.reference-content,.reference-content p,.coverage-note,.sequence-outline){font-size:calc(11px * var(--guide-font-scale))}
+.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) :is(.lesson-kind,.reminder-caption,.flash-details>summary,.reference-details>summary,.reference-content small,.flash-unit-list>span){font-size:calc(10px * var(--guide-font-scale))}
+.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) :is(.flash-timing,.flash-target>span,.flash-priority,.flash-fights-first,.rule-badge){font-size:calc(9px * var(--guide-font-scale))}
+.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) .flash-title-row .rule-badge{font-size:calc(8px * var(--guide-font-scale))}
+@media(max-width:650px){.guide-carousel:is([data-font-size="small"],[data-font-size="large"]) .lesson-focus h2{font-size:calc(22px * var(--guide-font-scale))}}

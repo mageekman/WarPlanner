@@ -71,7 +71,7 @@ test('phase cards show relevant units without dropdowns or per-unit completion',
  assert.match(a.html(),/<h3>Flitting Shadows<\/h3>/);
  assert.match(a.html(),/<h3>Avatar of Khaine<\/h3>/);
  assert.match(a.html(),/<h3>Swooping Hawks<\/h3>/);
- assert.doesNotMatch(a.html(),/<select/);assert.doesNotMatch(a.html(),/finish-unit|Finish unit walkthrough/);
+ assert.doesNotMatch(a.html(),/<select[^>]*data-unit/);assert.doesNotMatch(a.html(),/finish-unit|Finish unit walkthrough/);
  assert.match(a.html(),/class="flash-fact"/);assert.match(a.html(),/<details class="flash-details">/);
  assert.match(a.html(),/Your army at this phase/);
  const restored=app([...a.store]);assert.match(restored.html(),/<h3>Swooping Hawks<\/h3>/);
@@ -81,7 +81,7 @@ test('shooting cards preserve sequencing, unit context, and low-click phase prog
  assert.ok(a.html().indexOf('data-unit-card="sample-16"')<a.html().indexOf('data-unit-card="sample-12"'));
  assert.match(a.html(),/<h3>Fire Dragons<\/h3>/);
  assert.match(a.html(),/<h4>Assured Destruction<\/h4>/);assert.match(a.html(),/<h4>Aspect Shrine Token<\/h4>/);
- assert.doesNotMatch(a.html(),/Burning Lance/);assert.doesNotMatch(a.html(),/<select/);
+ assert.doesNotMatch(a.html(),/Burning Lance/);assert.doesNotMatch(a.html(),/<select[^>]*data-unit/);
  assert.doesNotMatch(a.html(),/data-unit-card="sample-(14|15|17)"/);
  assert.match(a.html(),/data-shared-rule="token"/);assert.match(a.html(),/Swooping Hawks 1/);assert.match(a.html(),/Warp Spiders/);
  a.click({action:'study-next'});assert.match(a.html(),/End of Shooting/);
@@ -297,4 +297,13 @@ test('settings returns to setup and resets the walkthrough while keeping lists',
 test('empty-account guide setup offers import and disables Start',()=>{
  const a=app(undefined,{hosted:true,setup:true});a.account({id:'empty'},null);a.click({view:'guide'});
  assert.match(a.html(),/Start your guide/);assert.match(a.html(),/class="primary guide-start-button" type="submit" disabled/);a.start();assert.match(a.html(),/Start your guide/);
+});
+
+test('font preference persists across reload and guide reset without changing the current step',()=>{
+ const a=app();a.click({phase:'2'});a.click({step:'1'});a.change('guide-font-size','large');
+ let saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.guideFontSize,'large');assert.equal(saved.phase,2);assert.equal(saved.open,1);
+ const b=app([...a.store]);assert.match(b.html(),/data-font-size="large"/);assert.match(b.html(),/<option value="large" selected>/);
+ b.click({action:'reset-guide'});b.start();assert.match(b.html(),/data-font-size="large"/);
+ b.change('guide-font-size','unexpected');assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).guideFontSize,'large');
+ b.change('guide-font-size','medium');assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).guideFontSize,'medium');
 });
