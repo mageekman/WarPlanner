@@ -22,7 +22,7 @@
   if(!session){loadingLibrary?.dispose();loadingLibrary=null;accountId=null;screen.hidden=false;app.hidden=true;window.clearWarPlannerAccount?.();return;}
   if(accountId===session.user.id){screen.hidden=true;app.hidden=false;return;}
   screen.hidden=false;app.hidden=true;loadingLibrary?.dispose();loadingLibrary=null;
-  let service=null;
+  let service=null,contentService=null;
   try{
    const {data:identity,error:identityError}=await client.auth.getUser();
    if(revision!==sessionRevision)return;
@@ -33,10 +33,12 @@
    const local=window.getWarPlannerLocalLists?.(identity.user)||[];
    const {lists,idMap}=await service.load(local);
    if(revision!==sessionRevision){service.dispose();return;}
-   window.setWarPlannerAccount?.(identity.user,lists,service,idMap);loadingLibrary=null;
+   if(window.WarPlannerContent){contentService=window.WarPlannerContent.create(client,identity.user.id);await contentService.load();}
+   if(revision!==sessionRevision){service.dispose();contentService?.dispose();return;}
+   window.setWarPlannerAccount?.(identity.user,lists,service,idMap,contentService);loadingLibrary=null;
    report('');
    accountId=identity.user.id;screen.hidden=true;app.hidden=false;
-  }catch(error){service?.dispose();if(revision===sessionRevision){accountId=null;window.clearWarPlannerAccount?.();report(error.message||'Could not load your account lists. Please reload and try again.');}}
+  }catch(error){service?.dispose();contentService?.dispose();if(revision===sessionRevision){accountId=null;window.clearWarPlannerAccount?.();report(error.message||'Could not load your account lists. Please reload and try again.');}}
  }
  if(!config?.supabaseUrl||!window.supabase){report('Account service is unavailable. Please reload and try again.');submit.disabled=true;return;}
  const client=window.supabase.createClient(config.supabaseUrl,config.supabasePublishableKey,{auth:{storageKey:'warplanner.auth.v1',persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
@@ -51,7 +53,7 @@
   const toggle=event.target.closest('[data-auth-mode]');
   if(toggle&&!busy){setMode(toggle.dataset.authMode);return;}
   if(event.target.closest('[data-auth-signout]')&&!busy){
-   if(window.hasUnsavedListDraft?.()){window.alert('Save or cancel your list edits before signing out.');return;}
+   if(window.hasUnsavedListDraft?.()){window.alert('Save or cancel your edits before signing out.');return;}
    busy=true;
    try{await window.flushWarPlannerLists?.();const {error}=await client.auth.signOut();if(error)throw error;setMode('signin');showSession(null);}
    catch{window.alert('Could not finish saving or sign out. Your lists are still here; retry saving before signing out.');}

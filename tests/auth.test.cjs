@@ -6,7 +6,7 @@ function boot(methods={},options={}){
  const nodes=new Map(),events={};let callback,redirect;const loaded=[];
  for(const id of ['#auth-screen','#app','#auth-form','#auth-email','#auth-password','#auth-message','#auth-submit','#auth-title','label[for="auth-password"]','label[for="auth-email"]'])nodes.set(id,{value:'',hidden:false,textContent:'',addEventListener:(type,fn)=>events[id+type]=fn});
  const auth={onAuthStateChange(fn){callback=fn;},getSession:async()=>({data:{session:null}}),getUser:async()=>({data:{user:{id:'one'}}}),signInWithPassword:async()=>({data:{session:{user:{id:'one'}}}}),signUp:async args=>{redirect=args.options.emailRedirectTo;return {data:{session:null}}},resetPasswordForEmail:async()=>({}),signOut:async()=>({}),...methods};
- vm.runInNewContext(fs.readFileSync('dist/auth.js','utf8'),{document:{querySelector:s=>nodes.get(s),addEventListener:(t,f)=>events[t]=f},window:{flushWarPlannerLists:options.flush,WarPlannerCloudLists:{create:()=>({load:options.load|| (async()=>({lists:[],idMap:{}})),dispose(){}})},WARPLANNER_CONFIG:{supabaseUrl:'https://example.supabase.co',supabasePublishableKey:'sb_publishable_test'},setWarPlannerAccount:(user,army)=>loaded.push({user,army}),supabase:{createClient:()=>({auth,from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:null,error:null})})})})})},location:{href:'https://mageekman.github.io/WarPlanner/?test=1'},alert(){}},URL,setTimeout});
+ vm.runInNewContext(fs.readFileSync('dist/auth.js','utf8'),{document:{querySelector:s=>nodes.get(s),addEventListener:(t,f)=>events[t]=f},window:{WarPlannerContent:options.content,flushWarPlannerLists:options.flush,WarPlannerCloudLists:{create:()=>({load:options.load|| (async()=>({lists:[],idMap:{}})),dispose(){}})},WARPLANNER_CONFIG:{supabaseUrl:'https://example.supabase.co',supabasePublishableKey:'sb_publishable_test'},setWarPlannerAccount:(user,army)=>loaded.push({user,army}),supabase:{createClient:()=>({auth,from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:null,error:null})})})})})},location:{href:'https://mageekman.github.io/WarPlanner/?test=1'},alert(){}},URL,setTimeout});
  return {signout:()=>events.click({target:{closest:s=>s==='[data-auth-signout]'?{}:null}}),nodes,events,loaded,callback:(...args)=>callback(...args),redirect:()=>redirect,mode(value){return events.click({target:{closest:s=>s==='[data-auth-mode]'?{dataset:{authMode:value}}:null}})},submit:()=>events['#auth-formsubmit']({preventDefault(){}})};
 }
 const flush=()=>new Promise(resolve=>setImmediate(resolve));
@@ -49,4 +49,11 @@ test('sign-out waits for account saves and stays signed in if saving fails',asyn
 test('account library read failure never unlocks an empty replacement library',async()=>{
  const a=boot({}, {load:async()=>{throw new Error('Cannot load account lists')}});await flush();await a.submit();
  assert.equal(a.nodes.get('#app').hidden,true);assert.equal(a.loaded.length,0);assert.match(a.nodes.get('#auth-message').textContent,/Cannot load account lists/);
+});
+
+test('a catalog read failure keeps the app gated instead of using a stale role or rules',async()=>{
+ const a=boot({}, {content:{create:()=>({load:async()=>{throw Error('Cannot load rules catalog')},dispose(){}})}});await flush();await a.submit();assert.equal(a.nodes.get('#app').hidden,true);assert.equal(a.loaded.length,0);assert.match(a.nodes.get('#auth-message').textContent,/Cannot load rules catalog/);
+});
+test('account access loads the rules service for the verified account identity',async()=>{
+ let id,loaded=false;const a=boot({}, {content:{create:(client,userId)=>{id=userId;return {load:async()=>{loaded=true},dispose(){}}}}});await flush();await a.submit();assert.equal(id,'one');assert.ok(loaded);assert.equal(a.loaded.length,1);
 });

@@ -11,8 +11,9 @@
  const catalog=typeof module!=='undefined'&&module.exports?require('./aeldari-data.js'):root.WarPlannerAeldariData;
  sources.catalog={name:'40kdc Aeldari structured source',version:'Pinned '+catalog.pin.slice(0,7)+' · source reference, not official verification',url:'https://github.com/wn-mitch/40kdc-data/tree/'+catalog.pin+'/data/enrichment/aeldari',status:'source-reference'};
  const aliases={'battle-focus-aeldari':'battle-focus','diviner-of-futures-aeldari':'eldrad-cp','doom-aeldari':'doom','whirling-death-aeldari':'whirling','superlative-strategist-aeldari':'strategist','flickerjump-aeldari':'flickerjump','grenade-pack-flyover-aeldari':'hawks','path-of-the-warrior-aeldari':'path-warrior','hand-of-asuryan-aeldari':'asurmen-hand','bladestorm-aeldari':'bladestorm','aspect-shrine-token-aeldari':'token','inescapable-accuracy-aeldari':'reapers','assured-destruction-aeldari':'dragons','crystalline-targeting-aeldari':'walker','fire-support-aeldari':'falcon','tactical-acumen-aeldari':'asurmen-move','acrobatic-aeldari':'acrobatic','the-bloody-handed-aeldari':'avatar-aura','molten-form-aeldari':'avatar-defence','wave-serpent-shield-aeldari':'serpent-shield','storm-of-silence-aeldari':'jain-attacks','aspect-of-murder-aspect-host-aeldari':'murder','path-of-command-aeldari':'autarch-discount','khaines-vengeance-aspect-host-aeldari':'khaines','skyborne-sanctuary-aspect-host-aeldari':'skyborne','to-their-final-breath-aspect-host-aeldari':'final-breath'};
- function unitInfo(name){return catalog.units.find(u=>normalized(u.name)===normalized(name));}
- function unitHasRule(unit,id){return !!unitInfo(unit.name)?.abilities.some(a=>a.id===id);}
+ function factionMatches(a,b){const n=x=>{const key=normalized(x),f=catalog.factions?.find(f=>normalized(f.name)===key||(f.aliases||[]).some(a=>normalized(a)===key));return f?normalized(f.name):['asuryani','aeldari'].includes(key)?'aeldari':key;};return n(a||'Aeldari')===n(b||'Aeldari');}
+ function unitInfo(name,faction='Aeldari'){return catalog.units.find(u=>factionMatches(u.faction,faction)&&normalized(u.name)===normalized(name));}
+ function unitHasRule(unit,id,faction='Aeldari'){return !!unitInfo(unit.name,faction)?.abilities.some(a=>a.id===id);}
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule',stratagem:'Stratagem',enhancement:'Enhancement'};
  function core(id,title,body,why,question,answer,section,window){return {id,title,body,why,question,answer,section,window,sourceIds:['core'],status:'official-checked',kind:'Core sequence',category:'core'};}
  const phases=[
@@ -90,11 +91,19 @@
  add('deep-strike','Deep Strike',['Falcon','Swooping Hawks','Warp Spiders'],[1],'you','arrivals','For an ingress move, a unit whose every model has Deep Strike can use its alternate setup option, more than 8 inches horizontally from enemy units, including in the enemy deployment zone.',['Check when that ingress move is permitted and all applicable setup restrictions.','An attached model without the ability can matter to the every-model condition.'],'Is Deep Strike an extra unrestricted move after arriving?','No. It changes the setup option for an ingress move; do not add a further move without another rule.',{sourceIds:['core'],status:'official-checked'});
  add('battle-focus-end','Unused Battle Focus expires',[],[4],'either','round-end','At the end of the battle round, discard unspent Battle Focus tokens. The next allocation belongs to the next round’s opening.',['This is after the second player’s turn, not after each Fight phase.'],'Can you carry an unspent token into the next round?','Not under the Battle Focus rule reviewed here.');
  add('deadly-demise','Deadly Demise',['Avatar of Khaine','Wave Serpent','Falcon'],[2,4],'either','act','When a model with Deadly Demise is destroyed, resolve any emergency passenger disembarkation first, then check its demise roll. A 6 causes the listed mortal-wound amount to nearby units.',['Use the destroyed model’s printed Deadly Demise value; units from both sides can be affected.','This is a destruction trigger, not an ability to use whenever you attack.'],'Does every vehicle automatically explode?','No. Check whether the model has the ability and whether its die result triggers it.',{sourceIds:['core','community'],status:'community-checked'});
+ abilities.push({id:'fuegan-burning-lance',expanded:true,leadingUnitRequired:true,leadingBodyguard:'Fire Dragons',name:'Burning Lance · Fuegan leading',category:'ability',units:['Fuegan'],phase:[2],turn:'you',window:'before',status:'community-checked',sourceIds:['fuegan'],
+   summary:'While Fuegan is still leading this unit, its Melta weapons add 6 inches to their Range characteristic. Check the resulting range before choosing targets.',
+   conditions:['Requires Fuegan to be attached as a leader to this Fire Dragons unit and still leading it.','Only Melta weapons receive the increase. Keep each weapon’s other rules and limits.'],question:'Does a separate Fuegan elsewhere in your army extend this unit’s range?',answer:'No. Being in the same army is not enough; the leading relationship is required.'},);
+ for(const extra of [
+  {id:'warrior-focus-stratagem',name:'Warrior Focus',phase:[2,4],turn:'either',summary:'Consider this Stratagem before selecting an eligible unit to shoot or fight. Read the full effect and cost in your current rules.'},
+  {id:'preternatural-precision-stratagem',name:'Preternatural Precision',phase:[2],turn:'you',summary:'A before-shooting option for an Aspect Warriors unit. Check the full rule, including its optional Aspect Shrine Token choice.'},
+  {id:'doom-inescapable-stratagem',name:'Doom Inescapable',phase:[2],turn:'you',summary:'A before-shooting option for the Avatar of Khaine. Check the full current effect and cost before declaring it.'}
+ ])abilities.push({units:[],detachment:'Aspect Host',window:'select',expanded:false,status:'community-checked',sourceIds:['community'],conditions:['This is an optional Stratagem window, not an automatic bonus.','Check the full current rule for CP cost, effect and restrictions before using it.'],question:'When do you decide?',answer:'Check the full rule before selecting the unit to attack.',...extra});
  const prebattle=[{id:'scout-walkers',name:'War Walkers: pre-battle Scouts',summary:'Your War Walkers have a Scouts entry. Resolve its options in the pre-battle-abilities window, not as a bonus every Movement phase. Check the current datasheet value and the full scout-move restrictions before deploying.',sourceIds:['core','community'],status:'community-checked',units:['War Walkers']},{id:'attachments',name:'Confirm leaders and passengers',summary:'Your export identifies three attached groups, but does not identify transport passengers or reserve assignments. Confirm these in battle formations. A leader-dependent ability stops being available when its leading condition no longer holds.',sourceIds:['core','community'],status:'community-checked',units:[]}];
  const armyIds=new Set(['battle-focus','battle-focus-end','swift','flitting','star-engines','opportunity','fade','sudden','path-warrior']);
  const coreIds=new Set(['deep-strike','deadly-demise','fights-first']);
  const stratagemIds=new Set(['khaines','skyborne','aspect-stratagems','final-breath']);
- for(const a of abilities)a.category=a.enhancement?'enhancement':stratagemIds.has(a.id)?'stratagem':armyIds.has(a.id)?'army':coreIds.has(a.id)?'core':'ability';
+ for(const a of abilities)a.category=a.enhancement?'enhancement':(stratagemIds.has(a.id)||a.id.endsWith('-stratagem'))?'stratagem':armyIds.has(a.id)?'army':coreIds.has(a.id)?'core':'ability';
  for(const p of prebattle)p.category='core';
  // Preserve existing reviewed summaries and extend their eligible unit lists from the source.
  for(const [sourceId,id] of Object.entries(aliases)){
@@ -111,24 +120,24 @@
   if(aliases[entry.id]||duplicateStrats.has(entry.id)||entry.id==='burning-lance-aeldari')continue;
   abilities.push({...entry,id:'expanded-'+entry.id,sourceRuleId:entry.id,question:'What must you confirm before applying '+entry.name+'?',answer:'Confirm the current source, the correct bearer or target, its precise timing, and every restriction. A reference reminder does not grant an effect.'});
  }
- const aspectUnits=catalog.units.filter(u=>u.keywords.some(k=>normalized(k)==='aspectwarrior'||normalized(k)==='aspectwarriors')||u.name==='Avatar of Khaine').map(u=>u.name);
+ const aspectUnits=()=>catalog.units.filter(u=>u.keywords.some(k=>normalized(k)==='aspectwarrior'||normalized(k)==='aspectwarriors')||u.name==='Avatar of Khaine').map(u=>u.name);
  function normalized(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
  function isAeldari(army){return ['aeldari','asuryani'].includes(normalized(army.faction));}
  function armyDetachments(army){return [...new Map((Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[]).filter(Boolean).map(name=>[normalized(name),name])).values()];}
  function enhancementEquipped(ability,unit,army){
   if(!ability.enhancement||!unit.details.some(d=>/^enhancement\s*:/i.test(d)&&normalized(d.replace(/^enhancement\s*:/i,'')).includes(normalized(ability.enhancement))))return false;
-  const sourceId=ability.sourceRuleId||Object.keys(aliases).find(id=>aliases[id]===ability.id);
+  const sourceId=ability.sourceRuleId||Object.keys(aliases).find(id=>aliases[id]===ability.id)||ability.id;
   if(unit.enhancementId)return unit.enhancementId===sourceId;
   const selected=armyDetachments(army).map(normalized);
-  const candidates=catalog.rules.filter(a=>a.category==='enhancement'&&normalized(a.enhancement)===normalized(ability.enhancement)&&selected.includes(normalized(a.detachment)));
+  const candidates=catalog.rules.filter(a=>a.category==='enhancement'&&factionMatches(a.faction,army.faction)&&normalized(a.enhancement)===normalized(ability.enhancement)&&selected.includes(normalized(a.detachment)));
   // Plain imported names may be ambiguous when several detachments share a name.
   return candidates.length===1&&candidates[0].id===sourceId;
  }
  function matches(ability,army){
-  if(!isAeldari(army))return false;
+  if(ability.faction!=='*'&&!factionMatches(ability.faction,army.faction))return false;
   if(ability.detachment&&!armyDetachments(army).some(d=>normalized(d)===normalized(ability.detachment)))return false;
   if(ability.units.length&&!army.units.some(u=>ability.units.some(n=>normalized(n)===normalized(u.name))))return false;
-  if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(ability.id)&&!army.units.some(u=>aspectUnits.some(n=>normalized(n)===normalized(u.name))))return false;
+  if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(ability.id)&&!army.units.some(u=>aspectUnits().some(n=>normalized(n)===normalized(u.name))))return false;
   if(ability.enhancement&&!army.units.some(u=>enhancementEquipped(ability,u,army)))return false;
   return true;
  }
@@ -138,9 +147,9 @@
  };
  function forStep(state,step){return abilities.filter(a=>{
   const timing=(a.window===step.window&&!(state.phase===0&&step.window==='act'&&a.sourceRuleId?.startsWith('psychic-guidance')))||(state.phase===0&&step.window==='shock'&&a.sourceRuleId?.startsWith('psychic-guidance'))||(state.phase===4&&step.id==='fight-resolve'&&a.window==='select')||(a.id==='flitting'&&step.id==='movement-select')||(a.window==='react'&&step.window==='act');
-  const preview=state.phase===2&&state.turn==='you'&&sequencing[a.id]?.steps.includes(step.id);
+  const preview=!a.adminManaged&&state.phase===2&&state.turn==='you'&&sequencing[a.id]?.steps.includes(step.id);
   return (timing||preview)&&matches(a,state.army)&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn);
- }).map(a=>sequencing[a.id]&&sequencing[a.id].steps.includes(step.id)?{...a,sequencePreview:true,sequence:sequencing[a.id]}:a)
+ }).map(a=>!a.adminManaged&&sequencing[a.id]&&sequencing[a.id].steps.includes(step.id)?{...a,sequencePreview:true,sequence:sequencing[a.id]}:a)
  .sort((a,b)=>(sequencing[a.id]?.priority??100)-(sequencing[b.id]?.priority??100));}
  function getSteps(state){
   const steps=phases[state.phase].steps.map(s=>({...s}));
@@ -160,8 +169,10 @@
    }
   }
   // Movement selection and charge declaration share the Flitting Shadows trigger.
-  return steps;
+  return steps.map(applyStep);
  }
- const api={armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const stepOverrides=new Map();
+ const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
+ const api={stepOverrides,applyStep,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

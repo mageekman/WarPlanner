@@ -28,17 +28,20 @@
  function sourceUnit(state,unit,name){return units(state.army).filter(u=>u.id!==unit.id&&has(u,name));}
  function leading(unit,name,bodyguard){return unit.attached&&unit.leaders.some(m=>m.role==='leader'&&norm(m.name)===norm(name))&&(!bodyguard||norm(unit.body.name)===norm(bodyguard));}
  function fits(a,state,unit){
-  if(!a||!L.matches(a,state.army))return false;
-  if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>m.role==='leader'&&a.units.includes(m.name))))return false;
+  if(!a||!L.matches(a,state.army)||!a.phase.includes(state.phase)||(a.turn!=='either'&&a.turn!==state.turn))return false;
+  if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>m.role==='leader'&&a.units.includes(m.name))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
   if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
   if(a.expanded&&a.sourceRuleId){
-   const refs=unit.members.flatMap(m=>(L.unitInfo(m.name)?.abilities||[]).filter(r=>r.id===a.sourceRuleId).map(r=>({entry:m,ref:r})));
+   const refs=unit.members.flatMap(m=>(L.unitInfo(m.name,state.army.faction)?.abilities||[]).filter(r=>r.id===a.sourceRuleId).map(r=>({entry:m,ref:r})));
    if(refs.length&&refs.every(({entry,ref})=>ref.wargear&&!entry.details.some(d=>norm(d).includes(norm(ref.wargear)))))return false;
   }
-  if(['swift','flitting','star-engines','opportunity','fade','sudden'].includes(a.id)&&!unit.members.every(m=>L.unitHasRule(m,'battle-focus-aeldari')))return false;
-  if(a.id==='deep-strike'&&!unit.members.every(m=>L.unitHasRule(m,'deep-strike')))return false;
+  if(['swift','flitting','star-engines','opportunity','fade','sudden'].includes(a.id)&&!unit.members.every(m=>L.unitHasRule(m,'battle-focus-aeldari',state.army.faction)))return false;
+  if(a.id==='deep-strike'&&!unit.members.every(m=>L.unitHasRule(m,'deep-strike',state.army.faction)))return false;
   if(a.units.length&&!a.units.some(name=>has(unit,name)))return false;
   if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(a.id)&&!unitIsAspect(unit)&&!has(unit,'Avatar of Khaine'))return false;
+  if(a.id==='warrior-focus-stratagem'&&!unitIsAspect(unit)&&!has(unit,'Avatar of Khaine'))return false;
+  if(a.id==='preternatural-precision-stratagem'&&!unitIsAspect(unit))return false;
+  if(a.id==='doom-inescapable-stratagem'&&!has(unit,'Avatar of Khaine'))return false;
   if(a.id==='murder'&&!unit.members.some(m=>norm(m.name)==='autarch'&&m.details.some(d=>norm(d).includes('aspectofmurder'))))return false;
   if(a.id==='fights-first'&&has(unit,'Autarch')&&!has(unit,'Howling Banshees')&&!has(unit,'Jain Zar'))return false;
   if(['whirling'].includes(a.id)&&!leading(unit,'Jain Zar'))return false;
@@ -52,25 +55,24 @@
   }
   return true;
  }
- function selected(ids,state,unit){return ids.map(ability).filter(a=>fits(a,state,unit)).flatMap(a=>{
+ function selected(ids,state,unit){return ids.map(ability).filter(a=>!a?.adminManaged&&fits(a,state,unit)).flatMap(a=>{
   const card={...a,targetUnits:unit.members};
   if(a.id==='aspect-stratagems'){
-   const conditions=['This is an optional Stratagem window, not an automatic bonus.','Check the full current rule for CP cost, effect and restrictions before using it.'];
-   const cards=[{...card,id:'warrior-focus-stratagem',name:'Warrior Focus',summary:'Consider this Stratagem before selecting an eligible unit to shoot or fight. Read the full effect and cost in your current rules.',conditions}];
-   if(state.phase===2&&state.turn==='you'&&unitIsAspect(unit))cards.push({...card,id:'preternatural-precision-stratagem',name:'Preternatural Precision',summary:'A before-shooting option for an Aspect Warriors unit. Check the full rule, including its optional Aspect Shrine Token choice.',conditions});
-   if(state.phase===2&&state.turn==='you'&&has(unit,'Avatar of Khaine'))cards.push({...card,id:'doom-inescapable-stratagem',name:'Doom Inescapable',summary:'A before-shooting option for the Avatar of Khaine. Check the full current effect and cost before declaring it.',conditions});
-   return cards;
+   const ids=['warrior-focus-stratagem'];
+   if(state.phase===2&&state.turn==='you'&&unitIsAspect(unit))ids.push('preternatural-precision-stratagem');
+   if(state.phase===2&&state.turn==='you'&&has(unit,'Avatar of Khaine'))ids.push('doom-inescapable-stratagem');
+   return ids.map(ability).filter(a=>a&&!a.adminManaged&&fits(a,state,unit)).map(a=>({...a,targetUnits:unit.members}));
   }
   return card;
  });}
  function fightsFirst(state,unit){
-  if(state.phase!==4||!L.isAeldari(state.army))return false;
+  if(state.phase!==4)return false;
   if(leading(unit,'The Visarch'))return true;
-  return unit.members.length>0&&unit.members.every(m=>L.unitHasRule(m,'fights-first')||['howlingbanshees','jainzar'].includes(norm(m.name))||(norm(m.name)==='autarch'&&leading(unit,'Autarch','Howling Banshees')));
+  return unit.members.length>0&&unit.members.every(m=>L.unitHasRule(m,'fights-first',state.army.faction)||['howlingbanshees','jainzar'].includes(norm(m.name))||(norm(m.name)==='autarch'&&leading(unit,'Autarch','Howling Banshees')));
  }
  function targeting(a,state){
   if(!['army','stratagem'].includes(a.category))return null;
-  if(a.expanded)return {label:a.category==='stratagem'?'Target':'Applies to',text:a.targetText||'Check this rule’s target restrictions.'};
+  if(a.expanded||a.targetText)return {label:a.category==='stratagem'?'Target':'Applies to',text:a.targetText||'Check this rule’s target restrictions.'};
   const descriptions={
    'battle-focus':'Your army’s Battle Focus pool; no individual unit is targeted.',
    'battle-focus-end':'Your army’s unspent Battle Focus tokens; no individual unit is targeted.',
@@ -93,9 +95,7 @@
  }
  function rangeBonus(unit){
   if(!leading(unit,'Fuegan','Fire Dragons'))return null;
-  return {id:'fuegan-burning-lance',name:'Burning Lance · Fuegan leading',category:'ability',units:['Fuegan'],phase:[2],turn:'you',window:'before',status:'community-checked',sourceIds:['fuegan'],targetUnits:unit.members,
-   summary:'While Fuegan is still leading this unit, its Melta weapons add 6 inches to their Range characteristic. Check the resulting range before choosing targets.',
-   conditions:['Requires Fuegan to be attached as a leader to this Fire Dragons unit and still leading it.','Only Melta weapons receive the increase. Keep each weapon’s other rules and limits.'],question:'Does a separate Fuegan elsewhere in your army extend this unit’s range?',answer:'No. Being in the same army is not enough; the leading relationship is required.'};
+  const rule=ability('fuegan-burning-lance');return rule&&!rule.adminManaged?{...rule,targetUnits:unit.members}:null;
  }
  function inherited(id,name,summary,conditions,state,unit){const a=ability(id);return a?{...a,name,summary,conditions,targetUnits:unit.members,borrowedEffect:true}:null;}
  function support(state,unit){
@@ -130,7 +130,7 @@
   if(mode==='fight')return [{id:'before',title:'When this unit is selected to fight',hint:'Follow the phase’s activation order. Check Fights First and before-selection effects before rolling attacks.',cards:selected(['fights-first','path-warrior','aspect-stratagems','autarch-discount'],state,unit)},
    {id:'attacks',title:'Attacks',hint:'Apply the unit’s relevant melee effects. A token does not affect a Character model’s own roll.',cards:selected(['token','jain-attacks','murder'],state,unit)}];
   if(mode==='pile'||mode==='consolidate'){
-   const sudden=L.isAeldari(state.army)&&unit.members.every(m=>L.unitHasRule(m,'battle-focus-aeldari'))?inherited('sudden','Sudden Strike · only if used earlier','If this unit used Sudden Strike at the end of its charge move earlier this turn, its pile-in and consolidation distance is 6 inches for the turn.',['This is a reminder of an existing effect, not a new activation window for that manoeuvre.','The move still has all its other positioning and eligibility requirements.'],state,unit):null;
+   const sudden=L.isAeldari(state.army)&&unit.members.every(m=>L.unitHasRule(m,'battle-focus-aeldari',state.army.faction))?inherited('sudden','Sudden Strike · only if used earlier','If this unit used Sudden Strike at the end of its charge move earlier this turn, its pile-in and consolidation distance is 6 inches for the turn.',['This is a reminder of an existing effect, not a new activation window for that manoeuvre.','The move still has all its other positioning and eligibility requirements.'],state,unit):null;
    return [{id:'move',title:mode==='pile'?'Pile In':'Consolidate',hint:'Use the appropriate separate movement step. Increasing distance does not remove positioning requirements.',cards:sudden?[sudden]:[]}];
   }
   return [];
@@ -138,11 +138,11 @@
  function stages(state,unit,mode){
   const rows=baseStages(state,unit,mode);
   if(!unit||!rows.length||['pile','consolidate'].includes(mode))return rows;
-  const cards=L.abilities.filter(a=>a.expanded&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn)&&['act','select','react','after','arrivals'].includes(a.window)&&fits(a,state,unit));
-  for(const card of cards){const row=card.window==='after'?rows[rows.length-1]:card.window==='select'||card.window==='arrivals'?rows[0]:rows.find(r=>r.id==='attacks')||rows[0];row.cards.push({...card,targetUnits:unit.members});}
+  const cards=L.abilities.filter(a=>a.expanded&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn)&&['act','select','before','react','after','arrivals'].includes(a.window)&&fits(a,state,unit));
+  for(const card of cards){const row=card.window==='after'?rows[rows.length-1]:card.window==='select'||card.window==='before'||card.window==='arrivals'?rows[0]:rows.find(r=>r.id==='attacks')||rows[0];row.cards.push({...card,targetUnits:unit.members});}
   return rows;
  }
- function steps(state){
+ function baseSteps(state){
   const base=L.getSteps(state);const p=state.phase;
   if(![1,2,3,4].includes(p))return base;
   if(p===4)return base.map(s=>s.id==='fight-pile'?{...s,activationMode:'pile'}:s.id==='fight-resolve'?{...s,id:'fight-activations',title:'Unit Fights',activationMode:'fight'}:s.id==='fight-consolidate'?{...s,activationMode:'consolidate'}:s);
@@ -155,6 +155,7 @@
   const merged={...base[1],id:mode==='response'?'opponent-'+(p===1?'movement':'shooting')+'-activations':mode+'-activations',title:verbs[mode],body:body[mode],activationMode:mode,coreHelp:base.slice(1,-1),window:'activation',why:'Keep the rules attached to the unit and the actual event, rather than splitting one activation across generic screens.',question:'When should you select another unit?',answer:'After resolving the current unit’s legal sequence and immediate effects. End-of-phase rules still wait until the phase closes.'};
   return [first,merged,last];
  }
+ function steps(state){return baseSteps(state).map(step=>{const result=L.applyStep(step);return state.turn==='opponent'?{...result,body:result.body.replace(/your unit/g,'the active unit')}:result;});}
  function flashcards(state,step){
   const sharedMap=new Map(),types=new Map();
   const ruleKey=a=>JSON.stringify([a.id,a.name,a.summary,a.conditions,a.sourceIds]);

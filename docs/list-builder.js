@@ -4,33 +4,37 @@
  const data=typeof module!=='undefined'&&module.exports?require('./aeldari-data.js'):root.WarPlannerAeldariData;
  const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
  const title=s=>String(s).split('-').map(w=>w[0]?.toUpperCase()+w.slice(1)).join(' ');
- const info=name=>data.units.find(u=>norm(u.name)===norm(name));
- const detachments=()=>[...data.detachments].sort((a,b)=>a.name.localeCompare(b.name));
- const dispositions=()=>[...new Set(data.detachments.flatMap(d=>d.dispositions||[]))].map(title).sort();
+ const canonical=value=>{const key=norm(value||'Aeldari'),f=data.factions?.find(f=>norm(f.name)===key||(f.aliases||[]).some(a=>norm(a)===key));return f?norm(f.name):['aeldari','asuryani'].includes(key)?'aeldari':key;};
+ const same=(a,b)=>canonical(a)===canonical(b);
+ const factions=()=>data.factions||[{id:'aeldari',name:'Aeldari',group:'Xenos'}];
+ const hasFaction=name=>factions().some(f=>same(f.name,name)||(f.aliases||[]).some(a=>same(a,name)));
+ const info=(name,faction='Aeldari')=>data.units.find(u=>same(u.faction,faction)&&norm(u.name)===norm(name));
+ const detachments=(faction='Aeldari')=>data.detachments.filter(d=>same(d.faction,faction)).sort((a,b)=>a.name.localeCompare(b.name));
+ const dispositions=(faction='Aeldari')=>[...new Set(detachments(faction).flatMap(d=>d.dispositions||[]))].map(title).sort();
  function selectedDetachments(army){return [...new Map((Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[]).map(s=>String(s).trim()).filter(Boolean).map(name=>[norm(name),name])).values()];}
  function setDetachments(army,names){army.detachments=[...new Map(names.map(s=>String(s).trim()).filter(Boolean).map(name=>[norm(name),name])).values()];army.detachment=army.detachments[0]||'';}
  function newArmy(){return {name:'',faction:'Aeldari',detachment:'',disposition:'',points:0,limit:2000,version:'Created in WarPlanner',origin:'builder',units:[]};}
- function search(query){const q=norm(query);return data.units.filter(u=>!q||norm(u.name).includes(q)).sort((a,b)=>a.name.localeCompare(b.name));}
- function add(army,id,unitId){const source=data.units.find(u=>u.id===id);if(!source)throw Error('Choose a unit from the catalog.');army.units.push({id:unitId,name:source.name,points:0,role:'',group:'',details:[],modelCount:source.modelCounts?.find(n=>n>0)||1});}
+ function search(query,faction='Aeldari'){const q=norm(query);return data.units.filter(u=>same(u.faction,faction)&&(!q||norm(u.name).includes(q))).sort((a,b)=>a.name.localeCompare(b.name));}
+ function add(army,id,unitId){const source=data.units.find(u=>u.id===id&&same(u.faction,army.faction));if(!source)throw Error('Choose a unit from the catalog.');army.units.push({id:unitId,name:source.name,points:0,role:'',group:'',details:[],modelCount:source.modelCounts?.find(n=>n>0)||1});}
  function cleanup(army){
   const groups=new Set(army.units.map(u=>u.group).filter(Boolean));
   for(const group of groups){const members=army.units.filter(u=>u.group===group);if(members.length<2||members.filter(u=>u.role==='bodyguard').length!==1)for(const unit of members){unit.group='';unit.role='';unit.details=unit.details.filter(d=>!/^Attached as:/i.test(d));}}
  }
  function remove(army,id){army.units=army.units.filter(u=>u.id!==id);cleanup(army);}
  function attachedTo(army,unit){return unit.group&&['leader','support'].includes(unit.role)?army.units.find(u=>u.group===unit.group&&u.role==='bodyguard')?.id||'':'';}
- function eligibleBodies(army,unit){const source=info(unit.name);return army.units.filter(u=>u.id!==unit.id&&!['leader','support'].includes(u.role)&&source?.bodyguardIds.includes(info(u.name)?.id));}
+ function eligibleBodies(army,unit){const source=info(unit.name,army.faction);return army.units.filter(u=>u.id!==unit.id&&!['leader','support'].includes(u.role)&&source?.bodyguardIds.includes(info(u.name,army.faction)?.id));}
  function attach(army,id,bodyId){
   const unit=army.units.find(u=>u.id===id);if(!unit)throw Error('Unit not found.');
   if(bodyId&&!eligibleBodies(army,unit).some(u=>u.id===bodyId))throw Error('That attachment is not in the available source.');
   unit.group='';unit.role='';unit.details=unit.details.filter(d=>!/^Attached as:/i.test(d));cleanup(army);
   if(!bodyId)return;
   const body=army.units.find(u=>u.id===bodyId);const group=body.group||'attached-'+body.id;
-  body.group=group;body.role='bodyguard';unit.group=group;unit.role=info(unit.name)?.abilities.some(a=>a.id==='support')?'support':'leader';
+  body.group=group;body.role='bodyguard';unit.group=group;unit.role=info(unit.name,army.faction)?.abilities.some(a=>a.id==='support')?'support':'leader';
  }
  const enhancement=unit=>unit.details.find(d=>/^Enhancement\s*:/i.test(d))?.replace(/^Enhancement\s*:\s*/i,'')||'';
  function enhancements(army,unit){
-  const source=info(unit.name),keys=(source?.keywords||[]).map(norm),dets=data.detachments.filter(d=>selectedDetachments(army).some(name=>norm(name)===norm(d.name)));
-  return data.enhancements.filter(e=>dets.some(d=>e.detachmentId===d.id)&&(e.upgrade||keys.includes('character')&&!keys.includes('epichero'))&&e.keywords.every(k=>keys.includes(norm(k)))&&(!e.restrictions.length||e.restrictions.some(r=>(!r.unit_id||r.unit_id===source?.id)&&(!r.keywords||r.keywords.every(k=>keys.includes(norm(k))))))).sort((a,b)=>a.name.localeCompare(b.name));
+  const source=info(unit.name,army.faction),keys=(source?.keywords||[]).map(norm),dets=data.detachments.filter(d=>same(d.faction,army.faction)&&selectedDetachments(army).some(name=>norm(name)===norm(d.name)));
+  return data.enhancements.filter(e=>same(e.faction,army.faction)&&dets.some(d=>e.detachmentId===d.id)&&(e.upgrade||keys.includes('character')&&!keys.includes('epichero'))&&e.keywords.every(k=>keys.includes(norm(k)))&&(!e.restrictions.length||e.restrictions.some(r=>(!r.unit_id||r.unit_id===source?.id)&&(!r.keywords||r.keywords.every(k=>keys.includes(norm(k))))))).sort((a,b)=>a.name.localeCompare(b.name));
  }
  function setEnhancement(army,id,choice){
   const unit=army.units.find(u=>u.id===id);if(!unit)throw Error('Unit not found.');
@@ -59,6 +63,6 @@
   else delete army.originalRoster;
   return army;
  }
- const api={selectedDetachments,setDetachments,newArmy,search,info,detachments,dispositions,add,remove,attachedTo,eligibleBodies,attach,enhancement,enhancements,setEnhancement,tokens,setTokens,commit};
+ const api={factions,hasFaction,selectedDetachments,setDetachments,newArmy,search,info,detachments,dispositions,add,remove,attachedTo,eligibleBodies,attach,enhancement,enhancements,setEnhancement,tokens,setTokens,commit};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerListBuilder=api;
 })(typeof window!=='undefined'?window:globalThis);

@@ -8,7 +8,7 @@ html = html.replace('<link rel="stylesheet" href="styles.css">', '<style>' + (ro
 html = html.replace('<script defer src="core.js"></script>', '').replace('<script defer src="cloud-lists.js"></script>', '')
 html = html.replace('<script defer src="app.js"></script>', '').replace('<script defer src="list-builder.js"></script>', '')
 html = html.replace('<script defer src="lessons.js"></script>', '').replace('<script defer src="aeldari-data.js"></script>', '')
-html = html.replace('<script defer src="activations.js"></script>', '')
+html = html.replace('<script defer src="activations.js"></script>', '').replace('<script defer src="content.js"></script>', '').replace('<script defer src="admin.js"></script>', '')
 html = html.replace('<script defer src="vendor/supabase.js"></script>', '').replace('<script defer src="config.js"></script>', '').replace('<script defer src="auth.js"></script>', '')
 start=html.index('<section id="auth-screen"')
 end=html.index('<div id="app" hidden></div>', start)
