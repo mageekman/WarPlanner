@@ -19,7 +19,9 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/activations.js'),'utf8'),context);
  context.WarPlanActivations=context.window.WarPlanActivations;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
- return {account:(user,army)=>context.window.setWarPlannerAccount(user,army),clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ // Existing navigation tests explicitly enter an active guide; setup tests opt out.
+ if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
+ return {start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -270,4 +272,29 @@ test('imports append lists and switching restores the correct army and persists 
  a.click({action:'view-imported-list'});assert.match(a.html(),/<pre>Dragons practice \(100 points\)/);
  const restored=app([...a.store]);assert.match(restored.html(),/<h1>Dragons practice<\/h1>/);
  restored.click({view:'army'});assert.match(restored.html(),/Hawks practice/);
+});
+
+test('guide opens on Start and moves coverage out of active pages',()=>{
+ const a=app(undefined,{setup:true});assert.match(a.html(),/Start your guide/);assert.match(a.html(),/11th edition/);assert.match(a.html(),/Content coverage/);assert.doesNotMatch(a.html(),/phase-tab-0|page-next/);
+ a.change('guide-first-player','opponent');a.start();
+ assert.match(a.html(),/data-turn="opponent" class="selected"/);assert.match(a.html(),/Start of Battle Round/);assert.match(a.html(),/Guide settings/);
+ assert.doesNotMatch(a.html(),/11th edition|Content coverage|class="focus-footer"/);
+ const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.guideStarted,true);assert.equal(saved.firstPlayer,'opponent');assert.equal(saved.turn,'opponent');
+});
+test('guide list selector groups alliances in order and sorts faction and list names',()=>{
+ const core=require('../dist/core.js');
+ const entries=[['x2','Tyranids','Swarm'],['c2','World Eaters','Axes'],['i2','Space Marines','Zulu'],['x1','Aeldari','Aspects'],['c1','Chaos Space Marines','Raid'],['i1','Adeptus Custodes','Guard'],['i3','Space Marines','Alpha']].map(([id,faction,name])=>({id,army:{...core.sample,faction,name},warnings:[],renames:{}}));
+ const a=app([['warplan.prototype.v1',JSON.stringify({army:core.sample,phase:0,savedLists:entries,activeListId:'x1'})]],{setup:true});
+ const html=a.html();assert.ok(html.indexOf('label="Imperium"')<html.indexOf('label="Chaos"'));assert.ok(html.indexOf('label="Chaos"')<html.indexOf('label="Xenos"'));
+ for(const [first,last] of [['i1','i3'],['i3','i2'],['c1','c2'],['x1','x2']])assert.ok(html.indexOf('value="'+first+'"')<html.indexOf('value="'+last+'"'));
+ a.change('guide-army-list','c1');a.start();const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.activeListId,'c1');assert.equal(saved.army.name,'Raid');
+});
+test('settings returns to setup and resets the walkthrough while keeping lists',()=>{
+ const a=app();a.click({action:'page-next'});a.click({phase:'2'});a.click({action:'reset-guide'});
+ assert.match(a.html(),/Start your guide/);let saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.phase,0);assert.equal(Object.keys(saved.completed).length,0);assert.equal(saved.savedLists.length,1);
+ a.start();a.click({action:'choose-guide-army'});assert.match(a.html(),/Start your guide/);
+});
+test('empty-account guide setup offers import and disables Start',()=>{
+ const a=app(undefined,{hosted:true,setup:true});a.account({id:'empty'},null);a.click({view:'guide'});
+ assert.match(a.html(),/Start your guide/);assert.match(a.html(),/class="primary guide-start-button" type="submit" disabled/);a.start();assert.match(a.html(),/Start your guide/);
 });

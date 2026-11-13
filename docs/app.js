@@ -4,12 +4,13 @@ let KEY=null;
 const EMPTY_ARMY={name:'No army imported',faction:'',detachment:'',points:0,limit:2000,version:'',units:[]};
 const Library=WarPlanLessons;
 const Activations=WarPlanActivations;
-const initialState=army=>({view:'guide',army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},flowRevision:'flashcards-v1'});
+const initialState=army=>({view:'guide',guideStarted:false,army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},flowRevision:'flashcards-v1'});
 let state=initialState(window.WARPLANNER_CONFIG?EMPTY_ARMY:sample);
 let storageOK=true;
 function normalizeLists(){
  if(!Array.isArray(state.savedLists))state.savedLists=state.army.units.length?[{id:'list-1',army:structuredClone(state.army),warnings:state.warnings||[],renames:state.renames||{}}]:[];
  if(!state.activeListId&&state.savedLists.length)state.activeListId=state.savedLists[0].id;
+ if(!state.savedLists.some(list=>list.id===state.setupListId))state.setupListId=state.activeListId;
  for(const list of state.savedLists)if(!list.army.disposition&&list.army.units[0]?.id.startsWith('sample'))list.army.disposition='Priority Assets';
  if(!state.army.disposition&&state.army.units[0]?.id.startsWith('sample'))state.army.disposition='Priority Assets';
 }
@@ -17,8 +18,8 @@ function syncActiveList(){const list=state.savedLists?.find(l=>l.id===state.acti
 function openSavedList(id){
  const list=state.savedLists.find(l=>l.id===id);if(!list)return;
  syncActiveList();
- if(state.activeListId!==id)Object.assign(state,{army:structuredClone(list.army),activeListId:id,renames:{...list.renames},warnings:[...(list.warnings||[])],completed:{},revealed:{},history:[],round:1,turn:state.firstPlayer,phase:0,open:0});
- state.selectedListId=id;state.showImportedList=false;state.view='army';render();
+ if(state.activeListId!==id)Object.assign(state,{guideStarted:false,army:structuredClone(list.army),activeListId:id,renames:{...list.renames},warnings:[...(list.warnings||[])],completed:{},revealed:{},history:[],round:1,turn:state.firstPlayer,phase:0,open:0});
+ state.setupListId=id;state.selectedListId=id;state.showImportedList=false;state.view='army';render();
 }
 function loadAccountState(key,army){KEY=key;state=initialState(army);storageOK=true;
 try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved&&Array.isArray(saved.army?.units)&&Number.isInteger(saved.phase)&&saved.phase>=0&&saved.phase<5){state={...state,...saved};state.view=['guide','army','overview','practice'].includes(state.view)?state.view:'guide';state.round=Math.max(1,Number(state.round)||1);state.turn=state.turn==='opponent'?'opponent':'you';state.firstPlayer=state.firstPlayer==='opponent'?'opponent':'you';state.confirmed=state.confirmed||{};delete state.activationSelections;delete state.activationReviewed;if(!['unit-activations-v1','flashcards-v1'].includes(saved.flowRevision)){state.open=0;state.history=[];}state.flowRevision='flashcards-v1';}}catch{storageOK=false;}
@@ -111,13 +112,44 @@ function switchGuideTurn(turn){
  render(true);
 }
 function phaseTabs(){return `<nav class="phase-nav" role="tablist" aria-label="Game phase">${phases.map((p,i)=>`<button id="phase-tab-${i}" data-phase="${i}" role="tab" aria-controls="guide-panel" aria-selected="${state.phase===i}" tabindex="${state.phase===i?0:-1}" class="${state.phase===i?'active':''}"><span class="phase-number">${i+1}</span>${p}</button>`).join('')}</nav>`;}
-function guide(){return `<section class="guide-page-shell guide-carousel" aria-label="Interactive guide"><div class="guide-frame"><button class="guide-page-arrow previous-page" data-action="page-previous" aria-label="Previous page" title="Previous page" ${canPreviousPage()?'':'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><header class="guide-fixed-header">${turnToggle()}${phaseTabs()}</header><div class="guide-viewport"><div class="guide-slide" id="guide-panel" role="tabpanel" aria-labelledby="phase-tab-${state.phase}">${guidePageHTML()}</div></div><button class="guide-page-arrow next-page" data-action="page-next" aria-label="Next page" title="Next page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></section>`;}
+function guideCoverage(){return `<footer class="focus-footer"><span>11th edition · Personal study snapshot</span><details><summary>Content coverage</summary><p>Core sequence checked against the June 2026 official PDF. Two army abilities checked against the October update; other army summaries use community references and need confirmation in your current rules. Stratagem cards are timing prompts, not complete instructions. No mission scoring or eligibility automation. Latest-update completeness is not guaranteed.</p><div class="rule-legend">${Object.keys(Library.categories).map(category=>categoryBadge({category})).join('')}</div><p>Reviewed 13 November 2026 · ${Library.revision}</p></details></footer>`;}
+function armyAlliance(faction){
+ const name=String(faction||'').toLowerCase().replace(/[’']/g,'');
+ if(/chaos|daemon|death guard|thousand sons|world eaters|emperors children/.test(name))return 'Chaos';
+ if(/aeldari|eldar|drukhari|ynnari|harlequin|necron|ork|tyranid|genestealer|tau|t’au|votann/.test(name))return 'Xenos';
+ if(/imperium|imperial|astra militarum|adepta|adeptus|space marine|blood angel|dark angel|space wolve|black templar|deathwatch|grey knight|salamander|raven guard|iron hand|white scar|ultramarine|crimson fist|flesh tearer|agent|inquisition|sister/.test(name))return 'Imperium';
+ return 'Other';
+}
+function guideStartPage(){
+ const lists=state.savedLists||[],chosen=state.setupListId||state.activeListId;
+ const groups=['Imperium','Chaos','Xenos','Other'].map(group=>{
+  const members=lists.filter(list=>armyAlliance(list.army.faction)===group).sort((a,b)=>(a.army.faction||'').localeCompare(b.army.faction||'',undefined,{sensitivity:'base'})||a.army.name.localeCompare(b.army.name,undefined,{sensitivity:'base'}));
+  return members.length?`<optgroup label="${group}">${members.map(list=>`<option value="${escapeHTML(list.id)}" ${list.id===chosen?'selected':''}>${escapeHTML(list.army.faction||'Unclassified')} — ${escapeHTML(list.army.name)}</option>`).join('')}</optgroup>`:'';
+ }).join('');
+ const first=state.setupFirstPlayer||state.firstPlayer;
+ return `<section class="guide-carousel guide-start-shell" aria-label="Guide setup"><div class="guide-frame"><div class="guide-start-page"><div class="eyebrow">YOUR NEXT GAME</div><h1>Start your guide</h1><form id="guide-start-form"><label for="guide-army-list">Army list</label><select id="guide-army-list" data-guide-list required ${lists.length?'':'disabled'}>${groups||'<option value="">Import a list to get started</option>'}</select><label for="guide-first-player">Who goes first?</label><select id="guide-first-player" data-guide-first><option value="you" ${first==='you'?'selected':''}>You</option><option value="opponent" ${first==='opponent'?'selected':''}>Your opponent</option></select><button class="primary guide-start-button" type="submit" ${lists.length?'':'disabled'}>Start <span aria-hidden="true">→</span></button></form>${lists.length?'':'<button class="text-button" data-action="import">Import an army list</button>'}${guideCoverage()}</div></div></section>`;
+}
+function showGuideStart(reset=false){
+ state.guideStarted=false;state.setupListId=state.activeListId;state.setupFirstPlayer=state.firstPlayer;state.view='guide';
+ if(reset)Object.assign(state,{round:1,turn:state.firstPlayer,phase:0,open:0,completed:{},revealed:{},history:[]});
+ render();
+}
+function startGuide(){
+ const selected=state.savedLists?.find(list=>list.id===(state.setupListId||state.activeListId));
+ if(!selected){toast('Import and select an army list first.');return;}
+ syncActiveList();
+ const first=state.setupFirstPlayer==='opponent'?'opponent':state.setupFirstPlayer==='you'?'you':state.firstPlayer;
+ Object.assign(state,{army:structuredClone(selected.army),activeListId:selected.id,renames:{...selected.renames},warnings:[...(selected.warnings||[])],firstPlayer:first,turn:first,round:1,phase:0,open:0,completed:{},revealed:{},history:[],guideStarted:true,view:'guide'});
+ render(true);
+}
+function guideSettings(){return `<details class="guide-settings"><summary aria-label="Guide settings" title="Guide settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3-.6 2.4-2 .9L4 5.6 2.5 8l1.8 1.8v2.4L2.5 14 4 16.4l2.4-.7 2 .9L9 19h3l.6-2.4 2-.9 2.4.7 1.5-2.4-1.8-1.8V9.8L18.5 8 17 5.6l-2.4.7-2-.9L12 3Z"/><circle cx="10.5" cy="11" r="3"/></svg></summary><div class="guide-settings-menu"><button type="button" data-action="reset-guide">Reset guide</button><button type="button" data-action="choose-guide-army">Choose another army</button></div></details>`;}
+function guide(){if(!state.guideStarted)return guideStartPage();return `<section class="guide-page-shell guide-carousel" aria-label="Interactive guide"><div class="guide-frame"><button class="guide-page-arrow previous-page" data-action="page-previous" aria-label="Previous page" title="Previous page" ${canPreviousPage()?'':'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><header class="guide-fixed-header">${guideSettings()}${turnToggle()}${phaseTabs()}</header><div class="guide-viewport"><div class="guide-slide" id="guide-panel" role="tabpanel" aria-labelledby="phase-tab-${state.phase}">${guidePageHTML()}</div></div><button class="guide-page-arrow next-page" data-action="page-next" aria-label="Next page" title="Next page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></section>`;}
 function guidePageHTML(){
  const data=lessons();state.open=Math.max(0,Math.min(data.steps.length-1,state.open));
  const active=data.steps[state.open];
  const unsupported=Library.isAeldari(state.army)?state.army.units.filter(u=>!sample.units.some(s=>s.name.toLowerCase()===u.name.toLowerCase())):state.army.units;
  const phaseHasAbilities=Library.phases[state.phase].steps.some(step=>Library.forStep(state,step).length>0);
- return `<div class="focus-layout"><article class="lesson-focus rule-${active.category}" aria-labelledby="lesson-title"><span class="lesson-kind">${categoryBadge(active)} <span class="rule-context">${escapeHTML(active.kind)}</span></span><h2 id="lesson-title" tabindex="-1">${escapeHTML(active.title)}</h2><p class="lesson-instruction">${escapeHTML(active.body)}</p>${flashBoard(active)}${!phaseHasAbilities?`<p class="coverage-note">${unsupported.length?'Army-ability coverage is incomplete for this phase.':'No army abilities are listed for this phase in this turn.'}</p>`:''}<details class="think-details"><summary>Why this matters</summary><p>${escapeHTML(active.why)}</p></details><details class="think-details"><summary>Test your understanding</summary><p class="question">${escapeHTML(active.question)}</p><p>${escapeHTML(active.answer)}</p></details>${referenceDetails(active)}</article><details class="sequence-outline"><summary>See the whole phase</summary><div>${data.steps.map((step,i)=>`<button data-step="${i}" aria-current="${i===state.open?'step':'false'}"><span>${state.completed[stepKey(i)]?'✓':i+1}</span>${escapeHTML(step.title)}</button>`).join('')}</div></details>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}<footer class="focus-footer"><span>11th edition · Personal study snapshot</span><details><summary>Content coverage</summary><p>Core sequence checked against the June 2026 official PDF. Two army abilities checked against the October update; other army summaries use community references and need confirmation in your current rules. Stratagem cards are timing prompts, not complete instructions. No mission scoring or eligibility automation. Latest-update completeness is not guaranteed.</p><div class="rule-legend">${Object.keys(Library.categories).map(category=>categoryBadge({category})).join('')}</div><p>Reviewed 13 November 2026 · ${Library.revision}</p></details></footer></div>`;
+ return `<div class="focus-layout"><article class="lesson-focus rule-${active.category}" aria-labelledby="lesson-title"><span class="lesson-kind">${categoryBadge(active)} <span class="rule-context">${escapeHTML(active.kind)}</span></span><h2 id="lesson-title" tabindex="-1">${escapeHTML(active.title)}</h2><p class="lesson-instruction">${escapeHTML(active.body)}</p>${flashBoard(active)}${!phaseHasAbilities?`<p class="coverage-note">${unsupported.length?'Army-ability coverage is incomplete for this phase.':'No army abilities are listed for this phase in this turn.'}</p>`:''}<details class="think-details"><summary>Why this matters</summary><p>${escapeHTML(active.why)}</p></details><details class="think-details"><summary>Test your understanding</summary><p class="question">${escapeHTML(active.question)}</p><p>${escapeHTML(active.answer)}</p></details>${referenceDetails(active)}</article><details class="sequence-outline"><summary>See the whole phase</summary><div>${data.steps.map((step,i)=>`<button data-step="${i}" aria-current="${i===state.open?'step':'false'}"><span>${state.completed[stepKey(i)]?'✓':i+1}</span>${escapeHTML(step.title)}</button>`).join('')}</div></details>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
 }
 function unitStudy(u){const available=Library.abilities.filter(a=>a.units.some(n=>n.toLowerCase()===u.name.toLowerCase())&&Library.matches(a,state.army));return available.length?`<details class="unit-lessons"><summary>Study this unit · ${available.length} reminders</summary>${available.map(abilityCard).join('')}</details>`:'';}
 function listMetadata(army){return `<dl class="list-metadata"><div><dt>Roster</dt><dd>${escapeHTML(army.faction||'Not provided')} · ${army.units.length} ${army.units.length===1?'unit':'units'}</dd></div><div><dt>Detachment</dt><dd>${escapeHTML(army.detachment||'Not provided')}</dd></div><div><dt>Disposition</dt><dd>${escapeHTML(army.disposition||'Not provided')}</dd></div></dl>`;}
@@ -267,6 +299,8 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.dataset.reveal!==undefined){const k=stepKey(Number(b.dataset.reveal));state.revealed[k]=!state.revealed[k];render();}
  if(b.dataset.complete!==undefined){const i=Number(b.dataset.complete),k=stepKey(i);state.completed[k]=!state.completed[k];if(state.completed[k]&&i<lessons().steps.length-1)state.open=i+1;render();}
  switch(b.dataset.action){
+ case 'reset-guide':showGuideStart(true);break;
+ case 'choose-guide-army':showGuideStart();break;
  case 'list-library':state.selectedListId=null;state.showImportedList=false;render();break;
  case 'view-imported-list':state.showImportedList=!state.showImportedList;render();break;
  case 'next':advancePhase();break;
@@ -279,7 +313,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  case 'back':{const previous=state.history.pop();if(previous){Object.assign(state,previous);state.open=previous.open||0;render();window.scrollTo(0,0);}break;}
  case 'round-down':if(state.round>1)transition({round:state.round-1});break;
  case 'round-up':transition({round:state.round+1});break;
- case 'restart':if(confirm('Start a fresh walkthrough? Your army will stay saved; study progress will be cleared.')){Object.assign(state,{round:1,turn:state.firstPlayer,phase:0,open:0,completed:{},revealed:{},history:[],view:'guide'});render();}break;
+ case 'restart':showGuideStart(true);break;
  case 'import':pendingImport=null;$('#import-feedback').innerHTML='';$('#import-form button[type=submit]').innerHTML='Review army <span>→</span>';$('#import-dialog').showModal();break;
  case 'close-import':$('#import-dialog').close();break;
  }
@@ -293,8 +327,9 @@ document.addEventListener('keydown',event=>{
  transition({phase:index});document.querySelector('#phase-tab-'+index)?.focus({preventScroll:true});
 });
 document.addEventListener('input',e=>{if(e.target.id==='unit-search'){const q=e.target.value.toLowerCase();document.querySelectorAll('.unit-card').forEach(c=>c.hidden=!c.dataset.unitName.includes(q)&&!c.querySelector('h3').textContent.toLowerCase().includes(q));}if(e.target.id==='army-text'){pendingImport=null;$('#import-feedback').innerHTML='';$('#import-form button[type=submit]').innerHTML='Review army <span>→</span>';}});
-document.addEventListener('change',e=>{if(e.target.dataset.rename){const value=e.target.value.trim();if(value){state.renames[e.target.dataset.rename]=value;save();e.target.closest('.unit-card').querySelector('h3').textContent=value;}else e.target.value=unitName(state.army.units.find(u=>u.id===e.target.dataset.rename));}});
-$('#import-form').addEventListener('submit',e=>{e.preventDefault();if(pendingImport){syncActiveList();const id='list-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);state.savedLists.push({id,army:pendingImport.army,warnings:pendingImport.warnings,renames:{}});state.activeListId=id;state.selectedListId=id;state.showImportedList=false;state.army=pendingImport.army;state.warnings=pendingImport.warnings;state.renames={};state.completed={};state.revealed={};state.history=[];state.phase=0;state.round=1;state.turn=state.firstPlayer;state.open=0;state.view='army';$('#import-dialog').close();pendingImport=null;render();toast('Army saved. Review your units before studying.');return;}try{pendingImport=parseArmy($('#army-text').value);$('#import-feedback').innerHTML=`<div class="banner" style="margin:15px 0 0">${pendingImport.army.units.length} entries found<br>${pendingImport.warnings.map(escapeHTML).join('<br>')}</div><div class="review-list">${pendingImport.army.units.map(u=>`<div class="review-row"><span>${escapeHTML(u.name)}${u.group?' · group '+escapeHTML(u.group):''}</span><span>${escapeHTML(u.role||'Unit')}</span></div>`).join('')}</div>`;$('#import-form button[type=submit]').innerHTML='Use this army <span>→</span>';}catch(error){$('#import-feedback').textContent=error.message;}});
+document.addEventListener('change',e=>{if(e.target.id==='guide-army-list'){state.setupListId=e.target.value;save();}if(e.target.id==='guide-first-player'){state.setupFirstPlayer=e.target.value;save();}if(e.target.dataset.rename){const value=e.target.value.trim();if(value){state.renames[e.target.dataset.rename]=value;save();e.target.closest('.unit-card').querySelector('h3').textContent=value;}else e.target.value=unitName(state.army.units.find(u=>u.id===e.target.dataset.rename));}});
+document.addEventListener('submit',e=>{if(e.target.id==='guide-start-form'){e.preventDefault();startGuide();}});
+$('#import-form').addEventListener('submit',e=>{e.preventDefault();if(pendingImport){syncActiveList();const id='list-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);state.savedLists.push({id,army:pendingImport.army,warnings:pendingImport.warnings,renames:{}});state.guideStarted=false;state.setupListId=id;state.activeListId=id;state.selectedListId=id;state.showImportedList=false;state.army=pendingImport.army;state.warnings=pendingImport.warnings;state.renames={};state.completed={};state.revealed={};state.history=[];state.phase=0;state.round=1;state.turn=state.firstPlayer;state.open=0;state.view='army';$('#import-dialog').close();pendingImport=null;render();toast('Army saved. Review your units before studying.');return;}try{pendingImport=parseArmy($('#army-text').value);$('#import-feedback').innerHTML=`<div class="banner" style="margin:15px 0 0">${pendingImport.army.units.length} entries found<br>${pendingImport.warnings.map(escapeHTML).join('<br>')}</div><div class="review-list">${pendingImport.army.units.map(u=>`<div class="review-row"><span>${escapeHTML(u.name)}${u.group?' · group '+escapeHTML(u.group):''}</span><span>${escapeHTML(u.role||'Unit')}</span></div>`).join('')}</div>`;$('#import-form button[type=submit]').innerHTML='Use this army <span>→</span>';}catch(error){$('#import-feedback').textContent=error.message;}});
 render();
 
 window.setWarPlannerAccount=(user,army)=>{
