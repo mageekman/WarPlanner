@@ -1,0 +1,686 @@
+{
+  "review_date": "2026-11-13",
+  "content_revision": "11e-personal-2026-11-13.1",
+  "reviewer": "Coding assistant; not a human rules editor or tournament judge",
+  "sources": [
+    {
+      "id": "core",
+      "url": "https://assets.warhammer-community.com/eng_01-06_warhammer40k_new40k_core_rules-was6fbu1ix-hfewhmxyiy.pdf",
+      "sha256": "f6a2443a44627ac5f0ef08407d29aa5ec7e97339998f05bc35f3ae37bf276833",
+      "checked_sections": [
+        "07.01\u201307.03",
+        "08.01\u201308.05",
+        "09.01\u201309.07",
+        "10.01\u201310.07",
+        "11.01\u201311.04",
+        "12.01\u201312.09",
+        "18.03\u201318.04",
+        "24.09"
+      ],
+      "scope": "Agent-reviewed sequence and selected mechanics; current errata completeness not established"
+    },
+    {
+      "id": "pack",
+      "url": "https://assets.warhammer-community.com/eng_14-10_wh40k_-faction_pack_aeldari-seqmcs1mu0-g8gzewikcm.pdf",
+      "sha256": "ca54d5039e6466c239e56a334e02fb14da4e7ce8113ba5a3335ddfad5a1c6ca2",
+      "scope": "Asurmen and token changes checked; other card references do not imply full official codex verification"
+    },
+    {
+      "id": "community",
+      "url": "https://wahapedia.ru/wh40k11ed/factions/aeldari/",
+      "snapshot_manifest": "/workspace/war-plan-research/evidence/manifest.json",
+      "comparison_repository": "https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b",
+      "scope": "Community-source mechanical review; human confirmation pending"
+    }
+  ],
+  "core_phase_steps": 23,
+  "boundary_steps": [
+    "round-start",
+    "turn-start",
+    "turn-end",
+    "round-end"
+  ],
+  "reminders": [
+    {
+      "id": "battle-focus",
+      "name": "Battle Focus",
+      "units": [],
+      "phase": [
+        0
+      ],
+      "turn": "either",
+      "window": "round",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "eldrad-cp",
+      "name": "Diviner of Futures",
+      "units": [
+        "Eldrad Ulthran"
+      ],
+      "phase": [
+        0
+      ],
+      "turn": "you",
+      "window": "start",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "doom",
+      "name": "Doom",
+      "units": [
+        "Eldrad Ulthran"
+      ],
+      "phase": [
+        1
+      ],
+      "turn": "you",
+      "window": "end",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "whirling",
+      "name": "Whirling Death",
+      "units": [
+        "Jain Zar"
+      ],
+      "phase": [
+        1
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "strategist",
+      "name": "Superlative Strategist",
+      "units": [
+        "Autarch"
+      ],
+      "phase": [
+        1
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "flickerjump",
+      "name": "Flickerjump",
+      "units": [
+        "Warp Spiders"
+      ],
+      "phase": [
+        1
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "flickerjump-risk",
+      "name": "Flickerjump: resolve the risk",
+      "units": [
+        "Warp Spiders"
+      ],
+      "phase": [
+        1
+      ],
+      "turn": "you",
+      "window": "end",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "hawks",
+      "name": "Grenade Pack Flyover",
+      "units": [
+        "Swooping Hawks"
+      ],
+      "phase": [
+        1
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "swift",
+      "name": "Swift as the Wind",
+      "units": [],
+      "phase": [
+        1
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "flitting",
+      "name": "Flitting Shadows",
+      "units": [],
+      "phase": [
+        1,
+        3
+      ],
+      "turn": "you",
+      "window": "select",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "star-engines",
+      "name": "Star Engines",
+      "units": [
+        "Wave Serpent",
+        "Falcon"
+      ],
+      "phase": [
+        1
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community",
+        "pack"
+      ]
+    },
+    {
+      "id": "opportunity",
+      "name": "Opportunity Seized",
+      "units": [],
+      "phase": [
+        1
+      ],
+      "turn": "opponent",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "fade",
+      "name": "Fade Back",
+      "units": [],
+      "phase": [
+        2
+      ],
+      "turn": "opponent",
+      "window": "after",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "sudden",
+      "name": "Sudden Strike",
+      "units": [],
+      "phase": [
+        3
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community",
+        "pack"
+      ]
+    },
+    {
+      "id": "path-warrior",
+      "name": "Path of the Warrior",
+      "units": [],
+      "phase": [
+        2,
+        4
+      ],
+      "turn": "either",
+      "window": "select",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "asurmen-hand",
+      "name": "Hand of Asuryan",
+      "units": [
+        "Asurmen"
+      ],
+      "phase": [
+        2
+      ],
+      "turn": "you",
+      "window": "select",
+      "status": "official-checked",
+      "sourceIds": [
+        "pack"
+      ]
+    },
+    {
+      "id": "bladestorm",
+      "name": "Bladestorm",
+      "units": [
+        "Dire Avengers"
+      ],
+      "phase": [
+        2
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "token",
+      "name": "Aspect Shrine Token",
+      "units": [
+        "Dire Avengers",
+        "Howling Banshees",
+        "Dark Reapers",
+        "Fire Dragons",
+        "Swooping Hawks",
+        "Warp Spiders"
+      ],
+      "phase": [
+        2,
+        4
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "official-checked",
+      "sourceIds": [
+        "pack"
+      ]
+    },
+    {
+      "id": "reapers",
+      "name": "Inescapable Accuracy",
+      "units": [
+        "Dark Reapers"
+      ],
+      "phase": [
+        2
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "dragons",
+      "name": "Assured Destruction",
+      "units": [
+        "Fire Dragons"
+      ],
+      "phase": [
+        2
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "walker",
+      "name": "Crystalline Targeting",
+      "units": [
+        "War Walkers"
+      ],
+      "phase": [
+        2
+      ],
+      "turn": "you",
+      "window": "after",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "falcon",
+      "name": "Fire Support",
+      "units": [
+        "Falcon"
+      ],
+      "phase": [
+        2
+      ],
+      "turn": "you",
+      "window": "after",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "asurmen-move",
+      "name": "Tactical Acumen",
+      "units": [
+        "Asurmen"
+      ],
+      "phase": [
+        2
+      ],
+      "turn": "you",
+      "window": "after",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "acrobatic",
+      "name": "Acrobatic",
+      "units": [
+        "Howling Banshees"
+      ],
+      "phase": [
+        3
+      ],
+      "turn": "you",
+      "window": "select",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "avatar-aura",
+      "name": "The Bloody-Handed",
+      "units": [
+        "Avatar of Khaine"
+      ],
+      "phase": [
+        1,
+        3
+      ],
+      "turn": "you",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "avatar-defence",
+      "name": "Molten Form",
+      "units": [
+        "Avatar of Khaine"
+      ],
+      "phase": [
+        2,
+        4
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "serpent-shield",
+      "name": "Wave Serpent Shield",
+      "units": [
+        "Wave Serpent"
+      ],
+      "phase": [
+        2
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "fights-first",
+      "name": "Fights First",
+      "units": [
+        "Jain Zar",
+        "Howling Banshees",
+        "Autarch"
+      ],
+      "phase": [
+        4
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "jain-attacks",
+      "name": "Storm of Silence",
+      "units": [
+        "Jain Zar"
+      ],
+      "phase": [
+        2,
+        4
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "murder",
+      "name": "Aspect of Murder",
+      "units": [
+        "Autarch"
+      ],
+      "phase": [
+        4
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "autarch-discount",
+      "name": "Path of Command",
+      "units": [
+        "Autarch"
+      ],
+      "phase": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "turn": "either",
+      "window": "react",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "khaines",
+      "name": "Khaine\u2019s Vengeance",
+      "units": [],
+      "phase": [
+        1
+      ],
+      "turn": "opponent",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "skyborne",
+      "name": "Skyborne Sanctuary",
+      "units": [],
+      "phase": [
+        4
+      ],
+      "turn": "either",
+      "window": "end",
+      "status": "community-checked",
+      "sourceIds": [
+        "community",
+        "pack"
+      ]
+    },
+    {
+      "id": "aspect-stratagems",
+      "name": "Before selecting an attacker",
+      "units": [],
+      "phase": [
+        2,
+        4
+      ],
+      "turn": "either",
+      "window": "select",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "final-breath",
+      "name": "To Their Final Breath",
+      "units": [],
+      "phase": [
+        4
+      ],
+      "turn": "either",
+      "window": "react",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "deep-strike",
+      "name": "Deep Strike",
+      "units": [
+        "Falcon",
+        "Swooping Hawks",
+        "Warp Spiders"
+      ],
+      "phase": [
+        1
+      ],
+      "turn": "you",
+      "window": "arrivals",
+      "status": "official-checked",
+      "sourceIds": [
+        "core"
+      ]
+    },
+    {
+      "id": "battle-focus-end",
+      "name": "Unused Battle Focus expires",
+      "units": [],
+      "phase": [
+        4
+      ],
+      "turn": "either",
+      "window": "round-end",
+      "status": "community-checked",
+      "sourceIds": [
+        "community"
+      ]
+    },
+    {
+      "id": "deadly-demise",
+      "name": "Deadly Demise",
+      "units": [
+        "Avatar of Khaine",
+        "Wave Serpent",
+        "Falcon"
+      ],
+      "phase": [
+        2,
+        4
+      ],
+      "turn": "either",
+      "window": "act",
+      "status": "community-checked",
+      "sourceIds": [
+        "core",
+        "community"
+      ]
+    }
+  ],
+  "limitations": [
+    "No independent current codex access; community-checked cards need confirmation",
+    "Stratagem reminders omit full effects and costs by design; open the current rule before use",
+    "No automated battlefield, transport, attached-unit survival, line-of-sight, or range eligibility",
+    "Pre-battle Scouts is a reference prompt, not a full setup procedure",
+    "No complete weapon-keyword or damaged-profile coverage",
+    "No public distribution clearance implied"
+  ],
+  "flow_revision": "flashcards-v1",
+  "presentation": "Collapsible unit cards preview rule names; shared cards preview matching unit names. Same abilities used by more than two battlefield units are promoted to one shared block, counting units before visual duplicate merging.",
+  "additional_reminders": [
+    {
+      "id": "fuegan-burning-lance",
+      "category": "ability",
+      "source": "https://wahapedia.ru/wh40k11ed/factions/aeldari/Fuegan",
+      "review_date": "2026-11-13",
+      "status": "community-checked",
+      "condition": "Fuegan imported as Leader attached to the selected Fire Dragons bodyguard group; still leading; Melta weapons only"
+    }
+  ],
+  "activation_limits": [
+    "Imported attachments are pre-game relationships; survival/attachment changes require player confirmation",
+    "Borrowed War Walker/Falcon effects require the correct previously hit/selected target and passenger conditions",
+    "No explicit weapon profile calculations or automated range modifications",
+    "Duplicate squads may share a reference card but retain independent rules/usage limits",
+    "A unit omitted from the card board may still take ordinary legal actions",
+    "Shared options are displayed once; matching unit cards refer to them without automatic application",
+    "A repeated rule block does not pool usage limits or grant that rule to unlisted units"
+  ]
+}
