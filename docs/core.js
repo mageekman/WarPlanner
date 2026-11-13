@@ -22,8 +22,10 @@
     const metadata=lines.slice(first+1,lines.findIndex((l,i)=>i>first&&/Attached Units|CHARACTERS|BATTLELINE|OTHER DATASHEETS|DEDICATED TRANSPORTS/.test(l))>first?lines.findIndex((l,i)=>i>first&&/Attached Units|CHARACTERS|BATTLELINE|OTHER DATASHEETS|DEDICATED TRANSPORTS/.test(l)):first+6).map(l=>l.trim()).filter(Boolean);
     const declared=Number(heading[2].replace(/,/g,''));const sum=units.reduce((s,u)=>s+u.points,0);if(sum!==declared)warnings.push('Listed units total '+sum+' points; the export header says '+declared+'. Check the import.');
     warnings.push('Import is not army legality validation. Rules, equipment, and attachments need review.');
+    const detachmentNames=metadata.filter(l=>/Detachment Points/i.test(l)).map(l=>l.replace(/\s*\(.*\)/,'')).filter(Boolean);
+    if(!detachmentNames.length)detachmentNames.push((metadata[1]||'Custom roster').replace(/\s*\(.*\)/,''));
     const limit=text.match(/(?:Strike Force|Incursion|Onslaught)\s*\(([\d,]+) points?\)/i);const version=text.match(/Exported with App Version:\s*(.+)/i);
-    return {army:{name:heading[1],faction:metadata[0]||'Imported army',detachment:(metadata.find(l=>/Detachment Points/.test(l))||metadata[1]||'Custom roster').replace(/\s*\(.*\)/,''),disposition:metadata.find(l=>l!==metadata[0]&&!/Detachment Points|Strike Force|Incursion|Onslaught/.test(l)&&l!==metadata[1])||'',points:declared,limit:limit?Number(limit[1].replace(/,/g,'')):null,version:version?version[1]:'Version not provided',units,originalExport:text},warnings};
+    return {army:{name:heading[1],faction:metadata[0]||'Imported army',detachment:detachmentNames[0],detachments:[...new Set(detachmentNames)],disposition:metadata.find(l=>l!==metadata[0]&&!/Detachment Points|Strike Force|Incursion|Onslaught/.test(l)&&l!==metadata[1])||'',points:declared,limit:limit?Number(limit[1].replace(/,/g,'')):null,version:version?version[1]:'Version not provided',units,originalExport:text},warnings};
   }
   function next(s){const t={...s};if(t.phase<4)t.phase++;else{t.phase=0;const first=t.firstPlayer||'you';if(t.turn===first)t.turn=first==='you'?'opponent':'you';else{t.turn=first;t.round++;}}return t;}
   const api={phases,sample,parseArmy,next};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlan=api;

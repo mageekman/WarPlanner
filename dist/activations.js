@@ -30,7 +30,7 @@
  function fits(a,state,unit){
   if(!a||!L.matches(a,state.army))return false;
   if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>m.role==='leader'&&a.units.includes(m.name))))return false;
-  if(a.expanded&&a.enhancement&&!unit.members.some(m=>m.details.some(d=>/^enhancement\s*:/i.test(d)&&norm(d.replace(/^enhancement\s*:/i,'')).includes(norm(a.enhancement)))))return false;
+  if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
   if(a.expanded&&a.sourceRuleId){
    const refs=unit.members.flatMap(m=>(L.unitInfo(m.name)?.abilities||[]).filter(r=>r.id===a.sourceRuleId).map(r=>({entry:m,ref:r})));
    if(refs.length&&refs.every(({entry,ref})=>ref.wargear&&!entry.details.some(d=>norm(d).includes(norm(ref.wargear)))))return false;
@@ -156,54 +156,57 @@
   return [first,merged,last];
  }
  function flashcards(state,step){
-  const sharedMap=new Map(),unitCards=[],records=[];
+  const sharedMap=new Map(),types=new Map();
+  const ruleKey=a=>JSON.stringify([a.id,a.name,a.summary,a.conditions,a.sourceIds]);
+  function typeFor(member){
+   const key=norm(member.name);
+   if(!types.has(key)){
+    const display=units({units:[{...structuredClone(member),group:'',role:''}]})[0];display.id='unit-type-'+key;
+    types.set(key,{unit:display,instances:[],items:new Map(),sharedIds:new Set()});
+   }
+   return types.get(key);
+  }
+  function owners(a,unit){
+   if(a.enhancement)return unit.members.filter(m=>L.enhancementEquipped(a,m,state.army));
+   return a.units?.length?unit.members.filter(m=>a.units.some(name=>norm(name)===norm(m.name))):unit.members;
+  }
   for(const unit of orderedUnits(state)){
+   for(const member of [unit.body,...unit.members.filter(m=>m!==unit.body)]){const record=typeFor(member);if(!record.instances.some(u=>u.id===unit.id))record.instances.push(unit);}
    const rows=step.activationMode?stages(state,unit,step.activationMode):[{title:'At this step',cards:L.forStep(state,step).filter(a=>!a.sequencePreview&&fits(a,state,unit))}];
-   const items=[],sharedIds=new Set(),seen=new Set();
+   const seen=new Set();
    for(const row of rows)for(const a of row.cards){
-    // A provider's own unit card explains the effect once, rather than repeating
-    // the same hypothetical benefit under every possible recipient.
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
-    const key=a.id+'|'+a.name+'|'+a.summary;
-    if(seen.has(key))continue;seen.add(key);
+    const key=ruleKey(a);if(seen.has(key))continue;seen.add(key);
     const item={...a,timing:a.expanded?(a.triggerText||row.title):row.title};
     if(a.category==='army'||a.category==='stratagem'){
-     if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[]});
-     sharedMap.get(key).appliesTo.push(unit);sharedIds.add(key);
-    }else items.push(item);
+     if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[],battlefieldUnits:[]});
+     const shared=sharedMap.get(key);shared.battlefieldUnits.push(unit);
+     for(const member of unit.members){const record=typeFor(member);if(!shared.appliesTo.some(u=>norm(u.body.name)===norm(member.name)))shared.appliesTo.push(record.unit);record.sharedIds.add(key);}
+    }else{
+     for(const member of owners(a,unit)){
+      const record=typeFor(member);
+      if(!record.items.has(key))record.items.set(key,{...item,targetUnits:[member]});
+     }
+    }
    }
-   if(items.length)records.push({unit,items,sharedIds});
   }
-  // Count imported battlefield units before identical squads are visually merged.
-  // A leader/bodyguard group is one user of a rule, not one user per model.
+  // Share a repeated rule across distinct unit types, not repeated squads.
   const repeated=new Map();
-  const ruleKey=a=>JSON.stringify([a.id,a.name,a.summary,a.conditions,a.sourceIds]);
-  for(const record of records)for(const item of record.items){
-   const key=ruleKey(item);
-   if(!repeated.has(key))repeated.set(key,{item,units:new Map()});
-   repeated.get(key).units.set(record.unit.id,record.unit);
+  for(const record of types.values())for(const [key,item] of record.items){
+   if(!repeated.has(key))repeated.set(key,{item,records:[]});repeated.get(key).records.push(record);
   }
   for(const [key,entry] of repeated){
-   if(entry.units.size<=2)continue;
+   if(entry.records.length<=2||entry.item.id==='fights-first')continue;
    const sharedKey='repeated:'+key;
-   sharedMap.set(sharedKey,{...entry.item,key:sharedKey,appliesTo:[...entry.units.values()],promoted:true});
-   for(const record of records){
-    if(!record.items.some(a=>ruleKey(a)===key))continue;
-    record.items=record.items.filter(a=>ruleKey(a)!==key);
-    record.sharedIds.add(sharedKey);
-   }
+   sharedMap.set(sharedKey,{...entry.item,key:sharedKey,appliesTo:entry.records.map(r=>r.unit),promoted:true});
+   for(const record of entry.records){record.items.delete(key);record.sharedIds.add(sharedKey);}
   }
-  for(const {unit,items,sharedIds} of records){
-   // A unit-only card adds no information when all its rules are already shared.
-   if(!items.length)continue;
-   const signature=JSON.stringify([unit.body.name,unit.leaders.map(m=>m.name),items.map(a=>[a.id,a.name,a.summary,a.conditions]),[...sharedIds]]);
-   const existing=unitCards.find(c=>c.signature===signature);
-   if(existing)existing.instances.push(unit);
-   else unitCards.push({signature,unit,instances:[unit],items,sharedIds:[...sharedIds]});
-  }
+  const unitCards=[...types.values()].filter(r=>r.items.size).map(r=>({unit:r.unit,instances:r.instances,items:[...r.items.values()],sharedIds:[...r.sharedIds]}));
+  if(state.phase===2&&state.turn==='you')unitCards.sort((a,b)=>a.unit.priority-b.unit.priority);
   const shared=[...sharedMap.values()];
   return {shared,unitCards,count:shared.length+unitCards.length};
  }
+
  const api={units,orderedUnits,stages,steps,rangeBonus,leading,support,has,flashcards,fightsFirst,targeting};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanActivations=api;
 })(typeof window!=='undefined'?window:globalThis);

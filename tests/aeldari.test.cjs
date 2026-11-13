@@ -61,3 +61,14 @@ test('Visarch Fights First is limited to an actual led unit and Fuegan resurrect
  assert.ok(!cards(solo).some(a=>a.sourceRuleId==='way-of-the-blade-aeldari'));
  const fuegan=state(['Fuegan'],'Aspect Host',2);const end=cards(fuegan).find(a=>a.sourceRuleId==='unquenchable-resolve-aeldari');assert.match(end.summary,/first time this battle/);assert.match(end.summary,/On 2\+/);
 });
+test('secondary detachments contribute their rules and removed detachments stop matching',()=>{
+ const s=state(['Fire Dragons'],'Warhost');s.army.detachments=['Warhost','Aspect Host'];
+ const path=L.abilities.find(a=>a.id==='path-warrior');assert.ok(L.matches(path,s.army));assert.ok(cards(s).some(a=>a.id==='path-warrior'));
+ assert.ok(L.abilities.filter(a=>a.detachment==='Warhost').some(a=>L.matches(a,s.army)));
+ s.army.detachments=['Warhost'];assert.equal(L.matches(path,s.army),false);
+});
+test('same-name enhancements from multiple detachments require a specific source',()=>{
+ const B=require('../dist/list-builder');const a={...B.newArmy(),name:'Mixed',disposition:'Disruption'};B.setDetachments(a,['Ghosts of the Webway','Fateful Performance']);B.add(a,'shadowseer','one');a.units[0].details=['Enhancement: Mistweave'];
+ const candidates=L.abilities.filter(a=>a.enhancement==='Mistweave');assert.equal(candidates.length,2);assert.equal(candidates.filter(rule=>L.matches(rule,a)).length,0);
+ const choice=B.enhancements(a,a.units[0]).find(e=>e.name==='Mistweave');B.setEnhancement(a,'one',choice.id);assert.equal(candidates.filter(rule=>L.matches(rule,a)).length,1);assert.equal(candidates.find(rule=>L.matches(rule,a)).sourceRuleId,choice.id);
+});

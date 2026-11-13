@@ -114,12 +114,22 @@
  const aspectUnits=catalog.units.filter(u=>u.keywords.some(k=>normalized(k)==='aspectwarrior'||normalized(k)==='aspectwarriors')||u.name==='Avatar of Khaine').map(u=>u.name);
  function normalized(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
  function isAeldari(army){return ['aeldari','asuryani'].includes(normalized(army.faction));}
+ function armyDetachments(army){return [...new Map((Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[]).filter(Boolean).map(name=>[normalized(name),name])).values()];}
+ function enhancementEquipped(ability,unit,army){
+  if(!ability.enhancement||!unit.details.some(d=>/^enhancement\s*:/i.test(d)&&normalized(d.replace(/^enhancement\s*:/i,'')).includes(normalized(ability.enhancement))))return false;
+  const sourceId=ability.sourceRuleId||Object.keys(aliases).find(id=>aliases[id]===ability.id);
+  if(unit.enhancementId)return unit.enhancementId===sourceId;
+  const selected=armyDetachments(army).map(normalized);
+  const candidates=catalog.rules.filter(a=>a.category==='enhancement'&&normalized(a.enhancement)===normalized(ability.enhancement)&&selected.includes(normalized(a.detachment)));
+  // Plain imported names may be ambiguous when several detachments share a name.
+  return candidates.length===1&&candidates[0].id===sourceId;
+ }
  function matches(ability,army){
   if(!isAeldari(army))return false;
-  if(ability.detachment&&normalized(army.detachment)!==normalized(ability.detachment))return false;
+  if(ability.detachment&&!armyDetachments(army).some(d=>normalized(d)===normalized(ability.detachment)))return false;
   if(ability.units.length&&!army.units.some(u=>ability.units.some(n=>normalized(n)===normalized(u.name))))return false;
   if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(ability.id)&&!army.units.some(u=>aspectUnits.some(n=>normalized(n)===normalized(u.name))))return false;
-  if(ability.enhancement&&!army.units.some(u=>u.details.some(d=>/^enhancement\s*:/i.test(d)&&normalized(d.replace(/^enhancement\s*:/i,'')).includes(normalized(ability.enhancement)))))return false;
+  if(ability.enhancement&&!army.units.some(u=>enhancementEquipped(ability,u,army)))return false;
   return true;
  }
  const sequencing={
@@ -152,6 +162,6 @@
   // Movement selection and charge declaration share the Flitting Shadows trigger.
   return steps;
  }
- const api={catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

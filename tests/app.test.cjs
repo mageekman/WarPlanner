@@ -24,7 +24,7 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -81,12 +81,12 @@ test('phase cards show relevant units without dropdowns or per-unit completion',
 });
 test('shooting cards preserve sequencing, unit context, and low-click phase progression',()=>{
  const a=app();a.click({phase:'2'});a.click({step:'1'});
- assert.ok(a.html().indexOf('data-unit-card="sample-16"')<a.html().indexOf('data-unit-card="sample-12"'));
+ assert.ok(a.html().indexOf('data-unit-card="unit-type-warwalkers"')<a.html().indexOf('data-unit-card="unit-type-firedragons"'));
  assert.match(a.html(),/<h3>Fire Dragons<\/h3>/);
  assert.match(a.html(),/<h4>Assured Destruction<\/h4>/);assert.match(a.html(),/<h4>Aspect Shrine Token<\/h4>/);
  assert.doesNotMatch(a.html(),/Burning Lance/);assert.doesNotMatch(a.html(),/<select[^>]*data-unit/);
- assert.doesNotMatch(a.html(),/data-unit-card="sample-(14|15|17)"/);
- assert.match(a.html(),/data-shared-rule="token"/);assert.match(a.html(),/Swooping Hawks 1/);assert.match(a.html(),/Warp Spiders/);
+ assert.doesNotMatch(a.html(),/data-unit-card="unit-type-(swoopinghawks|warpspiders)"/);
+ assert.match(a.html(),/data-shared-rule="token"/);assert.match(a.html(),/Swooping Hawks/);assert.match(a.html(),/Warp Spiders/);
  a.click({action:'study-next'});assert.match(a.html(),/End of Shooting/);
  const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.activationReviewed,undefined);
 });
@@ -98,18 +98,18 @@ test('collapsed cards preview rule names or the full shared-rule unit list',()=>
  const dragons=unitHeaders.find(h=>h.includes('<h3>Fire Dragons</h3>'));
  assert.match(dragons,/class="flash-preview"/);assert.match(dragons,/Assured Destruction/);assert.match(dragons,/Aspect Shrine Token/);assert.match(dragons,/Path of the Warrior/);
  const token=a.html().match(/<details[^>]*data-shared-rule="token"[\s\S]*?<\/summary>/)[0];
- assert.match(token,/Fire Dragons 1/);assert.match(token,/Fire Dragons 2/);assert.match(token,/Warp Spiders/);
+ assert.match(token,/Fire Dragons/);assert.doesNotMatch(token,/Fire Dragons [12]/);assert.match(token,/Warp Spiders/);
  assert.doesNotMatch(token,/matching roster groups/);
 });
 test('unit previews use actual two-line height and restore the list when space increases',()=>{
- const a=app(),element={dataset:{fullPreview:'Fire Dragons 1 · Fire Dragons 2 · Warp Spiders'},clientWidth:200,textContent:'',scrollHeight:33};
+ const a=app(),element={dataset:{fullPreview:'Fire Dragons · Dark Reapers · Warp Spiders'},clientWidth:200,textContent:'',scrollHeight:33};
  a.fitPreview(element);assert.equal(element.textContent,element.dataset.fullPreview);
  element.scrollHeight=50;a.fitPreview(element);assert.equal(element.textContent,'Multiple Units');
  element.clientWidth=450;element.scrollHeight=33;a.fitPreview(element);assert.equal(element.textContent,element.dataset.fullPreview);
  a.click({phase:'2'});a.click({step:'1'});
  assert.match(a.html(),/data-unit-preview data-full-preview=/);
  const token=a.html().match(/data-shared-rule="token"[\s\S]*?<div class="flash-unit-list">([\s\S]*?)<\/ul>/)[1];
- assert.match(token,/<li>Fire Dragons 1<\/li>/);assert.match(token,/<li>Fire Dragons 2<\/li>/);
+ assert.match(token,/<li>Fire Dragons<\/li>/);assert.equal((token.match(/<li>Fire Dragons<\/li>/g)||[]).length,1);
 });
 test('visible turn toggle stays above rule labels and preserves the phase and matching step',()=>{
  const a=app();a.click({phase:'2'});a.click({step:'1'});
@@ -210,9 +210,9 @@ test('reduced motion skips animation and leaving the guide cancels a pending tra
 });
 test('Fight cards show Fights First and army/stratagem cards show targeting instead of roster lists',()=>{
  const a=app();a.click({phase:'4'});a.click({step:'2'});
- const banshees=a.html().match(/data-unit-card="group-3"[\s\S]*?<\/summary>/)[0];
+ const banshees=a.html().match(/data-unit-card="unit-type-howlingbanshees"[\s\S]*?<\/summary>/)[0];
  assert.match(banshees,/<span class="flash-fights-first">Fights First<\/span>/);
- assert.doesNotMatch(a.html(),/data-unit-card="group-1"/); // Its Fight rules are already shared.
+ assert.doesNotMatch(a.html(),/data-unit-card="unit-type-direavengers"/); // Its Fight rules are already shared.
  a.click({phase:'1'});a.click({step:'1'});
  const swift=a.html().match(/data-shared-rule="swift"[\s\S]*?<div class="flash-expanded">/)[0];
  assert.match(swift,/Applies to: One eligible friendly Battle Focus unit/);assert.doesNotMatch(swift,/data-unit-preview|data-full-preview/);
@@ -338,4 +338,10 @@ test('editing a legacy starter preserves the original roster separately from rem
  const a=app();a.click({view:'army'});a.click({openList:'list-1'});a.click({action:'edit-list'});a.editorInput('name','Updated starter');a.click({removeUnit:'sample-17'});a.saveEditor();
  const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.army.units.length,17);assert.equal(saved.army.originalRoster.units.length,18);
  assert.ok(saved.army.originalRoster.units.some(u=>u.name==='Warp Spiders'));a.click({action:'view-imported-list'});assert.match(a.html(),/<pre>[\s\S]*Warp Spiders/);
+});
+
+test('the editor saves multiple checked detachments and displays them in the library and reference',()=>{
+ const a=app();a.click({view:'army'});a.click({action:'create-list'});a.editorInput('name','Combined host');a.toggleDetachment('Warhost',true);a.toggleDetachment('Aspect Host',true);a.editorChange('disposition','Priority Assets');a.click({addUnit:'fire-dragons'});a.saveEditor();
+ const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.deepEqual(saved.army.detachments,['Warhost','Aspect Host']);assert.match(a.html(),/Warhost, Aspect Host/);assert.match(a.html(),/Martial Grace/);assert.match(a.html(),/Path of the Warrior/);
+ a.click({view:'army'});assert.match(a.html(),/Warhost, Aspect Host/);
 });

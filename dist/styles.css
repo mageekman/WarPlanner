@@ -190,3 +190,12 @@
 .builder-empty{padding:20px;border:1px dashed var(--line);border-radius:8px;font-size:13px}
 .builder-footnote{margin:20px 0 14px}.builder-save-bottom{margin-bottom:24px}
 @media(max-width:650px){.list-editor>.heading{display:block}.list-editor>.heading .button-row{margin-top:15px}.builder-metadata,.builder-unit-fields{grid-template-columns:1fr}.builder-unit-search{padding:16px}#builder-search-results{grid-template-columns:1fr}.builder-unit{padding:13px}.builder-save-bottom{width:100%}}
+
+.builder-detachments{border:0;padding:0;margin:0;min-width:0}
+.builder-detachments legend{padding:0;font-size:12px;color:var(--muted)}
+.builder-detachments>details{margin-top:8px;border:1px solid #42565f;border-radius:6px;background:#13232d}
+.builder-detachments>details>summary{cursor:pointer;padding:12px;font-size:14px;color:var(--ink);line-height:1.5;overflow-wrap:anywhere}
+.builder-detachments>p{font-size:10px;margin-top:6px}
+.builder-detachment-choices{max-height:230px;overflow-y:auto;border-top:1px solid var(--line);padding:6px}
+.builder-detachment-choices label{display:flex;align-items:center;gap:10px;padding:9px 7px;font-size:12px;color:var(--ink);cursor:pointer}
+.builder-detachment-choices input[type=checkbox]{display:block;width:16px;height:16px;margin:0;flex-shrink:0;accent-color:var(--teal)}

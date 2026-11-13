@@ -7,6 +7,8 @@
  const info=name=>data.units.find(u=>norm(u.name)===norm(name));
  const detachments=()=>[...data.detachments].sort((a,b)=>a.name.localeCompare(b.name));
  const dispositions=()=>[...new Set(data.detachments.flatMap(d=>d.dispositions||[]))].map(title).sort();
+ function selectedDetachments(army){return [...new Map((Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[]).map(s=>String(s).trim()).filter(Boolean).map(name=>[norm(name),name])).values()];}
+ function setDetachments(army,names){army.detachments=[...new Map(names.map(s=>String(s).trim()).filter(Boolean).map(name=>[norm(name),name])).values()];army.detachment=army.detachments[0]||'';}
  function newArmy(){return {name:'',faction:'Aeldari',detachment:'',disposition:'',points:0,limit:2000,version:'Created in WarPlanner',origin:'builder',units:[]};}
  function search(query){const q=norm(query);return data.units.filter(u=>!q||norm(u.name).includes(q)).sort((a,b)=>a.name.localeCompare(b.name));}
  function add(army,id,unitId){const source=data.units.find(u=>u.id===id);if(!source)throw Error('Choose a unit from the catalog.');army.units.push({id:unitId,name:source.name,points:0,role:'',group:'',details:[],modelCount:source.modelCounts?.find(n=>n>0)||1});}
@@ -27,14 +29,21 @@
  }
  const enhancement=unit=>unit.details.find(d=>/^Enhancement\s*:/i.test(d))?.replace(/^Enhancement\s*:\s*/i,'')||'';
  function enhancements(army,unit){
-  const source=info(unit.name),keys=(source?.keywords||[]).map(norm),det=data.detachments.find(d=>norm(d.name)===norm(army.detachment));
-  return data.enhancements.filter(e=>e.detachmentId===det?.id&&(e.upgrade||keys.includes('character')&&!keys.includes('epichero'))&&e.keywords.every(k=>keys.includes(norm(k)))&&(!e.restrictions.length||e.restrictions.some(r=>(!r.unit_id||r.unit_id===source?.id)&&(!r.keywords||r.keywords.every(k=>keys.includes(norm(k))))))).sort((a,b)=>a.name.localeCompare(b.name));
+  const source=info(unit.name),keys=(source?.keywords||[]).map(norm),dets=data.detachments.filter(d=>selectedDetachments(army).some(name=>norm(name)===norm(d.name)));
+  return data.enhancements.filter(e=>dets.some(d=>e.detachmentId===d.id)&&(e.upgrade||keys.includes('character')&&!keys.includes('epichero'))&&e.keywords.every(k=>keys.includes(norm(k)))&&(!e.restrictions.length||e.restrictions.some(r=>(!r.unit_id||r.unit_id===source?.id)&&(!r.keywords||r.keywords.every(k=>keys.includes(norm(k))))))).sort((a,b)=>a.name.localeCompare(b.name));
  }
- function setEnhancement(army,id,name){const unit=army.units.find(u=>u.id===id);if(!unit)throw Error('Unit not found.');if(name&&!enhancements(army,unit).some(e=>e.name===name))throw Error('Choose an enhancement available for this bearer and detachment.');unit.details=unit.details.filter(d=>!/^Enhancement\s*:/i.test(d));if(name)unit.details.push('Enhancement: '+name);}
+ function setEnhancement(army,id,choice){
+  const unit=army.units.find(u=>u.id===id);if(!unit)throw Error('Unit not found.');
+  const available=enhancements(army,unit),matches=available.filter(e=>e.id===choice||e.name===choice);
+  if(choice&&matches.length!==1)throw Error('Choose an enhancement available for this bearer and detachment.');
+  unit.details=unit.details.filter(d=>!/^Enhancement\s*:/i.test(d));delete unit.enhancementId;
+  if(choice){unit.details.push('Enhancement: '+matches[0].name);unit.enhancementId=matches[0].id;}
+ }
+
  function tokens(unit){const text=unit.details.find(d=>/aspect shrine token/i.test(d));if(!text)return 0;return Number(text.match(/(\d+)\s*x/i)?.[1]||1);}
  function setTokens(unit,count){if(![0,1,2].includes(count))throw Error('Choose 0, 1 or 2 tokens.');unit.details=unit.details.filter(d=>!/aspect shrine token/i.test(d));if(count)unit.details.push(count+'x Aspect Shrine Token');}
  function commit(draft,original){
-  const army=structuredClone(draft);army.name=String(army.name||'').trim();army.detachment=String(army.detachment||'').trim();army.disposition=String(army.disposition||'').trim();
+  const army=structuredClone(draft);army.name=String(army.name||'').trim();army.detachment=String(army.detachment||'').trim();army.disposition=String(army.disposition||'').trim();setDetachments(army,selectedDetachments(army));
   if(!army.name||!army.detachment||!army.disposition)throw Error('Enter a list name and choose a detachment and disposition.');
   if(!army.units.length)throw Error('Add at least one unit to your list.');
   if(new Set(army.units.map(u=>u.id)).size!==army.units.length)throw Error('Each unit needs its own list entry.');
@@ -50,6 +59,6 @@
   else delete army.originalRoster;
   return army;
  }
- const api={newArmy,search,info,detachments,dispositions,add,remove,attachedTo,eligibleBodies,attach,enhancement,enhancements,setEnhancement,tokens,setTokens,commit};
+ const api={selectedDetachments,setDetachments,newArmy,search,info,detachments,dispositions,add,remove,attachedTo,eligibleBodies,attach,enhancement,enhancements,setEnhancement,tokens,setTokens,commit};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerListBuilder=api;
 })(typeof window!=='undefined'?window:globalThis);

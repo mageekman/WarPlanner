@@ -10,7 +10,7 @@ test('action phases use complete unit walkthroughs without flattening Fight step
  assert.deepEqual(A.steps(state(sample,3)).map(s=>s.id),['charge-start','charge-activations','charge-end']);
  const fight=A.steps(state(sample,4));assert.deepEqual(fight.slice(0,5).map(s=>s.activationMode||s.id),['fight-start','pile','fight','consolidate','fight-end']);
 });
-test('leaders and bodyguards share one activation; duplicate squads remain distinct',()=>{
+test('roster groups remain intact for evaluating attachment-dependent rules',()=>{
  const units=A.units(sample);assert.equal(units.length,15);
  const asurmen=units.find(u=>A.has(u,'Asurmen'));assert.ok(asurmen.attached);assert.equal(asurmen.body.name,'Dire Avengers');
  assert.equal(units.filter(u=>A.has(u,'Fire Dragons')).length,2);
@@ -66,30 +66,28 @@ test('movement board lists shared options once, then relevant unit cards',()=>{
  assert.ok(!deck.unitCards.some(c=>A.has(c.unit,'Dire Avengers'))); // No unit-specific Movement rule.
  assert.ok(!deck.unitCards.flatMap(c=>c.items).some(a=>a.borrowedEffect&&a.id==='avatar-aura'));
 });
-test('flashcards preserve setup-shooter order and keep differing attachments separate',()=>{
+test('guide separates leader types while merging bodyguards across attachment variants',()=>{
  const s=state(),deck=A.flashcards(s,A.steps(s)[1]);
  assert.ok(A.has(deck.unitCards[0].unit,'War Walkers'));assert.ok(A.has(deck.unitCards[1].unit,'Falcon'));
  const text=`Pilot (350 points)\nAeldari\nAspect Host (3 Detachment Points)\nAttached Units\nAttached Unit 1\nFuegan (130 points)\n• Attached as: Leader\nFire Dragons (110 points)\n• Attached as: Bodyguard\n• 1x Aspect Shrine Token\nOTHER DATASHEETS\nFire Dragons (110 points)\n• 1x Aspect Shrine Token`;
  const a=parseArmy(text).army,custom=state(a),cards=A.flashcards(custom,A.steps(custom)[1]).unitCards;
  assert.equal(cards.length,2);
  assert.equal(cards.filter(c=>c.items.some(a=>a.id==='fuegan-burning-lance')).length,1);
- assert.ok(cards.every(c=>c.instances.length===1));
+ const dragons=cards.find(c=>c.unit.body.name==='Fire Dragons');const fuegan=cards.find(c=>c.unit.body.name==='Fuegan');
+ assert.equal(dragons.instances.length,2);assert.ok(!dragons.items.some(a=>a.id==='fuegan-burning-lance'));assert.ok(fuegan.items.some(a=>a.id==='fuegan-burning-lance'));assert.ok(!fuegan.items.some(a=>a.id==='dragons'||a.id==='token'));
 });
-test('shared-ability threshold counts three actual units before visual merging',()=>{
- const makeArmy=n=>({...sample,units:Array.from({length:n},(_,i)=>({id:'dragon-'+i,name:'Fire Dragons',points:110,group:'',role:'',details:['1x Aspect Shrine Token']}))});
- const two=state(makeArmy(2)),deckTwo=A.flashcards(two,A.steps(two)[1]);
- assert.ok(!deckTwo.shared.some(a=>a.id==='token'));
- assert.ok(deckTwo.unitCards[0].items.some(a=>a.id==='token'));
- const three=state(makeArmy(3)),deckThree=A.flashcards(three,A.steps(three)[1]);
- const token=deckThree.shared.find(a=>a.id==='token');assert.ok(token.promoted);assert.equal(token.appliesTo.length,3);
- assert.equal(new Set(token.appliesTo.map(u=>u.id)).size,3);
- assert.equal(deckThree.unitCards.length,0); // Both unit rules are now shared.
+test('shared-ability threshold counts distinct unit types instead of repeated squads',()=>{
+ const makeArmy=names=>({...sample,units:names.map((name,i)=>({id:'unit-'+i,name,points:110,group:'',role:'',details:['1x Aspect Shrine Token']}))});
+ for(const copies of [2,3]){const s=state(makeArmy(Array(copies).fill('Fire Dragons'))),deck=A.flashcards(s,A.steps(s)[1]);assert.equal(deck.unitCards.length,1);assert.ok(deck.unitCards[0].items.some(a=>a.id==='token'));assert.ok(deck.unitCards[0].items.some(a=>a.id==='dragons'));assert.ok(!deck.shared.some(a=>a.id==='token'||a.id==='dragons'));}
+ const s=state(makeArmy(['Fire Dragons','Dire Avengers','Howling Banshees'])),deck=A.flashcards(s,A.steps(s)[1]);
+ const token=deck.shared.find(a=>a.id==='token');assert.ok(token.promoted);assert.equal(token.appliesTo.length,3);assert.equal(new Set(token.appliesTo.map(u=>u.body.name)).size,3);
+ assert.ok(!deck.unitCards.flatMap(c=>c.items).some(a=>a.id==='token'));
 });
 test('units with only shared Shooting rules disappear without losing their shared eligibility',()=>{
  const s=state(),deck=A.flashcards(s,A.steps(s)[1]);
  assert.ok(!deck.unitCards.some(c=>A.has(c.unit,'Swooping Hawks')||A.has(c.unit,'Warp Spiders')));
  const token=deck.shared.find(a=>a.id==='token');
- assert.equal(token.appliesTo.filter(u=>A.has(u,'Swooping Hawks')).length,2);
+ assert.equal(token.appliesTo.filter(u=>A.has(u,'Swooping Hawks')).length,1);
  assert.ok(token.appliesTo.some(u=>A.has(u,'Warp Spiders')));
  assert.ok(deck.unitCards.some(c=>A.has(c.unit,'War Walkers')));
  assert.ok(deck.unitCards.some(c=>A.has(c.unit,'Fire Dragons')));
@@ -130,4 +128,20 @@ test('shared army rules and separate stratagems expose target restrictions',()=>
  assert.match(A.targeting(precision,s).text,/Aspect Warriors unit not yet selected to shoot/);
  const doom=rules.find(a=>a.id==='doom-inescapable-stratagem');
  assert.match(A.targeting(doom,s).text,/Avatar of Khaine model/);
+});
+
+test('three Fire Dragon squads with different leaders become one type card plus separate characters',()=>{
+ const unit=(id,name,group='',role='',details=[])=>({id,name,group,role,details,points:0});
+ const army={...sample,units:[unit('d1','Fire Dragons','one','bodyguard',['1x Aspect Shrine Token']),unit('f','Fuegan','one','leader'),unit('d2','Fire Dragons','two','bodyguard',['1x Aspect Shrine Token']),unit('a','Autarch','two','leader',['Enhancement: Aspect of Murder']),unit('d3','Fire Dragons','','',['1x Aspect Shrine Token'])]};
+ const before=JSON.stringify(army),s=state(army),deck=A.flashcards(s,A.steps(s)[1]);
+ assert.deepEqual(deck.unitCards.map(c=>c.unit.body.name),['Fire Dragons','Fuegan','Autarch']);
+ const dragons=deck.unitCards[0];assert.equal(dragons.items.filter(a=>a.id==='dragons').length,1);assert.equal(dragons.items.filter(a=>a.id==='token').length,1);
+ assert.ok(!dragons.items.some(a=>a.id==='fuegan-burning-lance'||a.id==='autarch-discount'));
+ assert.ok(deck.unitCards[1].items.some(a=>a.id==='fuegan-burning-lance'));assert.ok(deck.unitCards[2].items.some(a=>a.id==='autarch-discount'));
+ assert.equal(JSON.stringify(army),before);assert.equal(A.units(army).length,3);
+});
+test('different equipment on repeated unit types yields one card with conditional reminders',()=>{
+ const army={...sample,units:[{id:'a',name:'Autarch',group:'',role:'',points:0,details:['Enhancement: Aspect of Murder']},{id:'b',name:'Autarch',group:'',role:'',points:0,details:[]}]};
+ const s=state(army,4),deck=A.flashcards(s,A.steps(s)[2]);
+ const autarch=deck.unitCards.find(c=>c.unit.body.name==='Autarch');assert.ok(autarch);assert.equal(deck.unitCards.filter(c=>c.unit.body.name==='Autarch').length,1);assert.equal(autarch.items.filter(a=>a.id==='murder').length,1);assert.match(autarch.items.find(a=>a.id==='murder').conditions.join(' '),/Aspect of Murder/);
 });

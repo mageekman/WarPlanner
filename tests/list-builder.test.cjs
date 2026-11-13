@@ -42,3 +42,15 @@ test('legacy lists keep their first saved roster snapshot while site-created lis
  assert.equal(edited.originalRoster.units[0].name,'Farseer');const again=structuredClone(edited);again.originalRoster.name='tampered';const saved=B.commit(again,edited);assert.equal(saved.originalRoster.name,'Practice');
  const created=B.commit({...draft,origin:'builder'},null);assert.equal(created.originalRoster,undefined);
 });
+test('lists can select multiple detachments and keep legacy single-detachment compatibility',()=>{
+ const a=army();B.add(a,'fire-dragons','one');B.setDetachments(a,['Warhost','Aspect Host','Warhost']);
+ const saved=B.commit(a,null);assert.deepEqual(saved.detachments,['Warhost','Aspect Host']);assert.equal(saved.detachment,'Warhost');
+ assert.deepEqual(B.selectedDetachments({detachment:'Aspect Host'}),['Aspect Host']);
+ B.setDetachments(a,[]);assert.throws(()=>B.commit(a,null),/detachment/);
+});
+test('enhancement choices include each selected detachment and distinguish duplicate names',()=>{
+ const a=army();B.setDetachments(a,['Ghosts of the Webway','Fateful Performance']);B.add(a,'shadowseer','one');
+ const choices=B.enhancements(a,a.units[0]).filter(e=>e.name==='Mistweave');assert.equal(choices.length,2);
+ assert.throws(()=>B.setEnhancement(a,'one','Mistweave'),/Choose an enhancement/);
+ B.setEnhancement(a,'one',choices[1].id);assert.equal(a.units[0].enhancementId,choices[1].id);
+});

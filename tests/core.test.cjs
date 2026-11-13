@@ -87,3 +87,7 @@ test('imports preserve the disposition separately from detachment and original t
  const {army}=require('../dist/core.js').parseArmy(text);
  assert.equal(army.disposition,'Priority Assets');assert.equal(army.detachment,'Aspect Host');assert.equal(army.originalExport,text);
 });
+test('multiple imported detachment lines are retained without rewriting the export',()=>{
+ const text='Multi (100 points)\nAeldari\nWindrider Host (2 Detachment Points)\nFateful Performance (1 Detachment Points)\nDisruption\nStrike Force (2000 points)\nCHARACTERS\nFarseer (100 points)';
+ const {army}=require('../dist/core.js').parseArmy(text);assert.deepEqual(army.detachments,['Windrider Host','Fateful Performance']);assert.equal(army.detachment,'Windrider Host');assert.equal(army.disposition,'Disruption');assert.equal(army.originalExport,text);
+});
