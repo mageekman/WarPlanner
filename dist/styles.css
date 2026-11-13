@@ -38,3 +38,12 @@
 .auth-card .primary{width:100%;margin-top:20px}.auth-actions{display:flex;flex-wrap:wrap;gap:12px}
 .auth-actions button{background:none;color:var(--teal);border:0;padding:5px 0;font:inherit;font-size:12px;cursor:pointer}
 #auth-message{color:#e8bf7b;min-height:20px}
+
+.saved-lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.saved-list-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;text-align:left;color:var(--ink)}
+.saved-list-card:hover{border-color:var(--teal)}.saved-list-heading{display:flex;justify-content:space-between;gap:12px;font-size:20px}
+.list-metadata{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0 26px}
+.list-metadata dt{font-size:10px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin-bottom:8px}.list-metadata dd{margin:0;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.saved-list-card .list-metadata{grid-template-columns:1fr;gap:12px;margin:20px 0}.saved-list-card .list-metadata div{display:grid;grid-template-columns:90px 1fr;gap:10px}.saved-list-card dt{margin:3px 0 0}
+.imported-list{padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:12px;margin-bottom:24px}.imported-list h2{font-size:18px}.imported-list pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.7}
+@media(max-width:650px){.list-metadata{grid-template-columns:1fr;gap:14px}.list-metadata div{display:grid;grid-template-columns:100px 1fr;gap:10px}.list-metadata dt{margin:3px 0 0}.saved-list-card{padding:18px}}

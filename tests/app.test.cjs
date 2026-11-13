@@ -29,7 +29,7 @@ test('guide navigation, study bookmarks, player turns and persistence',()=>{
  a.click({action:'back'});assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).completed).length,2);
  a.click({turn:'opponent'});assert.match(a.html(),/data-turn="opponent" class="selected"/);assert.doesNotMatch(a.html(),/Diviner of Futures/);
  const reloaded=app([...a.store]);assert.match(reloaded.html(),/data-turn="opponent" class="selected"/);
- a.click({view:'army'});assert.match(a.html(),/Your army, in focus/);
+ a.click({view:'army'});assert.match(a.html(),/My saved lists/);
  a.click({view:'practice'});assert.match(a.html(),/Future update/);
 });
 test('first player changes round boundaries and keeps source confirmation separate',()=>{
@@ -231,7 +231,7 @@ test('import review is required and untrusted content is escaped',()=>{
  a.elements['#army-text'].value='Test (100 points)\nAeldari\nAspect Host (3 Detachment Points)\nCHARACTERS\n<img src=x onerror=alert(1)> (100 points)\n • <script>alert(1)</script>';
  a.submit();assert.match(a.elements['#import-feedback'].innerHTML,/&lt;img/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
  a.submit();assert.equal(a.elements['#import-dialog'].open,false);assert.match(a.html(),/&lt;img/);assert.doesNotMatch(a.html(),/<script>/);
- assert.match(a.html(),/100/);assert.match(a.html(),/Imported content is preserved/);
+ assert.doesNotMatch(a.html(),/ARMY POINTS|class="points"/);a.click({action:'view-imported-list'});assert.match(a.html(),/Test \(100 points\)/);assert.doesNotMatch(a.html(),/<script>/);
 });
 
 test('hosted armies and progress are isolated by authenticated account',()=>{
@@ -250,4 +250,24 @@ test('hosted accounts never inherit the old shared browser roster',()=>{
  const saved={army:require('../dist/core.js').sample,phase:0,round:1,turn:'you'};
  const a=app([['warplan.prototype.v1',JSON.stringify(saved)]],{hosted:true});
  a.account({id:'new'},null);assert.match(a.html(),/Bring your army/);assert.doesNotMatch(a.html(),/Aspect Host/);
+});
+
+test('My army opens the saved-list library and selected list has metadata without points',()=>{
+ const a=app();a.click({view:'army'});
+ assert.match(a.html(),/My saved lists/);assert.doesNotMatch(a.html(),/class="unit-card"|1965|135 pts/);
+ a.click({openList:'list-1'});
+ assert.match(a.html(),/<h1>Aspect Host<\/h1>/);assert.match(a.html(),/<dt>Roster<\/dt>/);assert.match(a.html(),/<dt>Detachment<\/dt>/);assert.match(a.html(),/Priority Assets/);
+ assert.match(a.html(),/View imported list/);assert.match(a.html(),/<h3>Asurmen<\/h3>/);assert.doesNotMatch(a.html(),/1965|135 pts|ARMY POINTS/);
+ a.click({action:'list-library'});assert.match(a.html(),/My saved lists/);assert.doesNotMatch(a.html(),/class="unit-card"/);
+});
+test('imports append lists and switching restores the correct army and persists both',()=>{
+ const a=app();
+ function importList(name,unit){a.click({action:'import'});a.elements['#army-text'].value=name+' (100 points)\nAeldari\nAspect Host (3 Detachment Points)\nPriority Assets\nStrike Force (2000 points)\nCHARACTERS\n'+unit+' (100 points)';a.submit();a.submit();}
+ importList('Dragons practice','Fire Dragons');importList('Hawks practice','Swooping Hawks');
+ const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.savedLists.length,3);
+ a.click({view:'army'});assert.match(a.html(),/Dragons practice/);assert.match(a.html(),/Hawks practice/);
+ a.click({openList:saved.savedLists[1].id});assert.match(a.html(),/<h3>Fire Dragons<\/h3>/);assert.doesNotMatch(a.html(),/<h3>Swooping Hawks<\/h3>/);
+ a.click({action:'view-imported-list'});assert.match(a.html(),/<pre>Dragons practice \(100 points\)/);
+ const restored=app([...a.store]);assert.match(restored.html(),/<h1>Dragons practice<\/h1>/);
+ restored.click({view:'army'});assert.match(restored.html(),/Hawks practice/);
 });

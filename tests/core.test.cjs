@@ -81,3 +81,9 @@ test('turn transitions preserve player round and alternate after Fight',()=>{
 test('sample totals match supplied roster',()=>{
  assert.equal(sample.units.length,18);assert.equal(sample.units.reduce((n,u)=>n+u.points,0),1965);
 });
+
+test('imports preserve the disposition separately from detachment and original text',()=>{
+ const text='Practice (100 points)\nAeldari\nAspect Host (3 Detachment Points)\nPriority Assets\nStrike Force (2000 points)\nCHARACTERS\nAutarch (100 points)';
+ const {army}=require('../dist/core.js').parseArmy(text);
+ assert.equal(army.disposition,'Priority Assets');assert.equal(army.detachment,'Aspect Host');assert.equal(army.originalExport,text);
+});
