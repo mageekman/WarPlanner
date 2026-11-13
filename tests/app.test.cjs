@@ -14,6 +14,7 @@ function app(saved,options={}){
  const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,scrollTo(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>true,setTimeout:()=>0,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
  vm.runInContext(fs.readFileSync(require.resolve('../dist/core.js'),'utf8'),context);
  context.WarPlan=context.window.WarPlan;
+ vm.runInContext(fs.readFileSync(require.resolve('../dist/aeldari-data.js'),'utf8'),context);
  vm.runInContext(fs.readFileSync(require.resolve('../dist/lessons.js'),'utf8'),context);
  context.WarPlanLessons=context.window.WarPlanLessons;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/activations.js'),'utf8'),context);

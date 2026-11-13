@@ -1,0 +1,173 @@
+{
+  "guide-aeldari": {
+    "summary": "At the end of your Movement phase, choose an enemy unit visible to the Farseer and within 18 inches. Friendly Aeldari models get +1 to hit against that chosen unit until your next Command phase. Each enemy unit can be selected by this ability only once per turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  "psychic-guidance-aeldari": {
+    "summary": "While the unit is within 12 inches of a friendly Aeldari Psyker, its Leadership is 6+ and its hit rolls gain +1. Check the range when the benefit matters.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  "psychic-guidance-wraithlord-aeldari": {
+    "summary": "Within 12 inches of a friendly Aeldari Psyker, the Wraithlord improves its Weapon Skill and Ballistic Skill by 1 and uses Leadership 6+.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  "mandiblasters-aeldari": {
+    "summary": "If the Striking Scorpions charged this turn, their melee hit rolls score critical hits on an unmodified 5+. This changes critical hits, not critical wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  "crystal-matrix-aeldari": {
+    "summary": "When the Fire Prism is selected to shoot, it can reroll one hit roll and one wound roll. These are individual rolls, not rerolls for every attack.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  "war-construct-aeldari": {
+    "summary": "Wraithguard can shoot after Falling Back. Check their other shooting restrictions and the rules for the weapons being fired.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  "swift-demise-aeldari": {
+    "summary": "For Windriders' ranged attacks, reroll hit rolls of 1. If the target is the closest eligible enemy, reroll any hit rolls instead.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  "path-of-the-outcast-aeldari": {
+    "summary": "After an enemy unit ends a move within 8 inches of the Rangers in the opponent's Movement phase, the Rangers can make a D6-inch Normal move if they are not engaged. Resolve this response before the next enemy move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  "spirit-mark-aeldari": {
+    "summary": "Once per turn when the Spiritseer starts or ends a move in your Movement phase, choose a friendly non-Titanic Wraith Construct unit within 6 inches and a visible enemy. That chosen Wraith unit gains Sustained Hits 1 against the marked enemy until your next Movement phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  "tears-of-isha-aeldari": {
+    "summary": "In your Command phase, choose a friendly Wraith Construct unit within 6 inches. Return one destroyed model if it has any; otherwise, one model regains up to D3 lost wounds. A unit can be selected for this ability only once per turn.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  "malevolent-souls-aeldari": {
+    "summary": "When a Wraithblade is destroyed by a melee attack before it has fought this phase, roll a D6. On 3+, it can fight after the attacking unit finishes and is then removed. This does not let an already-fought model fight again.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  "target-acquisition-aeldari": {
+    "summary": "After Shroud Runners shoot, choose an enemy hit by their long rifle. That target cannot receive the Benefit of Cover for the rest of this phase. Consider resolving these shots before later attackers that can use the same target.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  "harassment-fire-aeldari": {
+    "summary": "After the Vyper shoots in your Shooting phase, choose one enemy unit it hit. That unit suffers -1 to hit rolls until the start of your next turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  "way-of-the-blade-aeldari": {
+    "summary": "While the Visarch is still leading this unit, every model in it has Fights First. Follow the normal Fight-phase activation order.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "leadingUnitRequired": true
+  },
+  "word-of-the-phoenix-aeldari": {
+    "summary": "While Yvraine leads a unit, in your Command phase roll a D6. On 2+, return D3+1 destroyed Bodyguard models with full wounds, excluding Support Weapon models.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "leadingUnitRequired": true
+  },
+  "herald-of-ynnead-aeldari": {
+    "summary": "At the start of the Fight phase, choose an enemy unit within Engagement Range of Yvraine. Friendly Aeldari models can reroll wound rolls of 1 against that chosen unit until the phase ends.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  "cruel-amusement-aeldari": {
+    "summary": "When the Death Jester is selected to shoot in your Shooting phase, choose Ignores Cover, Precision or Sustained Hits 3 for its shrieker cannon until the phase ends. The choice applies to that weapon only.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  "death-is-not-enough-aeldari": {
+    "summary": "After the Death Jester shoots, choose a non-Monster, non-Vehicle enemy it hit. That unit takes a Battle-shock test; subtract 1 from the test if those attacks destroyed any of its models.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  "blitz-aeldari": {
+    "summary": "Once per battle, before the Solitaire makes a Normal move in your Movement phase, it can add 2D6 inches to Move and add 3 attacks to its Solitaire weapons until the end of the turn. This is not a recurring move bonus.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  "unquenchable-resolve-aeldari": {
+    "summary": "If Fuegan was destroyed for the first time this battle during this phase, at its end roll a D6. On 2+, return him with full wounds as close as possible to his destruction location and outside enemy Engagement Range.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  }
+}

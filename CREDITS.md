@@ -11,3 +11,5 @@ Official references: [Core Rules](https://assets.warhammer-community.com/eng_01-
 WarPlanner is an independent, unofficial personal study companion. It is not affiliated with, endorsed by, or sponsored by Games Workshop. Referenced trademarks belong to their owners. No trademark clearance of “WarPlanner” is claimed.
 
 Supabase JavaScript SDK 2.119.0 is distributed in the hosted site under the MIT license; see `docs/vendor/SUPABASE-LICENSE`.
+
+Aeldari expansion: derived unit/rule associations and original study/reference presentations from [40kdc-data commit 6ea813f](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b), Alpaca Software and community contributors, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Changes include removing profiles/points/weapon tables, independently expressing selected mechanics, preserving provisional status, gating timing and bearers, and correcting reviewed healing/destruction scope after secondary comparison. See `docs/LICENSE-40KDC-DATA.txt`. Attribution does not imply endorsement or official verification.

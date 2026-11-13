@@ -30,7 +30,8 @@ test('all reminders have provenance and are reachable in a matching window',()=>
  assert.equal(new Set(L.abilities.map(a=>a.id)).size,L.abilities.length);
  for(const a of L.abilities){
   for(const id of a.sourceIds)assert.ok(L.sources[id]);
-  assert.ok(a.conditions.length);assert.ok(['official-checked','community-checked'].includes(a.status));
+  assert.ok(a.conditions.length);assert.ok(['official-checked','community-checked','source-reference'].includes(a.status));
+  if(a.expanded)continue; // Expanded rules are scoped to other rosters; tested separately.
   let found=false;for(let p=0;p<5;p++)for(const turn of ['you','opponent']){const s=state(p,turn);for(const step of L.getSteps(s))if(L.forStep(s,step).some(x=>x.id===a.id))found=true;}
   assert.ok(found,'Unreachable reminder: '+a.id);
  }

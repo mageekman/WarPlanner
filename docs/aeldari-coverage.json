@@ -1,0 +1,1148 @@
+{
+  "source_commit": "6ea813f7706bc9a492026d8b4403af99a965162b",
+  "units": 80,
+  "detachments": 16,
+  "enhancements": 54,
+  "stratagems": 81,
+  "indexed_rules": 300,
+  "mechanical_summaries": 73,
+  "reference_only": 227,
+  "provisional": 97,
+  "reference_only_rules": [
+    {
+      "id": "titanic-advance-aeldari",
+      "name": "Titanic Advance",
+      "provisional": false
+    },
+    {
+      "id": "towering-wraith-construct-revenant-titan-aeldari",
+      "name": "Towering Wraith Construct",
+      "provisional": true
+    },
+    {
+      "id": "revenant-jet-pack-aeldari",
+      "name": "Revenant Jet Pack",
+      "provisional": false
+    },
+    {
+      "id": "support-weapon-aeldari",
+      "name": "Support Weapon",
+      "provisional": false
+    },
+    {
+      "id": "monofilament-snare-aeldari",
+      "name": "Monofilament Snare",
+      "provisional": false
+    },
+    {
+      "id": "support-artillery-aeldari",
+      "name": "Support Artillery",
+      "provisional": true
+    },
+    {
+      "id": "aspect-shrine-token-aeldari",
+      "name": "Aspect Shrine Token",
+      "provisional": true
+    },
+    {
+      "id": "diviner-of-futures-aeldari",
+      "name": "Diviner of Futures",
+      "provisional": false
+    },
+    {
+      "id": "doom-aeldari",
+      "name": "Doom (Psychic)",
+      "provisional": false
+    },
+    {
+      "id": "fated-hero-aeldari",
+      "name": "Fated Hero",
+      "provisional": true
+    },
+    {
+      "id": "wave-serpent-shield-aeldari",
+      "name": "Wave Serpent Shield",
+      "provisional": false
+    },
+    {
+      "id": "word-of-the-phoenix-aeldari",
+      "name": "Word of the Phoenix (Psychic)",
+      "provisional": true
+    },
+    {
+      "id": "servant-of-the-whispering-god-yvraine-aeldari",
+      "name": "Servant of The Whispering God",
+      "provisional": true
+    },
+    {
+      "id": "piratical-raiders-aeldari",
+      "name": "Piratical Raiders",
+      "provisional": true
+    },
+    {
+      "id": "channeller-stones-aeldari",
+      "name": "Channeller Stones",
+      "provisional": false
+    },
+    {
+      "id": "superlative-strategist-aeldari",
+      "name": "Superlative Strategist",
+      "provisional": true
+    },
+    {
+      "id": "path-of-command-aeldari",
+      "name": "Path of Command",
+      "provisional": false
+    },
+    {
+      "id": "aspect-training-aeldari",
+      "name": "Aspect Training",
+      "provisional": false
+    },
+    {
+      "id": "tormentors-aeldari",
+      "name": "Tormentors",
+      "provisional": false
+    },
+    {
+      "id": "assured-destruction-aeldari",
+      "name": "Assured Destruction",
+      "provisional": true
+    },
+    {
+      "id": "tactical-acumen-aeldari",
+      "name": "Tactical Acumen",
+      "provisional": false
+    },
+    {
+      "id": "hand-of-asuryan-aeldari",
+      "name": "Hand of Asuryan",
+      "provisional": false
+    },
+    {
+      "id": "stormblades-aeldari",
+      "name": "Stormblades",
+      "provisional": false
+    },
+    {
+      "id": "crewed-platform-storm-guardians-aeldari",
+      "name": "Crewed Platform",
+      "provisional": true
+    },
+    {
+      "id": "structural-collapse-aeldari",
+      "name": "Structural Collapse",
+      "provisional": false
+    },
+    {
+      "id": "psychic-communion-aeldari",
+      "name": "Psychic Communion (Psychic)",
+      "provisional": true
+    },
+    {
+      "id": "empyric-ambush-aeldari",
+      "name": "Empyric Ambush",
+      "provisional": true
+    },
+    {
+      "id": "whispering-web-aeldari",
+      "name": "Whispering Web",
+      "provisional": false
+    },
+    {
+      "id": "cruel-amusement-aeldari",
+      "name": "Cruel Amusement",
+      "provisional": true
+    },
+    {
+      "id": "flip-belt-aeldari",
+      "name": "Flip Belt",
+      "provisional": true
+    },
+    {
+      "id": "travelling-players-aeldari",
+      "name": "Travelling Players",
+      "provisional": false
+    },
+    {
+      "id": "piratical-hero-aeldari",
+      "name": "Piratical Hero",
+      "provisional": true
+    },
+    {
+      "id": "prince-of-corsairs-aeldari",
+      "name": "Prince of Corsairs",
+      "provisional": true
+    },
+    {
+      "id": "inevitable-death-aeldari",
+      "name": "Inevitable Death",
+      "provisional": true
+    },
+    {
+      "id": "avatar-of-the-whispering-god-aeldari",
+      "name": "Avatar of The Whispering God",
+      "provisional": true
+    },
+    {
+      "id": "branching-fates-farseer-skyrunner-aeldari",
+      "name": "Branching Fates (Psychic)",
+      "provisional": false
+    },
+    {
+      "id": "path-of-damnation-aeldari",
+      "name": "Path of Damnation",
+      "provisional": false
+    },
+    {
+      "id": "harvester-of-souls-aeldari",
+      "name": "Harvester of Souls",
+      "provisional": false
+    },
+    {
+      "id": "face-of-death-aeldari",
+      "name": "Face of Death",
+      "provisional": false
+    },
+    {
+      "id": "raid-and-run-aeldari",
+      "name": "Raid and Run",
+      "provisional": false
+    },
+    {
+      "id": "fleet-of-foot-aeldari",
+      "name": "Fleet of Foot",
+      "provisional": true
+    },
+    {
+      "id": "molten-form-aeldari",
+      "name": "Molten Form",
+      "provisional": false
+    },
+    {
+      "id": "the-bloody-handed-aeldari",
+      "name": "The Bloody-Handed (Aura)",
+      "provisional": false
+    },
+    {
+      "id": "crystalline-targeting-aeldari",
+      "name": "Crystalline Targeting",
+      "provisional": false
+    },
+    {
+      "id": "aethersense-aeldari",
+      "name": "Aethersense (Psychic)",
+      "provisional": true
+    },
+    {
+      "id": "fury-of-the-void-aeldari",
+      "name": "Fury of the Void (Psychic)",
+      "provisional": false
+    },
+    {
+      "id": "mindshock-pod-aeldari",
+      "name": "Mindshock Pod (Aura, Psychic)",
+      "provisional": true
+    },
+    {
+      "id": "titanic-strides-aeldari",
+      "name": "Titanic Strides",
+      "provisional": true
+    },
+    {
+      "id": "point-blank-devastation-aeldari",
+      "name": "Point\u2010blank Devastation",
+      "provisional": true
+    },
+    {
+      "id": "eviscerating-fly-by-aeldari",
+      "name": "Eviscerating Fly-by",
+      "provisional": false
+    },
+    {
+      "id": "cluster-caltrops-aeldari",
+      "name": "Cluster caltrops",
+      "provisional": true
+    },
+    {
+      "id": "grenade-pack-flyover-aeldari",
+      "name": "Grenade Pack Flyover",
+      "provisional": false
+    },
+    {
+      "id": "burning-lance-aeldari",
+      "name": "Burning Lance",
+      "provisional": true
+    },
+    {
+      "id": "empowered-by-death-aeldari",
+      "name": "Empowered by Death",
+      "provisional": false
+    },
+    {
+      "id": "extreme-mobility-aeldari",
+      "name": "Extreme Mobility",
+      "provisional": true
+    },
+    {
+      "id": "yvraines-champion-aeldari",
+      "name": "Yvraine\u2019s Champion",
+      "provisional": true
+    },
+    {
+      "id": "reavers-of-the-void-aeldari",
+      "name": "Reavers of the Void",
+      "provisional": false
+    },
+    {
+      "id": "sonic-destruction-aeldari",
+      "name": "Sonic Destruction",
+      "provisional": true
+    },
+    {
+      "id": "fog-of-dreams-aeldari",
+      "name": "Fog of Dreams (Psychic)",
+      "provisional": true
+    },
+    {
+      "id": "treacherous-illusion-aeldari",
+      "name": "Treacherous Illusion (Psychic)",
+      "provisional": false
+    },
+    {
+      "id": "whirling-death-aeldari",
+      "name": "Whirling Death",
+      "provisional": true
+    },
+    {
+      "id": "flickerjump-aeldari",
+      "name": "Flickerjump",
+      "provisional": false
+    },
+    {
+      "id": "inescapable-accuracy-aeldari",
+      "name": "Inescapable Accuracy",
+      "provisional": false
+    },
+    {
+      "id": "sadistic-raiders-aeldari",
+      "name": "Sadistic Raiders",
+      "provisional": false
+    },
+    {
+      "id": "phantasm-grenade-launcher-aeldari",
+      "name": "Phantasm grenade launcher",
+      "provisional": true
+    },
+    {
+      "id": "polychromatic-camouflage-aeldari",
+      "name": "Polychromatic Camouflage",
+      "provisional": true
+    },
+    {
+      "id": "runes-of-fortune-aeldari",
+      "name": "Runes of Fortune (Psychic)",
+      "provisional": true
+    },
+    {
+      "id": "titanic-agility-aeldari",
+      "name": "Titanic Agility",
+      "provisional": true
+    },
+    {
+      "id": "no-escape-aeldari",
+      "name": "No Escape",
+      "provisional": false
+    },
+    {
+      "id": "monofilament-web-aeldari",
+      "name": "Monofilament Web",
+      "provisional": true
+    },
+    {
+      "id": "indomitable-strength-of-will-aeldari",
+      "name": "Indomitable Strength of Will",
+      "provisional": true
+    },
+    {
+      "id": "fire-support-aeldari",
+      "name": "Fire Support",
+      "provisional": false
+    },
+    {
+      "id": "choreographer-of-war-aeldari",
+      "name": "Choreographer of War",
+      "provisional": false
+    },
+    {
+      "id": "cegorachs-favour-aeldari",
+      "name": "Cegorach\u2019s Favour",
+      "provisional": true
+    },
+    {
+      "id": "skyhunter-aeldari",
+      "name": "Skyhunter",
+      "provisional": true
+    },
+    {
+      "id": "aethersails-aeldari",
+      "name": "Aethersails",
+      "provisional": false
+    },
+    {
+      "id": "hallucinogen-grenades-aeldari",
+      "name": "Hallucinogen Grenades",
+      "provisional": true
+    },
+    {
+      "id": "acrobatic-grace-aeldari",
+      "name": "Acrobatic Grace",
+      "provisional": true
+    },
+    {
+      "id": "reborn-mastermind-aeldari",
+      "name": "Reborn Mastermind",
+      "provisional": false
+    },
+    {
+      "id": "shadow-field-aeldari",
+      "name": "Shadow Field",
+      "provisional": true
+    },
+    {
+      "id": "cloudstrider-aeldari",
+      "name": "Cloudstrider",
+      "provisional": false
+    },
+    {
+      "id": "cry-of-the-wind-aeldari",
+      "name": "Cry of the Wind",
+      "provisional": true
+    },
+    {
+      "id": "lithe-embarkation-aeldari",
+      "name": "Lithe Embarkation",
+      "provisional": true
+    },
+    {
+      "id": "spiritseer-aeldari",
+      "name": "Spiritseer",
+      "provisional": false
+    },
+    {
+      "id": "rapid-embarkation-aeldari",
+      "name": "Rapid Embarkation",
+      "provisional": false
+    },
+    {
+      "id": "battle-focus-aeldari",
+      "name": "Battle Focus",
+      "provisional": false
+    },
+    {
+      "id": "acrobatic-onslaught-aeldari",
+      "name": "Acrobatic Onslaught",
+      "provisional": true
+    },
+    {
+      "id": "exit-the-stage-fateful-performance-aeldari",
+      "name": "Exit the Stage",
+      "provisional": false
+    },
+    {
+      "id": "heroes-fall-fateful-performance-aeldari",
+      "name": "Heroes\u2019 Fall",
+      "provisional": true
+    },
+    {
+      "id": "deceptive-feint-fateful-performance-aeldari",
+      "name": "Deceptive Feint",
+      "provisional": true
+    },
+    {
+      "id": "a-foot-in-the-future-fateful-performance-aeldari",
+      "name": "A Foot in the Future",
+      "provisional": true
+    },
+    {
+      "id": "mistweave-fateful-performance-aeldari",
+      "name": "Mistweave",
+      "provisional": true
+    },
+    {
+      "id": "far-reaching-doom-aeldari",
+      "name": "Far-reaching Doom",
+      "provisional": true
+    },
+    {
+      "id": "eldritch-suppression-path-of-the-outcast-aeldari",
+      "name": "Eldritch Suppression",
+      "provisional": true
+    },
+    {
+      "id": "casting-back-the-veil-path-of-the-outcast-aeldari",
+      "name": "Casting Back the Veil",
+      "provisional": true
+    },
+    {
+      "id": "nomads-of-the-hidden-way-path-of-the-outcast-aeldari",
+      "name": "Nomads of the Hidden Way",
+      "provisional": true
+    },
+    {
+      "id": "camouflaged-snipers-upgrade-path-of-the-outcast-aeldari",
+      "name": "Camouflaged Snipers",
+      "provisional": true
+    },
+    {
+      "id": "dance-of-distortion-aeldari",
+      "name": "Dance of Distortion",
+      "provisional": true
+    },
+    {
+      "id": "presaged-rehearsal-twilight-flickers-aeldari",
+      "name": "Presaged Rehearsal",
+      "provisional": true
+    },
+    {
+      "id": "captivating-performance-twilight-flickers-aeldari",
+      "name": "Captivating Performance",
+      "provisional": true
+    },
+    {
+      "id": "phantasmal-mirage-twilight-flickers-aeldari",
+      "name": "Phantasmal Mirage",
+      "provisional": true
+    },
+    {
+      "id": "shadowfall-masks-upgrade-twilight-flickers-aeldari",
+      "name": "Shadowfall Masks",
+      "provisional": true
+    },
+    {
+      "id": "prelude-performer-twilight-flickers-aeldari",
+      "name": "Prelude Performer",
+      "provisional": true
+    },
+    {
+      "id": "ride-the-wind-aeldari",
+      "name": "Ride the Wind",
+      "provisional": true
+    },
+    {
+      "id": "boons-of-the-brood-aeldari",
+      "name": "Boons of the Brood",
+      "provisional": true
+    },
+    {
+      "id": "shepherds-of-the-dead-aeldari",
+      "name": "Shepherds of the Dead",
+      "provisional": true
+    },
+    {
+      "id": "strength-from-death-aeldari",
+      "name": "Strength from Death",
+      "provisional": true
+    },
+    {
+      "id": "defend-at-all-costs-aeldari",
+      "name": "Defend At All Costs",
+      "provisional": true
+    },
+    {
+      "id": "skilled-crews-aeldari",
+      "name": "Skilled Crews",
+      "provisional": true
+    },
+    {
+      "id": "relentless-raiders-aeldari",
+      "name": "Relentless Raiders",
+      "provisional": true
+    },
+    {
+      "id": "veterans-of-the-void-aeldari",
+      "name": "Veterans of the Void",
+      "provisional": true
+    },
+    {
+      "id": "yriels-own-aeldari",
+      "name": "Yriel\u2019s Own",
+      "provisional": false
+    },
+    {
+      "id": "strands-of-fate-aeldari",
+      "name": "Strands of Fate",
+      "provisional": true
+    },
+    {
+      "id": "martial-grace-aeldari",
+      "name": "Martial Grace",
+      "provisional": true
+    },
+    {
+      "id": "path-of-the-warrior-aeldari",
+      "name": "Path of the Warrior",
+      "provisional": true
+    },
+    {
+      "id": "aspect-shrine-token-kygharils-protectors-dire-avengers-aeldari",
+      "name": "Aspect Shrine Token",
+      "provisional": false
+    },
+    {
+      "id": "engulfing-flames-aeldari",
+      "name": "Engulfing Flames",
+      "provisional": false
+    },
+    {
+      "id": "spiritseer-spiritseer-kygharil-aeldari",
+      "name": "Spiritseer",
+      "provisional": false
+    },
+    {
+      "id": "cornered-prey-aeldari",
+      "name": "Cornered Prey",
+      "provisional": false
+    },
+    {
+      "id": "acrobatic-onslaught-ghosts-of-the-webway-aeldari",
+      "name": "Acrobatic Onslaught",
+      "provisional": false
+    },
+    {
+      "id": "adrenal-infusions-eldritch-raiders-aeldari",
+      "name": "Adrenal Infusions",
+      "provisional": true
+    },
+    {
+      "id": "agile-reach-aeldari",
+      "name": "Agile Reach",
+      "provisional": true
+    },
+    {
+      "id": "archraider-corsair-coterie-aeldari",
+      "name": "Archraider",
+      "provisional": false
+    },
+    {
+      "id": "aspect-of-murder-aspect-host-aeldari",
+      "name": "Aspect of Murder",
+      "provisional": false
+    },
+    {
+      "id": "battle-focus-kygharils-protectors-aeldari",
+      "name": "Battle Focus",
+      "provisional": true
+    },
+    {
+      "id": "blitzing-firepower-warhost-aeldari",
+      "name": "Blitzing Firepower",
+      "provisional": true
+    },
+    {
+      "id": "bloody-dance-ghosts-of-the-webway-aeldari",
+      "name": "Bloody Dance",
+      "provisional": false
+    },
+    {
+      "id": "borrowed-vigour-devoted-of-ynnead-aeldari",
+      "name": "Borrowed Vigour",
+      "provisional": false
+    },
+    {
+      "id": "branching-fates-aeldari",
+      "name": "Branching Fates",
+      "provisional": true
+    },
+    {
+      "id": "breath-of-vaul-guardian-battlehost-aeldari",
+      "name": "Breath of Vaul",
+      "provisional": true
+    },
+    {
+      "id": "cegorachs-coil-ghosts-of-the-webway-aeldari",
+      "name": "Cegorach\u2019s Coil",
+      "provisional": false
+    },
+    {
+      "id": "cloak-and-shadow-corsair-coterie-aeldari",
+      "name": "Cloak and Shadow",
+      "provisional": false
+    },
+    {
+      "id": "cost-of-victory-guardian-battlehost-aeldari",
+      "name": "Cost of Victory",
+      "provisional": false
+    },
+    {
+      "id": "crewed-platform-aeldari",
+      "name": "Crewed Platform",
+      "provisional": true
+    },
+    {
+      "id": "crushing-strides-spirit-conclave-aeldari",
+      "name": "Crushing Strides",
+      "provisional": false
+    },
+    {
+      "id": "daring-riders-windrider-host-aeldari",
+      "name": "Daring Riders",
+      "provisional": false
+    },
+    {
+      "id": "death-answers-death-devoted-of-ynnead-aeldari",
+      "name": "Death Answers Death",
+      "provisional": false
+    },
+    {
+      "id": "disparate-paths-aeldari",
+      "name": "Disparate Paths",
+      "provisional": true
+    },
+    {
+      "id": "doom-inescapable-aspect-host-aeldari",
+      "name": "Doom Inescapable",
+      "provisional": true
+    },
+    {
+      "id": "drakolithe-aeldari",
+      "name": "Drakolithe (Once per battle, per token)",
+      "provisional": true
+    },
+    {
+      "id": "echoes-of-ulthanesh-windrider-host-aeldari",
+      "name": "Echoes of Ulthanesh",
+      "provisional": true
+    },
+    {
+      "id": "elemental-ensnarement-aeldari",
+      "name": "Elemental Ensnarement",
+      "provisional": true
+    },
+    {
+      "id": "ethereal-pathway-guardian-battlehost-aeldari",
+      "name": "Ethereal Pathway",
+      "provisional": true
+    },
+    {
+      "id": "exit-the-stage-ghosts-of-the-webway-aeldari",
+      "name": "Exit the Stage",
+      "provisional": false
+    },
+    {
+      "id": "exotic-munitions-eldritch-raiders-aeldari",
+      "name": "Exotic Munitions",
+      "provisional": false
+    },
+    {
+      "id": "fanged-leer-serpents-brood-aeldari",
+      "name": "Fanged Leer",
+      "provisional": false
+    },
+    {
+      "id": "fangs-of-the-brood-serpents-brood-aeldari",
+      "name": "Fangs of the Brood",
+      "provisional": false
+    },
+    {
+      "id": "fate-inescapable-seer-council-aeldari",
+      "name": "Fate Inescapable",
+      "provisional": false
+    },
+    {
+      "id": "fire-and-fade-warhost-aeldari",
+      "name": "Fire and Fade",
+      "provisional": false
+    },
+    {
+      "id": "firstdrawn-blade-windrider-host-aeldari",
+      "name": "Firstdrawn Blade",
+      "provisional": false
+    },
+    {
+      "id": "focused-strikes-kygharils-protectors-aeldari",
+      "name": "Focused Strikes",
+      "provisional": false
+    },
+    {
+      "id": "gift-of-foresight-warhost-aeldari",
+      "name": "Gift of Foresight",
+      "provisional": false
+    },
+    {
+      "id": "graceful-warriors-aeldari",
+      "name": "Graceful Warriors",
+      "provisional": false
+    },
+    {
+      "id": "guided-jump-kygharils-protectors-aeldari",
+      "name": "Guided Jump",
+      "provisional": false
+    },
+    {
+      "id": "heroes-fall-ghosts-of-the-webway-aeldari",
+      "name": "Heroes\u2019 Fall",
+      "provisional": false
+    },
+    {
+      "id": "higher-duty-spirit-conclave-aeldari",
+      "name": "Higher Duty",
+      "provisional": false
+    },
+    {
+      "id": "impeding-fire-eldritch-raiders-aeldari",
+      "name": "Impeding Fire",
+      "provisional": true
+    },
+    {
+      "id": "infamy-aura-corsair-coterie-aeldari",
+      "name": "Infamy (Aura)",
+      "provisional": false
+    },
+    {
+      "id": "into-the-breach-corsair-coterie-aeldari",
+      "name": "Into the Breach",
+      "provisional": false
+    },
+    {
+      "id": "ishas-fury-seer-council-aeldari",
+      "name": "Isha\u2019s Fury",
+      "provisional": false
+    },
+    {
+      "id": "key-of-ghosts-serpents-brood-aeldari",
+      "name": "Key of Ghosts",
+      "provisional": false
+    },
+    {
+      "id": "khaines-vengeance-aspect-host-aeldari",
+      "name": "Khaine\u2019s Vengeance",
+      "provisional": false
+    },
+    {
+      "id": "layered-wards-armoured-warhost-aeldari",
+      "name": "Layered Wards",
+      "provisional": false
+    },
+    {
+      "id": "lethal-ruse-corsair-coterie-aeldari",
+      "name": "Lethal Ruse",
+      "provisional": false
+    },
+    {
+      "id": "light-of-clarity-spirit-conclave-aeldari",
+      "name": "Light of Clarity",
+      "provisional": false
+    },
+    {
+      "id": "lucid-eye-seer-council-aeldari",
+      "name": "Lucid Eye",
+      "provisional": true
+    },
+    {
+      "id": "malevolent-souls-kygharils-protectors-wraithblades-aeldari",
+      "name": "Malevolent Souls",
+      "provisional": false
+    },
+    {
+      "id": "mantle-of-wisdom-aspect-host-aeldari",
+      "name": "Mantle of Wisdom",
+      "provisional": false
+    },
+    {
+      "id": "mask-of-secrets-ghosts-of-the-webway-aeldari",
+      "name": "Mask of Secrets",
+      "provisional": false
+    },
+    {
+      "id": "mistweave-ghosts-of-the-webway-aeldari",
+      "name": "Mistweave",
+      "provisional": false
+    },
+    {
+      "id": "murders-jest-ghosts-of-the-webway-aeldari",
+      "name": "Murder\u2019s Jest",
+      "provisional": true
+    },
+    {
+      "id": "no-prey-too-big-eldritch-raiders-aeldari",
+      "name": "No Prey too Big",
+      "provisional": false
+    },
+    {
+      "id": "outcast-ambush-corsair-coterie-aeldari",
+      "name": "Outcast Ambush",
+      "provisional": false
+    },
+    {
+      "id": "overflight-windrider-host-aeldari",
+      "name": "Overflight",
+      "provisional": false
+    },
+    {
+      "id": "pall-of-dread-devoted-of-ynnead-aeldari",
+      "name": "Pall of Dread",
+      "provisional": true
+    },
+    {
+      "id": "panicked-quarry-aeldari",
+      "name": "Panicked Quarry",
+      "provisional": false
+    },
+    {
+      "id": "parting-the-veil-devoted-of-ynnead-aeldari",
+      "name": "Parting the Veil",
+      "provisional": false
+    },
+    {
+      "id": "phoenix-gem-warhost-aeldari",
+      "name": "Phoenix Gem",
+      "provisional": false
+    },
+    {
+      "id": "pirate-prince-eldritch-raiders-aeldari",
+      "name": "Pirate Prince",
+      "provisional": false
+    },
+    {
+      "id": "pirates-due-corsair-coterie-aeldari",
+      "name": "Pirates\u2019 Due",
+      "provisional": false
+    },
+    {
+      "id": "presentiment-of-dread-seer-council-aeldari",
+      "name": "Presentiment of Dread",
+      "provisional": false
+    },
+    {
+      "id": "preternatural-precision-aspect-host-aeldari",
+      "name": "Preternatural Precision",
+      "provisional": true
+    },
+    {
+      "id": "protector-of-the-paths-guardian-battlehost-aeldari",
+      "name": "Protector of the Paths",
+      "provisional": false
+    },
+    {
+      "id": "psychic-communion-warlock-aeldari",
+      "name": "Psychic Communion",
+      "provisional": true
+    },
+    {
+      "id": "psychic-destroyer-warhost-aeldari",
+      "name": "Psychic Destroyer",
+      "provisional": false
+    },
+    {
+      "id": "psychic-shield-seer-council-aeldari",
+      "name": "Psychic Shield",
+      "provisional": false
+    },
+    {
+      "id": "rune-of-mists-spirit-conclave-aeldari",
+      "name": "Rune of Mists",
+      "provisional": false
+    },
+    {
+      "id": "runes-of-warding-seer-council-aeldari",
+      "name": "Runes of Warding",
+      "provisional": true
+    },
+    {
+      "id": "seers-eye-spirit-conclave-aeldari",
+      "name": "Seer\u2019s Eye",
+      "provisional": true
+    },
+    {
+      "id": "seersight-strike-windrider-host-aeldari",
+      "name": "Seersight Strike",
+      "provisional": false
+    },
+    {
+      "id": "servant-of-the-whispering-god-aeldari",
+      "name": "Servant of the Whispering God",
+      "provisional": false
+    },
+    {
+      "id": "shedskin-raiment-serpents-brood-aeldari",
+      "name": "Shedskin Raiment",
+      "provisional": false
+    },
+    {
+      "id": "shield-nodes-guardian-battlehost-aeldari",
+      "name": "Shield Nodes",
+      "provisional": false
+    },
+    {
+      "id": "skyborne-sanctuary-aspect-host-aeldari",
+      "name": "Skyborne Sanctuary",
+      "provisional": false
+    },
+    {
+      "id": "skyborne-sanctuary-warhost-aeldari",
+      "name": "Skyborne Sanctuary",
+      "provisional": false
+    },
+    {
+      "id": "skyward-lunge-serpents-brood-aeldari",
+      "name": "Skyward Lunge",
+      "provisional": false
+    },
+    {
+      "id": "soul-bridge-spirit-conclave-aeldari",
+      "name": "Soul Bridge",
+      "provisional": true
+    },
+    {
+      "id": "spirit-mark-psychic-aeldari",
+      "name": "Spirit Mark (Psychic) (Once per turn per unit)",
+      "provisional": true
+    },
+    {
+      "id": "spirit-stone-of-raelyth-armoured-warhost-aeldari",
+      "name": "Spirit Stone of Raelyth",
+      "provisional": false
+    },
+    {
+      "id": "spirit-token-spirit-conclave-aeldari",
+      "name": "Spirit Token",
+      "provisional": false
+    },
+    {
+      "id": "staged-death-ghosts-of-the-webway-aeldari",
+      "name": "Staged Death",
+      "provisional": false
+    },
+    {
+      "id": "stave-of-kurnous-spirit-conclave-aeldari",
+      "name": "Stave of Kurnous",
+      "provisional": false
+    },
+    {
+      "id": "stone-of-eldritch-fury-seer-council-aeldari",
+      "name": "Stone of Eldritch Fury",
+      "provisional": false
+    },
+    {
+      "id": "storm-of-whispers-devoted-of-ynnead-aeldari",
+      "name": "Storm of Whispers",
+      "provisional": false
+    },
+    {
+      "id": "suppressing-storm-kygharils-protectors-aeldari",
+      "name": "Suppressing Storm",
+      "provisional": false
+    },
+    {
+      "id": "tears-of-isha-spiritseer-kygharil-aeldari",
+      "name": "Tears of Isha (Psychic)",
+      "provisional": true
+    },
+    {
+      "id": "time-to-strike-guardian-battlehost-aeldari",
+      "name": "Time to Strike",
+      "provisional": false
+    },
+    {
+      "id": "timeless-strategist-warhost-aeldari",
+      "name": "Timeless Strategist",
+      "provisional": false
+    },
+    {
+      "id": "to-their-final-breath-aspect-host-aeldari",
+      "name": "To Their Final Breath",
+      "provisional": true
+    },
+    {
+      "id": "torc-of-morai-heg-seer-council-aeldari",
+      "name": "Torc of Morai-Heg",
+      "provisional": false
+    },
+    {
+      "id": "towering-wraith-construct-aeldari",
+      "name": "Towering Wraith Construct",
+      "provisional": false
+    },
+    {
+      "id": "tricksters-retort-ghosts-of-the-webway-aeldari",
+      "name": "Tricksters\u2019 Retort",
+      "provisional": false
+    },
+    {
+      "id": "unshrouded-truth-seer-council-aeldari",
+      "name": "Unshrouded Truth",
+      "provisional": false
+    },
+    {
+      "id": "vauls-vengeance-guardian-battlehost-aeldari",
+      "name": "Vaul\u2019s Vengeance",
+      "provisional": true
+    },
+    {
+      "id": "vengeful-sorrow-corsair-coterie-aeldari",
+      "name": "Vengeful Sorrow",
+      "provisional": false
+    },
+    {
+      "id": "venomous-wrath-serpents-brood-aeldari",
+      "name": "Venomous Wrath",
+      "provisional": false
+    },
+    {
+      "id": "veterans-of-the-void-eldritch-raiders-aeldari",
+      "name": "Veterans of the Void",
+      "provisional": true
+    },
+    {
+      "id": "warding-salvoes-guardian-battlehost-aeldari",
+      "name": "Warding Salvoes",
+      "provisional": false
+    },
+    {
+      "id": "warrior-focus-aspect-host-aeldari",
+      "name": "Warrior Focus",
+      "provisional": false
+    },
+    {
+      "id": "weavers-coils-serpents-brood-aeldari",
+      "name": "Weaver\u2019s Coils",
+      "provisional": false
+    },
+    {
+      "id": "weavers-wail-serpents-brood-aeldari",
+      "name": "Weavers' Wail",
+      "provisional": false
+    },
+    {
+      "id": "weaving-stride-serpents-brood-aeldari",
+      "name": "Weaving Stride",
+      "provisional": false
+    },
+    {
+      "id": "webway-pathstone-corsair-coterie-aeldari",
+      "name": "Webway Pathstone",
+      "provisional": false
+    },
+    {
+      "id": "webway-tunnel-warhost-aeldari",
+      "name": "Webway Tunnel",
+      "provisional": false
+    },
+    {
+      "id": "withdraw-and-reinforce-eldritch-raiders-aeldari",
+      "name": "Withdraw and Reinforce",
+      "provisional": false
+    },
+    {
+      "id": "wraithbone-armour-spirit-conclave-aeldari",
+      "name": "Wraithbone Armour",
+      "provisional": false
+    },
+    {
+      "id": "yriels-example-eldritch-raiders-aeldari",
+      "name": "Yriel\u2019s Example",
+      "provisional": false
+    }
+  ]
+}

@@ -682,5 +682,16 @@
     "A unit omitted from the card board may still take ordinary legal actions",
     "Shared options are displayed once; matching unit cards refer to them without automatic application",
     "A repeated rule block does not pool usage limits or grant that rule to unlisted units"
-  ]
+  ],
+  "aeldari_expansion": {
+    "version": "0.7.0",
+    "index": "aeldari-coverage.json",
+    "source": "aeldari-source.json",
+    "scope": "80 source datasheets, including Legends and Combat Patrol variants; 16 source detachments; 54 enhancements; 81 stratagems. This is an indexed community reference, not full codex verification.",
+    "summaries": 73,
+    "reference_only": 227,
+    "provisional": 97,
+    "secondary_checks": "18 independently written unit summaries compared with pinned Wahapedia exports; corrected Tears of Isha healing scope and Malevolent Souls melee-only trigger.",
+    "limitations": "Most rules are reference prompts because source effects or timing are incomplete. Unmapped rules remain in list/unit references rather than receiving invented phase windows. No weapon profile teaching or automatic battlefield eligibility."
+  }
 }

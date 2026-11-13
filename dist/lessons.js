@@ -8,6 +8,11 @@
   community:{name:'Aeldari community reference',version:'Export 12 Nov 2026 · compared with 40kdc snapshot',url:'https://wahapedia.ru/wh40k11ed/factions/aeldari/',status:'community-checked'},
   fuegan:{name:'Fuegan community reference',version:'11th edition · checked 13 Nov 2026; confirm in your app',url:'https://wahapedia.ru/wh40k11ed/factions/aeldari/Fuegan',status:'community-checked'}
  };
+ const catalog=typeof module!=='undefined'&&module.exports?require('./aeldari-data.js'):root.WarPlannerAeldariData;
+ sources.catalog={name:'40kdc Aeldari structured source',version:'Pinned '+catalog.pin.slice(0,7)+' · source reference, not official verification',url:'https://github.com/wn-mitch/40kdc-data/tree/'+catalog.pin+'/data/enrichment/aeldari',status:'source-reference'};
+ const aliases={'battle-focus-aeldari':'battle-focus','diviner-of-futures-aeldari':'eldrad-cp','doom-aeldari':'doom','whirling-death-aeldari':'whirling','superlative-strategist-aeldari':'strategist','flickerjump-aeldari':'flickerjump','grenade-pack-flyover-aeldari':'hawks','path-of-the-warrior-aeldari':'path-warrior','hand-of-asuryan-aeldari':'asurmen-hand','bladestorm-aeldari':'bladestorm','aspect-shrine-token-aeldari':'token','inescapable-accuracy-aeldari':'reapers','assured-destruction-aeldari':'dragons','crystalline-targeting-aeldari':'walker','fire-support-aeldari':'falcon','tactical-acumen-aeldari':'asurmen-move','acrobatic-aeldari':'acrobatic','the-bloody-handed-aeldari':'avatar-aura','molten-form-aeldari':'avatar-defence','wave-serpent-shield-aeldari':'serpent-shield','storm-of-silence-aeldari':'jain-attacks','aspect-of-murder-aspect-host-aeldari':'murder','path-of-command-aeldari':'autarch-discount','khaines-vengeance-aspect-host-aeldari':'khaines','skyborne-sanctuary-aspect-host-aeldari':'skyborne','to-their-final-breath-aspect-host-aeldari':'final-breath'};
+ function unitInfo(name){return catalog.units.find(u=>normalized(u.name)===normalized(name));}
+ function unitHasRule(unit,id){return !!unitInfo(unit.name)?.abilities.some(a=>a.id===id);}
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule',stratagem:'Stratagem',enhancement:'Enhancement'};
  function core(id,title,body,why,question,answer,section,window){return {id,title,body,why,question,answer,section,window,sourceIds:['core'],status:'official-checked',kind:'Core sequence',category:'core'};}
  const phases=[
@@ -91,7 +96,22 @@
  const stratagemIds=new Set(['khaines','skyborne','aspect-stratagems','final-breath']);
  for(const a of abilities)a.category=a.enhancement?'enhancement':stratagemIds.has(a.id)?'stratagem':armyIds.has(a.id)?'army':coreIds.has(a.id)?'core':'ability';
  for(const p of prebattle)p.category='core';
- const aspectUnits=['Dire Avengers','Howling Banshees','Dark Reapers','Fire Dragons','Swooping Hawks','Warp Spiders','Avatar of Khaine'];
+ // Preserve existing reviewed summaries and extend their eligible unit lists from the source.
+ for(const [sourceId,id] of Object.entries(aliases)){
+  const rule=abilities.find(a=>a.id===id),entry=catalog.rules.find(a=>a.id===sourceId);
+  if(rule&&entry?.detachment&&!rule.detachment)rule.detachment=entry.detachment;
+  if(rule?.units.length&&entry?.units.length)rule.units=[...new Set([...rule.units,...entry.units])];
+ }
+ for(const [id,sourceId] of [['deep-strike','deep-strike'],['deadly-demise','deadly-demise'],['fights-first','fights-first']]){
+  const rule=abilities.find(a=>a.id===id);rule.units=[...new Set([...rule.units,...catalog.units.filter(u=>u.abilities.some(a=>a.id===sourceId)).map(u=>u.name)])];
+ }
+ abilities.find(a=>a.id==='star-engines').units=catalog.units.filter(u=>u.keywords.some(k=>normalized(k)==='vehicle')&&u.abilities.some(a=>a.id==='battle-focus-aeldari')).map(u=>u.name);
+ const duplicateStrats=new Set(['warrior-focus-aspect-host-aeldari','preternatural-precision-aspect-host-aeldari','doom-inescapable-aspect-host-aeldari']);
+ for(const entry of catalog.rules){
+  if(aliases[entry.id]||duplicateStrats.has(entry.id)||entry.id==='burning-lance-aeldari')continue;
+  abilities.push({...entry,id:'expanded-'+entry.id,sourceRuleId:entry.id,question:'What must you confirm before applying '+entry.name+'?',answer:'Confirm the current source, the correct bearer or target, its precise timing, and every restriction. A reference reminder does not grant an effect.'});
+ }
+ const aspectUnits=catalog.units.filter(u=>u.keywords.some(k=>normalized(k)==='aspectwarrior'||normalized(k)==='aspectwarriors')||u.name==='Avatar of Khaine').map(u=>u.name);
  function normalized(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
  function isAeldari(army){return ['aeldari','asuryani'].includes(normalized(army.faction));}
  function matches(ability,army){
@@ -99,7 +119,7 @@
   if(ability.detachment&&normalized(army.detachment)!==normalized(ability.detachment))return false;
   if(ability.units.length&&!army.units.some(u=>ability.units.some(n=>normalized(n)===normalized(u.name))))return false;
   if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(ability.id)&&!army.units.some(u=>aspectUnits.some(n=>normalized(n)===normalized(u.name))))return false;
-  if(ability.enhancement&&!army.units.some(u=>u.name==='Autarch'&&u.details.some(d=>normalized(d).includes(normalized(ability.enhancement)))))return false;
+  if(ability.enhancement&&!army.units.some(u=>u.details.some(d=>/^enhancement\s*:/i.test(d)&&normalized(d.replace(/^enhancement\s*:/i,'')).includes(normalized(ability.enhancement)))))return false;
   return true;
  }
  const sequencing={
@@ -107,7 +127,7 @@
   falcon:{priority:20,steps:['shooting-start','shooting-select'],title:'Consider the Falcon before its passengers',advice:'If models disembarked from this Falcon this turn and can still attack the same target, consider shooting the Falcon before them. Resolve Fire Support after the Falcon shoots and hits. Being near the Falcon alone does not qualify those models.'}
  };
  function forStep(state,step){return abilities.filter(a=>{
-  const timing=a.window===step.window||(state.phase===4&&step.id==='fight-resolve'&&a.window==='select')||(a.id==='flitting'&&step.id==='movement-select')||(a.window==='react'&&step.window==='act');
+  const timing=(a.window===step.window&&!(state.phase===0&&step.window==='act'&&a.sourceRuleId?.startsWith('psychic-guidance')))||(state.phase===0&&step.window==='shock'&&a.sourceRuleId?.startsWith('psychic-guidance'))||(state.phase===4&&step.id==='fight-resolve'&&a.window==='select')||(a.id==='flitting'&&step.id==='movement-select')||(a.window==='react'&&step.window==='act');
   const preview=state.phase===2&&state.turn==='you'&&sequencing[a.id]?.steps.includes(step.id);
   return (timing||preview)&&matches(a,state.army)&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn);
  }).map(a=>sequencing[a.id]&&sequencing[a.id].steps.includes(step.id)?{...a,sequencePreview:true,sequence:sequencing[a.id]}:a)
@@ -132,6 +152,6 @@
   // Movement selection and charge declaration share the Flitting Shadows trigger.
   return steps;
  }
- const api={revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

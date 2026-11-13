@@ -5,7 +5,7 @@
  const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
  const has=(unit,name)=>unit.members.some(m=>norm(m.name)===norm(name));
  const aspect=['Dire Avengers','Howling Banshees','Dark Reapers','Fire Dragons','Swooping Hawks','Warp Spiders','Fuegan','Asurmen','Jain Zar'];
- const unitIsAspect=u=>aspect.some(n=>has(u,n));
+ const unitIsAspect=u=>aspect.some(n=>has(u,n))||u.members.some(m=>L.unitInfo(m.name)?.keywords.some(k=>['aspectwarrior','aspectwarriors'].includes(norm(k))));
  const ability=id=>L.abilities.find(a=>a.id===id);
  function units(army){
   const result=[],groups=new Map();
@@ -20,8 +20,8 @@
    const leaders=u.members.filter(m=>m.role==='leader'||m.role==='support');
    const body=bodies.length===1?bodies[0]:u.members[0];
    return {...u,body,leaders,attached:bodies.length===1&&leaders.length>0,
-    priority:has(u,'War Walkers')?10:has(u,'Falcon')?20:100,
-    orderHint:has(u,'War Walkers')?'Consider early: its marked target can help later shooters.':has(u,'Falcon')?'Consider before models that disembarked from this Falcon.':''};
+    priority:has(u,'War Walkers')?10:has(u,'Shroud Runners')?15:has(u,'Falcon')?20:100,
+    orderHint:has(u,'War Walkers')?'Consider early: its marked target can help later shooters.':has(u,'Shroud Runners')?'Consider early: Target Acquisition can remove cover before later shooters.':has(u,'Falcon')?'Consider before models that disembarked from this Falcon.':''};
   });
  }
  function orderedUnits(state){const list=units(state.army);return state.phase===2&&state.turn==='you'?list.sort((a,b)=>a.priority-b.priority):list;}
@@ -29,6 +29,14 @@
  function leading(unit,name,bodyguard){return unit.attached&&unit.leaders.some(m=>m.role==='leader'&&norm(m.name)===norm(name))&&(!bodyguard||norm(unit.body.name)===norm(bodyguard));}
  function fits(a,state,unit){
   if(!a||!L.matches(a,state.army))return false;
+  if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>m.role==='leader'&&a.units.includes(m.name))))return false;
+  if(a.expanded&&a.enhancement&&!unit.members.some(m=>m.details.some(d=>/^enhancement\s*:/i.test(d)&&norm(d.replace(/^enhancement\s*:/i,'')).includes(norm(a.enhancement)))))return false;
+  if(a.expanded&&a.sourceRuleId){
+   const refs=unit.members.flatMap(m=>(L.unitInfo(m.name)?.abilities||[]).filter(r=>r.id===a.sourceRuleId).map(r=>({entry:m,ref:r})));
+   if(refs.length&&refs.every(({entry,ref})=>ref.wargear&&!entry.details.some(d=>norm(d).includes(norm(ref.wargear)))))return false;
+  }
+  if(['swift','flitting','star-engines','opportunity','fade','sudden'].includes(a.id)&&!unit.members.every(m=>L.unitHasRule(m,'battle-focus-aeldari')))return false;
+  if(a.id==='deep-strike'&&!unit.members.every(m=>L.unitHasRule(m,'deep-strike')))return false;
   if(a.units.length&&!a.units.some(name=>has(unit,name)))return false;
   if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(a.id)&&!unitIsAspect(unit)&&!has(unit,'Avatar of Khaine'))return false;
   if(a.id==='murder'&&!unit.members.some(m=>norm(m.name)==='autarch'&&m.details.some(d=>norm(d).includes('aspectofmurder'))))return false;
@@ -57,10 +65,12 @@
  });}
  function fightsFirst(state,unit){
   if(state.phase!==4||!L.isAeldari(state.army))return false;
-  return unit.members.length>0&&unit.members.every(m=>['howlingbanshees','jainzar'].includes(norm(m.name))||(norm(m.name)==='autarch'&&leading(unit,'Autarch','Howling Banshees')));
+  if(leading(unit,'The Visarch'))return true;
+  return unit.members.length>0&&unit.members.every(m=>L.unitHasRule(m,'fights-first')||['howlingbanshees','jainzar'].includes(norm(m.name))||(norm(m.name)==='autarch'&&leading(unit,'Autarch','Howling Banshees')));
  }
  function targeting(a,state){
   if(!['army','stratagem'].includes(a.category))return null;
+  if(a.expanded)return {label:a.category==='stratagem'?'Target':'Applies to',text:a.targetText||'Check this rule’s target restrictions.'};
   const descriptions={
    'battle-focus':'Your army’s Battle Focus pool; no individual unit is targeted.',
    'battle-focus-end':'Your army’s unspent Battle Focus tokens; no individual unit is targeted.',
@@ -98,7 +108,7 @@
   if([1,3].includes(state.phase)&&state.turn==='you'&&sourceUnit(state,unit,'Avatar of Khaine').length)cards.push(inherited('avatar-aura','The Bloody-Handed · check the Avatar’s aura','If this friendly Aeldari unit is within 6 inches of the Avatar when applicable, add 1 to its Advance or Charge roll.',['Check the actual aura distance.','This modifies a roll; it does not create an Advance roll when another rule replaces it.'],state,unit));
   return cards.filter(Boolean);
  }
- function stages(state,unit,mode){
+ function baseStages(state,unit,mode){
   if(!unit)return [];
   if(mode==='response'){
    const phase=state.phase;
@@ -120,10 +130,17 @@
   if(mode==='fight')return [{id:'before',title:'When this unit is selected to fight',hint:'Follow the phase’s activation order. Check Fights First and before-selection effects before rolling attacks.',cards:selected(['fights-first','path-warrior','aspect-stratagems','autarch-discount'],state,unit)},
    {id:'attacks',title:'Attacks',hint:'Apply the unit’s relevant melee effects. A token does not affect a Character model’s own roll.',cards:selected(['token','jain-attacks','murder'],state,unit)}];
   if(mode==='pile'||mode==='consolidate'){
-   const sudden=L.isAeldari(state.army)?inherited('sudden','Sudden Strike · only if used earlier','If this unit used Sudden Strike at the end of its charge move earlier this turn, its pile-in and consolidation distance is 6 inches for the turn.',['This is a reminder of an existing effect, not a new activation window for that manoeuvre.','The move still has all its other positioning and eligibility requirements.'],state,unit):null;
+   const sudden=L.isAeldari(state.army)&&unit.members.every(m=>L.unitHasRule(m,'battle-focus-aeldari'))?inherited('sudden','Sudden Strike · only if used earlier','If this unit used Sudden Strike at the end of its charge move earlier this turn, its pile-in and consolidation distance is 6 inches for the turn.',['This is a reminder of an existing effect, not a new activation window for that manoeuvre.','The move still has all its other positioning and eligibility requirements.'],state,unit):null;
    return [{id:'move',title:mode==='pile'?'Pile In':'Consolidate',hint:'Use the appropriate separate movement step. Increasing distance does not remove positioning requirements.',cards:sudden?[sudden]:[]}];
   }
   return [];
+ }
+ function stages(state,unit,mode){
+  const rows=baseStages(state,unit,mode);
+  if(!unit||!rows.length||['pile','consolidate'].includes(mode))return rows;
+  const cards=L.abilities.filter(a=>a.expanded&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn)&&['act','select','react','after','arrivals'].includes(a.window)&&fits(a,state,unit));
+  for(const card of cards){const row=card.window==='after'?rows[rows.length-1]:card.window==='select'||card.window==='arrivals'?rows[0]:rows.find(r=>r.id==='attacks')||rows[0];row.cards.push({...card,targetUnits:unit.members});}
+  return rows;
  }
  function steps(state){
   const base=L.getSteps(state);const p=state.phase;
@@ -149,7 +166,7 @@
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
     const key=a.id+'|'+a.name+'|'+a.summary;
     if(seen.has(key))continue;seen.add(key);
-    const item={...a,timing:row.title};
+    const item={...a,timing:a.expanded?(a.triggerText||row.title):row.title};
     if(a.category==='army'||a.category==='stratagem'){
      if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[]});
      sharedMap.get(key).appliesTo.push(unit);sharedIds.add(key);

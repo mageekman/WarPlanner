@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.6
+# WarPlanner — personal study edition, v0.7
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -52,3 +52,12 @@ Account login currently unlocks the interface. GitHub Pages files and the reposi
 ## Saved-list library
 
 My army opens account-specific saved lists. Existing single-army saves migrate into the library automatically. Importing appends a list, and opening a list makes it active for the guide. Each list retains its unit labels and original export when provided. Switching active lists starts a fresh walkthrough. Summary cards show roster, detachment and disposition rather than point values; the original export retains its point values verbatim when opened. The older starter roster has no original export, so its import panel explicitly shows the saved roster instead. Lists and imported changes remain local to the signed-in account on that device.
+
+
+## Aeldari source expansion (v0.7)
+
+The app now indexes the pinned source's 80 Aeldari datasheets, 16 detachments, 54 enhancements and 81 Stratagems (including Legends and Combat Patrol records). Saved lists select their own unit rules, detachment and actually imported enhancements. “Army & detachment rules” and each unit's reference section expose entries that have no safe phase mapping. Unit keywords extend Aspect Host membership, Deep Strike, vehicle manoeuvres and Fights First beyond the starter roster. Wraith units without Battle Focus are not given manoeuvre cards merely for being Aeldari.
+
+This is **not a complete verified rules library**: 300 indexed records include 73 effect summaries and 227 reference-only entries; 97 records are explicitly provisional/approximate/stubs upstream. Timing and bearer gates are enforced where supplied, but reminders do not establish battlefield eligibility. Missing effects and mixed/unmapped triggers stay source-linked references. Eighteen new summaries were compared with the secondary export, including the one-model Tears of Isha heal and melee-only Malevolent Souls trigger. Official codex completeness and current errata remain unverified.
+
+`docs/aeldari-coverage.json` records the counts and reference-only rules. `docs/aeldari-source.json` pins upstream file hashes. To reproduce the index, check out 40kdc-data at the specified commit and run `python scripts/import-aeldari.py /path/to/40kdc-data`, then `npm run build`. Hash mismatches abort the importer. Original rulebook descriptions, lore, weapon/profile tables and upstream tools are not bundled. The generated study index and independently written overrides are committed for review.

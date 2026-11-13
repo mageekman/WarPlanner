@@ -160,3 +160,9 @@
 .guide-fixed-header{z-index:3;background:transparent;pointer-events:none}
 .guide-fixed-header .guide-turn-toggle{pointer-events:none}
 .guide-fixed-header :is(.turn-controls,.turn-order-button,.phase-nav,.guide-settings){pointer-events:auto}
+
+.reference-only{color:#e8bf7b;border-color:#6b5b37;font-size:8px}
+.army-rules-reference{border:1px solid var(--line);border-radius:9px;padding:16px;margin:0 0 24px}
+.army-rules-reference>summary{font-size:13px;cursor:pointer;color:var(--teal)}
+.army-rules-reference>p{font-size:11px;margin:12px 0}
+.unit-lessons>.reference-details{margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:6px}

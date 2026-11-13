@@ -1,0 +1,13 @@
+{
+  "commit": "6ea813f7706bc9a492026d8b4403af99a965162b",
+  "files": {
+    "data/core/aeldari/detachments.json": "8ac933127e2fa373ad33a90d9b6b2330da3713adc0495a82a2b91bae9b02898a",
+    "data/core/aeldari/enhancements.json": "5c9a908a230a3ee7d08086df8e8c8de6ea81f0614f9313246ce32fa5921f002b",
+    "data/core/aeldari/stratagems.json": "e795e959e41308b117167c5b97526d1be1242e85656eac24868546c7056e11eb",
+    "data/core/aeldari/units.json": "3ef766e3b2ba80f654ef1f550f57d599f4b3fa786941c14fe9712d900dd9e340",
+    "data/enrichment/aeldari/abilities.json": "b97618362bbb08a3e72bf05ab3983c71038a23206c64b7629039225fc893b55e",
+    "data/enrichment/aeldari/phase-mappings.json": "090b1e2524cb22e5fbf7d1fabd98cdf8bb5f8c601aedba51bd4eeb9a20e634f0"
+  },
+  "license": "CC BY 4.0",
+  "upstream": "https://github.com/wn-mitch/40kdc-data"
+}
