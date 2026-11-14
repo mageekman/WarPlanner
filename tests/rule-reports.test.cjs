@@ -38,3 +38,7 @@ test('legacy faction aliases use the canonical faction for guide unit reports',(
  const faction={kind:'faction',name:'Tyranids',data:{aliases:['Tyranid']}},unit={key:'unit:termagants',kind:'unit',name:'Termagants',faction:'Tyranids',revision:1,data:{id:'termagants'}};
  const page=R.pageContext({army:{faction:'Tyranid'},phase:1,turn:'you'},{id:'move',title:'Move',window:'act'},{unitCards:[{unit:{body:{name:'Termagants'}},items:[]}],shared:[]},[faction,unit]);assert.equal(page.context.faction,'Tyranids');assert.ok(page.options.some(o=>o.key===unit.key));
 });
+
+test('a corrected summary report clears the prior missing-summary marker',()=>{
+ const current=structuredClone(records),row=current.find(r=>r.key==='rule:walker');row.data.mechanicsPresentation='needs-summary';const fixed=R.proposal(report({change_text:'A checked replacement summary.'}),current);assert.equal(require('../dist/mechanics.js').summaryState(fixed.data),'available');assert.equal(fixed.data.mechanicsPresentation,undefined);
+});

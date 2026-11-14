@@ -37,7 +37,7 @@
   if(draft.kind!=='step')fields+=guideFields({...d,faction:draft.faction},draft.kind);
   if(draft.kind==='unit')fields+=select('fightsFirst','Fights First',['auto','yes','no'],d.fightsFirst||'auto')+'<p class="admin-guide-note">Attached units still require every model to qualify. Use custom badges above for other reminders.</p>';
   if(draft.kind==='rule'){
-   if(d.mechanicsPresentation)fields+='<p class="admin-guide-note">This view reads the imported source mechanics. Reference-only status stays in place until you review the rule.</p>';
+   if(d.mechanicsPresentation)fields+='<p class="admin-guide-note">This study summary is based on imported source data. Reference-only status stays in place until you review the rule.</p>';
    fields+=select('category','Type',Object.keys(L.categories),d.category)+select('detachment','Detachment',dets,d.detachment||'','None / faction-wide');
    fields+=`<fieldset class="admin-phases"><legend>Phases</legend>${L.phases.map((p,i)=>`<label><input type="checkbox" name="phase" value="${i}" ${d.phase.includes(i)?'checked':''}>${p.name}</label>`).join('')}<small>Leave empty for reference-only or pre-battle content.</small></fieldset>`;
    fields+=select('turn','Player turn',['you','opponent','either'],d.turn)+select('window','Timing window',C.windows,d.window);
@@ -84,6 +84,7 @@
    for(const key of ['category','detachment','turn','window','summary','targetText','triggerText','leadingBodyguard','enhancement','question','answer'])d[key]=get(key);
    for(const key of ['conditions','units','bearerKeywords'])d[key]=lines(get(key));
    d.phase=fd.getAll('phase').map(Number);d.referenceOnly=fd.has('referenceOnly');d.leadingUnitRequired=fd.has('leadingUnitRequired');
+   if(d.summary!==draft.data.summary)delete d.mechanicsPresentation;
    d.expanded=true;d.adminManaged=true;
    if(d.category==='enhancement'&&!d.enhancement)d.enhancement=row.name;
   }else if(row.kind==='unit'){

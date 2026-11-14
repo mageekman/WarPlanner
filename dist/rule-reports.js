@@ -46,7 +46,7 @@
    row=copy(row);
    // Keep generated study text when a timing/target proposal changes a legacy placeholder.
    if(row.kind==='rule')row.data=M.enrich(row.data);
-   if(report.issue_type==='summary'&&['rule','step'].includes(row.kind))row.data[row.kind==='step'?'body':'summary']=report.change_text;
+   if(report.issue_type==='summary'&&['rule','step'].includes(row.kind)){row.data[row.kind==='step'?'body':'summary']=report.change_text;if(row.kind==='rule')delete row.data.mechanicsPresentation;}
    if(report.issue_type==='targets'&&row.kind==='rule')row.data.targetText=report.change_text;
    if(report.issue_type==='timing'&&row.kind==='rule')Object.assign(row.data,{window:report.timing.window,phase:copy(report.timing.phase),turn:report.timing.turn});
   }
