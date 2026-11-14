@@ -15,7 +15,7 @@
   const roster=army&&Array.isArray(army.units)?army.units:[],rosterNames=new Set(roster.map(u=>norm(u.name)));
   const validArmy=!army||!!roster.length&&!!norm(army.faction)&&(norm(army.faction)===norm(faction)||L?.factionMatches(army.faction,faction));
   const factionUnits=units.filter(matches),listUnits=validArmy?factionUnits.filter(u=>!army||rosterNames.has(norm(u.name))):[];
-  const detachments=new Set((Array.isArray(army?.detachments)?army.detachments:army?.detachment?[army.detachment]:[]).map(norm));
+  const detachments=new Set((army?(L?.armyDetachments?L.armyDetachments(army,catalogDetachments):Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[]):[]).map(norm));
   for(const d of catalogDetachments.filter(matches))if(detachments.has(norm(d.name)))for(const id of [d.id,d.importSource?.sourceId,d.importSource?.record?.id])if(id)detachments.add(norm(id));
   const detachmentOf=r=>r.detachment||r.importSource?.record?.detachment_id||'';
   function equipped(r){const name=r.enhancement||r.name,ids=new Set([r.id,r.sourceRuleId,r.importSource?.sourceId,...Object.keys(L?.aliases||{}).filter(id=>L.aliases[id]===r.id)].filter(Boolean));return roster.some(u=>u.enhancementId?ids.has(u.enhancementId):(u.details||[]).some(d=>/^enhancement\s*:/i.test(d)&&norm(d.replace(/^enhancement\s*:/i,''))===norm(name)));}

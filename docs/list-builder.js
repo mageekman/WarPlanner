@@ -11,7 +11,7 @@
  const info=(name,faction='Aeldari')=>data.units.find(u=>same(u.faction,faction)&&norm(u.name)===norm(name));
  const detachments=(faction='Aeldari')=>data.detachments.filter(d=>same(d.faction,faction)).sort((a,b)=>a.name.localeCompare(b.name));
  const dispositions=(faction='Aeldari')=>[...new Set(detachments(faction).flatMap(d=>d.dispositions||[]))].map(title).sort();
- function selectedDetachments(army){return [...new Map((Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[]).map(s=>String(s).trim()).filter(Boolean).map(name=>[norm(name),name])).values()];}
+ function selectedDetachments(army){const names=Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[],core=typeof module!=='undefined'&&module.exports?require('./core.js'):root.WarPlan;return core?.resolveDetachmentNames?core.resolveDetachmentNames(names,detachments(army.faction),{knownOnly:true}):[...new Set(names)];}
  function setDetachments(army,names){army.detachments=[...new Map(names.map(s=>String(s).trim()).filter(Boolean).map(name=>[norm(name),name])).values()];army.detachment=army.detachments[0]||'';}
  function newArmy(){return {name:'',faction:'Aeldari',detachment:'',disposition:'',points:0,limit:2000,version:'Created in WarPlanner',origin:'builder',units:[]};}
  function search(query,faction='Aeldari'){const q=norm(query);return data.units.filter(u=>same(u.faction,faction)&&(!q||norm(u.name).includes(q))).sort((a,b)=>a.name.localeCompare(b.name));}

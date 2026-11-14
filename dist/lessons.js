@@ -123,7 +123,7 @@
  const aspectUnits=()=>catalog.units.filter(u=>u.keywords.some(k=>normalized(k)==='aspectwarrior'||normalized(k)==='aspectwarriors')||u.name==='Avatar of Khaine').map(u=>u.name);
  function normalized(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
  function isAeldari(army){return ['aeldari','asuryani'].includes(normalized(army.faction));}
- function armyDetachments(army){return [...new Map((Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[]).filter(Boolean).map(name=>[normalized(name),name])).values()];}
+ function armyDetachments(army,available=catalog.detachments){const names=Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[],core=typeof module!=='undefined'&&module.exports?require('./core.js'):root.WarPlan;return core?.resolveDetachmentNames?core.resolveDetachmentNames(names,available.filter(d=>factionMatches(d.faction,army.faction)),{knownOnly:true}):[...new Map(names.filter(Boolean).map(name=>[normalized(name),name])).values()];}
  function enhancementEquipped(ability,unit,army){
   if(!ability.enhancement||!unit.details.some(d=>/^enhancement\s*:/i.test(d)&&normalized(d.replace(/^enhancement\s*:/i,'')).includes(normalized(ability.enhancement))))return false;
   const sourceId=ability.sourceRuleId||Object.keys(aliases).find(id=>aliases[id]===ability.id)||ability.id;

@@ -91,3 +91,18 @@ test('multiple imported detachment lines are retained without rewriting the expo
  const text='Multi (100 points)\nAeldari\nWindrider Host (2 Detachment Points)\nFateful Performance (1 Detachment Points)\nDisruption\nStrike Force (2000 points)\nCHARACTERS\nFarseer (100 points)';
  const {army}=require('../dist/core.js').parseArmy(text);assert.deepEqual(army.detachments,['Windrider Host','Fateful Performance']);assert.equal(army.detachment,'Windrider Host');assert.equal(army.disposition,'Disruption');assert.equal(army.originalExport,text);
 });
+
+test('combined app-export detachment lines select individual canonical catalog entries',()=>{
+ const C=require('../dist/core.js'),detachments=[{name:'Windrider Host',faction:'Aeldari'},{name:'Fateful Performance',faction:'Aeldari'}];
+ for(const line of ['Windrider Host, Fateful Performance (3 Detachment Points)','Windrider Host (2 Detachment Points), Fateful Performance (1 Detachment Points)','Detachments: windrider host + Fateful Performance','Windrider Host and Fateful Performance']){
+  const text='Multi (100 points)\nAeldari\n'+line+'\nDisruption\nStrike Force (2000 points)\nCHARACTERS\nFarseer (100 points)';const {army}=C.parseArmy(text,{detachments});assert.deepEqual(army.detachments,['Windrider Host','Fateful Performance'],line);assert.equal(army.detachment,'Windrider Host');assert.equal(army.disposition,'Disruption');assert.equal(army.originalExport,text);
+ }
+});
+test('detachment matching preserves exact names, filters factions, deduplicates and retains unknowns for review',()=>{
+ const C=require('../dist/core.js'),d=[{name:'Hammer & Anvil',faction:'Test'},{name:'Known',faction:'Test'},{name:'Foreign',faction:'Other'}];assert.deepEqual(C.resolveDetachmentNames(['Hammer & Anvil'],d),['Hammer & Anvil']);
+ const text='Multi (100 points)\nTest\nKnown, known, Foreign (3 Detachment Points)\nDisruption\nCHARACTERS\nUnit (100 points)';const result=C.parseArmy(text,{detachments:d});assert.deepEqual(result.army.detachments,['Known','Foreign']);assert.ok(result.warnings.some(w=>w.includes('Foreign')&&w.includes('not found')));
+ assert.deepEqual(C.resolveDetachmentNames(['My custom + name'],d,{knownOnly:true}),['My custom + name']);
+});
+test('unannotated detachment headers and attached-unit headers do not become dispositions',()=>{
+ const C=require('../dist/core.js'),text='Multi (100 points)\nAeldari\nDetachments\nWindrider Host\nFateful Performance\nDisruption\nStrike Force (2000 points)\nAttached Units\nAttached Unit 1\nFarseer (100 points)';const {army}=C.parseArmy(text,{detachments:[{name:'Windrider Host',faction:'Aeldari'},{name:'Fateful Performance',faction:'Aeldari'}]});assert.deepEqual(army.detachments,['Windrider Host','Fateful Performance']);assert.equal(army.disposition,'Disruption');
+});

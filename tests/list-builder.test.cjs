@@ -54,3 +54,7 @@ test('enhancement choices include each selected detachment and distinguish dupli
  assert.throws(()=>B.setEnhancement(a,'one','Mistweave'),/Choose an enhancement/);
  B.setEnhancement(a,'one',choices[1].id);assert.equal(a.units[0].enhancementId,choices[1].id);
 });
+
+test('editing an older combined import selects existing detachments without altering the original export',()=>{
+ const original={...army(),detachment:'Warhost, Aspect Host',detachments:['Warhost, Aspect Host'],originalExport:'The original upload',units:[]};B.add(original,'fire-dragons');const snapshot=structuredClone(original);assert.deepEqual(B.selectedDetachments(original),['Warhost','Aspect Host']);const saved=B.commit(original,snapshot);assert.deepEqual(saved.detachments,['Warhost','Aspect Host']);assert.equal(saved.originalExport,'The original upload');assert.deepEqual(original,snapshot);
+});
