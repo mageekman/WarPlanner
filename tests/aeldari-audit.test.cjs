@@ -16,7 +16,7 @@ test('critical hits, individual rerolls and resurrection retain previously revie
 test('source conflicts are explained, and incomplete rules are not presented as verified effects',()=>{
  assert.match(summary('expanded-aspect-training-aeldari'),/cannot both be met/);assert.match(summary('expanded-crewed-platform-storm-guardians-aeldari'),/remaining-crew/);assert.match(summary('expanded-suppressing-storm-kygharils-protectors-aeldari'),/shooting unit/);
  assert.equal(view('doom-inescapable-stratagem').mechanicsPresentation,'missing');assert.equal(view('preternatural-precision-stratagem').referenceOnly,true);assert.equal(view('doom-inescapable-stratagem').status,'source-reference');
- const warrior=summary('warrior-focus-stratagem');for(const term of ['Weapon Skill','Ballistic Skill','Strength','AP','Damage','Hit rolls','this phase'])assert.ok(warrior.includes(term),term);
+ const warrior=summary('warrior-focus-stratagem');for(const term of ['one friendly ASPECT WARRIORS or AVATAR OF KHAINE','Before','Weapon Skill','Ballistic Skill','Strength','AP','Damage','Hit rolls','this phase'])assert.ok(warrior.includes(term),term);
 });
 test('Stratagem rewrites include important restrictions from the core index, not just effect data',()=>{
  const overflight=summary('expanded-overflight-windrider-host-aeldari');assert.match(overflight,/destroyed an enemy unit during that phase/);
