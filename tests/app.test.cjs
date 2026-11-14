@@ -21,7 +21,7 @@ function app(saved,options={}){
  context.WarPlanActivations=context.window.WarPlanActivations;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/list-builder.js'),'utf8'),context);
  context.WarPlannerListBuilder=context.window.WarPlannerListBuilder;
- for(const name of ['unit-profiles.js','practice.js','practice-ui.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+name),'utf8'),context);
+ for(const name of ['unit-profiles.js','study-cards.js','practice.js','practice-ui.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+name),'utf8'),context);
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);

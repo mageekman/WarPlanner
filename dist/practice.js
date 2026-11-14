@@ -17,11 +17,13 @@
   for(const r of rules.filter(matches).map(r=>({...(M?M.enrich(r):r),faction:r.faction})).filter(usable)){const key=[r.category,norm(r.name),norm(r.detachment)].join(':');if(!unique.has(key))unique.set(key,r);}
   const all=[...unique.values()],label=r=>r.name+(r.detachment?' · '+r.detachment:''),questions=[];
   const choices=(correct,others)=>shuffle([correct,...shuffle(others,random).slice(0,3)],random).map(option=>({...option,faction}));
+  const ruleView=r=>Object.fromEntries(['id','name','faction','category','summary','conditions','sourceIds','sourceUrl','sourceLabel','status','referenceOnly','mechanicsDetails','targetText','triggerText','phase','turn','window','detachment'].filter(key=>r[key]!==undefined).map(key=>[key,copy(r[key])]));
+  const unitView=u=>({id:u.id,name:u.name,faction:u.faction,...(u.fightsFirst?{fightsFirst:u.fightsFirst}:{})});
   const explain=r=>({summary:r.summary,conditions:Array.isArray(r.conditions)?r.conditions:[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
   for(const r of all){
    const seen=new Set([norm(label(r))]),other=all.filter(a=>{if(a.category!==r.category||norm(a.summary)===norm(r.summary)||norm(a.name)===norm(r.name)||seen.has(norm(label(a))))return false;seen.add(norm(label(a)));return true;});
    if(other.length<3)continue;
-   const id='rule:'+r.id;questions.push({id,mode:'rules',category:r.category,prompt:'Which '+(categories[r.category]||'rule').toLowerCase()+' matches this description?',clue:hideName(r.summary,r.name),correct:r.id,options:choices({id:r.id,label:label(r)},other.map(a=>({id:a.id,label:label(a)}))),explanation:explain(r)});
+   const id='rule:'+r.id;questions.push({id,mode:'rules',category:r.category,prompt:'Which '+(categories[r.category]||'rule').toLowerCase()+' matches this description?',clue:hideName(r.summary,r.name),correct:r.id,options:choices({id:r.id,label:label(r)},other.map(a=>({id:a.id,label:label(a)}))),review:{kind:'rule',rule:ruleView(r),units:[]},explanation:explain(r)});
   }
   const unitNames=new Map();for(const u of units.filter(matches)){const key=norm(u.name);if(!unitNames.has(key))unitNames.set(key,u);}
   const selectedUnits=[...unitNames.values()];
@@ -35,7 +37,7 @@
    for(const r of owned){
     const seen=new Set(),other=all.filter(a=>{const key=norm(label(a));if(a.category!==r.category||ownedNames.has(norm(a.name))||ownedSummaries.has(norm(a.summary))||hasRule(u,a)||seen.has(key))return false;seen.add(key);return true;});
     if(other.length<3)continue;
-    questions.push({id:'unit-rule:'+u.id+':'+r.id,mode:'abilities',category:r.category,prompt:'Which ability is listed for '+u.name+'?',clue:'Choose the ability associated with this unit. Its normal conditions still apply.',correct:r.id,options:choices({id:r.id,label:label(r)},other.map(a=>({id:a.id,label:label(a)}))),explanation:{...explain(r),summary:u.name+' — '+r.name+'\n'+r.summary}});
+    questions.push({id:'unit-rule:'+u.id+':'+r.id,mode:'abilities',category:r.category,prompt:'Which ability is listed for '+u.name+'?',clue:'Choose the ability associated with this unit. Its normal conditions still apply.',correct:r.id,options:choices({id:r.id,label:label(r)},other.map(a=>({id:a.id,label:label(a)}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(u)]},explanation:{...explain(r),summary:u.name+' — '+r.name+'\n'+r.summary}});
    }
   }
   const profiles=[];
@@ -45,8 +47,9 @@
    const {unit:u,profile:p,field:f,value}=item,id=['stat',u.id,norm(p.name||u.name),f.key].join(':');if(statSeen.has(id))continue;statSeen.add(id);
    const values=[...new Set(profiles.filter(a=>a.field.key===f.key).map(a=>a.value))].filter(v=>v!==value);if(values.length<3)continue;
    const profileLabel=p.name&&norm(p.name)!==norm(u.name)?' ('+p.name+' profile)':'';
-   questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
+   questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),review:{kind:'stats',units:[unitView(u)],profile:copy(p),stat:f.key,sourceUrl:u.sourceUrl||'',sourceLabel:u.sourceLabel||'Current catalog unit profile'},explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
   }
+  for(const q of questions)if(q.review.kind==='rule'&&['ability','core'].includes(q.review.rule.category))q.review.units=selectedUnits.filter(u=>hasRule(u,q.review.rule)).map(unitView);
   return {faction,questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['rules','stats','abilities'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
  }
  function createSession(bank,{mode='mixed',count=10,random=Math.random}={}){

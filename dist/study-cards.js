@@ -1,0 +1,36 @@
+/* Shared guide card shells and read-only practice answer cards. */
+(function(root){
+ 'use strict';
+ const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule',stratagem:'Stratagem',enhancement:'Enhancement'};
+ const phases=['Command','Movement','Shooting','Charge','Fight'];
+ const windows={round:'Start of battle round','turn-start':'Start of turn',start:'Start of phase','core-cp':'Gain Command Points',shock:'Battle-shock',act:'During the phase',select:'When selected',before:'Before the unit acts',after:'After the unit acts',react:'Reaction',arrivals:'Reinforcements / arrivals',end:'End of phase','turn-end':'End of turn','round-end':'End of battle round',prebattle:'Pre-battle / reference'};
+ function unitCard({id,title,preview,badges='',body='',open=false}){return `<details class="flash-card unit-flash-card collapsible-flash rule-ability" data-unit-card="${e(id)}" ${open?'open':''}><summary class="flash-summary"><span class="flash-title-row"><h3>${e(title)}</h3>${badges}</span><p class="flash-preview">${e(preview)}</p><span class="flash-chevron" aria-hidden="true">+</span></summary><div class="flash-expanded">${body}</div></details>`;}
+ function badge(rule){return `<span class="rule-badge rule-${e(rule.category)}">${e(categories[rule.category]||'Ability')}</span>${rule.referenceOnly?'<span class="rule-badge reference-only">Reference only</span>':rule.status==='source-reference'?'<span class="rule-badge reference-only">Source summary</span>':''}`;}
+ const link=(url,label)=>/^https?:\/\//i.test(url||'')?`<a href="${e(url)}" target="_blank" rel="noopener noreferrer">${e(label)} ↗</a>`:'';
+ function reference(rule,sources){
+  const urls=new Set(),links=[];
+  if(/^https?:\/\//i.test(rule.sourceUrl||'')){urls.add(rule.sourceUrl);links.push(link(rule.sourceUrl,rule.sourceLabel||'Rule source'));}
+  for(const id of rule.sourceIds||[]){const source=sources[id];if(!source||urls.has(source.url)||!/^https?:\/\//i.test(source.url||''))continue;urls.add(source.url);links.push(link(source.url,source.name)+(source.version?`<small>${e(source.version)}</small>`:''));}
+  const status=rule.status==='admin-reviewed'?'Maintained in the WarPlanner rules workshop.':rule.status==='official-checked'?'Compared with the linked official text.':rule.status==='source-reference'?'Structured community source. Confirm the complete rule in your current app or book.':'Study summary from the current catalog.';
+  return `<details class="reference-details"><summary>Rules reference & review</summary><div class="reference-content"><p>${e(status)}</p>${links.join('')||`<small>${e(rule.sourceLabel||'Current catalog')}</small>`}</div></details>`;
+ }
+ function details(rule,sources){return `<details class="flash-details"><summary>Conditions & sources</summary><section><h4>${e(rule.name)}</h4>${rule.conditions?.length?`<ul>${rule.conditions.map(c=>`<li>${e(c)}</li>`).join('')}</ul>`:''}${rule.mechanicsDetails?`<details class="mechanics-source-details"><summary>Imported mechanics details</summary><p>${e(rule.mechanicsDetails)}</p></details>`:''}${reference(rule,sources)}</section></details>`;}
+ function timing(rule){if(rule.referenceOnly)return [rule.detachment,rule.triggerText||'Reference / passive rule'].filter(Boolean).join(' · ');return rule.triggerText||[rule.detachment,(rule.phase||[]).map(i=>phases[i]).filter(Boolean).join(' / '),rule.turn==='you'?'Your turn':rule.turn==='opponent'?'Opponent’s turn':'Either turn',windows[rule.window]].filter(Boolean).join(' · ');}
+ function ruleBody(rule){return `<div class="flash-rule"><div>${badge(rule)}<h4>${e(rule.name)}</h4></div><p class="flash-timing">${e(timing(rule))}</p>${rule.targetText?`<div class="flash-expanded-target"><span>Applies to</span><p>${e(rule.targetText)}</p></div>`:''}<p class="flash-fact">${e(rule.summary)}</p></div>`;}
+ function statBody(review){
+  const fields=[['M','Movement'],['T','Toughness'],['Sv','Save'],['W','Wounds'],['Ld','Leadership'],['OC','Objective Control'],['invuln_sv','Invulnerable save']],profile=review.profile;
+  const format=(v,key)=>v==null?'—':v==='-'||v==='*'?v:key==='M'?v+'″':['Sv','Ld','invuln_sv'].includes(key)?v+'+':String(v);
+  return `<section class="practice-stat-profile">${profile.name&&profile.name!==review.units[0].name?`<h4>${e(profile.name)}</h4>`:''}<dl class="practice-stat-grid">${fields.map(([key,label])=>`<div ${key===review.stat?'class="practice-tested-stat"':''}><dt>${e(label)}</dt><dd>${e(format(profile[key],key))}</dd></div>`).join('')}</dl><details class="flash-details"><summary>Profile source</summary><p>${e(review.sourceLabel||'Current catalog unit profile')}</p>${link(review.sourceUrl,'Source')}</details></section>`;
+ }
+ function reviewCard(review,{sources={}}={}){
+  if(!review)return '';
+  const units=review.units||[],rule=review.rule;
+  const unitMode=units.length>0&&(review.kind!=='rule'||units.length<=2);
+  if(unitMode){return `<section class="practice-answer-cards flash-board" aria-label="Answer reference"><div class="flash-grid unit-flash-grid">${units.map(u=>unitCard({id:'practice-'+u.id,title:u.name,preview:review.kind==='stats'?review.profile.name&&review.profile.name!==u.name?review.profile.name+' · Unit stats':'Unit stats':rule.name,badges:u.fightsFirst==='yes'?'<span class="flash-fights-first">Fights First</span>':'',body:review.kind==='stats'?statBody(review):ruleBody(rule)+details(rule,sources),open:true})).join('')}</div></section>`;}
+  if(!rule)return '';
+  const names=units.map(u=>u.name),preview=rule.targetText||names.join(' · ')||rule.detachment||categories[rule.category];
+  return `<section class="practice-answer-cards flash-board" aria-label="Answer reference"><div class="flash-grid shared-flash-grid"><details class="flash-card collapsible-flash rule-${e(rule.category)}" data-shared-rule="${e(rule.id)}" open><summary class="flash-summary"><span class="flash-title-row"><h3>${e(rule.name)}</h3>${badge(rule)}</span><p class="flash-preview">${e(!rule.targetText&&names.length&&preview.length>160?'Multiple units':preview)}</p><span class="flash-chevron" aria-hidden="true">+</span></summary><div class="flash-expanded">${rule.targetText?`<div class="flash-expanded-target"><span>Applies to</span><p>${e(rule.targetText)}</p></div>`:''}${names.length?`<div class="flash-unit-list"><span>Units with this ability, subject to its conditions</span><ul>${names.map(n=>`<li>${e(n)}</li>`).join('')}</ul></div>`:''}<p class="flash-timing">${e(timing(rule))}</p><p class="flash-fact">${e(rule.summary)}</p>${details(rule,sources)}</div></details></div></section>`;
+ }
+ const api={unitCard,reviewCard};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerStudyCards=api;
+})(typeof window!=='undefined'?window:globalThis);

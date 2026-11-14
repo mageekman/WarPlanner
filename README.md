@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.25
+# WarPlanner — personal study edition, v0.26
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -221,3 +221,12 @@ Automated tests cover category/faction matching, unique answers, equivalent-desc
 
 
 Practice faction isolation (v0.25.1): Questions, correct answers, distractors and unit profiles must all carry the selected faction. Shared/unassigned entries are excluded instead of being assigned an implicit faction. Session construction also rejects questions or answer sets with mismatched faction metadata. Starting practice reads the submitted faction selection directly; sparse factions never borrow alternatives from another faction. The standalone Aeldari prototype supplies its known faction explicitly before building a bank. Regression tests mix Aeldari, Grey Knights, Adeptus Mechanicus, shared and unassigned records across all practice modes.
+
+
+## Guide cards in practice results (v0.26)
+
+After an answer is selected, Practice reveals the correct rule using the guide’s card layout, with category badges, full study text, targets, timing, conditions and expandable source references. Cards start expanded and can be collapsed. Unit ability questions show the named unit with the tested ability inside it. Rule-description questions with one or two known unit owners also use unit cards; shared abilities with more owners keep one rule card with their unit list. Army/detachment rules, stratagems and enhancements retain their own rule cards. Reference-only entries do not turn broad coverage phases into an activation timing claim.
+
+Stat questions reveal the unit card and the selected named profile, including all seven profile fields. The tested characteristic is highlighted; unknown values stay unknown. These profile cards appear only in Practice results, with guide and army stat presentation unchanged. Missed-question reviews use the same cards. Answer cards are absent before selection.
+
+Question data includes a compact snapshot of the relevant rule, unit and selected profile, so a later catalog edit cannot change the explanation or grading of an already-generated question. Raw imported records are excluded from the snapshot. `dist/study-cards.js` supplies the unit-card shell shared by the guide and practice, and the read-only practice reference renderer. Existing source and condition details remain expandable. Tests cover correct unit/rule association, selected profiles, immutable snapshots, shared rules, escaped content/URLs and the shared shell’s collapsed/expanded behavior. Browser checks cover hidden-before-answer behavior, unit nesting, expanded/collapsible cards, highlighted stats, missed-question reviews and mobile layout.
