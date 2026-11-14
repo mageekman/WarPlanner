@@ -1,0 +1,35 @@
+const test=require('node:test'),assert=require('node:assert/strict'),Q=require('../dist/practice.js'),C=require('../dist/content.js'),L=require('../dist/lessons.js');
+function rng(seed=19){return ()=>{seed=(1664525*seed+1013904223)>>>0;return seed/4294967296;};}
+const rule=(id,category='ability',extra={})=>({id,name:'Rule '+id,summary:'Effect '+id+' changes the attack in a distinct way.',category,faction:'Test',units:[],conditions:[],...extra});
+function source(){const rules=Array.from({length:8},(_,i)=>rule('r'+i)),units=Array.from({length:5},(_,i)=>({id:'u'+i,name:'Unit '+i,faction:'Test',abilities:[{id:'r'+i}],profiles:[{name:'Model '+i,T:i+3,M:6+i,Sv:i+2,OC:i,invuln_sv:null}]}));return {rules,units,faction:'Test',random:rng()};}
+test.afterEach(()=>C.reset());
+test('every rule question has one correct and three distinct choices of the same category and faction',()=>{
+ const data=source();data.rules.push(...Array.from({length:5},(_,i)=>rule('strat'+i,'stratagem')),rule('foreign','ability',{faction:'Other'}),rule('incomplete','ability',{summary:'This rule needs a checked summary. Its imported details are under Conditions & sources.'}));
+ const bank=Q.buildBank(data),byId=new Map(data.rules.map(r=>[r.id,r]));for(const q of bank.questions.filter(q=>q.mode==='rules')){assert.equal(q.options.length,4);assert.equal(new Set(q.options.map(o=>o.id)).size,4);assert.equal(q.options.filter(o=>o.id===q.correct).length,1);for(const o of q.options){assert.equal(byId.get(o.id).category,q.category);assert.equal(byId.get(o.id).faction,'Test');assert.notEqual(o.id,'incomplete');}}
+});
+test('rule clues hide the answer name and identical-summary alternatives are excluded',()=>{
+ const data=source();data.rules[0].summary='Rule r0 gives this unit a special attack.';data.rules[1].summary=data.rules[0].summary;const q=Q.buildBank(data).questions.find(q=>q.id==='rule:r0');assert.doesNotMatch(q.clue,/Rule r0/i);assert.equal(q.clue,'this rule gives this unit a special attack.');assert.ok(!q.options.some(o=>o.id==='r1'));
+});
+test('unit ability distractors exclude all of that unit’s abilities, aliases and equivalent descriptions',()=>{
+ const data=source();data.units[0].abilities.push({id:'r1'},{id:'raw-r2'});data.rules[2].sourceRuleId='raw-r2';data.rules[3].units=['Unit 0'];data.rules.push(rule('duplicate','ability',{name:'Rule r0',summary:'A differently worded duplicate.'}),rule('same-effect','ability',{summary:data.rules[0].summary}));
+ const bank=Q.buildBank(data),q=bank.questions.find(q=>q.id==='unit-rule:u0:r0');assert.ok(q);for(const option of q.options.filter(o=>o.id!==q.correct))assert.ok(!['r1','r2','r3','duplicate','same-effect'].includes(option.id));
+});
+test('unit stats use four real distinct values of the same field, keep profile names and skip missing stats',()=>{
+ const data=source(),before=JSON.stringify(data);const bank=Q.buildBank(data);assert.ok(bank.counts.stats>0);const q=bank.questions.find(q=>q.id==='stat:u0:model0:T');assert.match(q.prompt,/Toughness.*Model 0 profile/);assert.equal(q.correct,'3');assert.equal(q.options.length,4);assert.equal(new Set(q.options.map(o=>o.label)).size,4);q.options.forEach(o=>assert.ok(['3','4','5','6','7'].includes(o.label)));assert.ok(!bank.questions.some(q=>q.id.endsWith(':invuln_sv')));assert.equal(JSON.stringify(data),before);
+});
+test('stat values normalize suffixes and saved overrides take precedence over imports',()=>{
+ const data=source();data.units[0].profiles=[{name:'Model 0',M:'9″',Sv:'2+',OC:0,T:null}];data.units[0].importSource={record:{profiles:[{name:'Old',M:99,T:99}]}};let bank=Q.buildBank(data);assert.equal(bank.questions.find(q=>q.id==='stat:u0:model0:M').correct,'9″');assert.equal(bank.questions.find(q=>q.id==='stat:u0:model0:Sv').correct,'2+');assert.equal(bank.questions.find(q=>q.id==='stat:u0:model0:OC').correct,'0');assert.ok(!bank.questions.some(q=>q.id==='stat:u0:model0:T'));data.units[0].profiles=[];bank=Q.buildBank(data);assert.ok(!bank.questions.some(q=>q.id.startsWith('stat:u0:')));
+});
+test('insufficient or ambiguous data does not invent questions or answers',()=>{
+ const data=source();data.rules=data.rules.slice(0,3);data.units=data.units.slice(0,3);assert.equal(Q.buildBank(data).questions.length,0);
+ const more=source();more.units[0].profiles.push({...more.units[0].profiles[0],T:99});assert.ok(!Q.buildBank(more).questions.some(q=>q.id.startsWith('stat:u0:')));
+});
+test('sessions randomize targets and correct positions, do not repeat, cap to available content and balance mixed types',()=>{
+ const bank=Q.buildBank(source()),a=Q.createSession(bank,{count:20,random:rng(3)}),b=Q.createSession(bank,{count:20,random:rng(4)});assert.equal(a.questions.length,20);assert.equal(new Set(a.questions.map(q=>q.id)).size,20);assert.notDeepEqual(a.questions.map(q=>q.id),b.questions.map(q=>q.id));assert.equal(new Set(a.questions.map(q=>q.mode)).size,3);assert.ok(new Set(bank.questions.map(q=>q.options.findIndex(o=>o.id===q.correct))).size>1);
+ const tiny=Q.createSession({faction:'Test',questions:bank.questions.slice(0,2)},{count:10});assert.equal(tiny.questions.length,2);assert.throws(()=>Q.createSession(bank,{mode:'unknown'}));assert.throws(()=>Q.createSession(bank,{count:4}));
+});
+test('answers lock once, reject invalid choices and record correctness without mutating the bank',()=>{
+ const bank=Q.buildBank(source()),before=JSON.stringify(bank),s=Q.createSession(bank,{mode:'stats',count:5,random:rng()});assert.equal(Q.answer(s,'unknown'),false);assert.equal(Q.answer(s,s.questions[0].correct),true);assert.equal(Q.answer(s,s.questions[0].correct),false);s.index++;assert.equal(Q.answer(s,s.questions[1].options.find(o=>o.id!==s.questions[1].correct).id),true);assert.deepEqual(s.answers.map(a=>a.correct),[true,false]);assert.equal(JSON.stringify(bank),before);
+});
+test('real Aeldari catalog produces rule and unit ability practice and leaves absent stats unknown',()=>{C.apply(C.seed());const bank=Q.buildBank({rules:L.abilities,units:L.catalog.units,faction:'Aeldari',random:rng()});assert.ok(bank.counts.rules>50);assert.ok(bank.counts.abilities>10);assert.equal(bank.counts.stats,0);const session=Q.createSession(bank,{count:10,random:rng()});assert.equal(session.questions.length,10);});
+test('questions use the readable imported view instead of a legacy placeholder',()=>{const data=source();data.rules[0].summary='This rule needs a checked summary. Its imported details are under Conditions & sources.';data.rules[0].importSource={record:{},text:'A checked source description of a special effect.'};const q=Q.buildBank(data).questions.find(q=>q.id==='rule:r0');assert.ok(q);assert.equal(q.clue,'A checked source description of a special effect.');assert.equal(q.explanation.summary,q.clue);});

@@ -21,6 +21,7 @@ function app(saved,options={}){
  context.WarPlanActivations=context.window.WarPlanActivations;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/list-builder.js'),'utf8'),context);
  context.WarPlannerListBuilder=context.window.WarPlannerListBuilder;
+ for(const name of ['unit-profiles.js','practice.js','practice-ui.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+name),'utf8'),context);
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
@@ -35,7 +36,7 @@ test('guide navigation, study bookmarks, player turns and persistence',()=>{
  a.click({turn:'opponent'});assert.match(a.html(),/data-turn="opponent" class="selected"/);assert.doesNotMatch(a.html(),/Diviner of Futures/);
  const reloaded=app([...a.store]);assert.match(reloaded.html(),/data-turn="opponent" class="selected"/);
  a.click({view:'army'});assert.match(a.html(),/My saved lists/);
- a.click({view:'practice'});assert.match(a.html(),/Future update/);
+ a.click({view:'practice'});assert.match(a.html(),/Start practice/);assert.match(a.html(),/practice_mode/);assert.doesNotMatch(a.html(),/Future update/);
 });
 test('first player changes round boundaries and keeps source confirmation separate',()=>{
  const a=app();a.click({first:'opponent'});assert.match(a.html(),/data-turn="opponent" class="selected"/);assert.match(a.html(),/Start of Battle Round/);

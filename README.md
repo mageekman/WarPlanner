@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.24
+# WarPlanner — personal study edition, v0.25
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -202,3 +202,19 @@ The sole existing administrator sees a pending-count badge on Rules workshop and
 Apply `supabase/rule-reports.sql` after `supabase/admin-content.sql`. Report submission and review RPCs run with caller permissions under RLS. Players can submit and read only their own reports; only the existing admin can read the queue or review. Approval updates the catalog and resolves the report in one transaction; the existing catalog history trigger preserves the previous full iteration. Revision checks reject stale edits, failed proposals roll back, and repeated identical submissions/reviews do not duplicate writes. No role-assignment or privileged browser keys are added.
 
 Verification: proposal/context and service tests run in `npm test`; `tests/rule-reports.sql` checks real database permissions, idempotency, approval/history, stale edits, rollback, rejection and missing-rule creation inside a transaction that rolls back all fixtures. Browser QA with mocked Auth/REST covers ordinary-player submissions, timing/missing fields, mobile layout, lost-response retries, admin badge, direct and edited approvals, reviewed reports and rejection.
+
+
+## Generated recall practice (v0.25)
+
+Practice now offers faction selection, Mixed / Match the rule / Unit stats / Unit abilities, and sets of 5, 10 or 20 questions. Each question has four shuffled answers, locks after selection, reveals the correct answer and catalog explanation, and contributes to the current set’s score. Finished sets offer a missed-question review and another randomized set. Sessions stay in memory across app navigation and clear on account load/sign-out; scores are not persisted or treated as account records. Existing guide and army views do not display unit stat profiles.
+
+Question generation lives in `dist/practice.js`, separate from presentation in `dist/practice-ui.js`:
+
+- Rule matching selects a readable rule summary and three different rule names in the same category and faction (plus shared core rules). Identical descriptions, duplicate answer names and incomplete summaries are excluded. The correct rule’s name is masked when it appears in the clue. Detachment names qualify answer labels.
+- Unit ability questions ask which ability is listed for a unit. Ownership uses explicit unit matching or ability/source-ID references. Distractors share the category and exclude every known ability of that unit, duplicate names and equivalent descriptions. Conditions are retained in the revealed explanation.
+- Unit stat questions ask for a named unit/profile characteristic. Values come from workshop profiles, with imported profiles as fallback, using the same precedence as the editor. Three distinct incorrect values come from that same characteristic in other profiles in the faction. Unknown values are skipped; a field needs four distinct known answers. Ambiguous duplicate profile names are skipped. There are no guessed/generated stat values.
+- Mixed sets choose randomly among available question types, then draw unused questions within each type. Sets shorten when the eligible pool is smaller than the requested length. Sparse modes disable Start and explain why more catalog data is needed.
+
+The practice bank uses the current loaded catalog, so existing imports and workshop edits supply its material without a separate quiz database or schema changes. The pinned Aeldari seed currently supplies rule and unit ability questions but no unit stat profiles. Imported factions with sufficient known profiles can supply stat questions immediately.
+
+Automated tests cover category/faction matching, unique answers, equivalent-description exclusion, unit ownership/aliases, profile precedence, source rendering, sparse data, randomized sessions and one-time scoring. Mocked browser checks cover setup, full sets, feedback/results, missing-data handling, imported Mechanicus stats, unit abilities, mobile/desktop layouts, navigation and account-session reset.

@@ -9,13 +9,14 @@ html = html.replace('<script defer src="core.js"></script>', '').replace('<scrip
 html = html.replace('<script defer src="app.js"></script>', '').replace('<script defer src="list-builder.js"></script>', '')
 html = html.replace('<script defer src="lessons.js"></script>', '').replace('<script defer src="aeldari-data.js"></script>', '')
 html = html.replace('<script defer src="activations.js"></script>', '').replace('<script defer src="content.js"></script>', '').replace('<script defer src="unit-profiles.js"></script>', '').replace('<script defer src="mechanics.js"></script>', '').replace('<script defer src="aeldari-audit.js"></script>', '').replace('<script defer src="rule-summaries.js"></script>', '').replace('<script defer src="rule-notes.js"></script>', '').replace('<script defer src="admech-notes.js"></script>', '').replace('<script defer src="admin.js"></script>', '').replace('<script defer src="workshop-browser.js"></script>', '').replace('<script defer src="rules-import.js"></script>', '').replace('<script defer src="import-ui.js"></script>', '')
+html = html.replace('<script defer src="practice.js"></script>', '').replace('<script defer src="practice-ui.js"></script>', '')
 html = html.replace('<script defer src="rule-reports.js"></script>', '').replace('<script defer src="report-ui.js"></script>', '')
 html = html.replace('<script defer src="vendor/supabase.js"></script>', '').replace('<script defer src="config.js"></script>', '').replace('<script defer src="auth.js"></script>', '')
 start=html.index('<section id="auth-screen"')
 end=html.index('<div id="app" hidden></div>', start)
 html=html[:start]+html[end:].replace('<div id="app" hidden></div>', '<div id="app"></div>', 1)
 html = html.replace('Sign out</button>', 'Offline edition</button>')
-html = html.replace('</body>', ''.join('<script>' + (root / ('dist/' + name)).read_text() + '</script>' for name in ['core.js', 'aeldari-data.js', 'lessons.js', 'activations.js', 'list-builder.js', 'app.js']) + '</body>')
+html = html.replace('</body>', ''.join('<script>' + (root / ('dist/' + name)).read_text() + '</script>' for name in ['core.js', 'aeldari-data.js', 'lessons.js', 'activations.js', 'list-builder.js', 'unit-profiles.js', 'practice.js', 'practice-ui.js', 'app.js']) + '</body>')
 (root / 'warplanner.html').write_text(html)
 with zipfile.ZipFile(root / 'warplanner-source.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
     for path in sorted(root.rglob('*')):
