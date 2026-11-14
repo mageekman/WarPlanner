@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.26
+# WarPlanner — personal study edition, v0.27
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -246,3 +246,10 @@ After deploying frontend support, `supabase/space-marines-group.sql` moves that 
 Copies receive unique `-deathwatch` IDs and record their source catalog key/revision in `data.duplicatedFrom`. Leader bodyguard IDs point at the copied units. Stats, equipment, ability references, enablement and raw import records are preserved. Original and pre-existing destination records stay intact. The operation uses existing admin RLS, runs atomically, checks references and skips existing destination copies on reruns. A source selection or ID collision that needs review aborts the transaction.
 
 Verified against the live catalog: 10 units and one detachment added; all 68 pre-existing relevant entries matched their before snapshots. The Deathwatch folder contains 10 units, 17 detachments and its existing 40 rules after the operation. A rolled-back database trial, application catalog validation, profile comparisons, attachment/link checks and a mocked browser check with the updated live data passed.
+
+
+## Identify a unit by its ability (v0.27)
+
+Practice adds **Which unit has this ability?** alongside the existing types. It presents an ability’s name and description with four unique unit names from the selected faction. A randomly chosen known owner is the correct answer; other owners are excluded from distractors, including ownership found through duplicate records, matching ability names/descriptions, imported source aliases and alternate core/ability classifications. Abilities without three eligible non-owner units are skipped. Explicit owner names are masked in the description; abilities whose name directly gives away the owner are skipped.
+
+After selection, the existing guide-style unit card reveals the correct unit and full original ability, conditions and sources. The new type participates in Mixed practice and the standard scoring/missed-question review. Counts and session pools include the new type; faction isolation and existing answer-card behavior are retained. No catalog or database changes are required. Tests cover valid owners, source aliases, shared rules, ambiguous duplicate records, clue masking, sparse data and same-faction unit answers.
