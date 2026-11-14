@@ -174,6 +174,7 @@ function guideCoverage(){return `<footer class="focus-footer"><span>11th edition
 function armyAlliance(faction){
  const indexed=Builder.factions().find(f=>Library.factionMatches(f.name,faction)||(f.aliases||[]).some(a=>Library.factionMatches(a,faction)));if(indexed)return indexed.group;
  const name=String(faction||'').toLowerCase().replace(/[’']/g,'');
+ if(/^(space marines|adeptus astartes)$/.test(name))return 'Space Marines';
  if(/chaos|daemon|death guard|thousand sons|world eaters|emperors children/.test(name))return 'Chaos';
  if(/aeldari|eldar|drukhari|ynnari|harlequin|necron|ork|tyranid|genestealer|tau|t’au|votann/.test(name))return 'Xenos';
  if(/imperium|imperial|astra militarum|adepta|adeptus|space marine|blood angel|dark angel|space wolve|black templar|deathwatch|grey knight|salamander|raven guard|iron hand|white scar|ultramarine|crimson fist|flesh tearer|agent|inquisition|sister/.test(name))return 'Imperium';
@@ -181,7 +182,7 @@ function armyAlliance(faction){
 }
 function guideStartPage(){
  const lists=state.savedLists||[],chosen=state.setupListId||state.activeListId;
- const groups=['Imperium','Chaos','Xenos','Other'].map(group=>{
+ const groups=['Space Marines','Imperium','Chaos','Xenos','Other'].map(group=>{
   const members=lists.filter(list=>armyAlliance(list.army.faction)===group).sort((a,b)=>(a.army.faction||'').localeCompare(b.army.faction||'',undefined,{sensitivity:'base'})||a.army.name.localeCompare(b.army.name,undefined,{sensitivity:'base'}));
   return members.length?`<optgroup label="${group}">${members.map(list=>`<option value="${escapeHTML(list.id)}" ${list.id===chosen?'selected':''}>${escapeHTML(list.army.faction||'Unclassified')} — ${escapeHTML(list.army.name)}</option>`).join('')}</optgroup>`:'';
  }).join('');

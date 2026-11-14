@@ -11,7 +11,7 @@
   // Only the standalone Aeldari prototype lacks catalog faction metadata.
   if(!catalog.factions){catalog={...catalog,units:catalog.units.map(u=>({...u,faction:u.faction||'Aeldari'}))};rules=rules.map(r=>({...r,faction:r.faction||'Aeldari'}));}
   if(session)return session.index>=session.questions.length?results():question();
-  const factions=catalog.factions||[{name:'Aeldari',group:'Xenos'}],order=['Imperium','Chaos','Xenos'];
+  const factions=catalog.factions||[{name:'Aeldari',group:'Xenos'}],order=['Space Marines','Imperium','Chaos','Xenos'];
   if(!factions.some(f=>f.name===selectedFaction))selectedFaction=factions.find(f=>f.name===context.faction)?.name||factions[0]?.name||'';
   bank=Q.buildBank({faction:selectedFaction,rules,units:catalog.units});
   const available=mode==='mixed'?bank.questions.length:bank.counts[mode];

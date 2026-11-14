@@ -57,7 +57,7 @@
   }else if(draft.kind==='detachment'){
    fields+=field('description','Study notes',d.description||'',{area:true})+field('dispositions','Dispositions',d.dispositions.join('\n'),{area:true,help:'One per line. Add detachment rules in Rules & abilities and select this detachment.'});
   }else if(draft.kind==='faction'){
-   fields+=select('group','Army group',['Imperium','Chaos','Xenos'],d.group)+field('aliases','Alternate faction names',d.aliases.join('\n'),{area:true});
+   fields+=select('group','Army group',['Space Marines','Imperium','Chaos','Xenos'],d.group)+field('aliases','Alternate faction names',d.aliases.join('\n'),{area:true});
   }else{
    fields+=field('body','Instructions',d.body,{area:true})+field('why','Why this matters',d.why||'',{area:true})+field('question','Study question',d.question||'',{area:true})+field('answer','Study answer',d.answer||'',{area:true})+field('section','Source section',d.section||'');
   }

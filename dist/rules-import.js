@@ -47,7 +47,7 @@
   return {phase:[...phases].sort(),turn:turns.size===1&&turns.has('your-turn')||['your turn','your-turn','your'].includes(turn)?'you':turns.size===1&&turns.has('opponent-turn')||['opponents turn','opponent turn','opponent-turn','opponent'].includes(turn)?'opponent':'either',window:windows[event]||'act'};
  }
  function parse(files,options,existing=[]){
-  const faction=String(options.faction||'').trim(),group=options.group||'Xenos';if(!faction)throw Error('Choose the faction you are importing.');if(!['Imperium','Chaos','Xenos'].includes(group))throw Error('Choose an army group.');
+  const faction=String(options.faction||'').trim(),group=options.group||'Xenos';if(!faction)throw Error('Choose the faction you are importing.');if(!['Space Marines','Imperium','Chaos','Xenos'].includes(group))throw Error('Choose an army group.');
   const {tables,canonical,warnings}=parts(files),table=name=>(tables.get(name)||[]),candidates=[];
   const knownFactions=existing.filter(r=>r.kind==='faction'),factionRecord=knownFactions.find(r=>norm(r.name)===norm(faction)||(r.data.aliases||[]).some(n=>norm(n)===norm(faction)));
   const factionName=factionRecord?.name||faction;

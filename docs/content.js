@@ -68,7 +68,7 @@
   if(['unit','detachment'].includes(row.kind)&&(!row.faction||row.faction==='*'))throw Error('Choose one faction.');
   if(row.kind==='detachment')for(const k of ['rules','stratagems','enhancements','dispositions','gameModes'])stringList(d[k],k);
   if(row.kind==='faction'){
-   if(!['Imperium','Chaos','Xenos'].includes(d.group))throw Error('Choose Imperium, Chaos or Xenos.');stringList(d.aliases,'Aliases');
+   if(!['Space Marines','Imperium','Chaos','Xenos'].includes(d.group))throw Error('Choose Space Marines, Imperium, Chaos or Xenos.');stringList(d.aliases,'Aliases');
   }
   if(row.kind==='step'&&(!row.enabled||typeof d.body!=='string'||!d.body.trim()))throw Error('Core pages must remain enabled and have instructions.');
   return row;

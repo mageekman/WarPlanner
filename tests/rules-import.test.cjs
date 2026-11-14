@@ -43,3 +43,5 @@ test('source provenance stays idempotent after API JSON serialization drops abse
 test('malformed catalog rows remain safe inspectable errors instead of crashing the preview',()=>{
  const r=review([file('broken-backup.json',{entries:[null,{name:'Missing data'},{key:'unit:bad',kind:'unit',name:'Bad unit',data:[]} ]})]);assert.equal(r.rows.length,3);assert.ok(r.rows.every(e=>e.error&&e.action==='skip'&&e.proposed.data&&typeof e.proposed.name==='string'));assert.throws(()=>I.selected(r),/at least one/);
 });
+
+test('imports can create a faction in the Space Marines group',()=>{const rows=I.parse([file('units.json',[{id:'marine-test',name:'Test Marine',faction_id:'space-marines',keywords:[],ability_ids:[]}])],{faction:'Space Marines',group:'Space Marines'},existing);const plan=I.plan(rows,existing),faction=plan.rows.find(r=>r.kind==='faction');assert.ok(faction);assert.equal(faction.proposed.data.group,'Space Marines');C.validate(faction.proposed);});

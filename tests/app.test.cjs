@@ -289,8 +289,8 @@ test('guide list selector groups alliances in order and sorts faction and list n
  const core=require('../dist/core.js');
  const entries=[['x2','Tyranids','Swarm'],['c2','World Eaters','Axes'],['i2','Space Marines','Zulu'],['x1','Aeldari','Aspects'],['c1','Chaos Space Marines','Raid'],['i1','Adeptus Custodes','Guard'],['i3','Space Marines','Alpha']].map(([id,faction,name])=>({id,army:{...core.sample,faction,name},warnings:[],renames:{}}));
  const a=app([['warplan.prototype.v1',JSON.stringify({army:core.sample,phase:0,savedLists:entries,activeListId:'x1'})]],{setup:true});
- const html=a.html();assert.ok(html.indexOf('label="Imperium"')<html.indexOf('label="Chaos"'));assert.ok(html.indexOf('label="Chaos"')<html.indexOf('label="Xenos"'));
- for(const [first,last] of [['i1','i3'],['i3','i2'],['c1','c2'],['x1','x2']])assert.ok(html.indexOf('value="'+first+'"')<html.indexOf('value="'+last+'"'));
+ const html=a.html();assert.ok(html.indexOf('label="Space Marines"')<html.indexOf('label="Imperium"'));assert.ok(html.indexOf('label="Imperium"')<html.indexOf('label="Chaos"'));assert.ok(html.indexOf('label="Chaos"')<html.indexOf('label="Xenos"'));
+ for(const [first,last] of [['i3','i1'],['i3','i2'],['c1','c2'],['x1','x2']])assert.ok(html.indexOf('value="'+first+'"')<html.indexOf('value="'+last+'"'));
  a.change('guide-army-list','c1');a.start();const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.activeListId,'c1');assert.equal(saved.army.name,'Raid');
 });
 test('settings returns to setup and resets the walkthrough while keeping lists',()=>{

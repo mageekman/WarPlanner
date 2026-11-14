@@ -18,7 +18,7 @@
   const found=new Map();
   for(const r of records.filter(r=>r.kind==='faction'))found.set(norm(r.name),{id:r.name,name:r.name,group:r.data.group||'Other'});
   for(const r of records)if(r.faction&&r.faction!=='*'&&!found.has(norm(r.faction)))found.set(norm(r.faction),{id:r.faction,name:r.faction,group:'Other'});
-  const order=['Imperium','Chaos','Xenos','Other'];return [...found.values()].sort((a,b)=>order.indexOf(a.group)-order.indexOf(b.group)||sort(a,b));
+  const order=['Space Marines','Imperium','Chaos','Xenos','Other'];return [...found.values()].sort((a,b)=>order.indexOf(a.group)-order.indexOf(b.group)||sort(a,b));
  }
  function scoped(records,scope){
   if(!scope)return [];
