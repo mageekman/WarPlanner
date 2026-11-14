@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.14
+# WarPlanner — personal study edition, v0.15
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -109,3 +109,20 @@ In **Rules workshop → Rules & abilities**, use **Reference status → Referenc
 Expanded shared-rule cards show eligibility once, in the header preview; the body focuses on timing, effects and optional conditions/sources. Shared abilities with a unit-list preview still expand to show the full eligible-unit list.
 
 In the guide settings gear, turn off **Show preview info** to show only card names and badges when collapsed. Expanded cards still include their full details; shared-rule eligibility moves into the expanded body while previews are hidden. The setting persists alongside font size in this account’s browser preferences, and toggling it preserves open cards and the current page.
+
+
+## Rules/source imports (v0.15)
+
+Open **Rules workshop → Import source files**. Choose a faction (and the group if adding a new faction), add source files, then **Build import preview**. File selection and parsing make no database changes. Multiple file selections accumulate, so core and enrichment files can be selected from separate folders.
+
+Supported inputs:
+
+- **40kdc JSON:** extract the GitHub ZIP first. Add a faction's `abilities.json`, `phase-mappings.json` and core `units.json`, `detachments.json`, `factions.json`, `enhancements.json`, `stratagems.json`, `leader-attachments.json` and `unit-compositions.json` as available. Folder selection accepts the supported tables and reports other tables as skipped. Source abilities resolve unit IDs and existing rule aliases; structured effects stay readable as source JSON instead of being treated as complete rule prose. Unresolved unit eligibility does not become a blanket army activation.
+- **Wahapedia CSV:** add `Factions.csv`, `Datasheets.csv`, `Abilities.csv` and `Datasheets_abilities.csv` together to resolve faction IDs and unit associations. `Detachments.csv`, `Detachment_abilities.csv`, `Enhancements.csv`, `Stratagems.csv`, `Datasheets_keywords.csv` and `Datasheets_leader.csv` are supported too. BOMs, pipe/comma/semicolon/tab delimiters, quoted multiline cells and doubled quotes are handled. HTML is converted to plain text; uploaded markup is never executed. Unrelated faction records are excluded, and neutral scenario-specific Stratagems are excluded unless marked Core. New CSV units default to one model until their settings are reviewed.
+- **WarPlanner JSON:** export a catalog backup from the import page, or download the editable JSON template. Backups preserve the catalog format and settings. PDFs, ZIPs and executable JavaScript files are not parsed.
+
+The preview shows matches, proposed text, changed fields, raw source details and validation errors. Source imports default to **Add** for new entries and **Source details only** for matches, preserving existing summaries, timing, guide flags, model counts and attachments. **Replace content** is an explicit per-entry choice; backup matches default to Skip. Conflicting duplicate or ambiguous matches are excluded for manual attention. Source entries start as reference-only and do not claim official verification. Imported source text and structured records remain available under **Imported source details** in the editor, including after subsequent manual edits.
+
+Inputs are limited to 300 files / 20 MB and previews to 2,000 entries. Save up to 1,000 selected entries in one transaction (8 MB maximum). The preview reloads current revisions; server-side revision checks reject conflicts and roll back the whole batch. Rebuild the preview to resolve a conflict. Failed requests retain the preview. Existing revision history records updates, and repeat source imports default to Skip when their source record is unchanged. Imports never rewrite saved army lists.
+
+Apply `supabase/catalog-import.sql` to enable the `import_rules_catalog` RPC. It runs as SECURITY INVOKER, checks the existing singleton admin membership and uses the catalog's RLS and history trigger. Only the administrator can import. No privileged key is used in the browser. Database tests verify owner success, conflict rollback and non-admin rejection with test writes rolled back. Parser tests and browser checks cover source files, preservation, previews, retries, export and mobile layout.
