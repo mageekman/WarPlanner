@@ -1,0 +1,3978 @@
+[
+  {
+    "sourceIds": [
+      "aquilon-optics-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Aquilon Optics mentions re-rolling failed Damage rolls, but Damage rolls have no pass/fail result. The source does not specify which dice may be re-rolled."
+  },
+  {
+    "sourceIds": [
+      "teleport-homer-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Place a Teleport Homer outside the enemy deployment zone before battle. Rapid Ingress requires arrival within 3″ of it and outside 8″ of enemies, then removes it. The source conflicts on whether the Stratagem costs 0CP or 1CP less."
+  },
+  {
+    "sourceIds": [
+      "fury-of-the-first-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Improve this unit’s AP by 1 against targets within 9″."
+  },
+  {
+    "sourceIds": [
+      "assault-ramp-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After this transport makes a Normal move in your Movement phase, its passengers can disembark using the Assault disembarkation mode."
+  },
+  {
+    "sourceIds": [
+      "orbital-comms-array-adeptus-astartes",
+      "spearpoint-war-leader-tacticus-attack-force-adeptus-astartes",
+      "forlorn-hero-blood-angels",
+      "orbital-comms-array-black-templars",
+      "zealous-vanguard-vow-sworn-crusaders-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "Orbital Comms Array is labelled an aura, but its mechanics only give this unit Scouts 6″. The source does not identify an aura recipient or range."
+  },
+  {
+    "sourceIds": [
+      "shield-dome-adeptus-astartes",
+      "consecrating-aura-vow-sworn-crusaders-black-templars",
+      "shield-dome-black-templars"
+    ],
+    "state": "structured",
+    "summary": "This unit has a 5+ invulnerable save."
+  },
+  {
+    "sourceIds": [
+      "executioner-adeptus-astartes",
+      "executioner-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to ranged Hit rolls against targets that are not Below Half-strength."
+  },
+  {
+    "sourceIds": [
+      "priority-target-acquisition-adeptus-astartes",
+      "priority-target-acquisition-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s ranged weapon Strength against targets within 12″."
+  },
+  {
+    "sourceIds": [
+      "reaping-tally-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Improve this unit’s ranged AP by 1 against units that are neither MONSTERS nor VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "terminatus-assault-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "After charging, Lightning Claws gain Sustained Hits 1. The Thunder Hammer clause simultaneously requires the target to be a MONSTER or VEHICLE and to be neither. Its intended target restriction needs correcting."
+  },
+  {
+    "sourceIds": [
+      "refuse-to-yield-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Reduce Damage allocated to this model by 1."
+  },
+  {
+    "sourceIds": [
+      "unto-the-anvil-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Re-roll melee Wound rolls of 1. While Assault Doctrine is active, you can instead re-roll any melee Wound rolls."
+  },
+  {
+    "sourceIds": [
+      "lord-of-the-pyroclasts-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Worsen the OC of enemy units in Engagement Range of this unit by 1."
+  },
+  {
+    "sourceIds": [
+      "meteoric-descent-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s ranged Hit rolls in a turn when it made an Ingress move."
+  },
+  {
+    "sourceIds": [
+      "hailstrike-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, select one enemy unit it hit. Friendly ADEPTUS ASTARTES ranged weapons gain Ignores Cover against that target for the rest of the phase."
+  },
+  {
+    "sourceIds": [
+      "techmarine-adeptus-astartes",
+      "iron-father-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This model gains Lone Operative while within 3″ of a friendly ADEPTUS ASTARTES VEHICLE."
+  },
+  {
+    "sourceIds": [
+      "spear-of-chogoris-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Assault. It can charge after Advancing; while Assault Doctrine is active, also add 1 to its Advance and Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "skilled-riders-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit gains the MOBILE keyword."
+  },
+  {
+    "sourceIds": [
+      "master-of-shadows-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In your Command phase, select one friendly ADEPTUS ASTARTES INFANTRY unit. It can re-roll Charge rolls until your next Command phase."
+  },
+  {
+    "sourceIds": [
+      "blackwing-mantle-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit can use Heroic Intervention even if it was already used this phase. That use costs 1CP less and does not consume the shared use limit."
+  },
+  {
+    "sourceIds": [
+      "icon-of-obstinacy-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Icon of Obstinacy subtracts 1 from its own unit’s Hit rolls in the source. Check whether this should instead penalise attacks targeting the bearer’s unit."
+  },
+  {
+    "sourceIds": [
+      "rampart-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of a phase, you may give this model a 2+ invulnerable save until the end of that phase."
+  },
+  {
+    "sourceIds": [
+      "bladeguard-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll Hit rolls of 1 in the Fight phase."
+  },
+  {
+    "sourceIds": [
+      "sentinel-protocols-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit can use Fire Overwatch even if already used this phase, without consuming its shared use limit. Its Snap Shot Hit rolls succeed on 4+."
+  },
+  {
+    "sourceIds": [
+      "hammerstrike-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Sustained Hits 1 against targets in a terrain area."
+  },
+  {
+    "sourceIds": [
+      "signum-array-adeptus-astartes",
+      "augury-servo-host-vow-sworn-crusaders-black-templars"
+    ],
+    "state": "structured",
+    "summary": "In your Shooting phase, select one visible enemy unit within 18″. It loses the Benefit of Cover for the rest of the phase."
+  },
+  {
+    "sourceIds": [
+      "siege-captain-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Against FORTIFICATIONS, MONSTERS or VEHICLES, improve this model’s weapon Strength, AP and Damage by 2."
+  },
+  {
+    "sourceIds": [
+      "tempormortis-adeptus-astartes",
+      "inheritors-of-sigismund-upgrade-marshals-household-black-templars"
+    ],
+    "state": "structured",
+    "summary": "This unit has Fights First."
+  },
+  {
+    "sourceIds": [
+      "glory-of-ultramar-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After an enemy unit finishes shooting in your opponent’s Shooting phase, this unit can make a D6″ Surge move if those attacks destroyed one of its models."
+  },
+  {
+    "sourceIds": [
+      "banner-of-macragge-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the end of your Movement phase, an objective this unit holds remains under your control after it leaves. Once per battle for your army, when selected to fight, this unit can gain +1 melee Attack and Strength."
+  },
+  {
+    "sourceIds": [
+      "unstoppable-valour-adeptus-astartes",
+      "preyslayer-champions-of-fenris-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "author-of-the-codex-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In your Movement phase, select one visible friendly ADEPTUS ASTARTES unit within 12″. Activate a Combat Doctrine for it until your next Command phase."
+  },
+  {
+    "sourceIds": [
+      "supreme-commander-adeptus-astartes",
+      "supreme-commander-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "This model must be your Warlord."
+  },
+  {
+    "sourceIds": [
+      "drop-pod-assault-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit must start in Strategic Reserves and can make an Ingress move in your first Movement phase. When it arrives, its passengers must disembark using Assault mode and be set up more than 8″ from enemies."
+  },
+  {
+    "sourceIds": [
+      "deployment-complete-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Friendly units cannot embark in this model."
+  },
+  {
+    "sourceIds": [
+      "angels-wrath-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s Advance and Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "relic-shield-adeptus-astartes",
+      "relic-shield-assault-force-captain-adeptus-astartes",
+      "storm-shield-terminator-assault-squad-adeptus-astartes",
+      "relic-shield-blood-angels",
+      "storm-shield-deathwatch-terminator-squad-deathwatch",
+      "storm-shield-wolf-guard-battle-leader-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this model’s Wounds."
+  },
+  {
+    "sourceIds": [
+      "thunderstrike-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to ranged Wound rolls against MONSTERS or VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "veil-of-time-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "While this model leads a unit, that unit’s weapons gain Sustained Hits 1."
+  },
+  {
+    "sourceIds": [
+      "unyielding-in-the-face-of-the-foe-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s saving throws while it is within range of an objective you control."
+  },
+  {
+    "sourceIds": [
+      "rites-of-tempering-adeptus-astartes",
+      "duty-eternal-adeptus-astartes",
+      "indefatigable-fortitude-gravis-linebreaker-force-adeptus-astartes",
+      "heirs-of-azkaellon-blood-angels",
+      "rugged-resilience-askars-wolfpack-wolf-guard-terminators-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When an attack’s Strength exceeds the target’s Toughness, subtract 1 from the attacker’s Wound roll."
+  },
+  {
+    "sourceIds": [
+      "master-of-the-forge-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "In your Movement phase, choose a friendly ADEPTUS ASTARTES VEHICLE within 3″: it regains 3 wounds and ignores BS, Hit and Wound modifiers until your next Movement phase. The source lists both move-start and move-end triggers without specifying whose move or a usage limit."
+  },
+  {
+    "sourceIds": [
+      "brutalis-charge-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit can use Crushing Impact even if it was already used this phase. That use costs 1CP less and does not consume the shared use limit."
+  },
+  {
+    "sourceIds": [
+      "shrouding-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "When targeted, this unit can gain -1 to its own Hit rolls for the phase, with a D6 roll of 1 making it Battle-shocked. The defensive effect appears assigned to the wrong unit; the source also omits the roll’s timing relative to the penalty."
+  },
+  {
+    "sourceIds": [
+      "tactical-precision-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s weapons gain Lethal Hits against targets that are neither MONSTERS nor VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "hood-of-hellfire-adeptus-astartes",
+      "psychic-hood-dark-angels",
+      "the-watchers-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit has Feel No Pain 4+ against Psychic attacks and mortal wounds."
+  },
+  {
+    "sourceIds": [
+      "press-the-attack-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s melee weapons gain Sustained Hits 1 against targets that are neither MONSTERS nor VEHICLES. While Assault Doctrine is active, the target restriction is removed."
+  },
+  {
+    "sourceIds": [
+      "honour-of-ultramar-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "If this model is destroyed before its unit has fought in the Fight phase, roll a D6: on 2+, it can fight when its unit fights. Remove it after that fight or at phase end."
+  },
+  {
+    "sourceIds": [
+      "targeter-optics-adeptus-astartes",
+      "auspex-array-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "This unit’s weapons gain Ignores Cover."
+  },
+  {
+    "sourceIds": [
+      "knight-champion-of-macragge-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After an enemy unit ends a move within 8″ in your opponent’s Movement phase, this unit can make a Normal move up to 6″ if it is not engaged."
+  },
+  {
+    "sourceIds": [
+      "strategium-command-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After deployment, you may redeploy up to three friendly ADEPTUS ASTARTES units or place them into Strategic Reserves, ignoring the normal reserve limits."
+  },
+  {
+    "sourceIds": [
+      "litany-of-hate-adeptus-astartes",
+      "litany-of-hate-space-wolves",
+      "skjalds-foretelling-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit’s melee weapons gain Lance."
+  },
+  {
+    "sourceIds": [
+      "evade-and-survive-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After an enemy unit ends a move within 8″ in your opponent’s Movement phase, this unit can make a D3+3″ Normal move if it is not engaged."
+  },
+  {
+    "sourceIds": [
+      "haywire-mine-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In your Shooting phase, choose one visible enemy unit within 6″ and roll a D6. On 2+, it suffers D3 mortal wounds, or 2D3 if it is a VEHICLE."
+  },
+  {
+    "sourceIds": [
+      "hammer-of-wrath-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After this unit charges, choose one enemy unit in Engagement Range. Roll a D6 for each model in this unit in Engagement Range of that enemy; each 4+ inflicts 1 mortal wound."
+  },
+  {
+    "sourceIds": [
+      "cold-and-calculating-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "When attacking, this unit chooses Lethal Hits against MONSTERS/VEHICLES or Sustained Hits 1 against other targets. The source’s Tactical Doctrine option still keeps both mutually exclusive target restrictions; it does not explain the intended upgrade."
+  },
+  {
+    "sourceIds": [
+      "cerebrex-logic-engine-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When declaring battle formations, choose one friendly ADEPTUS ASTARTES INFANTRY unit to gain Scouts 6″."
+  },
+  {
+    "sourceIds": [
+      "vanguard-assault-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s melee Attacks in a turn when it charged."
+  },
+  {
+    "sourceIds": [
+      "command-squad-adeptus-astartes",
+      "honour-guard-of-macragge-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Subtract 1 from Wound rolls for attacks targeting this unit."
+  },
+  {
+    "sourceIds": [
+      "catechism-of-fire-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "When this unit is selected to shoot in your Shooting phase, choose a visible enemy target. The source mentions Devastating Wounds against it but assigns the benefit only to this unit while also labelling it a shared targeting effect. Check who benefits."
+  },
+  {
+    "sourceIds": [
+      "exhortation-of-rage-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "While this unit is Below Half-strength, it can re-roll melee Wound rolls."
+  },
+  {
+    "sourceIds": [
+      "aerial-assault-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After this model makes a Normal move, friendly units with Deep Strike that disembark from it can declare a charge that turn."
+  },
+  {
+    "sourceIds": [
+      "thunderhawk-cluster-bombs-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After a Normal move or Advance in your Movement phase, choose one enemy unit this unit moved over. Roll six D6; each 3+ inflicts 1 mortal wound."
+  },
+  {
+    "sourceIds": [
+      "omni-scramblers-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "In your Shooting phase, choose one visible enemy unit within 18″ and mark it Detected. The source then increases that enemy’s detection range by 3″; check whether it instead means the range at which the enemy can be detected."
+  },
+  {
+    "sourceIds": [
+      "ballistus-strike-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Sustained Hits 1 against targets within 24″."
+  },
+  {
+    "sourceIds": [
+      "trifold-path-of-shadow-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit gains Stealth and reduces its detection range by 3″."
+  },
+  {
+    "sourceIds": [
+      "echo-of-the-ravenspire-adeptus-astartes",
+      "parabolic-jetleap-adeptus-astartes",
+      "spectrus-doctrines-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, you may place this unit into Strategic Reserves if it is not engaged."
+  },
+  {
+    "sourceIds": [
+      "fearsome-assault-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of the Fight phase, enemy units engaged with friendly units that have Fearsome Assault take Battle-shock tests at -1. Resolve this once per phase for your army."
+  },
+  {
+    "sourceIds": [
+      "terror-troops-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Worsen the OC of enemy models within 3″ of this unit by 1."
+  },
+  {
+    "sourceIds": [
+      "spiritual-leader-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of a phase, choose one friendly Battle-shocked ADEPTUS ASTARTES unit within 6″ of this model. It is no longer Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "combat-doctrines-assault-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of your Command phase, select one army-wide Combat Doctrine until your next Command phase; each can be selected once per battle. Assault allows charging after Advancing; Devastator grants Assault to ranged weapons; Tactical allows shooting and charging after Falling Back. Only one doctrine is active for a unit at a time."
+  },
+  {
+    "sourceIds": [
+      "shadow-masters-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After a friendly PHOBOS or SCOUT SQUAD unit shoots, choose: those attacks do not end its Hidden state, or it makes a D6″ Normal move and cannot charge this turn."
+  },
+  {
+    "sourceIds": [
+      "purgation-run-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After shooting in your Shooting phase, this unit may make a D6″ Normal move, but cannot declare a charge this turn."
+  },
+  {
+    "sourceIds": [
+      "adaptive-strategy-gladius-task-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Choose a Combat Doctrine for the selected unit until your next Command phase, replacing its army-wide doctrine. You can choose a doctrine already used this battle."
+  },
+  {
+    "sourceIds": [
+      "storm-of-fire-devastator-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible ADEPTUS ASTARTES unit that has not shot. Its ranged weapons gain Ignores Cover for the phase; if Devastator Doctrine is active, also improve their AP by 1."
+  },
+  {
+    "sourceIds": [
+      "strike-from-the-shadows-phobos-shadow-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Select a Hidden PHOBOS unit before it shoots. The mechanics grant Lethal Hits and +1 Strength, but the notes describe ranged improvements beyond 12″ and a Battle-shock test without fully matching those effects. Check the actual bonuses and test trigger."
+  },
+  {
+    "sourceIds": [
+      "hail-of-vengeance-devastator-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After an enemy unit shoots and destroys models in the selected ADEPTUS ASTARTES unit, that unit may shoot back. It must target only that enemy unit, which must be an eligible target."
+  },
+  {
+    "sourceIds": [
+      "codex-discipline-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible unit before it shoots or fights. Re-roll Hit rolls of 1 for the phase, and Wound rolls of 1 against Auspex-scanned targets."
+  },
+  {
+    "sourceIds": [
+      "mercy-is-weakness-ironclad-champions-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible DREADNOUGHT before it shoots or fights. Choose Lethal Hits or Sustained Hits 1 for attacks against units below Starting Strength, lasting for the phase."
+  },
+  {
+    "sourceIds": [
+      "power-of-the-machine-spirit-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After an enemy unit shoots and reduces the selected VEHICLE to Below Half-strength, it may shoot back as if it were your Shooting phase. It must target only that enemy, if eligible."
+  },
+  {
+    "sourceIds": [
+      "wind-swift-evasion-stormlance-task-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "At the end of the Fight phase, the mechanics offer a Normal move or Fall Back. The notes prohibit selecting an engaged unit, which makes the Fall Back branch unusable. Check the selection restriction."
+  },
+  {
+    "sourceIds": [
+      "artificer-armour-gladius-task-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "The bearer has a 2+ Save and Feel No Pain 5+."
+  },
+  {
+    "sourceIds": [
+      "adept-of-the-codex-gladius-task-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of your Command phase, you can activate Tactical Doctrine for the bearer’s unit instead of selecting an army-wide doctrine, even if Tactical Doctrine was already used this battle."
+  },
+  {
+    "sourceIds": [
+      "redoubtable-machine-spirit-upgrade-ironstorm-spearhead-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This VEHICLE has a 5+ invulnerable save and regains 1 lost wound at the end of your Command phase."
+  },
+  {
+    "sourceIds": [
+      "gunnery-honours-upgrade-ironstorm-spearhead-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Gunnery Honours grants Heavy to ranged weapons, but the notes also mention one Hit, Wound and Damage roll per phase without specifying what to do with those rolls. Check the missing instruction."
+  },
+  {
+    "sourceIds": [
+      "prescience-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Once per turn, after an enemy ends a move within 8″ in your opponent’s Movement phase, the unengaged bearer’s unit can move. The source encodes a D6″ move plus a separate 6″ move with Divination Discipline; check whether the latter replaces the first."
+  },
+  {
+    "sourceIds": [
+      "execute-and-redeploy-phobos-shadow-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Once per Shooting phase, after the bearer’s unit shoots in your Shooting phase, it may make a Normal move up to 6″ if not engaged. It cannot charge this turn."
+  },
+  {
+    "sourceIds": [
+      "master-of-war-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the end of your opponent’s Charge phase, if this unit is unengaged and within 6″ of an enemy, it may resolve a charge. Treat a modified Charge roll above 6 as 6."
+  },
+  {
+    "sourceIds": [
+      "stalwart-defenders-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "While every model in this unit is within range of an objective marker, worsen the AP of attacks targeting it by 1."
+  },
+  {
+    "sourceIds": [
+      "empyric-insight-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged attacks can ignore modifiers to BS, Hit rolls and Wound rolls."
+  },
+  {
+    "sourceIds": [
+      "rapid-reactions-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Once per turn, after an enemy unit shoots at this unit in your opponent’s Shooting phase, this unit can make a Normal move up to D6+1″."
+  },
+  {
+    "sourceIds": [
+      "armour-of-contempt-assault-brethren-adeptus-astartes",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes",
+      "armour-of-contempt-black-spear-task-force-deathwatch",
+      "armour-of-contempt-blade-of-ultramar-ultramarines"
+    ],
+    "state": "structured",
+    "summary": "When an enemy selects the eligible ADEPTUS ASTARTES unit as an attack target, worsen those attacks’ AP by 1 until that attack sequence ends."
+  },
+  {
+    "sourceIds": [
+      "battle-line-veterans-assault-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s bolt rifles gain Rapid Fire 1."
+  },
+  {
+    "sourceIds": [
+      "blade-masters-assault-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After an enemy unit charges into Engagement Range of this unit, subtract 1 from that enemy’s melee Wound rolls for the rest of the turn."
+  },
+  {
+    "sourceIds": [
+      "combat-doctrines-adeptus-astartes",
+      "combat-doctrines-blood-angels",
+      "combat-doctrines-dark-angels",
+      "combat-doctrines-deathwatch",
+      "combat-doctrines-black-templars",
+      "combat-doctrines-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "At the start of your Command phase, you may select one Combat Doctrine until your next Command phase. Assault allows charging after Advancing; Devastator grants Assault to ranged weapons; Tactical allows shooting and charging after Falling Back. Each option is consumable; only one can be chosen at a time."
+  },
+  {
+    "sourceIds": [
+      "decapitating-strike-assault-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When an eligible ASSAULT FORCE unit is selected to fight, its melee weapons gain Precision for the phase."
+  },
+  {
+    "sourceIds": [
+      "finest-hour-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "When selected to fight, this model gains +3 melee Attacks and Devastating Wounds for the phase. The source gives no usage limit for Finest Hour; verify whether it is limited before relying on repeated use."
+  },
+  {
+    "sourceIds": [
+      "for-the-khan-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Assault and its melee weapons gain Lance."
+  },
+  {
+    "sourceIds": [
+      "forgefather-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "In your Shooting phase, choose one visible enemy within 24″. Friendly ADEPTUS ASTARTES Melta and Torrent attacks against it gain +2 Strength. The source sets this mark to last permanently without a removal rule; check its duration."
+  },
+  {
+    "sourceIds": [
+      "helix-gauntlet-adeptus-astartes",
+      "helix-gauntlet-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "In your Command phase, this unit regains D3 lost wounds."
+  },
+  {
+    "sourceIds": [
+      "honour-or-death-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Heroic Intervention targeting this unit costs 1CP less."
+  },
+  {
+    "sourceIds": [
+      "indomitable-resolve-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to the OC of friendly ASSAULT FORCE units."
+  },
+  {
+    "sourceIds": [
+      "narthecium-adeptus-astartes",
+      "narthecis-gauntlet-gravis-siege-force-adeptus-astartes",
+      "narthecium-blood-angels",
+      "healing-balms-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "In your Command phase, this unit regains D3+1 lost wounds."
+  },
+  {
+    "sourceIds": [
+      "psychic-hood-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit has Feel No Pain 4+ against Psychic attacks."
+  },
+  {
+    "sourceIds": [
+      "relentless-aggression-assault-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When an eligible ASSAULT FORCE unit consolidates, it can consolidate 6″."
+  },
+  {
+    "sourceIds": [
+      "seeker-of-the-unfound-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When this model is set up, choose one objective within its control range. While it remains within range of that objective, set its OC to 10 and Leadership to 5+, and give it Feel No Pain 4+."
+  },
+  {
+    "sourceIds": [
+      "storm-shield-adeptus-astartes",
+      "storm-shield-deathwatch",
+      "blizzard-shield-space-wolves",
+      "storm-shield-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This model has a 4+ invulnerable save."
+  },
+  {
+    "sourceIds": [
+      "suppression-fire-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, choose one enemy unit hit by its Twin Macro-accelerator Cannon. That target suffers -1 to Hit until the start of the next turn."
+  },
+  {
+    "sourceIds": [
+      "targeted-intercession-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this unit charged, improve its melee Strength and AP by 1."
+  },
+  {
+    "sourceIds": [
+      "terrifying-charge-assault-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After an eligible ASSAULT FORCE unit charges, choose one enemy in Engagement Range of it. That enemy takes a Battle-shock test at -1."
+  },
+  {
+    "sourceIds": [
+      "trophy-taker-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Re-roll Hit and Wound rolls of 1 against CHARACTER units."
+  },
+  {
+    "sourceIds": [
+      "martial-paragon-tacticus-attack-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible CHARACTER unit is selected to shoot or fight, choose Lethal Hits or Sustained Hits 1 for its weapons until the end of the phase."
+  },
+  {
+    "sourceIds": [
+      "relentless-assault-tacticus-attack-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Relentless Assault has conflicting effects: its mechanics grant attack keywords, while its notes describe shooting or charging after Falling Back, with Battle-shock enabling both. Check which rule belongs here."
+  },
+  {
+    "sourceIds": [
+      "adamantine-terror-ironclad-champions-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of the Fight phase, enemy units in Engagement Range of the selected unit take Battle-shock tests at -1."
+  },
+  {
+    "sourceIds": [
+      "aggressive-disembarkation-gauntlet-task-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Aggressive Disembarkation describes setting up an embarked unit when an ADEPTUS ASTARTES unit is selected to move, but omits the placement distance and does not identify which unit or transport moves. Check these conditions before use."
+  },
+  {
+    "sourceIds": [
+      "aggressive-reconnaissance-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In your Shooting phase, add 1 to ranged Wound rolls against an enemy unit with no other enemy unit within 6″ of it."
+  },
+  {
+    "sourceIds": [
+      "annihilating-force-gravis-linebreaker-force-adeptus-astartes",
+      "annihilating-force-gravis-siege-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When an eligible GRAVIS unit is selected to attack, its weapons gain Lethal Hits for the phase."
+  },
+  {
+    "sourceIds": [
+      "armoured-impact-gravis-linebreaker-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After the selected GRAVIS unit charges, choose one enemy in Engagement Range. Roll one D6 per model in your unit in Engagement Range of that enemy; each 3+ inflicts 1 mortal wound."
+  },
+  {
+    "sourceIds": [
+      "assault-mastery-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "You can select Assault Doctrine one additional time."
+  },
+  {
+    "sourceIds": [
+      "blessings-of-the-omnissiah-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "In your Movement phase, choose a friendly ADEPTUS ASTARTES VEHICLE within 3″: it regains D3 wounds and ignores Hit and Wound modifiers until your next Movement phase. The source lists both move-start and move-end triggers without identifying whose move or a usage limit."
+  },
+  {
+    "sourceIds": [
+      "bolter-discipline-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In your Shooting phase, add 1 to this unit’s ranged Hit rolls if either it or its target is within range of an objective marker."
+  },
+  {
+    "sourceIds": [
+      "captain-of-the-honour-guard-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "If your army includes MARNEUS CALGAR, this unit loses Leader and gains Support."
+  },
+  {
+    "sourceIds": [
+      "chameleoline-cloaks-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Reduce this unit’s detection range by 3″."
+  },
+  {
+    "sourceIds": [
+      "chief-librarian-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This model is Psyker Level 3. While not Battle-shocked, spend 2 Psychic Level in your Movement phase to improve this unit’s Save by 1 until the next turn starts, or spend 1 in your Shooting phase to inflict 2D3 mortal wounds on a visible enemy within 24″. Each power requires a D6 roll; on 1 this unit becomes Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "close-quarters-firestorm-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Improve this unit’s weapon Strength by 1 against targets within 9″."
+  },
+  {
+    "sourceIds": [
+      "codex-adept-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Codex Adept grants Assault, Devastator and Tactical Doctrine simultaneously in the mechanics, but Combat Doctrines permits only one active doctrine. Check whether this ability overrides that limit or instead permits a choice."
+  },
+  {
+    "sourceIds": [
+      "codex-fire-patterns-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Friendly TACTICUS units use their weapons’ full range for Rapid Fire."
+  },
+  {
+    "sourceIds": [
+      "combat-embarkation-adeptus-astartes",
+      "combat-embarkation-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When an enemy declares a charge in your opponent’s Charge phase, one targeted, unengaged ADEPTUS ASTARTES unit can embark in this transport if eligible and every model is within 3″. The enemy may then reselect its charge targets."
+  },
+  {
+    "sourceIds": [
+      "combat-shield-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This model has a 5+ invulnerable save."
+  },
+  {
+    "sourceIds": [
+      "combined-deployment-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After an eligible ADEPTUS ASTARTES TRANSPORT shoots in your Shooting phase, choose one enemy it hit. Friendly ADEPTUS ASTARTES units that disembarked this turn gain Sustained Hits 1 against that enemy for the rest of the turn."
+  },
+  {
+    "sourceIds": [
+      "death-blow-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to friendly ADEPTUS ASTARTES TERMINATOR units’ Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "deeds-of-legend-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s melee Attacks while it is within range of an objective marker."
+  },
+  {
+    "sourceIds": [
+      "demi-company-commander-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Once per turn for this unit, when a friendly CAPTAIN uses Strategic Acumen, this unit can activate the same selected Combat Doctrine until your next Command phase, replacing its army-wide doctrine."
+  },
+  {
+    "sourceIds": [
+      "devastator-mastery-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "You can select Devastator Doctrine one additional time."
+  },
+  {
+    "sourceIds": [
+      "divinator-class-auspexes-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Once per phase for this unit, when a friendly ADEPTUS ASTARTES unit is selected to shoot in your Shooting phase, choose a visible enemy within 18″ of this unit. Mark it Auspex-scanned; ranged attacks against it can re-roll Hit rolls of 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "domination-fire-tactical-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After the selected ADEPTUS ASTARTES unit shoots, choose one enemy it hit. That enemy suffers -1 to Hit until the start of the next turn."
+  },
+  {
+    "sourceIds": [
+      "driven-from-cover-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, choose one enemy it hit. Friendly ADEPTUS ASTARTES ranged weapons gain Ignores Cover against that enemy for the rest of the phase."
+  },
+  {
+    "sourceIds": [
+      "duty-in-death-assault-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit is targeted, its models destroyed before it fights may fight on a D6 roll of 4+, adding 1 to that roll if Assault Doctrine is active. Remove each model after its unit fights or at phase end."
+  },
+  {
+    "sourceIds": [
+      "duty-is-never-done-gauntlet-task-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "At the end of the Fight phase, Duty is Never Done allows this unit to embark, but does not identify a transport or the required distance and eligibility conditions."
+  },
+  {
+    "sourceIds": [
+      "enduring-vengeance-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES DREADNOUGHT units can re-roll Hit rolls of 1."
+  },
+  {
+    "sourceIds": [
+      "flexible-asset-adeptus-astartes",
+      "oathbound-exemplar-fist-of-the-god-emperor-black-templars"
+    ],
+    "state": "structured",
+    "summary": "This unit can start an action after Advancing or Falling Back."
+  },
+  {
+    "sourceIds": [
+      "for-the-emperor-tacticus-firestorm-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to the selected unit’s OC for the turn."
+  },
+  {
+    "sourceIds": [
+      "forward-assault-warsuit-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of battle round 1, choose an enemy unit. This unit can re-roll Wound rolls of 1 against that enemy for the battle. When the marked enemy is destroyed, replace it with another enemy unit; only one mark is active at a time."
+  },
+  {
+    "sourceIds": [
+      "full-throttle-assault-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this unit charged, its Thunder Hammers gain +1 to Hit and Sustained Hits 1. Its other melee weapons gain +1 Damage and Sustained Hits 1."
+  },
+  {
+    "sourceIds": [
+      "fury-of-the-machine-spirit-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Lethal Hits against targets within 12″."
+  },
+  {
+    "sourceIds": [
+      "gene-wrought-might-assault-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit is selected to fight, its melee weapons gain Lance for the phase. While Assault Doctrine is active, they can also gain +1 AP."
+  },
+  {
+    "sourceIds": [
+      "grapnel-launchers-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When making a Normal, Advance, Fall Back, Charge, Pile-in, Consolidation, Surge or Scout move, this unit can move through models and ignore vertical distances."
+  },
+  {
+    "sourceIds": [
+      "grav-chutes-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit gains Deep Strike."
+  },
+  {
+    "sourceIds": [
+      "gunship-extraction-terminator-storm-force-adeptus-astartes",
+      "tactical-withdrawal-phobos-shadow-force-adeptus-astartes",
+      "blackstar-extraction-deathwatch-support-deathwatch",
+      "co-ordinated-strike-saga-of-the-beastslayer-space-wolves",
+      "into-darkness-shadowmark-talon-raven-guard",
+      "withdraw-and-regroup-spearpoint-task-force-white-scars"
+    ],
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, place this unit into Strategic Reserves."
+  },
+  {
+    "sourceIds": [
+      "honour-of-the-company-adeptus-astartes",
+      "immovable-conquerors-upgrade-gravis-siege-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s OC."
+  },
+  {
+    "sourceIds": [
+      "indomitable-defence-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "While a friendly GRAVIS unit is within range of an objective, subtract 1 from incoming Wound rolls if the attack’s Strength exceeds its Toughness."
+  },
+  {
+    "sourceIds": [
+      "ironstorm-auto-targeters-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Friendly ADEPTUS ASTARTES VEHICLES other than WALKERS can re-roll one ranged Hit roll and one ranged Wound roll. The source omits whether that allowance is per attack, activation or phase."
+  },
+  {
+    "sourceIds": [
+      "leader-of-astartes-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit gains Lone Operative while within 3″ of friendly ADEPTUS ASTARTES INFANTRY."
+  },
+  {
+    "sourceIds": [
+      "librarian-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This model is Psyker Level 1. While not Battle-shocked, spend 1 Psychic Level when Advancing to set the Advance roll to 6, or in your Movement phase to give this unit a 4+ invulnerable save until the next turn starts. Each power requires a D6 roll; on 1 this unit becomes Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "librarian-librarian-in-phobos-armour-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This model is Psyker Level 1. While not Battle-shocked, spend 1 Psychic Level when targeted to give the attacker -1 to Hit for the phase, or in your Shooting phase to make ranged attacks against a visible enemy ignore cover for the phase. Each power requires a D6 roll; on 1 this unit becomes Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "librarian-librarian-in-terminator-armour-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This model is Psyker Level 1. While not Battle-shocked, spend 1 Psychic Level to give this unit +2 melee Strength in the Fight phase, or +6″ ranged weapon range in your Shooting phase. Each lasts for the phase and requires a D6 roll; on 1 this unit becomes Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "librarius-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of each battle round, set each friendly ADEPTUS ASTARTES PSYKER’s Psychic Level resource to its Psyker Level characteristic."
+  },
+  {
+    "sourceIds": [
+      "lightning-fast-strike-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 2″ to the Move of friendly ADEPTUS ASTARTES MOUNTED and SPEEDER units."
+  },
+  {
+    "sourceIds": [
+      "master-tactician-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In your Movement phase, choose one visible friendly ADEPTUS ASTARTES unit within 9″. Activate a Combat Doctrine for it until your next Command phase, replacing its army-wide doctrine."
+  },
+  {
+    "sourceIds": [
+      "masterful-tactics-tactical-brethren-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "After an enemy moves within 8″ of an unengaged friendly ADEPTUS ASTARTES INFANTRY or MOUNTED unit, the source offers a D6″ move, or 6″ with Tactical Doctrine. It assigns the move to the rule’s own unit instead of the nearby eligible unit; check the recipient."
+  },
+  {
+    "sourceIds": [
+      "merciless-veterans-terminator-storm-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES TERMINATOR unit is selected to shoot, its ranged weapons gain Lethal Hits and Sustained Hits 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "mortis-snares-phobos-shadow-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the end of your Movement phase, snare an objective this unit controls. The next enemy to finish a move within range of a snared objective triggers a D6 roll: on 2+, it suffers D6 mortal wounds. Clear that snare after resolving it."
+  },
+  {
+    "sourceIds": [
+      "never-shall-the-standard-fall-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "While this unit is within range of an objective marker, subtract 1 from incoming Wound rolls when the attack’s Strength exceeds its Toughness."
+  },
+  {
+    "sourceIds": [
+      "overlapping-destruction-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "In your Shooting phase, choose an enemy unit. Overlapping Destruction mentions Heavy Bolters gaining Blast 1 against it, but labels the effect as shared while assigning the benefit only to this unit. Check which attackers benefit."
+  },
+  {
+    "sourceIds": [
+      "point-blank-brutality-tacticus-firestorm-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible engaged TACTICUS unit is selected to shoot, its non-Blast ranged weapons gain Close Quarters and Ignores Cover for the phase."
+  },
+  {
+    "sourceIds": [
+      "primarch-of-the-xiii-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES units within 6″ can re-roll Hit and Wound rolls of 1."
+  },
+  {
+    "sourceIds": [
+      "priority-target-identified-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Once per battle for this unit, in your Command phase, identify a visible terrain area for the turn. The source increases the detection range of enemies in it by 3″; check whether this instead changes the range at which they can be detected."
+  },
+  {
+    "sourceIds": [
+      "purgation-push-gravis-linebreaker-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After the eligible GRAVIS unit shoots, if it is not engaged it can make a Normal move up to 5″ that ends within range of an objective. It cannot charge or embark this turn."
+  },
+  {
+    "sourceIds": [
+      "raise-the-banner-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the end of your Movement phase, an objective this unit holds remains under your control after it leaves."
+  },
+  {
+    "sourceIds": [
+      "rapid-disembarkation-adeptus-astartes",
+      "rapid-disembarkation-black-templars"
+    ],
+    "state": "structured",
+    "summary": "After this transport Advances in your Movement phase, its passengers can disembark using Shock mode."
+  },
+  {
+    "sourceIds": [
+      "relentless-assault-tacticus-firestorm-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible TACTICUS unit is selected to attack, choose Sustained Hits 1 against targets that are neither MONSTERS nor VEHICLES, or Lethal Hits against MONSTERS or VEHICLES, for the phase."
+  },
+  {
+    "sourceIds": [
+      "righteous-fury-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Once per battle for your army, in the Fight phase, this unit gains +1 melee Strength. After resolving attacks, this model may regain D3 wounds, or 2D3 if it destroyed an enemy model this phase."
+  },
+  {
+    "sourceIds": [
+      "rites-of-thermal-appeasement-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s Hazard rolls for Plasma Incinerators and plasma pistols."
+  },
+  {
+    "sourceIds": [
+      "shattered-defences-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, choose one enemy MONSTER or VEHICLE it hit. Improve friendly ADEPTUS ASTARTES ranged AP against that enemy by 1 for the rest of the phase."
+  },
+  {
+    "sourceIds": [
+      "special-issue-optics-and-ammunition-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "When this unit shoots in your Shooting phase, choose Ignores Cover for its ranged weapons, or select an enemy within 24″ for a detection effect until this unit has shot. The source increases that enemy’s own detection range by 6″; check the intended recipient."
+  },
+  {
+    "sourceIds": [
+      "special-move-types-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Assault disembarkation sets passengers up within 3″ and requires a transport that has neither Advanced nor Fallen Back this phase. Shock disembarkation prevents charging that turn. The source omits Shock’s setup distance and the full movement exceptions, so this is not a complete disembarkation reference."
+  },
+  {
+    "sourceIds": [
+      "stand-unyielding-gravis-siege-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the end of your Movement phase, choose one objective this unit holds. It remains under your control after this unit leaves."
+  },
+  {
+    "sourceIds": [
+      "storm-and-secure-gauntlet-task-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the end of your Movement phase, choose one objective this unit holds. It remains under your control after this unit leaves."
+  },
+  {
+    "sourceIds": [
+      "strategic-acumen-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In your Command phase, choose a Combat Doctrine for this unit until your next Command phase, replacing its army-wide doctrine."
+  },
+  {
+    "sourceIds": [
+      "strike-from-the-shadows-phobos-shock-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When an eligible Hidden PHOBOS unit is selected to attack, its weapons gain Lethal Hits and +1 Strength for the phase."
+  },
+  {
+    "sourceIds": [
+      "suppression-volleys-gravis-siege-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After the selected GRAVIS unit shoots, choose one enemy it hit. That enemy takes a Battle-shock test at -1."
+  },
+  {
+    "sourceIds": [
+      "tactical-dreadnought-fortitude-terminator-storm-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When an enemy targets the eligible ADEPTUS ASTARTES TERMINATOR unit, reduce the Damage of those attacks by 1 until that attack sequence ends."
+  },
+  {
+    "sourceIds": [
+      "tactical-fluidity-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Once per battle round for this unit, choose one opportunity: after shooting in your Shooting phase, make a D6″ Normal move if unengaged; or at the end of your opponent’s Fight phase, make a 6″ Fall Back move if engaged."
+  },
+  {
+    "sourceIds": [
+      "tactical-focus-tacticus-attack-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible TACTICUS unit consolidates, it can consolidate D3+3″."
+  },
+  {
+    "sourceIds": [
+      "tactical-mainstay-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit can start an action while engaged or Battle-shocked, and can shoot while performing an action."
+  },
+  {
+    "sourceIds": [
+      "tactical-mastery-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "You can select Tactical Doctrine one additional time."
+  },
+  {
+    "sourceIds": [
+      "thunderhawk-insertion-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When declaring battle formations, choose one friendly GRAVIS, PHOBOS or TACTICUS unit to gain Deep Strike."
+  },
+  {
+    "sourceIds": [
+      "total-obliteration-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll Damage rolls for ranged attacks."
+  },
+  {
+    "sourceIds": [
+      "transhuman-reactions-phobos-shock-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "After an enemy moves within 8″ of an unengaged friendly PHOBOS unit, the source offers a D6″ move, or 6″ with Tactical Doctrine. It assigns that move to the rule’s own unit instead of the nearby PHOBOS unit; check the recipient."
+  },
+  {
+    "sourceIds": [
+      "transhuman-strategist-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the start of each battle round, gain 1CP if your Warlord has this ability."
+  },
+  {
+    "sourceIds": [
+      "transhuman-swiftness-tacticus-attack-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "After an enemy resolves attacks, Transhuman Swiftness grants Fights First and permission to fight next for the phase. The source does not identify the eligible recipient or whether the enemy had to target it."
+  },
+  {
+    "sourceIds": [
+      "umbral-evasion-phobos-shock-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible PHOBOS unit is targeted, subtract 1 from the attacker’s ranged Hit rolls for the phase."
+  },
+  {
+    "sourceIds": [
+      "upstoppable-advance-ironclad-champions-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible DREADNOUGHT is selected to move or declares charge targets, it gains MOBILE for the phase."
+  },
+  {
+    "sourceIds": [
+      "vanguard-ambushers-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "At the end of your Movement phase, friendly Hidden PHOBOS units gain re-rolls of Wound rolls of 1 for the rest of the turn."
+  },
+  {
+    "sourceIds": [
+      "veiling-smoke-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Once per phase for this unit, it can use Smokescreen even if already used that phase. That use costs 1CP less and does not consume the shared use limit."
+  },
+  {
+    "sourceIds": [
+      "veteran-marksmen-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll ranged Hit rolls of 1."
+  },
+  {
+    "sourceIds": [
+      "vivispectral-analysis-targeting-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s weapons gain Lethal Hits against targets other than VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "walking-fortress-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Friendly GRAVIS units that made a Normal move this turn lose Heavy on their ranged weapons and gain +1 to ranged Hit rolls."
+  },
+  {
+    "sourceIds": [
+      "wrath-of-the-chapter-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Friendly TACTICUS units can re-roll Advance rolls."
+  },
+  {
+    "sourceIds": [
+      "wrath-of-the-machine-spirit-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Devastating Wounds against targets within 12″ that are neither MONSTERS nor VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "zealous-fortitude-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit has Feel No Pain 4+ against mortal wounds."
+  },
+  {
+    "sourceIds": [
+      "artificer-sarcophagus-upgrade-ironclad-champions-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Reduce Damage allocated to this unit by 1."
+  },
+  {
+    "sourceIds": [
+      "auspex-triangulation-shrines-upgrade-stormlance-task-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, mark one visible enemy within 12″ as Spotted for the phase. The source increases that enemy’s own detection range by 3″; check whether it instead increases the range at which the enemy can be detected."
+  },
+  {
+    "sourceIds": [
+      "champion-of-the-first-company-terminator-storm-force-adeptus-astartes",
+      "fury-unbound-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit’s melee weapons gain Lethal Hits."
+  },
+  {
+    "sourceIds": [
+      "corporeum-reliquary-terminator-storm-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit can make an Ingress move in your Movement phase during battle round 1."
+  },
+  {
+    "sourceIds": [
+      "cyber-familiar-tacticus-firestorm-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "After deployment, you may redeploy up to three friendly ADEPTUS ASTARTES INFANTRY units or place them into Strategic Reserves, ignoring normal reserve limits."
+  },
+  {
+    "sourceIds": [
+      "damocles-class-uplink-gauntlet-task-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "While the bearer is embarked in a TRANSPORT, in your Movement phase choose friendly ADEPTUS ASTARTES INFANTRY within 6″ of that transport and activate a Combat Doctrine for it. The source omits how long that doctrine lasts."
+  },
+  {
+    "sourceIds": [
+      "furious-assault-upgrade-assault-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s melee weapons gain Sustained Hits 1 against targets that are neither MONSTERS nor VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "honour-of-vigilance-devastator-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Lethal Hits. While Devastator Doctrine is active, this unit can also re-roll Advance rolls."
+  },
+  {
+    "sourceIds": [
+      "imperiums-sword-assault-brethren-adeptus-astartes"
+    ],
+    "state": "missing",
+    "summary": "Imperium’s Sword gives the bearer an additional weapon, but this ability record does not contain that weapon’s profile. Consult the linked weapon entry before using it."
+  },
+  {
+    "sourceIds": [
+      "laurels-of-triumph-gladius-task-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "Laurels of Triumph grants +1 melee Strength, or +2 with Assault Doctrine. Its AP change is encoded as an addition rather than an improvement; check the sign before applying that part."
+  },
+  {
+    "sourceIds": [
+      "laurels-of-vigilance-tactical-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Once per battle round for your army, Fire Overwatch or Heroic Intervention targeting a friendly ADEPTUS ASTARTES BATTLELINE unit within 12″ of this model costs 1CP less."
+  },
+  {
+    "sourceIds": [
+      "linebreaker-onslaught-gauntlet-task-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this unit disembarked, it can re-roll Charge rolls and cannot be targeted with Overwatch."
+  },
+  {
+    "sourceIds": [
+      "master-forged-firearms-devastator-brethren-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Improve the bearer’s non-Psychic ranged weapons’ Attacks, Strength, AP and Damage by 1."
+  },
+  {
+    "sourceIds": [
+      "relentless-advance-gravis-linebreaker-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit gains Scouts 5″."
+  },
+  {
+    "sourceIds": [
+      "seal-of-shrouding-phobos-shock-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "This unit cannot be targeted with Overwatch."
+  },
+  {
+    "sourceIds": [
+      "standard-of-the-emperor-ascendant-gladius-task-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "The bearer gains +1 OC and Feel No Pain 5+. Once per battle for your army, when its unit fights, that unit can gain +1 melee Attack for the phase. The source also adds 1 to Leadership numerically; check whether it should improve or worsen that characteristic."
+  },
+  {
+    "sourceIds": [
+      "supercharged-engines-upgrade-stormlance-task-force-adeptus-astartes",
+      "righteous-fervour-upgrade-fist-of-the-god-emperor-black-templars",
+      "stormseers-wisdom-spearpoint-task-force-white-scars"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll Advance rolls."
+  },
+  {
+    "sourceIds": [
+      "tactical-insight-tactical-brethren-adeptus-astartes",
+      "student-of-the-codex-blade-of-ultramar-ultramarines"
+    ],
+    "state": "structured",
+    "summary": "Tactical Doctrine is active for this unit."
+  },
+  {
+    "sourceIds": [
+      "tempered-in-battle-aura-tacticus-firestorm-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES units within 6″ can re-roll Leadership rolls."
+  },
+  {
+    "sourceIds": [
+      "venator-omni-auspex-phobos-shadow-force-adeptus-astartes",
+      "venator-omni-auspex-phobos-shock-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Against Hidden targets, re-roll Wound rolls of 1, or rolls of 1 and 2 while Assault Doctrine is active."
+  },
+  {
+    "sourceIds": [
+      "venerable-champion-aura-upgrade-ironclad-champions-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES INFANTRY and MOUNTED units within 6″ can re-roll Hit rolls of 1."
+  },
+  {
+    "sourceIds": [
+      "calgars-champion-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "The bearer can re-roll Hit and Wound rolls of 1 against enemy CHARACTER units."
+  },
+  {
+    "sourceIds": [
+      "into-the-fray-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this unit charged, its melee weapons gain Cleave 1."
+  },
+  {
+    "sourceIds": [
+      "veteran-bodyguard-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "While this model is attached to a unit, other friendly CHARACTER models in that unit gain Feel No Pain 4+."
+  },
+  {
+    "sourceIds": [
+      "a-worthy-death-gladius-task-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit is targeted, its models destroyed before the unit has fought can fight on a D6 roll of 4+. Remove them after that unit fights or at phase end."
+  },
+  {
+    "sourceIds": [
+      "headhunter-doctrine-ironstorm-spearhead-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES VEHICLE shoots in your Shooting phase, its ranged weapons gain Lethal Hits against MONSTERS and VEHICLES for the phase. DEDICATED TRANSPORTS, FLY and WALKER units are excluded."
+  },
+  {
+    "sourceIds": [
+      "hurtling-targets-stormlance-task-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When an eligible ADEPTUS ASTARTES MOUNTED or SPEEDER unit is targeted, subtract 1 from the attacker’s ranged Hit rolls for the phase."
+  },
+  {
+    "sourceIds": [
+      "layered-ceramite-ironstorm-spearhead-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When mortal damage is allocated to the eligible ADEPTUS ASTARTES VEHICLE, it gains Feel No Pain 5+ against mortal wounds for the phase."
+  },
+  {
+    "sourceIds": [
+      "might-of-angels-gladius-task-force-adeptus-astartes",
+      "courage-and-honour-blade-of-ultramar-ultramarines"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit fights, its melee weapons gain Lance for the phase."
+  },
+  {
+    "sourceIds": [
+      "might-of-the-machine-spirit-ironstorm-spearhead-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "The selected unit ignores modifiers to Move, BS, Hit rolls and Wound rolls until your next Command phase."
+  },
+  {
+    "sourceIds": [
+      "responsive-tactics-gladius-task-force-adeptus-astartes"
+    ],
+    "state": "needs-summary",
+    "summary": "After an enemy moves within 8″ of an unengaged friendly ADEPTUS ASTARTES INFANTRY or MOUNTED unit, a D6″ Normal move is granted. The source assigns it to the rule’s own unit instead of the nearby eligible unit; check the recipient."
+  },
+  {
+    "sourceIds": [
+      "storm-of-devastation-gladius-task-force-adeptus-astartes",
+      "exemplary-vigilance-blade-of-ultramar-ultramarines"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit shoots, its ranged weapons gain Ignores Cover for the phase."
+  },
+  {
+    "sourceIds": [
+      "sudden-onslaught-stormlance-task-force-adeptus-astartes"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES MOUNTED or SPEEDER unit Advances, treat its Advance roll as 6."
+  },
+  {
+    "sourceIds": [
+      "focused-fury-angelic-inheritors-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "When an eligible ADEPTUS ASTARTES unit is selected to fight, its melee weapons gain Lethal Hits for the phase. A CHARACTER unit can also gain Lance."
+  },
+  {
+    "sourceIds": [
+      "in-the-shadow-of-great-wings-angelic-inheritors-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "When an eligible ADEPTUS ASTARTES CHARACTER unit is targeted, the mechanics grant Stealth and reduce detection range by 3″, but the notes instead limit ranged targeting to models within 18″. Check which protection applies."
+  },
+  {
+    "sourceIds": [
+      "instant-of-grace-angelic-inheritors-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Until your next Command phase, a non-CHARACTER model in the selected INFANTRY unit gains CHARACTER so it can interact with Legacy of the Angel. The mechanics instead grant the keyword to the entire unit; check which model receives it."
+  },
+  {
+    "sourceIds": [
+      "strike-now-for-glory-angelic-inheritors-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible ADEPTUS ASTARTES unit before it shoots. Its ranged weapons gain Sustained Hits 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "unto-the-burning-skies-angelic-inheritors-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, place the eligible JUMP PACK unit into Strategic Reserves. An engaged unit cannot be chosen unless it is The Sanguinor."
+  },
+  {
+    "sourceIds": [
+      "angelic-terror-sanguinary-spearhead-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Choose one enemy within 3″ of the selected SANGUINARY SPEARHEAD SANGUINARY GUARD unit. That enemy takes a Battle-shock test at -1."
+  },
+  {
+    "sourceIds": [
+      "blinding-blurs-of-vengeance-encarmine-speartip-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "When the eligible SANGUINARY GUARD unit is targeted by ranged attacks, it gains Stealth and reduces its detection range by 3″ for the phase."
+  },
+  {
+    "sourceIds": [
+      "dauntless-bravery-sanguinary-spearhead-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "When the eligible SANGUINARY SPEARHEAD unit within 3″ of the battlefield centre is targeted, subtract 1 from incoming Wound rolls if the attack’s Strength exceeds its Toughness. Lasts for the phase."
+  },
+  {
+    "sourceIds": [
+      "death-begets-vengeance-wrath-of-the-doomed-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "When an enemy destroys a friendly DEATH COMPANY unit, mark that enemy as hated for the rest of the battle. Friendly DEATH COMPANY attacks against it gain +1 to Wound."
+  },
+  {
+    "sourceIds": [
+      "inexorable-valour-encarmine-speartip-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "After an enemy Falls Back from the selected SANGUINARY GUARD unit, if your unit is now unengaged, it can make a D3+3″ Normal move."
+  },
+  {
+    "sourceIds": [
+      "judgement-of-the-golden-host-encarmine-speartip-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "After the selected SANGUINARY GUARD unit charges, choose one enemy in Engagement Range. Roll one D6 for each model in your unit engaged with that enemy; each 3+ inflicts 1 mortal wound."
+  },
+  {
+    "sourceIds": [
+      "no-barrier-to-retribution-wrath-of-the-doomed-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "When the selected DEATH COMPANY DREADNOUGHT makes a Normal, Advance or Charge move, it gains MOBILE. The notes limit this to that move while the mechanics last for the phase; check the duration."
+  },
+  {
+    "sourceIds": [
+      "rage-fuelled-response-wrath-of-the-doomed-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "After an enemy shoots at the selected DEATH COMPANY unit, your unit can make a D6″ Surge move if it is unengaged."
+  },
+  {
+    "sourceIds": [
+      "show-no-mercy-sanguinary-spearhead-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "When an enemy Falls Back from the eligible SANGUINARY SPEARHEAD unit, it must use Desperate Escape. Apply -1 to those tests if it is Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "prescient-flash-angelic-inheritors-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "The bearer’s unit gains Scouts 6″."
+  },
+  {
+    "sourceIds": [
+      "blazing-icon-angelic-inheritors-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Enemy units cannot use Fire Overwatch to shoot at the bearer’s unit."
+  },
+  {
+    "sourceIds": [
+      "ordained-sacrifice-angelic-inheritors-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "The first time the bearer is destroyed, roll a D6 at phase end. On 2+, set it up unengaged as close as possible to where it died, with 3 wounds, as its own unit with Starting Strength 1. Once per battle for your army."
+  },
+  {
+    "sourceIds": [
+      "angelic-executioner-encarmine-speartip-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "When the bearer’s unit fights, choose Lethal Hits or Sustained Hits 1 for its melee weapons. The source marks this as permanent rather than limiting it to that fight or phase; check how long it lasts."
+  },
+  {
+    "sourceIds": [
+      "shadow-of-abomination-encarmine-speartip-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Once per battle, when selected to fight, the bearer gains +1 melee Damage. The source encodes a permanent duration despite describing a single activation; check when the bonus ends."
+  },
+  {
+    "sourceIds": [
+      "instinctive-interception-wrath-of-the-doomed-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Heroic Intervention targeting the bearer’s DEATH COMPANY unit costs 1CP less."
+  },
+  {
+    "sourceIds": [
+      "masterful-fighter-sanguinary-spearhead-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Improve the bearer’s melee Strength by 2 and AP by 1."
+  },
+  {
+    "sourceIds": [
+      "overwhelming-charge-sanguinary-spearhead-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "The upgraded ASSAULT INTERCESSOR SQUAD can make a D3+3″ Pile-in move."
+  },
+  {
+    "sourceIds": [
+      "on-the-archtraitors-bridge-wrath-of-the-doomed-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Add 2 to the bearer’s melee Attacks."
+  },
+  {
+    "sourceIds": [
+      "an-honourable-death-in-combat-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "While below Starting Strength, this unit can gain Sustained Hits 1; while Below Half-strength, it can instead gain Sustained Hits 2."
+  },
+  {
+    "sourceIds": [
+      "angelic-visage-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Subtract 1 from melee Hit rolls targeting this unit."
+  },
+  {
+    "sourceIds": [
+      "aura-of-fervour-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES units within 12″ can re-roll Leadership rolls."
+  },
+  {
+    "sourceIds": [
+      "black-rage-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Re-roll melee Hit rolls of 1. Black Rage also prevents Falling Back and sets OC to 0 outside support range, but its mechanics require both a BLOOD ANGELS CHARACTER within 6″ and a CHAPLAIN within 12″ to avoid that drawback, while the notes suggest either is sufficient. Check the support condition."
+  },
+  {
+    "sourceIds": [
+      "blood-chalice-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s Toughness."
+  },
+  {
+    "sourceIds": [
+      "born-to-fight-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Add 2 to this unit’s OC while it is within Engagement Range of an enemy."
+  },
+  {
+    "sourceIds": [
+      "death-mask-of-sanguinius-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "At the start of the Fight phase, every enemy unit within 6″ of this model takes a Battle-shock test at -1."
+  },
+  {
+    "sourceIds": [
+      "driven-by-fury-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Driven by Fury has conflicting movement instructions. The notes give this model a D6+2″ move toward the nearest enemy after being hit; the mechanics give the attacking enemy a D6+1″ Surge move. Check the mover, distance and restrictions."
+  },
+  {
+    "sourceIds": [
+      "finest-hour-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "When selected to fight, this model gains +3 melee Attacks and Devastating Wounds for the phase. The partial source does not state Finest Hour’s usage limit."
+  },
+  {
+    "sourceIds": [
+      "guardian-of-the-lost-blood-angels",
+      "gravis-protection-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Guardian of the Lost subtracts 1 from its own unit’s weapon Damage in the source. Check whether it should instead reduce incoming Damage."
+  },
+  {
+    "sourceIds": [
+      "lost-to-fury-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit’s melee weapons gain Sustained Hits 1."
+  },
+  {
+    "sourceIds": [
+      "mass-of-doom-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this unit charged, its melee weapons gain Devastating Wounds against targets that are neither MONSTERS nor VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "miraculous-saviour-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Miraculous Saviour permits a one-use Ingress move ending in Engagement Range of an enemy that charged. Its condition also requires this arriving unit to have charged already this turn, so the source does not provide a usable arrival trigger."
+  },
+  {
+    "sourceIds": [
+      "overcharged-engines-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll Advance rolls."
+  },
+  {
+    "sourceIds": [
+      "redeemer-of-the-lost-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "While this model leads a unit in the Fight phase, Redeemer of the Lost grants fighting on death. The source omits the destruction trigger, any required roll and whether already-fought models qualify."
+  },
+  {
+    "sourceIds": [
+      "savage-fury-blood-angels",
+      "fervent-exemplars-upgrade-marshals-household-black-templars",
+      "sigismunds-heir-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "targeted-intercession-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Re-roll melee Wound rolls of 1, or any melee Wound rolls against a target within range of an objective marker."
+  },
+  {
+    "sourceIds": [
+      "the-sons-of-sanguinius-blood-angels",
+      "the-unforgiven-dark-angels",
+      "sons-of-russ-askars-wolfpack-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Your army is restricted to a single Space Marine chapter."
+  },
+  {
+    "sourceIds": [
+      "transfixing-gaze-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "An enemy within 6″ attempting to Fall Back must pass a Leadership test or cannot Fall Back. The source marks that prohibition as lasting for the entire battle; check whether it only prevents this move."
+  },
+  {
+    "sourceIds": [
+      "warden-of-the-imperium-nihilus-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Warden of the Imperium Nihilus grants both Assault and Tactical Doctrine in the mechanics without explaining how this interacts with the one-active-doctrine limit. Check whether both apply together or a choice is required."
+  },
+  {
+    "sourceIds": [
+      "legacy-of-the-angel-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Friendly BLOOD ANGELS CHARACTER units can re-roll Hit and Wound rolls of 1. Your army is restricted to a single chapter."
+  },
+  {
+    "sourceIds": [
+      "oath-of-moment-blood-angels",
+      "the-deathwing-dark-angels",
+      "oath-of-moment-dark-angels",
+      "mission-tactics-deathwatch",
+      "close-range-destruction-black-templars",
+      "oath-of-moment-space-wolves"
+    ],
+    "state": "missing",
+    "summary": "The source supplies an empty effect for this named rule; it does not state its benefit, targets or full resolution. Its effect must be supplied from a current rules reference."
+  },
+  {
+    "sourceIds": [
+      "rapid-manoeuvres-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Friendly SANGUINARY SPEARHEAD units can re-roll Advance rolls."
+  },
+  {
+    "sourceIds": [
+      "wrath-of-angels-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Wrath of Angels activates Tactical Doctrine for friendly SANGUINARY GUARD and restricts the army to one chapter. The source gives no activation timing or doctrine end point."
+  },
+  {
+    "sourceIds": [
+      "black-rage-death-company-marines-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Re-roll melee Hit rolls of 1. The mechanics prevent Falling Back and set OC to 0 unless both a BLOOD ANGELS CHARACTER is within 6″ and a CHAPLAIN is within 12″. Check whether either support unit should suffice."
+  },
+  {
+    "sourceIds": [
+      "chief-librarian-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "This model is Psyker Level 3. Spending 1 Psychic Level can grant Assault Doctrine in your Command phase; spending 2 can hinder an enemy’s Fall Back near this model. The latter trigger occurs after the enemy has already Fallen Back, so its intended timing needs correction."
+  },
+  {
+    "sourceIds": [
+      "death-visions-of-sanguinius-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Death Visions of Sanguinius inflicts mortal wounds after this model is destroyed in melee, with a stronger table near the enemy Warlord. Its destruction condition refers to a model being a member of itself, so the trigger needs correction before the table is usable."
+  },
+  {
+    "sourceIds": [
+      "sanguinius-fury-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "DEATH COMPANY units lose access to Devastator and Tactical Doctrine and gain Assault Doctrine at a phase start. The source does not identify which phase, or how long that activation lasts. The army must use a single chapter."
+  },
+  {
+    "sourceIds": [
+      "strategic-acumen-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "In your Command phase, choose a Combat Doctrine for this unit until your next Command phase, replacing its army-wide doctrine."
+  },
+  {
+    "sourceIds": [
+      "transhuman-strategist-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "At the start of each battle round, gain 1CP if your Warlord has this ability."
+  },
+  {
+    "sourceIds": [
+      "unto-death-angelic-inheritors-blood-angels"
+    ],
+    "state": "structured",
+    "summary": "Once per battle for your army, in your Command phase, this unit can gain re-rolls to Advance and Charge rolls for the turn."
+  },
+  {
+    "sourceIds": [
+      "measured-strategist-angelic-inheritors-blood-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Measured Strategist selects a Combat Doctrine for this unit until your next Command phase, replacing its army-wide doctrine. The source does not state when you select it."
+  },
+  {
+    "sourceIds": [
+      "for-the-lion-the-vengeful-brethren-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "In the Command phase, select one eligible VENGEFUL BRETHREN unit. Add 1 to its OC for the turn."
+  },
+  {
+    "sourceIds": [
+      "mission-focus-the-vengeful-brethren-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "When the selected VENGEFUL BRETHREN unit attacks in your Shooting phase or the Fight phase while within range of an objective, add 1 to its Hit rolls for the phase."
+  },
+  {
+    "sourceIds": [
+      "determined-to-the-last-the-vengeful-brethren-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "When the eligible VENGEFUL BRETHREN BLADEGUARD VETERAN SQUAD is targeted in the Fight phase before fighting, roll for each destroyed model. On 2+, it remains to fight with its unit, then is removed after the fight or at phase end."
+  },
+  {
+    "sourceIds": [
+      "wings-of-shadow-darkflight-pursuit-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Wings of Shadow grants Stealth for the phase, but the notes restrict it to RAVENWING FLY units in the opponent’s Shooting phase while the mechanics also allow MOUNTED units and other attack windows. Check eligibility and timing."
+  },
+  {
+    "sourceIds": [
+      "skyborne-surveillance-darkflight-pursuit-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "After the selected RAVENWING FLY unit shoots, visible enemies within 6″ receive a +3″ detection-range change for the phase. The source assigns it to the enemies’ own detection range; check whether this instead makes them easier to detect."
+  },
+  {
+    "sourceIds": [
+      "we-are-vengeance-darkflight-pursuit-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "After an enemy shoots at the selected RAVENWING FLY unit, your unit can make a D3+3″ Normal move if unengaged."
+  },
+  {
+    "sourceIds": [
+      "knights-of-iron-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "The selected RAVENWING unit gains MOBILE for the phase, allowing horizontal movement through terrain on Normal, Advance and Charge moves."
+  },
+  {
+    "sourceIds": [
+      "tactical-mastery-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Tactical Mastery activates a Combat Doctrine until your next Command phase, but its notes instead specify shooting and charging after Falling Back for a RAVENWING unit. Check whether it must select Tactical Doctrine and when it is used."
+  },
+  {
+    "sourceIds": [
+      "inescapable-justice-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Inescapable Justice has unrelated effects in the source: melee Precision in the mechanics, but selecting a new Oath of Moment target within 12″ of a visible CHARACTER in the notes. Check which rule applies."
+  },
+  {
+    "sourceIds": [
+      "relics-of-the-dark-age-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible ADEPTUS ASTARTES INFANTRY or MOUNTED unit before it shoots. Improve its ranged Strength by 2 for the phase."
+  },
+  {
+    "sourceIds": [
+      "lions-will-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Lion’s Will’s notes give an engaged unit +1 OC until your next Command phase and +1 to Hit for the turn. The mechanics only give +1 OC for the turn. Check both effects and durations."
+  },
+  {
+    "sourceIds": [
+      "duty-unto-death-inner-circle-task-force-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Duty Unto Death’s notes allow destroyed DEATHWING models to fight on 4+, with +1 near the Vowed objective, after the attacker finishes. The mechanics instead roll when targeted and omit that bonus and destruction trigger. Check the resolution."
+  },
+  {
+    "sourceIds": [
+      "wrath-of-the-lion-inner-circle-task-force-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Wrath of the Lion has conflicting mortal-wound values: the notes say 4+ per engaged model, +1 near the Vowed objective, capped at 3; the mechanics say 3+, capped at 6. Check the roll and cap."
+  },
+  {
+    "sourceIds": [
+      "relic-teleportarium-inner-circle-task-force-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "When the eligible DEATHWING unit arrives by Deep Strike, it can be set up more than 6″ horizontally from enemies. It cannot declare a charge that turn."
+  },
+  {
+    "sourceIds": [
+      "champion-of-the-deathwing-inner-circle-task-force-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Champion of the Deathwing’s notes mention Critical Hits on 5+ while the bearer is near the Vowed objective. The mechanics instead grant Sustained Hits 1 while the target is near that objective. Check the benefit and which unit must be near the objective."
+  },
+  {
+    "sourceIds": [
+      "singular-will-inner-circle-task-force-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Singular Will’s notes give the bearer’s DEATHWING unit 6″ Pile-in and Consolidation moves, but the mechanics only permit a D3+3″ Consolidation. Check the distance and both move types."
+  },
+  {
+    "sourceIds": [
+      "supreme-combatant-the-vengeful-brethren-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "When the VENGEFUL BRETHREN GRAVIS CAPTAIN’s unit attacks, choose Lethal Hits or Sustained Hits 1. The source marks this as permanent without stating when the selected benefit ends."
+  },
+  {
+    "sourceIds": [
+      "dutiful-defenders-the-vengeful-brethren-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Once per battle round for your army, Heroic Intervention targeting the upgraded VENGEFUL BRETHREN BLADEGUARD VETERAN SQUAD costs 1CP less."
+  },
+  {
+    "sourceIds": [
+      "tempered-in-battle-aura-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES units within 6″ can re-roll Battle-shock and Leadership tests."
+  },
+  {
+    "sourceIds": [
+      "ancient-weapons-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Ancient Weapons adds 2 to the bearer’s melee Strength. It encodes an AP addition rather than an improvement, so check whether the intended AP bonus is +1 improvement."
+  },
+  {
+    "sourceIds": [
+      "deathwing-assault-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Deathwing Assault’s notes permit Deep Strike arrival in your first, second or third Movement phase regardless of mission rules. The mechanics only encode battle round 1. Check the full arrival permission."
+  },
+  {
+    "sourceIds": [
+      "lord-of-the-ravenwing-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "The bearer’s RAVENWING unit can re-roll Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "thundercowl-turbines-upgrade-darkflight-pursuit-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "The upgraded RAVENWING FLY unit can make an Ingress move in your first Movement phase."
+  },
+  {
+    "sourceIds": [
+      "nightforged-battery-upgrade-darkflight-pursuit-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "The upgraded LAND SPEEDER VENGEANCE can re-roll rolls determining its number of Attacks and its Hazard rolls."
+  },
+  {
+    "sourceIds": [
+      "astartes-banner-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "While this unit includes a RAVENWING ANCIENT, add 1 to its OC."
+  },
+  {
+    "sourceIds": [
+      "book-of-salvation-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s melee Attacks."
+  },
+  {
+    "sourceIds": [
+      "braziers-of-judgement-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit gains Stealth. Subtract 1 from melee Hit rolls targeting it."
+  },
+  {
+    "sourceIds": [
+      "cut-off-their-escape-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Enemy units in Engagement Range that are neither MONSTERS nor VEHICLES cannot Fall Back."
+  },
+  {
+    "sourceIds": [
+      "dark-angels-bodyguard-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit gains Lone Operative while within 3″ of friendly DARK ANGELS INFANTRY."
+  },
+  {
+    "sourceIds": [
+      "deathwing-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit ignores modifiers to WS, BS and Hit rolls."
+  },
+  {
+    "sourceIds": [
+      "engulfing-fear-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "In your Shooting phase, if this unit is not Battle-shocked, roll a D6; on 1 it becomes Battle-shocked. Choose one enemy within 12″ of this model to take a Battle-shock test at -1."
+  },
+  {
+    "sourceIds": [
+      "exemplar-of-hate-dark-angels",
+      "litanies-of-the-devout-black-templars"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll melee Hit rolls."
+  },
+  {
+    "sourceIds": [
+      "feared-interrogator-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "At the start of the Fight phase, enemy CHARACTER units within 6″ take Battle-shock tests at -1."
+  },
+  {
+    "sourceIds": [
+      "grand-master-of-the-deathwing-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s Wound rolls against CHARACTER units."
+  },
+  {
+    "sourceIds": [
+      "grand-master-of-the-ravenwing-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "While this model leads a unit, add 1 to that unit’s Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "honour-or-death-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "While this unit includes a RAVENWING CHAMPION, add 1 to its Advance and Charge rolls, and Heroic Intervention targeting it costs 1CP less."
+  },
+  {
+    "sourceIds": [
+      "icon-of-old-caliban-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Friendly DARK ANGELS units within 6″ gain Stealth."
+  },
+  {
+    "sourceIds": [
+      "inner-circle-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Inner Circle prevents this unit being targeted by Tactical Dreadnought Fortitude. It also subtracts 1 from its own weapon Damage in the source; check whether that should instead reduce incoming Damage."
+  },
+  {
+    "sourceIds": [
+      "intractable-will-dark-angels",
+      "anvil-of-endurance-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "If a model in this unit is destroyed in the Fight phase before the unit has fought, roll a D6. On 4+, it fights with its unit before removal. Remove it after that fight or at phase end."
+  },
+  {
+    "sourceIds": [
+      "knights-of-caliban-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this unit charged, its melee weapons gain Anti-MONSTER 4+ and Anti-VEHICLE 4+."
+  },
+  {
+    "sourceIds": [
+      "lightning-fast-manoeuvres-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Subtract 1 from ranged Wound rolls targeting this unit."
+  },
+  {
+    "sourceIds": [
+      "masterful-tactician-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "In your Movement phase, choose up to one visible friendly ADEPTUS ASTARTES unit within 9″. Activate a Combat Doctrine for it until your next Command phase, replacing its army-wide doctrine."
+  },
+  {
+    "sourceIds": [
+      "narthecium-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "While this unit includes a RAVENWING APOTHECARY, it regains D3+1 lost wounds in your Command phase."
+  },
+  {
+    "sourceIds": [
+      "primarch-of-the-first-legion-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "At the start of your Command phase, choose up to two benefits until your next Command phase: if unengaged, enter Strategic Reserves and return next Movement phase, including round 1; give friendly DARK ANGELS within 6″ re-rolls of melee Hit and Wound rolls of 1; or give them Feel No Pain 5+ against Psychic attacks and mortal wounds."
+  },
+  {
+    "sourceIds": [
+      "stasis-bomb-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "At the end of your opponent’s Fight phase, mark a visible enemy within 24″, excluding AIRCRAFT and Lone Operatives. Its next move can trigger mortal wounds and a Move penalty in the opponent’s Movement phase. The source does not specify how long the resulting Move penalty lasts after that phase."
+  },
+  {
+    "sourceIds": [
+      "storm-of-vengeance-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy destroys a friendly DARK ANGELS unit within 6″ of this unit, this unit may shoot back using Normal shooting and must target that enemy."
+  },
+  {
+    "sourceIds": [
+      "strikes-of-retribution-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "Strikes of Retribution’s source instructs this model to destroy itself before fighting and then grants fighting on death on 2+, without a destruction trigger. Check the trigger and remove the unintended self-destruction instruction."
+  },
+  {
+    "sourceIds": [
+      "supreme-grand-master-dark-angels",
+      "tactical-instinct-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "This unit’s weapons gain Sustained Hits 1."
+  },
+  {
+    "sourceIds": [
+      "the-emperors-shield-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "The Emperor’s Shield subtracts 1 from its own unit’s Wound rolls when an attack’s Strength exceeds the target’s Toughness. Check whether it should penalise the incoming attacker instead."
+  },
+  {
+    "sourceIds": [
+      "the-lion-helm-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit has a 4+ invulnerable save."
+  },
+  {
+    "sourceIds": [
+      "the-ravenwing-dark-angels",
+      "the-ravenwing-the-vengeful-brethren-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES MOUNTED units and FLY VEHICLES gain RAVENWING."
+  },
+  {
+    "sourceIds": [
+      "the-spiritshield-helm-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "This unit has Feel No Pain 3+ against Psychic attacks and mortal wounds."
+  },
+  {
+    "sourceIds": [
+      "watcher-in-the-dark-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Once per battle, this unit can gain Feel No Pain 4+ for one phase."
+  },
+  {
+    "sourceIds": [
+      "black-winged-vigilance-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Friendly RAVENWING FLY units’ ranged weapons gain Ignores Cover, and friendly OUTRIDER SQUADS gain BATTLELINE. Your army must use a single chapter."
+  },
+  {
+    "sourceIds": [
+      "bladeguard-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Once per turn for this unit in the Fight phase, choose one benefit for the phase: +1 to its melee Hit rolls when selected to fight, or -1 to incoming Hit rolls when targeted."
+  },
+  {
+    "sourceIds": [
+      "dutiful-tenacity-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "When an attack targets friendly ADEPTUS ASTARTES INFANTRY or MOUNTED, subtract 1 from its Wound roll if its Strength exceeds the target’s Toughness. Your army must use a single chapter."
+  },
+  {
+    "sourceIds": [
+      "honoured-knights-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "After an enemy charges into friendly VENGEFUL BRETHREN units, mark those units in Defence Stance for the turn. Subtract 1 from incoming Wound rolls against them if the attack’s Strength exceeds their Toughness."
+  },
+  {
+    "sourceIds": [
+      "objective-secured-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "At the end of your Command phase, an objective this unit holds remains under your control after it leaves."
+  },
+  {
+    "sourceIds": [
+      "punishing-volley-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, choose one enemy it hit. That enemy takes a Battle-shock test."
+  },
+  {
+    "sourceIds": [
+      "teleport-homer-dark-angels",
+      "teleport-homer-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "At battle start, you may place a Teleport Homer token. Rapid Ingress targeting this unit can cost 1CP less if it arrives within 3″ of the token and more than 8″ from enemies; then remove the token. An enemy ending a move within 1″ of the token also removes it."
+  },
+  {
+    "sourceIds": [
+      "vowed-target-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "In your Command phase, choose a Vowed objective until your next Command phase. Friendly DEATHWING INFANTRY gain +1 to Wound against enemies within range of it. Your army must use a single chapter."
+  },
+  {
+    "sourceIds": [
+      "chief-librarian-dark-angels"
+    ],
+    "state": "needs-summary",
+    "summary": "This model is Psyker Level 3. One power spends 1 Psychic Level in your Shooting phase to force a Battle-shock test at -1 on an enemy within 12″. Its defensive power instead penalises its own Hit rolls when targeted; check that recipient. Each power rolls a D6, with a 1 making this unit Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "emnity-for-the-unworthy-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s Hit rolls against CHARACTER units."
+  },
+  {
+    "sourceIds": [
+      "master-strategist-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "In your Command phase, choose a Combat Doctrine for this unit until your next Command phase."
+  },
+  {
+    "sourceIds": [
+      "the-deathwing-the-vengeful-brethren-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES DARK ANGELS gain DEATHWING if they are TERMINATORS, DREADNOUGHTS, a BLADEGUARD ANCIENT, BLADEGUARD VETERANS, STERNGUARD VETERANS, VANGUARD VETERANS WITH JUMP PACKS, a LAND RAIDER variant, REPULSOR or REPULSOR EXECUTIONER."
+  },
+  {
+    "sourceIds": [
+      "transhuman-strategist-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "At the start of each battle round, gain 1CP if your Warlord has this ability."
+  },
+  {
+    "sourceIds": [
+      "watcher-in-the-dark-azrael-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "Once per battle for this unit, when mortal damage is allocated to it, it can gain Feel No Pain 4+ against mortal wounds for the phase."
+  },
+  {
+    "sourceIds": [
+      "in-sacrifice-victory-wrath-of-the-rock-dark-angels"
+    ],
+    "state": "structured",
+    "summary": "When the eligible DEATHWING or RAVENWING unit is destroyed near an objective, you may still use this Stratagem on it. Choose an objective it controlled at the previous phase end with no enemy non-AIRCRAFT units in range; it remains under your control."
+  },
+  {
+    "sourceIds": [
+      "blackstar-cluster-launcher-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "After a Normal move in your Movement phase, choose up to one enemy this unit moved over. Roll six D6; each 4+ inflicts 1 mortal wound."
+  },
+  {
+    "sourceIds": [
+      "death-to-the-alien-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "Re-roll Hit rolls of 1, or any Hit rolls against targets with neither CHAOS nor IMPERIUM."
+  },
+  {
+    "sourceIds": [
+      "fortis-doctrines-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to Hit rolls against targets below Starting Strength. Against targets Below Half-strength, also add 1 to Wound rolls."
+  },
+  {
+    "sourceIds": [
+      "indomitor-doctrines-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "In the Fight phase during a turn when this unit charged, add 2 to its weapon Strength."
+  },
+  {
+    "sourceIds": [
+      "strategic-knowledge-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Assault. It can charge after Advancing, and can shoot and charge after Falling Back."
+  },
+  {
+    "sourceIds": [
+      "talonstrike-doctrines-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this unit was set up, improve its AP by 1 and give its melee weapons Lance."
+  },
+  {
+    "sourceIds": [
+      "unstoppable-champion-deathwatch"
+    ],
+    "state": "needs-summary",
+    "summary": "At the end of a phase when this model was destroyed, on a D6 roll of 2+ it returns unengaged, as close as possible to where it died, with 3 wounds. The source does not limit how many times it can return."
+  },
+  {
+    "sourceIds": [
+      "adaptive-tactics-black-spear-task-force-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "Choose a Combat Doctrine for the selected unit until your next Command phase, replacing its army-wide doctrine."
+  },
+  {
+    "sourceIds": [
+      "beacon-angelis-black-spear-task-force-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "The bearer’s unit gains Deep Strike if it is a KILL TEAM. Rapid Ingress targeting that unit costs 1CP less."
+  },
+  {
+    "sourceIds": [
+      "dragonfire-rounds-black-spear-task-force-deathwatch",
+      "dragonfire-rounds-deathwatch-support-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "When the eligible KILL TEAM is selected to shoot, its ranged weapons gain Ignores Cover and re-rolls of Wound rolls of 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "hellfire-rounds-black-spear-task-force-deathwatch",
+      "hellfire-rounds-deathwatch-support-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "When the eligible KILL TEAM shoots, its ranged weapons without Devastating Wounds score Critical Wounds on 4+ against targets other than VEHICLES for the phase."
+  },
+  {
+    "sourceIds": [
+      "kraken-rounds-black-spear-task-force-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "When the eligible KILL TEAM shoots, add 6″ to its ranged weapon range and 1 to its ranged Strength for the phase."
+  },
+  {
+    "sourceIds": [
+      "osseus-key-aura-black-spear-task-force-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "Worsen the Attacks of enemy VEHICLES within 6″ of the bearer by 1."
+  },
+  {
+    "sourceIds": [
+      "site-to-site-teleportation-black-spear-task-force-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, place the selected unit into Strategic Reserves. If it is a KILL TEAM, it gains Deep Strike until the end of your next Movement phase."
+  },
+  {
+    "sourceIds": [
+      "terminatus-assault-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll Charge rolls. After charging, every enemy in Engagement Range takes a Battle-shock test, at -1 if it has neither CHAOS nor IMPERIUM."
+  },
+  {
+    "sourceIds": [
+      "the-tome-of-ectoclades-black-spear-task-force-deathwatch"
+    ],
+    "state": "needs-summary",
+    "summary": "Once per battle for your army, in your Command phase, The Tome of Ectoclades grants this unit Assault, Devastator and Tactical Doctrine until your next Command phase. The source does not explain how simultaneous doctrines override the normal one-active-doctrine limit."
+  },
+  {
+    "sourceIds": [
+      "kraken-rounds-deathwatch-support-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "When the eligible KILL TEAM shoots, add 6″ to its ranged weapon range and 1 to its ranged Strength for the phase."
+  },
+  {
+    "sourceIds": [
+      "mission-tactics-deathwatch-support-deathwatch"
+    ],
+    "state": "needs-summary",
+    "summary": "Eligible KILL TEAMS gain Sustained Hits 1 with Devastator Doctrine, Lethal Hits with Tactical, or Precision against enemies within 9″ with Assault. Deathwatch Support also caps DEATHWATCH at 500 points and forbids a DEATHWATCH Warlord, but its enhancement-source restriction has no permitted source specified."
+  },
+  {
+    "sourceIds": [
+      "purgatus-quarry-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "At the start of battle round 1, you may select one enemy as this unit’s quarry. Re-roll Wound rolls of 1 against it. When it is destroyed, you may choose a new quarry; only one is active at a time."
+  },
+  {
+    "sourceIds": [
+      "transhuman-strategist-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "At the start of each battle round, gain 1CP if your Warlord has this ability."
+  },
+  {
+    "sourceIds": [
+      "veteran-recruits-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "Your army cannot include the SCOUT SQUAD, TERMINATOR ASSAULT SQUAD or TERMINATOR SQUAD datasheets."
+  },
+  {
+    "sourceIds": [
+      "watch-master-deathwatch"
+    ],
+    "state": "structured",
+    "summary": "The bearer can re-roll Hit and Wound rolls of 1 against CHARACTER units."
+  },
+  {
+    "sourceIds": [
+      "the-thief-of-secrets-black-spear-task-force-deathwatch"
+    ],
+    "state": "missing",
+    "summary": "The Thief of Secrets grants the bearer a weapon, but this ability record does not contain that weapon’s profile or any upgrade conditions. Consult its weapon entry and full rule."
+  },
+  {
+    "sourceIds": [
+      "condemnatory-annihilation-black-templars"
+    ],
+    "state": "structured",
+    "summary": "After this unit resolves attacks that destroyed an enemy model this phase, every enemy unit in Engagement Range takes a Battle-shock test at -1."
+  },
+  {
+    "sourceIds": [
+      "crusade-of-wrath-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s melee Attacks and Strength."
+  },
+  {
+    "sourceIds": [
+      "exploit-their-cowardice-black-templars"
+    ],
+    "state": "structured",
+    "summary": "After an enemy Falls Back from this unit in your opponent’s Movement phase, this unit can make a 6″ Normal move if it is now unengaged."
+  },
+  {
+    "sourceIds": [
+      "heirs-of-sigismund-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Your army cannot include ADEPTUS ASTARTES PSYKERS or the standard Gladiator Lancer, Reaper, Valiant, Impulsor, Repulsor or Repulsor Executioner datasheets."
+  },
+  {
+    "sourceIds": [
+      "high-marshal-black-templars"
+    ],
+    "state": "structured",
+    "summary": "At the start of the Fight phase, you may choose one enemy in Engagement Range and roll a D6: 1 has no effect; 2–3 inflicts D3 mortal wounds; 4–5 inflicts 3; 6 inflicts D3+3."
+  },
+  {
+    "sourceIds": [
+      "inspirational-exemplar-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s melee Hit rolls."
+  },
+  {
+    "sourceIds": [
+      "martial-honour-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "After this unit destroys an enemy unit in melee, the bearer gains +5 OC for the battle. The source does not state whether this can accumulate after multiple kills."
+  },
+  {
+    "sourceIds": [
+      "pious-fervour-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When the bearer is selected to fight, add 1 to its melee Attacks for each enemy unit within 6″, up to +3. Count those units when applying the bonus."
+  },
+  {
+    "sourceIds": [
+      "remorseless-persecution-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "When this unit Advances in your Movement phase, it gains permission to charge, but the source ends that permission at the end of the Movement phase. Check whether it should last for the turn."
+  },
+  {
+    "sourceIds": [
+      "righteous-zeal-black-templars"
+    ],
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy shoots and destroys a model in this unit, this unit can make a D6+1″ Surge move."
+  },
+  {
+    "sourceIds": [
+      "templar-vows-black-templars"
+    ],
+    "state": "structured",
+    "summary": "At the start of battle round 1, choose one vow for the battle: melee Precision and Lance against PSYKERS; +1 to melee Wound rolls when target Toughness exceeds attack Strength; or sticky objectives at your Movement phase end and permission for INFANTRY to start actions after Advancing. Your army must use BLACK TEMPLARS and a single chapter."
+  },
+  {
+    "sourceIds": [
+      "temple-relics-black-templars"
+    ],
+    "state": "structured",
+    "summary": "At the start of your Command phase, if this unit includes a CENOBYTE SERVITOR, choose up to one benefit until your next Command phase: +1 to Advance and Charge rolls; +1 Toughness; or +1 melee AP."
+  },
+  {
+    "sourceIds": [
+      "vehement-aggression-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When selected to fight, this unit can take a Leadership test and re-roll melee Hit rolls of 1 for the phase. If the test succeeds, it can also re-roll melee Wound rolls of 1."
+  },
+  {
+    "sourceIds": [
+      "vengeful-exhortation-black-templars"
+    ],
+    "state": "structured",
+    "summary": "If a model in this unit is destroyed in the Fight phase before its unit has fought, roll a D6. On 4+, it fights with its unit before removal. Remove it after that fight or at phase end."
+  },
+  {
+    "sourceIds": [
+      "aquilon-optics-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "Against enemy MONSTERS or VEHICLES, Aquilon Optics permits re-rolling one ranged Hit, Wound and Damage roll. The source omits whether this is per attack, activation or phase."
+  },
+  {
+    "sourceIds": [
+      "armour-of-faith-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Reduce Damage allocated to this model by 1."
+  },
+  {
+    "sourceIds": [
+      "blade-of-detestation-marshals-household-black-templars"
+    ],
+    "state": "structured",
+    "summary": "After the eligible SWORD BRETHREN SQUAD charges, choose one engaged enemy. Roll a D6 for each model in your unit engaged with it; each 4+ inflicts 1 mortal wound, up to 6."
+  },
+  {
+    "sourceIds": [
+      "bladeguard-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Once per turn for this unit in the Fight phase, choose one benefit for the phase: re-roll melee Hit rolls of 1 when selected to fight, or re-roll Save rolls of 1 when targeted."
+  },
+  {
+    "sourceIds": [
+      "blessed-aura-vow-sworn-of-vedrenn-black-templars"
+    ],
+    "state": "structured",
+    "summary": "After the eligible VOW-SWORN OF VEDRENN unit passes a Battle-shock test, subtract 1 from melee Hit rolls targeting it until the start of the next turn."
+  },
+  {
+    "sourceIds": [
+      "chosen-of-the-emperor-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Your army can include at most one EMPEROR’S CHAMPION."
+  },
+  {
+    "sourceIds": [
+      "come-to-their-aid-vow-sworn-of-vedrenn-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "Come To Their Aid adds 2 to a Charge roll after a VOW-SWORN OF VEDRENN unit rolls, but its mandatory-target clause names no target and the bonus is assigned to the rule’s own unit. Check the charging unit and required target."
+  },
+  {
+    "sourceIds": [
+      "deft-riposte-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Enemy melee weapons attacking this unit gain Hazardous."
+  },
+  {
+    "sourceIds": [
+      "devout-push-vow-sworn-crusaders-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES INFANTRY unit Piles In or Consolidates, it can move up to D3+3″ for the phase."
+  },
+  {
+    "sourceIds": [
+      "divine-endurance-vow-sworn-of-vedrenn-black-templars"
+    ],
+    "state": "structured",
+    "summary": "At the start of your Movement phase, choose a visible friendly VOW-SWORN OF VEDRENN unit within 12″. For the turn, it can start actions after Advancing or Falling Back and automatically passes Desperate Escape rolls when Falling Back."
+  },
+  {
+    "sourceIds": [
+      "divine-protection-vow-sworn-of-vedrenn-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "Once per battle for this unit, when targeted it can gain a 4+ invulnerable save. The source does not state when that save ends and encodes it as permanent."
+  },
+  {
+    "sourceIds": [
+      "dread-crusaders-vow-sworn-crusaders-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "Dread Crusaders makes an enemy declaring a charge take a Battle-shock test at -1, but does not require it to target or be near this unit. Check the missing trigger restriction."
+  },
+  {
+    "sourceIds": [
+      "exploit-their-cowardice-vow-sworn-sword-brethren-squad-black-templars"
+    ],
+    "state": "structured",
+    "summary": "After an enemy Falls Back from this unit, this unit can make a Normal move if it is now unengaged."
+  },
+  {
+    "sourceIds": [
+      "faith-fuelled-resolve-black-templars"
+    ],
+    "state": "structured",
+    "summary": "In the Fight phase, friendly SWORD BRETHREN SQUADS within range of an objective gain +1 melee Attack. Your army must use BLACK TEMPLARS and a single chapter."
+  },
+  {
+    "sourceIds": [
+      "for-the-emperors-honour-vow-sworn-crusaders-black-templars",
+      "lay-low-the-tyrants-shadowmark-talon-raven-guard"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES INFANTRY unit fights, its melee weapons gain Precision for the phase."
+  },
+  {
+    "sourceIds": [
+      "heavy-strikes-vow-sworn-of-vedrenn-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible VOW-SWORN BLADEGUARD VETERAN or SWORD BRETHREN SQUAD fights, improve its melee Damage against MONSTERS and VEHICLES by 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "heresy-begets-retribution-vow-sworn-crusaders-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "After an enemy moves within 8″ of friendly ADEPTUS ASTARTES INFANTRY, Heresy Begets Retribution grants a D6″ Surge move. The source assigns it to the rule’s own unit rather than the nearby eligible INFANTRY; check the recipient."
+  },
+  {
+    "sourceIds": [
+      "incendiary-animus-vow-sworn-crusaders-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Improve this unit’s melee Strength by 1."
+  },
+  {
+    "sourceIds": [
+      "pious-enmity-vow-sworn-crusaders-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible CHAPLAIN or JUDICIAR unit fights, re-roll melee Hit rolls of 1 for the phase. Against MONSTERS and VEHICLES, also re-roll melee Wound rolls of 1."
+  },
+  {
+    "sourceIds": [
+      "purge-and-sanctify-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "A friendly CRUSADER SQUAD making a Surge move can end toward a chosen objective instead of the closest enemy, model by model. The selector does not enforce the closest objective despite naming it that way. Check which objective can be chosen. The army must use BLACK TEMPLARS and a single chapter."
+  },
+  {
+    "sourceIds": [
+      "reaping-tally-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Improve this unit’s ranged AP by 1 against targets that are neither MONSTERS nor VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "righteous-zeal-vow-sworn-crusader-squad-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Once per turn for this unit, after an enemy shoots and destroys a model in it during your opponent’s Shooting phase, this unit can make a D6+2″ Surge move if unengaged."
+  },
+  {
+    "sourceIds": [
+      "slayers-of-abominations-marshals-household-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible SWORD BRETHREN SQUAD fights, improve its melee Strength against MONSTERS and VEHICLES by 2 for the phase."
+  },
+  {
+    "sourceIds": [
+      "spoor-of-the-unholy-vow-sworn-crusaders-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit attacks, it ignores modifiers to WS, BS and Hit rolls for the phase."
+  },
+  {
+    "sourceIds": [
+      "templar-vows-vow-sworn-of-vedrenn-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "At battle round 1, choose one vow: anti-PSYKER melee Precision and charge re-rolls; +1 to melee Wound rolls when Strength is at most target Toughness; charging after Falling Back with freer Pile-in/Consolidation positioning; or sticky objectives and actions after Advancing for INFANTRY. This source differs from the other Templar Vows definition and omits its duration; check which version applies."
+  },
+  {
+    "sourceIds": [
+      "unsparing-execution-marshals-household-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When an enemy Falls Back from the eligible SWORD BRETHREN SQUAD, it must use Desperate Escape. Apply -1 to those tests if it is Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "angels-defiant-fist-of-the-god-emperor-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "Angels Defiant grants -1 to incoming Wound rolls when attack Strength exceeds target Toughness, lasting for the phase. Its mechanics require CRUSADER SQUAD while the notes say BATTLELINE; check which units qualify."
+  },
+  {
+    "sourceIds": [
+      "avowed-destruction-fist-of-the-god-emperor-black-templars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible CRUSADER SQUAD fights, choose Lethal Hits or Sustained Hits 1 for its melee weapons for the phase."
+  },
+  {
+    "sourceIds": [
+      "doctrinal-flexibility-fist-of-the-god-emperor-black-templars"
+    ],
+    "state": "needs-summary",
+    "summary": "Doctrinal Flexibility selects a Combat Doctrine until your next Command phase, replacing the unit’s army-wide doctrine. The source does not state when it is activated."
+  },
+  {
+    "sourceIds": [
+      "faithful-cenobytes-black-templars"
+    ],
+    "state": "structured",
+    "summary": "If CHAPLAIN GRIMALDUS is destroyed, destroy all CENOBYTE SERVITORS in his unit. Those Servitors take no transport spaces."
+  },
+  {
+    "sourceIds": [
+      "heirs-of-sigismund-vow-sworn-of-vedrenn-black-templars"
+    ],
+    "state": "structured",
+    "summary": "Your army must use a single chapter. Including BLACK TEMPLARS grants its Templar Vows rule but excludes ADEPTUS ASTARTES PSYKERS and the standard Gladiator variants, Impulsor, Land Raider Crusader, Repulsor variants, Sternguard Veteran Squad and Terminator Squad datasheets."
+  },
+  {
+    "sourceIds": [
+      "transhuman-strategist-black-templars"
+    ],
+    "state": "structured",
+    "summary": "At the start of each battle round, gain 1CP if your Warlord has this ability."
+  },
+  {
+    "sourceIds": [
+      "ancient-tactician-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Stratagems targeting this unit cost 1CP less. Ancient Tactician’s source does not specify a per-turn or per-round usage limit; check that limit."
+  },
+  {
+    "sourceIds": [
+      "battle-lust-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this model charged, add 2 to its melee Attacks."
+  },
+  {
+    "sourceIds": [
+      "berserk-charge-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit can declare a charge after Advancing."
+  },
+  {
+    "sourceIds": [
+      "bestial-fury-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll Advance and Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "bestial-rage-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy shoots, this unit can make a D6″ Surge move if it has lost wounds."
+  },
+  {
+    "sourceIds": [
+      "champion-of-the-kingsguard-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This model can re-roll Hit and Wound rolls of 1 against CHARACTER units."
+  },
+  {
+    "sourceIds": [
+      "cunning-hunters-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "In the Fight phase, while this unit is within range of an objective, improve its melee Strength and AP by 1."
+  },
+  {
+    "sourceIds": [
+      "curse-of-the-wulfen-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "While not Battle-shocked and within 6″ of a non-WULFEN SPACE WOLVES CHARACTER or 12″ of a WOLF PRIEST, this unit gains +1 OC if INFANTRY or +3 OC if a VEHICLE. Each WULFEN model takes two transport spaces."
+  },
+  {
+    "sourceIds": [
+      "deadly-stalkers-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to Wound rolls against an enemy unit with no other enemy within 6″ of it."
+  },
+  {
+    "sourceIds": [
+      "death-totem-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit can re-roll melee Hit rolls of 1."
+  },
+  {
+    "sourceIds": [
+      "fervour-of-the-ancients-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Friendly SPACE WOLVES within 6″ gain +1 to Advance and Charge rolls."
+  },
+  {
+    "sourceIds": [
+      "force-of-untamed-destruction-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit cannot be your Warlord."
+  },
+  {
+    "sourceIds": [
+      "gift-of-the-iron-wolf-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "In your Movement phase, choose up to one friendly SPACE WOLVES VEHICLE within 3″. Once per phase it regains D3 wounds and ignores Hit and Wound modifiers until your next Movement phase. The source lists both move-start and move-end triggers without identifying whose move triggers the repair."
+  },
+  {
+    "sourceIds": [
+      "guile-of-the-wolf-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Guile of the Wolf activates Assault, Devastator and Tactical Doctrine at a phase start, but identifies neither that phase nor how simultaneous doctrines override their normal limit. Despite the aura label, no aura range or recipients are supplied."
+  },
+  {
+    "sourceIds": [
+      "hammer-blow-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "After this unit hits an enemy MONSTER or VEHICLE in the Fight phase, Hammer Blow marks that enemy Suppressed until the next turn starts. The -1 to Hit penalty is then assigned back to this unit instead of the enemy; check the recipient."
+  },
+  {
+    "sourceIds": [
+      "headhunters-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "At the start of battle round 1, you may choose an enemy quarry. This unit’s weapons gain Devastating Wounds and Precision against it. When that enemy is destroyed, replace it with a new quarry; only one is active at a time."
+  },
+  {
+    "sourceIds": [
+      "heroic-last-stand-space-wolves",
+      "heroic-last-stand-fyrri-askar-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Heroic Last Stand instructs this model to destroy itself before fighting, then grants fighting on death on 2+, without a destruction trigger. Check the trigger and remove the unintended self-destruction instruction."
+  },
+  {
+    "sourceIds": [
+      "high-king-of-fenris-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "High King of Fenris sets up one friendly SPACE WOLVES unit from Strategic Reserves with a battle-round offset of 1, but the source does not identify the phase, selection point or arrival restrictions."
+  },
+  {
+    "sourceIds": [
+      "hunting-hounds-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Hunting Hounds sets this unit’s OC to 1 for a battle round while not Battle-shocked and within 6″ of a non-WULFEN SPACE WOLVES CHARACTER. The source does not state when this benefit is checked or activated."
+  },
+  {
+    "sourceIds": [
+      "iron-priest-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This model gains Lone Operative while within 3″ of friendly SPACE WOLVES VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "judgement-of-the-omnissiah-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This model can re-roll Wound rolls against targets engaged with friendly SPACE WOLVES VEHICLES."
+  },
+  {
+    "sourceIds": [
+      "legendary-tenacity-space-wolves",
+      "rugged-resilience-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Legendary Tenacity subtracts 1 from its own unit’s Wound rolls when an attack’s Strength exceeds target Toughness. Check whether it should penalise the incoming attacker instead."
+  },
+  {
+    "sourceIds": [
+      "let-loose-the-wolves-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When declaring battle formations, you may split this unit into separate WOLF GUARD HEADTAKER and HUNTING WOLVES groups."
+  },
+  {
+    "sourceIds": [
+      "murder-maker-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When a friendly WULFEN model within 6″ is destroyed in the Fight phase before fighting, roll a D6. On 4+, it can fight before removal, then is removed after its unit fights or at phase end."
+  },
+  {
+    "sourceIds": [
+      "oathbound-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s melee Hit rolls. Against its Slayer’s Oath target, it can also gain +1 to melee Wound rolls."
+  },
+  {
+    "sourceIds": [
+      "predatory-instinct-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "After an enemy ends a move within 8″ in your opponent’s Movement phase, this unit can make a D6″ Normal move if unengaged."
+  },
+  {
+    "sourceIds": [
+      "sagas-space-wolves"
+    ],
+    "state": "missing",
+    "summary": "Sagas has no effect mechanics in this source. It does not specify any saga objectives, completion triggers or rewards."
+  },
+  {
+    "sourceIds": [
+      "savage-frenzy-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Enemy units that are neither MONSTERS nor VEHICLES must use Desperate Escape when Falling Back from this unit. Apply -1 to those tests if they are Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "slayers-oath-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Slayer’s Oath’s mechanics select one enemy CHARACTER, MONSTER or VEHICLE at battle round 1 and let this unit ignore WS, BS and Hit modifiers against it. The notes instead trigger saga rewards after destroying a unit with a chosen keyword. Check the oath selection and reward."
+  },
+  {
+    "sourceIds": [
+      "sons-of-russ-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Your army cannot include APOTHECARIES."
+  },
+  {
+    "sourceIds": [
+      "tempered-ferocity-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit’s weapons gain Sustained Hits 1. Re-roll Hit rolls of 1 against targets within 6″."
+  },
+  {
+    "sourceIds": [
+      "tempests-wrath-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "In your Shooting phase, if not Battle-shocked, roll a D6; on 1 this unit becomes Battle-shocked. Select one visible enemy within 18″; it suffers -1 to Hit until the start of the next turn."
+  },
+  {
+    "sourceIds": [
+      "thunderous-charge-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "In a turn when this unit charged, improve its melee Strength and Damage by 1."
+  },
+  {
+    "sourceIds": [
+      "violent-fury-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "If this model has an entirely melee loadout, this unit’s melee weapons gain Twin-linked."
+  },
+  {
+    "sourceIds": [
+      "war-howl-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "War Howl gives BLOOD CLAWS +1 melee Strength and Sustained Hits 1 while this model is attached. Its charge-after-Advance clause also requires attachment to HEADTAKERS/WOLF GUARD inside the BLOOD CLAWS condition, making the eligibility contradictory. Check which unit gets each benefit."
+  },
+  {
+    "sourceIds": [
+      "wind-walker-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Assault. When it Advances, you may treat its Advance roll as 6."
+  },
+  {
+    "sourceIds": [
+      "a-giant-amongst-giants-champions-of-fenris-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Add 2 to the bearer’s Wounds and improve its melee Strength by 1."
+  },
+  {
+    "sourceIds": [
+      "aggressive-response-askars-wolfpack-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Once per turn for this unit, after an enemy shoots and hits it in your opponent’s Shooting phase, it may make a D3+1″ Surge move."
+  },
+  {
+    "sourceIds": [
+      "battle-instincts-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "After an enemy shoots at the selected ADEPTUS ASTARTES unit, that unit can make a D3+3″ Normal move."
+  },
+  {
+    "sourceIds": [
+      "berserk-charge-askars-wolfpack-blood-claws-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "This unit can charge after Advancing."
+  },
+  {
+    "sourceIds": [
+      "bestial-dominance-askars-wolfpack-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "When a friendly ASKAR’S WOLFPACK WULFEN unit destroys an enemy, Bestial Dominance grants +1 OC for the battle. The source assigns it to the rule’s own unit rather than explicitly to the destroying WULFEN unit, and omits whether it accumulates."
+  },
+  {
+    "sourceIds": [
+      "birth-of-a-saga-champions-of-fenris-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Birth of a Saga grants CHARACTER to this unit until your next Command phase, but does not state when it is used or whether only one model receives the keyword."
+  },
+  {
+    "sourceIds": [
+      "born-hunters-askars-wolfpack-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "After an enemy Falls Back from the eligible non-TERMINATOR ASKAR’S WOLFPACK unit, your unit can make a D3+1″ Normal move if now unengaged."
+  },
+  {
+    "sourceIds": [
+      "bring-it-down-askars-wolfpack-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ASKAR’S WOLFPACK unit fights, its melee weapons gain Anti-MONSTER 4+ and Anti-VEHICLE 4+ for the phase."
+  },
+  {
+    "sourceIds": [
+      "champions-guidance-champions-of-fenris-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES CHARACTER unit fights, it can re-roll melee Hit and Wound rolls of 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "chariots-of-the-storm-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "After deployment, you may redeploy up to three friendly ADEPTUS ASTARTES units or place them into Strategic Reserves, ignoring normal reserve limits."
+  },
+  {
+    "sourceIds": [
+      "death-totem-askars-wolfpack-wulfen-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "The bearer can re-roll melee Hit rolls of 1."
+  },
+  {
+    "sourceIds": [
+      "eye-of-the-pack-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES INFANTRY unit attacks, it can re-roll Wound rolls of 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "fangs-of-the-pack-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES INFANTRY or MOUNTED unit fights, its melee weapons gain Precision for the phase."
+  },
+  {
+    "sourceIds": [
+      "fenrisian-ferocity-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES MOUNTED or WALKER unit is selected to move or declares charge targets, it gains MOBILE for the phase."
+  },
+  {
+    "sourceIds": [
+      "grimnars-command-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Grimnar’s Command selects a Combat Doctrine for the unit until your next Command phase, replacing its army-wide doctrine. The source does not state when it can be activated."
+  },
+  {
+    "sourceIds": [
+      "grimnars-mark-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Once per battle round for your army, this unit can use Rapid Ingress or Heroic Intervention even if already used that phase. That use costs 1CP less and does not consume the shared use limit."
+  },
+  {
+    "sourceIds": [
+      "haywire-mine-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "In your Shooting phase, choose up to one visible enemy within 6″ and roll a D6. On 2+, it suffers D3 mortal wounds, or 2D3 if it is a VEHICLE."
+  },
+  {
+    "sourceIds": [
+      "heroic-resolve-champions-of-fenris-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When an enemy targets the eligible ADEPTUS ASTARTES CHARACTER unit, reduce those attacks’ Damage by 1 until the attack sequence ends."
+  },
+  {
+    "sourceIds": [
+      "hidden-hunters-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Reduce friendly ASKAR’S WOLFPACK units’ detection range by 3″."
+  },
+  {
+    "sourceIds": [
+      "howlmaw-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Once per turn for this unit, at the start of the Fight phase, choose one enemy within 6″ of the bearer. It takes a Battle-shock test at -1."
+  },
+  {
+    "sourceIds": [
+      "hunters-guile-saga-of-the-beastslayer-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "After deployment, you may redeploy up to three friendly BLOOD CLAWS, THUNDERWOLF CAVALRY or WULFEN units, or place them into Strategic Reserves ignoring normal reserve limits."
+  },
+  {
+    "sourceIds": [
+      "impetuosity-saga-of-the-beastslayer-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "After an enemy shoots at the selected unit, that unit can make a D6″ Surge move."
+  },
+  {
+    "sourceIds": [
+      "legendary-slayers-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Friendly BLOOD CLAWS, THUNDERWOLF CAVALRY and WULFEN gain Lethal Hits against CHARACTER, MONSTER and VEHICLE targets."
+  },
+  {
+    "sourceIds": [
+      "lone-hunter-askars-wolfpack-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "The bearer gains Lone Operative with a 9″ range, Stealth and +1 Toughness."
+  },
+  {
+    "sourceIds": [
+      "master-of-wolves-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "Eligible non-MONSTER/non-VEHICLE units gain doctrine bonuses: Assault gives +1 Advance/Charge; Devastator re-rolls ranged Hit rolls of 1; Tactical gives Sustained Hits 1 against targets within 9″. Once per battle Logan can extend these to MONSTERS/VEHICLES until your next Command phase. The eligibility requires the Master of Wolves ability itself, but the source does not identify which units receive it."
+  },
+  {
+    "sourceIds": [
+      "old-greymanes-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When declaring battle formations, you may split this unit into two equal units."
+  },
+  {
+    "sourceIds": [
+      "savage-frenzy-askars-wolfpack-wulfen-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Enemies that are neither MONSTERS nor VEHICLES must use Desperate Escape when Falling Back from this unit. Apply -1 to those tests if they are Battle-shocked."
+  },
+  {
+    "sourceIds": [
+      "storm-shield-fyrri-askar-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Set this model’s Wounds to 6."
+  },
+  {
+    "sourceIds": [
+      "the-great-wolf-watches-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES CHARACTER units gain Countercharge: once per battle round for each unit, Heroic Intervention targeting it costs 1CP less."
+  },
+  {
+    "sourceIds": [
+      "wolf-totems-saga-of-the-great-wolf-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When damage is allocated to the eligible ADEPTUS ASTARTES INFANTRY or MOUNTED unit, it gains Feel No Pain 5+ against mortal wounds for the phase."
+  },
+  {
+    "sourceIds": [
+      "wolf-touched-saga-of-the-beastslayer-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "The bearer’s unit gains WULFEN and +2″ Move."
+  },
+  {
+    "sourceIds": [
+      "curse-of-the-wulfen-askars-wolfpack-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "While this unit is not Battle-shocked and within 6″ of a non-WULFEN SPACE WOLVES CHARACTER or 12″ of a WOLF PRIEST, its INFANTRY models gain +1 OC and its VEHICLE models gain +3 OC."
+  },
+  {
+    "sourceIds": [
+      "high-rune-priest-space-wolves"
+    ],
+    "state": "needs-summary",
+    "summary": "This model is Psyker Level 3. Spend 1 Psychic Level for a phase of reduced detection range when targeted, or in your Shooting phase to suppress a visible enemy within 18″ until the next turn starts. Each power rolls a D6; 1 causes Battle-shock. Its Movement-phase power encodes “cannot shoot as if Snap Shooting”; check whether it prohibits Snap Shots or shooting entirely."
+  },
+  {
+    "sourceIds": [
+      "hunting-hounds-fenrisian-wolves-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to this unit’s OC while it is not Battle-shocked and within 6″ of a non-WULFEN SPACE WOLVES CHARACTER model."
+  },
+  {
+    "sourceIds": [
+      "transhuman-strategist-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "At the start of each battle round, gain 1CP if your Warlord has this ability."
+  },
+  {
+    "sourceIds": [
+      "unbridled-feroicity-saga-of-the-beastslayer-space-wolves"
+    ],
+    "state": "structured",
+    "summary": "When the eligible BLOOD CLAWS, THUNDERWOLF CAVALRY or WULFEN unit fights, its melee weapons gain Lance for the phase."
+  },
+  {
+    "sourceIds": [
+      "armour-of-antoninus-blade-of-ultramar-ultramarines"
+    ],
+    "state": "structured",
+    "summary": "The bearer has a 2+ Save and Feel No Pain 5+."
+  },
+  {
+    "sourceIds": [
+      "mastered-doctrines-ultramarines"
+    ],
+    "state": "structured",
+    "summary": "If your army includes MARNEUS CALGAR, choose one Combat Doctrine option that can be selected one additional time."
+  },
+  {
+    "sourceIds": [
+      "oath-of-macragge-blade-of-ultramar-ultramarines"
+    ],
+    "state": "needs-summary",
+    "summary": "Oath of Macragge gives the bearer +1 melee Strength, or +2 while Assault Doctrine is active. Its AP change is encoded as an addition rather than an improvement; check the intended AP sign."
+  },
+  {
+    "sourceIds": [
+      "practical-tactics-blade-of-ultramar-ultramarines"
+    ],
+    "state": "needs-summary",
+    "summary": "After an enemy moves within 8″ of unengaged friendly ADEPTUS ASTARTES INFANTRY or MOUNTED, Practical Tactics grants a D3+3″ Normal move. It assigns that move to the rule’s own unit rather than the nearby eligible unit; check the recipient."
+  },
+  {
+    "sourceIds": [
+      "tactical-foresight-blade-of-ultramar-ultramarines"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit is targeted, subtract 1 from incoming Wound rolls if attack Strength exceeds target Toughness. Lasts for the phase."
+  },
+  {
+    "sourceIds": [
+      "ultramarian-adaptivity-blade-of-ultramar-ultramarines"
+    ],
+    "state": "needs-summary",
+    "summary": "Ultramarian Adaptivity selects a Combat Doctrine for the unit until your next Command phase, replacing its army-wide doctrine. The source does not state when it is activated."
+  },
+  {
+    "sourceIds": [
+      "veteran-of-behemoth-blade-of-ultramar-ultramarines"
+    ],
+    "state": "structured",
+    "summary": "The bearer’s ranged weapons gain Sustained Hits 1."
+  },
+  {
+    "sourceIds": [
+      "adaptive-defence-imperial-fists"
+    ],
+    "state": "needs-summary",
+    "summary": "Adaptive Defence grants re-rolls of Hit and Wound rolls of 1 when the attacking unit is within terrain. The source explicitly omits the separate conditional ENTRENCHED benefit and its condition, so the full detachment rule is incomplete."
+  },
+  {
+    "sourceIds": [
+      "augmented-targeting-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible ADEPTUS ASTARTES unit before it shoots. Choose Lethal Hits or Sustained Hits 1 for the phase; an Entrenched unit can gain both instead."
+  },
+  {
+    "sourceIds": [
+      "castellum-omnivox-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "needs-summary",
+    "summary": "Castellum Omnivox allows actions after an Advance or Fall Back in the mechanics, but its notes only mention Falling Back and choosing an unspecified option for the turn. Check the available options, trigger and duration."
+  },
+  {
+    "sourceIds": [
+      "defensive-mastery-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "needs-summary",
+    "summary": "After deployment, redeploy up to three units or place them into Strategic Reserves ignoring reserve limits. The mechanics restrict this to ADEPTUS ASTARTES INFANTRY while the notes allow any ADEPTUS ASTARTES unit; check eligibility."
+  },
+  {
+    "sourceIds": [
+      "evasive-repositioning-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "structured",
+    "summary": "After an enemy shoots at the eligible INFANTRY or MOUNTED unit, it can make a D6″ Normal move. If Entrenched, it may re-roll that move distance."
+  },
+  {
+    "sourceIds": [
+      "honour-indefatigable-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "needs-summary",
+    "summary": "The first time the bearer is destroyed, roll a D6 at phase end; on 2+ it returns unengaged near where it died. The notes give full wounds while the mechanics give 3; check its returned wounds."
+  },
+  {
+    "sourceIds": [
+      "priority-strike-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible ADEPTUS ASTARTES INFANTRY or MOUNTED unit before it shoots or fights. Add 1 to Wound rolls against MONSTERS and VEHICLES for the phase."
+  },
+  {
+    "sourceIds": [
+      "spy-skull-data-link-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "structured",
+    "summary": "The bearer’s unit’s ranged weapons gain Ignores Cover."
+  },
+  {
+    "sourceIds": [
+      "stand-to-the-end-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "needs-summary",
+    "summary": "Stand To The End has unrelated effects: its notes allow destroyed models to fight on 4+, with +1 if Entrenched, but the mechanics instead reduce incoming Wound rolls. Check the actual defensive effect."
+  },
+  {
+    "sourceIds": [
+      "unyielding-might-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "structured",
+    "summary": "Select one eligible unit in Engagement Range of enemies. Add 1 to its OC for the turn."
+  },
+  {
+    "sourceIds": [
+      "establish-supremacy-ceramite-sentinels-imperial-fists"
+    ],
+    "state": "needs-summary",
+    "summary": "When eligible Entrenched ADEPTUS ASTARTES INFANTRY consolidate, they may choose an objective-focused mode. The source does not supply that mode’s distance and ending-position requirements."
+  },
+  {
+    "sourceIds": [
+      "adept-of-the-omnissiah-medusas-wrath-iron-hands"
+    ],
+    "state": "needs-summary",
+    "summary": "Adept of the Omnissiah’s notes change an incoming attack’s Damage to 0 after a nearby VEHICLE fails a save, once per battle round. The mechanics instead give Feel No Pain 5+ when targeted. Check the actual effect and trigger."
+  },
+  {
+    "sourceIds": [
+      "ancient-fury-medusas-wrath-iron-hands"
+    ],
+    "state": "structured",
+    "summary": "Until your next Command phase, the selected WALKER gains +1″ Move, +1 Toughness, improved Leadership by 1, +1 OC and +1 to Hit."
+  },
+  {
+    "sourceIds": [
+      "armoured-wrath-iron-hands"
+    ],
+    "state": "needs-summary",
+    "summary": "Armoured Wrath allows a single Hit, Wound or Damage re-roll, with all three near CAANOK VAR or IRON FATHER FEIRROS. The notes say once per phase but the mechanics give a fresh allowance whenever selected to shoot or fight; check the shared usage limit."
+  },
+  {
+    "sourceIds": [
+      "target-augury-web-medusas-wrath-iron-hands"
+    ],
+    "state": "needs-summary",
+    "summary": "Target Augury Web grants Lethal Hits until your next Command phase, but its notes select a VEHICLE within 6″ in the Command phase while the mechanics select one within 3″ during movement. Check the phase, distance and trigger."
+  },
+  {
+    "sourceIds": [
+      "the-flesh-is-weak-medusas-wrath-iron-hands"
+    ],
+    "state": "structured",
+    "summary": "The bearer gains +1 Toughness and Feel No Pain 5+."
+  },
+  {
+    "sourceIds": [
+      "unbowed-conviction-medusas-wrath-iron-hands"
+    ],
+    "state": "needs-summary",
+    "summary": "Unbowed Conviction’s notes let a unit below Starting Strength ignore characteristic and roll/test modifiers except saving throws. The mechanics omit that strength condition and only cover WS, BS, Hit and Wound rolls. Check the full scope."
+  },
+  {
+    "sourceIds": [
+      "vengeful-animus-medusas-wrath-iron-hands"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES VEHICLE is destroyed, automatically trigger its Deadly Demise instead of rolling, treating the result as 6."
+  },
+  {
+    "sourceIds": [
+      "methodical-brutality-medusas-wrath-iron-hands"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit attacks, its weapons gain Sustained Hits 1 for the phase. If it is a VEHICLE, also add 1 to its Wound rolls."
+  },
+  {
+    "sourceIds": [
+      "power-of-the-machine-spirit-medusas-wrath-iron-hands"
+    ],
+    "state": "structured",
+    "summary": "After an enemy shoots at the selected ADEPTUS ASTARTES VEHICLE, it may shoot back using Snap Shooting, or Normal shooting if at or below Half-strength. It must target that attacking enemy."
+  },
+  {
+    "sourceIds": [
+      "spirits-of-iron-medusas-wrath-iron-hands"
+    ],
+    "state": "structured",
+    "summary": "When damage is allocated to the eligible ADEPTUS ASTARTES unit, it gains Feel No Pain 5+ against mortal wounds for the phase."
+  },
+  {
+    "sourceIds": [
+      "master-of-the-machine-war-medusas-wrath-iron-hands"
+    ],
+    "state": "structured",
+    "summary": "In your Movement phase, choose one visible friendly ADEPTUS ASTARTES VEHICLE within 6″ of the bearer. Activate Devastator or Tactical Doctrine for it until your next Command phase, replacing its army-wide doctrine."
+  },
+  {
+    "sourceIds": [
+      "blackwing-shroud-shadowmark-talon-raven-guard"
+    ],
+    "state": "structured",
+    "summary": "The bearer’s unit gains Infiltrators."
+  },
+  {
+    "sourceIds": [
+      "coronal-susurrant-shadowmark-talon-raven-guard"
+    ],
+    "state": "structured",
+    "summary": "Enemy units in Engagement Range of the bearer’s unit that are neither MONSTERS nor VEHICLES cannot be targeted with Stratagems."
+  },
+  {
+    "sourceIds": [
+      "feint-and-thrust-shadowmark-talon-raven-guard"
+    ],
+    "state": "needs-summary",
+    "summary": "Feint and Thrust activates Tactical Doctrine for this unit until your next Command phase, but does not state when it can be used."
+  },
+  {
+    "sourceIds": [
+      "hunters-instincts-shadowmark-talon-raven-guard"
+    ],
+    "state": "needs-summary",
+    "summary": "Hunter’s Instincts’ notes treat the battle round as one higher when the bearer’s unit arrives from Strategic Reserves. Its mechanics only allow an Ingress move in battle round 1. Check the full arrival permission."
+  },
+  {
+    "sourceIds": [
+      "raptorial-vigilance-shadowmark-talon-raven-guard"
+    ],
+    "state": "needs-summary",
+    "summary": "After an enemy moves within 8″ of unengaged friendly ADEPTUS ASTARTES INFANTRY, a D6″ Normal move is offered, or 6″ for PHOBOS/SCOUT SQUAD. The source assigns the move to the rule’s own unit rather than the nearby eligible unit; check the recipient."
+  },
+  {
+    "sourceIds": [
+      "umbral-raptor-shadowmark-talon-raven-guard"
+    ],
+    "state": "structured",
+    "summary": "The bearer gains Fights First and Lone Operative."
+  },
+  {
+    "sourceIds": [
+      "shadow-tactics-raven-guard"
+    ],
+    "state": "structured",
+    "summary": "Friendly ADEPTUS ASTARTES gain Stealth; PHOBOS and SCOUT SQUADS also reduce detection range by 3″. AETHON SHAAN gains a once-per-battle-round army-wide discount of 1CP on Into Darkness."
+  },
+  {
+    "sourceIds": [
+      "murderous-fusillade-shadowmark-talon-raven-guard"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES INFANTRY unit shoots in a turn when it made an Ingress move, improve its ranged BS and AP by 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "suppressed-weapons-shadowmark-talon-raven-guard"
+    ],
+    "state": "structured",
+    "summary": "After the eligible ADEPTUS ASTARTES INFANTRY unit shoots, those attacks do not end its Hidden state."
+  },
+  {
+    "sourceIds": [
+      "adamantine-mantle-forgefathers-seekers-salamanders"
+    ],
+    "state": "structured",
+    "summary": "Reduce Damage allocated to the bearer by 1. For Melta or Torrent attacks, instead set their Damage to 1."
+  },
+  {
+    "sourceIds": [
+      "blazing-earth-forgefathers-seekers-salamanders"
+    ],
+    "state": "structured",
+    "summary": "At the start of your opponent’s Charge phase, choose one visible enemy within 12″. Subtract 1 from its Charge rolls for the phase."
+  },
+  {
+    "sourceIds": [
+      "burning-vengeance-forgefathers-seekers-salamanders"
+    ],
+    "state": "structured",
+    "summary": "After an enemy shoots at the selected TRANSPORT, one embarked unit can disembark as if it were your Movement phase and shoot as if it were your Shooting phase. It must target only that enemy, if eligible."
+  },
+  {
+    "sourceIds": [
+      "crucible-of-battle-forgefathers-seekers-salamanders"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible INFANTRY unit before it shoots or fights. Add 1 to Wound rolls against its closest eligible target within 6″ for the phase."
+  },
+  {
+    "sourceIds": [
+      "forged-in-battle-forgefathers-seekers-salamanders"
+    ],
+    "state": "needs-summary",
+    "summary": "Forged in Battle has unrelated effects in the source: ignoring WS, BS and Hit modifiers in the mechanics, but changing one Hit roll or saving throw to an unmodified 6 once per turn in the notes. Check the actual benefit."
+  },
+  {
+    "sourceIds": [
+      "immolation-protocols-forgefathers-seekers-salamanders"
+    ],
+    "state": "structured",
+    "summary": "Select an eligible ADEPTUS ASTARTES INFANTRY unit before it shoots. Improve its Torrent ranged weapons’ AP by 1 for the phase."
+  },
+  {
+    "sourceIds": [
+      "immolator-forgefathers-seekers-salamanders"
+    ],
+    "state": "structured",
+    "summary": "Add 1 to the Attacks of the bearer’s unit’s Torrent ranged weapons."
+  },
+  {
+    "sourceIds": [
+      "vulkans-quest-salamanders"
+    ],
+    "state": "structured",
+    "summary": "Select Devastator Doctrine one additional time. Friendly ADEPTUS ASTARTES ranged attacks gain +1 Strength against targets within 12″. If your army includes VULKAN HE’STAN, INFERNUS SQUADS can start actions after Advancing or Falling Back and shoot while performing them. Your army must use SALAMANDERS and a single chapter."
+  },
+  {
+    "sourceIds": [
+      "war-tempered-artifice-forgefathers-seekers-salamanders"
+    ],
+    "state": "structured",
+    "summary": "Improve the bearer’s melee Strength and Damage by 1."
+  },
+  {
+    "sourceIds": [
+      "forged-in-fire-forgefathers-seekers-salamanders"
+    ],
+    "state": "structured",
+    "summary": "When the eligible engaged ADEPTUS ASTARTES unit shoots, its Torrent weapons lose Blast, gain Close Quarters and gain +1 Attack for the phase."
+  },
+  {
+    "sourceIds": [
+      "wrath-and-ruin-forgefathers-seekers-salamanders"
+    ],
+    "state": "needs-summary",
+    "summary": "Wrath and Ruin activates Assault or Tactical Doctrine until your next Command phase, replacing the unit’s army-wide doctrine. The source does not state when it can be used."
+  },
+  {
+    "sourceIds": [
+      "chogorian-huntmaster-upgrade-spearpoint-task-force-white-scars"
+    ],
+    "state": "structured",
+    "summary": "When the bearer’s unit arrives by Ingress, treat the battle round as one higher for its setup."
+  },
+  {
+    "sourceIds": [
+      "hunters-eye-spearpoint-task-force-white-scars"
+    ],
+    "state": "structured",
+    "summary": "The bearer’s unit’s ranged weapons gain Ignores Cover and Sustained Hits 1."
+  },
+  {
+    "sourceIds": [
+      "hunters-instincts-spearpoint-task-force-white-scars"
+    ],
+    "state": "needs-summary",
+    "summary": "After an enemy moves within 8″ of unengaged friendly ADEPTUS ASTARTES INFANTRY, MOUNTED or SPEEDER, Hunter’s Instincts grants a D3+3″ Normal move. The source assigns it to the rule’s own unit rather than the nearby eligible unit; check the recipient."
+  },
+  {
+    "sourceIds": [
+      "mobile-lethality-spearpoint-task-force-white-scars"
+    ],
+    "state": "needs-summary",
+    "summary": "When the eligible ADEPTUS ASTARTES unit Advances or Falls Back, it gains Assault on ranged weapons and permission to shoot after Falling Back. The source ends both at phase end, before normal shooting; check the intended duration."
+  },
+  {
+    "sourceIds": [
+      "spear-thrust-and-sabre-swing-spearpoint-task-force-white-scars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES unit fights, choose Lethal Hits or Lance for its melee weapons for the phase. A MOUNTED unit gains both instead."
+  },
+  {
+    "sourceIds": [
+      "spearpoint-paragon-spearpoint-task-force-white-scars"
+    ],
+    "state": "needs-summary",
+    "summary": "The bearer gains +1 melee Strength, or +2 in a turn when it charged. Spearpoint Paragon encodes its matching AP change as an addition rather than an improvement; check the AP sign."
+  },
+  {
+    "sourceIds": [
+      "storm-swift-onslaught-white-scars"
+    ],
+    "state": "structured",
+    "summary": "Choose Assault or Tactical Doctrine to use one additional time. Friendly ADEPTUS ASTARTES MOUNTED/SPEEDER units gain +1 Advance. At Fight phase end, SUBODEN KHAN’s unit can make a Normal move if unengaged or Fall Back if engaged, provided eligible to fight. Your army must use WHITE SCARS and a single chapter."
+  },
+  {
+    "sourceIds": [
+      "evasive-manoeuvers-spearpoint-task-force-white-scars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES MOUNTED or SPEEDER unit is targeted, subtract 1 from incoming ranged Wound rolls for the phase."
+  },
+  {
+    "sourceIds": [
+      "flawless-riders-spearpoint-task-force-white-scars"
+    ],
+    "state": "structured",
+    "summary": "When the eligible ADEPTUS ASTARTES MOUNTED unit is selected to move or declares charge targets, it gains MOBILE for the phase."
+  }
+]

@@ -301,3 +301,9 @@ Catalog application now indexes rule links by canonical faction and normalized u
 Practice setup retains one session-memory bank while only quiz types or question count change. Content generation, source-array replacement, faction/list changes, any roster edit and account reset invalidate it. Starting a quiz or Another set always rebuilds fresh randomized material. Setup rendering measured roughly 270–530 ms repeatedly before, under 1 ms on cache hits after; the initial calculation remains necessary. Caching is disabled for legacy/standalone contexts without a catalog generation. No additional browser storage, database/schema changes, report deletions or rule-data changes are introduced.
 
 Regression checks cover pending-only rendering, direct/edited approvals, rejection, retry, catalog-refresh failures, polling races, reference equivalence, aliases, cache invalidation and new-quiz randomization. Browser checks exercise the existing player report form, admin approval/editor/rejection flow, refresh persistence, imports, working-list edits, guide cards and mixed practice.
+
+## Space Marines and all available chapters (catalog audit, 2026-11-14)
+
+The live catalog now has reviewed study summaries or explicit source issues for all 640 unique Space Marine/chapter source abilities. Blood Angels and Dark Angels have their missing units and profiles; all eleven supplied chapters have their own faction folders, shared parent units/rules, detachments and faction-scoped quizzes. Original uploads and account lists are unchanged. Incomplete or contradictory effects remain outside quiz answer pools and retain their imported reference status.
+
+See [AUDIT-SPACE-MARINES.md](AUDIT-SPACE-MARINES.md) for coverage, source limits and the guarded one-time audit script.
