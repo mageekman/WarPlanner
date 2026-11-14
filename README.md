@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.22
+# WarPlanner — personal study edition, v0.23
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -183,3 +183,11 @@ Regression checks cover every entry, preservation of arbitrary saved changes, ti
 Guide headings have an info button instead of a permanent explanation paragraph. The native popover shows the original step text, closes with ×, outside click/tap or Escape, and restores keyboard focus to its opener. Its position stays within the viewport; resizing and page navigation dismiss it. The popup lives outside the animated slide so carousel previews cannot duplicate it, and swipes while reading it do not change pages.
 
 Army content displays directly in a labelled section, without the outer “Your army at this step/phase” dropdown or introductory caption. Individual unit and shared-rule cards remain collapsible. Steps with no matched abilities retain an explicit empty message. Desktop/mobile browser checks cover opening, dismissal, focus, viewport fit, automatic army content and carousel navigation.
+
+## Workshop unit stat fields (v0.23)
+
+Admin unit editors have individual fields for Movement, Toughness, Save, Wounds, Leadership, Objective Control and invulnerable save, grouped into named profiles. Open Rules workshop → Faction → Units → Unit. Imported `importSource.record.profiles` values prefill the editor when no saved profiles exist. Units without profiles show blank fields; no stats are guessed or fetched automatically. Add/remove profiles for mixed model types.
+
+Save stores optional `data.profiles` in the existing catalog JSON through the existing admin-authorized save and revision history service. Saved profiles take precedence over the raw source, including an explicitly empty array after removing all profiles. Original imported records remain unchanged; source-only reimports preserve edited stats. Numbers, inch/target-number suffixes, zero Objective Control, blank values, dice expressions and source placeholders are handled explicitly. Validation errors retain edited values so they can be corrected.
+
+The new stat fields render only in the admin workshop. No stat profiles are added to the guide, My Army or other player-facing views. This is a presentation restriction: existing authenticated catalog access is unchanged. No schema migration, bulk data rewrite or army-list update is required. Tests cover source/manual precedence, multiple profiles, validation and reimports; mocked browser checks cover prefills, save/reload, removal, missing values, mobile layout and non-admin UI exclusion.

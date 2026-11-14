@@ -1,7 +1,7 @@
 /* In-site content editor. Database policies, never this UI, authorize writes. */
 (function(root){
  'use strict';
- const C=root.WarPlannerContent,L=root.WarPlanLessons,W=root.WarPlannerWorkshopBrowser;
+ const C=root.WarPlannerContent,L=root.WarPlanLessons,W=root.WarPlannerWorkshopBrowser,P=root.WarPlannerUnitProfiles;
  let service=null,draft=null,dirty=false,busy=false,message='',failure='',query='',referenceFilter='all',summaryFilter='all',history=[],factionScope=null,folder=null,browserLevel='factions',parentKey=null;
  const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const lines=s=>String(s||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean),slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -14,6 +14,11 @@
   const g=L.guideSettings(data,kind);
   return `<details class="admin-guide-settings" ${data.guide||g.order!=='normal'?'open':''}><summary>Guide order & badges</summary><div class="admin-fields">${select('guideOrder','Suggested activation order',['normal','early','late'],g.order)}${field('guideRank','Order within this priority group',g.rank,{type:'number',help:'1 comes first, 99 comes last. Normal-order cards ignore this number.'})}<fieldset class="admin-phases"><legend>Show hints in these phases</legend>${L.phases.map((p,i)=>`<label><input type="checkbox" name="guidePhase" value="${i}" ${g.phases.includes(i)?'checked':''}>${p.name}</label>`).join('')}</fieldset>${select('guideTurn','Show hints during',['you','opponent','either'],g.turn)}${field('guideLabel','Priority badge (optional)',g.label,{help:'Leave blank for Move early, Shoot early, Fight early, or the matching late label.'})}${field('guideNote','Sequencing / badge explanation',g.note,{area:true,help:'Explain why this should happen early or late, or what to remember about a badge.'})}${field('guideFlags','Extra guide badges',g.flags.join('\n'),{area:true,help:'One per line, e.g. Deep Strike, Once per battle, Keep in range. These are reminders; add the actual rule separately.'})}<p class="admin-guide-note">These settings change guide hints and card order. The rule still resolves at its saved timing window. Faction and detachment hints provide defaults for their rules.</p></div></details>`;
  }
+ function profileFields(data){
+  const profiles=P.read(data);if(!Object.hasOwn(data,'profiles')&&!profiles.length)profiles.push({name:data.name||''});
+  return `<section class="admin-unit-profiles" aria-label="Unit stats"><h3>Unit stats</h3><p>Shown in the Rules Workshop only. Movement is in inches; saves and Leadership are target numbers. Leave unknown stats blank. Imported values still need checking.</p>${profiles.map((profile,index)=>`<fieldset class="admin-stat-profile" data-unit-profile="${index}"><legend>Profile ${index+1}</legend><div class="admin-stat-profile-top">${field('profile-'+index+'-name','Profile name',profile.name||data.name||'')}<button type="button" class="text-button" data-admin-remove-profile="${index}" aria-label="Remove profile ${index+1}">Remove</button></div><div class="admin-stat-grid">${P.fields.map(f=>`<label class="admin-field">${e(f.label)}<input type="text" inputmode="text" name="profile-${index}-${f.key}" value="${e(profile[f.key]??'')}" placeholder="${e(f.hint)}" maxlength="30"></label>`).join('')}</div></fieldset>`).join('')}<button type="button" class="outline" data-admin-action="add-profile" ${profiles.length>=20?'disabled':''}>＋ Add profile</button></section>`;
+ }
+ function captureProfiles(form,fd,name){const originals=P.read(draft.data);return [...form.querySelectorAll('[data-unit-profile]')].map(el=>{const index=Number(el.dataset.unitProfile),profile={...(originals[index]||{}),name:String(fd.get('profile-'+index+'-name')||'').trim()||name};for(const f of P.fields)profile[f.key]=P.parse(fd.get('profile-'+index+'-'+f.key),f.key);return profile;});}
  function folderDefinition(){return W.definitions.find(d=>d.id===folder);}
  function scopeName(){return factionScope===W.ALL?'All content':factionScope===W.SHARED?'Shared / core':factionScope||'Choose a faction';}
  function listed(){return C.filterRecords(W.entries(service?.records||[],factionScope,folder),{kind:folderDefinition()?.kind||'',query,reference:referenceFilter}).filter(r=>r.kind!=='rule'||summaryFilter==='all'||root.WarPlannerMechanics.summaryState(r.data)===summaryFilter);}
@@ -44,6 +49,7 @@
    fields+=`<label class="admin-check"><input name="referenceOnly" type="checkbox" ${d.referenceOnly?'checked':''}>Reference reminder — effect still needs review</label>`;
    fields+=field('question','Study question',d.question||'',{area:true})+field('answer','Study answer',d.answer||'',{area:true});
   }else if(draft.kind==='unit'){
+   fields+=profileFields(d);
    fields+=field('keywords','Keywords',d.keywords.join('\n'),{area:true,help:'One keyword per line. Include Character / Epic Hero where applicable.'})+field('modelCounts','Available model counts',d.modelCounts.join(', '),{help:'Separate counts with commas, for example 5, 10.'});
    const names=d.bodyguardIds.map(id=>L.catalog.units.find(u=>u.id===id&&L.factionMatches(u.faction,draft.faction))?.name||id);
    fields+=field('bodyguards','Units this character can lead',names.join('\n'),{area:true,help:'One existing unit name per line. Assign rule text from Rules & abilities.'});
@@ -69,7 +75,7 @@
  function refresh(){root.refreshWarPlannerContent?.();}
  function markDirty(){dirty=true;const s=document.querySelector('#admin-draft-status');if(s)s.textContent='Unsaved changes';}
  function canLeave(){if(root.WarPlannerImportUI?.active)return root.WarPlannerImportUI.canLeave();return !busy&&(!dirty||root.confirm('Discard your unsaved rule edits?'));}
- function capture(form){
+ function capture(form,check=true){
   const fd=new FormData(form),get=n=>String(fd.get(n)||'').trim(),row=structuredClone(draft),d=row.data;
   row.name=get('name');row.faction=['faction','step'].includes(row.kind)?row.faction:get('faction');
   d.id=get('contentId')||slug(row.name+'-'+(row.faction==='*'?'core':row.faction));row.key=row.kind+':'+d.id;
@@ -81,6 +87,7 @@
    d.expanded=true;d.adminManaged=true;
    if(d.category==='enhancement'&&!d.enhancement)d.enhancement=row.name;
   }else if(row.kind==='unit'){
+   d.profiles=captureProfiles(form,fd,row.name);
    d.keywords=lines(get('keywords'));d.modelCounts=get('modelCounts').split(',').map(x=>Number(x.trim()));d.legend=fd.has('legend');
    d.bodyguardIds=lines(get('bodyguards')).map(name=>{const unit=L.catalog.units.find(u=>L.factionMatches(u.faction,row.faction)&&u.name.toLowerCase()===name.toLowerCase());if(!unit)throw Error('Add the bodyguard unit “'+name+'” first.');return unit.id;});
   }else if(row.kind==='detachment'){d.description=get('description');d.dispositions=lines(get('dispositions'));}
@@ -90,7 +97,7 @@
   if(row.kind==='unit')d.fightsFirst=get('fightsFirst');
   d.sourceUrl=get('sourceUrl');d.sourceLabel=get('sourceLabel');d.faction=row.faction;
   if(['rule','step'].includes(row.kind)){d.status='admin-reviewed';d.sourceIds=[...new Set([...(d.sourceIds||[]),'admin'])];}
-  row.enabled=row.kind==='step'||fd.has('enabled');return C.validate(row);
+  row.enabled=row.kind==='step'||fd.has('enabled');return check?C.validate(row):row;
  }
  function newEntry(kind){
   const data={id:'',name:'',sourceLabel:'',sourceUrl:''};
@@ -115,6 +122,11 @@
  });
  document.addEventListener('click',async event=>{
   const button=event.target.closest('button');if(!button||!service?.isAdmin||busy)return;
+  if((button.dataset.adminAction==='add-profile'||button.dataset.adminRemoveProfile!==undefined)&&draft?.kind==='unit'){
+   try{const next=capture(document.querySelector('#admin-content-form'),false);if(button.dataset.adminAction==='add-profile'){if(next.data.profiles.length>=20)return;next.data.profiles.push({name:next.name});}else next.data.profiles.splice(Number(button.dataset.adminRemoveProfile),1);draft=next;dirty=true;failure='';refresh();}
+   catch(error){failure=error.message;const notice=document.querySelector('.admin-notice');if(notice){notice.classList.add('admin-error');notice.textContent=failure;}}
+   return;
+  }
   if(button.dataset.adminLevel){browserLevel=button.dataset.adminLevel;const explorer=document.querySelector('.admin-explorer');if(explorer)explorer.dataset.level=browserLevel;return;}
   if(button.dataset.adminScope){if(!canLeave())return;factionScope=button.dataset.adminScope;folder=null;draft=null;parentKey=null;query='';referenceFilter='all';summaryFilter='all';dirty=false;history=[];browserLevel='groups';refresh();return;}
   if(button.dataset.adminFolder){if(!canLeave())return;folder=button.dataset.adminFolder;draft=null;parentKey=null;query='';referenceFilter='all';summaryFilter='all';dirty=false;history=[];browserLevel='entries';refresh();return;}
@@ -139,7 +151,7 @@
   if(event.target.getAttribute('id')!=='admin-content-form')return;event.preventDefault();if(!service?.isAdmin||busy)return;
   const current=service;
   try{
-   draft=capture(event.target);busy=true;failure='';refresh();
+   draft=capture(event.target,false);C.validate(draft);busy=true;failure='';refresh();
    const saved=await current.save(draft);if(service!==current)return;
    draft=saved;dirty=false;history=[];C.apply(service.records);message='Saved to database. The guide and army builder now use this content.';
   }catch(error){if(service===current)failure=error.message;}

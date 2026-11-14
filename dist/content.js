@@ -5,6 +5,7 @@
  const L=node?require('./lessons.js'):root.WarPlanLessons;
  const A=node?require('./activations.js'):root.WarPlanActivations;
  const M=node?require('./mechanics.js'):root.WarPlannerMechanics;
+ const Profiles=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles;
  const copy=v=>structuredClone(v),norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
  const kinds=['rule','unit','detachment','faction','step'];
  const windows=['round','turn-start','start','core-cp','shock','act','select','before','after','react','arrivals','end','turn-end','round-end','prebattle'];
@@ -59,6 +60,7 @@
    if(!row.faction)throw Error('Choose a faction, or All factions.');
   }
   if(row.kind==='unit'){
+   if(d.profiles!==undefined)Profiles.validate(d.profiles);
    for(const k of ['keywords','bodyguardIds'])stringList(d[k],k);
    if(!Array.isArray(d.abilities)||d.abilities.some(a=>!a||typeof a.id!=='string'))throw Error('Review this unit’s ability references.');
    if(!Array.isArray(d.modelCounts)||!d.modelCounts.length||d.modelCounts.some(n=>!Number.isInteger(n)||n<1||n>100))throw Error('Enter model counts from 1 to 100.');

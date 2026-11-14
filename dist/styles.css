@@ -354,3 +354,16 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
 .guide-info-close{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:5px;background:none;color:var(--muted);font-size:23px}
 .guide-info-close:hover{background:#ffffff08;color:var(--ink)}
 .guide-info-popup::backdrop{background:transparent}
+
+/* Stats stay in the admin unit editor until player-facing profiles are enabled. */
+.admin-unit-profiles{grid-column:1/-1;padding:16px;border:1px solid #3a5551;border-radius:7px;min-width:0}
+.admin-unit-profiles h3{font-size:14px;color:var(--teal)}
+.admin-unit-profiles>p{font-size:11px;line-height:1.7;margin:7px 0 14px}
+.admin-stat-profile{border:1px solid #344d58;border-radius:6px;padding:12px;margin:0 0 12px;min-width:0}
+.admin-stat-profile legend{padding:0 6px;font-size:11px;color:var(--muted)}
+.admin-stat-profile-top{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.admin-stat-profile-top>.admin-field{flex:1;min-width:0}
+.admin-stat-profile-top>.text-button{padding:8px;font-size:11px}
+.admin-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.admin-stat-grid .admin-field{grid-column:auto;font-size:11px}
+@media(max-width:600px){.admin-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-unit-profiles{padding:12px}}
