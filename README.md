@@ -237,3 +237,12 @@ Question data includes a compact snapshot of the relevant rule, unit and selecte
 The primary faction group order is Space Marines → Imperium → Chaos → Xenos, followed by Other for unclassified entries. The workshop faction browser, guide list selector, practice selector, faction editor and import group selector all support the new group. Space Marines is an editable group value; factions remain alphabetical within their groups. Only the existing Space Marines faction moves out of Imperium. Other factions, including Grey Knights, keep their current group.
 
 After deploying frontend support, `supabase/space-marines-group.sql` moves that one existing faction through the normal administrator permissions and catalog history trigger. It changes only `data.group`, preserves imported source records and names/IDs, and is idempotent. No schema, role or saved-list changes are needed. Future chapter factions can be assigned to the group in the workshop.
+
+
+## Deathwatch catalog copies
+
+`supabase/duplicate-deathwatch-content.sql` duplicates the 10 Deathwatch-specific units stored under Space Marines into the existing Deathwatch faction: five Kill Teams (Decimus, Fortis, Indomitor, Spectrus and Talonstrike), Deathwatch Veterans, Deathwatch Terminator Squad, Watch Master, Watch Captain Artemis and Corvus Blackstar. It also copies Deathwatch Support. Existing Deathwatch rules are reused by their IDs.
+
+Copies receive unique `-deathwatch` IDs and record their source catalog key/revision in `data.duplicatedFrom`. Leader bodyguard IDs point at the copied units. Stats, equipment, ability references, enablement and raw import records are preserved. Original and pre-existing destination records stay intact. The operation uses existing admin RLS, runs atomically, checks references and skips existing destination copies on reruns. A source selection or ID collision that needs review aborts the transaction.
+
+Verified against the live catalog: 10 units and one detachment added; all 68 pre-existing relevant entries matched their before snapshots. The Deathwatch folder contains 10 units, 17 detachments and its existing 40 rules after the operation. A rolled-back database trial, application catalog validation, profile comparisons, attachment/link checks and a mocked browser check with the updated live data passed.
