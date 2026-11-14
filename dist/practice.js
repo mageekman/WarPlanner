@@ -1,7 +1,7 @@
 /* Multiple-choice recall from the current catalog. No invented stats or rule text. */
 (function(root){
  'use strict';
- const node=typeof module!=='undefined'&&module.exports,P=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles,M=node?require('./mechanics.js'):root.WarPlannerMechanics;
+ const node=typeof module!=='undefined'&&module.exports,P=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles,M=node?require('./mechanics.js'):root.WarPlannerMechanics,L=node?require('./lessons.js'):root.WarPlanLessons;
  const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),text=s=>String(s||'').trim(),copy=x=>structuredClone(x);
  const modes={mixed:'Mixed practice',rules:'Match the rule',stats:'Unit stats',abilities:'Unit abilities',units:'Which unit has this ability?'};
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule',stratagem:'Stratagem',enhancement:'Enhancement'};
@@ -10,11 +10,28 @@
  function format(value,key){return key==='M'?value+'″':['Sv','Ld','invuln_sv'].includes(key)?value+'+':String(value);}
  function known(value,key){return typeof value==='number'&&Number.isInteger(value)&&value>=(['Sv','Ld','invuln_sv'].includes(key)?1:0)&&value<=999||typeof value==='string'&&/^\d*D\d+(?:[+-]\d+)?$/.test(value);}
  function hideName(summary,name,replacement='this rule'){const escaped=name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return summary.replace(new RegExp('(^|[^a-z0-9])'+escaped+'(?=$|[^a-z0-9])','gi'),(_match,prefix)=>prefix+replacement);}
- function buildBank({rules=[],units=[],faction,random=Math.random}={}){
+ function buildBank({rules=[],units=[],faction,army=null,detachments:catalogDetachments=[],random=Math.random}={}){
   const matches=r=>r.enabled!==false&&!!norm(faction)&&!!norm(r.faction)&&norm(r.faction)===norm(faction);
+  const roster=army&&Array.isArray(army.units)?army.units:[],rosterNames=new Set(roster.map(u=>norm(u.name)));
+  const validArmy=!army||!!roster.length&&!!norm(army.faction)&&(norm(army.faction)===norm(faction)||L?.factionMatches(army.faction,faction));
+  const factionUnits=units.filter(matches),listUnits=validArmy?factionUnits.filter(u=>!army||rosterNames.has(norm(u.name))):[];
+  const detachments=new Set((Array.isArray(army?.detachments)?army.detachments:army?.detachment?[army.detachment]:[]).map(norm));
+  for(const d of catalogDetachments.filter(matches))if(detachments.has(norm(d.name)))for(const id of [d.id,d.importSource?.sourceId,d.importSource?.record?.id])if(id)detachments.add(norm(id));
+  const detachmentOf=r=>r.detachment||r.importSource?.record?.detachment_id||'';
+  function equipped(r){const name=r.enhancement||r.name,ids=new Set([r.id,r.sourceRuleId,r.importSource?.sourceId,...Object.keys(L?.aliases||{}).filter(id=>L.aliases[id]===r.id)].filter(Boolean));return roster.some(u=>u.enhancementId?ids.has(u.enhancementId):(u.details||[]).some(d=>/^enhancement\s*:/i.test(d)&&norm(d.replace(/^enhancement\s*:/i,''))===norm(name)));}
+  function relevant(r){
+   if(!army)return true;
+   if(!validArmy)return false;
+   if(detachmentOf(r)&&!detachments.has(norm(detachmentOf(r))))return false;
+   if((r.enhancement||r.category==='enhancement')&&!equipped(r))return false;
+   if(r.units?.length)return r.units.some(name=>rosterNames.has(norm(name)));
+   if(r.category==='ability')return listUnits.some(u=>hasRule(u,r));
+   if(r.category==='core'&&factionUnits.some(u=>hasRule(u,r)))return listUnits.some(u=>hasRule(u,r));
+   return true;
+  }
   // A repeated name within a detachment represents one possible answer.
   const unique=new Map();
-  const scoped=rules.filter(matches).map(r=>({...(M?M.enrich(r):r),faction:r.faction})),eligible=scoped.filter(usable);
+  const scoped=rules.filter(matches).map(r=>({...(M?M.enrich(r):r),faction:r.faction})),eligible=scoped.filter(relevant).filter(usable);
   for(const r of eligible){const key=[r.category,norm(r.name),norm(r.detachment)].join(':');if(!unique.has(key))unique.set(key,r);}
   const all=[...unique.values()],label=r=>r.name+(r.detachment?' · '+r.detachment:''),questions=[];
   const choices=(correct,others)=>shuffle([correct,...shuffle(others,random).slice(0,3)],random).map(option=>({...option,faction}));
@@ -26,7 +43,7 @@
    if(other.length<3)continue;
    const id='rule:'+r.id;questions.push({id,mode:'rules',category:r.category,prompt:'Which '+(categories[r.category]||'rule').toLowerCase()+' matches this description?',clue:hideName(r.summary,r.name),correct:r.id,options:choices({id:r.id,label:label(r)},other.map(a=>({id:a.id,label:label(a)}))),review:{kind:'rule',rule:ruleView(r),units:[]},explanation:explain(r)});
   }
-  const unitNames=new Map();for(const u of units.filter(matches)){const key=norm(u.name);if(!unitNames.has(key))unitNames.set(key,u);}
+  const unitNames=new Map();for(const u of listUnits){const key=norm(u.name);if(!unitNames.has(key))unitNames.set(key,u);}
   const selectedUnits=[...unitNames.values()];
   function hasRule(u,r){
    if(r.units?.length)return r.units.some(n=>norm(n)===norm(u.name));
@@ -61,14 +78,18 @@
    questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),review:{kind:'stats',units:[unitView(u)],profile:copy(p),stat:f.key,sourceUrl:u.sourceUrl||'',sourceLabel:u.sourceLabel||'Current catalog unit profile'},explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
   }
   for(const q of questions)if(q.review.kind==='rule'&&['ability','core'].includes(q.review.rule.category))q.review.units=selectedUnits.filter(u=>hasRule(u,q.review.rule)).map(unitView);
-  return {faction,questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['rules','stats','abilities','units'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
+  return {faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['rules','stats','abilities','units'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
  }
- function createSession(bank,{mode='mixed',count=10,random=Math.random}={}){
-  if(!Object.hasOwn(modes,mode)||![5,10,20].includes(count))throw Error('Choose a practice type and 5, 10 or 20 questions.');
-  const pools=Object.fromEntries(['rules','stats','abilities','units'].filter(m=>mode==='mixed'||mode===m).map(m=>[m,shuffle(bank.questions.filter(q=>q.mode===m&&!!norm(bank.faction)&&norm(q.faction)===norm(bank.faction)&&q.options.length===4&&q.options.every(o=>norm(o.faction)===norm(bank.faction))),random)])),questions=[];
-  while(questions.length<count){const available=Object.keys(pools).filter(m=>pools[m].length);if(!available.length)break;const selected=available[Math.floor(random()*available.length)];questions.push(copy(pools[selected].pop()));}
-  return {faction:bank.faction,mode,questions,index:0,answers:[]};
+ function createSession(bank,{mode='mixed',types,count=10,random=Math.random}={}){
+  const kinds=Object.keys(modes).filter(key=>key!=='mixed');
+  if(!Object.hasOwn(modes,mode)||![5,10,20].includes(count))throw Error('Choose practice types and 5, 10 or 20 questions.');
+  if(types!==undefined&&(!Array.isArray(types)||!types.length||types.some(type=>!kinds.includes(type))))throw Error('Select at least one valid question type.');
+  const selected=[...new Set(types===undefined?(mode==='mixed'?kinds:[mode]):types)];
+  const pools=Object.fromEntries(selected.map(m=>[m,shuffle(bank.questions.filter(q=>q.mode===m&&!!norm(bank.faction)&&norm(q.faction)===norm(bank.faction)&&q.options.length===4&&q.options.every(o=>norm(o.faction)===norm(bank.faction))),random)])),questions=[],availableTypes=selected.filter(m=>pools[m].length);
+  while(questions.length<count){const available=shuffle(availableTypes.filter(m=>pools[m].length),random);if(!available.length)break;for(const m of available){if(questions.length>=count)break;questions.push(copy(pools[m].pop()));}}
+  return {faction:bank.faction,scope:bank.scope||'faction',listName:bank.listName||'',mode:availableTypes.length===1?availableTypes[0]:'mixed',types:availableTypes,requestedTypes:selected,questions,index:0,answers:[]};
  }
+
  function answer(session,id){const q=session.questions[session.index];if(!q||session.answers.length!==session.index||!q.options.some(o=>o.id===id))return false;session.answers.push({id,correct:id===q.correct});return true;}
  const api={modes,categories,shuffle,buildBank,createSession,answer};if(node)module.exports=api;else root.WarPlannerPractice=api;
 })(typeof window!=='undefined'?window:globalThis);

@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.27
+# WarPlanner — personal study edition, v0.28
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -253,3 +253,17 @@ Verified against the live catalog: 10 units and one detachment added; all 68 pre
 Practice adds **Which unit has this ability?** alongside the existing types. It presents an ability’s name and description with four unique unit names from the selected faction. A randomly chosen known owner is the correct answer; other owners are excluded from distractors, including ownership found through duplicate records, matching ability names/descriptions, imported source aliases and alternate core/ability classifications. Abilities without three eligible non-owner units are skipped. Explicit owner names are masked in the description; abilities whose name directly gives away the owner are skipped.
 
 After selection, the existing guide-style unit card reveals the correct unit and full original ability, conditions and sources. The new type participates in Mixed practice and the standard scoring/missed-question review. Counts and session pools include the new type; faction isolation and existing answer-card behavior are retained. No catalog or database changes are required. Tests cover valid owners, source aliases, shared rules, ambiguous duplicate records, clue masking, sparse data and same-faction unit answers.
+
+
+## Saved-list practice and custom question mixes (v0.28)
+
+Practice offers **Whole faction** or **My saved army list** as quiz content. The list selector uses the signed-in account’s existing saved-list library; its management button opens My army for importing or creating lists. Choosing a practice list does not switch the active guide army, edit the saved roster or create another stored copy. Quiz questions and answer choices are limited to the list’s unique unit types and applicable unit/faction rules, selected detachments and equipped enhancements. Imported detachment IDs are resolved through catalog metadata. Missing unit data is identified, and sparse lists never borrow choices from outside the selected list.
+
+Four question-type checkboxes replace the single dropdown. Select one type, any combination, or use Select all / Clear. Sessions draw a shuffled round from each available checked type before starting another round, giving a balanced custom mix without repeated questions. Unavailable types are explicitly noted and skipped; no selected types or no valid questions disables Start. Existing single-mode session API calls remain supported.
+
+List and question-type choices stay in session memory and clear at account reset/sign-out. A generated quiz retains its list label and immutable question snapshots; deleted/unavailable lists produce an empty list scope rather than falling back to whole-faction material. Results and guide-style answer cards are retained. **New practice set** is now an outlined button at the top right, including on mobile.
+
+Model tests cover roster-only unit/rule/stat choices, duplicate squads, detachment/enhancement filtering, imported detachment IDs, empty/wrong-faction/missing data, custom type validation and balanced mixes. Browser QA covers account-scoped list choices, checkbox focus and selection, an end-to-end two-type list quiz, scoring and answer cards, sparse-list safeguards, saved-army immutability, and mobile/desktop button placement. No database/schema changes or new storage are required.
+
+
+Practice answer reports: after an answer is revealed, **Are we wrong?** appears below Next question / See results. It opens the existing report form with the correct answer’s rule or unit preselected, plus related displayed entries and Something is missing. Stat and unit-identification reports default to Something else for manual unit-editor review. Reports preserve the quiz’s displayed summary or selected profile facts, identify the practice question, and omit the saved list name/export. If the loaded rule has changed since question creation, direct approval is disabled in favor of Edit. Submission, retry handling, account permissions, the admin notification badge and the existing Approve/Edit/Reject queue are shared with guide reports. The accordion retains its open state while changing fields. No new report endpoint or schema is needed.

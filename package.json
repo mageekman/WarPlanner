@@ -1,6 +1,6 @@
 {
   "name": "warplanner",
-  "version": "0.27.0",
+  "version": "0.28.0",
   "private": true,
   "description": "WarPlanner personal study companion with source-aware lessons",
   "scripts": {
