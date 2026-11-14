@@ -32,7 +32,9 @@
  }
  function folders(records,scope){
   if(!scope)return [];
-  return definitions.filter(d=>d.id!=='step'||scope===SHARED||scope===ALL).filter(d=>scope!==SHARED||!['faction','unit','detachment'].includes(d.id)).map(d=>({...d,name:d.id==='faction'&&scope===ALL?'Factions':d.name,count:entries(records,scope,d.id).length}));
+  const rows=scoped(records,scope),counts=new Map();
+  for(const r of rows){counts.set(r.kind,(counts.get(r.kind)||0)+1);if(r.kind==='rule')counts.set('category:'+r.data.category,(counts.get('category:'+r.data.category)||0)+1);}
+  return definitions.filter(d=>d.id!=='step'||scope===SHARED||scope===ALL).filter(d=>scope!==SHARED||!['faction','unit','detachment'].includes(d.id)).map(d=>({...d,name:d.id==='faction'&&scope===ALL?'Factions':d.name,count:counts.get(d.category?'category:'+d.category:d.kind)||0}));
  }
  function related(records,parent){
   if(!parent||!['detachment','unit'].includes(parent.kind))return [];

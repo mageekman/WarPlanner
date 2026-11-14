@@ -75,7 +75,8 @@ test('catalog loads every page beyond 500 entries without dropping later units o
  const dataset=Array.from({length:1001},(_,i)=>{const r=row('rule:walker');r.key='rule:paged-'+i;r.data.id='paged-'+i;r.name=r.data.name='Paged rule '+i;return r;}),ranges=[];let fail=false;
  const query={select(){return this},order(){return this},async range(start,end){ranges.push([start,end]);return fail&&start===500?{error:{message:'Second page failed'}}:{data:dataset.slice(start,end+1)};}};
  const service=C.create({from:()=>query},'owner');await service.reload();assert.equal(service.records.length,1001);assert.equal(service.records.at(-1).key,'rule:paged-1000');assert.deepEqual(ranges,[[0,499],[500,999],[1000,1499]]);
- fail=true;await assert.rejects(service.reload(),/Second page failed/);assert.equal(service.records.length,1001);
+ const version=service.version;fail=true;await assert.rejects(service.reload(),/Second page failed/);assert.equal(service.records.length,1001);assert.equal(service.version,version);
+ fail=false;await service.reload();assert.equal(service.version,version+1);service.dispose();assert.equal(service.version,version+2);assert.deepEqual(service.records,[]);
 });
 
 test('Space Marines is a supported editable faction group',()=>{const faction={key:'faction:space-marines',kind:'faction',faction:'',name:'Space Marines',enabled:true,data:{id:'space-marines',name:'Space Marines',group:'Space Marines',aliases:['Adeptus Astartes']}};C.validate(faction);C.apply([faction]);assert.equal(B.factions().find(f=>f.name==='Space Marines').group,'Space Marines');faction.data.group='Unknown';assert.throws(()=>C.validate(faction),/Choose Space Marines/);});

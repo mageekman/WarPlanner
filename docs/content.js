@@ -109,15 +109,15 @@
   return records.filter(row=>(!kind||row.kind===kind)&&(kind!=='rule'||reference==='all'||(reference==='reference')===(row.data.referenceOnly===true))&&(!text||[row.name,row.faction,row.data.detachment,row.data.summary,row.data.importSource?.text].filter(Boolean).join(' ').toLowerCase().includes(text))).sort((a,b)=>a.name.localeCompare(b.name));
  }
  function create(client,userId){
-  let records=[],isAdmin=false,disposed=false;
+  let records=[],isAdmin=false,disposed=false,version=0;
   const check=()=>{if(disposed)throw Error('This account session has ended.');};
   const result=r=>{if(r.error)throw Error(r.error.message||'The content database could not be reached.');return r.data;};
   async function read(){
    const pageSize=500,all=[];for(let start=0;;start+=pageSize){check();const page=result(await client.from('rules_catalog').select('*').order('key').range(start,start+pageSize-1))||[];all.push(...page);if(page.length<pageSize)break;}
-   all.forEach(validate);check();records=all;return copy(records);
+   all.forEach(validate);check();records=all;version++;return copy(records);
   }
   return {
-   get isAdmin(){return isAdmin&&!disposed;},get records(){return copy(records);},get userId(){return userId;},
+   get isAdmin(){return isAdmin&&!disposed;},get records(){return copy(records);},get version(){return version;},get userId(){return userId;},
    async load(){check();const admin=result(await client.from('site_admins').select('user_id').eq('user_id',userId).maybeSingle());isAdmin=!!admin;await read();return this;},
    async reload(){return read();},
    async save(row){
@@ -127,7 +127,7 @@
     if(row.revision)query=client.from('rules_catalog').update(payload).eq('key',row.key).eq('revision',row.revision).select('*').maybeSingle();
     else query=client.from('rules_catalog').insert(payload).select('*').single();
     const saved=result(await query);check();if(!saved)throw Error('This entry changed in another tab. Reload the catalog before saving; your draft is still here.');
-    records=records.filter(r=>r.key!==saved.key).concat([saved]);return copy(saved);
+    records=records.filter(r=>r.key!==saved.key).concat([saved]);version++;return copy(saved);
    },
    async saveBatch(rows){
     check();if(!isAdmin)throw Error('Administrator access is required.');
@@ -135,7 +135,7 @@
     const entries=rows.map(row=>({key:row.key,kind:row.kind,faction:row.faction,name:row.name.trim(),data:copy(row.data),enabled:row.enabled,expectedRevision:row.revision||0}));
     const saved=result(await client.rpc('import_rules_catalog',{entries}));check();
     if(!Array.isArray(saved)||saved.length!==entries.length)throw Error('Import response was incomplete. Reload the catalog to verify before trying again.');
-    saved.forEach(validate);const map=new Map(records.map(r=>[r.key,r]));for(const row of saved)map.set(row.key,row);records=[...map.values()];return copy(saved);
+    saved.forEach(validate);const map=new Map(records.map(r=>[r.key,r]));for(const row of saved)map.set(row.key,row);records=[...map.values()];version++;return copy(saved);
    },
    async submitReport(payload){check();const saved=result(await client.rpc('submit_rule_report',{payload:copy(payload)}));check();return saved;},
    async listReports(status='pending'){
@@ -147,7 +147,7 @@
     const saved=result(await client.rpc('review_rule_report',{payload:{id:report.id,decision,proposal:proposal?copy(proposal):null,expected_revision:proposal?.revision||0,mode}}));check();return saved;
    },
    async history(key){check();if(!isAdmin)throw Error('Administrator access is required.');return result(await client.from('rules_catalog_history').select('*').eq('key',key).order('revision',{ascending:false}).limit(30))||[];},
-   dispose(){disposed=true;isAdmin=false;records=[];}
+   dispose(){disposed=true;isAdmin=false;records=[];version++;}
   };
  }
  const api={get generation(){return generation;},filterRecords,kinds,windows,seed:()=>copy(defaults),validate,apply,reset:()=>apply([]),create};
