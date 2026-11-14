@@ -16,7 +16,7 @@
   if(!catalog.factions){catalog={...catalog,units:catalog.units.map(u=>({...u,faction:u.faction||'Aeldari'}))};rules=rules.map(r=>({...r,faction:r.faction||'Aeldari'}));}
   if(session)return session.index>=session.questions.length?results():question();
   const factions=catalog.factions||[{name:'Aeldari',group:'Xenos'}],order=['Space Marines','Imperium','Chaos','Xenos'];
-  if(!factions.some(f=>f.name===selectedFaction))selectedFaction=factions.find(f=>f.name===context.faction)?.name||factions[0]?.name||'';
+  if(!factions.some(f=>f.name===selectedFaction))selectedFaction=factions.find(f=>normalized(f.name)===normalized(context.faction)||(f.aliases||[]).some(a=>normalized(a)===normalized(context.faction)))?.name||factions[0]?.name||'';
   if(!savedLists.some(list=>list.id===listId))listId=savedLists.find(list=>list.id===activeListId)?.id||savedLists[0]?.id||'';
   bank=selectionBank();
   const available=selectedTypes.reduce((sum,type)=>sum+(bank.counts[type]||0),0),emptyTypes=selectedTypes.filter(type=>!bank.counts[type]);

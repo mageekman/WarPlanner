@@ -45,3 +45,18 @@ test('malformed catalog rows remain safe inspectable errors instead of crashing 
 });
 
 test('imports can create a faction in the Space Marines group',()=>{const rows=I.parse([file('units.json',[{id:'marine-test',name:'Test Marine',faction_id:'space-marines',keywords:[],ability_ids:[]}])],{faction:'Space Marines',group:'Space Marines'},existing);const plan=I.plan(rows,existing),faction=plan.rows.find(r=>r.kind==='faction');assert.ok(faction);assert.equal(faction.proposed.data.group,'Space Marines');C.validate(faction.proposed);});
+
+test('Tyranid spelling resolves upstream Tyranids and retains unit profiles and detachment links',()=>{
+ const files=[file('data/core/tyranids/factions.json',[{id:'tyranids',name:'Tyranids'}]),file('data/core/tyranids/units.json',[{id:'termagants',name:'Termagants',faction_id:'tyranids',profiles:[{name:'Termagants',M:6,T:3}]}]),file('data/core/tyranids/detachments.json',[{id:'invasion',name:'Invasion Fleet',faction_id:'tyranids'}]),file('data/core/tyranids/enhancements.json',[{id:'adapt',name:'Adapt',detachment_id:'invasion'}])];
+ const parsed=I.parse(files,{faction:'Tyranid',group:'Xenos'},existing),r=I.plan(parsed,existing);assert.equal(parsed.faction,'Tyranids');assert.ok(r.rows.every(e=>!e.error));assert.equal(r.rows.find(e=>e.kind==='unit').proposed.data.importSource.record.profiles[0].T,3);assert.equal(r.rows.find(e=>e.kind==='rule').proposed.data.detachment,'Invasion Fleet');assert.equal(r.rows.find(e=>e.kind==='faction').name,'Tyranids');
+});
+test('mixed faction folders cannot leak metadata or factionless enhancements into an import',()=>{
+ const files=[file('data/core/aeldari/units.json',[{id:'shared-id',name:'Right unit',faction_id:'aeldari',ability_ids:['folder-test']}]),file('data/core/other/units.json',[{id:'shared-id',name:'Wrong unit',faction_id:'other'}]),file('data/enrichment/aeldari/abilities.json',[{...ability,ability_id:'folder-test',unit_ids:['shared-id']}]),file('data/enrichment/other/phase-mappings.json',[{source_id:'folder-test',phases:['fight']}]),file('data/core/other/enhancements.json',[{id:'foreign',name:'Foreign enhancement'}]),file('data/core/other/wrapped.json',{stratagems:[{id:'foreign-strat',name:'Foreign stratagem'}]})];
+ const r=review(files);assert.ok(!r.rows.some(e=>e.name.startsWith('Wrong')||e.name.startsWith('Foreign')));assert.deepEqual(r.rows.find(e=>e.kind==='rule').proposed.data.units,['Right unit']);assert.deepEqual(r.rows.find(e=>e.kind==='rule').proposed.data.phase,[]);assert.ok(r.warnings.some(w=>w.includes('another faction')));
+});
+test('registered upstream source IDs resolve renamed factions and mismatched faction files fail clearly',()=>{
+ const faction={key:'faction:custom',kind:'faction',name:'My faction',faction:'',enabled:true,revision:1,data:{id:'custom',name:'My faction',group:'Xenos',aliases:[],importSource:{sourceId:'upstream-id'}}};const r=I.parse([file('units.json',[{id:'u',name:'Unit',faction_id:'upstream-id'}])],{faction:'My faction'},[faction]);assert.equal(r.candidates[0].row.name,'Unit');assert.throws(()=>I.parse([file('factions.json',[{id:'other',name:'Other'}]),file('enhancements.json',[{id:'e',name:'Enhancement'}])],{faction:'My faction'},[faction]),/does not match/);
+});
+test('a direct stable key in another faction cannot replace that faction entry',()=>{
+ const foreign=structuredClone(existing.find(r=>r.kind==='rule'));foreign.faction='Other';const row={...structuredClone(foreign),faction:'Aeldari'};const r=review([file('backup.json',{entries:[row]})],[foreign]);assert.equal(r.rows[0].before,null);assert.equal(r.rows[0].action,'add');
+});

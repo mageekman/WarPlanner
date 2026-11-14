@@ -29,7 +29,7 @@
    if(!Array.isArray(data)&&(data?.format==='warplanner-rules'||Object.hasOwn(data||{},'entries'))){if(!Array.isArray(data.entries))throw Error(file.name+': entries must be an array.');canonical.push(...data.entries.map(row=>({row,file:file.name})));continue;}
    if(data?.key&&data?.kind){canonical.push({row:data,file:file.name});continue;}
    if(Array.isArray(data)&&data.some(x=>x?.key&&x?.kind)){if(data.some(x=>!x?.key||!x?.kind))throw Error(file.name+': mixed catalog and source records.');canonical.push(...data.map(row=>({row,file:file.name})));continue;}
-   if(!Array.isArray(data)){const key=Object.keys(data||{}).find(k=>Array.isArray(data[k])&&['abilities','units','detachments','factions','enhancements','stratagems','rules'].includes(k));if(key){data=data[key];file={...file,name:key+'.json'};}else throw Error(file.name+': expected a JSON array or WarPlanner export.');}
+   if(!Array.isArray(data)){const key=Object.keys(data||{}).find(k=>Array.isArray(data[k])&&['abilities','units','detachments','factions','enhancements','stratagems','rules'].includes(k));if(key){data=data[key];file={...file,name:file.name.replace(/[^/\\]+$/,key+'.json')};}else throw Error(file.name+': expected a JSON array or WarPlanner export.');}
    const key=baseName(file.name),known=['abilities','units','detachments','factions','enhancements','stratagems','phase-mappings','leader-attachments','unit-compositions','datasheets','datasheets_abilities','detachment_abilities','datasheets_keywords','datasheets_leader'];
    if(!known.includes(key)){warnings.push('Skipped '+file.name+' (unsupported source table).');continue;}
    if(!tables.has(key))tables.set(key,[]);tables.get(key).push(...data.map(raw=>({raw,file:file.name,csv:! /\.json$/i.test(file.name)})));
@@ -48,12 +48,20 @@
  }
  function parse(files,options,existing=[]){
   const faction=String(options.faction||'').trim(),group=options.group||'Xenos';if(!faction)throw Error('Choose the faction you are importing.');if(!['Space Marines','Imperium','Chaos','Xenos'].includes(group))throw Error('Choose an army group.');
-  const {tables,canonical,warnings}=parts(files),table=name=>(tables.get(name)||[]),candidates=[];
-  const knownFactions=existing.filter(r=>r.kind==='faction'),factionRecord=knownFactions.find(r=>norm(r.name)===norm(faction)||(r.data.aliases||[]).some(n=>norm(n)===norm(faction)));
-  const factionName=factionRecord?.name||faction;
-  const importedFaction=table('factions').find(x=>norm(x.raw.name)===norm(factionName)||(x.raw.aliases||[]).some(n=>norm(n)===norm(factionName)));
-  const factionIds=new Set([slug(factionName),factionRecord?.data.id,importedFaction?.raw.id].filter(Boolean).map(norm));
-  function inFaction(raw){return !raw.faction_id||factionIds.has(norm(raw.faction_id));}
+  const {tables,canonical,warnings}=parts(files),candidates=[];
+  // Explicit upstream spelling aliases, never a general singular/plural guess.
+  const sourceName=value=>norm(value)==='tyranid'?'tyranids':norm(value);
+  const names=r=>[r.name,r.data?.id,r.data?.importSource?.sourceId,r.data?.importSource?.record?.id,...(r.data?.aliases||[])].filter(Boolean);
+  const knownFactions=existing.filter(r=>r.kind==='faction'),factionRecord=knownFactions.find(r=>names(r).some(n=>sourceName(n)===sourceName(faction)));
+  const factionName=factionRecord?.name||(sourceName(faction)==='tyranids'?'Tyranids':faction);
+  const rawTables=name=>(tables.get(name)||[]);
+  const importedFaction=rawTables('factions').find(x=>[x.raw.id,x.raw.name,...(x.raw.aliases||[])].some(n=>n&&[faction,factionName,...(factionRecord?names(factionRecord):[])].some(v=>sourceName(n)===sourceName(v))));
+  const factionIds=new Set([faction,factionName,...(factionRecord?names(factionRecord):[]),importedFaction?.raw.id,importedFaction?.raw.name,...(importedFaction?.raw.aliases||[])].filter(Boolean).map(sourceName));
+  const knownIds=new Set([...knownFactions.flatMap(names),...rawTables('factions').flatMap(x=>[x.raw.id,x.raw.name,...(x.raw.aliases||[])]),...factionIds].filter(Boolean).map(sourceName));
+  function fileFaction(file){const path=String(file).replace(/\\/g,'/').split('/'),i=path.findIndex(p=>['core','enrichment'].includes(p.toLowerCase()));if(i>=0&&i<path.length-2)return sourceName(path[i+1]);const parent=path.at(-2);return parent&&knownIds.has(sourceName(parent))?sourceName(parent):null;}
+  const table=name=>rawTables(name).filter(x=>{const id=fileFaction(x.file),ok=!id||factionIds.has(id);if(!ok)warnings.push('Skipped '+x.file+' (belongs to another faction).');return ok;});
+  function inFaction(raw){return !raw.faction_id||factionIds.has(sourceName(raw.faction_id));}
+  if(rawTables('factions').length&&!importedFaction&&!canonical.length)throw Error('The selected faction does not match the uploaded factions file. Choose the matching faction or add its source ID as an alias.');
   function provenance(raw,file,text=''){return {name:!/\.json$/i.test(file)?'Wahapedia export':'40kdc-data',file,sourceId:String(raw.ability_id||raw.id||raw.source_id||''),text,record:JSON.parse(JSON.stringify(raw))};}
   function add(kind,id,name,data,source,factionValue=factionName){
    if(existing.some(r=>r.key===kind+':'+id&&kind!=='faction'&&!L.factionMatches(r.faction,factionValue)))id+='-'+slug(factionValue);
@@ -115,7 +123,7 @@
  }
  function match(candidate,existing){
   const row=candidate.row,sourceId=row.data.importSource?.sourceId;
-  const direct=existing.find(r=>r.key===row.key)||sourceId&&existing.find(r=>r.kind===row.kind&&L.factionMatches(r.faction,row.faction)&&(r.data.sourceRuleId===sourceId||L.aliases[sourceId]===r.data.id||sourceId==='burning-lance-aeldari'&&r.data.id==='fuegan-burning-lance'));
+  const direct=existing.find(r=>r.key===row.key&&(row.kind==='faction'||L.factionMatches(r.faction,row.faction)))||sourceId&&existing.find(r=>r.kind===row.kind&&L.factionMatches(r.faction,row.faction)&&(r.data.sourceRuleId===sourceId||L.aliases[sourceId]===r.data.id||sourceId==='burning-lance-aeldari'&&r.data.id==='fuegan-burning-lance'));
   if(direct)return direct;
   const same=existing.filter(r=>r.kind===row.kind&&norm(r.name)===norm(row.name)&&(row.kind==='faction'||L.factionMatches(r.faction,row.faction))&&(row.kind!=='rule'||r.data.category===row.data.category&&norm(r.data.detachment)===norm(row.data.detachment)));
   if(same.length>1&&row.kind==='rule'&&row.data.units?.length){const linked=same.filter(r=>r.data.units?.some(n=>row.data.units.some(u=>norm(n)===norm(u))));if(linked.length===1)return linked[0];}
