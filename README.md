@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.13.1
+# WarPlanner — personal study edition, v0.14
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -107,3 +107,5 @@ Hints and flags live in the existing catalog JSON, use the same owner-only write
 In **Rules workshop → Rules & abilities**, use **Reference status → Reference only** to find entries awaiting a complete study summary, including entries with no phase mapping. All rules and Other rules remain available. Reference entries are labeled in the browser and editor, searchable by name/faction/detachment or summary, and remain editable. Changing the reference checkbox refreshes the filtered results after saving. This filter surfaces the stored summaries and references; it does not fetch missing full rulebook text.
 
 Expanded shared-rule cards show eligibility once, in the header preview; the body focuses on timing, effects and optional conditions/sources. Shared abilities with a unit-list preview still expand to show the full eligible-unit list.
+
+In the guide settings gear, turn off **Show preview info** to show only card names and badges when collapsed. Expanded cards still include their full details; shared-rule eligibility moves into the expanded body while previews are hidden. The setting persists alongside font size in this account’s browser preferences, and toggling it preserves open cards and the current page.

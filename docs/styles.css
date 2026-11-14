@@ -253,3 +253,11 @@
 .saved-list-actions{display:flex;justify-content:flex-end;border-top:1px solid var(--line);padding:2px 8px}
 .delete-list-button{color:#d9a7a1}.delete-list-button:hover{color:#f0b4ad;border-color:#9b655f}.delete-list-button:disabled{opacity:.5;cursor:wait}
 .list-delete-error{padding:12px 15px;margin:15px 0;border:1px solid #80544f;border-radius:6px;color:#efb0a9;font-size:13px}
+
+.guide-preview-setting{display:flex;align-items:center;gap:8px;padding:8px 12px 12px;color:var(--ink);font-size:12px;line-height:1.4;cursor:pointer}
+.guide-preview-setting input{accent-color:var(--teal);width:16px;height:16px;margin:0;flex-shrink:0}
+.flash-expanded-target{display:none;margin-bottom:12px;padding:10px;background:#20333c;border-radius:5px}
+.flash-expanded-target>span{font-size:calc(9px * var(--guide-font-scale,1));text-transform:uppercase;color:var(--muted)}
+.flash-expanded-target>p{font-size:calc(11px * var(--guide-font-scale,1));line-height:1.7;margin-top:5px}
+.guide-carousel[data-show-previews="false"] .flash-preview{display:none}
+.guide-carousel[data-show-previews="false"] .flash-expanded-target{display:block}
