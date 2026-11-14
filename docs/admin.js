@@ -18,12 +18,13 @@
  function results(){const rows=listed();return `<p class="admin-count">${rows.length} entries</p>${rows.map(r=>`<button type="button" class="admin-result ${draft?.key===r.key?'selected':''}" data-admin-edit="${e(r.key)}"><strong>${e(r.name)}</strong><small>${e(r.faction==='*'?'All factions':r.faction||labels[r.kind])}${r.data.detachment?' · '+e(r.data.detachment):''}${r.kind==='rule'&&r.data.referenceOnly?' · Reference only':''}${!r.enabled?' · Disabled':''}</small></button>`).join('')||'<p class="muted">No matching content.</p>'}`;}
  function editor(){
   if(!draft)return `<section class="admin-empty"><span class="eyebrow">YOUR RULES LIBRARY</span><h2>Choose something to edit.</h2><p>Search the existing content, or add a rule, unit, detachment or faction.</p></section>`;
-  const d=draft.data,factions=L.catalog.factions.map(f=>f.name),dets=L.catalog.detachments.filter(x=>L.factionMatches(x.faction,draft.faction)).map(x=>x.name);
+  const d=draft.kind==='rule'?root.WarPlannerMechanics.enrich(draft.data):draft.data,factions=L.catalog.factions.map(f=>f.name),dets=L.catalog.detachments.filter(x=>L.factionMatches(x.faction,draft.faction)).map(x=>x.name);
   let fields=field('name',draft.kind==='step'?'Page title':'Name',draft.name)+field('contentId','Stable ID',d.id,{readonly:!!draft.revision,help:draft.revision?'This ID keeps links and revisions intact.':'Optional: generated from the name and faction when saved.'});
   if(!['faction','step'].includes(draft.kind))fields+=select('faction','Faction',draft.kind==='rule'?['*',...factions]:factions,draft.faction,'Choose a faction');
   if(draft.kind!=='step')fields+=guideFields({...d,faction:draft.faction},draft.kind);
   if(draft.kind==='unit')fields+=select('fightsFirst','Fights First',['auto','yes','no'],d.fightsFirst||'auto')+'<p class="admin-guide-note">Attached units still require every model to qualify. Use custom badges above for other reminders.</p>';
   if(draft.kind==='rule'){
+   if(d.mechanicsPresentation)fields+='<p class="admin-guide-note">This view reads the imported source mechanics. Reference-only status stays in place until you review the rule.</p>';
    fields+=select('category','Type',Object.keys(L.categories),d.category)+select('detachment','Detachment',dets,d.detachment||'','None / faction-wide');
    fields+=`<fieldset class="admin-phases"><legend>Phases</legend>${L.phases.map((p,i)=>`<label><input type="checkbox" name="phase" value="${i}" ${d.phase.includes(i)?'checked':''}>${p.name}</label>`).join('')}<small>Leave empty for reference-only or pre-battle content.</small></fieldset>`;
    fields+=select('turn','Player turn',['you','opponent','either'],d.turn)+select('window','Timing window',C.windows,d.window);

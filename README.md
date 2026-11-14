@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.15
+# WarPlanner — personal study edition, v0.16
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -117,7 +117,7 @@ Open **Rules workshop → Import source files**. Choose a faction (and the group
 
 Supported inputs:
 
-- **40kdc JSON:** extract the GitHub ZIP first. Add a faction's `abilities.json`, `phase-mappings.json` and core `units.json`, `detachments.json`, `factions.json`, `enhancements.json`, `stratagems.json`, `leader-attachments.json` and `unit-compositions.json` as available. Folder selection accepts the supported tables and reports other tables as skipped. Source abilities resolve unit IDs and existing rule aliases; structured effects stay readable as source JSON instead of being treated as complete rule prose. Unresolved unit eligibility does not become a blanket army activation.
+- **40kdc JSON:** extract the GitHub ZIP first. Add a faction's `abilities.json`, `phase-mappings.json` and core `units.json`, `detachments.json`, `factions.json`, `enhancements.json`, `stratagems.json`, `leader-attachments.json` and `unit-compositions.json` as available. Folder selection accepts the supported tables and reports other tables as skipped. Source abilities resolve unit IDs and existing rule aliases; structured effects get a readable mechanics view, with raw JSON retained for inspection, instead of being treated as complete rulebook prose. Unresolved unit eligibility does not become a blanket army activation.
 - **Wahapedia CSV:** add `Factions.csv`, `Datasheets.csv`, `Abilities.csv` and `Datasheets_abilities.csv` together to resolve faction IDs and unit associations. `Detachments.csv`, `Detachment_abilities.csv`, `Enhancements.csv`, `Stratagems.csv`, `Datasheets_keywords.csv` and `Datasheets_leader.csv` are supported too. BOMs, pipe/comma/semicolon/tab delimiters, quoted multiline cells and doubled quotes are handled. HTML is converted to plain text; uploaded markup is never executed. Unrelated faction records are excluded, and neutral scenario-specific Stratagems are excluded unless marked Core. New CSV units default to one model until their settings are reviewed.
 - **WarPlanner JSON:** export a catalog backup from the import page, or download the editable JSON template. Backups preserve the catalog format and settings. PDFs, ZIPs and executable JavaScript files are not parsed.
 
@@ -126,3 +126,12 @@ The preview shows matches, proposed text, changed fields, raw source details and
 Inputs are limited to 300 files / 20 MB and previews to 2,000 entries. Save up to 1,000 selected entries in one transaction (8 MB maximum). The preview reloads current revisions; server-side revision checks reject conflicts and roll back the whole batch. Rebuild the preview to resolve a conflict. Failed requests retain the preview. Existing revision history records updates, and repeat source imports default to Skip when their source record is unchanged. Imports never rewrite saved army lists.
 
 Apply `supabase/catalog-import.sql` to enable the `import_rules_catalog` RPC. It runs as SECURITY INVOKER, checks the existing singleton admin membership and uses the catalog's RLS and history trigger. Only the administrator can import. No privileged key is used in the browser. Database tests verify owner success, conflict rollback and non-admin rejection with test writes rolled back. Parser tests and browser checks cover source files, preservation, previews, retries, export and mobile layout.
+
+
+## Readable imported mechanics (v0.16)
+
+Imported JSON effects now appear as readable mechanics in the guide, the workshop summary field and import previews. Common effects describe rerolls, stat/roll modifiers, permissions, weapon keywords, Stratagem costs, Feel No Pain, healing and mortal wounds. Conditions, targets, triggers, usage limits and source duration remain included. Unrecognized structures are shown as labeled details instead of silently dropping their fields; deeply nested records explicitly direct the reader to their full source record.
+
+The view derives content from the stored `importSource` record whenever the saved summary is an untouched importer/reference placeholder. Existing uploads update on page refresh without another upload or a database rewrite. Imported prose is preferred when available. Custom summaries, guide placement, verification flags and original structured records are preserved. Saving the workshop editor remains an explicit normal catalog edit.
+
+A top-level `no-effect` placeholder means the source has no effect mechanics encoded; it is presented as missing source information, not a claim that the game's ability does nothing. Legitimate no-effect branches inside roll tables remain distinct. These generated views remain reference material and do not claim complete or officially checked wording. Validation against the inspected Grey Knights source found 123 records with readable effects and 11 empty effect records out of 134.

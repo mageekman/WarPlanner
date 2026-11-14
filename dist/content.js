@@ -4,6 +4,7 @@
  const node=typeof module!=='undefined'&&module.exports;
  const L=node?require('./lessons.js'):root.WarPlanLessons;
  const A=node?require('./activations.js'):root.WarPlanActivations;
+ const M=node?require('./mechanics.js'):root.WarPlannerMechanics;
  const copy=v=>structuredClone(v),norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
  const kinds=['rule','unit','detachment','faction','step'];
  const windows=['round','turn-start','start','core-cp','shock','act','select','before','after','react','arrivals','end','turn-end','round-end','prebattle'];
@@ -73,7 +74,7 @@
  function apply(rows){
   const entries=new Map(defaults.map(r=>[r.key,copy(r)]));
   for(const row of rows){validate(row);entries.set(row.key,copy(row));}
-  const enabled=[...entries.values()].filter(r=>r.enabled),select=kind=>enabled.filter(r=>r.kind===kind).map(r=>({...r.data,faction:r.faction}));
+  const enabled=[...entries.values()].filter(r=>r.enabled),select=kind=>enabled.filter(r=>r.kind===kind).map(r=>({...((kind==='rule')?M.enrich(r.data):r.data),faction:r.faction}));
   L.catalog.factions.splice(0,L.catalog.factions.length,...select('faction'));
   L.catalog.units.splice(0,L.catalog.units.length,...select('unit'));
   L.catalog.detachments.splice(0,L.catalog.detachments.length,...select('detachment'));
