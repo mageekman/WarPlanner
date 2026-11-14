@@ -79,3 +79,22 @@ test('catalog loads every page beyond 500 entries without dropping later units o
 });
 
 test('Space Marines is a supported editable faction group',()=>{const faction={key:'faction:space-marines',kind:'faction',faction:'',name:'Space Marines',enabled:true,data:{id:'space-marines',name:'Space Marines',group:'Space Marines',aliases:['Adeptus Astartes']}};C.validate(faction);C.apply([faction]);assert.equal(B.factions().find(f=>f.name==='Space Marines').group,'Space Marines');faction.data.group='Unknown';assert.throws(()=>C.validate(faction),/Choose Space Marines/);});
+
+test('indexed unit-rule links preserve aliases, faction isolation, ordering and existing references',()=>{
+ const faction={key:'faction:index-test',kind:'faction',faction:'',name:'Index Test',enabled:true,data:{id:'index-test',name:'Index Test',group:'Xenos',aliases:['Old Index']}},unit={key:'unit:index-test',kind:'unit',faction:'Index Test',name:'Fire Dragons',enabled:true,data:{id:'index-test',name:'Fire Dragons',keywords:[],abilities:[{id:'native-ref',wargear:'Keep this'}],bodyguardIds:[],modelCounts:[1]}},base=row('rule:walker');
+ const extra=[faction,unit,...['First','Second','Disabled'].map((name,i)=>({...structuredClone(base),key:'rule:link-'+i,faction:'Old Index',name,enabled:i!==2,data:{...structuredClone(base.data),id:'link-'+i,name,sourceRuleId:i===0?'source-link':'',units:['FIRE DRAGONS','Fire Dragons']}}))];
+ const entries=new Map([...seed,...extra].map(r=>[r.key,r]));C.apply(extra);
+ for(const unit of L.catalog.units){const original=entries.get('unit:'+unit.id).data,refs=new Map(original.abilities.map(a=>[a.id,a]));for(const rule of L.abilities)if(rule.id!=='fights-first'&&L.factionMatches(rule.faction,unit.faction)&&rule.units.some(n=>n.toLowerCase().replace(/[^a-z0-9]/g,'')===unit.name.toLowerCase().replace(/[^a-z0-9]/g,''))){const id=rule.sourceRuleId||rule.id;if(!refs.has(id))refs.set(id,{id});}assert.deepEqual(unit.abilities,[...refs.values()],unit.name+' / '+unit.faction);}
+ assert.deepEqual(L.catalog.units.find(u=>u.id==='index-test').abilities,[{id:'native-ref',wargear:'Keep this'},{id:'source-link'},{id:'link-1'}]);
+});
+test('catalog generation advances only on successful applications so practice can invalidate cached material',()=>{
+ const version=C.generation;C.apply([]);assert.equal(C.generation,version+1);assert.throws(()=>C.apply([{kind:'bad'}]));assert.equal(C.generation,version+1);
+});
+
+test('canonical faction names keep distinct factions isolated even if normalized IDs collide',()=>{
+ const rows=[['collision-id','First faction'],['collision_id','Second faction']].flatMap(([id,name],i)=>[{key:'faction:'+id,kind:'faction',faction:'',name,enabled:true,data:{id,name,group:'Xenos',aliases:[]}},{key:'unit:collision-'+i,kind:'unit',faction:name,name:'Parallel Unit',enabled:true,data:{id:'collision-'+i,name:'Parallel Unit',keywords:[],abilities:[],bodyguardIds:[],modelCounts:[1]}}]);const r=row('rule:walker');r.key='rule:isolated';r.faction='Second faction';Object.assign(r.data,{id:'isolated',name:'Isolated',sourceRuleId:'',units:['Parallel Unit']});rows.push(r);C.apply(rows);assert.deepEqual(L.catalog.units.find(u=>u.id==='collision-0').abilities,[]);assert.deepEqual(L.catalog.units.find(u=>u.id==='collision-1').abilities,[{id:'isolated'}]);
+});
+
+test('indexed links retain the built-in Asuryani alias even when its faction entry is disabled',()=>{
+ const disabled=row('faction:aeldari');disabled.enabled=false;const unit={key:'unit:alias-test',kind:'unit',faction:'Asuryani',name:'Alias test unit',enabled:true,data:{id:'alias-test',name:'Alias test unit',keywords:[],abilities:[],bodyguardIds:[],modelCounts:[1]}},r=row('rule:walker');r.key='rule:alias-effect';Object.assign(r.data,{id:'alias-effect',name:'Alias effect',sourceRuleId:'',units:['Alias test unit']});C.apply([disabled,unit,r]);assert.deepEqual(L.catalog.units.find(u=>u.id==='alias-test').abilities,[{id:'alias-effect'}]);
+});

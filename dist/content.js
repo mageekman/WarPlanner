@@ -7,6 +7,7 @@
  const M=node?require('./mechanics.js'):root.WarPlannerMechanics;
  const Profiles=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles;
  const copy=v=>structuredClone(v),norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+ let generation=0;
  const kinds=['rule','unit','detachment','faction','step'];
  const windows=['round','turn-start','start','core-cp','shock','act','select','before','after','react','arrivals','end','turn-end','round-end','prebattle'];
  L.catalog.factions=L.catalog.factions||[{id:'aeldari',name:'Aeldari',group:'Xenos',aliases:['Asuryani']}];
@@ -88,12 +89,20 @@
    const id=a.sourceRuleId||a.id,old=defaultEnhancements.find(e=>e.id===id),det=L.catalog.detachments.find(d=>L.factionMatches(d.faction,a.faction)&&norm(d.name)===norm(a.detachment));
    return {...(old||{keywords:[],restrictions:[],upgrade:false}),id,name:a.enhancement||a.name,detachmentId:det?.id||'',faction:a.faction,keywords:a.bearerKeywords||old?.keywords||[],restrictions:a.bearerRestrictions||old?.restrictions||[],upgrade:a.enhancementUpgrade??old?.upgrade??false};
   }));
-  // A unit rule's selected units are also its references in the roster view.
+  // Build faction/unit links once, preserving rule order and existing references.
+  const factions=new Map(),links=new Map(),representatives=[];
+  const factionKey=name=>{if(!factions.has(name)){let key=representatives.findIndex(f=>L.factionMatches(f,name));if(key<0){key=representatives.length;representatives.push(name);}factions.set(name,key);}return factions.get(name);};
+  for(const rule of L.abilities)if(rule.id!=='fights-first'){
+   const faction=factionKey(rule.faction);if(!links.has(faction))links.set(faction,new Map());const names=links.get(faction);
+   for(const name of rule.units){const key=norm(name);if(!names.has(key))names.set(key,[]);names.get(key).push(rule.sourceRuleId||rule.id);}
+  }
   for(const unit of L.catalog.units){
    const refs=new Map(unit.abilities.map(a=>[a.id,a]));
-   for(const rule of L.abilities)if(rule.id!=='fights-first'&&L.factionMatches(rule.faction,unit.faction)&&rule.units.some(n=>norm(n)===norm(unit.name))){const id=rule.sourceRuleId||rule.id;if(!refs.has(id))refs.set(id,{id});}
+   for(const id of links.get(factionKey(unit.faction))?.get(norm(unit.name))||[])if(!refs.has(id))refs.set(id,{id});
    unit.abilities=[...refs.values()];
   }
+  generation++;
+
  }
  function filterRecords(records,{kind='rule',query='',reference='all'}={}){
   const text=query.trim().toLowerCase();
@@ -141,6 +150,6 @@
    dispose(){disposed=true;isAdmin=false;records=[];}
   };
  }
- const api={filterRecords,kinds,windows,seed:()=>copy(defaults),validate,apply,reset:()=>apply([]),create};
+ const api={get generation(){return generation;},filterRecords,kinds,windows,seed:()=>copy(defaults),validate,apply,reset:()=>apply([]),create};
  if(node)module.exports=api;else root.WarPlannerContent=api;
 })(typeof window!=='undefined'?window:globalThis);

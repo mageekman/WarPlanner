@@ -3,7 +3,7 @@
  'use strict';
  const R=root.WarPlannerRuleReports,C=root.WarPlannerContent;
  const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let reviewGeneration=0,service=null,epoch=0,timer=null,pending=[],reviewed=[],queueOpen=false,queueMode='pending',queueError='',queueBusy=false,loading=false,editing=null;
+ let reviewGeneration=0,service=null,epoch=0,timer=null,pending=[],queueOpen=false,queueError='',queueBusy=false,loading=false,editing=null;
  const drafts=new Map();let practiceKeys=new WeakMap();
  const uid=()=>root.crypto.randomUUID();
  function contextKey(page){return JSON.stringify([page.context.faction,page.context.phase,page.context.turn,page.context.stepId,page.options.map(o=>o.key)]);}
@@ -31,29 +31,36 @@
  function badgeHTML(){return `<span class="report-nav-badge" data-report-badge role="status" aria-label="${count()} pending rule reports" ${count()?'':'hidden'}>${count()}</span>`;}
  function queueHTML(){
   if(!service?.isAdmin)return '';
-  const reports=queueMode==='pending'?pending:reviewed;
-  return `<details class="report-queue" ${queueOpen?'open':''} data-report-queue><summary>Submitted reports <span>${count()} pending</span></summary><div class="report-queue-toolbar"><label>Show<select data-report-queue-mode><option value="pending" ${queueMode==='pending'?'selected':''}>Pending</option><option value="reviewed" ${queueMode==='reviewed'?'selected':''}>Reviewed</option></select></label><button type="button" class="outline" data-report-action="reload" ${loading?'disabled':''}>Refresh reports</button></div><p class="report-message ${queueError?'report-error':''}" role="status">${e(queueError||(loading?'Loading reports…':''))}</p>${reports.map(report=>{
+  const reports=pending;
+  return `<details class="report-queue" ${queueOpen?'open':''} data-report-queue><summary>Submitted reports <span>${count()} pending</span></summary><div class="report-queue-toolbar"><button type="button" class="outline" data-report-action="reload" ${loading||queueBusy?'disabled':''}>Refresh reports</button></div><p class="report-message ${queueError?'report-error':''}" role="status">${e(queueError||(loading?'Loading reports…':''))}</p>${reports.map(report=>{
    let reason=R.directReviewReason(report,service.records);if(!reason){try{R.proposal(report,service.records);}catch(error){reason=error.message;}}
    const timing=report.issue_type==='timing'?`${R.windows[report.timing.window]||report.timing.window} · ${(Array.isArray(report.timing?.phase)?report.timing.phase:[]).map(i=>['Command','Movement','Shooting','Charge','Fight'][i]).join(', ')||'Reference only'} · ${report.timing.turn==='you'?'Your turn':report.timing.turn==='opponent'?'Opponent’s turn':'Either turn'}`:'';
-   return `<article class="report-card"><div class="report-card-heading"><h3>${e(report.entity_name||report.missing_name)}</h3><span>${e(R.types[report.issue_type]||report.issue_type)}</span></div><p>${e(report.faction)} · ${e(report.context?.stepTitle||'Guide')} · ${e(new Date(report.created_at).toLocaleString())}</p>${report.observed?.summary?`<details class="report-observed"><summary>Text shown to the player</summary><p>${e(report.observed.summary)}</p></details>`:''}${timing?`<p class="report-proposed-timing">Proposed timing: ${e(timing)}</p>`:''}<p class="report-change">${e(report.change_text)}</p>${report.status==='pending'?`${reason?`<p class="report-review-note">${e(reason)}</p>`:''}<div class="button-row"><button type="button" class="primary" data-report-action="approve" data-report-id="${e(report.id)}" ${reason||queueBusy?'disabled':''}>Approve</button><button type="button" class="outline" data-report-action="edit" data-report-id="${e(report.id)}" ${queueBusy?'disabled':''}>Edit</button><button type="button" class="text-button" data-report-action="reject" data-report-id="${e(report.id)}" ${queueBusy?'disabled':''}>Reject</button></div>`:`<p class="report-resolution">${report.status==='approved'?'Approved':'Rejected'}${report.applied_entry?' · Revision '+e(report.applied_entry.revision):''}</p>`}</article>`;
-  }).join('')||(!loading?'<p class="report-empty">No reports in this view.</p>':'')}</details>`;
+   return `<article class="report-card"><div class="report-card-heading"><h3>${e(report.entity_name||report.missing_name)}</h3><span>${e(R.types[report.issue_type]||report.issue_type)}</span></div><p>${e(report.faction)} · ${e(report.context?.stepTitle||'Guide')} · ${e(new Date(report.created_at).toLocaleString())}</p>${report.observed?.summary?`<details class="report-observed"><summary>Text shown to the player</summary><p>${e(report.observed.summary)}</p></details>`:''}${timing?`<p class="report-proposed-timing">Proposed timing: ${e(timing)}</p>`:''}<p class="report-change">${e(report.change_text)}</p>${reason?`<p class="report-review-note">${e(reason)}</p>`:''}<div class="button-row"><button type="button" class="primary" data-report-action="approve" data-report-id="${e(report.id)}" ${reason||queueBusy?'disabled':''}>Approve</button><button type="button" class="outline" data-report-action="edit" data-report-id="${e(report.id)}" ${queueBusy?'disabled':''}>Edit</button><button type="button" class="text-button" data-report-action="reject" data-report-id="${e(report.id)}" ${queueBusy?'disabled':''}>Reject</button></div></article>`;
+  }).join('')||(!loading?'<p class="report-empty">No pending reports.</p>':'')}</details>`;
  }
  function updateQueue(){
   document.querySelectorAll('[data-report-badge]').forEach(b=>{b.hidden=!count();b.textContent=count();b.setAttribute('aria-label',count()+' pending rule reports');});
   const box=document.querySelector('#rule-report-queue');if(box)box.innerHTML=queueHTML();
  }
  async function reload(){
-  if(!service?.isAdmin||!service.listReports||loading)return;
-  const current=service,session=epoch,generation=reviewGeneration,requestedMode=queueMode;loading=true;
-  try{const results=await Promise.all([current.listReports('pending'),queueMode==='reviewed'?current.listReports('reviewed'):Promise.resolve(reviewed)]);if(session!==epoch||generation!==reviewGeneration)return;pending=results[0];reviewed=results[1];queueError='';}
-  catch(error){if(session===epoch)queueError=error.message||'Could not load reports.';}
-  finally{if(session===epoch){loading=false;updateQueue();if(requestedMode!==queueMode)void reload();}}
+  if(!service?.isAdmin||!service.listReports||loading||queueBusy)return;
+  const current=service,session=epoch,generation=reviewGeneration;loading=true;
+  try{const reports=await current.listReports('pending');if(session!==epoch||generation!==reviewGeneration)return;pending=reports.filter(report=>report.status==='pending');queueError='';}
+  catch(error){if(session===epoch&&generation===reviewGeneration)queueError=error.message||'Could not load reports.';}
+  finally{if(session===epoch){loading=false;updateQueue();}}
  }
  async function decide(report,decision,proposal=null,mode='direct'){
   if(queueBusy||!service?.isAdmin)throw Error('A review is already in progress.');
   const current=service,session=epoch;reviewGeneration++;queueBusy=true;queueError='';updateQueue();
-  try{const result=await current.reviewReport(report,decision,proposal,mode);if(session!==epoch)throw Error('This account session has ended.');await current.reload();if(session!==epoch)throw Error('This account session has ended.');C.apply(current.records);pending=pending.filter(r=>r.id!==report.id);reviewed=[result.report,...reviewed.filter(r=>r.id!==report.id)];return result;}
-  finally{if(session===epoch){queueBusy=false;updateQueue();}}
+  try{
+   const result=await current.reviewReport(report,decision,proposal,mode);if(session!==epoch)throw Error('This account session has ended.');
+   pending=pending.filter(r=>r.id!==report.id);updateQueue();
+   if(decision==='approve'){
+    try{await current.reload();if(session!==epoch)throw Error('This account session has ended.');C.apply(current.records);}
+    catch(error){if(session!==epoch)throw error;queueError='Report approved, but the rules could not refresh. Refresh the page to load the saved change.';}
+   }
+   return result;
+  }finally{if(session===epoch){queueBusy=false;updateQueue();}}
  }
  function reviewBanner(){return !editing?'':`<section class="report-editor-banner"><strong>Reviewing a player report · ${e(R.types[editing.issue_type])}</strong><p>${e(editing.change_text)}</p>${editing.issue_type==='timing'?`<p>Proposed timing: ${e(R.windows[editing.timing.window])}</p>`:''}${editing.issue_type==='missing'?'<p>Choose the new rule’s units, detachment and timing before approving. It starts as a reference entry.</p>':''}<p>Approving saves this draft and preserves the previous catalog revision.</p></section>`;}
  document.addEventListener('toggle',event=>{const el=event.target;if(el.matches?.('[data-report-details]')){const d=drafts.get(el.dataset.reportDetails);if(d)d.open=el.open;}if(el.matches?.('[data-report-queue]'))queueOpen=el.open;},true);
@@ -61,7 +68,6 @@
  document.addEventListener('change',event=>{
   const form=event.target.closest?.('[data-guide-report]');
   if(form){const d=recordForm(form);if(!d)return;d.error='';d.message='';if(event.target.name==='report_entity'){d.selected=event.target.value;d.text='';d.missing='';d.id=uid();const selected=d.page.options.find(o=>o.key===d.selected);d.window=selected?.timing.window||'act';d.phase='keep';d.turn='keep';}if(event.target.name==='report_issue'){d.issue=event.target.value;d.id=uid();}if(['report_entity','report_issue'].includes(event.target.name))renderGuide(form.dataset.guideReport);}
-  if(event.target.matches?.('[data-report-queue-mode]')){queueMode=event.target.value;void reload();updateQueue();}
  });
  document.addEventListener('submit',event=>{if(event.target.matches?.('[data-guide-report]')){event.preventDefault();void send(event.target);}});
  document.addEventListener('click',async event=>{
@@ -75,6 +81,6 @@
  root.addEventListener?.('focus',()=>{void reload();});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)void reload();});
  root.WarPlannerReports={practiceForQuestion(question){if(!service)return '';if(!practiceKeys.has(question))practiceKeys.set(question,uid());return guideHTML(R.practiceContext(question,service.records,practiceKeys.get(question)));},guideForStep(state,active,deck){return service?guideHTML(R.pageContext(state,active,deck,service.records)):'';},guideHTML,badgeHTML,queueHTML,count,reviewBanner,get editing(){return editing;},clearEditing(){editing=null;},async approveEdited(draft){if(!editing)throw Error('No report is being edited.');const result=await decide(editing,'approve',draft,'edited');editing=null;return result.entry;},
-  setService(next){epoch++;if(timer)clearInterval(timer);timer=null;service=next;pending=[];reviewed=[];drafts.clear();practiceKeys=new WeakMap();editing=null;queueError='';queueBusy=false;loading=false;queueOpen=false;queueMode='pending';if(next?.isAdmin&&next.listReports){void reload();timer=setInterval(()=>{if(!document.hidden)void reload();},30000);}},reload
+  setService(next){epoch++;if(timer)clearInterval(timer);timer=null;service=next;pending=[];drafts.clear();practiceKeys=new WeakMap();editing=null;queueError='';queueBusy=false;loading=false;queueOpen=false;if(next?.isAdmin&&next.listReports){void reload();timer=setInterval(()=>{if(!document.hidden)void reload();},30000);}},reload
  };
 })(window);
