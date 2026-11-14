@@ -59,12 +59,12 @@ test('one instruction surface is rendered and detailed phase list starts closed'
  assert.match(a.html(),/<details class="sequence-outline">/);
  assert.doesNotMatch(a.html(),/class="aside"/);
  a.click({phase:'1'});a.click({step:'1'});
- assert.match(a.html(),/<details class="army-lessons flash-board" open>/);
+ assert.match(a.html(),/<section class="army-lessons flash-board" aria-label="Your army at this phase">/);
  assert.ok(a.html().indexOf('Your army at this phase') < a.html().indexOf('<summary>Why this matters</summary>'));
 });
 test('empty steps keep the army section open and show an explicit message',()=>{
  const a=app();a.click({step:'3'}); // Core CP, no unit ability window.
- assert.match(a.html(),/<details class="army-lessons" open>/);
+ assert.match(a.html(),/<section class="army-lessons" aria-label="Your army at this step">/);
  assert.match(a.html(),/No matching army abilities are listed for this step/);
  assert.ok(a.html().indexOf('Your army at this step')<a.html().indexOf('Why this matters'));
 });

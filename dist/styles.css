@@ -342,3 +342,15 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
  .admin-path{gap:6px;padding:8px 10px}
  .admin-path button{min-height:36px}
 }
+
+/* Keep phase explanations available without filling the guide page. */
+.guide-title-row{display:flex;align-items:center;gap:8px;margin:9px 0 16px}
+.guide-title-row #lesson-title{margin:0;min-width:0}
+.guide-info-button{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:32px;height:32px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--teal);font-size:19px;line-height:1}
+.guide-info-button:hover{background:#8cd5bd12}
+.guide-info-popup{position:fixed;inset:auto;top:16px;left:16px;margin:0;width:min(360px,calc(100vw - 32px));max-height:min(360px,calc(100dvh - 32px));overflow-y:auto;padding:20px 22px;border:1px solid #526f6b;border-radius:10px;background:#1a2d36;color:var(--ink);box-shadow:0 12px 40px #0007}
+.guide-info-popup h3{font-size:15px;font-weight:600;line-height:1.5;margin:0 28px 10px 0}
+.guide-info-popup .lesson-instruction{font-size:14px;line-height:1.75;margin:0;white-space:pre-line}
+.guide-info-close{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:5px;background:none;color:var(--muted);font-size:23px}
+.guide-info-close:hover{background:#ffffff08;color:var(--ink)}
+.guide-info-popup::backdrop{background:transparent}

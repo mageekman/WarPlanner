@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.21
+# WarPlanner — personal study edition, v0.22
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -177,3 +177,9 @@ The Aeldari catalog predates the JSON source importer, so its rows have no impor
 Existing reference/provisional flags stay intact. Three older Aspect Host reminder cards now explicitly use source-reference status: Warrior Focus has a source-derived effect; Doom Inescapable and Preternatural Precision have no encoded effect. This audit does not promote community data to official verification or change phase placement and activation ordering. The earlier aeldari-coverage.json describes the original index; the current presentation audit is reported in AUDIT-AELDARI.md.
 
 Regression checks cover every entry, preservation of arbitrary saved changes, timing, model/unit and leader scope, source conflicts, core Stratagem restrictions, existing reviewed summaries and inspectable source details. Browser tests use copies of the current catalog with mocked Auth/REST responses, including the three existing edited entries, and verify filters, guide reminders, mobile layout and saving custom wording.
+
+## Compact guide explanations (v0.22)
+
+Guide headings have an info button instead of a permanent explanation paragraph. The native popover shows the original step text, closes with ×, outside click/tap or Escape, and restores keyboard focus to its opener. Its position stays within the viewport; resizing and page navigation dismiss it. The popup lives outside the animated slide so carousel previews cannot duplicate it, and swipes while reading it do not change pages.
+
+Army content displays directly in a labelled section, without the outer “Your army at this step/phase” dropdown or introductory caption. Individual unit and shared-rule cards remain collapsible. Steps with no matched abilities retain an explicit empty message. Desktop/mobile browser checks cover opening, dismissal, focus, viewport fit, automatic army content and carousel navigation.
