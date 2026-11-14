@@ -24,3 +24,35 @@ test('saved previous automatic readouts upgrade while custom summaries remain un
  const r=record('Hallowed Ground'),legacy=M.describe(r).details,base={name:r.name,summary:legacy,referenceOnly:true,status:'source-reference',importSource:{record:r,text:''}};const current=M.enrich(base);assert.match(current.summary,/at least half/);assert.doesNotMatch(current.summary,/Branch precedence/);assert.equal(base.summary,legacy);assert.equal(current.referenceOnly,true);assert.equal(current.status,'source-reference');
  base.summary='My edited tournament notes.';assert.equal(M.enrich(base).summary,base.summary);
 });
+const greyKnights=require('./fixtures/grey-knights-abilities.json'),Notes=require('../dist/rule-notes.js');
+const grey=id=>structuredClone(greyKnights.find(r=>r.ability_id===id));
+test('Narthecium explains the phase, bearer condition and non-Character resurrection without inventing wound recovery',()=>{
+ const r=grey('apothecarys-narthecium-grey-knights'),result=M.describe(r);
+ assert.equal(result.concise,true);assert.equal(result.text,'During your Command phase, while this model is on the battlefield, you may return one destroyed non-CHARACTER model to its unit.');assert.doesNotMatch(result.text,/full wounds|maximum wounds|checked summary/);
+ r.effect.effect.modifier.count=2;assert.equal(Notes.summarize(r),null);
+});
+test('Strike Squad and Combat Squad have direct instructions with their own timings',()=>{
+ for(const id of ['sanctifying-ritual-grey-knights','sanctifying-ritual-crowes-sanctifiers-strike-squad-grey-knights']){
+  const r=grey(id),text=M.describe(r).text;assert.match(text,/end of your Command phase/);assert.match(text,/objective you control/);assert.match(text,/within range/);assert.match(text,/keep control after moving away/);
+  r.trigger.condition.operands[1].parameters.turn='opponent-turn';assert.equal(Notes.summarize(r),null);
+ }
+ assert.equal(M.describe(grey('combat-squad-grey-knights')).text,'When declaring battle formations, you may split this unit into two units of 5 models.');
+});
+test('Grey Knights coverage includes every source-backed entry except four identified ambiguities',()=>{
+ const available=greyKnights.filter(r=>M.describe(r).concise),missing=greyKnights.filter(r=>M.describe(r).missing),unresolved=greyKnights.filter(r=>!M.describe(r).concise&&!M.describe(r).missing);
+ assert.equal(available.length,119);assert.equal(missing.length,11);assert.deepEqual(unresolved.map(r=>r.name),['Haloed in Soulfire (Psychic)','Force Wave','Responsive Displacement','Vigilance of Titan']);
+ for(const r of unresolved){const result=M.describe(r);assert.match(result.text,/imported source/i);assert.doesNotMatch(result.text,/This rule needs a checked summary/);assert.ok(result.details.length);}
+});
+test('all authored notes reject altered effects, timing, scope, restrictions and unknown mechanics even with an unchanged digest',()=>{
+ const authored=greyKnights.filter(r=>Notes.summarize(r));assert.equal(authored.length,63);
+ for(const original of authored)for(const patch of [{effect:{type:'no-effect'}},{scope:{duration:'changed-source-duration'}},{trigger:{event:'turn-started'}},{keyword_restrictions:['EXTRA']},{unknown_new_constraint:true}]){
+  const changed={...structuredClone(original),...patch};assert.equal(Notes.summarize(changed),null,original.ability_id+' '+Object.keys(patch)[0]);
+ }
+});
+test('saved automatic fallbacks refresh, and workshop summary coverage keeps authored text and source gaps distinct',()=>{
+ const record=grey('apothecarys-narthecium-grey-knights'),data={summary:'This rule needs a checked summary. Its imported details are under Conditions & sources.',referenceOnly:true,importSource:{record}};
+ const view=M.enrich(data);assert.match(view.summary,/non-CHARACTER/);assert.equal(M.summaryState(data),'available');assert.equal(data.summary,'This rule needs a checked summary. Its imported details are under Conditions & sources.');assert.equal(view.referenceOnly,true);
+ const custom={...data,summary:'My checked Narthecium reminder.'};assert.equal(M.enrich(custom).summary,custom.summary);assert.equal(M.summaryState(custom),'available');
+ assert.equal(M.summaryState({...data,importSource:{record:grey('force-wave-sanctic-spearhead-grey-knights')}}),'needs-summary');
+ assert.equal(M.summaryState({...data,importSource:{record:greyKnights.find(r=>r.effect.type==='no-effect')}}),'missing');
+});

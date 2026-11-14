@@ -71,3 +71,9 @@ test('workshop reference filters include untimed and disabled reference entries 
  const records=C.seed(),references=C.filterRecords(records,{reference:'reference'}),other=C.filterRecords(records,{reference:'other'}),all=C.filterRecords(records);assert.ok(references.length>0);assert.ok(references.every(r=>r.kind==='rule'&&r.data.referenceOnly===true));assert.ok(other.every(r=>r.kind==='rule'&&!r.data.referenceOnly));assert.equal(references.length+other.length,all.length);assert.ok(references.some(r=>r.data.phase.length===0));
  const entry=structuredClone(references[0]);entry.enabled=false;assert.equal(C.filterRecords([entry],{reference:'reference'}).length,1);assert.ok(C.filterRecords(records,{kind:'unit',reference:'reference'}).length>0);assert.ok(C.filterRecords(records,{reference:'reference',query:references[0].name}).some(r=>r.key===references[0].key));
 });
+test('catalog loads every page beyond 500 entries without dropping later units or publishing a partial failed reload',async()=>{
+ const dataset=Array.from({length:1001},(_,i)=>{const r=row('rule:walker');r.key='rule:paged-'+i;r.data.id='paged-'+i;r.name=r.data.name='Paged rule '+i;return r;}),ranges=[];let fail=false;
+ const query={select(){return this},order(){return this},async range(start,end){ranges.push([start,end]);return fail&&start===500?{error:{message:'Second page failed'}}:{data:dataset.slice(start,end+1)};}};
+ const service=C.create({from:()=>query},'owner');await service.reload();assert.equal(service.records.length,1001);assert.equal(service.records.at(-1).key,'rule:paged-1000');assert.deepEqual(ranges,[[0,499],[500,999],[1000,1499]]);
+ fail=true;await assert.rejects(service.reload(),/Second page failed/);assert.equal(service.records.length,1001);
+});

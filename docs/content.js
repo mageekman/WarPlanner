@@ -102,7 +102,7 @@
   const check=()=>{if(disposed)throw Error('This account session has ended.');};
   const result=r=>{if(r.error)throw Error(r.error.message||'The content database could not be reached.');return r.data;};
   async function read(){
-   const all=[];for(let start=0;;start+=1000){check();const page=result(await client.from('rules_catalog').select('*').order('key').range(start,start+499))||[];all.push(...page);if(page.length<1000)break;}
+   const pageSize=500,all=[];for(let start=0;;start+=pageSize){check();const page=result(await client.from('rules_catalog').select('*').order('key').range(start,start+pageSize-1))||[];all.push(...page);if(page.length<pageSize)break;}
    all.forEach(validate);check();records=all;return copy(records);
   }
   return {

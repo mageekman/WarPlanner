@@ -1,6 +1,7 @@
 /* Player-facing summaries. Unsupported restrictions stay in the source-details view. */
 (function(root){
  'use strict';
+ const notes=typeof module!=='undefined'&&module.exports?require('./rule-notes.js'):root.WarPlannerRuleNotes;
  const only=(x,keys)=>!!x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).every(k=>keys.includes(k));
  const stable=x=>Array.isArray(x)?'['+x.map(stable).join(',')+']':x&&typeof x==='object'?'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+stable(x[k])).join(',')+'}':JSON.stringify(x);
  const same=(a,b)=>stable(a)===stable(b),lower=s=>s[0].toLowerCase()+s.slice(1);
@@ -170,6 +171,7 @@
  }
  function summarize(record){
   if(!record||typeof record!=='object'||!record.effect)return null;
+  const note=notes?.summarize(record);if(note)return note;
   const namedGround=hallowed(record),discount=strategist(record),special=namedGround||discount;
   const contexts=record.trigger?.event==='selected'?{'event-subject':'The selected unit'}:record.trigger?.event==='targets-selected'?{'event-subject':'The attacking unit'}:record.trigger?.event==='move-ended'?{'event-subject':'The unit that moved'}:{};
   let text=special||effect(record.effect,0,contexts);if(!text)return null;
@@ -189,5 +191,5 @@
   if(record.optional===true&&!/\b(can|may)\b/i.test(text))text='You may use this effect: '+lower(text);
   return [when,text,discount?'':u,durations[duration]||''].filter(Boolean).join('\n');
  }
- const api={summarize};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerRuleSummaries=api;
+ const api={summarize,reviewIssue:record=>notes?.reviewIssue(record)};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerRuleSummaries=api;
 })(typeof window!=='undefined'?window:globalThis);

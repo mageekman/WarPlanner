@@ -81,10 +81,10 @@
  }
  function describe(record){
   const detailed=sourceBreakdown(record),short=S.summarize(record);
-  const text=detailed.missing?'The source has no effect mechanics for this rule. Check its full wording.':short||'This rule needs a checked summary. Its imported details are under Conditions & sources.';
+  const text=detailed.missing?'The source has no effect mechanics for this rule. Check its full wording.':short||S.reviewIssue?.(record)||'This rule needs a checked summary. Its imported details are under Conditions & sources.';
   return {text,details:detailed.text,missing:detailed.missing,concise:!!short};
  }
- function isPlaceholder(summary){return !String(summary||'').trim()||/^Imported structured mechanics for [\s\S]+\. Review the imported source details before writing a study summary\.$/.test(summary)||/^Reference reminder: check [\s\S]+ in your current rules\. The source does not support a complete study summary yet\.$/.test(summary)||summary==='No complete mechanics record is available. Open the current rules reference.';}
+ function isPlaceholder(summary){return !String(summary||'').trim()||/^Imported structured mechanics for [\s\S]+\. Review the imported source details before writing a study summary\.$/.test(summary)||/^Reference reminder: check [\s\S]+ in your current rules\. The source does not support a complete study summary yet\.$/.test(summary)||summary==='No complete mechanics record is available. Open the current rules reference.'||summary==='This rule needs a checked summary. Its imported details are under Conditions & sources.'||summary==='The source has no effect mechanics for this rule. Check its full wording.';}
  function enrich(data){
   if(!data?.importSource)return data;
   if(!isPlaceholder(data.summary)&&data.summary!==sourceBreakdown(data.importSource.record).text)return data;
@@ -93,5 +93,11 @@
   const result=describe(data.importSource.record);
   return {...data,summary:result.text,mechanicsDetails:result.details,mechanicsPresentation:result.missing?'missing':result.concise?'structured':'needs-summary'};
  }
- const api={describe,enrich,isPlaceholder};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerMechanics=api;
+ function summaryState(data){
+  const view=enrich(data);
+  if(view?.mechanicsPresentation==='missing')return 'missing';
+  if(view?.mechanicsPresentation==='needs-summary'||!String(view?.summary||'').trim())return 'needs-summary';
+  return 'available';
+ }
+ const api={describe,enrich,isPlaceholder,summaryState};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerMechanics=api;
 })(typeof window!=='undefined'?window:globalThis);
