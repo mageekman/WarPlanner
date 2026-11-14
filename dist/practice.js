@@ -17,7 +17,7 @@
   for(const r of rules.filter(matches).map(r=>({...(M?M.enrich(r):r),faction:r.faction})).filter(usable)){const key=[r.category,norm(r.name),norm(r.detachment)].join(':');if(!unique.has(key))unique.set(key,r);}
   const all=[...unique.values()],label=r=>r.name+(r.detachment?' · '+r.detachment:''),questions=[];
   const choices=(correct,others)=>shuffle([correct,...shuffle(others,random).slice(0,3)],random).map(option=>({...option,faction}));
-  const ruleView=r=>Object.fromEntries(['id','name','faction','category','summary','conditions','sourceIds','sourceUrl','sourceLabel','status','referenceOnly','mechanicsDetails','targetText','triggerText','phase','turn','window','detachment'].filter(key=>r[key]!==undefined).map(key=>[key,copy(r[key])]));
+  const ruleView=r=>Object.fromEntries(['id','sourceRuleId','name','faction','units','category','summary','conditions','sourceIds','sourceUrl','sourceLabel','status','referenceOnly','mechanicsDetails','targetText','triggerText','phase','turn','window','detachment'].filter(key=>r[key]!==undefined).map(key=>[key,copy(r[key])]));
   const unitView=u=>({id:u.id,name:u.name,faction:u.faction,...(u.fightsFirst?{fightsFirst:u.fightsFirst}:{})});
   const explain=r=>({summary:r.summary,conditions:Array.isArray(r.conditions)?r.conditions:[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
   for(const r of all){
