@@ -30,6 +30,15 @@
  function validate(row){
   if(!row||!kinds.includes(row.kind)||!row.data||typeof row.data!=='object'||Array.isArray(row.data))throw Error('Choose a content type.');
   const d=row.data;
+  if(d.guide!==undefined){
+   const g=d.guide;
+   if(!g||typeof g!=='object'||Array.isArray(g)||!['early','normal','late'].includes(g.order)||!['you','opponent','either'].includes(g.turn))throw Error('Choose a valid guide order and player turn.');
+   if(!Number.isInteger(g.rank)||g.rank<1||g.rank>99)throw Error('Guide rank must be a whole number from 1 to 99.');
+   if(!Array.isArray(g.phases)||g.phases.some(n=>!Number.isInteger(n)||n<0||n>4))throw Error('Choose valid guide hint phases.');
+   if(typeof g.label!=='string'||g.label.length>50||typeof g.note!=='string'||g.note.length>2000)throw Error('Use a short guide badge (up to 50 characters) and explanation (up to 2000).');
+   stringList(g.flags,'Guide badges');if(g.flags.length>12||g.flags.some(s=>!s.trim()||s.length>50))throw Error('Add up to 12 guide badges, each up to 50 characters.');
+  }
+  if(d.fightsFirst!==undefined&&!['auto','yes','no'].includes(d.fightsFirst))throw Error('Choose a valid Fights First setting.');
   if(typeof d.id!=='string'||!/^[a-zA-Z0-9_-]{1,180}$/.test(d.id)||row.key!==row.kind+':'+d.id)throw Error('Use a stable ID with letters, numbers, dashes or underscores.');
   if(typeof row.name!=='string'||!row.name.trim()||row.name.length>180)throw Error('Enter a name (up to 180 characters).');
   if(typeof row.faction!=='string'||row.faction.length>100)throw Error('Choose a faction.');
@@ -74,7 +83,7 @@
   // A unit rule's selected units are also its references in the roster view.
   for(const unit of L.catalog.units){
    const refs=new Map(unit.abilities.map(a=>[a.id,a]));
-   for(const rule of L.abilities)if(L.factionMatches(rule.faction,unit.faction)&&rule.units.some(n=>norm(n)===norm(unit.name))){const id=rule.sourceRuleId||rule.id;if(!refs.has(id))refs.set(id,{id});}
+   for(const rule of L.abilities)if(rule.id!=='fights-first'&&L.factionMatches(rule.faction,unit.faction)&&rule.units.some(n=>norm(n)===norm(unit.name))){const id=rule.sourceRuleId||rule.id;if(!refs.has(id))refs.set(id,{id});}
    unit.abilities=[...refs.values()];
   }
  }

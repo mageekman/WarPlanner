@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.11
+# WarPlanner — personal study edition, v0.12
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -85,3 +85,14 @@ Disable entries to retire them without deleting their history. Core guide pages 
 `supabase/admin-content.sql` creates the server-managed singleton admin membership, shared catalog and edit history. The only administrator is the existing owner account verified during setup. Clients can read only their own membership and have no role-assignment permissions. Signed-in players can read content; database RLS restricts content writes and revision history to the administrator. An invoker trigger stamps identities/timestamps, increments revisions and records previous versions. History inserts require an active trigger, preventing direct API history writes. No privileged keys or administrator email checks appear in the frontend. Existing private army-list policies stay in place.
 
 `node scripts/seed-catalog.cjs` generates idempotent SQL batches from bundled content; apply these using an authorized database-owner connection. The standalone offline bundle continues using the bundled catalog and has no admin controls. Automated content tests cover rule propagation, timing changes, faction isolation, custom enhancements, revision conflicts and validation; browser checks cover the full owner workflow, non-admin gating, mobile layout and draft recovery. Database permission checks are run separately under the real authenticated and anonymous Postgres roles, with test writes rolled back.
+
+
+## Editable guide priorities and unit flags (v0.12)
+
+In **Rules workshop**, open a rule or unit and expand **Guide order & badges**. Choose early, normal or late order, rank within that group (1 first, 99 last), phases, player turn, optional badge text and an explanation. Default labels follow the phase, e.g. Move early or Shoot late. Rules of any category support these hints. Detachment and faction settings provide defaults when a rule has no explicit guide settings. Unit cards derive hints from their own record and their applicable abilities; shared rule cards retain their own hints. Early suggestions win when several applicable hints disagree, and late hints apply when there is no early suggestion. Sorting is within shared cards and within unit cards; the core phase sequence and actual rule triggers stay unchanged.
+
+War Walkers, Shroud Runners and Falcon retain their previous early-shooting defaults, now visible and editable in their unit records. Selecting normal clears that unit's default. Custom badges are phase/turn-scoped reminders, such as Deep Strike, Keep in aura or Once per battle; they do not grant or simulate those rules. Explicit unit hints or badges keep an otherwise shared-only unit visible once in the main activation page.
+
+Unit records also offer **Fights First**: automatic from current rules, has Fights First, or does not have Fights First. This override applies to that datasheet's models. Every member of an attached unit must still qualify for the unqualified Fights First badge. An explicitly flagged datasheet with a nonqualifying attachment shows a check-attachments reminder instead. Existing leader-dependent automatic cases remain conditional.
+
+Hints and flags live in the existing catalog JSON, use the same owner-only write policies, revision history and conflict handling, and reload across devices. Saved army uploads remain untouched. The content loader preserves equipment restrictions and avoids turning a conditional Fights First reminder into an unconditional ability reference.

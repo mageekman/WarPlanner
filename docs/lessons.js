@@ -171,8 +171,30 @@
   // Movement selection and charge declaration share the Flitting Shadows trigger.
   return steps.map(applyStep);
  }
+ // Editable presentation hints do not change a rule's legal timing window.
+ const defaultUnitGuides={
+  'war-walkers':{order:'early',rank:10,phases:[2],turn:'you',label:'Early',note:'Consider early: its marked target can help later shooters.'},
+  'shroud-runners':{order:'early',rank:15,phases:[2],turn:'you',label:'Early',note:'Consider early: Target Acquisition can remove cover before later shooters.'},
+  falcon:{order:'early',rank:20,phases:[2],turn:'you',label:'Early',note:'Consider before models that disembarked from this Falcon.'}
+ };
+ function guideSettings(entry={},kind='rule'){
+  const defaults=kind==='unit'&&factionMatches(entry.faction,'Aeldari')?defaultUnitGuides[entry.id]:null;
+  return {order:'normal',rank:20,phases:[0,1,2,3,4],turn:'either',label:'',note:'',flags:[],...(entry.guide||defaults||{})};
+ }
+ function guideMeta(entry,kind,state){
+  const hint=guideSettings(entry,kind),active=hint.phases.includes(state.phase)&&(hint.turn==='either'||hint.turn===state.turn);
+  if(!active)return {priority:100,label:'',note:'',flags:[],order:'normal'};
+  const priority=hint.order==='early'?hint.rank:hint.order==='late'?100+hint.rank:100;
+  const verb=['Act','Move','Shoot','Charge','Fight'][state.phase];
+  return {priority,order:hint.order,label:hint.order==='normal'?'':hint.label||verb+' '+hint.order,note:hint.note,flags:[...hint.flags]};
+ }
+ function ruleGuideMeta(rule,state){
+  const det=catalog.detachments.find(d=>factionMatches(d.faction,state.army.faction)&&normalized(d.name)===normalized(rule.detachment));
+  const faction=catalog.factions?.find(f=>factionMatches(f.name,state.army.faction));
+  return guideMeta(rule.guide?rule:det?.guide?det:faction?.guide?faction:rule,'rule',state);
+ }
  const stepOverrides=new Map();
  const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
- const api={stepOverrides,applyStep,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

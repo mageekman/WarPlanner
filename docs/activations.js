@@ -20,11 +20,15 @@
    const leaders=u.members.filter(m=>m.role==='leader'||m.role==='support');
    const body=bodies.length===1?bodies[0]:u.members[0];
    return {...u,body,leaders,attached:bodies.length===1&&leaders.length>0,
-    priority:has(u,'War Walkers')?10:has(u,'Shroud Runners')?15:has(u,'Falcon')?20:100,
-    orderHint:has(u,'War Walkers')?'Consider early: its marked target can help later shooters.':has(u,'Shroud Runners')?'Consider early: Target Acquisition can remove cover before later shooters.':has(u,'Falcon')?'Consider before models that disembarked from this Falcon.':''};
+    priority:100,orderHint:''};
   });
  }
- function orderedUnits(state){const list=units(state.army);return state.phase===2&&state.turn==='you'?list.sort((a,b)=>a.priority-b.priority):list;}
+ function orderedUnits(state){return units(state.army).map(unit=>{
+  const hints=unit.members.map(m=>L.guideMeta(L.unitInfo(m.name,state.army.faction)||{},'unit',state));
+  const hint=chooseOrder(hints);return {...unit,priority:hint.priority,orderHint:hint.note};
+ }).sort((a,b)=>a.priority-b.priority);}
+ function chooseOrder(hints){const early=hints.filter(h=>h.priority<100).sort((a,b)=>a.priority-b.priority);return early[0]||hints.filter(h=>h.priority>100).sort((a,b)=>b.priority-a.priority)[0]||{priority:100,label:'',note:'',order:'normal'};}
+
  function sourceUnit(state,unit,name){return units(state.army).filter(u=>u.id!==unit.id&&has(u,name));}
  function leading(unit,name,bodyguard){return unit.attached&&unit.leaders.some(m=>m.role==='leader'&&norm(m.name)===norm(name))&&(!bodyguard||norm(unit.body.name)===norm(bodyguard));}
  function fits(a,state,unit){
@@ -67,8 +71,11 @@
  });}
  function fightsFirst(state,unit){
   if(state.phase!==4)return false;
-  if(leading(unit,'The Visarch'))return true;
-  return unit.members.length>0&&unit.members.every(m=>L.unitHasRule(m,'fights-first',state.army.faction)||['howlingbanshees','jainzar'].includes(norm(m.name))||(norm(m.name)==='autarch'&&leading(unit,'Autarch','Howling Banshees')));
+  return unit.members.length>0&&unit.members.every(m=>{
+   const override=L.unitInfo(m.name,state.army.faction)?.fightsFirst;
+   if(override==='yes')return true;if(override==='no')return false;
+   return L.isAeldari(state.army)&&leading(unit,'The Visarch')||L.unitHasRule(m,'fights-first',state.army.faction)||L.isAeldari(state.army)&&(['howlingbanshees','jainzar'].includes(norm(m.name))||(norm(m.name)==='autarch'&&leading(unit,'Autarch','Howling Banshees')));
+  });
  }
  function targeting(a,state){
   if(!['army','stratagem'].includes(a.category))return null;
@@ -162,7 +169,7 @@
   function typeFor(member){
    const key=norm(member.name);
    if(!types.has(key)){
-    const display=units({units:[{...structuredClone(member),group:'',role:''}]})[0];display.id='unit-type-'+key;
+    const display=units({faction:state.army.faction,units:[{...structuredClone(member),group:'',role:''}]})[0];display.id='unit-type-'+key;
     types.set(key,{unit:display,instances:[],items:new Map(),sharedIds:new Set()});
    }
    return types.get(key);
@@ -178,7 +185,7 @@
    for(const row of rows)for(const a of row.cards){
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
     const key=ruleKey(a);if(seen.has(key))continue;seen.add(key);
-    const item={...a,timing:a.expanded?(a.triggerText||row.title):row.title};
+    const item={...a,guideMeta:L.ruleGuideMeta(a,state),timing:a.expanded?(a.triggerText||row.title):row.title};
     if(a.category==='army'||a.category==='stratagem'){
      if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[],battlefieldUnits:[]});
      const shared=sharedMap.get(key);shared.battlefieldUnits.push(unit);
@@ -202,9 +209,18 @@
    sharedMap.set(sharedKey,{...entry.item,key:sharedKey,appliesTo:entry.records.map(r=>r.unit),promoted:true});
    for(const record of entry.records){record.items.delete(key);record.sharedIds.add(sharedKey);}
   }
-  const unitCards=[...types.values()].filter(r=>r.items.size).map(r=>({unit:r.unit,instances:r.instances,items:[...r.items.values()],sharedIds:[...r.sharedIds]}));
-  if(state.phase===2&&state.turn==='you')unitCards.sort((a,b)=>a.unit.priority-b.unit.priority);
-  const shared=[...sharedMap.values()];
+  const unitCards=[...types.values()].map(r=>{
+   const source=L.unitInfo(r.unit.body.name,state.army.faction)||{},unitMeta=L.guideMeta(source,'unit',state);
+   const items=[...r.items.values()].sort((a,b)=>a.guideMeta.priority-b.guideMeta.priority);
+   const hints=[unitMeta,...items.map(a=>a.guideMeta)],order=chooseOrder(hints);
+   const mainActivation=!!step.activationMode&&!['pile','consolidate'].includes(step.activationMode);
+   const first=state.phase===4&&r.instances.every(unit=>fightsFirst(state,unit));
+   const conditionalFirst=state.phase===4&&source.fightsFirst==='yes'&&!first;
+   const flags=[...new Set([...(conditionalFirst?['Fights First · check attachments']:[]),...hints.flatMap(h=>h.flags).filter(flag=>!first||norm(flag)!=='fightsfirst')])];
+   const notes=[...new Set([...(conditionalFirst?['This datasheet is marked Fights First. Every model in its attached unit must also qualify.']:[]),...hints.filter(h=>h.note&&(h.priority!==100||h.flags.length)).map(h=>h.note)])];
+   return {unit:{...r.unit,priority:order.priority,orderHint:order.note},instances:r.instances,items,sharedIds:[...r.sharedIds],guideMeta:{...order,flags,notes},fightsFirst:first,show:items.length>0||mainActivation&&(first||flags.length>0||order.priority!==100)};
+  }).filter(r=>r.show).sort((a,b)=>a.unit.priority-b.unit.priority);
+  const shared=[...sharedMap.values()].sort((a,b)=>a.guideMeta.priority-b.guideMeta.priority);
   return {shared,unitCards,count:shared.length+unitCards.length};
  }
 
