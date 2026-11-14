@@ -1,19 +1,25 @@
 # Aeldari description audit
 
-Audited 312 catalog entries using the pinned [40kdc Aeldari source](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/enrichment/aeldari), its core Stratagem restrictions and previously reviewed study notes. This checks the app's descriptions against its source material; it is not official rules verification.
+Audited all 312 Aeldari catalog entries using the [pinned 40kdc source](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/enrichment/aeldari), its core Stratagem restrictions and previously reviewed study notes. This checks descriptions against source material; it is not official rules verification.
 
-| Result | Entries |
+| Current result | Entries |
 | --- | ---: |
-| Usable descriptions | 255 |
-| Of those, rewritten or expanded | 196 |
-| Missing effect data | 25 |
+| Usable descriptions | 258 |
+| Missing effect data | 22 |
 | Specific source issues | 32 |
+| Generic description prompts | 0 |
 
-The original index had 198 generic reference prompts. Those are now replaced with an actual description, an explicit missing-effect message or a specific source issue. The current account's three edited entries—Crystalline Targeting, Piratical Hero and Whispering Web—were preserved. Existing early-activation hints and phase placement were retained.
+## Current import refresh (v0.28.4)
 
-Examples: Protect retains its Farseer requirement; Misfortune includes end-of-Movement timing, visibility, range and duration; Dance of Death identifies its choice and phase; Warrior Focus now states which characteristics and rolls ignore modifiers. Word of the Phoenix and Tears of Isha use the previously reviewed descriptions that the old provisional-data gate had hidden. Core Stratagem data supplies conditions such as Isha's Fury's 9-inch range and Overflight's destroyed-unit requirement.
+Recent imports added turn and bearer metadata. The original presentation adapter intentionally requires an exact original payload, so those additions stopped many earlier descriptions from applying. The refresh saves the reviewed wording directly in the database for 301 entries and leaves all 11 workshop-edited entries completely unchanged. This includes the checked Eldritch Raiders text for Adrenal Infusions, Impeding Fire and Veterans of the Void, which resolve three previously empty-source entries.
 
-Doom Inescapable and Preternatural Precision are named but have no encoded effect in this source. Their earlier reminder cards now explicitly indicate the gap. Source-derived interpretations retain reference/provisional status. Every saved change to an original payload overrides the presentation adapter; browsing does not rewrite the database.
+The original adapter remains strict. The operational refresh compares source structures against the pinned records, validates added metadata against the core index, and separately accounts for two imported corrections already reflected in the reviewed notes: Crystal Matrix uses phase-limited individual re-rolls, and Tears of Isha heals one model rather than every model. It does not trust unchanged source digests alone. The complete current row and expected revision must match before an update can apply.
+
+The 148 generic live prompts are replaced with reviewed descriptions, specific source issues or named missing-effect explanations. Generic army/detachment target previews are replaced with concrete beneficiaries or an explicit source gap. Recall answers now use the saved study description. All 80 unit profiles, 16 detachments, faction data, phase placement, early-activation hints, uploaded mechanics and account rosters are preserved. Revision history retains the previous payloads.
+
+Examples: Protect keeps its FARSEER requirement; Misfortune keeps end-of-Movement timing, visibility, 18″ range and duration; Dance of Death keeps its choice and Fight-phase timing. Warrior Focus distinguishes ignored characteristics and Hit-roll modifiers. Critical hits and critical wounds remain separate. The existing 32 source issues below still need checking; they and the 22 missing effects remain excluded from practice pools.
+
+`scripts/refresh-aeldari.cjs` generates the reviewed transaction without connecting or applying it. Summaries are persisted through the existing administrator-only import RPC and history trigger, rather than relying on a browser-only overlay. New source mechanics or unknown constraints fail validation; saved workshop edits are never silently replaced.
 
 ## Records that still require checking
 
