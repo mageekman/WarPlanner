@@ -67,3 +67,7 @@ test('custom enhancements stay tied to their actual equipped bearer',()=>{
 test('applying the database catalog retains equipment-specific source restrictions',()=>{
  C.apply(C.seed());const scorpions=L.unitInfo('Striking Scorpions');assert.equal(scorpions.abilities.find(a=>a.id==='aspect-shrine-token-aeldari').wargear,'aspect-shrine-token');
 });
+test('workshop reference filters include untimed and disabled reference entries without hiding other content types',()=>{
+ const records=C.seed(),references=C.filterRecords(records,{reference:'reference'}),other=C.filterRecords(records,{reference:'other'}),all=C.filterRecords(records);assert.ok(references.length>0);assert.ok(references.every(r=>r.kind==='rule'&&r.data.referenceOnly===true));assert.ok(other.every(r=>r.kind==='rule'&&!r.data.referenceOnly));assert.equal(references.length+other.length,all.length);assert.ok(references.some(r=>r.data.phase.length===0));
+ const entry=structuredClone(references[0]);entry.enabled=false;assert.equal(C.filterRecords([entry],{reference:'reference'}).length,1);assert.ok(C.filterRecords(records,{kind:'unit',reference:'reference'}).length>0);assert.ok(C.filterRecords(records,{reference:'reference',query:references[0].name}).some(r=>r.key===references[0].key));
+});

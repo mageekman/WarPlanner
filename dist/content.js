@@ -87,6 +87,10 @@
    unit.abilities=[...refs.values()];
   }
  }
+ function filterRecords(records,{kind='rule',query='',reference='all'}={}){
+  const text=query.trim().toLowerCase();
+  return records.filter(row=>(!kind||row.kind===kind)&&(kind!=='rule'||reference==='all'||(reference==='reference')===(row.data.referenceOnly===true))&&(!text||[row.name,row.faction,row.data.detachment,row.data.summary].filter(Boolean).join(' ').toLowerCase().includes(text))).sort((a,b)=>a.name.localeCompare(b.name));
+ }
  function create(client,userId){
   let records=[],isAdmin=false,disposed=false;
   const check=()=>{if(disposed)throw Error('This account session has ended.');};
@@ -112,6 +116,6 @@
    dispose(){disposed=true;isAdmin=false;records=[];}
   };
  }
- const api={kinds,windows,seed:()=>copy(defaults),validate,apply,reset:()=>apply([]),create};
+ const api={filterRecords,kinds,windows,seed:()=>copy(defaults),validate,apply,reset:()=>apply([]),create};
  if(node)module.exports=api;else root.WarPlannerContent=api;
 })(typeof window!=='undefined'?window:globalThis);

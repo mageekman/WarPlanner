@@ -28,7 +28,7 @@
    if(revision!==sessionRevision)return;
    if(identityError||!identity.user||identity.user.id!==session.user.id)throw new Error('Please sign in again.');
    report('Loading your account lists…');
-   service=window.WarPlannerCloudLists.create(client,identity.user.id,{status:status=>window.setWarPlannerCloudStatus?.(status),saved:result=>window.applyWarPlannerCloudSave?.(result)});
+   service=window.WarPlannerCloudLists.create(client,identity.user.id,{status:status=>window.setWarPlannerCloudStatus?.(status),saved:result=>window.applyWarPlannerCloudSave?.(result),deleted:id=>window.applyWarPlannerCloudDeletion?.(id)});
    loadingLibrary=service;
    const local=window.getWarPlannerLocalLists?.(identity.user)||[];
    const {lists,idMap}=await service.load(local);

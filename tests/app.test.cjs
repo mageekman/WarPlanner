@@ -11,7 +11,7 @@ function app(saved,options={}){
  const viewport={clientWidth:400,children:[],append(node){this.children.push(node);}},slide=motionNode();
  const document={querySelector:s=>s==='.guide-viewport'&&options.motion?viewport:s==='.guide-slide'&&options.motion?slide:elements[s],addEventListener:(type,fn)=>listeners[type]=fn};
  if(options.motion)document.createElement=()=>motionNode();
- const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,scrollTo(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>true,setTimeout:()=>0,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
+ const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,scrollTo(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>options.confirm!==false,setTimeout:()=>0,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
  vm.runInContext(fs.readFileSync(require.resolve('../dist/core.js'),'utf8'),context);
  context.WarPlan=context.window.WarPlan;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/aeldari-data.js'),'utf8'),context);
@@ -344,4 +344,19 @@ test('the editor saves multiple checked detachments and displays them in the lib
  const a=app();a.click({view:'army'});a.click({action:'create-list'});a.editorInput('name','Combined host');a.toggleDetachment('Warhost',true);a.toggleDetachment('Aspect Host',true);a.editorChange('disposition','Priority Assets');a.click({addUnit:'fire-dragons'});a.saveEditor();
  const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.deepEqual(saved.army.detachments,['Warhost','Aspect Host']);assert.match(a.html(),/Warhost, Aspect Host/);assert.match(a.html(),/Martial Grace/);assert.match(a.html(),/Path of the Warrior/);
  a.click({view:'army'});assert.match(a.html(),/Warhost, Aspect Host/);
+});
+
+test('deleting the last saved list clears the active guide and does not restore the starter roster',()=>{
+ const a=app();a.click({view:'army'});assert.match(a.html(),/data-delete-list="list-1"/);a.click({deleteList:'list-1'});const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.savedLists.length,0);assert.equal(saved.army.units.length,0);assert.equal(saved.guideStarted,false);assert.match(a.html(),/Import list/);assert.doesNotMatch(a.html(),/data-open-list=/);const loaded=app([...a.store],{setup:true});assert.doesNotMatch(loaded.html(),/data-open-list="list-1"/);
+});
+test('cancelling list deletion preserves the saved roster',()=>{
+ const a=app(undefined,{confirm:false});a.click({view:'army'});a.click({deleteList:'list-1'});assert.match(a.html(),/data-open-list="list-1"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).savedLists.length,1);
+});
+test('account deletion removes only the selected list and switches the active roster safely',async()=>{
+ const sample=require('../dist/core.js').sample,a=app(undefined,{hosted:true});let removed;
+ const service={schedule(){},dispose(){},remove:async id=>{removed=id;return id;}};
+ a.cloudAccount({id:'owner'},[{id:'one',army:structuredClone(sample),renames:{},warnings:[]},{id:'two',army:{...structuredClone(sample),name:'Second roster'},renames:{},warnings:[]}],service);a.click({view:'army'});a.click({deleteList:'one'});await new Promise(r=>setImmediate(r));assert.equal(removed,'one');const saved=JSON.parse(a.store.get('warplanner.account.owner.v1'));assert.equal(saved.savedLists.length,1);assert.equal(saved.activeListId,'two');assert.equal(saved.army.name,'Second roster');assert.equal(saved.guideStarted,false);
+});
+test('a failed account delete keeps the list and renders a safe error',async()=>{
+ const sample=require('../dist/core.js').sample,a=app(undefined,{hosted:true});a.cloudAccount({id:'owner'},[{id:'one',army:structuredClone(sample),renames:{},warnings:[]}],{schedule(){},dispose(){},remove:async()=>{throw Error('<offline>')}});a.click({view:'army'});a.click({deleteList:'one'});await new Promise(r=>setImmediate(r));assert.match(a.html(),/Could not delete this list/);assert.match(a.html(),/&lt;offline&gt;/);assert.match(a.html(),/data-open-list="one"/);
 });

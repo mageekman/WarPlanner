@@ -3,22 +3,24 @@ const C=require('../dist/cloud-lists.js');
 const army=name=>({name,faction:'Aeldari',detachment:'Warhost',units:[{id:'one',name:'Farseer',details:[]}],originalExport:name});
 const list=(id,name)=>({id,army:army(name),warnings:[],renames:{}});
 function backend(seed=[]){
- const rows=new Map(seed.map(r=>[r.user_id+':'+r.list_id,structuredClone(r)]));let writes=0,fail=false,hook=null;
- function client(owner){return {from(){let operation='read',values,filters=[],range=null;
- const query={select(){return query;},eq(k,v){filters.push([k,v]);return query;},order(){return query;},range(from,to){range=[from,to];return query;},insert(v){operation='insert';values=v;return query;},update(v){operation='update';values=v;return query;},single:()=>run(true),maybeSingle:()=>run(true),then:(resolve,reject)=>run(false).then(resolve,reject)};
+ const tombstones=new Map(),rows=new Map(seed.map(r=>[r.user_id+':'+r.list_id,structuredClone(r)]));let writes=0,fail=false,hook=null;
+ function client(owner){return {from(name){const storage=name==='deleted_army_lists'?tombstones:rows;let operation='read',values,filters=[],range=null;
+ const query={select(){return query;},eq(k,v){filters.push([k,v]);return query;},order(){return query;},range(from,to){range=[from,to];return query;},insert(v){operation='insert';values=v;return query;},update(v){operation='update';values=v;return query;},delete(){operation='delete';return query;},single:()=>run(true),maybeSingle:()=>run(true),then:(resolve,reject)=>run(false).then(resolve,reject)};
  async function run(single){
   if(operation!=='read'){writes++;if(fail){fail=false;return {error:{message:'Offline'}};}if(hook){const h=hook;hook=null;await h();}}
   if(operation==='insert'){
    if(values.user_id!==owner)return {error:{code:'42501'}};const key=owner+':'+values.list_id;
+   if(tombstones.has(key))return {error:{code:'P0001',message:'saved_list_deleted'}};
    if(rows.has(key))return {error:{code:'23505'}};rows.set(key,structuredClone(values));return {data:structuredClone(values)};
   }
-  let matches=[...rows.values()].filter(r=>r.user_id===owner&&filters.every(([k,v])=>r[k]===v));
+  let matches=[...storage.values()].filter(r=>r.user_id===owner&&filters.every(([k,v])=>r[k]===v));
   if(operation==='read'&&range)matches=matches.slice(range[0],range[1]+1);
+  if(operation==='delete')for(const row of matches){rows.delete(owner+':'+row.list_id);tombstones.set(owner+':'+row.list_id,{user_id:owner,list_id:row.list_id});}
   if(operation==='update')for(const row of matches)Object.assign(row,structuredClone(values));
   return {data:structuredClone(single?(matches[0]||null):matches)};
  }
  return query;}};}
- return {rows,client,get writes(){return writes;},failNext(){fail=true;},beforeWrite(fn){hook=fn;}};
+ return {rows,tombstones,client,get writes(){return writes;},failNext(){fail=true;},beforeWrite(fn){hook=fn;}};
 }
 const row=(id,name,revision=1)=>({user_id:'owner',list_id:id,...C.payload(list(id,name)),revision});
 test('fresh devices load the same account library without creating writes',async()=>{
@@ -69,4 +71,25 @@ test('disposing a session prevents pending account callbacks after switching use
 test('account libraries page beyond the first API batch without truncating lists',async()=>{
  const b=backend(Array.from({length:250},(_,i)=>row('list-'+i,'Roster '+i)));const loaded=await C.create(b.client('owner'),'owner').load();
  assert.equal(loaded.lists.length,250);assert.equal(b.writes,0);
+});
+
+test('deleting a list removes its account row and returns an empty library on another device',async()=>{
+ const b=backend([row('a','Aspects')]),deleted=[],service=C.create(b.client('owner'),'owner',{deleted:id=>deleted.push(id)});await service.load();assert.equal(await service.remove('a'),'a');assert.equal(b.rows.size,0);assert.deepEqual(deleted,['a']);assert.ok(b.tombstones.has('owner:a'));assert.equal((await C.create(b.client('owner'),'owner').load()).lists.length,0);
+});
+test('old clean and dirty caches cannot recreate a deleted list, but a new import ID is allowed',async()=>{
+ const b=backend([row('a','Aspects')]),s=C.create(b.client('owner'),'owner'),cached=(await s.load()).lists[0];await s.remove('a');
+ const dirty=structuredClone(cached);dirty.army.name='Edited offline';for(const cache of [cached,dirty,list('a','Legacy cache')])assert.equal((await C.create(b.client('owner'),'owner').load([cache])).lists.length,0);
+ const imported=await C.create(b.client('owner'),'owner').load([list('new-id','Aspects')]);assert.equal(imported.lists.length,1);assert.equal(imported.lists[0].id,'new-id');
+});
+test('a stale tab save notices deletion and does not create a recovered copy',async()=>{
+ const b=backend([row('a','Aspects')]),removed=[],old=C.create(b.client('owner'),'owner',{deleted:id=>removed.push(id)}),cached=(await old.load()).lists[0];const second=C.create(b.client('owner'),'owner');await second.load();await second.remove('a');cached.renames.one='Stale edit';old.schedule([cached]);await old.flush();assert.equal(b.rows.size,0);assert.deepEqual(removed,['a']);assert.equal(old.dirty,false);
+});
+test('failed deletes keep the saved list available and can be retried',async()=>{
+ const b=backend([row('a','Aspects')]),service=C.create(b.client('owner'),'owner');await service.load();b.failNext();await assert.rejects(()=>service.remove('a'));assert.ok(b.rows.has('owner:a'));assert.equal(b.tombstones.size,0);await service.remove('a');assert.equal(b.rows.size,0);
+});
+test('account deletion is owner scoped and cannot delete another account’s list',async()=>{
+ const b=backend([row('a','Aspects')]),other=C.create(b.client('other'),'other');await other.load();await assert.rejects(()=>other.remove('a'),/confirm deletion/);assert.ok(b.rows.has('owner:a'));assert.equal(b.tombstones.size,0);
+});
+test('pending saves finish before deletion and navigation cannot reinsert the removed entry',async()=>{
+ const b=backend([row('a','Aspects')]),service=C.create(b.client('owner'),'owner'),draft=(await service.load()).lists[0];draft.renames.one='New label';service.schedule([draft]);await service.remove('a');service.schedule([draft]);await service.flush();assert.equal(b.rows.size,0);assert.equal(service.dirty,false);
 });
