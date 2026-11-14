@@ -1,6 +1,7 @@
 /* Readable views of imported mechanics, never a claim of official or complete wording. */
 (function(root){
  'use strict';
+ const S=typeof module!=='undefined'&&module.exports?require('./rule-summaries.js'):root.WarPlannerRuleSummaries;
  const words={stub:'Source marked incomplete',A:'Attacks',D:'Damage',M:'Move',T:'Toughness',S:'Strength',W:'Wounds',OC:'Objective Control',Ld:'Leadership',Sv:'Save','this-unit':'This unit','this-model':'This model','selected-unit':'Selected unit','event-subject':'Event subject','event-object':'Event object','any-result':'Any result','all-failures':'Failed results',ones:'Results of 1','once-per-battle':'Once per battle','once-per-turn':'Once per turn','once-per-battle-round':'Once per battle round',gte:'At least',lte:'At most',gt:'Greater than',lt:'Less than',eq:'Equal to','phase-started':'Phase starts','phase-ended':'Phase ends','move-ended':'Move ends','move-started':'Move starts','attacks-resolved':'Attacks finish','targets-selected':'Targets are selected','round-started':'Battle round starts','round-ended':'Battle round ends','turn-ended':'Turn ends','turn-started':'Turn starts','damage-allocated':'Damage is allocated','model-destroyed':'A model is destroyed','set-up':'Set up',disembarked:'Disembarkation',used:'Use of a rule',selected:'Selection for an action'};
  const label=s=>words[s]||String(s).replace(/[_-]/g,' ').replace(/^./,c=>c.toUpperCase());
  const scalar=x=>typeof x==='string'?words[x]||(/^[\w-]+$/.test(x)?label(x):x):x===true?'Yes':x===false?'No':x==null?'Not specified':String(x);
@@ -64,7 +65,7 @@
   // Unknown structures remain fully labeled, with no unsupported effect omitted.
   return tree(node,depth+1);
  }
- function describe(record){
+ function sourceBreakdown(record){
   if(!record||typeof record!=='object'||!record.effect)return {text:'The imported source does not include readable rule text or effect mechanics for this entry.',missing:true};
   const missing=record.effect.type==='no-effect'&&known(record.effect,['type']);
   const sections=[];
@@ -78,13 +79,19 @@
   for(const [key,v] of Object.entries(record))if(!metadata.has(key)&&v!==undefined)sections.push(label(key)+':\n'+indent(tree(v)));
   return {text:sections.join('\n\n'),missing};
  }
+ function describe(record){
+  const detailed=sourceBreakdown(record),short=S.summarize(record);
+  const text=detailed.missing?'The source has no effect mechanics for this rule. Check its full wording.':short||'This rule needs a checked summary. Its imported details are under Conditions & sources.';
+  return {text,details:detailed.text,missing:detailed.missing,concise:!!short};
+ }
  function isPlaceholder(summary){return !String(summary||'').trim()||/^Imported structured mechanics for [\s\S]+\. Review the imported source details before writing a study summary\.$/.test(summary)||/^Reference reminder: check [\s\S]+ in your current rules\. The source does not support a complete study summary yet\.$/.test(summary)||summary==='No complete mechanics record is available. Open the current rules reference.';}
  function enrich(data){
-  if(!data?.importSource||!isPlaceholder(data.summary))return data;
+  if(!data?.importSource)return data;
+  if(!isPlaceholder(data.summary)&&data.summary!==sourceBreakdown(data.importSource.record).text)return data;
   const text=data.importSource.text;
   if(typeof text==='string'&&text.trim())return {...data,summary:text.trim(),mechanicsPresentation:'source-text'};
   const result=describe(data.importSource.record);
-  return {...data,summary:result.text,mechanicsPresentation:result.missing?'missing':'structured'};
+  return {...data,summary:result.text,mechanicsDetails:result.details,mechanicsPresentation:result.missing?'missing':result.concise?'structured':'needs-summary'};
  }
  const api={describe,enrich,isPlaceholder};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerMechanics=api;
 })(typeof window!=='undefined'?window:globalThis);

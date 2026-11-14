@@ -1,0 +1,380 @@
+[
+  {
+    "ability_id": "hallowed-ground-grey-knights",
+    "name": "Hallowed Ground",
+    "authored_by": "40kdc-community",
+    "game_version": {
+      "edition": "11th",
+      "dataslate": "2026-10-14"
+    },
+    "source_digest": "b38fe64780a3318a7c020f0af71ddb2d59beeb03a61c7ffb3f62b89a334be077",
+    "version": "2025-q3",
+    "supersedes": null,
+    "unit_ids": [],
+    "faction_id": "grey-knights",
+    "detachment_id": "warpbane-task-force",
+    "ability_type": "detachment",
+    "behavior": "passive",
+    "effect": {
+      "type": "named-region-state",
+      "target": {
+        "owner": "friendly"
+      },
+      "modifier": {
+        "region_ref": {
+          "region_id": "hallowed-ground",
+          "owner_faction": "grey-knights"
+        },
+        "producer": {
+          "region_ref": {
+            "region_id": "hallowed-ground",
+            "owner_faction": "grey-knights"
+          },
+          "mode": "complete",
+          "parent_ref": null,
+          "baseline": [
+            {
+              "region": {
+                "territory": "your-deployment-zone"
+              },
+              "duration": "permanent"
+            }
+          ],
+          "phase_extensions": [
+            {
+              "region": {
+                "territory": "no-mans-land"
+              },
+              "condition": {
+                "type": "controls",
+                "parameters": {
+                  "by": "friendly",
+                  "objective": {
+                    "territory": "no-mans-land"
+                  },
+                  "proportion": {
+                    "comparison": "gte",
+                    "fraction": 0.5
+                  }
+                }
+              },
+              "trigger": {
+                "event": "phase-started"
+              },
+              "duration": "phase",
+              "evaluation": "snapshot-once"
+            },
+            {
+              "region": {
+                "territory": "enemy-deployment-zone"
+              },
+              "condition": {
+                "type": "controls",
+                "parameters": {
+                  "by": "friendly",
+                  "objective": {
+                    "territory": "enemy-deployment-zone"
+                  },
+                  "proportion": {
+                    "comparison": "gte",
+                    "fraction": 0.5
+                  }
+                }
+              },
+              "trigger": {
+                "event": "phase-started"
+              },
+              "duration": "phase",
+              "evaluation": "snapshot-once"
+            }
+          ],
+          "additive_extensions": [
+            {
+              "kind": "unit-proximity",
+              "filter": {
+                "owner": "friendly",
+                "all_of": [
+                  "PURIFIER SQUAD"
+                ]
+              },
+              "range": {
+                "inches": 6
+              }
+            }
+          ]
+        },
+        "consumer": {
+          "state_ref": {
+            "region_id": "hallowed-ground",
+            "owner_faction": "grey-knights"
+          },
+          "beneficiary_filter": {
+            "owner": "friendly",
+            "all_of": [
+              "GREY KNIGHTS"
+            ]
+          },
+          "membership": {
+            "unit_scope": "whole-unit",
+            "relation": "wholly-within"
+          },
+          "qualified_condition": {
+            "operator": "or",
+            "operands": [
+              {
+                "type": "matches",
+                "parameters": {
+                  "subject": "this-unit",
+                  "filter": {
+                    "all_of": [
+                      "PURIFIER SQUAD"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "in-region",
+                "parameters": {
+                  "region": {
+                    "rule_region": {
+                      "region_id": "hallowed-ground",
+                      "owner_faction": "grey-knights"
+                    }
+                  },
+                  "wholly": true,
+                  "models": "every"
+                }
+              }
+            ]
+          },
+          "default_branch": {
+            "effect": {
+              "type": "ability-part",
+              "effect": {
+                "type": "re-roll",
+                "target": "attacker",
+                "modifier": {
+                  "roll": "hit",
+                  "subset": "ones"
+                }
+              },
+              "optional": false
+            }
+          },
+          "qualified_branch": {
+            "effect": {
+              "type": "ability-part",
+              "effect": {
+                "type": "re-roll",
+                "target": "attacker",
+                "modifier": {
+                  "roll": "hit",
+                  "result_scope": "any-result"
+                }
+              },
+              "optional": true
+            }
+          },
+          "attack_condition": {
+            "operator": "or",
+            "operands": [
+              {
+                "type": "attack-is",
+                "parameters": {
+                  "attack_type": "melee"
+                }
+              },
+              {
+                "operator": "and",
+                "operands": [
+                  {
+                    "type": "attack-is",
+                    "parameters": {
+                      "attack_type": "ranged"
+                    }
+                  },
+                  {
+                    "type": "matches",
+                    "parameters": {
+                      "subject": "defender",
+                      "filter": {
+                        "visible": {
+                          "to": "attacker"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "branch_precedence": "qualified-replaces-default"
+      }
+    },
+    "scope": {
+      "duration": "permanent"
+    }
+  },
+  {
+    "ability_id": "champion-of-the-order-of-purifiers-grey-knights",
+    "name": "Champion of the Order of Purifiers (Psychic)",
+    "authored_by": "40kdc-community",
+    "game_version": {
+      "edition": "11th",
+      "dataslate": "2026-10-14"
+    },
+    "source_digest": "b62d5c340cd072f828323aa32c110941fd63b58bfccc2f7fc1665405ce668bbd",
+    "version": "2025-q3",
+    "effect": {
+      "type": "conditional",
+      "condition": {
+        "type": "attachment",
+        "parameters": {
+          "subject": "this-model",
+          "role": "leading"
+        }
+      },
+      "effect": {
+        "type": "stat-modifier",
+        "target": "this-unit",
+        "modifier": {
+          "stat": "A",
+          "operation": "add",
+          "value": 1,
+          "weapons": {
+            "type": "ranged",
+            "name": "purifying flame"
+          }
+        }
+      }
+    },
+    "scope": {
+      "duration": "permanent"
+    },
+    "unit_ids": [
+      "castellan-crowe"
+    ],
+    "ability_type": "unit",
+    "behavior": "passive",
+    "faction_id": "grey-knights"
+  },
+  {
+    "ability_id": "foesight-grey-knights",
+    "name": "Foesight (Psychic)",
+    "authored_by": "40kdc-community",
+    "game_version": {
+      "edition": "11th",
+      "dataslate": "2026-10-14"
+    },
+    "source_digest": "ef0a4de75f17fb338b5880d892c53e429b164468fabe53781b3e1dd512248e4f",
+    "version": "2025-q3",
+    "effect": {
+      "type": "conditional",
+      "condition": {
+        "type": "matches",
+        "parameters": {
+          "subject": "defender",
+          "filter": {
+            "all_of": [
+              "CHARACTER"
+            ]
+          }
+        }
+      },
+      "effect": {
+        "type": "re-roll",
+        "target": "this-model",
+        "modifier": {
+          "roll": "hit",
+          "result_scope": "any-result"
+        }
+      }
+    },
+    "scope": {
+      "duration": "permanent"
+    },
+    "unit_ids": [
+      "castellan-crowe"
+    ],
+    "ability_type": "unit",
+    "behavior": "passive",
+    "faction_id": "grey-knights"
+  },
+  {
+    "ability_id": "surge-of-wrath-grey-knights",
+    "name": "Surge of Wrath (Psychic)",
+    "authored_by": "40kdc-community",
+    "game_version": {
+      "edition": "11th",
+      "dataslate": "2026-10-14"
+    },
+    "source_digest": "0bcdb0e60113942352575c1b792e55af7c2b88c03c76c07551446743b5dd8e26",
+    "version": "2025-q3",
+    "effect": {
+      "type": "conditional",
+      "condition": {
+        "operator": "and",
+        "operands": [
+          {
+            "type": "attack-is",
+            "parameters": {
+              "attack_type": "melee"
+            }
+          },
+          {
+            "type": "matches",
+            "parameters": {
+              "subject": "defender",
+              "filter": {
+                "any_of": [
+                  "MONSTER",
+                  "VEHICLE"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "effect": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "re-roll",
+            "target": "this-model",
+            "modifier": {
+              "roll": "hit",
+              "result_scope": "any-result"
+            }
+          },
+          {
+            "type": "re-roll",
+            "target": "this-model",
+            "modifier": {
+              "roll": "wound",
+              "result_scope": "any-result"
+            }
+          },
+          {
+            "type": "re-roll",
+            "target": "this-model",
+            "modifier": {
+              "roll": "damage",
+              "result_scope": "any-result"
+            }
+          }
+        ]
+      }
+    },
+    "scope": {
+      "duration": "permanent"
+    },
+    "unit_ids": [
+      "grand-master-in-nemesis-dreadknight"
+    ],
+    "ability_type": "unit",
+    "behavior": "activated",
+    "faction_id": "grey-knights",
+    "optional": true
+  }
+]

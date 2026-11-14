@@ -276,3 +276,5 @@
 @media(max-width:650px){.import-inputs,.import-review{padding:16px}.import-options{grid-template-columns:1fr}.import-entry-heading{flex-direction:column;gap:12px}.import-choice-label{width:100%}.import-options input,.import-options select,.import-choice-label select{font-size:16px}#rules-import-page>.heading{flex-wrap:wrap}.import-entry-list{max-height:60dvh}}
 
 .flash-fact,.ability-body>p,.import-entry>details>p{white-space:pre-line}
+
+.mechanics-source-details{margin-top:10px;font-size:11px}.mechanics-source-details>summary{cursor:pointer;color:var(--muted)}.mechanics-source-details>p{white-space:pre-line;line-height:1.7;padding:10px 0;color:var(--muted)}
