@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.13
+# WarPlanner — personal study edition, v0.13.1
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -105,3 +105,5 @@ Hints and flags live in the existing catalog JSON, use the same owner-only write
 `supabase/list-deletion.sql` grants owner-only DELETE on `saved_army_lists`. A deletion removes that row's roster, labels and original-upload payload. A separate RLS-protected `deleted_army_lists` table retains only the owner, list ID and deletion time. Invoker triggers record those IDs and reject attempts to reuse them, including recovery-ID inserts from older clients. Identity locks serialize deletion with ID reuse. Clients cannot write deletion records directly or remove them. Local cache migration and stale saves respect deleted IDs; intentionally importing the same roster under a new ID is allowed. Other devices see account deletions when they reload, and stale edits are removed instead of being restored as recovered copies. Browser tests use mocked Auth/REST; real database tests verify owner deletion, cross-account denial, deletion-ID protections and legacy recovery rejection with all test writes rolled back.
 
 In **Rules workshop → Rules & abilities**, use **Reference status → Reference only** to find entries awaiting a complete study summary, including entries with no phase mapping. All rules and Other rules remain available. Reference entries are labeled in the browser and editor, searchable by name/faction/detachment or summary, and remain editable. Changing the reference checkbox refreshes the filtered results after saving. This filter surfaces the stored summaries and references; it does not fetch missing full rulebook text.
+
+Expanded shared-rule cards show eligibility once, in the header preview; the body focuses on timing, effects and optional conditions/sources. Shared abilities with a unit-list preview still expand to show the full eligible-unit list.
