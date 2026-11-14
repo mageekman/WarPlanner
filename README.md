@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.19
+# WarPlanner — personal study edition, v0.20
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -157,3 +157,13 @@ The Rules workshop uses four columns: Factions → Content groups → Entries �
 Each faction has folders for faction details, units, detachments, army/detachment rules, abilities, Stratagems, enhancements and all rules. Search and reference/summary filters operate within the selected folder. Empty folders remain available for new content. New entries inherit the selected faction; new rules opened from a unit or detachment inherit that relationship. Existing content is never moved or rewritten by browsing.
 
 On screens up to 900px, one column appears at a time. The path bar switches levels and retains the current unsaved form. Choosing different content still prompts before discarding edits. Save, import, revision history and database authorization use the existing services. Browser checks cover faction isolation, related rules, scoped filters, new-entry defaults, saved edits, unsaved-change protection, desktop columns and mobile navigation.
+
+## Adeptus Mechanicus study summaries (v0.20)
+
+Inspected the 167 rules already imported into the shared catalog. Added 119 independently written study notes, alongside the 21 existing automatic translations: 140 usable summaries, 16 records with no encoded effect and 11 records with specific source issues. The additions cover Doctrina Imperatives (standard and Purge Corps), Battle Protocols, Canticles, Rad-bombardment, objective rules, transport support, weapon-specific bonuses and Battleline upgrades.
+
+Exact mechanics snapshots bind every note and issue explanation to its source, including targets, timing, duration, restrictions and unknown fields. Source changes invalidate stale interpretations even if the digest is unchanged. Existing workshop text and reference-only status remain intact. This release changes presentation without rewriting the user's imported catalog or saved lists.
+
+The unresolved source records are Chant of Electrotraction, Cyber-static Canticles, Electro-shock, Guided Retreat, Noospheric Recon, Noospheric Transference, Omnissiah’s Blessing, Overloaded Safeguards, Repolarised Augurs, Scuttling Walker and Shroud Protocols. Their cards explain missing timing, contradictory targets, undefined mechanics or incomplete restrictions. Use Adeptus Mechanicus → All rules & abilities → Filter rules → Summary coverage in the workshop to find these or the empty effect records. They require a current rules reference and a manually checked description.
+
+Regression tests retain the full structured source fixture and cover all 167 entries, mechanics changes, Battleline/weapon scope, round/phase differences, dice thresholds, limited uses, custom notes and source issues. Browser checks use copies of the imported catalog with mocked Auth/REST responses and verify workshop filters, the guide, mobile layout and manual override saving. Attribution: CREDITS.md and LICENSE-40KDC-DATA.txt. These source-derived study interpretations are not official rules verification.
