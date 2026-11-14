@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.20
+# WarPlanner — personal study edition, v0.21
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -167,3 +167,13 @@ Exact mechanics snapshots bind every note and issue explanation to its source, i
 The unresolved source records are Chant of Electrotraction, Cyber-static Canticles, Electro-shock, Guided Retreat, Noospheric Recon, Noospheric Transference, Omnissiah’s Blessing, Overloaded Safeguards, Repolarised Augurs, Scuttling Walker and Shroud Protocols. Their cards explain missing timing, contradictory targets, undefined mechanics or incomplete restrictions. Use Adeptus Mechanicus → All rules & abilities → Filter rules → Summary coverage in the workshop to find these or the empty effect records. They require a current rules reference and a manually checked description.
 
 Regression tests retain the full structured source fixture and cover all 167 entries, mechanics changes, Battleline/weapon scope, round/phase differences, dice thresholds, limited uses, custom notes and source issues. Browser checks use copies of the imported catalog with mocked Auth/REST responses and verify workshop filters, the guide, mobile layout and manual override saving. Attribution: CREDITS.md and LICENSE-40KDC-DATA.txt. These source-derived study interpretations are not official rules verification.
+
+## Aeldari description audit (v0.21)
+
+Audited the 312 Aeldari catalog entries against the pinned 40kdc mechanics and core Stratagem restrictions, keeping existing independently reviewed notes and saved workshop edits. The older built-in index had 198 generic reference prompts and terse mechanical translations. The audited view has 255 usable descriptions (196 rewritten or expanded), 25 missing effect records and 32 specific source issues. Three saved admin entries remain untouched. See AUDIT-AELDARI.md for findings and unresolved records.
+
+The Aeldari catalog predates the JSON source importer, so its rows have no importSource field. A presentation adapter upgrades only an exact match to the original bundled payload; every saved text, timing, guide hint, restriction, digest or unknown extra field takes precedence. Each upgraded view exposes the pinned source and mechanics under Conditions & sources and in the workshop. Viewing never rewrites database content, revisions or saved armies. Saving the workshop form persists the user's summary normally. Placeholder-only rows are classified as needing a summary even if no source is attached.
+
+Existing reference/provisional flags stay intact. Three older Aspect Host reminder cards now explicitly use source-reference status: Warrior Focus has a source-derived effect; Doom Inescapable and Preternatural Precision have no encoded effect. This audit does not promote community data to official verification or change phase placement and activation ordering. The earlier aeldari-coverage.json describes the original index; the current presentation audit is reported in AUDIT-AELDARI.md.
+
+Regression checks cover every entry, preservation of arbitrary saved changes, timing, model/unit and leader scope, source conflicts, core Stratagem restrictions, existing reviewed summaries and inspectable source details. Browser tests use copies of the current catalog with mocked Auth/REST responses, including the three existing edited entries, and verify filters, guide reminders, mobile layout and saving custom wording.

@@ -1,6 +1,7 @@
 /* Readable views of imported mechanics, never a claim of official or complete wording. */
 (function(root){
  'use strict';
+ const AeldariAudit=typeof module!=='undefined'&&module.exports?require('./aeldari-audit.js'):root.WarPlannerAeldariAudit;
  const S=typeof module!=='undefined'&&module.exports?require('./rule-summaries.js'):root.WarPlannerRuleSummaries;
  const words={stub:'Source marked incomplete',A:'Attacks',D:'Damage',M:'Move',T:'Toughness',S:'Strength',W:'Wounds',OC:'Objective Control',Ld:'Leadership',Sv:'Save','this-unit':'This unit','this-model':'This model','selected-unit':'Selected unit','event-subject':'Event subject','event-object':'Event object','any-result':'Any result','all-failures':'Failed results',ones:'Results of 1','once-per-battle':'Once per battle','once-per-turn':'Once per turn','once-per-battle-round':'Once per battle round',gte:'At least',lte:'At most',gt:'Greater than',lt:'Less than',eq:'Equal to','phase-started':'Phase starts','phase-ended':'Phase ends','move-ended':'Move ends','move-started':'Move starts','attacks-resolved':'Attacks finish','targets-selected':'Targets are selected','round-started':'Battle round starts','round-ended':'Battle round ends','turn-ended':'Turn ends','turn-started':'Turn starts','damage-allocated':'Damage is allocated','model-destroyed':'A model is destroyed','set-up':'Set up',disembarked:'Disembarkation',used:'Use of a rule',selected:'Selection for an action'};
  const label=s=>words[s]||String(s).replace(/[_-]/g,' ').replace(/^./,c=>c.toUpperCase());
@@ -86,6 +87,7 @@
  }
  function isPlaceholder(summary){return !String(summary||'').trim()||/^Imported structured mechanics for [\s\S]+\. Review the imported source details before writing a study summary\.$/.test(summary)||/^Reference reminder: check [\s\S]+ in your current rules\. The source does not support a complete study summary yet\.$/.test(summary)||summary==='No complete mechanics record is available. Open the current rules reference.'||summary==='This rule needs a checked summary. Its imported details are under Conditions & sources.'||summary==='The source has no effect mechanics for this rule. Check its full wording.';}
  function enrich(data){
+  const audited=AeldariAudit?.enrich(data);if(audited&&audited!==data)return audited;
   if(!data?.importSource)return data;
   if(!isPlaceholder(data.summary)&&data.summary!==sourceBreakdown(data.importSource.record).text)return data;
   const text=data.importSource.text;
@@ -96,7 +98,7 @@
  function summaryState(data){
   const view=enrich(data);
   if(view?.mechanicsPresentation==='missing')return 'missing';
-  if(view?.mechanicsPresentation==='needs-summary'||!String(view?.summary||'').trim())return 'needs-summary';
+  if(view?.mechanicsPresentation==='needs-summary'||isPlaceholder(view?.summary)||!String(view?.summary||'').trim())return 'needs-summary';
   return 'available';
  }
  const api={describe,enrich,isPlaceholder,summaryState};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerMechanics=api;
