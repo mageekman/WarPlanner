@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.18
+# WarPlanner — personal study edition, v0.19
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -149,3 +149,11 @@ In Rules workshop, choose Rules & abilities, then use **Summary coverage → Nee
 The complete Grey Knights structured fixture is retained in tests for coverage checks. Production notes contain only the source snapshots needed to invalidate stale interpretations. Attribution: CREDITS.md and LICENSE-40KDC-DATA.txt.
 
 Catalog loading now fetches consecutive 500-entry pages until complete. A regression test covers 1,001 entries and confirms a failed later page does not replace the last complete catalog.
+
+## Workshop faction folders (v0.19)
+
+The Rules workshop uses four columns: Factions → Content groups → Entries → Editor. Factions are grouped by Imperium, Chaos and Xenos, then sorted alphabetically. All content provides global browsing; Shared / core holds common rules and guide pages. Select Grey Knights → Detachments to browse that faction's detachments, then select a detachment to edit it on the right. Units and detachments include links to their editable rules. Path buttons return to earlier levels or the current editor.
+
+Each faction has folders for faction details, units, detachments, army/detachment rules, abilities, Stratagems, enhancements and all rules. Search and reference/summary filters operate within the selected folder. Empty folders remain available for new content. New entries inherit the selected faction; new rules opened from a unit or detachment inherit that relationship. Existing content is never moved or rewritten by browsing.
+
+On screens up to 900px, one column appears at a time. The path bar switches levels and retains the current unsaved form. Choosing different content still prompts before discarding edits. Save, import, revision history and database authorization use the existing services. Browser checks cover faction isolation, related rules, scoped filters, new-entry defaults, saved edits, unsaved-change protection, desktop columns and mobile navigation.
