@@ -1,0 +1,52 @@
+-- Run against a configured project with execute_sql. All fixture changes roll back.
+begin;
+insert into auth.users(id,aud,role,email) values('11111111-1111-4111-8111-111111111111','authenticated','authenticated','rule-report-rollback-test@example.invalid');
+select set_config('request.jwt.claim.sub','37b487e0-c183-48de-99ff-a622d2b6e6a8',true);
+set local role authenticated;
+insert into public.rules_catalog(key,kind,name,faction,data,enabled) values('rule:report-rollback-test','rule','Rollback test','Aeldari','{"id":"report-rollback-test","name":"Rollback test","summary":"Original","phase":[2],"turn":"you","window":"act"}',true);
+select set_config('request.jwt.claim.sub','11111111-1111-4111-8111-111111111111',true);
+do $$ declare r public.rule_reports; count_rows integer;
+begin
+ r=public.submit_rule_report('{"id":"22222222-2222-4222-8222-222222222222","entity_key":"rule:report-rollback-test","base_revision":1,"issue_type":"summary","change_text":"Corrected","context":{"faction":"Aeldari"}}');
+ if r.reporter_id<>auth.uid() or r.status<>'pending' then raise exception 'Submission identity failed'; end if;
+ r=public.submit_rule_report('{"id":"22222222-2222-4222-8222-222222222222","entity_key":"rule:report-rollback-test","base_revision":1,"issue_type":"summary","change_text":"Corrected","context":{"faction":"Aeldari"}}');
+ if (select count(*) from public.rule_reports where id=r.id)<>1 then raise exception 'Retry duplicated report'; end if;
+ begin perform public.review_rule_report(jsonb_build_object('id',r.id,'decision','reject'));raise exception 'Non-admin review succeeded'; exception when insufficient_privilege then null; end;
+ update public.rules_catalog set name='Forbidden' where key='rule:report-rollback-test';get diagnostics count_rows=row_count;if count_rows<>0 then raise exception 'Non-admin catalog write succeeded';end if;
+ update public.rule_reports set status='rejected',reviewed_at=now(),reviewed_by=auth.uid() where id=r.id;get diagnostics count_rows=row_count;if count_rows<>0 then raise exception 'Non-admin report review succeeded';end if;
+end;$$;
+select set_config('request.jwt.claim.sub','37b487e0-c183-48de-99ff-a622d2b6e6a8',true);
+do $$ declare catalog_entry public.rules_catalog; result jsonb; r public.rule_reports; v integer;
+begin
+ select * into catalog_entry from public.rules_catalog where key='rule:report-rollback-test';catalog_entry.data=jsonb_set(catalog_entry.data,'{summary}','"Corrected"');
+ result=public.review_rule_report(jsonb_build_object('id','22222222-2222-4222-8222-222222222222','decision','approve','proposal',to_jsonb(catalog_entry),'expected_revision',1));
+ if result->'entry'->>'revision'<>'2' or result->'report'->>'status'<>'approved' then raise exception 'Approval failed';end if;
+ if not exists(select 1 from public.rules_catalog_history where key=catalog_entry.key and revision=1 and entry->'data'->>'summary'='Original') then raise exception 'Previous revision lost';end if;
+ result=public.review_rule_report(jsonb_build_object('id','22222222-2222-4222-8222-222222222222','decision','approve','proposal',to_jsonb(catalog_entry),'expected_revision',1));
+ if result->'entry'->>'revision'<>'2' or (select revision from public.rules_catalog where key=catalog_entry.key)<>2 then raise exception 'Approval retry wrote twice';end if;
+ r=public.submit_rule_report('{"id":"33333333-3333-4333-8333-333333333333","entity_key":"rule:report-rollback-test","base_revision":2,"issue_type":"summary","change_text":"Third","context":{"faction":"Aeldari"}}');
+ update public.rules_catalog set name='Changed in another tab' where key=catalog_entry.key;
+ select * into catalog_entry from public.rules_catalog where key=catalog_entry.key;
+ catalog_entry.data=jsonb_set(catalog_entry.data,'{summary}','"Third"');
+ begin perform public.review_rule_report(jsonb_build_object('id',r.id,'decision','approve','proposal',to_jsonb(catalog_entry),'expected_revision',catalog_entry.revision));raise exception 'Stale direct approval succeeded';exception when raise_exception then if sqlerrm='Stale direct approval succeeded' then raise;end if;end;
+ if (select status from public.rule_reports where id=r.id)<>'pending' then raise exception 'Failed review resolved report';end if;
+ result=public.review_rule_report(jsonb_build_object('id',r.id,'decision','approve','mode','edited','proposal',to_jsonb(catalog_entry),'expected_revision',catalog_entry.revision));
+ if result->'entry'->>'revision'<>'4' then raise exception 'Edited approval failed';end if;
+ r=public.submit_rule_report('{"id":"44444444-4444-4444-8444-444444444444","entity_key":"rule:report-rollback-test","base_revision":4,"issue_type":"targets","change_text":"Eligible units","context":{"faction":"Aeldari"}}');
+ select * into catalog_entry from public.rules_catalog where key=catalog_entry.key;
+ catalog_entry.name='';
+ begin perform public.review_rule_report(jsonb_build_object('id',r.id,'decision','approve','proposal',to_jsonb(catalog_entry),'expected_revision',4));raise exception 'Invalid proposal saved';exception when check_violation then null;end;
+ if (select status from public.rule_reports where id=r.id)<>'pending' or (select revision from public.rules_catalog where key=catalog_entry.key)<>4 then raise exception 'Failed approval was not atomic';end if;
+ result=public.review_rule_report(jsonb_build_object('id',r.id,'decision','reject'));
+ if result->'report'->>'status'<>'rejected' or (select revision from public.rules_catalog where key=catalog_entry.key)<>4 then raise exception 'Rejection changed catalog';end if;
+ r=public.submit_rule_report('{"id":"55555555-5555-4555-8555-555555555555","issue_type":"missing","missing_name":"Missing test rule","change_text":"New text","context":{"faction":"Aeldari"}}');
+ result=public.review_rule_report(jsonb_build_object('id',r.id,'decision','approve','mode','edited','expected_revision',0,'proposal','{"key":"rule:report-rollback-new","kind":"rule","name":"Missing test rule","faction":"Aeldari","enabled":true,"data":{"id":"report-rollback-new","name":"Missing test rule","summary":"New text","phase":[]}}'::jsonb));
+ if result->'entry'->>'revision'<>'1' then raise exception 'Missing rule approval failed';end if;
+end;$$;
+select set_config('request.jwt.claim.sub','11111111-1111-4111-8111-111111111111',true);
+do $$ begin
+ if (select count(*) from public.rule_reports where id in ('33333333-3333-4333-8333-333333333333','44444444-4444-4444-8444-444444444444'))<>0 then raise exception 'Other account reports exposed';end if;
+ if has_function_privilege('anon','public.submit_rule_report(jsonb)','execute') or has_function_privilege('anon','public.review_rule_report(jsonb)','execute') then raise exception 'Anonymous RPC access';end if;
+end;$$;
+rollback;
+select 'PASS: report permissions, retry safety, history, stale edits, atomic failure, rejection and missing-rule approval; all fixtures rolled back' as result;

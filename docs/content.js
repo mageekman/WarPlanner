@@ -128,6 +128,15 @@
     if(!Array.isArray(saved)||saved.length!==entries.length)throw Error('Import response was incomplete. Reload the catalog to verify before trying again.');
     saved.forEach(validate);const map=new Map(records.map(r=>[r.key,r]));for(const row of saved)map.set(row.key,row);records=[...map.values()];return copy(saved);
    },
+   async submitReport(payload){check();const saved=result(await client.rpc('submit_rule_report',{payload:copy(payload)}));check();return saved;},
+   async listReports(status='pending'){
+    check();if(!isAdmin)throw Error('Administrator access is required.');const all=[];
+    for(let start=0;;start+=500){let query=client.from('rule_reports').select('*').order('created_at',{ascending:false}).order('id');query=status==='pending'?query.eq('status','pending'):query.neq('status','pending');const page=result(await query.range(start,start+499))||[];check();all.push(...page);if(page.length<500)break;}return all;
+   },
+   async reviewReport(report,decision,proposal=null,mode='direct'){
+    check();if(!isAdmin)throw Error('Administrator access is required.');if(proposal)validate(proposal);
+    const saved=result(await client.rpc('review_rule_report',{payload:{id:report.id,decision,proposal:proposal?copy(proposal):null,expected_revision:proposal?.revision||0,mode}}));check();return saved;
+   },
    async history(key){check();if(!isAdmin)throw Error('Administrator access is required.');return result(await client.from('rules_catalog_history').select('*').eq('key',key).order('revision',{ascending:false}).limit(30))||[];},
    dispose(){disposed=true;isAdmin=false;records=[];}
   };

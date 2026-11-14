@@ -1,4 +1,4 @@
-# WarPlanner — personal study edition, v0.23
+# WarPlanner — personal study edition, v0.24
 
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
@@ -191,3 +191,14 @@ Admin unit editors have individual fields for Movement, Toughness, Save, Wounds,
 Save stores optional `data.profiles` in the existing catalog JSON through the existing admin-authorized save and revision history service. Saved profiles take precedence over the raw source, including an explicitly empty array after removing all profiles. Original imported records remain unchanged; source-only reimports preserve edited stats. Numbers, inch/target-number suffixes, zero Objective Control, blank values, dice expressions and source placeholders are handled explicitly. Validation errors retain edited values so they can be corrected.
 
 The new stat fields render only in the admin workshop. No stat profiles are added to the guide, My Army or other player-facing views. This is a presentation restriction: existing authenticated catalog access is unchanged. No schema migration, bulk data rewrite or army-list update is required. Tests cover source/manual precedence, multiple profiles, validation and reimports; mocked browser checks cover prefills, save/reload, removal, missing values, mobile layout and non-admin UI exclusion.
+
+
+## Player reports and admin review (v0.24)
+
+Each active guide page has a collapsed **Report an incorrect or missing rule** section immediately above **Rules reference & review**. Its dropdown contains the current page’s unique units, abilities and core page, plus **Something is missing**. Players select Rules Summary, Timing, Targets or Something else and provide their proposed change. Timing offers window, phase and turn selections; missing-rule reports ask for a name and proposed text. Reports are stored against the signed-in account in Supabase, with the observed catalog revision and minimal guide context. No army export or email is included. In-memory drafts survive guide navigation; failed requests retain the draft, and an unchanged retry uses the same request ID.
+
+The sole existing administrator sees a pending-count badge on Rules workshop and a collapsible **Submitted reports** queue. It refreshes on sign-in, window focus and every 30 seconds while visible, with a manual Refresh option. Pending and reviewed views retain the report and resolution. **Approve** applies a summary, target or timing proposal; **Edit** loads a proposal in the regular editor and changes Save to **Approve and apply**; **Reject** closes the report without changing the catalog. Unit reports, Something else, missing rules and entries changed since submission require Edit to confirm exact fields. New missing rules begin as reference-only drafts with no active phases until scope/timing are confirmed.
+
+Apply `supabase/rule-reports.sql` after `supabase/admin-content.sql`. Report submission and review RPCs run with caller permissions under RLS. Players can submit and read only their own reports; only the existing admin can read the queue or review. Approval updates the catalog and resolves the report in one transaction; the existing catalog history trigger preserves the previous full iteration. Revision checks reject stale edits, failed proposals roll back, and repeated identical submissions/reviews do not duplicate writes. No role-assignment or privileged browser keys are added.
+
+Verification: proposal/context and service tests run in `npm test`; `tests/rule-reports.sql` checks real database permissions, idempotency, approval/history, stale edits, rollback, rejection and missing-rule creation inside a transaction that rolls back all fixtures. Browser QA with mocked Auth/REST covers ordinary-player submissions, timing/missing fields, mobile layout, lost-response retries, admin badge, direct and edited approvals, reviewed reports and rejection.
