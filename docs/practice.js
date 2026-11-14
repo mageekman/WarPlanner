@@ -11,6 +11,9 @@
  function known(value,key){return typeof value==='number'&&Number.isInteger(value)&&value>=(['Sv','Ld','invuln_sv'].includes(key)?1:0)&&value<=999||typeof value==='string'&&/^\d*D\d+(?:[+-]\d+)?$/.test(value);}
  function hideName(summary,name,replacement='this rule'){const escaped=name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return summary.replace(new RegExp('(^|[^a-z0-9])'+escaped+'(?=$|[^a-z0-9])','gi'),(_match,prefix)=>prefix+replacement);}
  function buildBank({rules=[],units=[],faction,army=null,detachments:catalogDetachments=[],random=Math.random}={}){
+  // Catalog names and summaries recur in the choice/ownership loops. Keep this
+  // cache local to one build so subsequent edits cannot retain stale values.
+  const normalized=new Map(),norm=value=>{if(!normalized.has(value))normalized.set(value,String(value||'').toLowerCase().replace(/[^a-z0-9]/g,''));return normalized.get(value);};
   const matches=r=>r.enabled!==false&&!!norm(faction)&&!!norm(r.faction)&&norm(r.faction)===norm(faction);
   const roster=army&&Array.isArray(army.units)?army.units:[],rosterNames=new Set(roster.map(u=>norm(u.name)));
   const validArmy=!army||!!roster.length&&!!norm(army.faction)&&(norm(army.faction)===norm(faction)||L?.factionMatches(army.faction,faction));
@@ -71,9 +74,10 @@
   const profiles=[];
   for(const u of selectedUnits){const read=P?P.read(u):[],names=new Map();for(const p of read){const key=norm(p.name||u.name);names.set(key,(names.get(key)||0)+1);}for(const p of read){if(names.get(norm(p.name||u.name))>1)continue;for(const f of P.fields)if(known(p[f.key],f.key))profiles.push({unit:u,profile:p,field:f,value:format(p[f.key],f.key)});}}
   const statSeen=new Set();
+  const statValues=new Map();for(const p of profiles){if(!statValues.has(p.field.key))statValues.set(p.field.key,new Set());statValues.get(p.field.key).add(p.value);}
   for(const item of profiles){
    const {unit:u,profile:p,field:f,value}=item,id=['stat',u.id,norm(p.name||u.name),f.key].join(':');if(statSeen.has(id))continue;statSeen.add(id);
-   const values=[...new Set(profiles.filter(a=>a.field.key===f.key).map(a=>a.value))].filter(v=>v!==value);if(values.length<3)continue;
+   const values=[...statValues.get(f.key)].filter(v=>v!==value);if(values.length<3)continue;
    const profileLabel=p.name&&norm(p.name)!==norm(u.name)?' ('+p.name+' profile)':'';
    questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),review:{kind:'stats',units:[unitView(u)],profile:copy(p),stat:f.key,sourceUrl:u.sourceUrl||'',sourceLabel:u.sourceLabel||'Current catalog unit profile'},explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
   }
