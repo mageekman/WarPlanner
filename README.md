@@ -357,3 +357,7 @@ Audited all 195 rules across 53 units, 54 source-matching stat profiles and nine
 ## Death Guard readiness audit (2026-11-15)
 
 Audited all 160 rules across 41 source-matching units/profiles and ten detachments: 86 usable summaries, 60 source issues and 14 empty records. Nurgle’s Gift retains its full menu, cap and distinct ordinary/Maggot Lords scopes. Mortarion reactions, resurrection limits and afflicted-state gaps stay explicit. Original sources, memberships, IDs, flags and saved lists are preserved; unresolved entries stay outside practice. See [AUDIT-DEATH-GUARD.md](AUDIT-DEATH-GUARD.md).
+
+## Imperial Knights readiness audit (2026-11-15)
+
+Audited all 118 rules across 23 source-matching units/profiles and eight detachments: 43 usable summaries, 62 source issues and 13 empty effects. Bondsman, oath/reward approximations and the wrong-faction enhancement-reset trigger remain explicit. Full Tilt versions and same-name Thin Their Ranks records stay distinct. All 113 timed rules have Guide placements; five untimed records remain references. Original imports, memberships, flags, profiles and saved lists are preserved; unresolved entries stay outside practice. See [AUDIT-IMPERIAL-KNIGHTS.md](AUDIT-IMPERIAL-KNIGHTS.md).
