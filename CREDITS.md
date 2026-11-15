@@ -1,5 +1,13 @@
 # Research references and credits
 
+Grey Knights readiness audit: original study summaries derived from preserved
+40kdc mechanics and the [pinned Grey Knights index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/grey-knights),
+Alpaca Software and community contributors, CC BY 4.0. Changes include teleport
+and leading reminders, source-bound target/bearer restrictions, intermediate
+composition-tier model counts, and explicit source conflicts. Original sources,
+stats, attachments and saved summaries are preserved. See `AUDIT-GREY-KNIGHTS.md`
+and `docs/LICENSE-40KDC-DATA.txt`; no official Codex certification is claimed.
+
 Necrons readiness audit: original study summaries derived from preserved
 user-imported 40kdc mechanics and the [pinned Necrons index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/necrons),
 Alpaca Software and community contributors, CC BY 4.0. Changes include timing,
