@@ -373,3 +373,9 @@ Audited all 148 rules across 37 units, 46 source-matching profiles, nine detachm
 ## Rule timing alternatives
 
 In either Workshop editor, use **Add timing** to give a rule separate phase, player-turn, and timing-window combinations. A rule appears when any combination matches. For example, Armour of Contempt uses Shooting / Opponent’s turn and Fight / Either turn. Existing single-timing rules remain compatible. The Guide groups explanations, study questions, reports, and references under **More Stuff and Things**.
+
+## Workshop faction review
+
+Use **Rules workshop → Faction review** to browse units and their abilities alongside army and detachment rules. Select a faction, choose **All detachments** or a single detachment, and search names, rule text, or keywords. **Core rules & stratagems** is a separate choice in the faction selector. Pencil buttons open the full Workshop editor in a popup; saving closes it and refreshes the review. Advanced data fields can be edited as JSON and applied to the form before saving. Shared entries update all their memberships.
+
+Core source references are prepared by `scripts/prepare-core-review.cjs` from the retained community source fixture. These are reference-only entries, including provisional upstream records, rather than an official rules audit.
