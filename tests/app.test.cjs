@@ -5,13 +5,13 @@ const vm=require('node:vm');
 const fs=require('node:fs');
 function app(saved,options={}){
  const listeners={};const elements={};const store=new Map(saved||[]);
- const animations=[];
+ const animations=[],idle=[];
  for(const id of ['#app','#toast','#import-feedback','#import-form button[type=submit]','#army-text','#import-dialog','#import-form'])elements[id]={innerHTML:'',textContent:'',value:'',style:{},showModal(){this.open=true},close(){this.open=false},addEventListener(type,fn){this[type]=fn}};
  function motionNode(){return {style:{},setAttribute(){},querySelectorAll:()=>[],remove(){},animate(frames,settings){let resolve,reject;const finished=new Promise((a,b)=>{resolve=a;reject=b});const animation={finished,cancel:()=>reject(new Error('cancelled'))};animations.push({frames,settings,finish:resolve});return animation;}};}
  const viewport={clientWidth:400,children:[],append(node){this.children.push(node);}},slide=motionNode();
  const document={querySelector:s=>s==='.guide-viewport'&&options.motion?viewport:s==='.guide-slide'&&options.motion?slide:elements[s],addEventListener:(type,fn)=>listeners[type]=fn};
  if(options.motion)document.createElement=()=>motionNode();
- const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,scrollTo(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>options.confirm!==false,setTimeout:()=>0,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
+ const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,scrollTo(){},requestIdleCallback:options.warm?fn=>{idle.push(fn);return idle.length;}:undefined,cancelIdleCallback(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>options.confirm!==false,setTimeout:()=>0,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
  vm.runInContext(fs.readFileSync(require.resolve('../dist/core.js'),'utf8'),context);
  context.WarPlan=context.window.WarPlan;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/aeldari-data.js'),'utf8'),context);
@@ -25,7 +25,7 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {warm(){idle.shift()?.();},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -381,4 +381,17 @@ test('guide progress stays local while roster edits still reach account list sto
  assert.equal(calls.length,initial+1);assert.equal(calls.at(-1)[0].army.name,'Updated after game');
  const b=app([...a.store],{hosted:true,setup:true});b.cloudAccount({id:'guide-cache-owner'},calls.at(-1),{schedule:lists=>calls.push(structuredClone(lists)),dispose(){}});
  assert.equal(calls.length,initial+2,'a new account connection must establish its own save baseline');
+});
+
+test('swipe settlement shortens with the distance remaining instead of adding a fixed delay',async()=>{
+ const point=x=>({identifier:1,clientX:x,clientY:200});
+ const arrow=app(undefined,{motion:true});arrow.click({action:'page-next'});assert.equal(arrow.animations[0].settings.duration,140);
+ const swipe=app(undefined,{motion:true});swipe.touch('touchstart',{touches:[point(350)]});swipe.touch('touchmove',{touches:[point(50)]});swipe.touch('touchend',{changedTouches:[point(50)]});assert.equal(swipe.animations[0].settings.duration,60);assert.ok(swipe.animations[0].settings.duration<arrow.animations[0].settings.duration);
+ swipe.animations.forEach(a=>a.finish());await new Promise(r=>setImmediate(r));assert.equal(JSON.parse(swipe.store.get('warplan.prototype.v1')).open,1);
+ const cancelled=app(undefined,{motion:true});cancelled.touch('touchstart',{touches:[point(180)]});cancelled.touch('touchmove',{touches:[point(150)]});cancelled.touch('touchend',{changedTouches:[point(150)]});assert.equal(cancelled.animations[0].settings.duration,110);cancelled.animations.forEach(a=>a.finish());await new Promise(r=>setImmediate(r));assert.equal(JSON.parse(cancelled.store.get('warplan.prototype.v1')).open,0);
+});
+
+test('idle preparation reuses the neighboring page and invalidates it when leaving the guide',async()=>{
+ const a=app(undefined,{motion:true,warm:true});a.warm();const preview=a.viewport.children[0];assert.ok(preview);const count=a.viewport.children.length;a.click({action:'page-next'});assert.equal(a.viewport.children.length,count);assert.equal(a.animations.length,2);a.animations.forEach(animation=>animation.finish());await new Promise(r=>setImmediate(r));assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).open,1);
+ const b=app(undefined,{motion:true,warm:true});b.click({view:'army'});b.warm();assert.equal(b.viewport.children.length,0);assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).view,'army');
 });
