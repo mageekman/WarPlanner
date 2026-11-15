@@ -349,3 +349,7 @@ Audited all 166 T’au rules across 47 units, 48 stat profiles and eight detachm
 ## Astra Militarum readiness audit (2026-11-15)
 
 Audited all 251 rules across 75 units, 84 source-matching stat profiles and 12 detachments: 132 usable summaries, 105 source issues and 14 empty records. Orders retain the full menu and officer-specific limits, with Voice of Command timing conflicts explicit. The saved faction edit, original imports, unit identities, flags and lists are preserved. Unresolved entries stay out of practice. See [AUDIT-ASTRA-MILITARUM.md](AUDIT-ASTRA-MILITARUM.md).
+
+## Chaos Daemons readiness audit (2026-11-15)
+
+Audited all 195 rules across 53 units, 54 source-matching stat profiles and nine detachments: 94 usable summaries, 84 source issues and 17 empty records. Shadow of Chaos now appears for Poxbringer-only lists; its original import remains intact. Shadow timing/recovery, Flux tokens and Horror Split differences stay flagged for review. Unresolved entries remain outside practice; other memberships, IDs, flags and saved lists are preserved. See [AUDIT-CHAOS-DAEMONS.md](AUDIT-CHAOS-DAEMONS.md).
