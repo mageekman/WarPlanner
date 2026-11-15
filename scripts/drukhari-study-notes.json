@@ -1,0 +1,1656 @@
+[
+  {
+    "id": "a-challenge-met-spectacle-of-spite-drukhari",
+    "state": "missing",
+    "summary": "A Challenge Met has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "acrobatic-display-spectacle-of-spite-drukhari",
+    "state": "structured",
+    "summary": "When this eligible WYCH CULT unit is targeted in your opponent’s Shooting phase, it gains a 5+ invulnerable save for that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "acrobatic-display-exhibition-of-slaughter-drukhari",
+    "state": "structured",
+    "summary": "When this eligible WYCH CULT unit is targeted in your opponent’s Shooting phase, it gains a 5+ invulnerable save for that phase. This Exhibition of Slaughter version retains its own detachment membership.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "acrobatic-gladiators-drukhari",
+    "state": "structured",
+    "summary": "At the start of your Charge phase, spend 1 Pain token to Empower this unit. It can declare a charge despite having Advanced or Fallen Back this turn, for that phase.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "aerialists-drukhari",
+    "state": "structured",
+    "summary": "At the end of the Fight phase, if this Venom has no embarked unit, select one friendly DRUKHARI INFANTRY unit without FLY, with at most six models, wholly within 6″ and not engaged. It can embark in this Venom even if it disembarked this turn; apply transport capacity and remaining embark restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "agonising-onslaught-coven-of-agonies-drukhari",
+    "state": "needs-summary",
+    "summary": "When a friendly COVEN OF AGONIES unit is selected to attack, it re-rolls Hit rolls of 1 for the phase. The source then requires spending 1 Pain token and grants full Hit re-rolls, without encoding an optional enhanced branch; confirm whether the token spend is optional before using the base benefit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "agonising-suppression-drukhari",
+    "state": "structured",
+    "summary": "When selected to shoot in your Shooting phase, this Ravager may spend 1 Pain token to Empower itself. After it shoots, select one enemy unit hit by those attacks; if Empowered, that enemy suffers -1 to Hit until the start of your next turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "airborne-evasion-drukhari",
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, if unengaged, it may make a 6″ Normal move. It cannot declare a charge for the rest of the turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "alliance-of-agony-drukhari",
+    "state": "needs-summary",
+    "summary": "At battle start, Alliance of Agony grants 2 Pain tokens for each qualifying Archon/Kabalite Warriors, Succubus/Wyches and Haemonculus/Wracks pairing. The source tests both keywords on an unspecified subject instead of checking the two separate army units; confirm the roster requirements before awarding tokens.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "archon-of-the-poisoned-tongue-drukhari",
+    "state": "needs-summary",
+    "summary": "When this unit is selected to attack in your Shooting phase or either Fight phase, Lady Malys may spend 1 Pain token to Empower it and choose Sustained Hits 1 or Lethal Hits for the phase. The source labels this partial; confirm any omitted weapon or attached-unit restrictions.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "archons-retinue-drukhari",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, a Leader attached to Hand of the Archon gains Scouts 7″. Apply the Scouts requirements for every model in the combined unit.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "archons-will-drukhari",
+    "state": "needs-summary",
+    "summary": "At the start of battle round 1, select an objective for Archon’s Will. This unit gains a 5+ invulnerable save and Objective Control 3 while within objective control range and not Battle-shocked. The effect checks any objective rather than the selected one; confirm whether the benefits require that chosen marker.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "archraider-reapers-wager-drukhari",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, if the bearer is embarked in a DEDICATED TRANSPORT, that transport gains Scouts 9″. Apply the remaining Scouts and passenger eligibility requirements.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "assassins-poisons-drukhari",
+    "state": "needs-summary",
+    "summary": "In the Fight phase, this unit’s weapons gain Lethal Hits and Precision. The source labels this partial; confirm whether all models and weapon profiles receive both benefits.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "battlefield-butchery-drukhari",
+    "state": "structured",
+    "summary": "When this Hellions unit is selected to fight, it may spend 1 Pain token to Empower itself. Add 1 to its melee Attacks and Strength for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "berserk-fugue-spectacle-of-spite-drukhari",
+    "state": "structured",
+    "summary": "When an enemy targets the eligible WYCH CULT unit in the Fight phase, grant fight-on-death for that phase to models whose unit has not fought. A destroyed model fights after the attacking unit finishes its attacks, then is removed. The imported effect has no dice gate; do not add one from another fight-on-death rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "bloody-spectacle-drukhari",
+    "state": "needs-summary",
+    "summary": "The Succubus re-rolls melee Hit and Wound rolls against CHARACTER targets. The source also grants 1CP when this unit destroys a CHARACTER model, but labels the record partial and does not state an additional usage cap; check the CP clause and current CP-gain limits.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "blur-of-blades-drukhari",
+    "state": "structured",
+    "summary": "While Lelith Hesperax leads a unit, that unit has Fights First.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "brides-of-death-drukhari",
+    "state": "structured",
+    "summary": "When this unit is selected to fight, spend 1 Pain token to Empower it. Its melee attacks improve Strength and AP by 1 for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "callous-competition-drukhari",
+    "state": "structured",
+    "summary": "DRUKHARI start winning the wager and HARLEQUINS losing. When either faction destroys an enemy unit, that faction becomes the winner and the other becomes the loser. Both sides re-roll Hit rolls of 1; the losing side also re-rolls Wound rolls of 1. Apply only to friendly DRUKHARI and HARLEQUINS models.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "chronoshard-spectacle-of-spite-drukhari",
+    "state": "structured",
+    "summary": "Once per battle per model, at the start of the Fight phase, the bearer can give its unit Fights First for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "cluster-caltrops-drukhari",
+    "state": "structured",
+    "summary": "When using Eviscerating Fly-by, this unit may re-roll one of that ability’s dice for each model equipped with cluster caltrops. This is not unlimited re-rolls for every model in the unit.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "combat-drugs-drukhari",
+    "state": "needs-summary",
+    "summary": "At the start of your Command phase, Combat Drugs offers one chosen drug, or two random drugs from 2D6, until your next Command phase. Adrenalight adds 1 melee Attack; Hypex adds 2″ Move; Serpentin improves melee Weapon Skill by 1; Painbringer adds 1 Toughness; Grave Lotus adds 1 melee Strength; Splintermind improves Leadership and ranged Ballistic Skill by 1. Benefits apply to friendly WYCH CULT models. The notes forbid deliberately choosing the same drug twice per battle; the pinned source’s effect and trigger differ. Confirm the choice, random-result and reuse procedure before use.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "conductor-of-torment-reapers-wager-drukhari",
+    "state": "missing",
+    "summary": "Conductor of Torment has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "connoisseurs-of-pain-covenite-coterie-drukhari",
+    "state": "structured",
+    "summary": "When this DRUKHARI unit is targeted, spend 1 Pain token to worsen incoming AP by 1 for that attack sequence. At phase end, regain 1 Pain token if the selected unit is HAEMONCULUS COVENS and remains on the battlefield.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "contempt-for-rivals-kabalite-agonysts-drukhari",
+    "state": "structured",
+    "summary": "This unit’s weapons gain Precision. Apply this enhancement only to its eligible bearer or unit as specified by the core restrictions.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "contracted-harvest-drukhari",
+    "state": "structured",
+    "summary": "Friendly BLADES FOR HIRE and KABAL ranged weapons gain Sustained Hits 1 against targets that are neither MONSTER nor VEHICLE units. This detachment also enforces its exclusive KABAL detachment tag.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "corsairs-and-travelling-players-drukhari",
+    "state": "structured",
+    "summary": "A DRUKHARI army may include up to 500 points of eligible HARLEQUINS and ANHRATHE allies. They cannot be your Warlord or receive enhancements. The core faction index also limits Death Jester, Shadowseer and Troupe Master to one each. These are army-composition rules, not abilities restricted to the Coven of Agonies datasheets listed in the imported enrichment.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "crucible-of-malediction-realspace-raiders-drukhari",
+    "state": "missing",
+    "summary": "Crucible of Malediction has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "cruel-enforcers-drukhari",
+    "state": "structured",
+    "summary": "At the end of your Command phase, if this unit is within control range of a friendly-controlled objective, make that objective sticky. Apply the current rules for when retained control ends.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "dance-macabre-reapers-wager-drukhari",
+    "state": "structured",
+    "summary": "After an enemy ends a Normal, Advance or Fall Back move within 8″ of one eligible friendly DRUKHARI or HARLEQUINS INFANTRY unit, that unit makes a D6″ Normal move, or up to 6″ instead if it is losing the wager.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "dark-harvest-realspace-raiders-drukhari",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, grant melee Lethal Hits for the phase to either up to two friendly Wracks units or one friendly DRUKHARI unit. These are alternative target modes; do not select both groups.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "dark-vitality-realspace-raiders-drukhari",
+    "state": "missing",
+    "summary": "Dark Vitality has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "darkest-artifice-drukhari",
+    "state": "structured",
+    "summary": "Subtract 1 from Wound rolls for attacks against friendly CRONOS or TALOS units if the attack’s Strength exceeds the target’s Toughness. This detachment also enforces its exclusive COVENS tag.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "deadly-debut-spectacle-of-spite-drukhari",
+    "state": "structured",
+    "summary": "Before an eligible friendly DRUKHARI unit that charged this turn fights, its melee weapons gain Lethal Hits for the phase. If it is WYCHES, also improve its melee AP by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "deadly-deceivers-kabalite-cartel-drukhari",
+    "state": "needs-summary",
+    "summary": "In your opponent’s Shooting phase, the eligible BLADES FOR HIRE or KABAL unit is intended to be targetable by ranged attacks only from within 18″. The effect encodes permission inside 18″ without explicitly prohibiting attacks from farther away; confirm that targeting restriction.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "decapitating-strikes-drukhari",
+    "state": "structured",
+    "summary": "When this Incubi unit is selected to fight, it may spend 1 Pain token to Empower itself. Its melee weapons gain Devastating Wounds against INFANTRY targets for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "devious-mastermind-drukhari",
+    "state": "structured",
+    "summary": "Once per battle round per army, when a Stratagem targets this Archon’s unit, reduce that use’s CP cost by 1.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "devoted-to-pain-drukhari",
+    "state": "structured",
+    "summary": "Macro-scalpels equipped by models in this Talos unit gain Twin-linked. Other weapon profiles do not gain it from this rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "distillers-of-fear-covenite-coterie-drukhari",
+    "state": "structured",
+    "summary": "Before the eligible HAEMONCULUS COVENS unit fights, its weapons gain Devastating Wounds against Battle-shocked targets for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "dividends-of-agony-tools-of-torment-drukhari",
+    "state": "structured",
+    "summary": "After a friendly HAEMONCULUS COVENS unit destroys an enemy unit, select one enemy unit visible to the bearer and within 12″ of its unit. That enemy takes a Battle-shock test at -1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "double-cross-kabalite-cartel-drukhari",
+    "state": "missing",
+    "summary": "Double-cross has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "eager-for-the-kill-realspace-raiders-drukhari",
+    "state": "missing",
+    "summary": "Eager for the Kill has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "elixir-of-the-corpse-courts-upgrade-tools-of-torment-drukhari",
+    "state": "structured",
+    "summary": "This eligible upgraded unit has a 5+ invulnerable save.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "empowered-engines-drukhari",
+    "state": "needs-summary",
+    "summary": "When this Coven of Agonies Cronos is selected for a Normal, Advance or Fall Back move, it may spend 1 Pain token to Empower itself and add 2″ to its Move. The source gives the bonus a permanent scope rather than a specific move or phase duration; confirm when it expires and whether it can stack.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "enemies-without-number-kabalite-cartel-drukhari",
+    "state": "missing",
+    "summary": "Enemies Without Number has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "enfolding-nightmare-covenite-coterie-drukhari",
+    "state": "needs-summary",
+    "summary": "After an enemy finishes shooting at this eligible HAEMONCULUS COVENS unit in your opponent’s Shooting phase, it makes a D6″ Surge move. The effect does not supply wound-loss or engagement gates; check the complete Surge conditions before use.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "eradicate-the-foe-drukhari",
+    "state": "structured",
+    "summary": "This Ravager re-rolls Hit rolls against targets that are not below Starting Strength.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "eviscerating-fly-by-drukhari",
+    "state": "structured",
+    "summary": "After this Reavers unit ends a Normal or Advance move, select one enemy unit it moved over that is neither MONSTER nor VEHICLE. Roll one die per Reaver model: each 4+ causes 1 mortal wound to that enemy.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "exacting-cruelty-drukhari",
+    "state": "structured",
+    "summary": "Friendly WYCH CULT melee weapons gain Lethal Hits against targets that are neither MONSTER nor VEHICLE units. This detachment also enforces its exclusive WYCH CULT tag.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "experimental-enhancements-drukhari",
+    "state": "structured",
+    "summary": "When Wracks are selected to fight, spend 1 Pain token to Empower the unit. Choose melee Attacks 3, or melee Attacks 4 with Hazardous, for non-CHARACTER models for that phase. These set the characteristic rather than adding 3 or 4.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "experimental-enhancements-coven-of-agonies-wracks-drukhari",
+    "state": "needs-summary",
+    "summary": "When Coven of Agonies Wracks are selected to fight, spend 1 Pain token to Empower them and set non-CHARACTER models’ melee Attacks to 3 or 4. The 4-Attack branch grants melee Hazardous to the whole unit rather than only those models, and differs from the pinned source; confirm the weapon/model scope.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "eye-of-spite-realspace-raiders-drukhari",
+    "state": "missing",
+    "summary": "Eye of Spite has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "fade-away-drukhari",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, if unengaged, spend 1 Pain token to Empower this Mandrakes unit and place it into Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "fateful-role-reapers-wager-drukhari",
+    "state": "structured",
+    "summary": "When an enemy targets this eligible DRUKHARI or HARLEQUINS unit in the Fight phase, grant fight-on-death to models whose unit has not fought. Roll D6 on destruction: a model fights on 4+, adding 1 if its unit is losing the wager. Fight after the attacking unit finishes, then remove that model.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fear-incarnate-xatrophos-nuul-drukhari",
+    "state": "structured",
+    "summary": "Enemy units within 6″ of Xatrophos worsen Leadership by 1. At your opponent’s Battle-shock step, each enemy unit within that aura that is below Starting Strength also takes a Battle-shock test.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "shock"
+  },
+  {
+    "id": "fear-incarnate-drukhari",
+    "state": "structured",
+    "summary": "Enemy units within 6″ of this Haemonculus worsen Leadership by 1. At your opponent’s Battle-shock step, each enemy unit within that aura that is below Starting Strength also takes a Battle-shock test.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "shock"
+  },
+  {
+    "id": "feigned-weakness-spectacle-of-spite-drukhari",
+    "state": "structured",
+    "summary": "After the selected friendly DRUKHARI unit Falls Back, it can shoot and declare a charge for the rest of the turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "fighting-shadows-realspace-raiders-drukhari",
+    "state": "structured",
+    "summary": "When an enemy targets this friendly DRUKHARI unit, excluding HAEMONCULUS COVENS units, subtract 1 from incoming Hit rolls for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fleshcraft-drukhari",
+    "state": "structured",
+    "summary": "In your Command phase, spend 1 Pain token to Empower this Haemonculus’s unit and return D3+1 destroyed Bodyguard models to it. Do not return CHARACTER models with this effect.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "gnarlskin-experimentor-tools-of-torment-drukhari",
+    "state": "structured",
+    "summary": "Subtract 1 from Wound rolls for attacks against this eligible unit if the attack’s Strength exceeds its Toughness.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "grav-talon-drukhari",
+    "state": "structured",
+    "summary": "The equipped model’s melee weapons have AP 2 and Lethal Hits. This is a set characteristic rather than an additional 2 AP improvement.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ground-attack-craft-drukhari",
+    "state": "structured",
+    "summary": "Add 1 to this unit’s ranged Hit rolls against targets without FLY.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "hardened-physiology-coven-of-agonies-drukhari",
+    "state": "needs-summary",
+    "summary": "When this COVEN OF AGONIES WRACKS unit is targeted, the intended defensive benefit is -1 to incoming Wound rolls for the phase. The source instead applies -1 to this unit’s own Wound rolls; confirm the recipient before applying it.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "hatred-eternal-drukhari",
+    "state": "structured",
+    "summary": "When this Archon’s unit is selected to attack in your Shooting phase or either Fight phase, it may spend 1 Pain token to Empower itself. Re-roll its Hit rolls for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "hyperstimm-trafficker-exhibition-of-slaughter-drukhari",
+    "state": "structured",
+    "summary": "Add 1 to the eligible upgraded unit’s Toughness.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "incubi-shrine-token-drukhari",
+    "state": "needs-summary",
+    "summary": "Once per battle, the Incubi Shrine token can change one Hit or Wound roll to an unmodified 6. The imported effect does not specify a before/after-roll choice window; confirm that procedure and the equipped token before use.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "informant-network-kabalite-cartel-drukhari",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, select up to three friendly Hand of the Archon or Kabalite Warriors units. They gain Infiltrators.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "insensible-to-pain-realspace-raiders-drukhari",
+    "state": "structured",
+    "summary": "When this friendly HAEMONCULUS COVENS unit is targeted, reduce incoming Damage allocated to its models by 1 for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "instinctive-spite-realspace-raiders-drukhari",
+    "state": "missing",
+    "summary": "Instinctive Spite has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "kabalite-icon-drukhari",
+    "state": "structured",
+    "summary": "While the equipped model is not Battle-shocked, add 1 to its Objective Control. The source targets the model, not every model in the unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "killers-from-the-dark-spires-kabalite-agonysts-drukhari",
+    "state": "structured",
+    "summary": "When a friendly Kabalite Warriors unit is selected to shoot, its ranged weapons gain Ignores Cover for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "labyrinthine-cunning-realspace-raiders-drukhari",
+    "state": "structured",
+    "summary": "At the start of your Command phase, if the bearer is on the battlefield, choose one: spend 1 Pain token to gain 1CP, or roll a D6 and gain 1CP on 4+. Do not resolve both options.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "leechbite-plate-kabalite-cartel-drukhari",
+    "state": "missing",
+    "summary": "Leechbite Plate has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "lithe-agility-drukhari",
+    "state": "needs-summary",
+    "summary": "When the Succubus’s unit Advances or makes a Charge roll, spend 1 Pain token to Empower it and re-roll the relevant roll. The source requires the Movement and Charge phases simultaneously, making the condition impossible; confirm that those phases are alternatives.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "making-a-point-kabalite-cartel-drukhari",
+    "state": "structured",
+    "summary": "Before a friendly Hand of the Archon or Kabalite Warriors unit shoots, improve its ranged Ballistic Skill and AP by 1 for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "malicious-frenzy-reapers-wager-drukhari",
+    "state": "structured",
+    "summary": "Before this eligible friendly DRUKHARI or HARLEQUINS unit shoots or fights, choose Lethal Hits or Sustained Hits 1 for its weapons for that phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "master-artisan-covenite-coterie-drukhari",
+    "state": "structured",
+    "summary": "Add 1 to the bearer’s Wounds and 1 to its unit’s Toughness. Keep the model-only Wounds increase separate from the unit benefit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "master-nemesine-covenite-coterie-drukhari",
+    "state": "structured",
+    "summary": "The bearer’s weapons gain Anti-BEAST 2+ and Anti-MONSTER 4+.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "master-of-blades-drukhari",
+    "state": "structured",
+    "summary": "When Drazhar’s unit is selected to fight, spend 1 Pain token to Empower it and add 1 to its melee Wound rolls for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "master-regenesist-covenite-coterie-drukhari",
+    "state": "missing",
+    "summary": "Master Regenesist has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "master-repugnomancer-aura-covenite-coterie-drukhari",
+    "state": "needs-summary",
+    "summary": "Increase the bearer’s Fear Incarnate range by 3″. When a friendly DRUKHARI unit within 9″ fails Battle-shock or is destroyed, roll a D6: on 4+, gain 1 Pain token. The source uses friendly casualties/tests; confirm that side rather than substituting enemy events from another token rule.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "matchless-swiftness-drukhari",
+    "state": "needs-summary",
+    "summary": "When Reavers are selected to Advance, spend 1 Pain token to Empower them and use an 8″ Advance. The fixed-Advance modifier is triggered only after the move ends; confirm that it should apply before measuring the move.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "mind-like-a-steel-trap-drukhari",
+    "state": "needs-summary",
+    "summary": "Once per turn per model, when an enemy Stratagem selects a target within 12″ of Lady Malys, increase that use’s CP cost by 1. The source assigns the modifier to this unit instead of clearly to the enemy use; confirm which player pays the increase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "mindless-killing-machines-drukhari",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, spend 1 Pain token to Empower this Talos unit. If a model is destroyed before its unit has fought, roll a D6: on 2+, it fights after the attacking unit finishes, then is removed.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "mindless-killing-machines-coven-of-agonies-talos-drukhari",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, spend 1 Pain token to Empower this Coven of Agonies Talos unit. If a model is destroyed before its unit has fought, it fights on 2+ when its unit fights, then is removed; remove it at phase end if it has not fought. This version’s resolution differs from the ordinary Talos version.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "morghennas-curse-spectacle-of-spite-drukhari",
+    "state": "structured",
+    "summary": "Improve the bearer’s melee AP and Damage by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "murderers-circus-reapers-wager-drukhari",
+    "state": "structured",
+    "summary": "When an enemy targets this eligible friendly DRUKHARI or HARLEQUINS unit in the Fight phase, subtract 1 from incoming Hit rolls for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "murderous-agenda-drukhari",
+    "state": "needs-summary",
+    "summary": "At the start of battle round 1, Murderous Agenda should choose a Contract. The encoded Trophy Hunters branch marks an enemy for Precision, while its notes require an enemy CHARACTER and KABAL/BLADES FOR HIRE attackers, and award 3 Pain tokens when the Contract unit is destroyed. The notes also describe Sow Fear and Terror (Sustained Hits 1 against INFANTRY/MOUNTED) and Show of Strength (Lethal Hits against MONSTER/VEHICLE), neither encoded. Confirm the Contract choice and all omitted gates before use.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "murderous-crossfire-drukhari",
+    "state": "structured",
+    "summary": "Once per turn per unit, after these Scourges shoot, select one enemy unit hit by their attacks. Friendly DRUKHARI ranged attacks improve AP by 1 against that target for the rest of the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "night-shield-skysplinter-assault-drukhari",
+    "state": "structured",
+    "summary": "When this friendly DRUKHARI VEHICLE unit is targeted in your opponent’s Shooting phase, it gains a 4+ invulnerable save for that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "nightmare-shroud-skysplinter-assault-drukhari",
+    "state": "structured",
+    "summary": "After this bearer’s unit disembarks, it cannot be targeted by Fire Overwatch for the rest of the turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "no-escape-drukhari",
+    "state": "structured",
+    "summary": "When an enemy unit that is neither MONSTER nor VEHICLE starts to Fall Back while engaged with a friendly unit with No Escape, it must take Desperate Escape tests. If Battle-shocked, subtract 1 from those tests.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "before"
+  },
+  {
+    "id": "nowhere-to-hide-drukhari",
+    "state": "structured",
+    "summary": "When this Voidraven is selected to shoot in your Shooting phase, it may spend 1 Pain token to Empower itself. After it shoots, select one enemy unit it hit; if Empowered, that target cannot receive the Benefit of Cover for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "nowhere-to-run-drukhari",
+    "state": "needs-summary",
+    "summary": "When this Razorwing is selected to shoot, spend 1 Pain token to Empower it. After shooting, select one enemy it hit that is neither MONSTER nor VEHICLE; subtract 2″ from that target’s Move until the start of your next turn. The source applies the -2 Charge modifier to the Razorwing rather than the selected enemy; confirm the recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "onslaught-drukhari",
+    "state": "needs-summary",
+    "summary": "While Drazhar leads a unit, add 3″ to that unit’s Pile-in and Consolidation distances. The encoded trigger applies the bonus only after the move ends; confirm it applies before measuring the move, retaining all remaining movement restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "overlord-drukhari",
+    "state": "structured",
+    "summary": "Once per battle per unit, at the start of any phase, select one friendly Battle-shocked DRUKHARI unit within 12″ of this Archon. It is no longer Battle-shocked.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "pain-adept-drukhari",
+    "state": "structured",
+    "summary": "Once per Command phase per army, if a friendly Haemonculus with Pain Adept is on the battlefield, roll a D6: on 4+, gain 1 Pain token.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "pain-adept-xatrophos-nuul-drukhari",
+    "state": "needs-summary",
+    "summary": "In your Command phase, if Xatrophos Nuul is on the battlefield, roll a D6: on 4+, gain 1 Pain token. This record lacks the ordinary Haemonculus version’s explicit once-per-phase army cap; confirm its usage limit rather than assuming unlimited attempts.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "pain-engine-drukhari",
+    "state": "needs-summary",
+    "summary": "When a friendly unit within 9″ spends a Pain token to Empower, roll a D6: on 5+, regain 1 Pain token. Add 1 if no model in this Cronos unit has a spirit vortex. The encoded test instead gives that bonus if at least one model lacks the weapon; confirm how a mixed unit is handled. Spending tokens for other reasons does not trigger this refund.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "pain-engine-coven-of-agonies-cronos-drukhari",
+    "state": "missing",
+    "summary": "The Coven of Agonies Cronos Pain Engine is empty in this source. Do not substitute the ordinary Cronos refund rule merely because it has the same name.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "pain-enlivens-drukhari",
+    "state": "structured",
+    "summary": "Gain 1 Pain token whenever a friendly COVEN OF AGONIES unit is destroyed.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "pain-parasite-drukhari",
+    "state": "needs-summary",
+    "summary": "The partial Pain Parasite source grants both shooting and fighting on death while below Starting Strength in the Fight phase, without a destruction trigger, resolution sequence or use limit. Check the actual trigger and which action is allowed before applying it.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "periapt-of-torments-spectacle-of-spite-drukhari",
+    "state": "structured",
+    "summary": "The bearer’s unit cannot be targeted by Fire Overwatch. Other targeting and movement rules still apply.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "periapt-of-torments-exhibition-of-slaughter-drukhari",
+    "state": "structured",
+    "summary": "This Exhibition of Slaughter enhancement suppresses Fire Overwatch against the bearer’s unit. Keep its own bearer and detachment restrictions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "phantasm-grenade-launcher-hand-of-the-archon-drukhari",
+    "state": "structured",
+    "summary": "This equipped Hand of the Archon unit gains SMOKE. This version does not grant GRENADES.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "phantasm-grenade-launcher-drukhari",
+    "state": "structured",
+    "summary": "This equipped unit gains SMOKE and GRENADES.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "phantasmal-smoke-skysplinter-assault-drukhari",
+    "state": "structured",
+    "summary": "While this unit is wholly within 6″ of a friendly DRUKHARI TRANSPORT, it has Stealth and receives the Benefit of Cover against ranged attacks.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "pharmacophex-spectacle-of-spite-drukhari",
+    "state": "missing",
+    "summary": "Pharmacophex has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "planned-strikes-exhibition-of-slaughter-drukhari",
+    "state": "structured",
+    "summary": "When a friendly WYCH CULT unit is selected to fight, its melee weapons gain Lethal Hits for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "poisoners-art-covenite-coterie-drukhari",
+    "state": "needs-summary",
+    "summary": "After this HAEMONCULUS COVENS unit fights, select one non-VEHICLE enemy it hit and mark it poisoned for the battle. At the start of each Command phase, roll for every poisoned enemy still on the battlefield: on 4+, it suffers D3 mortal wounds. The recurring branch has a HAEMONCULUS COVENS condition on an unspecified subject; confirm which model or unit must still qualify.",
+    "phase": [
+      0,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "postmortality-covenite-coterie-drukhari",
+    "state": "missing",
+    "summary": "Postmortality has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "pounce-on-the-prey-skysplinter-assault-drukhari",
+    "state": "missing",
+    "summary": "Pounce on the Prey has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "power-from-pain-drukhari",
+    "state": "missing",
+    "summary": "Power From Pain is empty in the imported army-rule source. Starting Pain-token pools, general token generation and the full Empower procedure are not defined here. Confirm the current army rule before using the token-spending reminders; those reminders do not supply the missing army rule.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "powerful-creations-coven-of-agonies-drukhari",
+    "state": "structured",
+    "summary": "When a friendly COVEN OF AGONIES MONSTER unit is selected to fight, add 1 to its Wound rolls and improve its AP by 1 against MONSTER or VEHICLE targets for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "precognisant-drukhari",
+    "state": "structured",
+    "summary": "After both players deploy, redeploy up to three friendly DRUKHARI units. Each may be set up on the battlefield or placed into Strategic Reserves ignoring reserve limits.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "preternatural-agility-spectacle-of-spite-drukhari",
+    "state": "needs-summary",
+    "summary": "This WYCH CULT unit ignores Move, Advance and Charge modifiers, and can pass through models while making the listed moves without ending Normal or Advance moves in enemy Engagement Range. The source triggers these benefits after moves end, gives different phase/turn durations and permits moving while engaged without a clear move type; confirm timing and permitted moves.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "prioritised-victim-kabalite-agonysts-drukhari",
+    "state": "structured",
+    "summary": "When a friendly BLADES FOR HIRE or KABAL unit selects a CHARACTER target, re-roll its Hit and Wound rolls of 1 against that target for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "raid-and-fade-realspace-raiders-drukhari",
+    "state": "structured",
+    "summary": "At the end of your Shooting phase, select either up to two unengaged Kabalite Warriors units or one unengaged DRUKHARI unit excluding AIRCRAFT and SCOURGES. The selected units make a 6″ Normal move and cannot charge that turn. The target modes are alternatives, not permission to take both groups.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "rain-of-cruelty-drukhari",
+    "state": "structured",
+    "summary": "After a friendly DRUKHARI unit disembarks from a transport, its ranged weapons gain Ignores Cover and its melee weapons gain Lance for the rest of the turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "rapid-deployment-drukhari",
+    "state": "structured",
+    "summary": "When this Venom is selected to Advance in your Movement phase, spend 1 Pain token to Empower it. Its passengers may disembark despite the transport Advancing, count as having made a Normal move until phase end, and cannot declare a charge afterwards.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "reapers-cowl-reapers-wager-drukhari",
+    "state": "structured",
+    "summary": "The bearer’s unit gains Stealth and Infiltrators. Apply the Infiltrators requirements for the combined unit during deployment.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "sadistic-fulcrum-skysplinter-assault-drukhari",
+    "state": "needs-summary",
+    "summary": "After spending a Pain token, select one friendly DRUKHARI TRANSPORT within 6″ of the bearer’s unit to re-roll Hit rolls for the phase. The source does not bind the spend to Empowering the bearer’s unit and places a Shooting-phase test only on a separate Empower designation; confirm which spend and phase activate the transport benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "react"
+  },
+  {
+    "id": "sadistic-raiders-drukhari",
+    "state": "needs-summary",
+    "summary": "When Kabalite Warriors are selected to shoot in your Shooting phase or to fight, spend 1 Pain token to Empower them. Re-roll Wound rolls of 1, or all Wound rolls against a target in objective control range. The full-re-roll branch does not explicitly test Empowered status, although it follows the token spend; confirm that the cost gates both branches.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "salting-the-wound-tools-of-torment-drukhari",
+    "state": "structured",
+    "summary": "When a friendly CRONOS or TALOS unit is selected to fight, its weapons gain Devastating Wounds against Battle-shocked targets for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "scintillating-tempo-reapers-wager-drukhari",
+    "state": "needs-summary",
+    "summary": "When the eligible friendly unit is selected to move, arrives, or selects charge targets in your turn, it cannot be targeted by Fire Overwatch for the rest of the turn. The movement trigger explicitly lists DRUKHARI or HARLEQUINS, while the arrival and charge branches do not repeat those keywords; confirm their target eligibility.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "sculpting-the-stage-exhibition-of-slaughter-drukhari",
+    "state": "needs-summary",
+    "summary": "When a friendly WYCH CULT unit is selected to Advance or Fall Back, it gains permission to start an action for the phase. The effect neither explicitly waives those movement restrictions nor lasts into later action steps; confirm the intended permission and expiry.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "shade-weavers-drukhari",
+    "state": "structured",
+    "summary": "This Mandrakes unit cannot be targeted by ranged attacks from models more than 18″ away.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "shadowfield-drukhari",
+    "state": "needs-summary",
+    "summary": "The Archon has a 4+ invulnerable save from Shadowfield, lost when a save fails according to the source notes. The effect only gives a one-use scope and does not encode the breaking procedure; confirm whether the failure must be a Shadowfield save and when the protection ends.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "shadows-reach-kabalite-agonysts-drukhari",
+    "state": "structured",
+    "summary": "After the eligible unit’s shooting attacks resolve, those attacks do not trigger the normal rule that attacking ends Hidden. This does not grant Hidden to a unit that was not already Hidden.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "shorten-the-odds-reapers-wager-drukhari",
+    "state": "structured",
+    "summary": "After an eligible friendly DRUKHARI or HARLEQUINS unit Advances, its ranged weapons gain Assault and it may declare a charge despite Advancing, for the rest of the turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "silent-executioner-drukhari",
+    "state": "needs-summary",
+    "summary": "Drazhar re-rolls Hit rolls against targets below Starting Strength and also re-rolls Wound rolls against targets below Half-strength. The source labels Silent Executioner partial; confirm any omitted attack-type or usage restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "skyboard-evasion-drukhari",
+    "state": "structured",
+    "summary": "In your opponent’s Movement phase, after an enemy ends a move within 8″ of this unengaged Hellions unit, this unit can make a D6″ Normal move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "skyborne-annihilation-skysplinter-assault-drukhari",
+    "state": "needs-summary",
+    "summary": "Before an eligible friendly DRUKHARI unit that disembarked this turn shoots, its ranged weapons gain a Sustained Hits benefit. The effect requires HAND OF THE ARCHON or KABALITE WARRIORS and offers Sustained Hits 1 or 2 as a free choice, rather than encoding a base benefit and an escalation condition. Confirm which unit receives which value.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "soul-trap-drukhari",
+    "state": "needs-summary",
+    "summary": "Soul Trap gives the Archon +1 melee Attack and Strength, then a further +1 to both after the first time it destroys an enemy model in melee this battle. The preserved import differs from the pinned source; confirm the initial bonus and first-kill reward rather than silently replacing them.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "spiteful-raider-skysplinter-assault-drukhari",
+    "state": "needs-summary",
+    "summary": "The bearer’s unit gains 1 Pain token for a Fight-phase event within objective control range. The source triggers both on selecting this unit to fight and on destroying an enemy, without clearly binding the objective condition to the victim; confirm the actual token-generating event.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "splinter-racks-drukhari",
+    "state": "needs-summary",
+    "summary": "When this Raider is selected to shoot, spend 1 Pain token to Empower it. While it has passengers, it re-rolls ranged Hit rolls for Anti-keyword weapons for the phase. The effect targets the Raider rather than the embarked models and omits the Anti target type; confirm which Firing Deck or passenger attacks receive the benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "stimm-needler-drukhari",
+    "state": "structured",
+    "summary": "Once per turn per unit, after a saving throw is failed for this unit, change that attack’s Damage to 0. This affects one failed save, not every attack in the sequence.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "stitchflesh-abominations-drukhari",
+    "state": "structured",
+    "summary": "Subtract 1 from Wound rolls for attacks against friendly HAEMONCULUS COVENS units if the attack’s Strength exceeds the target’s Toughness.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "storm-of-blades-drukhari",
+    "state": "structured",
+    "summary": "While the Succubus leads a unit, that unit’s melee weapons gain Sustained Hits 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "superior-soulcraft-coven-of-agonies-drukhari",
+    "state": "structured",
+    "summary": "This unit can re-roll rolls that determine the number of attacks. The source does not grant general Hit, Wound or Damage re-rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "swooping-descent-drukhari",
+    "state": "needs-summary",
+    "summary": "In your Movement phase, spend 1 Pain token to Empower these Scourges. When using Deep Strike, they may set up more than 6″ from enemies; if set up within 8″ of an enemy, they cannot charge that turn. The source lacks a specific token-spend trigger and attaches the no-charge permission to an event subject; confirm the setup sequence and recipient.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "swooping-mockery-skysplinter-assault-drukhari",
+    "state": "structured",
+    "summary": "After an enemy ends a Normal, Advance or Fall Back move within 8″ of an eligible friendly DRUKHARI TRANSPORT unit, that transport makes a 6″ Normal move. The core target record supplies the proximity requirement.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "symphony-of-suffering-covenite-coterie-drukhari",
+    "state": "needs-summary",
+    "summary": "After a friendly DRUKHARI unit destroys an enemy, each enemy within 9″ of and visible to the friendly unit takes a Battle-shock test. The source gives a -1 modifier if an unspecified subject has HAEMONCULUS COVENS; confirm whether that condition refers to the destroying unit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "tailored-toxins-kabalite-cartel-drukhari",
+    "state": "needs-summary",
+    "summary": "Before an eligible friendly BLADES FOR HIRE or KABAL unit shoots or fights, its attacks against the Contract unit are intended to score Critical Hits on 5+ for the phase. The source instead tests whether this unit is itself designated the Contract unit; confirm the target binding.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "taken-alive-kabalite-cartel-drukhari",
+    "state": "missing",
+    "summary": "Taken Alive has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "thrilling-spectacle-drukhari",
+    "state": "structured",
+    "summary": "Once per battle per unit, at the start of the Fight phase, Lelith gains a 3+ invulnerable save and sets her melee Attacks to 12 for that phase. This does not add 12 Attacks.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "tormentors-drukhari",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, once per phase per army, enemy units engaged with a friendly unit with Tormentors take a Battle-shock test. This Incubi unit also adds 1 to melee Hit rolls against Battle-shocked targets.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "torture-device-drukhari",
+    "state": "structured",
+    "summary": "Gain 1 Pain token when this Talos unit destroys an enemy unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "torture-device-coven-of-agonies-talos-drukhari",
+    "state": "structured",
+    "summary": "Gain 1 Pain token when this Coven of Agonies Talos unit destroys an enemy unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "torturers-craft-coven-of-agonies-wracks-drukhari",
+    "state": "structured",
+    "summary": "After this Coven of Agonies Wracks unit attacks in your Shooting phase or either Fight phase, select one non-VEHICLE enemy unit hit by those attacks. That enemy takes a Battle-shock test.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "torturers-craft-drukhari",
+    "state": "structured",
+    "summary": "After this Wracks unit attacks in your Shooting phase or either Fight phase, select one non-VEHICLE enemy unit hit by those attacks. That enemy takes a Battle-shock test.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "towering-arrogance-kabalite-cartel-drukhari",
+    "state": "structured",
+    "summary": "While the bearer leads a unit, improve that unit’s Leadership and Objective Control by 1.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "towering-arrogance-kabalite-agonysts-drukhari",
+    "state": "needs-summary",
+    "summary": "While this ARCHON bearer leads a unit, improve its models’ Leadership and Objective Control by 1. The effect adds 1 to Leadership, which worsens it, and omits the leading condition; confirm the notes’ improvement and attachment gate.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "toxin-laced-blades-coven-of-agonies-drukhari",
+    "state": "structured",
+    "summary": "Improve this eligible unit’s melee AP by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "urgent-metamorphosis-tools-of-torment-drukhari",
+    "state": "needs-summary",
+    "summary": "When a friendly HAEMONCULUS COVENS unit is selected to Fall Back, it gains permission to declare a charge for the phase. The effect does not explicitly waive the Fall Back restriction and expires before the Charge phase; confirm the permission and duration.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "vanguard-of-the-dark-city-drukhari",
+    "state": "needs-summary",
+    "summary": "At the start of your Command phase, this Raider chooses one option for the battle round: Masters of the Shadowed Sky makes an objective sticky while carrying Kabalite Warriors; Speed of the Kill lets embarked Wyches disembark wholly within 6″; Visions of Butchery adds bladevane and chainsnare Attacks based on models in or embarked in the bearer; Aethersails lets the Raider re-roll Advance and Charge rolls while carrying DRUKHARI. The source does not define which model count is used for the scaling or the full disembark procedure; check those branches before use.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "vicious-blades-skysplinter-assault-drukhari",
+    "state": "missing",
+    "summary": "Vicious Blades has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "vile-weaponry-drukhari",
+    "state": "needs-summary",
+    "summary": "When Xatrophos Nuul is selected to fight, spend 1 Pain token to Empower his unit and set his Damage to 3 for the phase. The effect does not identify the affected weapon profile; confirm the scope rather than granting Damage 3 to every weapon.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "void-mine-drukhari",
+    "state": "needs-summary",
+    "summary": "At the end of your opponent’s Fight phase, select one visible enemy model within 24″ that lacks Lone Operative. Roll a D6 for the mine’s radius; for each enemy unit within that many inches of the selected model, roll a D6: on 4+, it suffers D6 mortal wounds. The source has no usage cap and represents the selected model as a unit reference for the radius; confirm frequency and measurement origin.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "webway-awl-kabalite-cartel-drukhari",
+    "state": "structured",
+    "summary": "The bearer’s unit gains Deep Strike, and Rapid Ingress targeting it costs 0CP. The rule does not itself grant an additional or unrestricted arrival.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "arrivals"
+  },
+  {
+    "id": "webway-walker-reapers-wager-drukhari",
+    "state": "structured",
+    "summary": "The bearer’s unit gains Deep Strike. On a turn it arrives using Deep Strike while losing the wager, it can re-roll Charge rolls. Normal arrival and charge restrictions still apply.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "winged-strike-drukhari",
+    "state": "structured",
+    "summary": "When these heavy-weapon Scourges are selected to shoot in your Shooting phase, spend 1 Pain token to Empower them and re-roll their ranged Hit rolls for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "wraithlike-retreat-skysplinter-assault-drukhari",
+    "state": "missing",
+    "summary": "Wraithlike Retreat has no effect mechanics in the imported source. Confirm its complete rule before applying any benefit, cost, target selection or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  }
+]

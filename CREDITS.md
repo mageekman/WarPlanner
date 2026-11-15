@@ -1,5 +1,14 @@
 # Research references and credits
 
+Drukhari readiness audit: original study summaries and restored datasheet
+associations derived from preserved user-imported 40kdc mechanics and the
+[pinned Drukhari index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/drukhari),
+Alpaca Software and community contributors, CC BY 4.0. Changes include four
+missing datasheets, army-rule scope, timing, target modes, Pain-token reminders
+and explicit source issues. Original mechanics and review flags are preserved.
+No official verification is claimed; see `AUDIT-DRUKHARI.md` and
+`docs/LICENSE-40KDC-DATA.txt`.
+
 Thousand Sons readiness audit: original study summaries derived from preserved
 user-imported 40kdc mechanics and the [pinned Thousand Sons core index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/thousand-sons),
 Alpaca Software and community contributors, CC BY 4.0. Changes include Ritual
