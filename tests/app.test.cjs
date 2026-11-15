@@ -38,6 +38,12 @@ test('guide navigation, study bookmarks, player turns and persistence',()=>{
  a.click({view:'army'});assert.match(a.html(),/My saved lists/);
  a.click({view:'practice'});assert.match(a.html(),/Start practice/);assert.match(a.html(),/practice_mode/);assert.doesNotMatch(a.html(),/Future update/);
 });
+
+test('navigation can be minimized and its preference survives navigation and reload',()=>{
+ const a=app();a.click({action:'toggle-nav'});assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).sidebarCollapsed,true);
+ a.click({view:'army'});assert.match(a.html(),/class="shell nav-collapsed"/);assert.match(a.html(),/aria-label="Expand navigation"/);
+ const reloaded=app([...a.store]);assert.match(reloaded.html(),/class="shell nav-collapsed"/);reloaded.click({action:'toggle-nav'});assert.equal(JSON.parse(reloaded.store.get('warplan.prototype.v1')).sidebarCollapsed,false);
+});
 test('first player changes round boundaries and keeps source confirmation separate',()=>{
  const a=app();a.click({first:'opponent'});assert.match(a.html(),/data-turn="opponent" class="selected"/);assert.match(a.html(),/Start of Battle Round/);
  a.click({phase:'4'});a.click({action:'next'});assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).turn,'you');assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).round,1);
