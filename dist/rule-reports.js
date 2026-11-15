@@ -18,7 +18,7 @@
  function practiceContext(question,records,key=question.id){
   const options=[],snapshot=question.review||{},unit=snapshot.units?.[0],rule=snapshot.rule;
   function add(row,observed){if(!row||options.some(o=>o.key===row.key))return;options.push({key:row.key,name:row.name,kind:row.kind,group:row.kind==='unit'?'Units':'Abilities',revision:row.revision,observed:{name:row.name,...observed},timing:{phase:row.data.phase||[],turn:row.data.turn||'either',window:C.windows.includes(row.data.window)?row.data.window:'prebattle'}});}
-  const matchingRules=records.filter(r=>r.kind==='rule'&&norm(r.faction)===norm(question.faction));
+  const matchingRules=records.filter(r=>r.kind==='rule'&&!r.data.sharedRuleId&&(r.data.memberships||[{faction:r.faction}]).some(m=>m.faction==='*'||norm(m.faction)===norm(question.faction)));
   const ruleRow=rule?matchingRules.find(r=>r.data.id===rule.id)||matchingRules.find(r=>rule.sourceRuleId&&(r.data.sourceRuleId===rule.sourceRuleId||r.data.id===rule.sourceRuleId)):null;
   const matchingUnits=records.filter(r=>r.kind==='unit'&&norm(r.faction)===norm(question.faction));
   const findUnit=u=>matchingUnits.find(r=>r.data.id===u.id)||matchingUnits.find(r=>norm(r.name)===norm(u.name));

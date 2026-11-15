@@ -143,7 +143,7 @@
   return {rows,warnings:parsed.warnings};
  }
  function selected(review){
-  const rows=[];for(const entry of review.rows){if(entry.action==='skip')continue;if(entry.error)throw Error(entry.name+': '+entry.error);const row=entry.action==='source'?entry.sourceOnly:entry.proposed;if(!row)throw Error('Unsupported import choice.');C.validate(row);rows.push(copy(row));}
+  const rows=[];for(const entry of review.rows){if(entry.action==='skip')continue;if(entry.error)throw Error(entry.name+': '+entry.error);const row=entry.action==='source'?entry.sourceOnly:entry.proposed;if(!row)throw Error('Unsupported import choice.');if(entry.before?.data.sharedRuleId&&entry.action!=='source')throw Error(entry.name+' is linked to a shared rule. Update its source only, or edit the shared rule in the Workshop.');C.validate(row);rows.push(copy(row));}
   if(!rows.length)throw Error('Choose at least one entry to import.');if(rows.length>1000)throw Error('Import at most 1000 entries at a time. Skip some entries and retry.');return rows;
  }
  function exportCatalog(records){return JSON.stringify({format:'warplanner-rules',version:1,entries:records.map(({key,kind,faction,name,data,enabled})=>({key,kind,faction,name,data,enabled}))},null,2);}

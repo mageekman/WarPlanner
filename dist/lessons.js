@@ -12,6 +12,16 @@
  sources.catalog={name:'40kdc Aeldari structured source',version:'Pinned '+catalog.pin.slice(0,7)+' · source reference, not official verification',url:'https://github.com/wn-mitch/40kdc-data/tree/'+catalog.pin+'/data/enrichment/aeldari',status:'source-reference'};
  const aliases={'battle-focus-aeldari':'battle-focus','diviner-of-futures-aeldari':'eldrad-cp','doom-aeldari':'doom','whirling-death-aeldari':'whirling','superlative-strategist-aeldari':'strategist','flickerjump-aeldari':'flickerjump','grenade-pack-flyover-aeldari':'hawks','path-of-the-warrior-aeldari':'path-warrior','hand-of-asuryan-aeldari':'asurmen-hand','bladestorm-aeldari':'bladestorm','aspect-shrine-token-aeldari':'token','inescapable-accuracy-aeldari':'reapers','assured-destruction-aeldari':'dragons','crystalline-targeting-aeldari':'walker','fire-support-aeldari':'falcon','tactical-acumen-aeldari':'asurmen-move','acrobatic-aeldari':'acrobatic','the-bloody-handed-aeldari':'avatar-aura','molten-form-aeldari':'avatar-defence','wave-serpent-shield-aeldari':'serpent-shield','storm-of-silence-aeldari':'jain-attacks','aspect-of-murder-aspect-host-aeldari':'murder','path-of-command-aeldari':'autarch-discount','khaines-vengeance-aspect-host-aeldari':'khaines','skyborne-sanctuary-aspect-host-aeldari':'skyborne','to-their-final-breath-aspect-host-aeldari':'final-breath'};
  function factionMatches(a,b){const n=x=>{const key=normalized(x),f=catalog.factions?.find(f=>normalized(f.name)===key||(f.aliases||[]).some(a=>normalized(a)===key));return f?normalized(f.name):['asuryani','aeldari'].includes(key)?'aeldari':key;};return n(a||'Aeldari')===n(b||'Aeldari');}
+ function ruleMemberships(rule){return Array.isArray(rule.memberships)?rule.memberships:[{faction:rule.faction,detachments:rule.detachment?[rule.detachment]:[]}];}
+ function ruleFactions(rule){return [...new Set(ruleMemberships(rule).map(m=>m.faction))];}
+ function ruleDetachments(rule,faction){return [...new Set(ruleMemberships(rule).filter(m=>m.faction==='*'||factionMatches(m.faction,faction)).flatMap(m=>m.detachments))];}
+ function ruleInFaction(rule,faction){return ruleFactions(rule).some(f=>f==='*'||factionMatches(f,faction));}
+ function ruleInArmy(rule,army){
+  if(rule.membershipFaction&&rule.membershipFaction!=='*'&&!factionMatches(rule.membershipFaction,army.faction))return false;
+  const memberships=ruleMemberships(rule).filter(m=>m.faction==='*'||factionMatches(m.faction,army.faction));
+  if(!memberships.length)return false;if(memberships.some(m=>!m.detachments.length))return true;
+  const selected=armyDetachments(army).map(normalized);return memberships.some(m=>m.detachments.some(d=>selected.includes(normalized(d))));
+ }
  function unitInfo(name,faction='Aeldari'){return catalog.units.find(u=>factionMatches(u.faction,faction)&&normalized(u.name)===normalized(name));}
  function unitHasRule(unit,id,faction='Aeldari'){return !!unitInfo(unit.name,faction)?.abilities.some(a=>a.id===id);}
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule',stratagem:'Stratagem',enhancement:'Enhancement'};
@@ -127,15 +137,14 @@
  function enhancementEquipped(ability,unit,army){
   if(!ability.enhancement||!unit.details.some(d=>/^enhancement\s*:/i.test(d)&&normalized(d.replace(/^enhancement\s*:/i,'')).includes(normalized(ability.enhancement))))return false;
   const sourceId=ability.sourceRuleId||Object.keys(aliases).find(id=>aliases[id]===ability.id)||ability.id;
-  if(unit.enhancementId)return unit.enhancementId===sourceId;
+  if(unit.enhancementId)return unit.enhancementId===sourceId||(ability.sharedRuleIds||[]).includes(unit.enhancementId);
   const selected=armyDetachments(army).map(normalized);
-  const candidates=catalog.rules.filter(a=>a.category==='enhancement'&&factionMatches(a.faction,army.faction)&&normalized(a.enhancement)===normalized(ability.enhancement)&&selected.includes(normalized(a.detachment)));
+  const candidates=catalog.rules.filter(a=>a.category==='enhancement'&&factionMatches(a.faction,army.faction)&&normalized(a.enhancement)===normalized(ability.enhancement)&&(a.memberships?ruleInArmy(a,army):selected.includes(normalized(a.detachment))));
   // Plain imported names may be ambiguous when several detachments share a name.
   return candidates.length===1&&candidates[0].id===sourceId;
  }
  function matches(ability,army){
-  if(ability.faction!=='*'&&!factionMatches(ability.faction,army.faction))return false;
-  if(ability.detachment&&!armyDetachments(army).some(d=>normalized(d)===normalized(ability.detachment)))return false;
+  if(!ruleInArmy(ability,army))return false;
   if(ability.units.length&&!army.units.some(u=>ability.units.some(n=>normalized(n)===normalized(u.name))))return false;
   if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(ability.id)&&!army.units.some(u=>aspectUnits().some(n=>normalized(n)===normalized(u.name))))return false;
   if(ability.enhancement&&!army.units.some(u=>enhancementEquipped(ability,u,army)))return false;
@@ -189,12 +198,12 @@
   return {priority,order:hint.order,label:hint.order==='normal'?'':hint.label||verb+' '+hint.order,note:hint.note,flags:[...hint.flags]};
  }
  function ruleGuideMeta(rule,state){
-  const det=catalog.detachments.find(d=>factionMatches(d.faction,state.army.faction)&&normalized(d.name)===normalized(rule.detachment));
+  const det=catalog.detachments.find(d=>factionMatches(d.faction,state.army.faction)&&(rule.memberships?ruleDetachments(rule,state.army.faction).some(name=>normalized(name)===normalized(d.name))&&armyDetachments(state.army).some(name=>normalized(name)===normalized(d.name)):normalized(d.name)===normalized(rule.detachment)));
   const faction=catalog.factions?.find(f=>factionMatches(f.name,state.army.faction));
   return guideMeta(rule.guide?rule:det?.guide?det:faction?.guide?faction:rule,'rule',state);
  }
  const stepOverrides=new Map();
  const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
- const api={guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);
