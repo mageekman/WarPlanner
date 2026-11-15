@@ -154,10 +154,14 @@
   walker:{priority:10,steps:['shooting-start','shooting-select'],title:'Consider shooting War Walkers early',advice:'If other Aeldari units can attack the same target afterward, consider shooting the War Walkers first. Once they have shot and hit that target, resolve Crystalline Targeting before those later attacks. A unit that has already shot cannot benefit retroactively.'},
   falcon:{priority:20,steps:['shooting-start','shooting-select'],title:'Consider the Falcon before its passengers',advice:'If models disembarked from this Falcon this turn and can still attack the same target, consider shooting the Falcon before them. Resolve Fire Support after the Falcon shoots and hits. Being near the Falcon alone does not qualify those models.'}
  };
- function forStep(state,step){return abilities.filter(a=>{
+ function timingMatches(a,state,step){
+  if(a.timingOverride)return a.window===step.window||(state.phase===4&&step.id==='fight-resolve'&&a.window==='select')||(a.window==='react'&&step.window==='act');
   const timing=(a.window===step.window&&!(state.phase===0&&step.window==='act'&&a.sourceRuleId?.startsWith('psychic-guidance')))||(state.phase===0&&step.window==='shock'&&a.sourceRuleId?.startsWith('psychic-guidance'))||(state.phase===4&&step.id==='fight-resolve'&&a.window==='select')||(a.id==='flitting'&&step.id==='movement-select')||(a.window==='react'&&step.window==='act');
   const preview=!a.adminManaged&&state.phase===2&&state.turn==='you'&&sequencing[a.id]?.steps.includes(step.id);
-  return (timing||preview)&&matches(a,state.army)&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn);
+  return !!(timing||preview);
+ }
+ function forStep(state,step){return abilities.filter(a=>{
+  return timingMatches(a,state,step)&&matches(a,state.army)&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn);
  }).map(a=>!a.adminManaged&&sequencing[a.id]&&sequencing[a.id].steps.includes(step.id)?{...a,sequencePreview:true,sequence:sequencing[a.id]}:a)
  .sort((a,b)=>(sequencing[a.id]?.priority??100)-(sequencing[b.id]?.priority??100));}
  function getSteps(state){
@@ -204,6 +208,6 @@
  }
  const stepOverrides=new Map();
  const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
- const api={guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingMatches,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);
