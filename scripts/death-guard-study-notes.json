@@ -1,0 +1,1740 @@
+[
+  {
+    "id": "aggravus-spasms-paragons-of-putrescence-death-guard",
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, the selected friendly DEATH GUARD CHARACTER selects one visible enemy within this unit’s Nurgle’s Gift aura range and adds 6 to its detection range this phase. Source gap: detection range and the dynamic aura-range measurement are not defined here; confirm both before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "all-is-rot-tallyband-summoners-death-guard",
+    "state": "needs-summary",
+    "summary": "Select an engaged friendly PLAGUE LEGIONS unit. All Is Rot permits shooting at enemies and on D6 5+ after damage may inflict 1 mortal wound on this unit after the attacker finishes. Source conflict: the shooter, engaged target and sacrifice recipient are not clearly bound; confirm the full shooting-into-combat procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "arch-contaminator-virulent-vectorium-death-guard",
+    "state": "structured",
+    "summary": "This enhancement unit re-rolls Wound rolls while within control range of a friendly-controlled objective. The source supplies no weapon-type restriction.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "assault-ramp-death-guard",
+    "state": "needs-summary",
+    "summary": "After a unit disembarks from this Chaos Land Raider, it may charge despite disembarking if this model made a Normal move this turn. Source review: the move condition uses this-model, the transport filter uses this-unit, and the subject allows any owner; confirm the friendly transport/unit binding and duration.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "avatars-of-decay-tallyband-summoners-death-guard",
+    "state": "needs-summary",
+    "summary": "The selected friendly PLAGUE LEGIONS unit designates enemies within 6″ afflicted this phase. Source gap: no exact activation event or removal/refresh procedure for the afflicted state is supplied; confirm how this aura interacts with Nurgle’s Gift.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "barrage-of-filth-death-guard",
+    "state": "structured",
+    "summary": "After this Defiler shoots in your Shooting phase, select one enemy it hit; that enemy loses the Benefit of Cover this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "beckoning-blight-tallyband-summoners-death-guard",
+    "state": "needs-summary",
+    "summary": "Friendly PLAGUE LEGIONS using Deep Strike may set up at the encoded 6″ enemy distance while wholly within 12″ of the bearer. Source review: setup triggers another setup, without a strict more-than distance boundary; confirm replacement timing, arrival restrictions and which units qualify.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "arrivals"
+  },
+  {
+    "id": "bilemaw-blight-mortarions-hammer-death-guard",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, add 12″ to the bearer model’s plague wind Range this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "blessed-icon-of-disease-death-guard",
+    "state": "structured",
+    "summary": "Once per battle per unit, at phase start, this Icon Bearer may select one Battle-shocked friendly DEATH GUARD unit within 12″; remove its Battle-shocked state.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "blessings-of-filth-champions-of-contagion-death-guard",
+    "state": "needs-summary",
+    "summary": "Before the selected attached friendly DEATH GUARD unit shoots or fights, its Hit rolls score Critical Hits on the encoded value of 5 this phase. Source review: the effect does not specify unmodified rolls or a 5+ threshold; confirm the critical range.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "blight-bombardment-death-guard",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select one visible enemy within 30″ of this Lord of Virulence. Friendly DEATH GUARD models re-roll ranged Hit rolls of 1 against it, or any ranged Hit rolls with Blast weapons, this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "blighted-land-mortarions-hammer-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Blighted Land contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "blinding-spray-death-guard",
+    "state": "structured",
+    "summary": "This Foul Blightspawn unit gains Fights First in the Fight phase. No leading condition is encoded; do not silently substitute a different attached-unit version.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "blistering-fusillade-death-guard",
+    "state": "needs-summary",
+    "summary": "In the Shooting phase, this Blightlord unit improves AP by 1 against AFFLICTED defenders while this-model is leading. Source conflict: the record is attached to a non-Leader datasheet but requires a leading model; confirm the beneficiary and whether an attached character is intended.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "bloodrust-deluge-contagion-engines-death-guard",
+    "state": "structured",
+    "summary": "When the friendly CONTAGION ENGINES unit is selected to shoot, select one visible enemy and designate it afflicted until those attacks finish. The source gives no additional distance limit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "blooming-pestilence-death-lords-chosen-death-guard",
+    "state": "structured",
+    "summary": "At phase start, the selected friendly TERMINATOR unit adds 3″ to its Nurgle’s Gift range this phase. Apply the army rule’s range cap after checking the current contagion rules.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "bountiful-regeneration-maggot-lords-death-guard",
+    "state": "structured",
+    "summary": "In your Command phase, the bearer model heals 1 wound.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "clutching-corruption-tallyband-summoners-death-guard",
+    "state": "structured",
+    "summary": "Before the selected friendly DEATH GUARD unit fights, it re-rolls Hit rolls against defenders engaged with a friendly PLAGUE LEGIONS unit this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "cornucophagus-champions-of-contagion-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Cornucophagus contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "creeping-blight-virulent-vectorium-death-guard",
+    "state": "structured",
+    "summary": "Before the selected friendly DEATH GUARD INFANTRY unit shoots, it re-rolls ranged Hit and Wound rolls against AFFLICTED defenders this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "creeping-rot-death-guard",
+    "state": "structured",
+    "summary": "Friendly MAGGOT LORDS TERMINATOR units gain Scouts 3″.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "curse-of-the-walking-pox-death-guard",
+    "state": "needs-summary",
+    "summary": "Curse of the Walking Pox describes returning one Poxwalker after melee destruction or Typhus’s Eater Plague destroys an enemy model, excluding MONSTER and VEHICLE victims. Source conflict: the provisional effect targets this-model for returning, tests an unbound recipient’s keywords and does not bind the casualty count to this unit; confirm recovery, timing and placement.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "daemon-lord-of-nurgle-death-guard",
+    "state": "structured",
+    "summary": "Friendly PLAGUE LEGIONS units within 6″ of this Great Unclean One gain +1 Toughness. This version uses PLAGUE LEGIONS rather than the Chaos Daemons faction’s Nurgle keywords.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "daemon-weapon-of-nurgle-virulent-vectorium-death-guard",
+    "state": "needs-summary",
+    "summary": "The bearer’s melee Hit rolls score Critical Hits on the encoded value of 5. Source review: the effect lacks unmodified-roll wording and a 5+ threshold; confirm the critical range.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "daemonic-icon-death-guard",
+    "state": "structured",
+    "summary": "Set this icon-equipped Plague Drones or Plaguebearers unit’s Leadership characteristic to 6.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "deadly-vectors-death-guard",
+    "state": "needs-summary",
+    "summary": "In your opponent’s Command phase, roll 2D6 for each afflicted enemy: deal D3 mortal wounds on 7 or less if below Half-strength, otherwise on 6 or less. Source gap: this provisional effect has no activation event or frequency limit; confirm when each test occurs.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "death-approaches-death-guard",
+    "state": "needs-summary",
+    "summary": "When this Deathshroud unit uses Deep Strike in your Movement phase, the source sets it up away from afflicted enemies by 6″ and other enemies by 8″. Source review: this provisional record repeats setup after setup triggers and does not define strict distance boundaries; confirm the arrival procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "death-guard-defenders-death-guard",
+    "state": "structured",
+    "summary": "This foot Daemon Prince model gains Lone Operative while within 3″ of a friendly DEATH GUARD INFANTRY unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "deaths-heads-champions-of-contagion-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Death’s Heads for Champions of Contagion contains only a no-effect marker. Do not substitute the separate Plague Drones ability.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "deaths-heads-death-guard",
+    "state": "structured",
+    "summary": "After this Plague Drones unit shoots in your Shooting phase, select one enemy it hit. Friendly PLAGUE LEGIONS attacks against it re-roll Wound rolls for the rest of the turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "deluge-of-nurgle-death-guard",
+    "state": "structured",
+    "summary": "Enemy units within 6″ of this Rotigus suffer -2″ Move and -1 Objective Control.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "destroyer-hive-death-guard",
+    "state": "structured",
+    "summary": "While this Typhus model leads a unit, incoming melee Hit rolls against that unit suffer -1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "diseased-cover-death-guard",
+    "state": "needs-summary",
+    "summary": "Diseased Cover would protect a defender obscured by this Miasmic Malignifier. Source conflict: it triggers when Damage is allocated, after the normal save/cover decision, and targets event-object instead of the defender; confirm timing and recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "diseased-malice-death-guard",
+    "state": "structured",
+    "summary": "This Helbrute model gains +1 to Wound against AFFLICTED defenders. The source supplies no weapon-type restriction.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "disgustingly-resilient-virulent-vectorium-death-guard",
+    "state": "structured",
+    "summary": "When the selected friendly DEATH GUARD unit is targeted in Shooting or Fight, reduce Damage allocated to it by 1 this phase. Apply the core minimum Damage rule.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "drawn-to-despair-mortarions-hammer-death-guard",
+    "state": "structured",
+    "summary": "Before the selected friendly DEATH GUARD unit shoots, re-roll its Hit rolls against non-AIRCRAFT defenders in the enemy deployment zone this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "droning-horror-flyblown-host-death-guard",
+    "state": "structured",
+    "summary": "When the friendly PLAGUE MARINES unit is selected to shoot, re-roll ranged Hit rolls of 1 this phase; also re-roll ranged Wound rolls of 1 against targets within half weapon range.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "eater-plague-death-guard",
+    "state": "needs-summary",
+    "summary": "In your Shooting phase, Typhus selects one visible enemy within 18″; it must either lack Lone Operative, be attached, or be within 12″. Roll D6: 1 deals D3 mortals to this unit; 2–5 deals D6 to the enemy; 6 deals D3+3 to the enemy. Source gap: no activation event or use limit is supplied; confirm the full targeting exceptions and frequency before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "enemy-spotted-death-guard",
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, Sholgor may select one enemy within 18″ and add 6 to its detection range this phase. Source gap: detection range and its measurement are undefined in the supplied rules.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "enfeebling-miasma-death-guard",
+    "state": "needs-summary",
+    "summary": "When an enemy Falls Back, enemies within this winged Daemon Prince’s 6″ aura that are neither MONSTER nor VEHICLE take Desperate Escape tests, at -1 if the triggering enemy is Battle-shocked. Source conflict: this provisional aura tests all eligible recipients rather than only the falling-back unit; confirm recipient and Battle-shock gates.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "entropic-knell-tallyband-summoners-death-guard",
+    "state": "structured",
+    "summary": "At the start of your opponent’s Battle-shock step, enemies within 6″ of the bearer that are below Starting Strength take Battle-shock tests at -1. Do not extend this to full-strength units.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "shock"
+  },
+  {
+    "id": "explosive-blight-death-guard",
+    "state": "needs-summary",
+    "summary": "When this heavy-blight-launcher Bloat-Drone destroys an enemy with ranged attacks in your Shooting phase, Explosive Blight may spread afflicted on D6 4+ if the destroyed defender was afflicted, otherwise 5+. Source conflict: the provisional effect gives no 6″ range origin and tests an unbound recipient in the second branch; confirm victims, range and duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "extraction-of-fresh-disease-death-guard",
+    "state": "structured",
+    "summary": "The first time this Biologus Putrifier unit destroys an enemy unit with melee attacks this battle, add 6 to this model’s Objective Control for the rest of the battle.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "eye-of-affliction-mortarions-hammer-death-guard",
+    "state": "structured",
+    "summary": "This enhancement unit’s ranged weapons gain Ignores Cover against AFFLICTED defenders.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "eye-of-the-swarm-flyblown-host-death-guard",
+    "state": "structured",
+    "summary": "When the friendly PLAGUE MARINES unit is selected to shoot, its ranged weapons gain Close Quarters this phase. Apply the core keyword’s targeting and shooting rules.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "eyestinger-storm-mortarions-hammer-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Eyestinger Storm contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "face-of-death-death-lords-chosen-death-guard",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, every enemy engaged with this enhancement unit takes a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "fell-harvester-tallyband-summoners-death-guard",
+    "state": "structured",
+    "summary": "Add 2 to the bearer model’s melee Attacks.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fevered-strategist-death-guard",
+    "state": "needs-summary",
+    "summary": "Once per battle round per army, when a friendly Stratagem targets a DEATH GUARD unit within 12″ of this foot Daemon Prince, optionally reduce that triggering use’s cost by 1CP. Source conflict: the modifier targets this-unit rather than the triggering recipient; confirm that binding and core cost rules.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "final-ingredient-champions-of-contagion-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Final Ingredient contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "fire-support-death-guard",
+    "state": "structured",
+    "summary": "After this Chaos Rhino shoots in your Shooting phase, select one enemy it hit. Friendly models that disembarked from this Rhino this turn re-roll Wound rolls against it this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "fleshy-avalanche-tallyband-summoners-death-guard",
+    "state": "needs-summary",
+    "summary": "The selected friendly PLAGUE LEGIONS MONSTER may pass through all terrain, ignoring vertical distance, during Normal, Advance or Charge moves this phase. Source conflict: the effect triggers at move-ended rather than during the move; confirm activation and ending positions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "font-of-filth-mortarions-hammer-death-guard",
+    "state": "structured",
+    "summary": "In your Shooting phase, before the selected friendly DEATH GUARD VEHICLE shoots, its ranged weapons gain Assault this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "fortification-death-guard",
+    "state": "structured",
+    "summary": "In the Shooting phase, incoming Hit rolls against this Miasmic Malignifier unit suffer -1.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "foul-infusion-death-guard",
+    "state": "needs-summary",
+    "summary": "While this Biologus Putrifier leads a unit, its weapons gain Lethal Hits and its Hit rolls score Critical Hits on the encoded value of 5. Source review: the source lacks unmodified-roll wording and a 5+ threshold; confirm the critical range and weapon scope.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fresh-vectors-contagion-engines-death-guard",
+    "state": "structured",
+    "summary": "When the friendly CONTAGION ENGINES unit is selected to attack, re-roll its Wound rolls of 1 this phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "froth-spattered-frenzy-death-guard",
+    "state": "structured",
+    "summary": "If this Helbrute model has a Close combat weapon and exactly two other melee weapons, add 2 Attacks to those other melee weapons. Do not apply the bonus to the excluded Close combat weapon.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "furnace-of-plagues-virulent-vectorium-death-guard",
+    "state": "structured",
+    "summary": "The bearer’s melee weapons gain +1 Attack, +1 Strength and Devastating Wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "gift-of-contagion-death-guard",
+    "state": "structured",
+    "summary": "While this Malignant Plaguecaster leads a unit, its weapons gain Sustained Hits 1 against AFFLICTED defenders. The source supplies no weapon-type restriction.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "gift-of-poxes-death-guard",
+    "state": "needs-summary",
+    "summary": "Add 3″ to this Lord of Poxes model’s Nurgle’s Gift range. Source review: the modifier is provisional; confirm current wording and the army rule’s range cap.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "gnawing-hunger-shamblerot-vectorium-death-guard",
+    "state": "structured",
+    "summary": "The selected friendly POXWALKERS unit gains +1″ Move, +1 melee Attack and +1 melee Strength this turn.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "grim-reapers-death-lords-chosen-death-guard",
+    "state": "structured",
+    "summary": "Before the selected friendly TERMINATOR unit fights, re-roll its Hit rolls against targets that are neither MONSTER nor VEHICLE this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "grip-of-the-walking-pox-shamblerot-vectorium-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Grip of the Walking Pox contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "grotesque-fortitude-champions-of-contagion-death-guard",
+    "state": "structured",
+    "summary": "When the selected attached friendly DEATH GUARD unit is targeted in Shooting or Fight, add 2 Toughness this phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "grotesque-regeneration-death-guard",
+    "state": "structured",
+    "summary": "At the end of each phase, friendly BEASTS OF NURGLE models in this unit heal to full wounds. This Death Guard version heals wounds rather than changing the Wounds characteristic as the separate Chaos Daemons import does.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "hail-of-corrosive-disease-death-guard",
+    "state": "structured",
+    "summary": "After this Predator Destructor shoots in your Shooting phase, choose one non-MONSTER, non-VEHICLE enemy it hit, limited to one selected enemy per phase. Friendly DEATH GUARD ranged attacks against it improve AP by 1 this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "helm-of-the-fly-king-death-lords-chosen-death-guard",
+    "state": "needs-summary",
+    "summary": "While the bearer leads a unit, ranged attacks from attackers outside 18″ cannot target that unit. Source conflict: the targeting effect names this-unit as both the restricted attacker and target instead of binding the enemy shooter; confirm protection and range origin.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "hidden-amongst-the-dead-shamblerot-vectorium-death-guard",
+    "state": "structured",
+    "summary": "At the Reinforcements step, the selected POXWALKERS unit in Strategic Reserves gains Deep Strike this phase; it must not be attached. Apply the core setup restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "horrifying-visage-death-guard",
+    "state": "structured",
+    "summary": "After this winged Daemon Prince unit charges, select one enemy engaged with this model; it takes a Battle-shock test at -1.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "host-of-plagues-death-guard",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, roll D6 for each enemy within 6″ of Mortarion; on 3+, deal D3 mortal wounds, adding 1 to the die for afflicted enemies.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "host-of-the-hybridised-pox-paragons-of-putrescence-death-guard",
+    "state": "needs-summary",
+    "summary": "Once per battle per army in your Command phase, Host of the Hybridised Pox activates a player-selected Nurgle’s Gift option against enemies in this unit’s contagion aura. Source gap: the selected option variable is not bound to a menu choice and battle-long scope does not explain replacement, stacking or expiry after leaving the aura; confirm the full override.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "hovering-death-death-guard",
+    "state": "structured",
+    "summary": "This Foetid Bloat-Drone model may shoot and declare a charge after Falling Back.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "hypervirulent-strains-death-guard",
+    "state": "structured",
+    "summary": "Friendly DEATH GUARD CHARACTER units add 3″ to Nurgle’s Gift range, capped at 12″. Apply the army rule’s emitter and afflicted-state restrictions.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "icon-of-despair-death-guard",
+    "state": "structured",
+    "summary": "Enemy units within 6″ of this Plague Marines or Deathshroud unit worsen Leadership by 1.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "inexorable-executioners-maggot-lords-death-guard",
+    "state": "structured",
+    "summary": "When the friendly MAGGOT LORDS DEATHSHROUD TERMINATORS unit starts a Charge move, it may pass through models other than MONSTER or VEHICLE models this phase. Apply normal ending-position restrictions.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "infected-outbreak-death-guard",
+    "state": "structured",
+    "summary": "At the end of your Command phase, a friendly-controlled objective within this Plaguebearers unit’s control range becomes sticky.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "inflamed-infections-death-guard",
+    "state": "needs-summary",
+    "summary": "At Fight-phase start, this Plague Surgeon selects one enemy engaged with this model; attacks by this model against it score Critical Hits on the encoded value 5, or 4 if that target is below Half-strength. Source review: the effect lacks unmodified-roll wording and explicit 5+/4+ thresholds; confirm the critical ranges.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "infused-with-the-blessings-of-nurgle-death-guard",
+    "state": "needs-summary",
+    "summary": "In your Shooting phase, select one enemy this Plague Marines unit hit and designate it afflicted until the start of your next turn. Source conflict: the source triggers both when selected to shoot and after attacks, but the successful-hit condition can only be checked after attacks; confirm the selection window.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "infused-with-the-blessings-of-nurgle-maggot-lords-plague-marines-death-guard",
+    "state": "structured",
+    "summary": "After this Maggot Lords Plague Marines unit shoots in your Shooting phase, optionally select one enemy hit by its ranged attacks; designate it afflicted until the start of your next turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "insectile-murmuration-upgrade-flyblown-host-death-guard",
+    "state": "needs-summary",
+    "summary": "This upgrade unit re-rolls Wound rolls of 1 against defenders within a friendly unit’s Nurgle’s Gift aura range. Source gap: the friendly range origin has no DEATH GUARD/emitter restriction and Nurgle’s Gift range is dynamic; confirm eligible aura sources.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "instrument-of-chaos-death-guard",
+    "state": "structured",
+    "summary": "Add 1 to this instrument-equipped Plague Drones or Plaguebearers unit’s Charge rolls.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "lancet-of-the-worldsore-upgrade-contagion-engines-death-guard",
+    "state": "structured",
+    "summary": "This upgrade unit gains MOBILE.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "leechspore-eruption-virulent-vectorium-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Leechspore Eruption contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "lethal-ichor-death-guard",
+    "state": "needs-summary",
+    "summary": "After an enemy fights, Lethal Ichor rolls up to six D6, one per melee attack, dealing 1 mortal wound per 4+ to that enemy. Source gap: the source does not bind those attacks to this Chaos Spawn unit or say which hits/wounds qualify; confirm the counterattack gate and dice count.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "lord-of-the-death-guard",
+    "state": "needs-summary",
+    "summary": "Once per turn per Mortarion model, the source provides three reactions: after an enemy Normal/Advance/Fall Back move, select one unengaged friendly DEATH GUARD unit within 6″ of Mortarion and 8″ of that enemy for a 5″ Normal move; when a friendly unit within 6″ is attacked in Fight, its destroyed models may fight on 2+ after the attacker finishes if not yet fought; or after an enemy shoots a friendly unit within 6″ in your opponent’s Shooting phase, that unit shoots back with Ballistic Skill worsened by 1 and must target the attacker. Source conflict: the shooting selector compares this-unit to the enemy instead of binding the chosen enemy, and the fight eligibility checks the casualty rather than its unit; confirm shared-use, recipient and resolution rules.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "lord-of-the-walking-pox-shamblerot-vectorium-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Lord of the Walking Pox contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "malicious-calculations-death-guard",
+    "state": "structured",
+    "summary": "While this Tallyman leads a unit, it ignores modifiers to Weapon Skill, Ballistic Skill and Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "malicious-calculations-septimol-fulg-maggot-lords-tallyman-death-guard",
+    "state": "structured",
+    "summary": "This Septimol Fulg unit ignores modifiers to Weapon Skill, Ballistic Skill and Hit rolls. Unlike the ordinary Tallyman version, the source has no leading condition.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "malignance-magnified-champions-of-contagion-death-guard",
+    "state": "structured",
+    "summary": "Before the selected attached friendly DEATH GUARD unit shoots or fights, re-roll its Hit and Wound rolls against defenders below Starting Strength this phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "manifold-maladies-death-guard",
+    "state": "needs-summary",
+    "summary": "At battle-round start, Manifold Maladies sets this unit’s Nurgle’s Gift options to reselect-plague. Source gap: the provisional record does not define a new menu, who selects it, or whether it replaces the army-wide choice; confirm reselection timing and scope.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "metalophagic-infection-death-guard",
+    "state": "structured",
+    "summary": "After this Predator Annihilator shoots in your Shooting phase, select one MONSTER or VEHICLE enemy it hit and roll D6; on 5+, deal D3 mortal wounds, adding 1 to the die if that enemy is afflicted.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "miasma-of-pestilence-death-guard",
+    "state": "structured",
+    "summary": "Friendly DEATH GUARD units within 6″ of this foot Daemon Prince gain the Benefit of Cover against ranged attacks.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "miasmic-bombardment-death-guard",
+    "state": "needs-summary",
+    "summary": "At battle-round start, enemies outside 12″ of friendly units become afflicted for the round. Source gap: the provisional condition uses an unbound subject and does not define selection or a count limit; confirm which enemies are affected.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "mireslick-tallyband-summoners-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Mireslick contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "mischief-makers-death-guard",
+    "state": "structured",
+    "summary": "When a non-TITANIC enemy engaged with a friendly unit with Mischief-makers is selected to fight, subtract 1 from its melee Hit rolls this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "mobile-vector-champions-of-contagion-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Mobile Vector contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "mortarions-teachings-death-lords-chosen-death-guard",
+    "state": "structured",
+    "summary": "Before the selected friendly TERMINATOR unit shoots, its ranged weapons gain Assault and Heavy this phase. Apply each core keyword’s eligibility and stationary requirement separately.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "nauseating-paroxysms-flyblown-host-death-guard",
+    "state": "structured",
+    "summary": "At Fight-phase start, the selected engaged friendly PLAGUE MARINES unit selects one engaged enemy; that enemy takes a Battle-shock test at -1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "needle-of-nurgle-champions-of-contagion-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Needle of Nurgle contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "noisome-veil-maggot-lords-death-guard",
+    "state": "structured",
+    "summary": "Once per battle per army, when this unit is targeted in your opponent’s Shooting phase, it may gain Stealth this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "numberless-horde-death-guard",
+    "state": "needs-summary",
+    "summary": "In your Command phase, Numberless Horde adds one Poxwalkers unit to Strategic Reserves. Source gap: this provisional effect gives no unit size, points/roster interaction, activation event, frequency or replacement restriction; do not treat it as unlimited free units.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "nurgles-gift-death-guard",
+    "state": "needs-summary",
+    "summary": "For a Death Guard army, friendly DEATH GUARD units emit Nurgle’s Gift, marking enemies in range afflicted. The encoded first three battle-round ranges are 3″, 6″ and 9″, with a 12″ maximum after modifiers. At Declare Battle Formations choose one plague for the battle: give defenders cover against afflicted enemies’ ranged attacks and impose -1 on their melee Hit rolls; worsen afflicted enemies’ Save by 1; or reduce their Move by 1, worsen Leadership by 1 and reduce Objective Control by 1 to a minimum of 1. All afflicted enemies also lose 1 Toughness. Source review: the note’s flat Hit-penalty shorthand differs from the defensive branch, later-round ranges are not explicit, and leaving-range clearance is undefined; confirm dynamic afflicted-state and choice timing. This ordinary version retains its separate unit scope from Maggot Lords.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "nurgles-gift-maggot-lords-death-guard",
+    "state": "needs-summary",
+    "summary": "For the Maggot Lords units in a Death Guard army, Nurgle’s Gift marks enemies in its contagion aura afflicted: encoded round ranges 3″, 6″ and 9″ with a 12″ cap. At Declare Battle Formations choose one plague for the battle: cover against afflicted ranged attackers and -1 to their melee Hit rolls; worsen afflicted Save by 1; or reduce Move by 1, worsen Leadership by 1 and reduce Objective Control by 1, minimum 1. Afflicted enemies also lose 1 Toughness. Source gap: later-round range, leaving-range clearance and dynamic application after the prebattle choice are not explicit; confirm those procedures. Keep this Maggot Lords version and its five-unit scope distinct from the ordinary rule.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "nurgles-rot-death-guard",
+    "state": "needs-summary",
+    "summary": "At the end of your Movement phase, this Great Unclean One may select one enemy within 12″, mark it rotted and reduce its Toughness by 1 until the next Movement phase. Source review: the expiry does not say whose Movement phase; confirm duration.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "obstinate-resistance-death-guard",
+    "state": "structured",
+    "summary": "While this Maggot Lords Deathshroud unit is engaged, add 1 to its Objective Control characteristic.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "overwhelming-generosity-virulent-vectorium-death-guard",
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, the selected friendly DEATH GUARD CHARACTER selects one visible enemy. When friendly DEATH GUARD units select attack targets, the source grants ranged Attacks-roll re-rolls this phase. Source gap: the effect does not require attacks to target that selected enemy and assigns the re-roll to this-unit instead of the triggering shooter; confirm beneficiaries and target binding.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "pact-of-decay-death-guard",
+    "state": "needs-summary",
+    "summary": "Pact of Decay encodes a faction-forbidden rule for plague-legions on this-unit. Source gap: it does not define army-selection conditions, allied points/model limits or exceptions for Maggot Lords and allied daemon units; confirm the full army-construction rule rather than treating every PLAGUE LEGIONS unit as automatically illegal.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "parasitic-woe-reaper-upgrade-contagion-engines-death-guard",
+    "state": "needs-summary",
+    "summary": "After attacks resolve, this upgrade unit heals D3 wounds to one model. Source conflict: the imported one-model heal differs from the pinned per-model effect and has no destruction or success gate; confirm eligible model, trigger and frequency.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "persistent-pests-tallyband-summoners-death-guard",
+    "state": "needs-summary",
+    "summary": "When the selected friendly NURGLINGS unit is destroyed, Persistent Pests may be used despite destruction and adds an identical unit at Starting Strength to Strategic Reserves. Source gap: the destroyed unit is not bound to event-object and no usage cap or exclusions are supplied; confirm the replacement procedure before reuse.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "pestilent-fallout-death-guard",
+    "state": "needs-summary",
+    "summary": "After this Malignant Plaguecaster shoots in your Shooting phase, select one enemy INFANTRY hit by Plague Wind; it is enfeebled and loses 2″ Move until the end of your opponent’s next turn. Source review: this source is provisional; confirm current wording and duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "plaguesurge-virulent-vectorium-death-guard",
+    "state": "needs-summary",
+    "summary": "Select your on-battlefield DEATH GUARD Warlord model in your Command phase. Plaguesurge adds 3″ to friendly models’ Nurgle’s Gift range until your next Command phase. Source gap: the effect targets all friendly models without a DEATH GUARD keyword or distance condition, while the core target is one Warlord; confirm the affected emitters and range cap.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "plagueveil-upgrade-flyblown-host-death-guard",
+    "state": "needs-summary",
+    "summary": "This upgrade unit reduces its detection range by 3. Source gap: detection range and its measurement are undefined in the supplied rules.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "putrefying-stink-death-guard",
+    "state": "needs-summary",
+    "summary": "Enemies within 9″ cannot Advance. Source gap: Putrefying Stink’s range has no origin, recipient selector or timing gate; confirm that the distance is measured from this Foul Blightspawn and when the prohibition is checked.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "before"
+  },
+  {
+    "id": "putrescent-fog-death-guard",
+    "state": "structured",
+    "summary": "Enemy units arriving from Strategic Reserves cannot be set up within 12″ of this Miasmic Malignifier model. Keep the source’s arrival-type restriction.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "arrivals"
+  },
+  {
+    "id": "putrid-detonation-virulent-vectorium-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Putrid Detonation contains only a no-effect marker. Supply checked destruction and resolution rules before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "rabid-infusion-champions-of-contagion-death-guard",
+    "state": "structured",
+    "summary": "At Fight-phase start, the selected friendly DEATH GUARD unit containing at least two CHARACTER models gains Fights First this phase. Retain the core model-count gate.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "rejuvenating-swarm-paragons-of-putrescence-death-guard",
+    "state": "structured",
+    "summary": "Subtract 1 from incoming Wound rolls when the attacker’s Strength exceeds this enhancement unit’s Toughness.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "relentless-grind-mortarions-hammer-death-guard",
+    "state": "needs-summary",
+    "summary": "The selected friendly DEATH GUARD VEHICLE may pass through terrain and ignore vertical distance during Normal, Advance or Charge moves this phase. Source conflict: the effect triggers after the move ends; confirm activation and legal ending positions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "reverberant-rancidity-death-guard",
+    "state": "needs-summary",
+    "summary": "Friendly PLAGUE LEGIONS within 7″ of friendly DEATH GUARD gain Nurgle’s Gift; friendly DEATH GUARD within 7″ of friendly PLAGUE LEGIONS gain +3″ Nurgle’s Gift range. Source review: this provisional bundle relies on unclear dynamic recipient/expiry handling; confirm whether the borrowed aura requires continued proximity and apply the range cap.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "revolting-regeneration-virulent-vectorium-death-guard",
+    "state": "structured",
+    "summary": "The bearer model gains Feel No Pain 5+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "scuttling-walker-death-guard",
+    "state": "needs-summary",
+    "summary": "This Defiler may pass through non-TITANIC models and terrain for Normal, Advance or Fall Back moves, may move despite being engaged, cannot end in Engagement Range and automatically passes Desperate Escape. Source conflict: permissions trigger at move-ended and use an unbound event-subject, while terrain/engagement exceptions have no complete placement procedure; confirm the full movement rule.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sevenfold-chant-death-guard",
+    "state": "needs-summary",
+    "summary": "In your Command phase, if this Tallyman is on the battlefield, roll 2D6; on 7+, gain 1CP. Source gap: no activation event or once-per-phase limit is supplied; confirm frequency and apply core CP-gain limits.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "sevenfold-chant-septimol-fulg-maggot-lords-tallyman-death-guard",
+    "state": "needs-summary",
+    "summary": "In your Command phase, if Septimol Fulg is on the battlefield, roll 2D6; on 7+, gain 1CP. Source gap: no activation event or once-per-phase limit is supplied; confirm frequency and apply core CP-gain limits. This named version is separate from ordinary Tallyman.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "shambling-wall-shamblerot-vectorium-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Shambling Wall contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "shock-and-horror-shamblerot-vectorium-death-guard",
+    "state": "structured",
+    "summary": "After the friendly DEATH GUARD unit charges, each enemy engaged with it takes a Battle-shock test at -1.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "shriekworm-familiar-mortarions-hammer-death-guard",
+    "state": "structured",
+    "summary": "Once per battle round per model, Fire Overwatch costs 0CP when targeting this enhancement unit. Apply core Stratagem eligibility and cost-modification limits.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "shroud-of-disease-death-guard",
+    "state": "needs-summary",
+    "summary": "While this Lord of Poxes leads a unit, enemies outside 18″ cannot target that unit with ranged attacks. Source conflict: the targeting effect assigns this-unit as both restricted attacker and target; confirm the enemy-shooter binding and range origin.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "sickening-horror-maggot-lords-death-guard",
+    "state": "structured",
+    "summary": "At Fight-phase start, the selected friendly MAGGOT LORDS INFANTRY unit selects one engaged enemy; that enemy takes a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "sickening-impact-death-lords-chosen-death-guard",
+    "state": "structured",
+    "summary": "After the friendly TERMINATOR unit charges, select one engaged enemy. Roll one D6 per friendly model in this unit engaged with that enemy; deal 1 mortal wound per 2+, capped at six mortal wounds.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "sickening-vitality-death-guard",
+    "state": "needs-summary",
+    "summary": "While this Noxious Blightbringer leads a unit, it gains +1″ Move and chooses Charge re-rolls or Advance re-rolls. Source gap: the choice has no selection timing or refresh rule; confirm whether it is fixed for a period or changes between activations.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "signal-pox-death-lords-chosen-death-guard",
+    "state": "needs-summary",
+    "summary": "In your Command phase, select one objective within 30″ of the chosen friendly Lord of Virulence. Enemies within its control range become afflicted until the start of your next turn. Source gap: no activation event or dynamic range/recipient procedure is supplied; confirm when selection happens and whether enemies arriving later qualify.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "silent-bodyguard-death-guard",
+    "state": "structured",
+    "summary": "Attached CHARACTER leader models in this Deathshroud unit gain Feel No Pain 4+ while leading. The protection applies to those leaders, not automatically to every Bodyguard model.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "simultaneous-contamination-paragons-of-putrescence-death-guard",
+    "state": "structured",
+    "summary": "When the selected friendly DEATH GUARD CHARACTER unit performs an action, it may shoot despite performing that action this phase. Apply other core action and shooting restrictions.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "smeared-with-filth-shamblerot-vectorium-death-guard",
+    "state": "structured",
+    "summary": "When the selected friendly POXWALKERS unit is destroyed, this Stratagem may target it despite destruction. Select one enemy that targeted it with attacks this phase and designate that enemy afflicted for the rest of the battle. The source gate is being targeted, not specifically delivering the final casualty.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "sorrowsyphon-shamblerot-vectorium-death-guard",
+    "state": "needs-summary",
+    "summary": "While the bearer leads POXWALKERS, its plague wind gains +1 Damage. After attacks with plague wind resolve, destroy D3 BODYGUARD models in this unit. Source conflict: the casualty branch is not gated by leading Poxwalkers and uses a BODYGUARD keyword rather than attachment role; confirm eligibility and which models are removed.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "soulrot-flux-contagion-engines-death-guard",
+    "state": "structured",
+    "summary": "When an enemy engaged with this friendly CONTAGION ENGINES unit is selected to Fall Back, roll D6 for that enemy: 1 deals 1 mortal wound, 2–5 deals D3, and 6 deals 3. Retain both engagement gates.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "spore-laced-shock-waves-death-guard",
+    "state": "needs-summary",
+    "summary": "When this Plagueburst Crawler selects targets for its mortar in your Shooting phase, roll D6 for the enemy defender and each enemy within 3″ of it; add 1 against afflicted recipients. Mark those scoring 6+, then after this model’s attacks resolve each marked unit suffers D3 mortal wounds. Source review: the target-selection trigger has not explicitly bound a defender and marked-unit consumption allows any owner; confirm victim selection and sequencing.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "stinking-mire-mortarions-hammer-death-guard",
+    "state": "needs-summary",
+    "summary": "At the start of your opponent’s Charge phase, the selected unengaged friendly DEATH GUARD VEHICLE selects one visible enemy within 12″. Source conflict: when that enemy declares a charge, the -1 Charge modifier targets this-unit instead of the charging enemy; confirm the recipient.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "supreme-commander-death-guard",
+    "state": "structured",
+    "summary": "If included in your army, Mortarion must be your Warlord.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "tainted-narthecium-death-guard",
+    "state": "needs-summary",
+    "summary": "In your Command phase while this Plague Surgeon leads a unit, return one destroyed Bodyguard model to it. Source gap: no exact activation event or usage limit is supplied; confirm frequency and core return/placement restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "talisman-of-burgeoning-shamblerot-vectorium-death-guard",
+    "state": "structured",
+    "summary": "While the bearer leads a unit, POXWALKERS models in that unit gain +1 Toughness.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "tank-hunters-death-guard",
+    "state": "needs-summary",
+    "summary": "In your Shooting phase, this Myphitic Blight-haulers unit gains +1 Hit and +1 Wound against MONSTER or VEHICLE defenders. Source review: the source is marked partial; confirm omitted conditions.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "tendrilous-emissions-mortarions-hammer-death-guard",
+    "state": "structured",
+    "summary": "While within 3″ of a friendly DEATH GUARD VEHICLE, the bearer has Lone Operative. Friendly DEATH GUARD VEHICLE units within 3″ of the bearer re-roll ranged Wound rolls of 1 against enemies visible to it. Retain the proximity condition for both benefits.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "territorial-infection-paragons-of-putrescence-death-guard",
+    "state": "structured",
+    "summary": "At the start of either player’s Command phase, the selected friendly DEATH GUARD CHARACTER unit gains +1 Objective Control for that turn.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "tocsin-of-misery-death-guard",
+    "state": "needs-summary",
+    "summary": "At the start of your opponent’s Battle-shock step, enemies below Starting Strength within 9″ of this Noxious Blightbringer take Battle-shock tests, at -1 if PSYKER. Source conflict: the effects target all enemies while conditions test an unbound recipient; confirm the intended test recipients.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "shock"
+  },
+  {
+    "id": "tome-of-bounteous-blessings-tallyband-summoners-death-guard",
+    "state": "missing",
+    "summary": "Missing source mechanics: Tome of Bounteous Blessings contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "unclean-icon-death-guard",
+    "state": "structured",
+    "summary": "While this Icon Bearer leads a unit, that unit gains +1 Objective Control.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "undying-spite-death-lords-chosen-death-guard",
+    "state": "needs-summary",
+    "summary": "When the selected friendly TERMINATOR unit is targeted, destroyed models may fight on D6 4+ after the attacker finishes and are then removed after fighting. Source conflict: the not-yet-fought condition tests event-subject instead of the defending unit; confirm eligibility before resolving fight-on-death.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "unholy-resilience-death-guard",
+    "state": "needs-summary",
+    "summary": "The effect returns this Lord of Contagion model at phase end on D6 2+ with 3 wounds, closest to its destruction point and at the encoded 1″ enemy distance. Source conflict: usage is once per battle per model, while the approximate note says the first destruction each battle round and claims timing is absent. Confirm frequency, strict distance/engagement boundary and destroyed-model binding before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "vector-of-disease-death-guard",
+    "state": "structured",
+    "summary": "While this Lord of Contagion leads a unit, its melee weapons gain Sustained Hits 1 and Lance.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "verminous-haze-death-guard",
+    "state": "needs-summary",
+    "summary": "Select up to two friendly PLAGUE MARINES units to gain Infiltrators. Source gap: Verminous Haze has battle duration but no selection trigger; confirm the prebattle window and any further eligibility restrictions.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "vile-vigour-death-lords-chosen-death-guard",
+    "state": "structured",
+    "summary": "While the bearer leads a unit, it gains +1″ Move and re-rolls Advance rolls.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "virulent-aura-death-guard",
+    "state": "structured",
+    "summary": "While this Lord of Virulence leads a unit, it re-rolls ranged Wound rolls.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "virulent-blessing-death-guard",
+    "state": "structured",
+    "summary": "At Fight-phase start, Rotigus may select one visible enemy within 24″. Friendly PLAGUE LEGIONS attacks against it gain +1 Damage this phase. No ranged or melee weapon restriction is supplied beyond the Fight-phase timing.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "visions-of-virulence-champions-of-contagion-death-guard",
+    "state": "needs-summary",
+    "summary": "Enemies enfeebled by this model become afflicted. Source gap: Visions of Virulence has no activation event or expiry and tests an unbound recipient; confirm how it links the two designations and which enemies qualify.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "vomitous-salvoes-maggot-lords-death-guard",
+    "state": "structured",
+    "summary": "When the friendly MAGGOT LORDS PLAGUE MARINES unit is selected to shoot, its ranged Lethal Hits weapons gain Rapid Fire 1 this phase. The source grants the keyword without an explicit increment-existing branch; do not automatically add another Rapid Fire level.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "warped-and-rusted-animus-death-guard",
+    "state": "structured",
+    "summary": "Friendly Foetid Bloat-Drone, heavy-blight-launcher Bloat-Drone, Helbrute and Myphitic Blight-hauler units gain CONTAGION ENGINES, and friendly CONTAGION ENGINES ranged weapons gain Assault. The detachment uses an exclusive ENGINES tag; retain the listed unit eligibility.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "warprot-talisman-death-lords-chosen-death-guard",
+    "state": "structured",
+    "summary": "Once per battle per model, at the end of your opponent’s turn, this unit may enter Strategic Reserves if unengaged. Retain the bearer’s usage cap.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "witherbone-pipes-shamblerot-vectorium-death-guard",
+    "state": "structured",
+    "summary": "While the bearer leads POXWALKERS, that unit gains +1 Objective Control and adds 1 to Battle-shock and Leadership rolls. This improves those rolls; it does not change the Leadership characteristic.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "worldblight-death-guard",
+    "state": "needs-summary",
+    "summary": "At the end of your Command phase, friendly DEATH GUARD units make their controlled objectives sticky and designate them secured. Enemies within control range of those secured, friendly-controlled objectives become afflicted until control is lost. Source review: this provisional effect lacks explicit objective selection/range binding for the sticky step and clear removal when enemies leave; confirm secured-marker and afflicted-state procedures.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  }
+]
