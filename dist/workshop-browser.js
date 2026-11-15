@@ -11,6 +11,7 @@
   {id:'detachment',name:'Detachments',kind:'detachment'},
   {id:'army',name:'Army & detachment rules',kind:'rule',category:'army'},
   {id:'ability',name:'Abilities',kind:'rule',category:'ability'},
+  {id:'core-stratagem',name:'Core Stratagems',kind:'rule',category:'core-stratagem'},
   {id:'stratagem',name:'Stratagems',kind:'rule',category:'stratagem'},
   {id:'enhancement',name:'Enhancements',kind:'rule',category:'enhancement'},
   {id:'rule',name:'All rules & abilities',kind:'rule'},

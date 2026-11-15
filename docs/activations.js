@@ -78,8 +78,8 @@
   });
  }
  function targeting(a,state){
-  if(!['army','stratagem'].includes(a.category))return null;
-  if(a.expanded||a.targetText)return {label:a.category==='stratagem'?'Target':'Applies to',text:a.targetText||'Check this rule’s target restrictions.'};
+  if(!['army','stratagem','core-stratagem'].includes(a.category))return null;
+  if(a.expanded||a.targetText)return {label:['stratagem','core-stratagem'].includes(a.category)?'Target':'Applies to',text:a.targetText||'Check this rule’s target restrictions.'};
   const descriptions={
    'battle-focus':'Your army’s Battle Focus pool; no individual unit is targeted.',
    'battle-focus-end':'Your army’s unspent Battle Focus tokens; no individual unit is targeted.',
@@ -98,7 +98,7 @@
    'doom-inescapable-stratagem':'One friendly Avatar of Khaine model not yet selected to shoot this phase.',
    'aspect-stratagems':'Warrior Focus: an eligible Aspect Warriors or Avatar unit. Preternatural Precision: an eligible Aspect Warriors unit. Doom Inescapable: an eligible Avatar model. Check their individual timing restrictions.'
   };
-  return {label:a.category==='stratagem'?'Target':'Applies to',text:descriptions[a.id]||'Check this rule’s conditions for eligible targets.'};
+  return {label:['stratagem','core-stratagem'].includes(a.category)?'Target':'Applies to',text:descriptions[a.id]||'Check this rule’s conditions for eligible targets.'};
  }
  function rangeBonus(unit){
   if(!leading(unit,'Fuegan','Fire Dragons'))return null;
@@ -189,7 +189,7 @@
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
     const key=ruleKey(a);if(seen.has(key))continue;seen.add(key);
     const item={...a,guideMeta:L.ruleGuideMeta(a,state),timing:a.timings?L.ruleTimingLabel(a):a.expanded?(a.triggerText||row.title):row.title};
-    if(a.category==='army'||a.category==='stratagem'){
+    if(['army','stratagem','core-stratagem'].includes(a.category)){
      if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[],battlefieldUnits:[]});
      const shared=sharedMap.get(key);shared.battlefieldUnits.push(unit);
      for(const member of unit.members){const record=typeFor(member);if(!shared.appliesTo.some(u=>norm(u.body.name)===norm(member.name)))shared.appliesTo.push(record.unit);record.sharedIds.add(key);}

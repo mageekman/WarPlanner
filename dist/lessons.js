@@ -24,7 +24,7 @@
  }
  function unitInfo(name,faction='Aeldari'){const key=normalized(name);return catalog.units.find(u=>normalized(u.name)===key&&factionMatches(u.faction,faction));}
  function unitHasRule(unit,id,faction='Aeldari'){return !!unitInfo(unit.name,faction)?.abilities.some(a=>a.id===id);}
- const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule',stratagem:'Stratagem',enhancement:'Enhancement'};
+ const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule','core-stratagem':'Core Stratagems',stratagem:'Stratagem',enhancement:'Enhancement'};
  function core(id,title,body,why,question,answer,section,window){return {id,title,body,why,question,answer,section,window,sourceIds:['core'],status:'official-checked',kind:'Core sequence',category:'core'};}
  const phases=[
   {name:'Command',intro:'Resolve the opening in order, then make your command decisions.',steps:[
