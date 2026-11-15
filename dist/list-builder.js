@@ -34,7 +34,8 @@
  const enhancement=unit=>unit.details.find(d=>/^Enhancement\s*:/i.test(d))?.replace(/^Enhancement\s*:\s*/i,'')||'';
  function enhancements(army,unit){
   const source=info(unit.name,army.faction),keys=(source?.keywords||[]).map(norm),dets=data.detachments.filter(d=>same(d.faction,army.faction)&&selectedDetachments(army).some(name=>norm(name)===norm(d.name)));
-  return data.enhancements.filter(e=>same(e.faction,army.faction)&&dets.some(d=>e.detachmentId===d.id)&&(e.upgrade||keys.includes('character')&&!keys.includes('epichero'))&&e.keywords.every(k=>keys.includes(norm(k)))&&(!e.restrictions.length||e.restrictions.some(r=>(!r.unit_id||r.unit_id===source?.id)&&(!r.keywords||r.keywords.every(k=>keys.includes(norm(k))))))).sort((a,b)=>a.name.localeCompare(b.name));
+  const eligible=data.enhancements.filter(e=>same(e.faction,army.faction)&&dets.some(d=>e.detachmentId===d.id)&&(e.upgrade||keys.includes('character')&&!keys.includes('epichero'))&&e.keywords.every(k=>keys.includes(norm(k)))&&(!e.restrictions.length||e.restrictions.some(r=>(!r.unit_id||r.unit_id===source?.id)&&(!r.keywords||r.keywords.every(k=>keys.includes(norm(k))))))).sort((a,b)=>a.name.localeCompare(b.name));
+  return [...new Map(eligible.map(e=>[e.id,e])).values()];
  }
  function setEnhancement(army,id,choice){
   const unit=army.units.find(u=>u.id===id);if(!unit)throw Error('Unit not found.');

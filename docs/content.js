@@ -50,6 +50,15 @@
   if(d.sourceUrl&&!/^https?:\/\//i.test(d.sourceUrl))throw Error('Source links must start with https:// or http://.');
   if(JSON.stringify(d).length>100000)throw Error('This entry is too large.');
   if(row.kind==='rule'){
+   if(d.sharedRuleId!==undefined&&(typeof d.sharedRuleId!=='string'||!/^[a-zA-Z0-9_-]{1,180}$/.test(d.sharedRuleId)||d.sharedRuleId===d.id))throw Error('Choose a different shared rule ID.');
+   if(d.sharedRuleIds!==undefined){stringList(d.sharedRuleIds,'Linked rule IDs');if(d.sharedRuleIds.some(id=>!/^[a-zA-Z0-9_-]{1,180}$/.test(id)))throw Error('Invalid linked rule ID.');}
+   if(d.memberships!==undefined){
+    if(!Array.isArray(d.memberships)||!d.memberships.length||d.memberships.length>100)throw Error('Add between 1 and 100 faction memberships.');
+    const seen=new Set();for(const m of d.memberships){if(!m||typeof m.faction!=='string'||!m.faction.trim()||m.faction.length>100||seen.has(norm(m.faction)))throw Error('Choose each membership faction once.');seen.add(norm(m.faction));stringList(m.detachments,'Membership detachments');if(m.detachments.some(d=>!d.trim()||d.length>180)||new Set(m.detachments.map(norm)).size!==m.detachments.length)throw Error('Choose each detachment once.');}
+    if(d.memberships.length>1&&d.memberships.some(m=>m.faction==='*'))throw Error('Use All factions by itself, or choose individual faction memberships.');
+    if(d.faction!==row.faction||!d.memberships.some(m=>m.faction===row.faction))throw Error('The primary faction must be one of the rule memberships.');
+    if(d.detachment)throw Error('Use the membership detachments for a shared rule.');
+   }
    for(const key of ['sourceRuleId','detachment','enhancement','leadingBodyguard'])if(d[key]!=null&&(typeof d[key]!=='string'||d[key].length>180))throw Error(key+' must be a short text value.');
    if(d.bearerKeywords!==undefined)stringList(d.bearerKeywords,'Bearer keywords');
    if(d.bearerRestrictions!==undefined&&(!Array.isArray(d.bearerRestrictions)||d.bearerRestrictions.some(r=>!r||typeof r!=='object'||Array.isArray(r)||r.keywords!==undefined&&(!Array.isArray(r.keywords)||r.keywords.some(k=>typeof k!=='string')))))throw Error('Review the enhancement bearer restrictions.');
@@ -77,17 +86,24 @@
  function apply(rows){
   const entries=new Map(defaults.map(r=>[r.key,copy(r)]));
   for(const row of rows){validate(row);entries.set(row.key,copy(row));}
-  const enabled=[...entries.values()].filter(r=>r.enabled),select=kind=>enabled.filter(r=>r.kind===kind).map(r=>({...((kind==='rule')?M.enrich(r.data):r.data),faction:r.faction}));
+  const enabled=[...entries.values()].filter(r=>r.enabled&&!r.data.sharedRuleId),select=kind=>enabled.filter(r=>r.kind===kind).flatMap(r=>{
+   const data=kind==='rule'?M.enrich(r.data):r.data;
+   return kind==='rule'&&data.memberships?data.memberships.map(m=>({...data,faction:m.faction,membershipFaction:m.faction})): [{...data,faction:r.faction}];
+  });
   L.catalog.factions.splice(0,L.catalog.factions.length,...select('faction'));
   L.catalog.units.splice(0,L.catalog.units.length,...select('unit'));
   L.catalog.detachments.splice(0,L.catalog.detachments.length,...select('detachment'));
   L.abilities.splice(0,L.abilities.length,...select('rule'));
+  const sharedIds=new Map();for(const r of enabled.filter(r=>r.kind==='rule'))for(const id of r.data.sharedRuleIds||[])sharedIds.set(id,r.data.id);
+  for(const u of L.catalog.units)u.abilities=u.abilities.map(a=>sharedIds.has(a.id)?{...a,id:sharedIds.get(a.id)}:a);
+  for(const d of L.catalog.detachments)for(const field of ['rules','stratagems','enhancements'])d[field]=[...new Set(d[field].map(id=>sharedIds.get(id)||id))];
   // Rebuild references from the same rule objects that the guide reads.
   L.catalog.rules.splice(0,L.catalog.rules.length,...L.abilities.map(a=>({...a,id:a.sourceRuleId||a.id})));
   L.stepOverrides.clear();for(const r of enabled.filter(r=>r.kind==='step'))L.stepOverrides.set(r.data.id,copy(r.data));
-  L.catalog.enhancements.splice(0,L.catalog.enhancements.length,...L.abilities.filter(a=>a.category==='enhancement').map(a=>{
-   const id=a.sourceRuleId||a.id,old=defaultEnhancements.find(e=>e.id===id),det=L.catalog.detachments.find(d=>L.factionMatches(d.faction,a.faction)&&norm(d.name)===norm(a.detachment));
-   return {...(old||{keywords:[],restrictions:[],upgrade:false}),id,name:a.enhancement||a.name,detachmentId:det?.id||'',faction:a.faction,keywords:a.bearerKeywords||old?.keywords||[],restrictions:a.bearerRestrictions||old?.restrictions||[],upgrade:a.enhancementUpgrade??old?.upgrade??false};
+  L.catalog.enhancements.splice(0,L.catalog.enhancements.length,...L.abilities.filter(a=>a.category==='enhancement').flatMap(a=>{
+   const id=a.sourceRuleId||a.id,old=defaultEnhancements.find(e=>e.id===id),names=a.memberships?L.ruleDetachments(a,a.faction):[a.detachment];
+   const dets=L.catalog.detachments.filter(d=>L.factionMatches(d.faction,a.faction)&&(a.memberships&&!names.length||names.some(name=>norm(d.name)===norm(name))));
+   return (dets.length?dets:[null]).map(det=>({... (old||{keywords:[],restrictions:[],upgrade:false}),id,name:a.enhancement||a.name,detachmentId:det?.id||'',faction:a.faction,keywords:a.bearerKeywords||old?.keywords||[],restrictions:a.bearerRestrictions||old?.restrictions||[],upgrade:a.enhancementUpgrade??old?.upgrade??false}));
   }));
   // Build faction/unit links once, preserving rule order and existing references.
   const factions=new Map(),links=new Map(),representatives=[];
@@ -106,7 +122,7 @@
  }
  function filterRecords(records,{kind='rule',query='',reference='all'}={}){
   const text=query.trim().toLowerCase();
-  return records.filter(row=>(!kind||row.kind===kind)&&(kind!=='rule'||reference==='all'||(reference==='reference')===(row.data.referenceOnly===true))&&(!text||[row.name,row.faction,row.data.detachment,row.data.summary,row.data.importSource?.text].filter(Boolean).join(' ').toLowerCase().includes(text))).sort((a,b)=>a.name.localeCompare(b.name));
+  return records.filter(row=>(!kind||row.kind===kind)&&(kind!=='rule'||reference==='all'||(reference==='reference')===(row.data.referenceOnly===true))&&(!text||[row.name,row.faction,row.data.detachment,...(row.data.memberships||[]).flatMap(m=>[m.faction,...m.detachments]),row.data.summary,row.data.importSource?.text].filter(Boolean).join(' ').toLowerCase().includes(text))).sort((a,b)=>a.name.localeCompare(b.name));
  }
  function create(client,userId){
   let records=[],isAdmin=false,disposed=false,version=0;

@@ -28,8 +28,12 @@
  function captureProfiles(form,fd,name){const originals=P.read(draft.data);return [...form.querySelectorAll('[data-unit-profile]')].map(el=>{const index=Number(el.dataset.unitProfile),profile={...(originals[index]||{}),name:String(fd.get('profile-'+index+'-name')||'').trim()||name};for(const f of P.fields)profile[f.key]=P.parse(fd.get('profile-'+index+'-'+f.key),f.key);return profile;});}
  function folderDefinition(){return W.definitions.find(d=>d.id===folder);}
  function scopeName(){return factionScope===W.ALL?'All content':factionScope===W.SHARED?'Shared / core':factionScope||'Choose a faction';}
+ function membershipFields(d){
+  const factions=['*',...L.catalog.factions.map(f=>f.name)];
+  return `<section class="admin-memberships"><h3>Faction & detachment memberships</h3><p>One rule, edited here, is used in every membership below. An empty detachment selection applies faction-wide.</p>${d.memberships.map((m,i)=>{const dets=[...new Set([...L.catalog.detachments.filter(x=>m.faction==='*'||L.factionMatches(x.faction,m.faction)).map(x=>x.name),...m.detachments])].sort();return `<fieldset data-membership="${i}"><legend>Membership ${i+1}</legend>${select('membership-'+i+'-faction','Faction',factions,m.faction)}<label class="admin-field">Detachments<select name="membership-${i}-detachments" multiple size="5">${dets.map(name=>`<option value="${e(name)}" ${m.detachments.includes(name)?'selected':''}>${e(name)}</option>`).join('')}</select><small>Select every detachment that uses this exact rule. Ctrl/Cmd-click to toggle choices.</small></label><button type="button" class="text-button" data-admin-remove-membership="${i}" ${d.memberships.length===1?'disabled':''}>Remove membership</button></fieldset>`;}).join('')}<button type="button" class="outline" data-admin-action="add-membership">Add faction membership</button></section>`;
+ }
  function listed(){return C.filterRecords(W.entries(records(),factionScope,folder),{kind:folderDefinition()?.kind||'',query,reference:referenceFilter}).filter(r=>r.kind!=='rule'||summaryFilter==='all'||root.WarPlannerMechanics.summaryState(r.data)===summaryFilter);}
- function rowButton(r){return `<button type="button" class="admin-result ${draft?.key===r.key?'selected':''}" data-admin-edit="${e(r.key)}" ${draft?.key===r.key?'aria-current="true"':''}><span class="admin-entry-icon" aria-hidden="true">${['unit','detachment','faction'].includes(r.kind)?'◇':'≡'}</span><span><strong>${e(r.name)}</strong><small>${e(r.faction==='*'?'Shared / core':r.faction||labels[r.kind])}${r.data.detachment?' · '+e(r.data.detachment):''}${r.kind==='rule'&&r.data.referenceOnly?' · Reference only':''}${r.kind==='rule'&&root.WarPlannerMechanics.summaryState(r.data)==='needs-summary'?' · Needs summary':''}${r.kind==='rule'&&root.WarPlannerMechanics.summaryState(r.data)==='missing'?' · Missing source mechanics':''}${!r.enabled?' · Disabled':''}</small></span><span class="admin-chevron" aria-hidden="true">›</span></button>`;}
+ function rowButton(r){return `<button type="button" class="admin-result ${draft?.key===r.key?'selected':''}" data-admin-edit="${e(r.key)}" ${draft?.key===r.key?'aria-current="true"':''}><span class="admin-entry-icon" aria-hidden="true">${['unit','detachment','faction'].includes(r.kind)?'◇':'≡'}</span><span><strong>${e(r.name)}</strong><small>${e(r.faction==='*'?'Shared / core':r.faction||labels[r.kind])}${r.data.memberships?' · Shared across '+r.data.memberships.length+' faction'+(r.data.memberships.length===1?'':'s'):r.data.detachment?' · '+e(r.data.detachment):''}${r.kind==='rule'&&r.data.referenceOnly?' · Reference only':''}${r.kind==='rule'&&root.WarPlannerMechanics.summaryState(r.data)==='needs-summary'?' · Needs summary':''}${r.kind==='rule'&&root.WarPlannerMechanics.summaryState(r.data)==='missing'?' · Missing source mechanics':''}${!r.enabled?' · Disabled':''}</small></span><span class="admin-chevron" aria-hidden="true">›</span></button>`;}
  function results(){const rows=listed();return `<p class="admin-count">${rows.length} entries</p>${rows.map(rowButton).join('')||`<p class="admin-folder-empty">${folder?'No matching entries in this folder.':'Choose a content group to see its entries.'}</p>`}`;}
  function folderButton(id,name,selected,attribute,count){return `<button type="button" class="admin-folder ${selected?'selected':''}" ${attribute}="${e(id)}" ${selected?'aria-current="true"':''}><span class="admin-folder-icon" aria-hidden="true"></span><span>${e(name)}</span>${count!==undefined?`<small>${count}</small>`:''}<span class="admin-chevron" aria-hidden="true">›</span></button>`;}
  function factionFolders(){let group='';return folderButton(W.ALL,'All content',factionScope===W.ALL,'data-admin-scope')+folderButton(W.SHARED,'Shared / core',factionScope===W.SHARED,'data-admin-scope')+W.factions(records()).map(f=>{const heading=f.group!==group?`<h3 class="admin-folder-group">${e(f.group)}</h3>`:'';group=f.group;return heading+folderButton(f.id,f.name,factionScope===f.id,'data-admin-scope');}).join('');}
@@ -40,12 +44,13 @@
   if(!draft)return `<section class="admin-empty"><span class="eyebrow">YOUR RULES LIBRARY</span><h2>Choose something to edit.</h2><p>Open a faction, choose a folder, then select an entry. Its settings and related rules appear here.</p></section>`;
   const d=draft.kind==='rule'?root.WarPlannerMechanics.enrich(draft.data):draft.data,factions=L.catalog.factions.map(f=>f.name),dets=L.catalog.detachments.filter(x=>L.factionMatches(x.faction,draft.faction)).map(x=>x.name);
   let fields=field('name',draft.kind==='step'?'Page title':'Name',draft.name)+field('contentId','Stable ID',d.id,{readonly:!!draft.revision,help:draft.revision?'This ID keeps links and revisions intact.':'Optional: generated from the name and faction when saved.'});
-  if(!['faction','step'].includes(draft.kind))fields+=select('faction','Faction',draft.kind==='rule'?['*',...factions]:factions,draft.faction,'Choose a faction');
+  if(!['faction','step'].includes(draft.kind)&&!d.memberships)fields+=select('faction','Faction',draft.kind==='rule'?['*',...factions]:factions,draft.faction,'Choose a faction');
   if(draft.kind!=='step')fields+=guideFields({...d,faction:draft.faction},draft.kind);
   if(draft.kind==='unit')fields+=select('fightsFirst','Fights First',['auto','yes','no'],d.fightsFirst||'auto')+'<p class="admin-guide-note">Attached units still require every model to qualify. Use custom badges above for other reminders.</p>';
   if(draft.kind==='rule'){
    if(d.mechanicsPresentation)fields+='<p class="admin-guide-note">This study summary is based on imported source data. Reference-only status stays in place until you review the rule.</p>';
-   fields+=select('category','Type',Object.keys(L.categories),d.category)+select('detachment','Detachment',dets,d.detachment||'','None / faction-wide');
+   fields+=select('category','Type',Object.keys(L.categories),d.category)+(d.memberships?membershipFields(d):select('detachment','Detachment',dets,d.detachment||'','None / faction-wide')+'<button type="button" class="outline" data-admin-action="share-rule">Use in multiple factions / detachments</button>');
+   if(d.sharedRuleIds?.length)fields+=`<details><summary>Linked original imports (${d.sharedRuleIds.length})</summary><p>Original source records and revision history are retained. Edit the shared rule above to update every membership.</p>${records().filter(r=>d.sharedRuleIds.includes(r.data.id)).map(r=>`<details><summary>${e(r.faction)} · ${e(r.data.detachment||r.name)}</summary><pre>${e(JSON.stringify(r.data.importSource||r.data,null,2))}</pre></details>`).join('')}</details>`;
    fields+=`<fieldset class="admin-phases"><legend>Phases</legend>${L.phases.map((p,i)=>`<label><input type="checkbox" name="phase" value="${i}" ${d.phase.includes(i)?'checked':''}>${p.name}</label>`).join('')}<small>Leave empty for reference-only or pre-battle content.</small></fieldset>`;
    fields+=select('turn','Player turn',['you','opponent','either'],d.turn)+select('window','Timing window',C.windows,d.window);
    fields+=field('summary','Rule text / study summary',d.summary,{area:true,help:'Write a short reminder: when it happens, who it affects, and what changes. Keep important limits and conditions. Save to database preserves your wording; source-only imports keep it. A source-derived summary still needs checking against your current rules.'})+field('conditions','Conditions & restrictions',(d.conditions||[]).join('\n'),{area:true,help:'One condition per line.'});
@@ -84,11 +89,12 @@
  function canLeave(){if(root.WarPlannerImportUI?.active)return root.WarPlannerImportUI.canLeave();return !busy&&(!dirty||root.confirm('Discard your unsaved rule edits?'));}
  function capture(form,check=true){
   const fd=new FormData(form),get=n=>String(fd.get(n)||'').trim(),row=structuredClone(draft),d=row.data;
-  row.name=get('name');row.faction=['faction','step'].includes(row.kind)?row.faction:get('faction');
+  row.name=get('name');row.faction=['faction','step'].includes(row.kind)||d.memberships?row.faction:get('faction');
   d.id=get('contentId')||slug(row.name+'-'+(row.faction==='*'?'core':row.faction));row.key=row.kind+':'+d.id;
   if(row.kind==='step')d.title=row.name;else d.name=row.name;
   if(row.kind==='rule'){
    for(const key of ['category','detachment','turn','window','summary','targetText','triggerText','leadingBodyguard','enhancement','question','answer'])d[key]=get(key);
+   if(d.memberships){d.memberships=d.memberships.map((m,i)=>({faction:get('membership-'+i+'-faction'),detachments:fd.getAll('membership-'+i+'-detachments').map(String)}));if(!d.memberships.some(m=>m.faction===row.faction))row.faction=d.memberships[0]?.faction||'';d.detachment='';}
    for(const key of ['conditions','units','bearerKeywords'])d[key]=lines(get(key));
    d.phase=fd.getAll('phase').map(Number);d.referenceOnly=fd.has('referenceOnly');d.leadingUnitRequired=fd.has('leadingUnitRequired');
    if(d.summary!==draft.data.summary)delete d.mechanicsPresentation;
@@ -122,6 +128,7 @@
  });
  document.addEventListener('change',event=>{
   if(!service?.isAdmin)return;
+  const membership=event.target.name?.match(/^membership-(\d+)-faction$/);if(membership&&draft?.data.memberships){draft=capture(event.target.form,false);draft.data.memberships[Number(membership[1])].detachments=[];dirty=true;refresh();return;}
   if(event.target.id==='admin-summary-filter'){summaryFilter=event.target.value;document.querySelector('#admin-results').innerHTML=results();}
   if(event.target.id==='admin-reference-filter'){referenceFilter=event.target.value;document.querySelector('#admin-results').innerHTML=results();}
   if(event.target.closest('#admin-content-form')){markDirty();if(event.target.name==='faction'){
@@ -130,6 +137,14 @@
  });
  document.addEventListener('click',async event=>{
   const button=event.target.closest('button');if(!button||!service?.isAdmin||busy)return;
+  if(draft?.kind==='rule'&&(['share-rule','add-membership'].includes(button.dataset.adminAction)||button.dataset.adminRemoveMembership!==undefined)){
+   try{const next=capture(document.querySelector('#admin-content-form'),false),d=next.data;
+    if(button.dataset.adminAction==='share-rule'){d.memberships=[{faction:next.faction,detachments:d.detachment?[d.detachment]:[]}];d.detachment='';}
+    else if(button.dataset.adminAction==='add-membership'){const faction=L.catalog.factions.find(f=>!d.memberships.some(m=>m.faction===f.name));if(!faction)throw Error('Every faction already has a membership.');d.memberships.push({faction:faction.name,detachments:[]});}
+    else if(d.memberships.length>1)d.memberships.splice(Number(button.dataset.adminRemoveMembership),1);
+    if(!d.memberships.some(m=>m.faction===next.faction))next.faction=d.memberships[0].faction;d.faction=next.faction;draft=next;dirty=true;failure='';refresh();
+   }catch(error){failure=error.message;refresh();}return;
+  }
   if((button.dataset.adminAction==='add-profile'||button.dataset.adminRemoveProfile!==undefined)&&draft?.kind==='unit'){
    try{const next=capture(document.querySelector('#admin-content-form'),false);if(button.dataset.adminAction==='add-profile'){if(next.data.profiles.length>=20)return;next.data.profiles.push({name:next.name});}else next.data.profiles.splice(Number(button.dataset.adminRemoveProfile),1);draft=next;dirty=true;failure='';refresh();}
    catch(error){failure=error.message;const notice=document.querySelector('.admin-notice');if(notice){notice.classList.add('admin-error');notice.textContent=failure;}}
