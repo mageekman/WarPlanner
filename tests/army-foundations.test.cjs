@@ -65,6 +65,8 @@ test('actual Guide places corrected cards at start, turn boundaries and arrivals
  assert.ok(cards(state(g,4,'opponent'),{id:'fight-end',window:'end'}).some(c=>c.id===gate));
  assert.ok(cards(state(g,1),{id:'movement-arrivals',window:'arrivals'}).some(c=>c.id===gate));
  assert.ok(!cards(state(g,4),{id:'fight-end',window:'end'}).some(c=>c.id===gate));
+ const knights=army('Imperial Knights',['Knight Paladin']);
+ for(const phase of [1,2,4])assert.ok(cards(state(knights,phase),{id:'phase-act',window:'act'}).some(c=>c.id==='code-chivalric-imperial-knights'));
  const acts=get('acts-of-faith-adepta-sororitas'),s=army('Adepta Sororitas',['Battle Sisters Squad']);
  for(const turn of ['you','opponent'])assert.ok(cards(state(s,0,turn),{id:'turn-start',window:'turn-start'}).some(c=>c.id===acts.id));
 });

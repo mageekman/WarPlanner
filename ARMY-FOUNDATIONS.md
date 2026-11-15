@@ -49,7 +49,9 @@ document supersedes their warnings for these ten specific entries only.
 The live administrator import updated all ten entries atomically. Readback
 matched every expected data payload and incremented each revision once. A
 catalog digest confirmed all 9,303 other records unchanged. The saved Power
-From Pain edit advances from revision 3 to 4; the other nine advance from 2 to 3.
+From Pain edit advances from revision 3 to 4; eight others advance from 2 to 3. Code Chivalric advances from 2 to 4 after
+a follow-up timing refinement retains its Quality reminder during every phase
+as well as the prebattle and Deed-check windows.
 
 All 554 automated tests, syntax checks, build and bundle checks passed.
 Headless Chromium checks at 1440px and 390px verified each corrected timeline
