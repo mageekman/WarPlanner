@@ -1,0 +1,2416 @@
+[
+  {
+    "id": "accelerator-mandible-necrons",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, select one friendly CANOPTEK unit within 3″ of these Macrocytes. Improve its Weapon Skill by 1 for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "adaptive-strategy-necrons",
+    "state": "structured",
+    "summary": "This Royal Warden’s unit can shoot and declare a charge after Falling Back.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "advanced-quantum-shielding-necrons",
+    "state": "structured",
+    "summary": "Subtract 1 from incoming Wound rolls if the attack’s Strength exceeds this unit’s Toughness.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "aggression-protocols-amonhotekhs-guard-necrons",
+    "state": "needs-summary",
+    "summary": "When an eligible AMONHOTEKH’S GUARD unit other than a MONSTER or VEHICLE is selected to Fall Back, it gains shooting and charging permission despite Falling Back. The source expires both permissions that Movement phase; confirm how long they should last.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "ancient-collector-necrons",
+    "state": "structured",
+    "summary": "At the end of your Command phase, while Trazyn leads a unit within control range of a friendly-controlled objective, make that objective sticky. Apply the current retained-control expiry rules.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "ancient-cover-necrons",
+    "state": "structured",
+    "summary": "A model receiving a ranged attack gains the Benefit of Cover if it is not fully visible to the attacker because this Convergence of Dominion blocks the view.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "animus-curse-cryptek-conclave-necrons",
+    "state": "needs-summary",
+    "summary": "After an enemy finishes attacking, this Cryptek can be targeted despite being destroyed, and friendly NECRONS models re-roll Hits against that enemy for the battle. The core casualty gate refers to a model belonging to this model rather than clearly the Cryptek itself; confirm the destruction binding.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "animus-damper-pantheon-of-woe-necrons",
+    "state": "structured",
+    "summary": "Once per turn per model, at the start of your opponent’s Shooting phase, select one visible enemy VEHICLE. It takes a Leadership test and suffers -1 to Hit for the phase; if it fails the test, it also suffers -1 to Wound.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "annihilation-protocol-necrons",
+    "state": "structured",
+    "summary": "Friendly DESTROYER CULT or FLAYED ONES units re-roll Charges and add 1 when a charge target is below Half-strength. DESTROYER CULT ranged attacks improve AP by 1 only against the closest eligible target. Keep the charge and ranged-attack keyword gates separate.",
+    "phase": [
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "arisen-tyrant-hypercrypt-legion-necrons",
+    "state": "structured",
+    "summary": "This unit re-rolls Hit rolls of 1, or all Hit rolls instead on a turn in which it was set up on the battlefield.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "atavistic-instigation-necrons",
+    "state": "structured",
+    "summary": "In the Shooting phase, subtract 1 from Hit rolls for attacks against this Doom Scythe.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "atomic-disintegrators-cryptek-conclave-necrons",
+    "state": "missing",
+    "summary": "Atomic Disintegrators has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "atomic-energy-manipulator-necrons",
+    "state": "structured",
+    "summary": "At Fight-phase end, if Szeras destroyed an enemy model that phase, increase Mechanical Augmentation’s range by 3″ for the battle, up to 12″. This is one increase for the phase condition, not one for each kill.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "autodivinator-canoptek-court-necrons",
+    "state": "missing",
+    "summary": "Autodivinator has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "blood-fuelled-cruelty-annihilation-legion-necrons",
+    "state": "missing",
+    "summary": "Blood-fuelled Cruelty has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "bound-creation-necrons",
+    "state": "needs-summary",
+    "summary": "CRYPTEK models in this Cryptothralls unit have Feel No Pain 4+. The source’s separate CRYPTEK condition has no explicit subject; confirm the attached-unit eligibility rather than granting it to every model.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ctan-shard-necrons",
+    "state": "structured",
+    "summary": "This Transcendent C’tan cannot receive enhancements.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "canoptek-retinue-necrons",
+    "state": "structured",
+    "summary": "Canoptek Tomb Crawlers may be led by a CRYPTEK under this attachment rule. Apply the current eligible-Leader and combined-unit restrictions.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "canoptek-swarm-necrons",
+    "state": "needs-summary",
+    "summary": "In the Command phase, return one destroyed model to a friendly CANOPTEK SCARAB SWARM unit within 6″. The source omits the range’s origin and tests the Scarab keyword on an unspecified subject; confirm which Spyder and target satisfy the rule.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "carrier-wave-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS units within 6″ of this Command Barge add 1 to Objective Control.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "chittering-swarm-necrons",
+    "state": "structured",
+    "summary": "Enemy units engaged with these Scarab Swarms subtract 1 from Objective Control, to a minimum of 1. This Scarab unit has Objective Control 1 while within 6″ of a friendly CRYPTEK model.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "chrono-impedance-fields-starshatter-arsenal-necrons",
+    "state": "structured",
+    "summary": "In your Command phase, select one friendly non-TITANIC NECRONS MOUNTED or VEHICLE unit within 6″ of the bearer. Reduce damage allocated to it by 1 until your next Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "chronodistortion-pantheon-of-woe-necrons",
+    "state": "structured",
+    "summary": "When targeted in the Fight phase, grant fight-on-death to models whose unit has not fought. Roll D6 on destruction: fight on 4+, adding 1 if the attacker is unravelling. Resolve after that attacking unit finishes, then remove the model.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "chronometron-necrons",
+    "state": "structured",
+    "summary": "After this Chronomancer’s unit shoots in your Shooting phase, if unengaged, it can make a 5″ Normal move. It cannot declare a charge for the rest of the turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "chronoshift-starshatter-arsenal-necrons",
+    "state": "structured",
+    "summary": "When this eligible unit starts an Advance, use a fixed 6″ Advance instead of rolling.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "cold-fervour-necrons",
+    "state": "needs-summary",
+    "summary": "Friendly DESTROYER CULT weapons gain +2 Strength. The first time each turn a DESTROYER CULT unit destroys an enemy or reduces it below Half-strength, other friendly NECRONS weapons, excluding DESTROYER CULT, MONSTER and TITANIC, gain +2 Strength for the turn. The preserved effect and usage differ from the pinned source; confirm the reward’s trigger and frequency.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "command-protocols-necrons",
+    "state": "structured",
+    "summary": "While this unit is led by a friendly NECRONS CHARACTER, add 1 to its Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "cosmic-distortion-necrons",
+    "state": "needs-summary",
+    "summary": "The notes describe NECRONS MONSTER Distortion Fields marking enemies within 6″ as unravelling, improving AP of attacks against them by 1, with an optional 3-mortal-wound extension to 9″ and C’tan-specific bindings. The effect instead improves enemy AP and omits those marking, extension and binding mechanics; confirm the full detachment rule.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "cosmic-precision-hypercrypt-legion-necrons",
+    "state": "missing",
+    "summary": "Cosmic Precision has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "cosmic-storm-the-phaerons-armoury-necrons",
+    "state": "structured",
+    "summary": "When a friendly OBELISK or TESSERACT VAULT is selected to shoot, improve its tesla sphere’s ranged AP by 1 for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "countertemporal-shift-canoptek-court-necrons",
+    "state": "needs-summary",
+    "summary": "This targeted unit is intended to be selectable by ranged attacks only from within 18″ for the phase. The effect encodes permission within 18″ rather than a complete prohibition beyond it; confirm the targeting restriction.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "crimson-harvest-necrons",
+    "state": "structured",
+    "summary": "After the Skorpekh Lord ends a Charge move, select one enemy engaged with him and roll a D6: 1 does nothing, 2–5 causes D3 mortal wounds, and 6 causes D3+3.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "cryptek-retinue-necrons",
+    "state": "needs-summary",
+    "summary": "Cryptothralls may be attached under this CRYPTEK-led attachment rule. The source contains only an attachment reference; confirm the legal combined-unit procedure and any limits.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "curse-of-the-cryptek-canoptek-court-necrons",
+    "state": "needs-summary",
+    "summary": "After an enemy finishes attacking, this destroyed Cryptek can be selected. Friendly CANOPTEK attackers add 1 to Hit and Wound rolls against that enemy for the battle. The core casualty gate refers to a model belonging to this model rather than clearly the Cryptek itself; confirm which death unlocks the mark.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "cursed-circlet-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "After an enemy shoots in your opponent’s Shooting phase and destroys a model in this unit, this unit can make a D6″ Surge move. Apply current Surge eligibility and ending-position restrictions.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "cynosure-of-eradication-canoptek-court-necrons",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase or either Fight phase, weapons equipped by CANOPTEK or CRYPTEK models in the selected unit gain Devastating Wounds for that phase. Other models in an attached unit do not automatically gain it.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "damaged-1-6-wounds-remaining-necrons",
+    "state": "needs-summary",
+    "summary": "While the Silent King model has at most 6 wounds remaining, halve its Attacks and subtract 1 from this unit’s Hit rolls. The effect does not specify weapon profiles or rounding for halved Attacks; confirm those details.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "damaged-1-8-wounds-remaining-necrons",
+    "state": "structured",
+    "summary": "While this Tesseract Vault has at most 8 wounds remaining, subtract 4 from its Objective Control and limit Powers of the C’tan to one selection in your Shooting phase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "deepening-madness-upgrade-skyshroud-spearhead-necrons",
+    "state": "structured",
+    "summary": "This upgraded unit’s ranged weapons gain Assault.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "demanding-leader-starshatter-arsenal-necrons",
+    "state": "needs-summary",
+    "summary": "In your Command phase, select one friendly non-TITANIC NECRONS MOUNTED or VEHICLE unit within 6″. It is intended to shoot after Falling Back until your next Command phase, but the effect grants the permission to this unit rather than the selected unit; confirm the recipient.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "deployment-necrons",
+    "state": "needs-summary",
+    "summary": "When set up, this Convergence of Dominion is represented as ten connected sections. The source does not encode the full setup distances and terrain/section placement rules; verify those restrictions.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "destroyer-ankh-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "The bearer gains DESTROYER CULT and +2 melee Attacks; its unit gains +2″ Move. Keep the model-only buffs distinct from the unit Move bonus.",
+    "phase": [
+      1,
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "destroyer-cult-necrons",
+    "state": "structured",
+    "summary": "While this Lokhust Lord leads a unit, that unit’s ranged attacks score Critical Hits on 5+.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "dimensional-corridor-hypercrypt-legion-necrons",
+    "state": "missing",
+    "summary": "Dimensional Corridor has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "dimensional-overseer-hypercrypt-legion-necrons",
+    "state": "structured",
+    "summary": "While the bearer is on the battlefield or in Strategic Reserves, increase Hyperphasing’s selection allowance by one friendly unit. Apply Hyperphasing’s battle-size and engagement restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "dimensional-sanctum-canoptek-court-necrons",
+    "state": "structured",
+    "summary": "The bearer’s unit gains Infiltrators.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "dimensional-tunnel-starshatter-arsenal-necrons",
+    "state": "needs-summary",
+    "summary": "For the phase, the selected unit can pass through models and terrain and ignore vertical distances. The effect does not specify eligible move types or ending-position restrictions; confirm those limits before moving.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "disharmonisation-cascade-pantheon-of-woe-necrons",
+    "state": "missing",
+    "summary": "Disharmonisation Cascade has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "dispersion-shield-necrons",
+    "state": "structured",
+    "summary": "The equipped Lychguard model has a 4+ invulnerable save.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "dominance-protocols-hand-of-the-dynasty-necrons",
+    "state": "structured",
+    "summary": "Improve this eligible unit’s Objective Control by 1 for the turn.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "drain-life-necrons",
+    "state": "structured",
+    "summary": "At the end of the Fight phase, roll a D6 for each enemy unit within 6″ of the Nightbringer: on 4+, it suffers D3 mortal wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "dread-majesty-aura-starshatter-arsenal-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS units within 6″ of the bearer, excluding MONSTER and TITANIC units, re-roll Hit rolls of 1 and Wound rolls of 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "driven-by-hatred-necrons",
+    "state": "needs-summary",
+    "summary": "The Lokhust Lord re-rolls Hit and Wound rolls against targets below Half-strength. The source labels this partial; confirm any missing attack-type or usage conditions.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "driven-to-butchery-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "Once per turn per army, give this eligible unit’s ranged weapons Assault and permit it to charge after Advancing for the rest of the turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "eldritch-nightmare-annihilation-legion-necrons",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, enemy units engaged with the bearer take a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "empowered-engines-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS TITANIC FLY units gain +6″ Move. The detachment also enforces its exclusive HYPERCRYPT tag.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "enaegic-dermal-bond-awakened-dynasty-necrons",
+    "state": "structured",
+    "summary": "The bearer has Feel No Pain 4+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "endless-servitude-starshatter-arsenal-necrons",
+    "state": "structured",
+    "summary": "At the end of your Fight phase, this eligible unit activates Reanimation Protocols. Apply the current Reanimation procedure.",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "engrammatic-logic-necrons",
+    "state": "structured",
+    "summary": "Once per battle per unit, at the start of any phase, select one friendly Battle-shocked NECRONS unit within 12″ of this Royal Warden. It is no longer Battle-shocked.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "enlivened-sentinels-upgrade-hand-of-the-dynasty-necrons",
+    "state": "structured",
+    "summary": "This eligible upgraded unit gains Scouts 5″.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "enslaved-artifice-obeisance-phalanx-necrons",
+    "state": "structured",
+    "summary": "For the phase, this eligible unit scores Critical Hits on unmodified Hit rolls of 5+.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "enslaved-star-god-necrons",
+    "state": "structured",
+    "summary": "These C’tan models cannot be your Warlord.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "entrophasic-aura-targeting-pantheon-of-woe-necrons",
+    "state": "structured",
+    "summary": "For the phase, this eligible unit re-rolls Hit rolls of 1 and also Wound rolls of 1 against unravelling targets.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "entropic-damping-hypercrypt-legion-necrons",
+    "state": "structured",
+    "summary": "When an enemy selects this eligible unit as an attack target, that attacking unit’s weapons gain Hazardous for the phase. Keep the effect tied to the triggering attacker.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "eternal-conqueror-obeisance-phalanx-necrons",
+    "state": "structured",
+    "summary": "This bearer’s unit re-rolls Hit rolls against a target within an objective marker’s control range.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "eternal-madness-annihilation-legion-necrons",
+    "state": "structured",
+    "summary": "If a model in this unit is destroyed in the Fight phase before its unit has fought, roll a D6: on 4+, it fights after the attacking unit finishes, then is removed.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "eternity-gate-necrons",
+    "state": "needs-summary",
+    "summary": "The Monolith’s imported Eternity Gate record grants Deep Strike when arriving from Strategic Reserves and forbids a selected unit from charging. It never selects that unit or encodes the teleport/setup procedure; confirm the complete Gate rule before using it.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "evasion-engrams-necrons",
+    "state": "structured",
+    "summary": "After this Tomb Blades unit shoots in your Shooting phase, it may make a 6″ Normal move and cannot charge for the rest of the turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "evasive-protocols-skyshroud-spearhead-necrons",
+    "state": "structured",
+    "summary": "When an enemy targets this friendly NECRONS MOUNTED unit with ranged attacks, subtract 1 from incoming Wound rolls if Strength exceeds its Toughness, for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "fabricator-claw-array-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS VEHICLE units within 6″ of these Spyders have Feel No Pain 6+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "flesh-hunger-necrons",
+    "state": "structured",
+    "summary": "For melee attacks against a target below Half-strength, every successful Hit roll made by this Flayed Ones unit is a Critical Hit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "fortification-necrons",
+    "state": "structured",
+    "summary": "In the Shooting phase, subtract 1 from Hit rolls for attacks against this Convergence of Dominion.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "gauntlet-of-compression-cryptek-conclave-necrons",
+    "state": "structured",
+    "summary": "Add 6″ to the range of this eligible unit’s ranged weapons.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "gauss-storm-amonhotekhs-guard-necrons",
+    "state": "structured",
+    "summary": "When this AMONHOTEKH’S GUARD NECRON WARRIORS unit is selected to shoot, add 1 to its Hit rolls for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "gloom-prism-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS units within 6″ of these Spyders have Feel No Pain 5+ against psychic attacks and mortal wounds.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "grand-illusion-necrons",
+    "state": "structured",
+    "summary": "After deployment, redeploy up to three friendly NECRONS units; each may be set up on the battlefield or placed into Strategic Reserves ignoring reserve limits.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "grand-strategist-necrons",
+    "state": "structured",
+    "summary": "At the start of your Command phase, gain 1CP if Imotekh is on the battlefield.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "gravitic-bolas-cryptek-conclave-necrons",
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, select one non-TITANIC enemy it hit. Until the start of your next turn, subtract 2″ from that target’s Move and 2 from its Charge rolls.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "gravitic-pulse-necrons",
+    "state": "needs-summary",
+    "summary": "At the start of your opponent’s Movement phase, select one visible enemy within 18″ of this Obelisk. Halve its Move, Advance and Charge rolls for the turn. If it has FLY, after each move until the next Movement phase roll a D6: on 4+, it suffers D3 mortal wounds. Confirm the rounding and mixed expiry windows omitted from the source.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "guardian-protocols-necrons",
+    "state": "structured",
+    "summary": "While these Lychguard are led by a NOBLE, subtract 1 from incoming Wound rolls if Strength exceeds their Toughness.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "harassment-swarm-necrons",
+    "state": "structured",
+    "summary": "Enemy units within 3″ of these Macrocytes, excluding MONSTER and VEHICLE units, suffer -1 to Hit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "harbinger-of-despair-necrons",
+    "state": "structured",
+    "summary": "Once per turn per unit, at the start of a phase in your turn, select one enemy within 18″ of the Psychomancer. It takes a Battle-shock test at -1.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "harbinger-of-destruction-necrons",
+    "state": "structured",
+    "summary": "While this Plasmancer leads a unit, that unit’s ranged attacks score Critical Hits on 5+.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "hard-wired-for-destruction-necrons",
+    "state": "structured",
+    "summary": "When shooting the closest eligible target, these Lokhust Destroyers re-roll Hit rolls of 1, or all Hits if that target is within control range of an enemy-controlled objective.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "honourable-combatant-obeisance-phalanx-necrons",
+    "state": "missing",
+    "summary": "Honourable Combatant has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "hypermotility-protocols-necrons",
+    "state": "structured",
+    "summary": "Friendly Immortals and Necron Warriors gain Assault on their ranged weapons and may start an action after Advancing. The detachment’s DYNASTY exclusivity is a list-construction restriction.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "hyperphasic-fulcrum-canoptek-court-necrons",
+    "state": "structured",
+    "summary": "While the bearer leads a unit and every model in that unit is wholly within the Power Matrix, re-roll its Wound rolls of 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "hyperphasic-recall-hypercrypt-legion-necrons",
+    "state": "needs-summary",
+    "summary": "After an enemy destroys a model in the first selected NECRONS INFANTRY unit, relocate that unit wholly within 6″ of a separate friendly Monolith, unengaged. The source lacks explicit enemy-spacing and full setup restrictions; confirm those before repositioning.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "hyperphasing-necrons",
+    "state": "structured",
+    "summary": "At the end of your opponent’s turn, place up to one friendly NECRONS unit in Incursion, two in Strike Force or three in Onslaught into Strategic Reserves. Selected units must be unengaged. Apply any explicit selection-count modifiers.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "hyperspace-hunters-necrons",
+    "state": "structured",
+    "summary": "Once per turn per unit, after an enemy arrives by ingress within 18″ and visible to these Deathmarks in your opponent’s Movement phase, this unit may shoot if eligible. It must target that arriving enemy.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "hyperspatial-transfer-node-hypercrypt-legion-necrons",
+    "state": "needs-summary",
+    "summary": "This unit is intended to use a fixed 6″ Advance, but the source applies it after the Advance ends. Confirm that the replacement applies before measuring the move.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "illuminor-necrons",
+    "state": "structured",
+    "summary": "Szeras has Lone Operative while within 3″ of another friendly NECRONS unit.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "image-of-death-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "When this unit is targeted, subtract 1 from incoming Hit rolls for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "implacable-eradication-necrons",
+    "state": "structured",
+    "summary": "These Immortals re-roll Wound rolls of 1, or all Wound rolls against targets within objective control range.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "implacable-resilience-necrons",
+    "state": "structured",
+    "summary": "Reduce the Damage characteristic of attacks against this Overlord by 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "inescapable-death-necrons",
+    "state": "structured",
+    "summary": "Once per turn per army, an eligible unit with Inescapable Death may use Fire Overwatch for 0CP even if it was already used that phase. This Hexmark hits on 2+ when it Overwatches. Normal target and shooting eligibility still apply.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "infectious-murder-madness-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS units within 6″ of Nekrosor, excluding MONSTER and TITANIC units, gain Sustained Hits 1 for attacks made by DESTROYER CULT models or against the closest eligible target. Apply the alternate target gate per attack, not to every target in a split attack.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ingrained-superiority-annihilation-legion-necrons",
+    "state": "structured",
+    "summary": "Improve this eligible unit’s AP by 1 on Critical Wounds.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "insanitys-ire-annihilation-legion-necrons",
+    "state": "needs-summary",
+    "summary": "After an enemy shoots at this unit, it may make a D6″ Surge move. The effect does not encode a casualty or engagement requirement; check the complete Surge eligibility conditions.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "invasion-beams-necrons",
+    "state": "needs-summary",
+    "summary": "At Fight-phase end, if this Night Scythe is empty, one friendly unengaged NECRONS INFANTRY unit within 6″ can embark in it. The source does not specify whether every model must be within range or grant a disembarked-this-turn exception; confirm the embark procedure and capacity.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "iron-will-necrons",
+    "state": "needs-summary",
+    "summary": "Iron Will includes a 2+ fight-on-death effect but also destroys this model if it has not fought, without a destruction trigger. Confirm when the ability activates and whether that self-destruction step belongs in the rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "living-lightning-necrons",
+    "state": "structured",
+    "summary": "In your Shooting phase, select one visible enemy within 18″ of this Plasmancer. Roll four dice: each 4+ causes 1 mortal wound. An unattached Lone Operative target must be within 12″.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "lord-of-the-storm-necrons",
+    "state": "structured",
+    "summary": "Once per battle per unit, at the end of your Command phase, roll for every enemy within 12″ of Imotekh: 1 does nothing, 2–5 causes D3 mortal wounds, and 6 causes D3+3.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "malevolent-arcing-necrons",
+    "state": "structured",
+    "summary": "When this Annihilation Barge selects twin tesla destructor targets, roll for the target and each enemy within 3″ of it. On 5+, mark that unit; after the Barge finishes its attacks, each marked unit suffers D3 mortal wounds. Marks clear at phase end.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "mark-of-the-nekrosor-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "Add 1 to this eligible unit’s Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "masks-of-death-annihilation-legion-necrons",
+    "state": "structured",
+    "summary": "When an enemy targets this eligible unit, subtract 1 from incoming Hit rolls for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "mass-transmogrification-pantheon-of-woe-necrons",
+    "state": "missing",
+    "summary": "Mass Transmogrification has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "master-chronomancer-necrons",
+    "state": "structured",
+    "summary": "While Orikan leads a unit, that unit has a 4+ invulnerable save.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "matter-absorption-necrons",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select one enemy VEHICLE within 12″ of the Void Dragon and roll a D6. On 2+, that enemy suffers D3 mortal wounds and this model regains D3 wounds.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "mechanical-augmentation-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS BATTLELINE units within 3″ of Szeras improve their AP by 1, and attacks against them worsen AP by 1. Keep the offensive and defensive recipients separate.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "merciless-reclamation-starshatter-arsenal-necrons",
+    "state": "structured",
+    "summary": "For the phase, add 1 to this eligible unit’s Wound rolls against targets within objective control range.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "metalline-might-amonhotekhs-guard-necrons",
+    "state": "structured",
+    "summary": "Improve the bearer’s melee Strength by 2.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "metalodermal-tesla-weave-canoptek-court-necrons",
+    "state": "needs-summary",
+    "summary": "Once per phase per model, when an enemy selects charge targets, roll a D6: 1 does nothing, 2–5 causes D3 mortal wounds to the enemy, and 6 causes 3. The effect does not require that enemy to charge the bearer’s unit; confirm the triggering target.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "methodical-murder-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "This eligible unit’s weapons gain Sustained Hits 1 for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "microscarab-swarm-cryptek-conclave-necrons",
+    "state": "structured",
+    "summary": "When targeted, this eligible unit gains a 5+ invulnerable save if it is NECRON WARRIORS, or 4+ if it is IMMORTALS, for that phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "miniaturised-nebuloscope-starshatter-arsenal-necrons",
+    "state": "structured",
+    "summary": "This bearer’s unit’s ranged weapons gain Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "molecular-erosion-pantheon-of-woe-necrons",
+    "state": "needs-summary",
+    "summary": "Once per battle round per army, select one visible unravelling enemy. It takes a Battle-shock test at -1 and suffers D3+1 mortal wounds if failed. The source supplies no activation event for this selection; confirm when to use it.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "molecular-targeting-cryptek-conclave-necrons",
+    "state": "needs-summary",
+    "summary": "For the phase, this eligible unit ignores modifiers to Weapon Skill, Ballistic Skill and Hit rolls. The effect also ignores Wound modifiers if an unspecified subject has CRYPTEK; confirm whether that benefit applies per CRYPTEK model or to the whole unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "mortality-shroud-aura-upgrade-the-phaerons-armoury-necrons",
+    "state": "structured",
+    "summary": "At your opponent’s Battle-shock step, enemy units below Starting Strength within 8″ of this upgraded unit take a Battle-shock test.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "shock"
+  },
+  {
+    "id": "mortis-protocols-cursed-legion-necrons",
+    "state": "missing",
+    "summary": "Mortis Protocols has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "multi-threat-eliminator-necrons",
+    "state": "needs-summary",
+    "summary": "Once per turn, this Hexmark can make a reactive shot at a triggering enemy while a nearby event object is within 3″. The source omits the triggering attack/casualty event and does not identify that nearby object; confirm the full trigger and eligible target.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "murdermind-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "The bearer gains DESTROYER CULT and +3″ Move.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "murderous-reanimation-annihilation-legion-necrons",
+    "state": "missing",
+    "summary": "Murderous Reanimation has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "my-will-be-done-necrons",
+    "state": "structured",
+    "summary": "Once per battle round per army, when a friendly Stratagem targets this unit with My Will Be Done, reduce that use’s CP cost by 1.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "nanoassembly-protocols-obeisance-phalanx-necrons",
+    "state": "structured",
+    "summary": "When this eligible unit is targeted, reduce incoming Damage allocated to it by 1 for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "nanosaturation-hand-of-the-dynasty-necrons",
+    "state": "structured",
+    "summary": "After an enemy shoots at this eligible unit, it may Snap Shoot at that enemy for the phase. Apply normal eligibility and the current Snap Shooting procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "nanoscarab-amulet-necrons",
+    "state": "structured",
+    "summary": "This Lokhust Lord has Feel No Pain 5+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "nanoscarab-projector-necrons",
+    "state": "structured",
+    "summary": "Once per battle round per unit, when a friendly NECRONS unit within 3″ of these Macrocytes activates Reanimation Protocols, it reanimates one additional wound. Apply the current wound-allocation and returning-model procedure.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "nanoscarab-reanimation-beam-necrons",
+    "state": "structured",
+    "summary": "When a friendly NECRONS unit within 3″ of this Reanimator activates Reanimation Protocols, it reanimates D3 additional wounds. Apply the current reanimation procedure.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "nebuloscope-necrons",
+    "state": "structured",
+    "summary": "The equipped Tomb Blade’s ranged weapons gain Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "necrodermis-necrons",
+    "state": "structured",
+    "summary": "Reduce incoming Damage against these C’tan by 1; the source notes apply a minimum of 1 Damage.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "nether-realm-casket-awakened-dynasty-necrons",
+    "state": "structured",
+    "summary": "While the bearer leads a unit, that unit has Stealth.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "nightmare-shroud-necrons",
+    "state": "structured",
+    "summary": "At your opponent’s Battle-shock step, enemy units below Starting Strength within 6″ of the Psychomancer take a Battle-shock test at -1.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "shock"
+  },
+  {
+    "id": "nullstone-field-generator-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS units within 6″ of Nekrosor have Feel No Pain 5+ against psychic attacks and mortal wounds.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "obelisk-node-control-necrons",
+    "state": "structured",
+    "summary": "While this Geomancer is within control range of a friendly-controlled objective, enemies cannot set up from Strategic Reserves within 12″ of it. Apply the remaining reserve setup restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "arrivals"
+  },
+  {
+    "id": "omnilocked-strafing-skyshroud-spearhead-necrons",
+    "state": "needs-summary",
+    "summary": "When a friendly NECRONS MOUNTED unit is selected to Fall Back, it gains shooting permission for the phase. The effect does not explicitly waive Fall Back and expires before the Shooting phase; confirm the permission and duration.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "optimised-for-slaughter-necrons",
+    "state": "structured",
+    "summary": "Lokhust Heavy Destroyers re-roll Wound rolls of 1 for enmitic exterminators against non-MONSTER/non-VEHICLE targets, and for gauss destructors against MONSTER or VEHICLE targets.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "osteoclave-fulcrum-hypercrypt-legion-necrons",
+    "state": "structured",
+    "summary": "The bearer’s unit gains Deep Strike. Normal reserve and setup restrictions still apply.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "overwhelming-obliteration-necrons",
+    "state": "structured",
+    "summary": "If this Doomsday Ark Remained Stationary in your Movement phase, its doomsday cannon gains Devastating Wounds for the turn.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "particle-pulse-the-phaerons-armoury-necrons",
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, select one enemy visible to the bearer and within 12″ of its unit. Increase its detection range by 3″ for the phase. The source does not define detection range; confirm that mechanic before applying it.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "phasal-subjugator-aura-awakened-dynasty-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS units within 6″ of the bearer, excluding CHARACTER units, add 1 to Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "phase-melding-pantheon-of-woe-necrons",
+    "state": "missing",
+    "summary": "Phase Melding has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "pitiless-hunters-annihilation-legion-necrons",
+    "state": "structured",
+    "summary": "Add 3″ to this eligible unit’s Pile-in and Consolidation distances for the phase. Other movement and ending-position restrictions still apply.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "plasmacyte-amonhotekhs-guard-skorpekh-destroyers-necrons",
+    "state": "needs-summary",
+    "summary": "When this Amonhotekh’s Guard Skorpekh unit is selected to fight, its weapons gain Devastating Wounds for the phase. Unlike the ordinary Plasmacyte record, it has no use cap and its scope differs from the pinned source; confirm the allowed uses.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "plasmacyte-necrons",
+    "state": "needs-summary",
+    "summary": "Once per battle, this unit’s weapons gain Devastating Wounds for a phase. The imported record lacks an activation event and a per-equipped-Plasmacyte use count; confirm the selection window and number of uses.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "potentiality-syphon-cryptek-conclave-necrons",
+    "state": "needs-summary",
+    "summary": "This eligible unit activates Reanimation Protocols. The effect also heals this unit by 1 if an unspecified subject has CRYPTEK; confirm which models receive the extra wound and when the ability is activated.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "power-matrix-necrons",
+    "state": "structured",
+    "summary": "The Power Matrix always includes your deployment zone. At each phase start, snapshot objective control: controlling at least half the objectives in no man’s land adds that territory for the phase, and controlling at least half in the enemy deployment zone adds it for the phase. Friendly CRYPTEK or CANOPTEK units re-roll Hit rolls of 1; while every model is wholly within the Matrix, they may re-roll all Hits instead. The qualified benefit replaces the default.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "powers-of-the-ctan-necrons",
+    "state": "needs-summary",
+    "summary": "When this Tesseract Vault is selected to shoot, choose up to two powers: antimatter meteor, cosmic fire, seismic assault or time’s arrow. This effect grants weapon references but contains no power profiles; check those weapon entries, and use only one selection while the Vault’s Damaged condition applies.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "prelocational-optimiser-the-phaerons-armoury-necrons",
+    "state": "needs-summary",
+    "summary": "If the bearer’s unit was set up this turn using a friendly Monolith’s Eternity Gate, choose Lethal Hits or Sustained Hits 1 for its ranged weapons when selected to shoot. The source gives a permanent scope despite a turn-based setup condition; confirm when the chosen benefit expires.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "prophet-of-destruction-necrons",
+    "state": "structured",
+    "summary": "When Nekrosor destroys an enemy unit, select one other friendly DESTROYER CULT unit within 9″. It re-rolls Wound rolls of 1 for the rest of the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "protective-disciples-necrons",
+    "state": "structured",
+    "summary": "Nekrosor has Lone Operative while within 3″ of another friendly DESTROYER CULT unit.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "protocol-of-the-conquering-tyrant-awakened-dynasty-necrons",
+    "state": "structured",
+    "summary": "For attacks against targets within half weapon range, this eligible unit re-rolls Hit rolls of 1, or all Hits instead while led by a NECRONS CHARACTER, for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "protocol-of-the-eternal-revenant-awakened-dynasty-necrons",
+    "state": "missing",
+    "summary": "Protocol of the Eternal Revenant has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "protocol-of-the-hungry-void-awakened-dynasty-necrons",
+    "state": "structured",
+    "summary": "For the phase, add 1 to this eligible unit’s melee Strength. While it is led by a NECRONS CHARACTER, also improve its melee AP by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "protocol-of-the-sudden-storm-awakened-dynasty-necrons",
+    "state": "structured",
+    "summary": "For the rest of the turn, this eligible unit’s ranged weapons gain Assault. If led by a NECRONS CHARACTER, it may also re-roll Advance rolls for the phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "protocol-of-the-undying-legions-awakened-dynasty-necrons",
+    "state": "needs-summary",
+    "summary": "After an enemy finishes attacking this eligible unit, activate Reanimation Protocols and reanimate D3 wounds, or D3+1 while led by a NECRONS CHARACTER. The source also has a separate heal after activating Reanimation, which could double-count recovery; confirm whether these replace or add to the normal roll.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "protocol-of-the-vengeful-stars-awakened-dynasty-necrons",
+    "state": "needs-summary",
+    "summary": "After a destruction event, this eligible unit may shoot at the enemy that finishes attacking, if eligible. The source does not identify which unit or model must be destroyed or bind that casualty to the attacker; confirm the reactive-shot trigger.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "quantum-abacus-cryptek-conclave-necrons",
+    "state": "needs-summary",
+    "summary": "When a friendly Stratagem targets this bearer’s unit, roll a D6 and add 1 if the unit is within objective control range. On 4+, gain 1CP. The source supplies no additional usage cap; apply current CP-gain limits and confirm any rule-specific cap.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "quantum-deflection-hypercrypt-legion-necrons",
+    "state": "structured",
+    "summary": "When this eligible unit is targeted, it gains a 4+ invulnerable save for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "quantum-goad-pantheon-of-woe-necrons",
+    "state": "structured",
+    "summary": "The bearer can declare a charge after Advancing. This model-only permission does not automatically grant it to every model in an attached unit.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "quantum-invader-necrons",
+    "state": "needs-summary",
+    "summary": "This Night Scythe may arrive from Strategic Reserves in the next Movement phase, including battle round 1. The source does not define what event starts that countdown or additional arrival conditions; confirm the complete rule.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "reactive-reposition-starshatter-arsenal-necrons",
+    "state": "needs-summary",
+    "summary": "After an enemy shoots, this eligible unit makes a D6″ Normal move. The effect does not encode a wound-loss or engagement gate; confirm the target and reactive-move eligibility.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "reactive-subroutines-canoptek-court-necrons",
+    "state": "needs-summary",
+    "summary": "After an enemy ends a Normal, Advance or Fall Back move, this eligible unit makes a 6″ Normal move. Apply the core target’s range gate and check any engagement restriction absent from the effect.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "reanimation-crypts-hypercrypt-legion-necrons",
+    "state": "needs-summary",
+    "summary": "The Warlord uses this Stratagem to activate Reanimation Protocols for friendly NECRONS units in Strategic Reserves. The effect gives no specific activation step or frequency inside the Command phase; confirm that procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "reanimation-nodes-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS INFANTRY units within 6″ of this Convergence of Dominion have Feel No Pain 6+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "reanimation-protocols-amonhotekhs-guard-necrons",
+    "state": "needs-summary",
+    "summary": "At the end of your Command phase, friendly on-battlefield units with the Amonhotekh’s Guard version of Reanimation Protocols recover D3 wounds. The effect also recursively activates itself and omits healing/returning-model sequencing; confirm the complete recovery procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "reanimation-protocols-necrons",
+    "state": "needs-summary",
+    "summary": "At the end of your Command phase, friendly on-battlefield units with Reanimation Protocols activate it and recover D3 wounds. The source does not encode how wounds are allocated, when destroyed models return or how attached units are handled; confirm that procedure before resolving Reanimation.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "recursive-reanimation-upgrade-skyshroud-spearhead-necrons",
+    "state": "structured",
+    "summary": "When the eligible Tomb Blades unit activates Reanimation Protocols, add 1 to its reanimation roll.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "reinforced-resilience-amonhotekhs-guard-necrons",
+    "state": "structured",
+    "summary": "When this eligible AMONHOTEKH’S GUARD unit is targeted, improve its Save by 1 for the phase if every model is within a terrain area. MONSTER and VEHICLE units are excluded by the core target restrictions.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "relentless-combatants-necrons",
+    "state": "structured",
+    "summary": "These Triarch Praetorians re-roll Charge rolls and may declare a charge after Falling Back.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "relentless-onslaught-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS models other than MONSTER models add 1 to Hit rolls against targets within objective control range. Friendly non-TITANIC NECRONS MOUNTED and VEHICLE models also gain Assault on ranged weapons. Keep the two keyword scopes separate.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "reletavistic-tether-pantheon-of-woe-necrons",
+    "state": "missing",
+    "summary": "Reletavistic Tether has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "repair-barge-necrons",
+    "state": "needs-summary",
+    "summary": "Once per turn, select one friendly Necron Warriors unit within 3″ of this Ghost Ark to activate Reanimation Protocols. The source’s damage condition refers to this unit rather than clearly to those Warriors and gives no triggering event; confirm which unit must take damage and when the repair is used.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "resurrection-orb-catacomb-command-barge-necrons",
+    "state": "missing",
+    "summary": "Resurrection Orb has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "resurrection-orb-necrons",
+    "state": "needs-summary",
+    "summary": "While the bearer leads a unit, its Resurrection Orb can recover D6 wounds for that unit once. The source gives no activation event or full reanimation/returning-model procedure; confirm the timing and resolution instead of treating the heal as an unrestricted action.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "rites-of-reanimation-necrons",
+    "state": "structured",
+    "summary": "While this Technomancer leads a unit, that unit has Feel No Pain 5+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "scarab-interference-necrons",
+    "state": "structured",
+    "summary": "Enemy units engaged with these Amonhotekh’s Guard Scarab Swarms suffer -1 to Hit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "self-destruction-necrons",
+    "state": "structured",
+    "summary": "At Fight-phase start, while engaged, destroy one model in this Scarab Swarms unit and select one engaged enemy. Against a VEHICLE, roll D6: 1–4 causes D3 mortal wounds, 5–6 causes 3. Against other targets, 1 does nothing, 2–5 causes D3 and 6 causes 3.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "sentinel-construct-necrons",
+    "state": "structured",
+    "summary": "When this Canoptek Doomstalker uses Fire Overwatch, its Hit rolls succeed on 5+. Normal Overwatch eligibility still applies.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "sentinels-of-eternity-obeisance-phalanx-necrons",
+    "state": "structured",
+    "summary": "When targeted in the Fight phase, this eligible unit gains fight-on-death for models whose unit has not fought. On destruction, roll D6: on 4+, fight after the attacking unit finishes, then remove the model.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "shadowloom-necrons",
+    "state": "structured",
+    "summary": "The equipped Tomb Blade gains Stealth.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "shieldvanes-necrons",
+    "state": "structured",
+    "summary": "Set the equipped Tomb Blade’s Save to 3+ and Move to 8″.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "singularity-matrix-pantheon-of-woe-necrons",
+    "state": "needs-summary",
+    "summary": "Once per turn per model, when an enemy Stratagem selects a target within 12″ of the bearer, increase its cost by 1CP. The source assigns the modifier to this unit rather than clearly to the triggering enemy use; confirm which player pays it.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "solar-pulse-canoptek-court-necrons",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select one objective within 18″ of the bearer. Friendly NECRONS models gain Ignores Cover against targets within that objective’s control range for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "soulless-reaper-annihilation-legion-necrons",
+    "state": "needs-summary",
+    "summary": "When an engaged enemy unit is selected to Fall Back, roll D6: on 3+, it cannot Fall Back or otherwise move. The source gives no expiry for that movement prohibition; confirm its duration and any exception.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "spreading-madness-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "When selecting charge targets, add 2 to this unit’s Charge roll if the target is engaged with a friendly unit, for the phase.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "suboptimal-facade-canoptek-court-necrons",
+    "state": "needs-summary",
+    "summary": "When an enemy selects charge targets, this eligible unit activates Reanimation Protocols. The source does not bind the charge to the bearer’s unit; confirm the triggering target and activation restrictions.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "subsurface-quantumweave-the-phaerons-armoury-necrons",
+    "state": "needs-summary",
+    "summary": "For the triggering attack sequence against an eligible NECRONS TITANIC FLY unit, the effect worsens incoming AP by 1. The notes instead describe setting AP to 1; confirm whether the rule sets or modifies AP and which attacks it affects.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "suffer-no-rival-obeisance-phalanx-necrons",
+    "state": "structured",
+    "summary": "This eligible unit’s melee weapons gain Precision for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "supreme-commander-necrons",
+    "state": "structured",
+    "summary": "The Silent King must be your Warlord if included in the army.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "surrogate-hosts-necrons",
+    "state": "needs-summary",
+    "summary": "At the start of a Command phase, if Trazyn is on the battlefield, he may replace one friendly NECRONS INFANTRY CHARACTER other than a SKORPEKH LORD or EPIC HERO: destroy the selected model without death triggers, then reposition Trazyn. The source says closest-to-original rather than the replacement model’s position and gives no spacing or attachment procedure; confirm the setup details.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "swift-as-death-skyshroud-spearhead-necrons",
+    "state": "needs-summary",
+    "summary": "After an enemy ends a move within 8″ of a friendly unengaged NECRONS MOUNTED unit, this eligible unit may make a D3+3″ Normal move. The effect does not explicitly bind this unit to that nearby unit; confirm the selected friendly recipient.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "synergistic-empowerment-cryptek-conclave-necrons",
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, select one friendly non-MONSTER/non-VEHICLE NECRONS model to gain CRYPTEK for the phase. The eligibility measures 12″ from a CRYPTEK model in the selected unit, rather than clearly from the bearer; confirm who provides the range and whether a whole unit or one model qualifies.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "systematic-vigour-necrons",
+    "state": "structured",
+    "summary": "When a Cryptothrall model in this unit is destroyed by a melee attack before it has fought, roll D6: on 2+, it fights after the attacking unit finishes, then is removed.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "targeting-relay-necrons",
+    "state": "structured",
+    "summary": "After this Triarch Stalker shoots in your Shooting phase, select one enemy unit it hit. That target cannot receive the Benefit of Cover for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "technomancer-necrons",
+    "state": "structured",
+    "summary": "Once per turn, at the end of your Movement phase, select one friendly NECRONS model within 6″ of this Technomancer. It regains up to D3 lost wounds.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "technosorcerous-augmentations-necrons",
+    "state": "structured",
+    "summary": "Friendly CRYPTEK models’ ranged weapons gain Assault. When a friendly CRYPTEK unit is selected to shoot in your Shooting phase, choose one additional ranged weapon ability for the phase: Anti-INFANTRY 3+, Anti-MOUNTED 4+, Assault, Heavy or Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "tectonic-reverberations-necrons",
+    "state": "structured",
+    "summary": "In your Movement phase, select one enemy visible to this Geomancer and within 18″. Until your next Movement phase, subtract 2″ from its Move and 2 from its Charge rolls.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "terrifying-monstrosity-necrons",
+    "state": "structured",
+    "summary": "Once per phase per army, at Fight-phase start, enemy units engaged with a friendly unit with Terrifying Monstrosity take a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "territorial-imperatives-necrons",
+    "state": "missing",
+    "summary": "Territorial Imperatives has no effect mechanics in the imported source. Confirm its complete rule before applying benefits, costs, targets or timing.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "territorial-obsession-obeisance-phalanx-necrons",
+    "state": "structured",
+    "summary": "Until your next Command phase, add 1 to this eligible unit’s Objective Control, or 3 instead if it is a VEHICLE.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "the-silent-king-necrons",
+    "state": "structured",
+    "summary": "Friendly NECRONS units within 6″ of the Silent King improve their Leadership by 1.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "the-spoor-of-frailty-annihilation-legion-necrons",
+    "state": "structured",
+    "summary": "For the phase, add 1 to this eligible unit’s Hit rolls against targets below Starting Strength, and also add 1 to Wound rolls against targets below Half-strength.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "the-stars-are-right-necrons",
+    "state": "needs-summary",
+    "summary": "In the Fight phase, Orikan triples his Attacks and Strength for the phase. The source gives no usage cap or activation event and does not identify weapon profiles; confirm the complete transformation rule before applying the multiplier.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "their-number-is-legion-amonhotekhs-guard-necron-warriors-necrons",
+    "state": "needs-summary",
+    "summary": "When this Amonhotekh’s Guard Warriors unit activates Reanimation Protocols, it may re-roll the recovery dice. The trigger refers to the ordinary Reanimation ability ID rather than its separate Guard version; confirm which activations qualify.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "their-number-is-legion-necrons",
+    "state": "structured",
+    "summary": "Each time these Necron Warriors activate Reanimation Protocols, they may re-roll the dice that determine how many wounds are reanimated.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "timesplinter-mantle-necrons",
+    "state": "structured",
+    "summary": "This Chronomancer’s unit has Stealth, and melee attacks against it suffer -1 to Hit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "tools-of-dominion-upgrade-hand-of-the-dynasty-necrons",
+    "state": "structured",
+    "summary": "This upgraded unit’s ranged weapons gain Rapid Fire 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "transdimensional-deployment-necrons",
+    "state": "needs-summary",
+    "summary": "Friendly Tomb Blades gain Deep Strike and add 1 to ranged Hit rolls when selected to shoot on a turn in which they made an ingress move. The imported effect differs from the pinned source; confirm the arrival condition and beneficiary before applying it.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "transdimensional-displacement-necrons",
+    "state": "needs-summary",
+    "summary": "In your Movement phase, this Transcendent C’tan can make an unlimited-distance Advance through models, ending more than 8″ from enemies. The source does not define terrain passage, other placement restrictions or the full teleport/movement procedure; confirm those conditions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "translocation-shroud-necrons",
+    "state": "needs-summary",
+    "summary": "Add 6″ to this unit’s Move for the phase. The record supplies no activation event, movement mode or remaining Translocation Shroud rules; confirm the full ability rather than assuming this is a complete teleport or Advance replacement.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "triarch-abilities-necrons",
+    "state": "structured",
+    "summary": "At battle-round start, the Silent King chooses one aura until the next round. Friendly NECRONS units within 6″, excluding MONSTER units, receive either Hit and Wound re-rolls of 1; Charge re-rolls and +1 melee Strength; or +2″ Move. Only one aura is active at a time.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "triarchal-menhirs-necrons",
+    "state": "needs-summary",
+    "summary": "When a model in the Silent King’s unit is destroyed, the effect destroys all TRIARCHAL MENHIR models in that unit. It does not restrict the trigger to the Silent King’s destruction, so a Menhir casualty would also remove the rest; confirm the intended casualty trigger.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "tunnelling-horrors-necrons",
+    "state": "structured",
+    "summary": "At the end of your opponent’s turn, if unengaged, these Ophydian Destroyers may enter Strategic Reserves and arrive in the next Movement phase, including round 1. Apply the remaining arrival restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "unblemished-legions-amonhotekhs-guard-necrons",
+    "state": "structured",
+    "summary": "Improve this eligible unit’s Move by 1″ and grant its ranged weapons Assault.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "unflinching-will-obeisance-phalanx-necrons",
+    "state": "structured",
+    "summary": "The bearer’s melee weapons gain Precision and Anti-INFANTRY 5+.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "united-in-destruction-necrons",
+    "state": "structured",
+    "summary": "While the Skorpekh Lord leads a unit, that unit’s melee weapons gain Lethal Hits.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "unnatural-aggression-cursed-legion-necrons",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Charge phase, this eligible unit may charge an enemy within 6″. Apply the core target’s charge eligibility and engagement gates; the ability does not grant an unrestricted charge.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "untapped-power-cryptek-conclave-necrons",
+    "state": "structured",
+    "summary": "When this eligible unit is selected to shoot, it may choose one additional Technosorcerous Augmentations option for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "unyielding-forms-starshatter-arsenal-necrons",
+    "state": "structured",
+    "summary": "When this eligible unit is targeted, subtract 1 from incoming Wound rolls if Strength exceeds its Toughness, for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "vanguard-protocols-necrons",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, if this Geomancer is attached to CANOPTEK MACROCYTES, its unit gains Scouts 8″. Apply the remaining combined-unit Scouts requirements.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "veil-of-darkness-awakened-dynasty-necrons",
+    "state": "structured",
+    "summary": "Once per battle per army, at the end of your opponent’s turn, put the bearer’s unengaged unit into Strategic Reserves. It gains Deep Strike until your next Shooting phase and may arrive in the next Movement phase, including round 1.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "warrior-noble-obeisance-phalanx-necrons",
+    "state": "structured",
+    "summary": "Melee attacks against this eligible unit suffer -1 to Hit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "weapon-sentinels-necrons",
+    "state": "structured",
+    "summary": "For ranged attacks against targets within 12″ of the attacker, this Canoptek Tomb Crawlers unit ignores modifiers to Ballistic Skill, Hit rolls and Wound rolls.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "whirling-onslaught-amonhotekhs-guard-skorpekh-destroyers-necrons",
+    "state": "structured",
+    "summary": "This Amonhotekh’s Guard Skorpekh unit re-rolls melee Hit rolls of 1, or all melee Hit rolls if it charged this turn.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "whirling-onslaught-necrons",
+    "state": "structured",
+    "summary": "These Skorpekh Destroyers re-roll melee Hit rolls of 1, or all melee Hit rolls if they charged this turn.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "will-of-the-conqueror-hand-of-the-dynasty-necrons",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, select one friendly-controlled objective in this eligible unit’s control range and make it sticky. Apply the current retained-control expiry rules.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "worthy-foes-necrons",
+    "state": "structured",
+    "summary": "In your Command phase, select one enemy as Worthy Foes. Friendly NOBLE, LYCHGUARD or TRIARCH units add 1 to Wound rolls against it until the start of your next Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "wraith-form-necrons",
+    "state": "structured",
+    "summary": "After these Canoptek Wraiths end a Normal move, select one enemy unit they moved over. Roll one die per model in this Wraiths unit: each 4+ causes 1 mortal wound to that enemy.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "your-time-is-nigh-obeisance-phalanx-necrons",
+    "state": "needs-summary",
+    "summary": "After a model in the selected Warlord’s unit is destroyed, enemy Battle-shock and Leadership tests suffer -1 for the battle. The effect does not restrict the trigger to the Warlord’s destruction or define the affected enemy scope; confirm both before applying the penalty.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  }
+]
