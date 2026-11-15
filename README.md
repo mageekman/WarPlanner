@@ -369,3 +369,7 @@ Audited all 110 rules across 20 source-matching units/profiles and eight detachm
 ## Adepta Sororitas readiness audit (2026-11-15)
 
 Audited all 148 rules across 37 units, 46 source-matching profiles, nine detachments and 13 leader/bodyguard maps: 69 usable summaries, 75 source issues and four empty Sanctuary effects. Acts of Faith, Miracle-die conservation, resurrection and three imported differences stay explicit. Source-supported bearer restrictions are corrected and equipment gates retained. All 144 timed reminders have Guide placements; four untimed effects remain references. Imports, unit scopes, flags, profiles and saved lists are preserved; unresolved entries stay out of practice. See [AUDIT-ADEPTA-SORORITAS.md](AUDIT-ADEPTA-SORORITAS.md).
+
+## Rule timing alternatives
+
+In either Workshop editor, use **Add timing** to give a rule separate phase, player-turn, and timing-window combinations. A rule appears when any combination matches. For example, Armour of Contempt uses Shooting / Opponent’s turn and Fight / Either turn. Existing single-timing rules remain compatible. The Guide groups explanations, study questions, reports, and references under **More Stuff and Things**.

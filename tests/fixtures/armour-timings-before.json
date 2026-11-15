@@ -1,0 +1,257 @@
+{
+  "key": "rule:shared-armour-of-contempt",
+  "kind": "rule",
+  "faction": "Space Marines",
+  "name": "Armour of Contempt",
+  "data": {
+    "id": "shared-armour-of-contempt",
+    "name": "Armour of Contempt",
+    "turn": "either",
+    "phase": [
+      2,
+      4
+    ],
+    "units": [],
+    "status": "source-reference",
+    "window": "select",
+    "faction": "Space Marines",
+    "summary": "When an enemy selects the eligible ADEPTUS ASTARTES unit as an attack target, worsen those attacks’ AP by 1 until that attack sequence ends.",
+    "category": "stratagem",
+    "expanded": true,
+    "sourceIds": [
+      "admin"
+    ],
+    "sourceUrl": "https://github.com/wn-mitch/40kdc-data",
+    "conditions": [
+      "Source-derived study note; confirm against current rules.",
+      "Stratagem cost: 1CP. Once per phase."
+    ],
+    "detachment": "",
+    "targetText": "One friendly Adeptus Astartes unit; the attacked unit.",
+    "enhancement": null,
+    "memberships": [
+      {
+        "faction": "Black Templars",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Blood Angels",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Dark Angels",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Deathwatch",
+        "detachments": [
+          "Assault Brethren",
+          "Black Spear Task Force",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Imperial Fists",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Iron Hands",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Raven Guard",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Salamanders",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Space Marines",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Space Wolves",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "Ultramarines",
+        "detachments": [
+          "Assault Brethren",
+          "Blade of Ultramar",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      },
+      {
+        "faction": "White Scars",
+        "detachments": [
+          "Assault Brethren",
+          "Devastator Brethren",
+          "Gladius Task Force",
+          "Tactical Brethren"
+        ]
+      }
+    ],
+    "sourceLabel": "40kdc community data",
+    "adminManaged": true,
+    "importSource": {
+      "file": "adeptus-astartes/abilities.json",
+      "name": "40kdc-data",
+      "text": "",
+      "record": {
+        "name": "Armour of Contempt",
+        "scope": {
+          "duration": "attack-sequence"
+        },
+        "effect": {
+          "type": "stat-modifier",
+          "target": "attacker",
+          "modifier": {
+            "stat": "AP",
+            "value": 1,
+            "operation": "worsen"
+          }
+        },
+        "trigger": {
+          "event": "targets-selected",
+          "filter": {
+            "kind": "attack"
+          },
+          "object": {
+            "owner": "friendly",
+            "all_of": [
+              "ADEPTUS ASTARTES"
+            ]
+          },
+          "subject": {
+            "owner": "enemy"
+          }
+        },
+        "behavior": "reactive",
+        "unit_ids": [],
+        "ability_id": "armour-of-contempt-gladius-task-force-adeptus-astartes",
+        "faction_id": "adeptus-astartes",
+        "authored_by": "40kdc-community",
+        "player_turn": "either",
+        "ability_type": "stratagem",
+        "game_version": {
+          "edition": "11th",
+          "dataslate": "2026-10-14"
+        },
+        "detachment_id": "gladius-task-force",
+        "source_digest": "e2d8acd51c560532b851277b3e7157d690709032620bfb93975742b1be397aaf"
+      },
+      "sourceId": "armour-of-contempt-gladius-task-force-adeptus-astartes"
+    },
+    "sourceRuleId": "shared-armour-of-contempt",
+    "referenceOnly": true,
+    "sharedRuleIds": [
+      "armour-of-contempt-assault-brethren-adeptus-astartes-black-templars",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-black-templars",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-black-templars",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-black-templars",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-blood-angels",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-blood-angels",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-blood-angels",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-blood-angels",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-dark-angels",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-dark-angels",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-dark-angels",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-dark-angels",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-deathwatch",
+      "armour-of-contempt-black-spear-task-force-deathwatch",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-deathwatch",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-deathwatch",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-deathwatch",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-imperial-fists",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-imperial-fists",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-imperial-fists",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-imperial-fists",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-iron-hands",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-iron-hands",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-iron-hands",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-iron-hands",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-raven-guard",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-raven-guard",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-raven-guard",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-raven-guard",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-salamanders",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-salamanders",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-salamanders",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-salamanders",
+      "armour-of-contempt-assault-brethren-adeptus-astartes",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-space-wolves",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-space-wolves",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-space-wolves",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-space-wolves",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-ultramarines",
+      "armour-of-contempt-blade-of-ultramar-ultramarines-ultramarines",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-ultramarines",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-ultramarines",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-ultramarines",
+      "armour-of-contempt-assault-brethren-adeptus-astartes-white-scars",
+      "armour-of-contempt-devastator-brethren-adeptus-astartes-white-scars",
+      "armour-of-contempt-gladius-task-force-adeptus-astartes-white-scars",
+      "armour-of-contempt-tactical-brethren-adeptus-astartes-white-scars"
+    ],
+    "bearerKeywords": [],
+    "mechanicsDetails": "Trigger:\n  Event: Targets are selected\n  Filter:\n    Kind: Attack\n  Subject:\n    Owner: Enemy\n  Object:\n    Owner: Friendly\n    All of: ADEPTUS ASTARTES\n\nStat modifier\nTarget: Attacker\nModifier:\n  Stat: AP\n  Operation: Worsen\n  Value: 1\n\nScope / duration:\n  Duration: Attack sequence",
+    "bearerRestrictions": [],
+    "enhancementUpgrade": false,
+    "mechanicsPresentation": "structured"
+  },
+  "enabled": true,
+  "revision": 1
+}

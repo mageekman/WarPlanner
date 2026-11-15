@@ -154,14 +154,25 @@
   walker:{priority:10,steps:['shooting-start','shooting-select'],title:'Consider shooting War Walkers early',advice:'If other Aeldari units can attack the same target afterward, consider shooting the War Walkers first. Once they have shot and hit that target, resolve Crystalline Targeting before those later attacks. A unit that has already shot cannot benefit retroactively.'},
   falcon:{priority:20,steps:['shooting-start','shooting-select'],title:'Consider the Falcon before its passengers',advice:'If models disembarked from this Falcon this turn and can still attack the same target, consider shooting the Falcon before them. Resolve Fire Support after the Falcon shoots and hits. Being near the Falcon alone does not qualify those models.'}
  };
+ const timingWindows={round:'Start of battle round','turn-start':'Start of turn',start:'Start of phase','core-cp':'Gain Command Points',shock:'Battle-shock',act:'During the phase',select:'When selected',before:'Before acting',after:'After acting',react:'Reaction to an event',arrivals:'Reinforcements / arrivals',end:'End of phase','turn-end':'End of turn','round-end':'End of battle round',prebattle:'Pre-battle / reference'};
+ const ruleTimings=a=>Array.isArray(a.timings)?a.timings:[a];
+ const timingContextMatches=(t,state)=>t.phase?.includes(state.phase)&&(t.turn==='either'||t.turn===state.turn);
+ function ruleMatchesContext(a,state){return a.timings?ruleTimings(a).some(t=>timingContextMatches(t,state)):timingContextMatches(a,state);}
+ function timingsFor(a,state){return ruleTimings(a).filter(t=>timingContextMatches(t,state));}
+ function timingLabel(t){return [(t.phase||[]).map(i=>phases[i]?.name).filter(Boolean).join(' / ')||'No phase assigned',t.turn==='you'?'Your turn':t.turn==='opponent'?'Opponent’s turn':'Either turn',timingWindows[t.window]||t.window].join(' · ');}
+ function ruleTimingLabel(a){return ruleTimings(a).map(timingLabel).join('; ');}
  function timingMatches(a,state,step){
-  if(a.timingOverride)return a.window===step.window||(state.phase===4&&step.id==='fight-resolve'&&a.window==='select')||(a.window==='react'&&step.window==='act');
-  const timing=(a.window===step.window&&!(state.phase===0&&step.window==='act'&&a.sourceRuleId?.startsWith('psychic-guidance')))||(state.phase===0&&step.window==='shock'&&a.sourceRuleId?.startsWith('psychic-guidance'))||(state.phase===4&&step.id==='fight-resolve'&&a.window==='select')||(a.id==='flitting'&&step.id==='movement-select')||(a.window==='react'&&step.window==='act');
-  const preview=!a.adminManaged&&state.phase===2&&state.turn==='you'&&sequencing[a.id]?.steps.includes(step.id);
-  return !!(timing||preview);
+  if(!ruleMatchesContext(a,state))return false;
+  return timingsFor(a,state).some(t=>{
+   const window=t.window;
+   if(a.timings||a.timingOverride)return window===step.window||(state.phase===4&&step.id==='fight-resolve'&&window==='select')||(window==='react'&&step.window==='act');
+   const timing=(window===step.window&&!(state.phase===0&&step.window==='act'&&a.sourceRuleId?.startsWith('psychic-guidance')))||(state.phase===0&&step.window==='shock'&&a.sourceRuleId?.startsWith('psychic-guidance'))||(state.phase===4&&step.id==='fight-resolve'&&window==='select')||(a.id==='flitting'&&step.id==='movement-select')||(window==='react'&&step.window==='act');
+   const preview=!a.adminManaged&&state.phase===2&&state.turn==='you'&&sequencing[a.id]?.steps.includes(step.id);
+   return !!(timing||preview);
+  });
  }
  function forStep(state,step){return abilities.filter(a=>{
-  return timingMatches(a,state,step)&&matches(a,state.army)&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn);
+  return timingMatches(a,state,step)&&matches(a,state.army);
  }).map(a=>!a.adminManaged&&sequencing[a.id]&&sequencing[a.id].steps.includes(step.id)?{...a,sequencePreview:true,sequence:sequencing[a.id]}:a)
  .sort((a,b)=>(sequencing[a.id]?.priority??100)-(sequencing[b.id]?.priority??100));}
  function getSteps(state){
@@ -208,6 +219,6 @@
  }
  const stepOverrides=new Map();
  const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
- const api={guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingMatches,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

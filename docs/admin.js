@@ -54,8 +54,7 @@
    if(d.mechanicsPresentation)fields+='<p class="admin-guide-note">This study summary is based on imported source data. Reference-only status stays in place until you review the rule.</p>';
    fields+=select('category','Type',Object.keys(L.categories),d.category)+(d.memberships?membershipFields(d):select('detachment','Detachment',dets,d.detachment||'','None / faction-wide')+'<button type="button" class="outline" data-admin-action="share-rule">Use in multiple factions / detachments</button>');
    if(d.sharedRuleIds?.length)fields+=`<details><summary>Linked original imports (${d.sharedRuleIds.length})</summary><p>Original source records and revision history are retained. Edit the shared rule above to update every membership.</p>${records().filter(r=>d.sharedRuleIds.includes(r.data.id)).map(r=>`<details><summary>${e(r.faction)} · ${e(r.data.detachment||r.name)}</summary><pre>${e(JSON.stringify(r.data.importSource||r.data,null,2))}</pre></details>`).join('')}</details>`;
-   fields+=`<fieldset class="admin-phases"><legend>Phases</legend>${L.phases.map((p,i)=>`<label><input type="checkbox" name="phase" value="${i}" ${d.phase.includes(i)?'checked':''}>${p.name}</label>`).join('')}<small>Leave empty for reference-only or pre-battle content.</small></fieldset>`;
-   fields+=select('turn','Player turn',['you','opponent','either'],d.turn)+select('window','Timing window',C.windows,d.window);
+   fields+=C.timingFields(d);
    fields+=field('summary','Rule text / study summary',d.summary,{area:true,help:'Write a short reminder: when it happens, who it affects, and what changes. Keep important limits and conditions. Save to database preserves your wording; source-only imports keep it. A source-derived summary still needs checking against your current rules.'})+field('conditions','Conditions & restrictions',(d.conditions||[]).join('\n'),{area:true,help:'One condition per line.'});
    fields+=field('units','Applies to these unit names',(d.units||[]).join('\n'),{area:true,help:'One exact roster name per line. Leave empty for an army-wide or detachment rule.'});
    fields+=field('targetText','Eligible targets',d.targetText||root.WarPlanActivations.targeting(d,{phase:d.phase[0]||0,turn:'you'})?.text||'',{area:true})+field('triggerText','Timing reminder',d.triggerText||'');
@@ -97,10 +96,10 @@
   d.id=get('contentId')||slug(row.name+'-'+(row.faction==='*'?'core':row.faction));row.key=row.kind+':'+d.id;
   if(row.kind==='step')d.title=row.name;else d.name=row.name;
   if(row.kind==='rule'){
-   for(const key of ['category','detachment','turn','window','summary','targetText','triggerText','leadingBodyguard','enhancement','question','answer'])d[key]=get(key);
+   for(const key of ['category','detachment','summary','targetText','triggerText','leadingBodyguard','enhancement','question','answer'])d[key]=get(key);
    if(d.memberships){d.memberships=d.memberships.map((m,i)=>({faction:get('membership-'+i+'-faction'),detachments:fd.getAll('membership-'+i+'-detachments').map(String)}));if(!d.memberships.some(m=>m.faction===row.faction))row.faction=d.memberships[0]?.faction||'';d.detachment='';}
    for(const key of ['conditions','units','bearerKeywords'])d[key]=lines(get(key));
-   d.phase=fd.getAll('phase').map(Number);d.referenceOnly=fd.has('referenceOnly');d.leadingUnitRequired=fd.has('leadingUnitRequired');
+   C.captureTimings(d,fd);d.referenceOnly=fd.has('referenceOnly');d.leadingUnitRequired=fd.has('leadingUnitRequired');
    if(d.summary!==draft.data.summary)delete d.mechanicsPresentation;
    d.expanded=true;d.adminManaged=true;
    if(d.category==='enhancement'&&!d.enhancement)d.enhancement=row.name;
@@ -144,6 +143,7 @@
   }}
  });
  document.addEventListener('click',async event=>{
+  const timingButton=event.target.closest('button');if(service?.isAdmin&&timingButton&&('ruleTimingAdd' in timingButton.dataset||'ruleTimingRemove' in timingButton.dataset)&&C.editTimingRows(timingButton,timingButton.closest('#admin-content-form'))){markDirty();return;}
   const button=event.target.closest('button');if(!button||!service?.isAdmin||busy)return;
   if(draft?.kind==='rule'&&(['share-rule','add-membership'].includes(button.dataset.adminAction)||button.dataset.adminRemoveMembership!==undefined)){
    try{const next=capture(document.querySelector('#admin-content-form'),false),d=next.data;

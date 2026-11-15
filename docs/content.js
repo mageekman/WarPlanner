@@ -30,6 +30,42 @@
  }
  const defaults=seed(),defaultEnhancements=copy(L.catalog.enhancements);
  function stringList(value,label){if(!Array.isArray(value)||value.some(s=>typeof s!=='string'||s.length>2000))throw Error(label+' must be a list of text values.');}
+ function validateTimings(timings){
+  if(!Array.isArray(timings)||!timings.length||timings.length>20)throw Error('Add between 1 and 20 timings.');
+  const seen=new Set();for(const t of timings){
+   if(!t||typeof t!=='object'||Array.isArray(t)||Object.keys(t).some(k=>!['phase','turn','window'].includes(k))||!['you','opponent','either'].includes(t.turn)||!windows.includes(t.window))throw Error('Choose valid player turns and windows for each timing.');
+   if(!Array.isArray(t.phase)||t.phase.length>5||new Set(t.phase).size!==t.phase.length||t.phase.some(p=>!Number.isInteger(p)||p<0||p>4))throw Error('Choose valid phases for each timing.');
+   const key=JSON.stringify([[...t.phase].sort(),t.turn,t.window]);if(seen.has(key))throw Error('Remove duplicate timings.');seen.add(key);
+  }
+ }
+ function captureTimings(data,fd){
+  const ids=fd.getAll('rule-timing');
+  if(!ids.length){
+   // Old export/test forms must not flatten an existing multi-timing rule.
+   if(data.timings)return;
+   const before=JSON.stringify([data.phase,data.turn,data.window]);
+   data.phase=fd.getAll('phase').map(Number);data.turn=String(fd.get('turn')||'');data.window=String(fd.get('window')||'');
+   if(before!==JSON.stringify([data.phase,data.turn,data.window]))data.timingOverride=true;
+   return;
+  }
+  const next=ids.map(id=>({phase:fd.getAll('timing-'+id+'-phase').map(Number),turn:String(fd.get('timing-'+id+'-turn')||''),window:String(fd.get('timing-'+id+'-window')||'')}));
+  const before=JSON.stringify(L.ruleTimings(data).map(t=>({phase:[...t.phase].sort(),turn:t.turn,window:t.window})));
+  if(before!==JSON.stringify(next))data.timingOverride=true;
+  data.phase=[...new Set(next.flatMap(t=>t.phase))].sort();data.turn=next.every(t=>t.turn===next[0].turn)?next[0].turn:'either';data.window=next[0].window;
+  if(next.length===1)delete data.timings;else{data.timings=next;data.timingOverride=true;}
+ }
+ function timingFields(data){
+  const timings=L.ruleTimings(data),e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  return `<fieldset class="rule-timings" data-rule-timings><legend>Rule timings</legend><p class="admin-guide-note">The rule is available when any timing below matches. Each timing has its own phases, player turn and window.</p>${timings.map((t,i)=>`<fieldset class="rule-timing" data-timing-row><legend>Timing ${i+1}</legend><input type="hidden" name="rule-timing" value="${i}"><div class="rule-timing-phases">${L.phases.map((p,n)=>`<label><input type="checkbox" name="timing-${i}-phase" value="${n}" ${t.phase.includes(n)?'checked':''}>${e(p.name)}</label>`).join('')}</div><label>Player turn<select name="timing-${i}-turn">${[['you','Your turn'],['opponent','Opponent’s turn'],['either','Either turn']].map(([v,label])=>`<option value="${v}" ${t.turn===v?'selected':''}>${label}</option>`).join('')}</select></label><label>Timing window<select name="timing-${i}-window">${Object.entries(L.timingWindows).map(([v,label])=>`<option value="${v}" ${t.window===v?'selected':''}>${e(label)}</option>`).join('')}</select></label><button type="button" class="text-button" data-rule-timing-remove="${i}" ${timings.length===1?'disabled':''}>Remove timing ${i+1}</button></fieldset>`).join('')}<button type="button" class="outline" data-rule-timing-add ${timings.length>=20?'disabled':''}>Add timing</button><small>Leave phases empty only for reference or pre-battle content.</small></fieldset>`;
+ }
+ function editTimingRows(button,form){
+  if(!form||!('ruleTimingAdd' in button.dataset||'ruleTimingRemove' in button.dataset))return false;
+  const region=form.querySelector('[data-rule-timings]');if(!region)return false;
+  const fd=new FormData(form),ids=fd.getAll('rule-timing'),timings=ids.map(id=>({phase:fd.getAll('timing-'+id+'-phase').map(Number),turn:String(fd.get('timing-'+id+'-turn')),window:String(fd.get('timing-'+id+'-window'))}));
+  if('ruleTimingAdd' in button.dataset){if(timings.length>=20)return true;timings.push({phase:[],turn:'either',window:timings.at(-1)?.window||'react'});}
+  else{if(timings.length<=1)return true;timings.splice(Number(button.dataset.ruleTimingRemove),1);}
+  region.outerHTML=timingFields({timings});return true;
+ }
  function validate(row){
   if(!row||!kinds.includes(row.kind)||!row.data||typeof row.data!=='object'||Array.isArray(row.data))throw Error('Choose a content type.');
   const d=row.data;
@@ -65,6 +101,7 @@
    for(const key of ['leadingUnitRequired','referenceOnly','enhancementUpgrade','timingOverride'])if(d[key]!==undefined&&typeof d[key]!=='boolean')throw Error(key+' must be true or false.');
    if(!Object.hasOwn(L.categories,d.category)||!['you','opponent','either'].includes(d.turn)||!windows.includes(d.window))throw Error('Choose a valid category, player turn and timing.');
    if(!Array.isArray(d.phase)||d.phase.some(n=>!Number.isInteger(n)||n<0||n>4))throw Error('Choose valid phases.');
+   if(d.timings!==undefined)validateTimings(d.timings);
    for(const k of ['units','conditions','sourceIds'])stringList(d[k],k);
    if(typeof d.summary!=='string'||!d.summary.trim())throw Error('Enter the rule text or study summary.');
    if(!row.faction)throw Error('Choose a faction, or All factions.');
@@ -191,6 +228,6 @@
    dispose(){disposed=true;isAdmin=false;records=[];version++;}
   };
  }
- const api={get generation(){return generation;},filterRecords,kinds,windows,seed:()=>copy(defaults),validate,apply,reset:()=>apply([]),create};
+ const api={get generation(){return generation;},filterRecords,kinds,windows,seed:()=>copy(defaults),validateTimings,captureTimings,timingFields,editTimingRows,validate,apply,reset:()=>apply([]),create};
  if(node)module.exports=api;else root.WarPlannerContent=api;
 })(typeof window!=='undefined'?window:globalThis);

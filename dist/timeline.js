@@ -36,7 +36,7 @@
     return result;
    });
    const extra={id:'event-windows',title:'Other event windows',body:'Follow the rule’s exact trigger. These events do not add a mandatory step.',items:[],slots:[]};
-   for(const row of rules){const a=runtime.get(row.data.id)||M.enrich({...row.data,faction:row.faction});if(!a.phase?.includes(p)||a.turn!=='either'&&a.turn!==player||a.window==='prebattle')continue;
+   for(const row of rules){const rule=runtime.get(row.data.id)||M.enrich({...row.data,faction:row.faction});for(const timing of L.timingsFor(rule,state)){const a=rule.timings?{...rule,...timing,timings:[timing]}:rule;if(a.window==='prebattle')continue;
     if(a.window==='round'&&(p!==0||player!=='you')||a.window==='round-end'&&(p!==4||player!=='opponent'))continue;
     let target=steps.find(s=>!s.step.activationMode&&L.timingMatches(a,state,s.step));
     const activation=steps.find(s=>s.step.activationMode&&!['pile','consolidate'].includes(s.step.activationMode));
@@ -51,7 +51,7 @@
     for(const name of a.units||[])for(const unit of unitNames.get(norm(name))||[])put(target,unit);
     for(const id of [a.id,a.sourceRuleId,...(a.sharedRuleIds||[])]){for(const unit of unitRefs.get(id)||[])put(target,unit);for(const det of detRefs.get(id)||[])put(target,det);}
     for(const name of L.ruleDetachments(a,faction))for(const det of detNames.get(norm(name))||[])put(target,det);
-   }
+   }}
    if(extra.items.length)steps.push(extra);
    const priorities=new Map();
    for(const step of steps)for(const slot of [step,...step.slots]){
@@ -61,7 +61,7 @@
    return {turn:player,label:player==='you'?'Your turn':'Opponent’s turn',steps};
   })}));
   const reference={id:'reference',title:'Pre-battle / reference / no phase assigned',items:[]};
-  for(const row of [...rules,...units,...detachments])if(!placed.has(row.key)&&matches(row)&&!index.has(row.key)&&(row.kind!=='rule'||turn==='both'||row.data.turn==='either'||row.data.turn===turn))put(reference,row);
+  for(const row of [...rules,...units,...detachments]){const hasReferenceTiming=row.kind==='rule'&&L.ruleTimings(row.data).some(t=>(!t.phase?.length||t.window==='prebattle')&&(turn==='both'||t.turn==='either'||t.turn===turn));if((!placed.has(row.key)&&!index.has(row.key)||hasReferenceTiming)&&matches(row)&&(row.kind!=='rule'||turn==='both'||L.ruleTimings(row.data).some(t=>t.turn==='either'||t.turn===turn)))put(reference,row);}
   return {faction,detachment,detachments:detachmentNames,phases,reference,index:[...index.values()].sort((a,b)=>a.name.localeCompare(b.name))};
  }
  function capture(row,fd,validate=true){
@@ -70,8 +70,8 @@
   else d.name=result.name;
   if(result.kind==='rule'){
    const summary=get('summary');if(summary!==d.summary)delete d.mechanicsPresentation;d.summary=summary;d.targetText=get('targetText');d.conditions=lines('conditions');
-   d.phase=fd.getAll('phase').map(Number);d.turn=get('turn');d.window=get('window');d.category=get('category');d.units=lines('units');d.referenceOnly=fd.has('referenceOnly');d.expanded=true;d.adminManaged=true;d.status='admin-reviewed';
-   if(JSON.stringify(d.phase)!==JSON.stringify(row.data.phase)||d.turn!==row.data.turn||d.window!==row.data.window)d.timingOverride=true;
+   C.captureTimings(d,fd);d.category=get('category');d.units=lines('units');d.referenceOnly=fd.has('referenceOnly');d.expanded=true;d.adminManaged=true;d.status='admin-reviewed';
+   if(JSON.stringify(d.phase)!==JSON.stringify(row.data.phase)||d.turn!==row.data.turn||d.window!==row.data.window||JSON.stringify(d.timings)!==JSON.stringify(row.data.timings))d.timingOverride=true;
    d.sourceRuleId=d.sourceRuleId||d.id;
   }else if(result.kind==='unit'){
    d.profiles=P.read(d).map((profile,i)=>{const next={...profile,name:get('profile-'+i+'-name')||profile.name};for(const f of P.fields)next[f.key]=P.parse(fd.get('profile-'+i+'-'+f.key),f.key);return next;});
@@ -103,7 +103,7 @@
   let body='';
   if(guide.order!=='normal'||editing){body+=region('guideOrder guideRank',`${e(guide.label||({'normal':'Normal order','early':'Early','late':'Late'}[guide.order])||'Normal order')} · Priority ${e(settings.rank)}`,'p','flash-order');if(guide.note||editing)body+=region('guideNote',e(guide.note||'No guide order note.'),'p','flash-order');}
   if(d.targetText||editing&&r.kind==='rule')body+=region('targetText',`<span>Applies to</span><p>${e(d.targetText||'No target note yet.')}</p>`,'div','flash-expanded-target timeline-target');
-  if(r.kind==='rule')body+=`<p class="flash-timing">${region('phase',e((d.phase||[]).map(i=>L.phases[i]?.name).filter(Boolean).join(' / ')||'No phase assigned'),'span')} · ${region('turn',e(d.turn==='you'?'Your turn':d.turn==='opponent'?'Opponent’s turn':'Either turn'),'span')} · ${region('window',e(windows[d.window]||d.window),'span')}</p>`;
+  if(r.kind==='rule')body+=region('timings',L.ruleTimings(d).map((t,i)=>region(`phase turn window timing-${i}-phase timing-${i}-turn timing-${i}-window`,e(L.timingLabel(t)),'p','flash-timing')).join(''));
   if(d.triggerText)body+=`<p class="flash-timing">${e(d.triggerText)}</p>`;
   if(r.kind==='unit')body+=unitProfileHTML(d)+region('modelCounts',`<strong>Model counts:</strong> ${e((d.modelCounts||[]).join(', '))}`,'p','flash-applies')+region('keywords',`<strong>Common keywords:</strong> ${e((d.keywords||[]).join(', '))}`,'p','flash-applies');
   else body+=region(r.kind==='rule'?'summary':'description',e(d.summary||d.description||(editing?'No study notes yet.':'')),'p','flash-fact');
@@ -120,7 +120,7 @@
   if(!draft)return '';
   const d=draft.kind==='rule'?M.enrich(draft.data):draft.data;
   let fields=field('name',draft.kind==='step'?'Step title':'Name',draft.name);
-  if(draft.kind==='rule')fields+=field('summary','Rule text / study summary',d.summary,true)+field('targetText','Eligible targets',d.targetText||'',true)+field('conditions','Conditions & restrictions',(d.conditions||[]).join('\n'),true)+`<fieldset><legend>Phases</legend>${L.phases.map((p,i)=>`<label><input type="checkbox" name="phase" value="${i}" ${d.phase.includes(i)?'checked':''}>${e(p.name)}</label>`).join('')}</fieldset>`+select('turn','Player turn',[['you','Your turn'],['opponent','Opponent’s turn'],['either','Either turn']],d.turn)+select('window','Timing window',Object.entries(windows),d.window)+select('category','Type',Object.entries(L.categories),d.category)+field('units','Applies to unit names',(d.units||[]).join('\n'),true)+`<label><input name="referenceOnly" type="checkbox" ${d.referenceOnly?'checked':''}> Reference only</label>`;
+  if(draft.kind==='rule')fields+=field('summary','Rule text / study summary',d.summary,true)+field('targetText','Eligible targets',d.targetText||'',true)+field('conditions','Conditions & restrictions',(d.conditions||[]).join('\n'),true)+C.timingFields(d)+select('category','Type',Object.entries(L.categories),d.category)+field('units','Applies to unit names',(d.units||[]).join('\n'),true)+`<label><input name="referenceOnly" type="checkbox" ${d.referenceOnly?'checked':''}> Reference only</label>`;
   else if(draft.kind==='unit')fields+=P.read(d).map((p,i)=>`<fieldset><legend>Profile ${i+1}</legend>${field('profile-'+i+'-name','Profile name',p.name)}<div class="timeline-stat-grid">${P.fields.map(f=>field('profile-'+i+'-'+f.key,f.label,p[f.key]??'')).join('')}</div></fieldset>`).join('')+field('modelCounts','Model counts (comma-separated)',d.modelCounts.join(', '))+field('keywords','Common keywords',d.keywords.join('\n'),true);
   else if(draft.kind==='detachment')fields+=field('description','Study notes',d.description||'',true);
   else fields+=field('body','Instructions',d.body,true)+field('why','Why this matters',d.why||'',true);
@@ -137,7 +137,7 @@
   clearFieldHighlight();if(!draft||!control.name)return;
   const cards=[...document.querySelectorAll('[data-timeline-item]')].filter(el=>el.dataset.timelineItem===draft.key),canvas=document.querySelector('.timeline-canvas');
   const card=cards.find(el=>el.dataset.timelineInstance===editingInstance)||cards[0];if(!card||!canvas)return;
-  const targets=[...card.querySelectorAll('[data-timeline-fields]')].filter(el=>el.closest('[data-timeline-item]')===card&&el.dataset.timelineFields.split(' ').includes(control.name));
+  let targets=[...card.querySelectorAll('[data-timeline-fields]')].filter(el=>el.closest('[data-timeline-item]')===card&&el.dataset.timelineFields.split(' ').includes(control.name));if(!targets.length&&control.name.startsWith('timing-'))targets=[...card.querySelectorAll('[data-timeline-fields="timings"]')];
   for(const target of targets){for(let parent=target.parentElement;parent&&parent!==card;parent=parent.parentElement)if(parent.tagName==='DETAILS'){parent.open=true;if(parent.dataset.timelineOpen)opened.add(parent.dataset.timelineOpen);}target.classList.add('timeline-field-highlight');}
   control.closest('label')?.classList.add('timeline-editor-field-active');focusedKey=draft.key;highlight(draft.key);
   // Pan the canvas only; focusing the editor must not scroll the page away
@@ -147,7 +147,7 @@
   if(rect.top<bounds.top+gap)canvas.scrollTop+=rect.top-bounds.top-gap;else if(rect.bottom>bounds.bottom-gap)canvas.scrollTop+=Math.min(rect.top-bounds.top-gap,rect.bottom-bounds.bottom+gap);
  }
  function selectRow(key,origin){if(!canLeave())return;editingInstance=origin?.dataset.timelineInstance||null;for(const card of document.querySelectorAll('[data-timeline-item]'))if(card.dataset.timelineItem===key&&(!editingInstance||card.dataset.timelineInstance===editingInstance)){const details=card.querySelector('details[data-timeline-open]');if(details)opened.add(details.dataset.timelineOpen);}const row=records().find(r=>r.key===key)||C.seed().find(r=>r.key===key);if(!row)return;draft=copy(row);if(!records().some(r=>r.key===key))draft.revision=0;selected=key;dirty=false;error='';refresh();document.querySelector('.timeline-inspector')?.scrollIntoView({block:'nearest'});highlight(key);}
- document.addEventListener('click',event=>{if(!active)return;const b=event.target.closest('button');if(!b)return;if(b.hasAttribute('data-timeline-reset-layout')){applyLayout(100,640);return;}if(b.dataset.timelineEdit||b.dataset.timelineStep){selectRow(b.dataset.timelineEdit||b.dataset.timelineStep,b.closest('[data-timeline-item]'));return;}if(b.hasAttribute('data-timeline-close-editor')){if(canLeave()){draft=null;dirty=false;refresh();}return;}if(b.hasAttribute('data-timeline-exit')){if(canLeave()){active=false;draft=null;dirty=false;refresh();}return;}if(b.dataset.timelineLocate){highlight(b.dataset.timelineLocate);const target=[...document.querySelectorAll('[data-timeline-item]')].find(el=>el.dataset.timelineItem===b.dataset.timelineLocate);target?.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});}});
+ document.addEventListener('click',event=>{if(!active)return;const b=event.target.closest('button');if(!b)return;if(('ruleTimingAdd' in b.dataset||'ruleTimingRemove' in b.dataset)&&C.editTimingRows(b,b.closest('form'))){dirty=true;const status=document.querySelector('#timeline-draft-status');if(status)status.textContent='Unsaved changes';return;}if(b.hasAttribute('data-timeline-reset-layout')){applyLayout(100,640);return;}if(b.dataset.timelineEdit||b.dataset.timelineStep){selectRow(b.dataset.timelineEdit||b.dataset.timelineStep,b.closest('[data-timeline-item]'));return;}if(b.hasAttribute('data-timeline-close-editor')){if(canLeave()){draft=null;dirty=false;refresh();}return;}if(b.hasAttribute('data-timeline-exit')){if(canLeave()){active=false;draft=null;dirty=false;refresh();}return;}if(b.dataset.timelineLocate){highlight(b.dataset.timelineLocate);const target=[...document.querySelectorAll('[data-timeline-item]')].find(el=>el.dataset.timelineItem===b.dataset.timelineLocate);target?.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});}});
  document.addEventListener('input',event=>{if(!active)return;if(event.target.id==='timeline-zoom'){applyLayout(Math.max(50,Math.min(150,Number(event.target.value)||100)),windowHeight);return;}if(event.target.id==='timeline-height'){applyLayout(zoom,Math.max(320,Math.min(1200,Number(event.target.value)||640)));return;}if(event.target.closest('#timeline-edit-form')){dirty=true;const status=document.querySelector('#timeline-draft-status');if(status)status.textContent='Unsaved changes';return;}if(event.target.id==='timeline-query'){if(dirty&&draft)draft=capture(draft,new FormData(document.querySelector('#timeline-edit-form')),false);query=event.target.value;if(searchTimer)clearTimeout(searchTimer);searchTimer=setTimeout(()=>{searchTimer=null;if(!active)return;refresh();document.querySelector('#timeline-query')?.focus();},150);}});
  document.addEventListener('change',event=>{if(!active)return;if(event.target.closest('#timeline-edit-form')){dirty=true;const status=document.querySelector('#timeline-draft-status');if(status)status.textContent='Unsaved changes';return;}if(!event.target.closest('.timeline-controls')||!(['timeline-faction','timeline-detachment','timeline-turn','timeline-disabled'].includes(event.target.id)||event.target.name==='timeline-type'))return;if(!canLeave()){if(event.target.id==='timeline-faction')event.target.value=faction;if(event.target.id==='timeline-turn')event.target.value=turn;if(event.target.id==='timeline-detachment')event.target.value=detachment;if(event.target.id==='timeline-disabled')event.target.checked=showDisabled;if(event.target.name==='timeline-type')event.target.checked=selectedTypes.includes(event.target.value);return;}draft=null;dirty=false;if(event.target.id==='timeline-faction'){faction=event.target.value;detachment='';}if(event.target.id==='timeline-detachment')detachment=event.target.value;if(event.target.id==='timeline-turn')turn=event.target.value;if(event.target.id==='timeline-disabled')showDisabled=event.target.checked;if(event.target.name==='timeline-type')selectedTypes=[...document.querySelectorAll('[name="timeline-type"]:checked')].map(el=>el.value);refresh();});
  document.addEventListener('submit',async event=>{if(event.target.id!=='timeline-edit-form'||!service?.isAdmin)return;event.preventDefault();if(busy)return;const current=service;try{draft=capture(draft,new FormData(event.target),false);C.validate(draft);busy=true;error='';refresh();const saved=await current.save(draft);if(service!==current)return;draft=saved;dirty=false;C.apply(current.records);cached=null;draft=null;message='Saved. The timeline and guide now use this revision.';}catch(failure){if(service===current)error=failure.message;}finally{if(service===current){busy=false;refresh();highlight(selected);}}});
