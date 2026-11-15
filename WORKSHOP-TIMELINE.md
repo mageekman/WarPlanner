@@ -1,13 +1,20 @@
 # Workshop guide timeline
 
-Open **Rules workshop → Guide timeline**. Choose a faction, turn view and content
-types. The chart shows all five phases across your turn and the opponent's turn.
+Open **Rules workshop → Guide timeline**. Choose an army, a detachment (or
+**All detachments**), turn view and content types. Detachment choices follow the
+selected army and reset to All detachments when the army changes. A selected
+detachment retains army-wide rules and units while narrowing detachment rules,
+Stratagems, enhancements and detachment cards, including shared memberships and
+pre-battle references. Search and type filters do not hide detachment choices.
+Unsaved edits are guarded when changing either dropdown.
+The chart shows all five phases across your turn and the opponent's turn.
 Core steps and activation stages come from the same guide definitions. Rules retain
 their saved timing, phase, turn and guide-order hints. The view deliberately skips
-roster, detachment and equipment eligibility filters; those restrictions remain on
+roster and equipment eligibility filters; those restrictions remain on
 the expanded cards. Unscheduled and pre-battle records appear in a reference area.
 
-Unit and detachment filters add the catalog entries linked to the timed rules.
+The Units and Detachments content-type checkboxes add catalog entries linked to
+the timed rules.
 Shared rules and datasheets resolve to their original editable record. Archived
 source aliases stay hidden. Disabled content is an explicit display option.
 
