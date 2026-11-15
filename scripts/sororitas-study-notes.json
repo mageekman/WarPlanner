@@ -1,0 +1,1690 @@
+[
+  {
+    "id": "abbess-sanctorum-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While Morvenn Vahl leads a unit, that unit re-rolls Hit and Wound rolls. Source review: the record is explicitly auto-generated and partial; confirm eligible attachments, affected models and remaining restrictions.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "acts-of-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Discard a Miracle die to substitute its stored value for a single permitted Hit, Wound, Save, Advance, Charge, Desperate Escape, Hazard or Leadership roll/test. This is not an automatic 6. Source gaps: pool generation, per-unit/phase usage limits, exact dice/test substitution procedure and all eligibility exceptions are absent; the source explicitly does not track pool state. Confirm the complete Acts of Faith rules. This ordinary record covers 33 named units, not the four separate Sanctuary Guardians variants.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "acts-of-faith-sanctuary-guardians-adepta-sororitas",
+    "state": "missing",
+    "summary": "Missing source mechanics: Acts of Faith for Sanctuary Guardians contains only a no-effect marker. Do not substitute the ordinary faction or wargear version. No activation timing is supplied; keep this as reference content until checked.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "anchorite-sarcophagus-adepta-sororitas",
+    "state": "structured",
+    "summary": "For a Mortifier model equipped with an anchorite sarcophagus, set Move to 7″ and its Save characteristic to 3+. This is equipment-specific and is not an invulnerable save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "angelic-ascent-adepta-sororitas",
+    "state": "structured",
+    "summary": "After this Seraphim unit finishes shooting in your Shooting phase, if it is not engaged, you may make a 6″ Normal move. If it does, it cannot declare a charge this turn; follow Normal-move restrictions.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "angelic-descent-army-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, select an unengaged friendly ADEPTA SORORITAS JUMP PACK unit and place it into Strategic Reserves. Follow the normal later-arrival restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "angelic-judgement-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Friendly ADEPTA SORORITAS FLY INFANTRY gain Condemnatory Psalms: in your Shooting phase, optionally select a visible enemy within 12″, designate it Condemned and add 3″ to its detection range for the phase. Source gaps: detection range, the exact activation event and the this-model/this-unit visibility and range bindings are undefined; confirm the procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "anguish-of-the-unredeemed-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When a Mortifier model is destroyed, roll D6; on 2+ it fights after the attacking unit finishes and is then removed. Source conflict: the not-yet-selected-to-fight condition checks event-subject rather than the destroyed event-object, so eligibility may test the attacker. Confirm the correct model, phase and fight-on-death gates.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "attached-unit-sanctifiers-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At Declare Battle Formations, Sanctifiers may attach a friendly Leader MINISTORUM PRIEST as though they were a Battle Sisters Squad; the attached Priest leader gains Scouts 6″ while leading. Source review: confirm the as-Battle-Sisters attachment exception and exact formation/Scout restrictions before applying it; the import expresses an attachment proxy, not an ordinary bodyguard link.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "auto-tapestry-of-the-emperors-judgement-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While Aestred Thurga leads, the unit’s weapons gain Devastating Wounds. Source review: the leading gate is combined with an Aestred model-profile test on this-unit; confirm that Aestred is the surviving granting model and which attached models benefit.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "bastion-of-faith-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "When the selected friendly CELESTIAN SACRESANTS unit is targeted in Fight, subtract 1 from Hit rolls against it for the phase. If that original unit is Righteous, you may also protect one other friendly Celestian Sacresants unit within 6″ that is not Battle-shocked. Keep the second unit’s range and state gates.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "blade-of-saint-ellynor-army-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "Improve the bearer’s melee Strength and AP by 1 and give those weapons Precision. Each time the bearer fights, if its attacks destroy one or more enemy models, gain 1 Miracle die after that fight sequence, not one die for each casualty.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "blazing-ire-bringers-of-flame-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "After an enemy shoots at your ADEPTA SORORITAS TRANSPORT, one embarked unit may disembark as in Movement and then shoot as in Shooting, only at that attacking enemy if eligible. Source conflict: the shooting permission targets this-unit (the transport) rather than the selected disembarking unit; transport-target and enemy-only restrictions are only in the note. Confirm disembarkation, shooter and target binding.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "blessed-believers-adepta-sororitas",
+    "state": "missing",
+    "summary": "Missing source mechanics: Blessed Believers for Sanctuary Guardians contains only a no-effect marker. Do not substitute the ordinary faction or wargear version. No activation timing is supplied; keep this as reference content until checked.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "blinding-radiance-army-of-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When targeted in opponent Shooting or either Fight, the note permits an Infantry target or a friendly JUMP PACK unit within 3″ of that target; attacks against it suffer -1 Hit. A targeted Jump Pack also protects friendly Infantry within 3″. Source gaps: the effect lacks those alternative targets/extension and core target restrictions are absent; core player metadata is broader in Shooting. Confirm recipients and timing.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "boundless-zeal-penitent-host-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "After the selected ADEPTA SORORITAS unit Falls Back, a non-PENITENT unit may shoot OR declare a charge this turn, while a PENITENT unit may do both. Source conflict: the effect grants both permissions to both branches, and its shooting permission lacks an explicit Fall Back exception. Confirm the choice and shooting restriction.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "carry-forth-the-faithful-bringers-of-flame-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Before an ADEPTA SORORITAS TRANSPORT Advances, re-roll its Advance roll and permit units to disembark despite that Advance; they count as having made a Normal move and cannot charge this turn. Source gaps: the disembark permission targets this-unit, the no-charge recipient is broad and Normal-move status is only in the note; confirm the transport/passenger binding and disembark procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "catechism-of-divine-penitence-penitent-host-adepta-sororitas",
+    "state": "structured",
+    "summary": "A CANONESS, PALATINE or MINISTORUM PRIEST bearer gains the PENITENT keyword. Keep those alternative bearer restrictions; this does not grant PENITENT to every model in the attached unit.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "chaplet-of-sacrifice-hallowed-martyrs-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At the end of your Command phase, if the bearer is on the battlefield, re-roll one Miracle die in your pool and return it showing the new result, or up to three if its unit is below Starting Strength. Source conflict: the effect instead substitutes rolled values and gains an extra die without the up-to-three choice. Confirm pool conservation, dice count and the re-roll procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "cherub-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Once per battle per unit, after this Battle Sisters, Dominion or Sanctifiers unit performs an Act of Faith, gain 1 Miracle die. Source review: the approximate trigger does not bind the Act of Faith to this unit, and base pool/usage rules are incomplete; confirm the triggering unit and limit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "cherub-sanctuary-guardians-battle-sisters-squad-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "After the Sanctuary Guardians Battle Sisters unit performs an Act of Faith, you may gain 1 Miracle die. Source gap: once per battle per unit appears in the name but no usage limit or triggering-unit binding is encoded, and its Sanctuary Acts of Faith record is empty; confirm all three.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "cherubs-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Twice per battle per Retributor unit, after that unit performs an Act of Faith, gain 1 Miracle die. Source review: the approximate trigger does not bind the Act of Faith to this unit and the base pool rules are incomplete. Preserve the two-use limit rather than copying the ordinary Cherub’s one use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "clarion-of-urgency-chorus-of-condemnation-adepta-sororitas",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, if the Canoness with Jump Pack bearer’s unit is not engaged, you may place that unit into Strategic Reserves. Keep the specific bearer restriction and normal later-arrival rules.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "cleansing-flames-bringers-of-flame-adepta-sororitas",
+    "state": "structured",
+    "summary": "Select one friendly ADEPTA SORORITAS unit that has not shot this phase. Only its Torrent weapons gain Devastating Wounds for the phase; other weapons do not receive the grant.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "damaged-1-6-wounds-remaining-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While the Triumph of Saint Katherine has 1–6 wounds remaining, halve its Attacks characteristic and set Relics of the Matriarchs selections to one. Source review: the predicate only supplies remaining_max 6, the Attacks effect has no weapon/profile selector or rounding, and the relic selection minimum is unclear; confirm the complete damaged profile.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "defenders-of-the-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At the end of your Command phase, while this Battle Sisters unit is within control range of a friendly-controlled objective, make that objective sticky. Source gap: the effect targets this-unit rather than a bound objective and gives no exact expiry/control-transfer procedure; confirm which objective and when control is lost.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "defenders-of-the-faith-sanctuary-guardians-battle-sisters-squad-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At the end of your Command phase, while this Sanctuary Guardians Battle Sisters unit is within control range of a friendly-controlled objective, make that objective sticky. Source gap: no selected-objective binding or exact control-transfer/expiry procedure is supplied; retain this unit-specific version separately.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "denuncia-oratory-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "With the denuncia-oratory wargear, Celestian Insidiants may select a replacement enemy after a quarry is destroyed. Source conflict: the trigger checks any-owner lowercase quarry, the condition tests enemy uppercase QUARRY, and designation is written onto this-unit with the selected enemy as subject. Confirm the casualty, replacement and tag binding before updating the quarry.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "desperate-for-redemption-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At the start of your Command phase you may choose one Vow until your next Command phase: Path of the Penitent (+3″ Move for friendly PENITENT models); Absolution in Battle (+1 melee Attacks and Strength for PENITENT models in a unit that charged this turn); or Death Before Disgrace (destroyed PENITENT models not yet selected to fight may fight on 2+ after the attacker finishes if destroyed by melee). Source review: consumable choices do not specify the once-per-battle reuse/exhaustion procedure; confirm vow history and any remaining gates.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "devastating-refrain-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "In Shooting, this Exorcist’s source forces the defender to take a Battle-shock test. Source gaps: there is no selection, hit requirement, exact activation event or frequency limit; confirm when the test occurs and which attacked enemy qualifies.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "devastating-reprise-chorus-of-condemnation-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "After a friendly EXORCIST shoots, select a non-MONSTER, non-VEHICLE enemy hit by its ranged attacks; the source describes ranged Devastating Wounds against that designation for the phase. Source conflict: the core target is a friendly ADEPTA SORORITAS FLY INFANTRY unit while the trigger is an Exorcist, the beneficiary is this-unit and the hit victim is unbound. Confirm issuer, beneficiary and selected enemy.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "devout-fanaticism-penitent-host-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "After an enemy finishes shooting at the selected friendly PENITENT unit in your opponent’s Shooting phase, that unit makes a D6″ Surge move. Source gap: the legal Surge path, final-position requirements and any further eligibility restrictions are not supplied; confirm the complete move procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "divine-aspect-army-of-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "In your Movement phase, select an enemy within 12″ of the bearer to take a Battle-shock test; if it fails, gain 1 Miracle die. Source gap: no exact activation event or frequency is supplied, so confirm when it can be used and how often.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "divine-deliverance-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Once per battle per Jump Pack Canoness unit, at the start of Fight you may add 3 to the bearer’s melee Attacks and grant those weapons Devastating Wounds for the phase. Source review: the record is explicitly auto-generated and partial; confirm bearer eligibility and remaining restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "divine-guidance-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Sanctuary Canoness Adalya describes full Hit re-rolls for a friendly SANCTUARY GUARDIANS unit selected to attack. Source gaps: once per turn per unit appears only in the name, with no usage/range limit or exact beneficiary selection. Confirm the limit and issuer; this is not the Army of Faith AP Stratagem.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "divine-guidance-army-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "Select a friendly ADEPTA SORORITAS unit not yet selected to shoot or fight this phase. Improve its AP by 1 for the phase; after its attacks, if they destroy one or more enemy models, gain 1 Miracle die. This is the Stratagem, not Adalya’s Hit re-roll ability.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "divine-intervention-hallowed-martyrs-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "For a destroyed ADEPTA SORORITAS CHARACTER other than Saint Celestine, the note permits discarding 1–3 Miracle dice to return one model closest to its destruction point, unengaged, unattached and Starting Strength 1, with D3 wounds plus one per die spent up to starting wounds; the same Character only once per battle. Source gaps: spend is unbounded one-or-more, wound bonus/cap and placement restrictions are omitted, and no return event is given. Confirm timing and the full resurrection procedure.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "divine-miracle-sanctuary-guardians-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Once per battle per upgraded Sanctuary Guardians Battle Sisters unit, at the start of any phase, you may heal D3+2 wounds. Source review: the effect targets a multi-model unit without specifying how healing is allocated or whether models can return; confirm the affected model and do not assume resurrection. The generic BATTLE SISTERS SQUAD keyword in applies-to is absent from the named Sanctuary datasheet; preserve the explicit core datasheet restriction.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "embodied-prophecy-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When this Zephyrim unit is selected to fight, choose Sustained Hits 1 OR Lethal Hits on its melee weapons for the phase; if it charged this turn, it gains both instead. Source review: the record is explicitly auto-generated and partial and its charge-history subject is unbound; confirm the charged unit and remaining restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "endless-suffering-adepta-sororitas",
+    "state": "structured",
+    "summary": "This Penitent Engines unit may declare a charge in a turn in which it Advanced. This does not waive unrelated charge-eligibility restrictions.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "executioner-of-heretics-adepta-sororitas",
+    "state": "structured",
+    "summary": "Enemy units within 6″ of this Dogmata worsen their Leadership characteristic by 1. This is a characteristic penalty, not -1 to a Leadership roll.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "extremis-trigger-word-adepta-sororitas",
+    "state": "structured",
+    "summary": "When the ordinary Arco-flagellants unit is selected to fight, you may set its arco-flails’ Attacks characteristic to 6 and give those flails Hazardous for the phase. Apply only to the named weapons and resolve the normal Hazardous procedure.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "extremis-trigger-word-sanctuary-guardians-arco-flagellants-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When Sanctuary Guardians Arco-Flagellants are selected to fight, you may set arco-flails to 6 attacks and give the unit’s melee weapons Hazardous. Source difference: this import limits the effects to the phase, while the pin says permanent. Its Hazardous grant is broader than the ordinary version’s flails-only grant; confirm duration and weapon scope without merging them.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "eyes-of-the-oracle-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "The bearer’s weapons gain Precision. Each time the bearer’s unit destroys an enemy CHARACTER model, gain 1CP; apply the core limits on CP gains. The casualty must be an enemy Character model.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "faith-and-fury-army-of-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Select a friendly ADEPTA SORORITAS unit that has not fought this phase. Its melee weapons gain Lance, and destroying one or more enemy models with its attacks yields 1 Miracle die. Source review: the note describes casualties during the phase while the gain triggers after each attack sequence with no explicit frequency bound; confirm how many gains occur if the unit attacks more than once.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "faithful-fortitude-sacred-champions-adepta-sororitas",
+    "state": "structured",
+    "summary": "When damage is allocated to the selected friendly CELESTIAN SACRESANTS unit, it gains Feel No Pain 5+ against mortal wounds for the phase. Ordinary damage is not covered.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "fervent-devotion-sanctuary-guardians-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When the selected friendly SANCTUARY GUARDIANS unit is selected to Advance or Fall Back, the note permits later shooting and charging despite that move. Source conflict: the permissions simply allow shoot/charge for the phase, without an explicit Advance/Fall Back exception or turn-long duration; confirm persistence and the waived restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "fervent-purgation-adepta-sororitas",
+    "state": "structured",
+    "summary": "Friendly ADEPTA SORORITAS models’ ranged weapons gain Assault. When those ranged weapons attack a defender within 6″ of the attacker, add 1 to Strength. Keep the close-range measurement and ranged-weapon restriction.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "fiery-conviction-adepta-sororitas",
+    "state": "structured",
+    "summary": "At the start of your Command phase, if Junith Eruita is on the battlefield, you may choose one: spend 1 Miracle die to gain 1CP, OR take a Leadership test and gain 1CP only on a pass. Do not take both branches; apply core CP-gain limits.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "final-redemption-penitent-host-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Just after a friendly PENITENT unit is destroyed while within control range of a friendly-controlled objective, its note keeps that objective yours until enemy control exceeds yours at phase end. Source gap: the effect targets the destroyed unit rather than a selected objective and lasts the phase, without the stated control-transfer expiry; confirm the marker and duration.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "fire-and-fury-bringers-of-flame-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While the bearer leads, its unit’s Torrent weapons gain 1 attack and its other ranged weapons gain Sustained Hits 1. Source conflict: the effect grants Sustained Hits to all ranged weapons instead of excluding Torrent; confirm the separate weapon branches.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "fires-of-damnation-sanctuary-guardians-adepta-sororitas",
+    "state": "structured",
+    "summary": "When the friendly SANCTUARY GUARDIANS unit is selected to shoot or fight, set its Torrent weapons’ Attacks characteristic to 6 and improve the AP of all its attacks by 1 for the phase. The fixed 6 attacks apply only to Torrent weapons.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "fury-of-the-righteous-adepta-sororitas",
+    "state": "structured",
+    "summary": "While this Palatine leads a unit, that unit’s weapons gain Lethal Hits. Preserve the leading condition; this is not an army-wide grant.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "hagiomnifex-upgrade-sanctified-orators-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "For an eligible non-PENITENT ADEPTA SORORITAS CHARACTER upgrade unit, choose one sermon for the phase: +6″ detection range for its ranged-attack defender; a battle-shock-auto-succeed designation; +1″ Move; +1 Strength; or -1 to incoming Wound rolls when attack Strength exceeds defender Toughness. Source gaps: no activation event or choice frequency is supplied, detection range is undefined, and the auto-pass designation has no consumer; confirm the full sermon procedure.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "harmonised-exorcism-chorus-of-condemnation-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "The selected EXORCIST unit adds 1 to ranged Hit rolls for the phase. Source gap: no exact selection event, not-yet-shot gate or core target restriction is supplied; confirm eligibility and when to use it.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "healing-tears-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "In your Command phase, while Celestine’s profile condition is met, return one Geminae Superia model to her unit. Source difference: the import specifically targets Geminae Superia whereas the pin returns a generic model to this-unit. Source gaps: the exact activation event, frequency, returned wounds and placement are not supplied; confirm the recovery procedure and do not return Celestine through this effect.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "holy-judgement-adepta-sororitas",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, Daemonifuge selects one visible enemy within 12″ to take a Battle-shock test. Subtract 2 from the test if that enemy has CHAOS; if it fails, it suffers 3 mortal wounds. Other enemies take an unmodified test before the same failure rider.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "holy-mission-adepta-sororitas",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, if this Ministorum Priest is attached to a Dominion Squad, the unit gains Scouts 6″; if attached to Sisters Novitiate Squad, it gains Infiltrators instead. Keep the two bodyguard-specific branches and normal deployment/Scout restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "holy-quest-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "The effect improves Weapon Skill and Ballistic Skill by 1 for friendly CELESTIAN INSIDIANTS or CELESTIAN SACRESANTS and declares the REVEREND-exclusive detachment tag. Source conflict: the applies-to filter names only Celestian Sacresants and the tag’s construction restrictions are undefined; confirm both recipient scopes and the tag.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "holy-vanguard-adepta-sororitas",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, while this Dominion unit is led and embarked in a TRANSPORT, its attached friendly Leader models gain Scouts 6″. Preserve the embarked/transport conditions rather than granting Scouts to every unattached leader.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "hymns-of-battle-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Friendly ADEPTA SORORITAS CHARACTER models improve Leadership by 1. The note says this detachment’s enhancements do not count toward the army enhancement total. Source review: the exemption effect does not bind the enhancement choices or the exact construction limit; confirm all list-building restrictions before treating this as unlimited enhancements.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "impetuous-fervour-adepta-sororitas",
+    "state": "structured",
+    "summary": "This Sisters Novitiate unit re-rolls Hit rolls of 1, improved to full Hit re-rolls against an enemy defender within control range of an objective marker. The stronger branch depends on the defender’s objective range.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "indefatigable-dedication-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "After the selected friendly ADEPTA SORORITAS unit Falls Back, it may shoot this turn. If it is Righteous, it may both shoot and declare a charge despite Falling Back. Keep the Righteous escalation separate from the ordinary shooting-only branch.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "inspirational-battle-canticles-chorus-of-condemnation-adepta-sororitas",
+    "state": "structured",
+    "summary": "At the start of a Command phase, choose either one friendly ADEPTA SORORITAS FLY INFANTRY unit OR one friendly EXORCIST. Select one friendly Battle-shocked ADEPTA SORORITAS unit within 6″ of that selected source; it is no longer Battle-shocked. The source choices are alternatives, not both required.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "iron-surplice-of-saint-istalela-bringers-of-flame-adepta-sororitas",
+    "state": "structured",
+    "summary": "CANONESS or PALATINE bearer only: set the bearer’s Save characteristic to 2+ and give it Feel No Pain 5+. This is a 2+ armour Save, not a 2+ invulnerable save and not a unit-wide grant.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "judged-for-execution-adepta-sororitas",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, Intranzia Fraye may select one visible enemy within 18″. Friendly ADEPTA SORORITAS models gain Lethal Hits against that selected enemy until your next Command phase. Preserve the single designated victim and visibility/range selection gates.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "lash-of-guilt-penitent-host-adepta-sororitas",
+    "state": "structured",
+    "summary": "Just before the selected friendly PENITENT unit Advances, allow it to declare a charge this turn despite Advancing. If it is PENITENT ENGINES, do not roll Advance; use a fixed 6″ for the phase instead. Other Penitent units retain their normal Advance roll.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "laud-hailer-adepta-sororitas",
+    "state": "structured",
+    "summary": "Once per battle per Dialogus unit, at the start of any phase, you may select one friendly Battle-shocked ADEPTA SORORITAS unit within 12″. That selected unit is no longer Battle-shocked.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "lifewards-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While Saint Celestine’s unit contains at least one GEMINAE SUPERIA model, the source grants this-model Feel No Pain 4+. Source gap: it does not bind this-model to Celestine’s named profile in this multi-profile unit; confirm which models receive the protection rather than granting it to every model.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "light-of-the-emperor-army-of-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "For the turn, the selected ADEPTA SORORITAS unit ignores modifiers to its profile characteristics, weapon WS/BS and rolls/tests except saving-throw modifiers. A JUMP PACK source also blesses friendly ADEPTA SORORITAS within 3″. Source review: the extension’s Jump Pack condition has no subject and its designation persistence is unclear; confirm the issuing unit, affected recipients and expiry.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "litanies-of-faith-army-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "CANONESS or PALATINE bearer only. At the start of your Command phase, if the bearer is on the battlefield, take a Leadership test for it; gain 1 Miracle die only if that test passes. The pass gate is encoded despite the older note saying otherwise.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "litany-of-deeds-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When a friendly ADEPTA SORORITAS unit or model is destroyed within 12″ of this Imagifier and that destruction causes a Miracle-die gain, you may re-roll that gained die. Source conflict: the inner condition checks only unit destruction and the pool IDs differ between miracle-dice and miracle-dice-pool elsewhere; confirm model/unit causality and pool identity.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "mantle-of-ophelia-hallowed-martyrs-adepta-sororitas",
+    "state": "structured",
+    "summary": "CANONESS or PALATINE bearer only: when an attack is allocated to the bearer, set that attack’s Damage characteristic to 1. This is a set-to-1 effect, not subtract 1, and protects only the bearer.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "manual-of-saint-griselda-bringers-of-flame-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At the start of your Command phase, the note permits discarding up to two Miracle dice to gain one showing their sum, capped at 6. Source conflict: the effect spends exactly two and gains an unvalued die without an activation event or value/cap; confirm how many dice may be spent and the new die’s value.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "mark-of-devotion-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "The bearer’s melee weapons gain 1 attack. While its unit is Righteous, replace that with 2 extra attacks and also add 1 Damage. The attack bonuses are alternatives, not +3 total.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "medicus-ministorum-adepta-sororitas",
+    "state": "structured",
+    "summary": "While this Hospitaller leads a unit, that unit gains Feel No Pain 5+. Preserve the leading condition.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "ministorum-sermon-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Sanctifiers describe Sustained Hits 1 on the unit’s melee weapons when a MINISTORUM PRIEST condition is met. Source gap: the keyword test has no subject and does not explicitly require a Priest leader in this unit; confirm which model must satisfy it.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "miraculous-intervention-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "The first time Celestine is destroyed this battle, at the end of that phase roll D6; on 2+ set her up closest to her destruction point, unengaged and with full wounds. Source review: the nested phase-end event does not carry an explicit reference back to the destroyed Celestine event-object, and precise placement/attachment restrictions are incomplete; confirm the complete return procedure. This is distinct from Healing Tears returning a Geminae.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "mysterious-saviours-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Daemonifuge may use Heroic Intervention even if it was used this phase, reduce the triggering use’s cost by 1, and lift a use limit without consuming the shared use. Source gap: the cost modifier does not explicitly name Heroic Intervention and no use frequency/proximity restriction is supplied; confirm the full restrictions.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "null-rod-adepta-sororitas",
+    "state": "structured",
+    "summary": "If this Canoness has the null rod, its unit gains Feel No Pain 4+ against Psychic attacks and mortal wounds. It does not grant ordinary non-Psychic damage protection; preserve the equipment gate.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "null-rod-sanctuary-canoness-adalya-adepta-sororitas",
+    "state": "structured",
+    "summary": "Sanctuary Canoness Adalya’s unit gains Feel No Pain 4+ against Psychic attacks and mortal wounds. Keep this named-unit record separate from the ordinary Canoness’s equipment-gated version.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "overseer-of-redemption-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While this Repentia unit contains a REPENTIA SUPERIOR, its SISTERS REPENTIA models re-roll melee Hit and Wound rolls. Source review: the record is explicitly auto-generated and partial; confirm the surviving Superior and affected model profiles, rather than buffing every attached Character.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "passion-of-the-penitent-penitent-host-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Select a friendly PENITENT unit that has not fought this phase; only its PENITENT models’ melee Hit rolls score Critical Hits on the encoded value of 5. Source review: the effect does not specify unmodified rolls or a 5+ threshold; confirm the critical range and do not apply it to non-Penitent attached models.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "path-of-the-righteous-champions-of-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Select a friendly ADEPTA SORORITAS unit that has not fought. It gains 3″ to Pile-in/Consolidation distance this turn. If Righteous, the note permits ending as close as possible to the closest enemy unit instead of closer to the closest enemy model. Source conflict: the modifier triggers after those moves end; confirm legal timing, paths and the replacement final-position rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "perfervid-haste-sacred-champions-adepta-sororitas",
+    "state": "structured",
+    "summary": "Add 1″ to the bearer’s unit’s Move characteristic. This changes Move, not Advance or Charge rolls.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "praise-the-fallen-hallowed-martyrs-adepta-sororitas",
+    "state": "structured",
+    "summary": "After an enemy shoots in your opponent’s Shooting phase and destroys at least one model in the selected friendly ADEPTA SORORITAS unit, that unit may shoot as if it were its Shooting phase. It must target only that enemy and only if the enemy is an eligible target.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "psalm-of-righteous-judgement-penitent-host-adepta-sororitas",
+    "state": "structured",
+    "summary": "While the bearer is on the battlefield, each time a friendly PENITENT unit destroys an enemy unit, you may discard one Miracle die and gain one showing 6. This replacement requires the discard and qualifying destruction; it is not an automatic extra 6 on every attack.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "purge-and-cleanse-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "After this Immolator shoots, select an enemy hit by its attacks; that enemy loses the Benefit of Cover for the rest of the phase. Source review: the hit-history object points to this-unit rather than the selected victim; confirm which enemy was hit before applying the suppression.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "purity-of-suffering-penitent-host-adepta-sororitas",
+    "state": "structured",
+    "summary": "When the selected friendly PENITENT unit is targeted by attacks, its PENITENT models gain Feel No Pain 4+ for the phase. Non-Penitent models in an attached unit do not receive the grant.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "rapturous-blows-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When this Palatine is selected to fight, it may spend one Miracle die; the source describes 1 mortal wound to the defender per successful melee Wound roll by this model. Source difference: this import adds the this-model trigger and melee gate missing from the pin and uses the parent phase duration. The damage branch is not conditional on having paid, so confirm the spend-to-benefit link and do not award free mortal wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "recount-the-deeds-of-the-saints-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "This Aestred/Agathae unit describes gaining 1 Miracle die when its led unit destroys an enemy, plus D3 for another destruction condition. Source conflicts: the filter says AGATHE DOLAN rather than the named Agathae profile, the second victim is event-object without an activation event, and the branches may overlap. Confirm the surviving model, casualties, count and timing.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "refrain-of-enduring-faith-penitent-host-adepta-sororitas",
+    "state": "structured",
+    "summary": "While the PENITENT bearer leads a unit, that unit gains a 5+ invulnerable save. Keep the bearer and leading restrictions.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "relics-of-the-matriarchs-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At the start of each battle round, the Triumph may select up to two relic effects lasting the round, each affecting friendly ADEPTA SORORITAS within 6″: Fiery Heart (+2″ Move, +1 Advance/Charge); Censer of the Sacred Rose (re-roll Battle-shock); Ebon Chalice (set Acts of Faith uses to two); Argent Shroud (ranged Wound re-rolls of 1); Valorous Heart (Feel No Pain 6+); or Bloody Rose (+1 melee AP). Source review: damaged selection count, the Acts of Faith period and overlapping/persistence rules need confirmation; do not activate all six.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "righteous-awareness-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "After an enemy ends a move within 8″ during the opponent’s Movement phase, the source describes a D6″ Normal move while not engaged. Source conflict: the move targets event-subject (the moving enemy), not this Dominion unit, and the engagement subject is unbound. Confirm the intended mover and legal reaction before moving either unit.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "righteous-blows-bringers-of-flame-adepta-sororitas",
+    "state": "structured",
+    "summary": "Select a friendly ADEPTA SORORITAS unit that has not fought. Its melee weapons gain Lethal Hits for the phase; after its melee attacks destroy one or more enemy models, select one casualty’s unit to take a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "righteous-denunciation-adepta-sororitas",
+    "state": "structured",
+    "summary": "At the start of Fight, enemy units within 6″ of Intranzia Fraye take Battle-shock tests at -1. The modifier applies to the test, not the Leadership characteristic.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "righteous-fervour-sanctuary-guardians-adepta-sororitas",
+    "state": "structured",
+    "summary": "For the eligible Sanctuary Guardians CANONESS bearer, improve its melee weapons’ Damage by 1 and add 1 to its unit’s melee Wound rolls. Keep the bearer-only Damage bonus distinct from the unit-wide Wound bonus.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "righteous-paragons-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "This Paragon Warsuits unit adds 1 to Hit and Wound rolls against MONSTER or VEHICLE defenders. Source review: the record is explicitly auto-generated and partial; confirm weapon scope and remaining restrictions.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "righteous-purpose-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "In your Command phase, select up to three friendly ADEPTA SORORITAS units as Righteous until your next Command phase. The note lists +1″ Move and improved Leadership, plus WS/BS bonuses for Battle Sisters, Celestian Sacresants and Paragon Warsuits and +1 OC for non-Battle-shocked Sacresants. Source conflict: only Move and a Battle-shock-roll bonus are encoded, no Righteous designation is set, and duration is turn rather than next Command. Confirm the complete bonuses, signs, recipients and expiry.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "righteous-rage-bringers-of-flame-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When the bearer is selected to fight, the note permits discarding up to three Miracle dice for +1 melee Attack and Strength per die for the phase. Source conflict: the effect spends exactly one and grants fixed +1 bonuses, with no selection event or variable multiplier; confirm the spend count and resulting bonus.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "righteous-repugnance-adepta-sororitas",
+    "state": "structured",
+    "summary": "When Morvenn Vahl is selected to shoot or fight, she may spend 1 Miracle die to add 3 attacks to Fidelis and the Lance of Illumination for the phase. Each time she destroys an enemy unit, gain 1 Miracle die. Keep the named weapons, model-specific destruction and spend requirement.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "righteous-smiting-adepta-sororitas",
+    "state": "structured",
+    "summary": "While this Ministorum Priest leads a unit, add 1 to that unit’s melee Wound rolls. This does not improve ranged attacks or an unattached unit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "righteous-vengeance-hallowed-martyrs-adepta-sororitas",
+    "state": "structured",
+    "summary": "Select a friendly ADEPTA SORORITAS unit that has not fought this phase. It re-rolls melee Hit rolls for the phase and also re-rolls melee Wound rolls while below Half-strength. The Wound re-roll branch has the extra strength condition.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "rites-of-castigation-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Once per turn per Castigator, after it shoots, select an enemy it hit. Friendly ADEPTA SORORITAS ranged attacks against that enemy improve AP by 1 for the turn. Source review: the hit-history object points to this-unit rather than the selected enemy; confirm the hit victim and designation binding before later units use the benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "rites-of-fire-bringers-of-flame-adepta-sororitas",
+    "state": "structured",
+    "summary": "Select a friendly ADEPTA SORORITAS unit that disembarked this turn and has not shot this phase. Add 1 to ranged Wound rolls against defenders within 6″ of the attacker and within control range of an objective. After those attacks destroy models, select a casualty’s unit meeting the range/objective conditions to take Battle-shock. All three gates matter: disembarked, close range and objective range.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "rituale-nullificatus-adepta-sororitas",
+    "state": "structured",
+    "summary": "This Celestian Insidiants unit gains Feel No Pain 4+ against Psychic attacks and mortal wounds. It is not general protection against ordinary non-Psychic damage.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "rod-of-office-adepta-sororitas",
+    "state": "structured",
+    "summary": "If this Canoness is equipped with a rod of office, its unit re-rolls Hit rolls of 1. Preserve the equipment gate; this does not grant full Hit re-rolls.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sacred-banner-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "For an equipped Sisters Novitiate or Zephyrim unit, Sacred Banner lists re-rolling Charge or Advance rolls as alternatives. Source gap: the choice has no activation event or per-roll selection procedure; confirm whether both are available in their separate windows and preserve the banner equipment gate.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "sacred-command-adepta-sororitas",
+    "state": "structured",
+    "summary": "Once per battle round across the army, when a friendly Stratagem targets this Canoness or Jump Pack Canoness unit with Sacred Command, you may reduce that triggering use’s CP cost by 1. The allowance is shared across bearers; this is not set-to-0 or a repeat-use permission.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "sacred-healing-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While this Hospitaller leads, Sacred Healing describes returning one model to its unit. Source gaps: no activation event, frequency, returned-model exclusions, wounds or placement procedure is supplied; confirm these before returning a model, especially an attached Character.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "sacred-rites-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Friendly ADEPTA SORORITAS units have Acts of Faith uses set to two. Source gap: the period is unspecified and the ordinary Acts of Faith record lacks full pool, substitution and eligibility rules; confirm the per-phase/unit limit and do not treat this as unlimited Miracle dice.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "saintly-example-hallowed-martyrs-adepta-sororitas",
+    "state": "structured",
+    "summary": "When the bearer is destroyed, before it is removed, gain an additional D3 Miracle dice. This is triggered by the bearer’s destruction, not by any nearby casualty.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "salvationist-medikit-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "In your Command phase, while the equipped Salvationist model is on the battlefield, return D3 non-CHARACTER models to this Sanctifiers unit. Source gaps: no exact activation event, frequency, returned wounds or placement is supplied; confirm the restoration procedure and do not return Characters.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "sanctified-amulet-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "Enemy units cannot set up from Strategic Reserves within 12″ of the bearer. The import names Strategic Reserves; do not automatically extend it to every other setup procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "arrivals"
+  },
+  {
+    "id": "sanctified-blows-sacred-champions-adepta-sororitas",
+    "state": "structured",
+    "summary": "When the selected friendly CELESTIAN SACRESANTS unit is selected to fight, improve its melee weapons’ Attacks and Strength by 1 for the phase. This does not buff ranged weapons.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "sanctified-immolation-hallowed-martyrs-adepta-sororitas",
+    "state": "structured",
+    "summary": "Just after a friendly ADEPTA SORORITAS VEHICLE model with Deadly Demise is destroyed, use this permission despite destruction and automatically pass its Deadly Demise roll. Resolve that model’s actual mortal-wound value and normal recipients; this does not grant Deadly Demise to a vehicle lacking it.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "self-repair-adepta-sororitas",
+    "state": "structured",
+    "summary": "At the start of your Command phase, this Sororitas Rhino regains 1 lost wound. This is a start-of-phase repair, unlike end-of-Command effects.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "shield-of-aversion-bringers-of-flame-adepta-sororitas",
+    "state": "structured",
+    "summary": "When an enemy selects the friendly ADEPTA SORORITAS unit as an attack target, worsen the AP of attacks targeting it by 1 until that attacker finishes its attacks. The duration is one attack sequence, not the whole phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "shield-of-denial-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "After a mortal wound is allocated to the selected friendly ADEPTA SORORITAS unit, it gains Feel No Pain 6+ against mortal wounds for the phase, improved to 5+ if Righteous. Ordinary damage is not covered and the two thresholds are alternatives.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "shield-of-faith-army-of-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "After mortal damage is allocated, core targets are alternatives: the affected ADEPTA SORORITAS unit OR a friendly JUMP PACK unit within 3″ of it. The effect grants mortal-only Feel No Pain 5+, with a 3″ friendly-unit extension if a chosen source is Jump Pack. Source conflict: both mode variables receive effects even though only one is selected, and the extension can use both origins; confirm active-mode recipients and measurements.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "simulacrum-imperialis-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At the end of a Command phase, an equipped unit within control range of an objective it controls rolls D6; on 4+ gain 1 Miracle die. Source review: controls and objective selection are not bound to a specific unit/marker and the player gate is unspecified. Confirm the eligible objective, bearer survival and frequency; preserve the wargear requirement.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "simulacrum-imperialis-sanctuary-guardians-adepta-sororitas",
+    "state": "missing",
+    "summary": "Missing source mechanics: Simulacrum Imperialis for Sanctuary Guardians contains only a no-effect marker. Do not substitute the ordinary faction or wargear version. No activation timing is supplied; keep this as reference content until checked.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "simulacrum-imperialis-wargear-adepta-sororitas",
+    "state": "missing",
+    "summary": "Missing source mechanics: Simulacrum Imperialis for Sanctuary Guardians contains only a no-effect marker. Do not substitute the ordinary faction or wargear version. No activation timing is supplied; keep this as reference content until checked.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "solemn-procession-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While the Triumph is on the battlefield, the note says it contributes one value-6 Miracle die each battle round. Source conflict: triggers include your turn start and every Miracle-die gain, with no round frequency limit; confirm the actual event and prevent recursive or repeated free sixes.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "turn-start"
+  },
+  {
+    "id": "spirit-of-the-martyr-hallowed-martyrs-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When the selected friendly ADEPTA SORORITAS unit is targeted in Fight, destroyed models that have not fought this phase may fight after the attacker finishes, then are removed. Source conflict: the not-yet-selected-to-fight test checks event-subject instead of the destroyed event-object; confirm eligibility for each destroyed model.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "stanchion-of-holy-martyrs-adepta-sororitas",
+    "state": "structured",
+    "summary": "While this Imagifier leads a unit, set that unit’s Save characteristic to 2+ and give it a 4+ invulnerable save. These are separate armour/invulnerable saves; preserve the leading condition.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "stirring-rhetoric-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "While this Dialogus leads, the source substitutes a Miracle die showing 6 when an Act of Faith is used. Source gaps: the triggering Act is not bound to the led unit and the exact pool die, spend and substitution limits are absent. Confirm the full interaction; it does not make every roll an automatic 6.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "storm-of-retribution-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "This Retributor unit re-rolls ranged Hit and Wound rolls of 1. Against a defender that destroyed a friendly ADEPTA SORORITAS unit earlier in the battle, add 1 to its ranged Hit and Wound rolls. Source review: the record is explicitly auto-generated and partial; confirm the destroyed-unit history, target binding and remaining restrictions.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "suffer-not-the-unfaithful-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "Select one friendly Righteous ADEPTA SORORITAS unit not yet selected to shoot or fight this phase. Choose Lethal Hits OR Sustained Hits 1 for its weapons for the phase; do not grant both from this choice.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "suffering-and-sacrifice-hallowed-martyrs-adepta-sororitas",
+    "state": "structured",
+    "summary": "At Fight start, select one friendly ADEPTA SORORITAS INFANTRY or WALKER unit. For the phase, enemy models within Engagement Range of it must target that unit with their attacks. Keep the model-by-model engagement and Infantry-or-Walker selection gates.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "supreme-commander-adepta-sororitas",
+    "state": "structured",
+    "summary": "If Morvenn Vahl is in your army, she must be your Warlord. This is an army-construction reference, not a combat bonus.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sworn-protectors-adepta-sororitas",
+    "state": "structured",
+    "summary": "While this ordinary Celestian Sacresants unit is led by an ADEPTA SORORITAS CHARACTER, subtract 1 from incoming Wound rolls against it. Preserve the led-unit condition; this is not a Toughness increase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "sworn-protectors-sanctuary-guardians-celestian-sacresants-adepta-sororitas",
+    "state": "structured",
+    "summary": "When enemies target this Sanctuary Guardians Celestian Sacresants unit while it is led by an ADEPTA SORORITAS CHARACTER, subtract 1 from incoming Wound rolls. Keep this variant’s unit scope and targeting trigger separate from the ordinary record.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "symphonic-payload-upgrade-chorus-of-condemnation-adepta-sororitas",
+    "state": "structured",
+    "summary": "The EXORCIST upgrade unit can re-roll dice used to determine a weapon’s random Attacks characteristic. These are Attacks-characteristic dice, not Hit rolls; keep the Exorcist restriction and upgrade tag.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "take-cover-sanctuary-guardians-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When the friendly SANCTUARY GUARDIANS unit is targeted while within a terrain area, improve its Save characteristic by 1 for the phase. ARCO-FLAGELLANTS cannot be selected. Keep the terrain and exclusion gates; this is not an invulnerable-save bonus. Source conflict: the Sanctuary Guardians Arco-Flagellants datasheet lacks the plain ARCO-FLAGELLANTS keyword used by the exclusion predicate; confirm the named-unit exclusion before choosing a target.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "the-blood-of-martyrs-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Friendly ADEPTA SORORITAS models gain +1 to Hit while their unit is below Starting Strength and also +1 to Wound while below Half-strength. Source review: both strength tests use event-subject rather than an explicitly bound attacking unit; confirm the recipient’s own strength and any remaining provisional restrictions.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "the-emperors-grace-adepta-sororitas",
+    "state": "structured",
+    "summary": "Once per battle per Canoness unit, at the start of any phase, you may give this Canoness model a 2+ invulnerable save for the phase. This is bearer-only protection, not a unit-wide 2+ save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "the-pulpit-of-saint-hollines-basilica-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Junith Eruita’s source grants Stealth to this unit and imposes -1 to incoming melee Hit rolls, with both effects conditional on melee attacks. Source conflict: Stealth normally applies to ranged attacks, so its melee-only condition cannot supply that protection; confirm the correct attack-type branches and beneficiary scope.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "through-suffering-strength-hallowed-martyrs-adepta-sororitas",
+    "state": "structured",
+    "summary": "The bearer’s melee Attacks, Strength and Damage each increase by 1, improved to +2 each instead while the bearer has lost at least one wound. This checks the bearer’s lost wounds, not the attached unit’s Starting Strength, and the bonuses do not stack to +3.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "to-the-heart-of-heresy-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "Select a friendly ADEPTA SORORITAS unit that has not fought. Improve its melee Strength by 1 for the turn; if Righteous, also improve its melee AP by 1 for the phase. Keep the different durations and Righteous gate.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "triptych-of-judgement-champions-of-faith-adepta-sororitas",
+    "state": "structured",
+    "summary": "Models in the bearer’s unit may ignore modifiers to their attacks’ Weapon Skill/Ballistic Skill and Hit rolls. This does not ignore Wound-roll, Damage or saving-throw modifiers.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "triptych-of-the-macharian-crusade-army-of-faith-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "A saving throw substituted through an Act of Faith succeeds regardless of the Miracle die’s value. Source gap: the trigger is any Act of Faith with no saving-throw or spent-die binding; confirm which substituted save receives the success and the complete base substitution rules.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "unflinching-determination-adepta-sororitas",
+    "state": "structured",
+    "summary": "While this Dogmata leads a unit, add 1 to that unit’s Objective Control characteristic. This is the datasheet ability, not the Sacred Champions movement Stratagem of the same name.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "unflinching-determination-sacred-champions-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "When the selected friendly CELESTIAN SACRESANTS unit is selected to Advance or Fall Back, it gains ranged Assault and permission to shoot and charge for the turn. Source review: the shoot/charge permissions omit explicit despite-Advance/Fall-Back exceptions; confirm what restrictions are waived rather than treating a generic permission as sufficient.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "verse-of-holy-piety-penitent-host-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Once per battle per bearer, at battle-round start choose a Desperate for Redemption Vow for its unit until next round, in addition to the army’s Vow, even if previously selected. Source review: the referenced rule normally activates in your Command phase and its consumable-history procedure is incomplete; confirm the out-of-window activation and unit-only scope.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "virtue-of-intolerance-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "At battle start, even while embarked, this Celestian Insidiants unit selects one enemy quarry for the battle. Its attacks against that quarry gain Precision and full Hit re-rolls. Source review: the record is explicitly auto-generated and partial; confirm the selection-to-designation reference and its interaction with Denuncia oratory’s replacement rule.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "writ-of-compunction-upgrade-sacred-champions-adepta-sororitas",
+    "state": "structured",
+    "summary": "Add 1 to the upgraded ordinary CELESTIAN SACRESANTS unit’s Objective Control. Keep the specific datasheet restriction and upgrade tag; this is not an army-wide bonus or an automatic grant to the Sanctuary variant.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "zealot-adepta-sororitas",
+    "state": "needs-summary",
+    "summary": "Once per battle per Ministorum Priest unit, in Fight add 3 to this model’s melee weapons’ Attacks and Strength for the phase. Source gap: the effect has a Fight-phase condition but no exact activation event; confirm when the choice is declared and the remaining restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  }
+]

@@ -365,3 +365,7 @@ Audited all 118 rules across 23 source-matching units/profiles and eight detachm
 ## Chaos Knights readiness audit (2026-11-15)
 
 Audited all 110 rules across 20 source-matching units/profiles and eight detachments: 56 usable summaries, 54 source issues and no empty effects. Harbingers/Malefic menus, incompatible Mirror/Storm versions and two imported pin differences stay explicit. All 110 reminders have Guide placements. Eight Imperial-matching chassis keep separate Chaos identities and abilities. Original imports, scopes, flags, profiles and saved lists are preserved; unresolved entries stay outside practice. See [AUDIT-CHAOS-KNIGHTS.md](AUDIT-CHAOS-KNIGHTS.md).
+
+## Adepta Sororitas readiness audit (2026-11-15)
+
+Audited all 148 rules across 37 units, 46 source-matching profiles, nine detachments and 13 leader/bodyguard maps: 69 usable summaries, 75 source issues and four empty Sanctuary effects. Acts of Faith, Miracle-die conservation, resurrection and three imported differences stay explicit. Source-supported bearer restrictions are corrected and equipment gates retained. All 144 timed reminders have Guide placements; four untimed effects remain references. Imports, unit scopes, flags, profiles and saved lists are preserved; unresolved entries stay out of practice. See [AUDIT-ADEPTA-SORORITAS.md](AUDIT-ADEPTA-SORORITAS.md).
