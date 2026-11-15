@@ -393,3 +393,9 @@ In a Chromium mobile check with a 20-unit Marine roster and 4× CPU throttling, 
 ## Grey Knights readiness audit (2026-11-15)
 
 Audited all 134 rules across 30 units/profiles and 10 detachments: 105 usable summaries, 18 specific source issues and 11 empty-effect records. Corrected teleport/phase reminders, leading requirements, bearer restrictions and six incomplete squad-size selectors. Original sources, existing review flags, two saved summaries, stats, attachments and saved armies are preserved. All 29 unresolved entries remain outside practice pools. See [AUDIT-GREY-KNIGHTS.md](AUDIT-GREY-KNIGHTS.md) for the findings and guarded repair workflow.
+
+## Navigation pages and browser history
+
+Each main tab has a shareable URL: `#/overview`, `#/guide`, `#/army`, `#/practice`, and `#/workshop`. These fragment routes work on GitHub Pages and in the standalone prototype without server rewrites. Tabs are ordinary links, including support for opening a new tab. Browser Back and Forward restore the selected section; refresh and direct links retain the requested page after account loading. A per-tab return-page value also preserves the requested tab through sign-in redirects; it contains no army or account data.
+
+Guide steps, turns, and phases keep their existing session state without creating a history entry for every action. A working army draft remains available when switching tabs. Leaving a dirty Workshop editor uses the same discard check for browser navigation as for tab clicks; canceling restores the current history entry without adding duplicates. Workshop URLs still require administrator access. Authentication fragments remain untouched until account loading finishes. The first actual visit remains the start of the app’s browser history, so Back can still leave the site after all in-site entries are exhausted.

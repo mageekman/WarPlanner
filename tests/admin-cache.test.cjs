@@ -4,7 +4,7 @@ function harness(){
  const handlers={},window={WarPlannerContent:{...C,apply(){},reset(){}},WarPlannerWorkshopBrowser:W,WarPlanLessons:L,WarPlannerMechanics:require('../dist/mechanics.js')};
  vm.runInNewContext(fs.readFileSync(require.resolve('../dist/admin.js'),'utf8'),{window,structuredClone,document:{addEventListener:(type,fn)=>handlers[type]=fn,querySelector:()=>null}});
  let reads=0,rows=C.seed();const service={isAdmin:true,version:1,get records(){reads++;return structuredClone(rows)},dispose(){this.isAdmin=false;this.version++;}};
- return {api:window.WarPlannerAdminPage,service,get reads(){return reads},update(){rows[0].name='Changed faction';service.version++;},click:dataset=>handlers.click({target:{closest:()=>({dataset})}})};
+ return {api:window.WarPlannerAdminPage,service,get reads(){return reads},input(target){handlers.input({target})},update(){rows[0].name='Changed faction';service.version++;},click:dataset=>handlers.click({target:{closest:()=>({dataset})}})};
 }
 test('Workshop navigation reuses a snapshot and reflects saved catalog revisions',async()=>{
  const h=harness();h.api.setService(h.service);h.api.render();await h.click({adminScope:'Aeldari'});h.api.render();await h.click({adminFolder:'rule'});h.api.render();h.api.render();assert.equal(h.reads,1);
@@ -15,3 +15,5 @@ test('Workshop navigation reuses a snapshot and reflects saved catalog revisions
 test('services without version metadata keep reading fresh Workshop data',()=>{
  const h=harness();delete h.service.version;h.api.setService(h.service);const before=h.reads;h.api.render();h.api.render();assert.ok(h.reads>before+1);
 });
+
+test('late input events from a discarded Workshop form cannot leave the page falsely dirty',()=>{const h=harness();h.api.setService(h.service);h.api.discardReport();h.input({id:'',name:'summary',closest:()=>({})});assert.equal(h.api.hasDraft,false);assert.equal(h.api.canLeave(),true);});
