@@ -353,3 +353,7 @@ Audited all 251 rules across 75 units, 84 source-matching stat profiles and 12 d
 ## Chaos Daemons readiness audit (2026-11-15)
 
 Audited all 195 rules across 53 units, 54 source-matching stat profiles and nine detachments: 94 usable summaries, 84 source issues and 17 empty records. Shadow of Chaos now appears for Poxbringer-only lists; its original import remains intact. Shadow timing/recovery, Flux tokens and Horror Split differences stay flagged for review. Unresolved entries remain outside practice; other memberships, IDs, flags and saved lists are preserved. See [AUDIT-CHAOS-DAEMONS.md](AUDIT-CHAOS-DAEMONS.md).
+
+## Death Guard readiness audit (2026-11-15)
+
+Audited all 160 rules across 41 source-matching units/profiles and ten detachments: 86 usable summaries, 60 source issues and 14 empty records. Nurgle’s Gift retains its full menu, cap and distinct ordinary/Maggot Lords scopes. Mortarion reactions, resurrection limits and afflicted-state gaps stay explicit. Original sources, memberships, IDs, flags and saved lists are preserved; unresolved entries stay outside practice. See [AUDIT-DEATH-GUARD.md](AUDIT-DEATH-GUARD.md).
