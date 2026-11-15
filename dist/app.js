@@ -59,7 +59,16 @@ if(!window.WARPLANNER_CONFIG)loadAccountState('warplan.prototype.v1',sample);
 const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function persistStateCache(){if(!KEY)return;try{localStorage.setItem(KEY,JSON.stringify(state));}catch{storageOK=false;}}
-function save(){syncActiveList();if(!KEY)return;persistStateCache();cloudLists?.schedule(state.savedLists||[]);}
+let savedRoster=null,savedLibrary=null;
+function save(){
+ const roster=JSON.stringify([KEY,state.activeListId,state.army,state.renames,state.warnings]);
+ const changed=roster!==savedRoster;
+ if(changed){syncActiveList();savedRoster=roster;}
+ if(!KEY)return;
+ persistStateCache();
+ const library=JSON.stringify(state.savedLists||[]);
+ if(library!==savedLibrary){savedLibrary=library;cloudLists?.schedule(state.savedLists||[]);}
+}
 function listSaveStatus(){return cloudLists?({loading:'Loading account lists…',saving:'Saving lists to account…',saved:'Lists saved to account',error:'Lists not saved — retry'}[cloudStatus]||'Saving lists…'):window.WARPLANNER_CONFIG?'Loading account lists…':storageOK?'Saved on this device':'Browser storage unavailable';}
 function updateCloudUI(){
  for(const label of document.querySelectorAll?.('[data-list-sync-status]')||[])label.textContent=listSaveStatus();
@@ -126,8 +135,9 @@ function activationLabel(unit){return unit.body?.name||unit.members[0]?.name||''
 function flashDetails(items){return `<details class="flash-details"><summary>Conditions & sources</summary>${items.map(a=>`<section><h4>${escapeHTML(a.name)}</h4>${a.detachment&&Library.armyDetachments(state.army).length>1?`<p class="flash-timing">${escapeHTML(a.detachment)}</p>`:''}<ul>${a.conditions.map(c=>`<li>${escapeHTML(c)}</li>`).join('')}</ul>${a.mechanicsDetails?`<details class="mechanics-source-details"><summary>Imported mechanics details</summary><p>${escapeHTML(a.mechanicsDetails)}</p></details>`:''}${referenceDetails(a)}</section>`).join('')}</details>`;}
 function guideHintBadges(meta){return `${meta?.label?`<span class="flash-priority${meta.order==='late'?' flash-late':''}">${escapeHTML(meta.label)} ${meta.order==='late'?'↘':'↗'}</span>`:''}${(meta?.flags||[]).map(label=>`<span class="flash-guide-flag">${escapeHTML(label)}</span>`).join('')}`;}
 function guideHintNotes(meta){return [...new Set(meta?.notes||[meta?.note].filter(Boolean))].map(note=>`<p class="flash-order">${escapeHTML(note)}</p>`).join('');}
-function flashBoard(active){
- const deck=Activations.flashcards(state,active);
+const guideSession=Activations.createSession();
+function guideDeck(active){return guideSession.deck(state,active);}
+function flashBoard(active,deck=guideDeck(active)){
  if(!deck.count)return `<section class="army-lessons" aria-label="Your army at this step"><p class="ability-empty">No matching army abilities are listed for this step. Open ⓘ for the core sequence.</p></section>`;
  const sharedNames=new Map(deck.shared.map(a=>[a.key,a.name]));
  const userLabel=(_a,u)=>activationLabel(u);
@@ -195,6 +205,7 @@ function showGuideStart(reset=false){
  render();
 }
 function startGuide(){
+ guideSession.reset();
  const selected=state.savedLists?.find(list=>list.id===(state.setupListId||state.activeListId));
  if(!selected){toast('Import and select an army list first.');return;}
  syncActiveList();
@@ -207,10 +218,9 @@ function guideInfoPopup(){const active=lessons().steps[state.open];return `<div 
 function guide(){if(!state.guideStarted)return guideStartPage();return `<section class="guide-page-shell guide-carousel" aria-label="Interactive guide" data-show-previews="${state.guideShowPreviews!==false}" data-font-size="${['small','large'].includes(state.guideFontSize)?state.guideFontSize:'medium'}"><div class="guide-frame"><button class="guide-page-arrow previous-page" data-action="page-previous" aria-label="Previous page" title="Previous page" ${canPreviousPage()?'':'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><header class="guide-fixed-header">${guideSettings()}${turnToggle()}${phaseTabs()}</header><div class="guide-viewport"><div class="guide-slide" id="guide-panel" role="tabpanel" aria-labelledby="phase-tab-${state.phase}">${guidePageHTML()}</div></div><button class="guide-page-arrow next-page" data-action="page-next" aria-label="Next page" title="Next page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>${guideInfoPopup()}</section>`;}
 function guidePageHTML(){
  const data=lessons();state.open=Math.max(0,Math.min(data.steps.length-1,state.open));
- const active=data.steps[state.open];
- const unsupported=state.army.units.filter(u=>!Library.unitInfo(u.name,state.army.faction));
- const phaseHasAbilities=Library.phases[state.phase].steps.some(step=>Library.forStep(state,step).length>0);
- return `<div class="focus-layout"><article class="lesson-focus rule-${active.category}" aria-labelledby="lesson-title"><span class="lesson-kind">${categoryBadge(active)} <span class="rule-context">${escapeHTML(active.kind)}</span></span><div class="guide-title-row"><h2 id="lesson-title" tabindex="-1">${escapeHTML(active.title)}</h2><button type="button" class="guide-info-button" popovertarget="guide-info-popup" aria-label="About ${escapeHTML(active.title)}" title="Step explanation"><span aria-hidden="true">ⓘ</span></button></div>${flashBoard(active)}${!phaseHasAbilities?`<p class="coverage-note">${unsupported.length?'Army-ability coverage is incomplete for this phase.':'No army abilities are listed for this phase in this turn.'}</p>`:''}<details class="think-details"><summary>Why this matters</summary><p>${escapeHTML(active.why)}</p></details><details class="think-details"><summary>Test your understanding</summary><p class="question">${escapeHTML(active.question)}</p><p>${escapeHTML(active.answer)}</p></details><div data-report-container>${window.WarPlannerReports?.guideForStep(state,active,Activations.flashcards(state,active))||''}</div>${referenceDetails(active)}</article><details class="sequence-outline"><summary>See the whole phase</summary><div>${data.steps.map((step,i)=>`<button data-step="${i}" aria-current="${i===state.open?'step':'false'}"><span>${state.completed[stepKey(i)]?'✓':i+1}</span>${escapeHTML(step.title)}</button>`).join('')}</div></details>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
+ const active=data.steps[state.open],deck=guideDeck(active);
+ const {unsupported,phaseHasAbilities}=guideSession.coverage(state);
+ return `<div class="focus-layout"><article class="lesson-focus rule-${active.category}" aria-labelledby="lesson-title"><span class="lesson-kind">${categoryBadge(active)} <span class="rule-context">${escapeHTML(active.kind)}</span></span><div class="guide-title-row"><h2 id="lesson-title" tabindex="-1">${escapeHTML(active.title)}</h2><button type="button" class="guide-info-button" popovertarget="guide-info-popup" aria-label="About ${escapeHTML(active.title)}" title="Step explanation"><span aria-hidden="true">ⓘ</span></button></div>${flashBoard(active,deck)}${!phaseHasAbilities?`<p class="coverage-note">${unsupported.length?'Army-ability coverage is incomplete for this phase.':'No army abilities are listed for this phase in this turn.'}</p>`:''}<details class="think-details"><summary>Why this matters</summary><p>${escapeHTML(active.why)}</p></details><details class="think-details"><summary>Test your understanding</summary><p class="question">${escapeHTML(active.question)}</p><p>${escapeHTML(active.answer)}</p></details><div data-report-container>${window.WarPlannerReports?.guideForStep(state,active,deck)||''}</div>${referenceDetails(active)}</article><details class="sequence-outline"><summary>See the whole phase</summary><div>${data.steps.map((step,i)=>`<button data-step="${i}" aria-current="${i===state.open?'step':'false'}"><span>${state.completed[stepKey(i)]?'✓':i+1}</span>${escapeHTML(step.title)}</button>`).join('')}</div></details>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
 }
 function catalogCard(entry){
  const reviewed=Library.abilities.find(a=>a.id===Library.aliases[entry.id]);
@@ -491,6 +501,7 @@ render();
 
 window.setWarPlannerAccount=(user,library,service=null,idMap={},contentService=null)=>{
  deletingListId=null;listDeleteError='';
+ guideSession.reset();savedRoster=null;savedLibrary=null;
  window.WarPlannerPracticePage?.reset();
  window.WarPlannerAdminPage?.setService(contentService);
  listEditor=null;
@@ -513,6 +524,7 @@ window.setWarPlannerAccount=(user,library,service=null,idMap={},contentService=n
 };
 window.clearWarPlannerAccount=()=>{
  deletingListId=null;listDeleteError='';
+ guideSession.reset();savedRoster=null;savedLibrary=null;
  window.WarPlannerPracticePage?.reset();
  window.WarPlannerAdminPage?.setService(null);
  listEditor=null;
@@ -521,4 +533,4 @@ window.clearWarPlannerAccount=()=>{
  $('#import-dialog').close();$('#army-text').value='';$('#import-feedback').innerHTML='';render();
 };
 
-window.refreshWarPlannerContent=()=>render();
+window.refreshWarPlannerContent=()=>{guideSession.reset();render();};

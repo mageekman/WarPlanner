@@ -31,8 +31,8 @@
 
  function sourceUnit(state,unit,name){return units(state.army).filter(u=>u.id!==unit.id&&has(u,name));}
  function leading(unit,name,bodyguard){return unit.attached&&unit.leaders.some(m=>m.role==='leader'&&norm(m.name)===norm(name))&&(!bodyguard||norm(unit.body.name)===norm(bodyguard));}
- function fits(a,state,unit){
-  if(!a||!L.matches(a,state.army)||!a.phase.includes(state.phase)||(a.turn!=='either'&&a.turn!==state.turn))return false;
+ function fits(a,state,unit,armyMatched=false){
+  if(!a||(!armyMatched&&!L.matches(a,state.army))||!a.phase.includes(state.phase)||(a.turn!=='either'&&a.turn!==state.turn))return false;
   if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>m.role==='leader'&&a.units.includes(m.name))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
   if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
   if(a.expanded&&a.sourceRuleId){
@@ -142,10 +142,11 @@
   }
   return [];
  }
- function stages(state,unit,mode){
+ function activationCandidates(state){return L.abilities.filter(a=>a.expanded&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn)&&['act','select','before','react','after','arrivals'].includes(a.window)&&L.matches(a,state.army));}
+ function stages(state,unit,mode,candidates){
   const rows=baseStages(state,unit,mode);
   if(!unit||!rows.length||['pile','consolidate'].includes(mode))return rows;
-  const cards=L.abilities.filter(a=>a.expanded&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn)&&['act','select','before','react','after','arrivals'].includes(a.window)&&fits(a,state,unit));
+  const cards=(candidates||activationCandidates(state)).filter(a=>fits(a,state,unit,true));
   for(const card of cards){const row=card.window==='after'?rows[rows.length-1]:card.window==='select'||card.window==='before'||card.window==='arrivals'?rows[0]:rows.find(r=>r.id==='attacks')||rows[0];row.cards.push({...card,targetUnits:unit.members});}
   return rows;
  }
@@ -165,6 +166,8 @@
  function steps(state){return baseSteps(state).map(step=>{const result=L.applyStep(step);return state.turn==='opponent'?{...result,body:result.body.replace(/your unit/g,'the active unit')}:result;});}
  function flashcards(state,step){
   const sharedMap=new Map(),types=new Map();
+  const candidates=step.activationMode?activationCandidates(state):null;
+  const stepCards=step.activationMode?null:L.forStep(state,step).filter(a=>!a.sequencePreview);
   const ruleKey=a=>JSON.stringify([a.id,a.name,a.summary,a.conditions,a.sourceIds]);
   function typeFor(member){
    const key=norm(member.name);
@@ -180,7 +183,7 @@
   }
   for(const unit of orderedUnits(state)){
    for(const member of [unit.body,...unit.members.filter(m=>m!==unit.body)]){const record=typeFor(member);if(!record.instances.some(u=>u.id===unit.id))record.instances.push(unit);}
-   const rows=step.activationMode?stages(state,unit,step.activationMode):[{title:'At this step',cards:L.forStep(state,step).filter(a=>!a.sequencePreview&&fits(a,state,unit))}];
+   const rows=step.activationMode?stages(state,unit,step.activationMode,candidates):[{title:'At this step',cards:stepCards.filter(a=>fits(a,state,unit,true))}];
    const seen=new Set();
    for(const row of rows)for(const a of row.cards){
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
@@ -224,6 +227,39 @@
   return {shared,unitCards,count:shared.length+unitCards.length};
  }
 
- const api={units,orderedUnits,stages,steps,rangeBonus,leading,support,has,flashcards,fightsFirst,targeting};
+ // Each Guide owns a bounded cache. Catalog revisions and roster changes discard it.
+ function createSession(){
+  let context=null;const decks=new Map(),coverageCache=new Map();
+  function reset(){context=null;decks.clear();coverageCache.clear();}
+  function prepare(state){
+   const generation=root.WarPlannerContent?.generation;
+   const next=JSON.stringify([generation??null,state.army,state.firstPlayer]);
+   if(context!==next){reset();context=next;}
+  }
+  function deck(state,step){
+   prepare(state);
+   const key=JSON.stringify([state.phase,state.turn,state.round,step]);
+   if(!decks.has(key)){
+    if(decks.size>=80)decks.delete(decks.keys().next().value);
+    decks.set(key,flashcards(state,step));
+   }
+   return decks.get(key);
+  }
+  function coverage(state){
+   prepare(state);
+   const key=JSON.stringify([state.phase,state.turn,state.round]);
+   if(!coverageCache.has(key)){
+    if(coverageCache.size>=80)coverageCache.delete(coverageCache.keys().next().value);
+    coverageCache.set(key,{
+     unsupported:state.army.units.filter(u=>!L.unitInfo(u.name,state.army.faction)),
+     phaseHasAbilities:L.phases[state.phase].steps.some(step=>L.forStep(state,step).length>0)
+    });
+   }
+   return coverageCache.get(key);
+  }
+  return {deck,coverage,reset};
+ }
+
+ const api={units,orderedUnits,stages,steps,rangeBonus,leading,support,has,flashcards,fightsFirst,targeting,createSession};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanActivations=api;
 })(typeof window!=='undefined'?window:globalThis);

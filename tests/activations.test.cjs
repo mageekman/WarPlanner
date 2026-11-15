@@ -145,3 +145,43 @@ test('different equipment on repeated unit types yields one card with conditiona
  const s=state(army,4),deck=A.flashcards(s,A.steps(s)[2]);
  const autarch=deck.unitCards.find(c=>c.unit.body.name==='Autarch');assert.ok(autarch);assert.equal(deck.unitCards.filter(c=>c.unit.body.name==='Autarch').length,1);assert.equal(autarch.items.filter(a=>a.id==='murder').length,1);assert.match(autarch.items.find(a=>a.id==='murder').conditions.join(' '),/Aspect of Murder/);
 });
+
+test('guide sessions reuse decks and isolate roster, turn, round and catalog changes',()=>{
+ const L=require('../dist/lessons.js'),original=L.forStep,prior=global.WarPlannerContent;
+ let scans=0;L.forStep=(...args)=>{scans++;return original(...args);};
+ global.WarPlannerContent={generation:1};
+ try{
+  const session=A.createSession(),s=state(sample,0),step=A.steps(s)[0];
+  const deck=session.deck(s,step),built=scans;
+  assert.ok(built>0);assert.deepEqual(deck,A.flashcards(s,step));
+  const afterDirect=scans;
+  assert.equal(session.deck({...s,completed:{a:true},renames:{a:'Label'}},step),deck);
+  assert.equal(scans,afterDirect,'progress and display labels do not rebuild rules');
+  for(const changed of [{...s,turn:'opponent'},{...s,round:2},{...s,firstPlayer:'opponent'},{...s,army:{...s.army,detachment:'Another detachment'}}]){
+   assert.notEqual(session.deck(changed,step),deck);
+   assert.deepEqual(session.deck(changed,step),A.flashcards(changed,step));
+  }
+  const restored=session.deck(s,step);global.WarPlannerContent.generation++;
+  assert.notEqual(session.deck(s,step),restored);
+  const refreshed=session.deck(s,step);session.reset();assert.notEqual(session.deck(s,step),refreshed);
+  assert.notEqual(A.createSession().deck(s,step),session.deck(s,step),'separate sessions own separate decks');
+ }finally{L.forStep=original;if(prior===undefined)delete global.WarPlannerContent;else global.WarPlannerContent=prior;}
+});
+
+test('non-activation decks scan matching step rules once for the whole roster',()=>{
+ const L=require('../dist/lessons.js'),original=L.forStep;let scans=0;
+ L.forStep=(...args)=>{scans++;return original(...args);};
+ try{const s=state(sample,0);A.flashcards(s,A.steps(s)[0]);assert.equal(scans,1);}finally{L.forStep=original;}
+});
+
+test('guide coverage reuses catalog scans until context changes or the session resets',()=>{
+ const L=require('../dist/lessons.js'),original=L.forStep;let scans=0;
+ L.forStep=(...args)=>{scans++;return original(...args);};
+ try{
+  const session=A.createSession(),s=state(sample,0),coverage=session.coverage(s),count=scans;
+  assert.ok(count>0);assert.deepEqual(coverage.unsupported,s.army.units.filter(u=>!L.unitInfo(u.name,s.army.faction)));
+  assert.equal(session.coverage(s),coverage);assert.equal(scans,count);
+  assert.notEqual(session.coverage({...s,turn:'opponent'}),coverage);
+  session.reset();assert.notEqual(session.coverage(s),coverage);
+ }finally{L.forStep=original;}
+});

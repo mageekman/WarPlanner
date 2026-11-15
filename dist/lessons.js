@@ -22,7 +22,7 @@
   if(!memberships.length)return false;if(memberships.some(m=>!m.detachments.length))return true;
   const selected=armyDetachments(army).map(normalized);return memberships.some(m=>m.detachments.some(d=>selected.includes(normalized(d))));
  }
- function unitInfo(name,faction='Aeldari'){return catalog.units.find(u=>factionMatches(u.faction,faction)&&normalized(u.name)===normalized(name));}
+ function unitInfo(name,faction='Aeldari'){const key=normalized(name);return catalog.units.find(u=>normalized(u.name)===key&&factionMatches(u.faction,faction));}
  function unitHasRule(unit,id,faction='Aeldari'){return !!unitInfo(unit.name,faction)?.abilities.some(a=>a.id===id);}
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule',stratagem:'Stratagem',enhancement:'Enhancement'};
  function core(id,title,body,why,question,answer,section,window){return {id,title,body,why,question,answer,section,window,sourceIds:['core'],status:'official-checked',kind:'Core sequence',category:'core'};}
