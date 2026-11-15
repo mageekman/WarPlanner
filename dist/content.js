@@ -90,7 +90,7 @@
    if(d.sharedRuleIds!==undefined){stringList(d.sharedRuleIds,'Linked rule IDs');if(d.sharedRuleIds.some(id=>!/^[a-zA-Z0-9_-]{1,180}$/.test(id)))throw Error('Invalid linked rule ID.');}
    if(d.memberships!==undefined){
     if(!Array.isArray(d.memberships)||!d.memberships.length||d.memberships.length>100)throw Error('Add between 1 and 100 faction memberships.');
-    const seen=new Set();for(const m of d.memberships){if(!m||typeof m.faction!=='string'||!m.faction.trim()||m.faction.length>100||seen.has(norm(m.faction)))throw Error('Choose each membership faction once.');seen.add(norm(m.faction));stringList(m.detachments,'Membership detachments');if(m.detachments.some(d=>!d.trim()||d.length>180)||new Set(m.detachments.map(norm)).size!==m.detachments.length)throw Error('Choose each detachment once.');}
+    const seen=new Set();for(const m of d.memberships){if(!m||typeof m.faction!=='string'||!m.faction.trim()||m.faction.length>100||seen.has(norm(m.faction)))throw Error('Choose each membership faction once.');seen.add(norm(m.faction));stringList(m.detachments,'Membership detachments');if(m.units!==undefined)stringList(m.units,'Membership units');if(m.targetText!==undefined&&(typeof m.targetText!=='string'||m.targetText.length>20000))throw Error('Use text for membership targets.');if(m.detachments.some(d=>!d.trim()||d.length>180)||new Set(m.detachments.map(norm)).size!==m.detachments.length)throw Error('Choose each detachment once.');}
     if(d.memberships.length>1&&d.memberships.some(m=>m.faction==='*'))throw Error('Use All factions by itself, or choose individual faction memberships.');
     if(d.faction!==row.faction||!d.memberships.some(m=>m.faction===row.faction))throw Error('The primary faction must be one of the rule memberships.');
     if(d.detachment)throw Error('Use the membership detachments for a shared rule.');
@@ -138,7 +138,7 @@
   const select=kind=>enabled.filter(r=>r.kind===kind).flatMap(r=>{
    const data=kind==='rule'?M.enrich(r.data):r.data;
    if(kind==='unit'&&data.unitMemberships)return data.unitMemberships.map(m=>({...data,id:m.unitId,faction:m.faction,keywords:[...new Set([...data.keywords,...m.keywordAdditions])],abilities:copy(m.abilities),bodyguardIds:data.bodyguardIds.map(id=>unitIds.get(id)?.get(m.faction)).filter(Boolean)}));
-   return kind==='rule'&&data.memberships?data.memberships.map(m=>({...data,faction:m.faction,membershipFaction:m.faction})): [{...data,faction:r.faction}];
+   return kind==='rule'&&data.memberships?data.memberships.map(m=>({...data,...(m.units!==undefined?{units:copy(m.units)}:{}),...(m.targetText!==undefined?{targetText:m.targetText}:{}),faction:m.faction,membershipFaction:m.faction})): [{...data,faction:r.faction}];
   });
   L.catalog.factions.splice(0,L.catalog.factions.length,...select('faction'));
   const units=select('unit');

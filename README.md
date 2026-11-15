@@ -379,3 +379,7 @@ In either Workshop editor, use **Add timing** to give a rule separate phase, pla
 Use **Rules workshop → Faction review** to browse units and their abilities alongside army and detachment rules. Select a faction, choose **All detachments** or a single detachment, and search names, rule text, or keywords. **Core rules & stratagems** is a separate choice in the faction selector. Pencil buttons open the full Workshop editor in a popup; saving closes it and refreshes the review. Advanced data fields can be edited as JSON and applied to the form before saving. Shared entries update all their memberships.
 
 Core source references are prepared by `scripts/prepare-core-review.cjs` from the retained community source fixture. These are reference-only entries, including provisional upstream records, rather than an official rules audit.
+
+## Completed Space Marine deduplication
+
+The final pass archives 2,439 rule copies and leaves 621 active Marine/chapter rules. The existing 177 shared datasheets retain all 1,094 chapter identities. Shared memberships can preserve chapter-specific unit lists and target wording; Workshop editors expose these fields. Distinct saved timings and reviewed variants remain separate. See [DEDUP-SPACE-MARINES.md](DEDUP-SPACE-MARINES.md) for the guarded workflow and verification.
