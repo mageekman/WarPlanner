@@ -69,3 +69,7 @@ Original concise study wording derived from the preserved user-imported Orks mec
 ### T’au Empire study audit (2026-11-15)
 
 Original concise study wording derived from preserved user-imported T’au mechanics and the [pinned 40kdc T’au source](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/tau-empire), Alpaca Software and the 40kdc community contributors, CC BY 4.0. Changes include readable descriptions, core target ownership/eligibility, timing, retained variants and explicit provisional/source-gap explanations. Structured snapshots are retained in audit fixtures. No official verification is claimed. See `AUDIT-TAU.md` and `docs/LICENSE-40KDC-DATA.txt`.
+
+### Astra Militarum study audit (2026-11-15)
+
+Original concise study wording derived from preserved user-imported Astra Militarum mechanics and the [pinned 40kdc Astra Militarum source](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/astra-militarum), Alpaca Software and the 40kdc community contributors, CC BY 4.0. Changes include readable descriptions, Order limits, core eligibility/timing, retained variants and explicit provisional/source-gap explanations. Structured snapshots are retained in audit fixtures; original imported variants and saved settings are preserved. No official verification is claimed. See `AUDIT-ASTRA-MILITARUM.md` and `docs/LICENSE-40KDC-DATA.txt`.

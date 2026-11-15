@@ -1,0 +1,2709 @@
+[
+  {
+    "id": "abhuman-detail-grizzled-company-astra-militarum",
+    "state": "structured",
+    "summary": "The bearer can issue Voice of Command Orders to friendly OGRYN units and can lead a BULLGRYN SQUAD or OGRYN SQUAD. Use the bearer’s normal Order allowance and the army rule’s timing, range and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "ablative-plating-astra-militarum",
+    "state": "structured",
+    "summary": "Once per battle per model, when Damage is allocated to this Rogal Dorn Battle Tank model, reduce that Damage to 0.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "ablative-plating-hammer-of-the-emperor-astra-militarum",
+    "state": "structured",
+    "summary": "When the selected friendly ASTRA MILITARUM VEHICLE is targeted in your opponent’s Shooting phase, reduce Damage allocated to its unit by 1 this phase. Apply the core minimum Damage rule.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "absolutist-principles-astra-militarum",
+    "state": "structured",
+    "summary": "Friendly BULLGRYN SQUAD, OGRYN SQUAD and RATLINGS gain ABHUMAN. Friendly COMMISSAR models add friendly ABHUMAN units to their eligible Order recipients; retain their normal Order allowances and option limits.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "accuracy-under-pressure-steel-hammer-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected friendly Astra Militarum unit has shot, grant it re-rolls of Hit rolls this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "adamantine-behemoth-steel-hammer-astra-militarum",
+    "state": "needs-summary",
+    "summary": "The selected friendly Astra Militarum VEHICLE may move through all terrain, ignoring vertical distance, for Normal, Advance or Charge moves this phase. Source review: the effect triggers at move-ended rather than during the move; confirm the permission’s activation and legal ending positions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "additional-armour-grizzled-company-astra-militarum",
+    "state": "structured",
+    "summary": "When the selected friendly Astra Militarum unit is targeted in your opponent’s Shooting phase, worsen incoming AP by 1 for that attack sequence.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "airborne-insertion-astra-militarum",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Movement phase, friendly units embarked in this Valkyrie may disembark. Apply the core disembark eligibility and placement rules.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "alchemyk-counteragents-astra-militarum",
+    "state": "structured",
+    "summary": "This Krieg Command Squad unit has Feel No Pain 6+ against mortal wounds only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "aquilan-eye-grizzled-company-astra-militarum",
+    "state": "structured",
+    "summary": "The bearer adds Target Weak Spot to its Order options: improve the ordered unit’s ranged AP by 1 against defenders within 12″ of the attacker. Apply Voice of Command range, allowance, duration and eligibility.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "aquiline-prow-astra-militarum",
+    "state": "structured",
+    "summary": "After this Commissar Graves unit charges, optionally select one engaged enemy and roll D6: 1 does nothing; 2–3 deals D3 mortal wounds; 4–5 deals 3; 6 deals D3+3.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "armour-obliteration-astra-militarum",
+    "state": "needs-summary",
+    "summary": "For this Banesword unit’s quake cannon attacks, set the defending unit’s Deadly Demise threshold to 3+. Source review: the effect has no destruction trigger or duration for changing the defender’s ability; confirm when that threshold applies.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "armoured-fist-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Friendly ASTRA MILITARUM models gain +1 to ranged Wound rolls if they disembarked this turn. Source review: the disembarked condition does not bind the recipient or transport; confirm who qualifies before applying the benefit army-wide.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "armoured-spearhead-astra-militarum",
+    "state": "structured",
+    "summary": "This Leman Russ Battle Tank unit re-rolls Hit rolls of 1. The source supplies no objective-dependent full re-roll branch; do not add one without checked wording.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "artillery-support-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At battle-round start choose one artillery support mode: shake enemies on 5+ for -2″ Move and -2 Charge; scatter selected enemies to remove cover; or grant selected friendly units Stealth. Limit affected units to 2/3/4 for Incursion/Strike Force/Onslaught, lasting the round; enemy targets must be outside 12″ of friendly units. Source review: this provisional source’s shaken selection rolls every enemy before applying a maximum; confirm the selection procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "assault-hatches-steel-hammer-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After a unit disembarks from this upgrade transport, it may declare a charge despite disembarking if the bearer model made a Normal move this turn. Source review: the movement condition uses this-model but the disembark filter uses this-unit, and the subject allows any owner; confirm the transport/model and friendly-unit binding.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "battalion-commander-steel-hammer-astra-militarum",
+    "state": "structured",
+    "summary": "The bearer gains OFFICER and Voice of Command, with two Orders for friendly ASTRA MILITARUM TITANIC or SQUADRON units. Use the army rule’s menu, timing, range and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "blazing-advance-hammer-of-the-emperor-astra-militarum",
+    "state": "structured",
+    "summary": "After the friendly SQUADRON unit Advances, its ranged weapons gain Assault for the rest of the turn.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "bold-leadership-mechanised-assault-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At the end of your Command phase, a friendly-controlled objective in control range of this unit or the bearer’s transport becomes sticky until control is lost. Source review: the source does not bind an embarked bearer to the transport or identify which objective the final effect secures; confirm that selection.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "bombast-class-vox-array-bridgehead-strike-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When using Orders, if this unit has Master Vox, set the bearer’s Voice of Command target count to three. Source review: the source modifies targets, not Order uses, and does not explain whether one Order is copied or three separate Orders are issued; confirm the distinction.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "born-soldiers-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Friendly REGIMENT ranged attacks gain Lethal Hits against targets that are neither MONSTER nor VEHICLE; friendly SQUADRON ranged attacks gain Lethal Hits against MONSTER or VEHICLE targets. Born Soldiers is explicitly provisional; confirm current wording.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "bring-it-down-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Catachan Heavy Weapons Squad re-rolls ranged Hit and Wound rolls of 1 against MONSTER or VEHICLE targets. Source review: the source is marked partial; confirm any omitted restrictions.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "brutal-disciplinarian-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Once per turn per unit, at phase start, Graves may select a visible Battle-shocked friendly ASTRA MILITARUM INFANTRY unit within 24″ with at least two models. Destroy one of its models, then remove Battle-shocked. Source conflict: the approximate note instead says 12″ and claims the cost/gates are absent; confirm range and conditions.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "brutal-disciplinarian-commissar-graves-on-foot-astra-militarum",
+    "state": "structured",
+    "summary": "Once per turn per unit, at phase start, Graves on Foot may select a Battle-shocked friendly ASTRA MILITARUM INFANTRY unit within 12″ with at least two models. Destroy one model in that unit, then remove its Battle-shocked state.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "brute-shield-astra-militarum",
+    "state": "structured",
+    "summary": "This equipped Bullgryn or Ogryn Bodyguard model has a 4+ invulnerable save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "burst-of-speed-armoured-infantry-astra-militarum",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, the selected friendly Astra Militarum unit makes a D6″ Normal move. It must not have Remained Stationary this turn or arrived from Strategic Reserves this phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "cadia-stands-astra-militarum",
+    "state": "structured",
+    "summary": "This Cadian Command Squad unit re-rolls Battle-shock tests while it contains an OFFICER and is within control range of an objective marker.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "shock"
+  },
+  {
+    "id": "call-up-the-reserves-draydens-lance-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Once per battle per unit, at phase start, select one friendly DRAYDEN’S LANCE unit to heal D3+2 wounds. Source review: no range or eligible model/allocation rule is supplied; confirm the healing recipient and intended limits.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "called-shots-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When this Rogal Dorn Commander model is selected to shoot, optionally re-roll one Hit roll, one Wound roll and one Damage roll. Source conflict: the imported scope lasts the phase while the pinned scope differs; confirm each allowance and its expiry.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "callous-sacrifice-siege-regiment-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Select an engaged friendly PLATOON unit. Callous Sacrifice permits shooting at enemies and may destroy a model in this unit on 4+ after damage to an engaged enemy. Source conflict: shooter/target engagement restrictions and the sacrifice recipient are not clearly bound; confirm who may shoot whom and when the casualty is removed.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "calm-under-fire-hammer-of-the-emperor-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Calm Under Fire contains only a no-effect marker. Supply checked wording before using the enhancement.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ceaseless-cannonade-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When a friendly Astra Militarum SQUADRON or TITANIC unit is selected to shoot, it may shoot while engaged under the encoded friendly-engagement gate and ignore worsening Hit-roll modifiers for non-Indirect Fire attacks. Source conflict: the imported scope differs from the pin and the engagement condition refers to an unbound defender; confirm target eligibility and duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "clear-and-secure-mechanised-assault-astra-militarum",
+    "state": "structured",
+    "summary": "Use on a friendly Astra Militarum unit that disembarked this turn and has not shot. It re-rolls Hit and Wound rolls against defenders within control range of an objective marker this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "close-quarters-warfare-astra-militarum",
+    "state": "structured",
+    "summary": "This Hellhammer model ignores worsening ranged Hit-roll modifiers while an enemy is engaged with it.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "close-range-detection-designation-force-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Close-range Detection adds 3 to the detection range of visible enemies within 6″ of this unit this phase. Source gap: the supplied rules do not define detection range or its measurement procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "close-range-titan-killer-astra-militarum",
+    "state": "needs-summary",
+    "summary": "For this Doomhammer’s magma cannon attacks against MONSTER or VEHICLE targets, treat the defender as within half weapon range. Source review: this is provisional; confirm the half-range treatment and its duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "combined-fire-armoured-infantry-astra-militarum",
+    "state": "structured",
+    "summary": "After the friendly ARMOURED SKIRMISHER unit shoots, select one enemy it hit. That enemy loses cover and friendly ARMOURED SKIRMISHER attacks against it gain +2 Strength this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "command-rod-astra-militarum",
+    "state": "needs-summary",
+    "summary": "While the bearer leads this Militarum Tempestus unit, it can be affected by two Orders concurrently. Source review: this source is provisional; confirm concurrency and interaction with the normal one-Order limit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "compact-astra-militarum",
+    "state": "structured",
+    "summary": "This Cyclops model may embark in a friendly ASTRA MILITARUM TRANSPORT as INFANTRY and occupies seven transport spaces. Apply capacity and core embark restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "concussive-wave-astra-militarum",
+    "state": "structured",
+    "summary": "When this Stormsword selects targets for its siege cannon in your Shooting phase, roll D6 for the defender and each unit within 3″ of it, including friendly units. On 5+, mark that unit; after this model’s attacks resolve, each marked unit suffers D3 mortal wounds.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "convoy-escort-vehicle-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Hippogriff AFV shoots in your Shooting phase, it may make a D6″ Normal move and cannot charge this turn. Source review: the move uses event-subject without an explicitly bound shooter; confirm the moving recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "coordinated-action-combined-arms-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Coordinated Action contains only a no-effect marker. Its core phase/CP metadata does not supply a usable effect.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "courageous-diversion-recon-element-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At the start of your opponent’s Shooting phase, the selected friendly Astra Militarum INFANTRY or MOUNTED unit gains Feel No Pain 6+ this phase. Source review: the accompanying enemy -1 Hit condition says closest among eligible targets without naming the closest subject; confirm which attacks suffer the penalty.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "covering-fire-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When Fire Overwatch targets this Cadian Heavy Weapons Squad, its hits succeed on 5+, or 4+ while within 6″ of a friendly PLATOON unit, for that resolution. Source review: the source does not specify unmodified dice or whether succeeds-on is a threshold; confirm the full Overwatch rule before use.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "covert-stealth-team-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At the end of your opponent’s turn, unengaged Gaunt’s Ghosts may enter Strategic Reserves and gain Deep Strike, arriving in the next Movement phase even in round 1. Source review: the provisional source expires at the next Shooting phase; confirm the arrival exception and expiry.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "crack-shots-recon-element-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected friendly PLATOON unit has shot, its ranged weapons gain Precision this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "crash-through-hammer-of-the-emperor-astra-militarum",
+    "state": "needs-summary",
+    "summary": "The selected friendly Astra Militarum VEHICLE may pass through terrain during Normal, Advance or Charge moves this phase. Source review: the trigger is move-ended, too late to grant movement permission; confirm activation and legal ending positions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "daring-recon-astra-militarum",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select one visible enemy within 18″ of this Scout Sentinels unit. Friendly ASTRA MILITARUM models re-roll Hit rolls of 1 against that enemy this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "death-befitting-an-officer-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When this Leman Russ Commander unit is destroyed in your opponent’s Shooting phase, before Deadly Demise, roll D6; on 2+ this model shoots. Source review: this provisional record lacks removal/resolution details and a clear destroyed-model binding; confirm the complete shoot-on-death procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "death-korps-medi-pack-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At the start of your Command phase, if this Death Korps unit is below Starting Strength, optionally return D3 destroyed DEATH KORPS TROOPERS, or D3+1 if at least two models carry death-korps-medi-packs. Source review: the first branch does not require even one pack; confirm equipment eligibility and placement.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "death-mask-of-ollanius-combined-arms-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Death Mask of Ollanius contains only a no-effect marker. Supply checked wording before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "deathstrike-missile-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Deathstrike Missile allows placing or relocating a Deathstrike target marker anywhere during Shooting. Source gap: the provisional source has no firing/detonation procedure, damage or range and marks usage as first-this-battle; confirm how the complete missile rule works.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "defence-line-astra-militarum",
+    "state": "structured",
+    "summary": "This Aegis Defence Line unit has the Benefit of Cover. This effect targets the fortification itself, not nearby infantry.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "demolition-charges-astra-militarum",
+    "state": "structured",
+    "summary": "After this Cyclops model or an enemy ends a move, if this model is within 3″ of an enemy, select one enemy within 3″, destroy the Cyclops and roll D6: 1 does nothing; 2–5 deals D3 mortal wounds; 6 deals D6. Apply the separate Deadly Demise rules only as the current source permits.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "demolition-gear-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Ratlings unit gains GRENADES. The source is provisional; confirm current equipment eligibility.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "deployment-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Set up this Aegis Defence Line model as ten connected sections. Source gap: the provisional record omits section spacing, coherency and terrain placement restrictions; confirm the complete deployment procedure.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "designated-targets-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Friendly ASTRA MILITARUM INFANTRY with SMOKE and friendly SCOUT SENTINELS gain Signal Flares: optionally mark one visible enemy within 12″ in your Shooting phase for +3 detection range this phase. The detachment uses the exclusive RECON tag. Source gap: detection range and tag-selection procedures are not defined here.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "draw-them-out-recon-element-astra-militarum",
+    "state": "structured",
+    "summary": "After an enemy ends a Normal, Advance or Fall Back move, the selected unengaged friendly PLATOON unit within 8″ makes a 6″ Normal move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "draydens-drill-draydens-lance-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This unit’s Snap shooting hits succeed on 4. Source gap: confirm whether this means a 4+ threshold, unmodified rolls and the Snap shooting procedure; the effect does not define them.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "drill-commander-combined-arms-astra-militarum",
+    "state": "needs-summary",
+    "summary": "While the bearer leads a unit and Remained Stationary this turn, that unit’s ranged attacks score Critical Hits on 5+. Source review: the effect gates on the bearer’s move rather than the whole unit and omits unmodified-roll wording; confirm those restrictions.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "eager-advance-siege-regiment-astra-militarum",
+    "state": "structured",
+    "summary": "While the bearer leads a REGIMENT unit, that unit gains Scouts 6″.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "earthshaker-rounds-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Basilisk shoots in your Shooting phase, enemy INFANTRY hit by its Earthshaker cannon are shaken: -2″ Move and -2 Charge until the next Shooting phase. Source review: this provisional source’s hit-history selector uses this-unit rather than each recipient; confirm affected targets and which player’s Shooting phase ends it.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "embarking-krieg-heavy-weapons-squad-astra-militarum",
+    "state": "structured",
+    "summary": "Each HEAVY WEAPONS GUNNER model in this Krieg Heavy Weapons Squad occupies two transport spaces.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "emplacement-platform-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Friendly ASTRA MILITARUM INFANTRY may be set up on this emplacement terrain and end moves on it. Source review: this provisional source does not define the eligible platform surface or placement restrictions.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "engine-of-wrath-steel-hammer-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected friendly Astra Militarum TITANIC unit fights, select one engaged enemy. Gain +6 melee Attacks and +2 melee AP this phase, and direct melee attacks only at that selected enemy.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "engine-speaker-steel-hammer-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When the bearer uses Omnissiah’s Blessing, add 3″ to its target’s Move until your next Command phase. Source review: the modifier uses event-object without explicitly binding the healed vehicle; confirm that recipient.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "enginseer-astra-militarum",
+    "state": "structured",
+    "summary": "This Tech-Priest Enginseer model has Lone Operative while within 3″ of a friendly ASTRA MILITARUM VEHICLE unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "exemplar-of-duty-upgrade-abhuman-auxiliaries-astra-militarum",
+    "state": "structured",
+    "summary": "The bearer model gains Feel No Pain 4+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "exemplary-officer-armoured-infantry-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When this model uses an Order on this-unit, optionally select up to two other friendly PLATOON units within 3″ and mark them affected-by-order. Source gap: no Order option is copied and no duration is supplied; confirm the triggering recipient, copied benefit and expiry.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "experienced-veterans-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Choose re-rolls of Damage rolls or Attacks rolls for friendly DRAYDEN’S LANCE units. Source gap: no choice timing, refresh or weapon scope is supplied; confirm those limits rather than changing the choice for every roll.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fields-of-fire-combined-arms-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Select a friendly REGIMENT unit and a different friendly SQUADRON unit, both not yet selected to shoot; Fields of Fire grants +1 AP against a designated enemy this phase. Source gap: the effect selects an enemy without binding it to the two core targets’ attacks and supplies no designation trigger; confirm the target-selection procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "fiery-vengeance-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Once per turn per army, this Avenger may shoot at an enemy FLY unit after it destroys another friendly Astra Militarum unit within 6″ in your opponent’s Shooting phase. Source conflict: an alternative attacks-resolved trigger has no FLY or casualty binding; confirm the reaction sequence and target.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "final-duty-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Final Duty allows this Krieg Heavy Weapons model to shoot on death. Source gap: no destruction trigger, die gate, eligibility, resolution timing or removal procedure is encoded; confirm the complete rule.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "final-hour-hammer-of-the-emperor-astra-militarum",
+    "state": "structured",
+    "summary": "Use on a below-Half-strength non-OFFICER SQUADRON unit. For this battle round, its ranged weapons other than One Shot gain Hazardous, and it ignores Ballistic Skill and ranged Hit-roll modifiers.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "fire-zone-purge-astra-militarum",
+    "state": "needs-summary",
+    "summary": "If your Warlord is a MILITARUM TEMPESTUS OFFICER, friendly TEMPESTUS SCIONS gain BATTLELINE and +1 Objective Control. Friendly MILITARUM TEMPESTUS units gain +1 ranged Hit when selected to shoot after being set up this turn. Source conflict: the imported effect differs from the pin; confirm the current Warlord gate and arrival benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "firing-hot-bridgehead-strike-astra-militarum",
+    "state": "structured",
+    "summary": "When the friendly KASRKIN or MILITARUM TEMPESTUS unit is selected to shoot, its hot-shot lascarbines, lasguns, laspistols, marksman rifles, volley guns and sentry hot-shot volley guns gain +1 Strength and +1 AP against defenders within 12″ this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "first-wave-draydens-lance-astra-militarum",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, a friendly-controlled objective within the selected DRAYDEN’S LANCE unit’s control range becomes sticky.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "flak-battery-astra-militarum",
+    "state": "structured",
+    "summary": "This Hydra model re-rolls Hit rolls against FLY targets.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "flare-burst-siege-regiment-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected friendly Astra Militarum CHARACTER unit has shot, re-roll its Hit rolls against defenders within 12″ this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "flash-grenades-siege-regiment-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Enemy units cannot target this unit with Fire Overwatch. Source review: the effect has permanent duration without an activation event; confirm how Flash Grenades are used and how long protection lasts.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "flexible-command-combined-arms-astra-militarum",
+    "state": "needs-summary",
+    "summary": "The selected friendly Astra Militarum OFFICER units add REGIMENT and SQUADRON to eligible Voice of Command recipients this phase. Core metadata says one or more target units; confirm whether any additional selection or cost limit applies.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "flush-them-out-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Hellhound shoots in your Shooting phase, select one enemy it hit. That enemy loses the Benefit of Cover until the next Shooting phase. Source review: the expiry does not specify whose Shooting phase; confirm the intended duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "focus-attacks-draydens-lance-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Focus Attacks contains only a no-effect marker. The core Command-phase metadata does not supply an effect.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "fortification-astra-militarum",
+    "state": "structured",
+    "summary": "In the Shooting phase, subtract 1 from incoming Hit rolls against this Aegis Defence Line unit.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "furious-barrage-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Manticore shoots in your Shooting phase, select one enemy hit by storm eagle rockets that is neither MONSTER nor VEHICLE. It is staggered and loses 1 Objective Control until the next Shooting phase. Source review: confirm which player’s Shooting phase ends the effect.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "furious-cannonade-hammer-of-the-emperor-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected friendly SQUADRON unit has shot, improve its AP by 1 against defenders within 12″ of this unit this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "furious-fusillade-siege-regiment-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected friendly PLATOON unit has shot, add 1 to ranged Attacks against enemy targets within half weapon range this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "get-back-in-the-fight-astra-militarum",
+    "state": "structured",
+    "summary": "While this Cadian Castellan leads a unit, that unit may shoot after Falling Back.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "grand-strategist-armoured-infantry-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After deployment, while this unit is on the battlefield, select up to two friendly REGIMENT or SQUADRON units to redeploy, optionally into Strategic Reserves ignoring limits. Source conflict: the effect sequences battlefield placement and reserve placement instead of alternatives; confirm the redeployment procedure.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "grand-strategist-combined-arms-astra-militarum",
+    "state": "structured",
+    "summary": "In your Command phase, the bearer can issue one additional Voice of Command Order. Apply its ordinary recipient, range, option and concurrency restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "grenadiers-astra-militarum",
+    "state": "structured",
+    "summary": "Once per turn per unit, Grenade costs 0CP when targeting this Krieg Combat Engineers unit. Apply the core Stratagem timing, eligibility and cost rules.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "grim-demeanour-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Death Korps unit gains +1 Hit while below Starting Strength and also +1 Wound while below Half-strength. Source review: this source is marked partial; confirm any omitted conditions or attack-type restrictions.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "grim-determination-astra-militarum",
+    "state": "needs-summary",
+    "summary": "If this Krieg Command Squad unit matches OFFICER, it may use Stratagems despite Battle-shocked and lifts Voice of Command duration limits. Source review: this provisional source does not explain which Order limit is lifted or bind the OFFICER model condition; confirm those interactions.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "guerrilla-honours-recon-element-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After deployment, if the bearer is on the battlefield, redeploy up to three other friendly ASTRA MILITARUM INFANTRY units, optionally into Strategic Reserves ignoring limits. Source conflict: the effect sequences two placements instead of alternatives; confirm the redeployment procedure.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "gung-ho-command-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Catachan Command Squad unit’s ranged weapons gain Assault if it matches OFFICER. Source review: the condition tests a unit keyword rather than the presence of an officer model; confirm the intended eligibility.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "gung-ho-executioners-astra-militarum",
+    "state": "structured",
+    "summary": "This Leman Russ Executioner model gains +1 Hit with its executioner plasma cannon against defenders below Half-strength.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "hasty-extraction-mechanised-assault-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Hasty Extraction contains only a no-effect marker. Confirm the embark reaction and its restrictions from checked wording.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "hero-of-hades-hive-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Yarrick may choose a stance in Command until the next Command phase: Counterstrategist reacts to an enemy moving or arriving within 8″ using a visible friendly REGIMENT within 6″ for a D6″ move, shooting on 6s, or a charge; Decisive Command sets Order range to 12″; Inspiring Hero grants friendly Astra Militarum within 6″ Battle-shock and Leadership re-rolls. Source review: the provisional Counterstrategist lacks a bound enemy and clear response timing, and its outer Command condition conflicts with later reactions; confirm the complete stance procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "holy-piety-astra-militarum",
+    "state": "structured",
+    "summary": "This Ministorum Priest model re-rolls melee Hit rolls while not Battle-shocked.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "horsemasters-astra-militarum",
+    "state": "structured",
+    "summary": "This Attilan Rough Riders unit may shoot and declare a charge after Falling Back.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "horsemasters-draydens-lance-attilan-rough-riders-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Drayden’s Lance Attilan Rough Riders unit Falls Back, it may still shoot and declare a charge. Source review: permanent scope does not specify the permission’s expiry; confirm its duration.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "icon-of-discipline-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Commissar Graves on Foot unit may shoot and charge after Falling Back. The source is provisional; confirm current wording.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "imposing-arrival-steel-hammer-astra-militarum",
+    "state": "needs-summary",
+    "summary": "From battle round 2, the selected friendly Astra Militarum TITANIC unit in Strategic Reserves can be set up within 8″ of a battlefield edge and at least the encoded 6″ from enemies. Source review: the effect does not identify the normal arrival replacement window or whether the enemy distance is strictly more than 6″; confirm setup boundaries.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "independent-operatives-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Cadian Recon Squad’s Orders last until replaced, Battle-shocked or battle end. Source conflict: the provisional duration modifier references the Cadian Castellan’s issue-Orders record instead of the shared Voice of Command benefit; confirm the actual Order duration interaction.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "indomitable-steed-hammer-of-the-emperor-astra-militarum",
+    "state": "structured",
+    "summary": "The bearer model gains Feel No Pain 6+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "inspired-command-combined-arms-astra-militarum",
+    "state": "structured",
+    "summary": "In your opponent’s Command phase, the selected friendly Astra Militarum OFFICER model may issue an Order as if it were your Command phase. Apply its normal allowance, recipients, range and option restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "iron-tread-astra-militarum",
+    "state": "needs-summary",
+    "summary": "For SQUADRON units Advancing, Iron Tread gives a fixed 6″ addition instead of an Advance roll. Source review: its approximate note also permits passing through, but not ending in, enemy Engagement Range; the effect only sets a roll to 6 and omits that movement permission. Confirm the full rule.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "jungle-fighters-astra-militarum",
+    "state": "structured",
+    "summary": "This Catachan Jungle Fighters unit gains +1 to melee Wound rolls if it charged or was charged this turn.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "laud-hailer-grizzled-company-astra-militarum",
+    "state": "structured",
+    "summary": "When the bearer issues Orders, set its Voice of Command range to 12″. Retain its ordinary allowance and recipients.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "leading-the-charge-astra-militarum",
+    "state": "structured",
+    "summary": "After this Lord Marshal Dreir unit charges, its melee weapons gain Devastating Wounds for the rest of the turn.",
+    "phase": [
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "legacy-sidearm-siege-regiment-astra-militarum",
+    "state": "structured",
+    "summary": "Add 2 to the Attacks characteristic of the bearer’s ranged Pistol weapons.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "like-fighting-a-shadow-astra-militarum",
+    "state": "structured",
+    "summary": "After this Sly Marbo model shoots in your Shooting phase, if unengaged it may make a Normal move and cannot charge this turn. Use its normal movement distance; no fixed extra distance is supplied.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "line-breaker-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Leman Russ Demolisher ignores worsening ranged Hit-roll modifiers. Its demolisher battle cannon has an extra targeting permission provided no other friendly unit is engaged with the defender. Source gap: the permission does not name the normal restriction it overrides; confirm shooting while engaged and eligible targets.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "loner-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Sly Marbo cannot be your Warlord. The source marks Loner provisional; confirm current wording.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "long-range-scout-upgrade-designation-force-astra-militarum",
+    "state": "structured",
+    "summary": "This upgrade unit gains Infiltrators.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "lord-castellan-astra-militarum",
+    "state": "needs-summary",
+    "summary": "While Ursula Creed leads a unit, that unit can have two Orders concurrently. The source is provisional; confirm its interaction with the normal one-Order limit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "low-profile-abhuman-auxiliaries-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After friendly RATLINGS shoot, those attacks do not end this-unit’s hidden status this phase. Source review: the event is bound to the Ratlings shooter but the beneficiary remains this-unit; confirm the affected unit and when hidden status is checked.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "loyal-protector-ogryn-bodyguard-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Loyal Protector for the Ogryn Bodyguard contains only a no-effect marker. Do not substitute Nork Deddog’s distinct version without checked wording.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "loyal-protector-astra-militarum",
+    "state": "structured",
+    "summary": "Nork Deddog must attach to a COMMAND SQUAD, with a maximum of one such attachment. He occupies three transport spaces and cannot be your Warlord. Apply current attachment and capacity rules.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "malign-wardings-astra-militarum",
+    "state": "structured",
+    "summary": "While this Primaris Psyker leads a unit, that unit has Feel No Pain 4+ against Psychic attacks only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "master-manoeuvrist-armoured-infantry-astra-militarum",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, if this unit is unengaged and every model is within 3″ of a friendly ASTRA MILITARUM TRANSPORT, it may embark. Apply capacity and core embark restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "master-vox-draydens-lance-command-squad-astra-militarum",
+    "state": "structured",
+    "summary": "When this Drayden’s Lance Command Squad uses Orders, set its Voice of Command range to 24″. Retain normal allowance and recipient restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "master-vox-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When this Command Squad uses Orders, set Voice of Command range to 24″. Source review: the provisional modifier targets this-unit rather than its issuing OFFICER; confirm the issuer and equipment requirement.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "masters-of-camouflage-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Source conflict: Masters of Camouflage grants Stealth to friendly non-TITANIC Astra Militarum units in its effect, while its approximate note instead describes +1 Save, capped at 3+, for WALKER/REGIMENT models already receiving cover from another source. Confirm which benefits and recipients are current.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "mechanised-spearhead-astra-militarum",
+    "state": "needs-summary",
+    "summary": "In your Movement phase, after a friendly Astra Militarum REGIMENT disembarks from a transport within 6″ of Graves, he may issue one Order to it without counting against his Order allowance. Source review: the note labels the trigger/bypass approximate despite the effect containing them; confirm the complete Order interaction.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "medi-pack-draydens-lance-command-squad-astra-militarum",
+    "state": "structured",
+    "summary": "This Drayden’s Lance Command Squad unit gains Feel No Pain 6+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "medi-pack-astra-militarum",
+    "state": "structured",
+    "summary": "At the start of your Command phase, if this unit is below Starting Strength, optionally return D3 destroyed non-CHARACTER PLATOON models to it. Apply core model-return and placement restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "medi-pack-militarum-tempestus-command-squad-astra-militarum",
+    "state": "structured",
+    "summary": "At the start of your Command phase, if this Militarum Tempestus unit is below Starting Strength, optionally return D3 destroyed TEMPESTUS SCIONS models to it. Apply core model-return and placement restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "melta-mine-astra-militarum",
+    "state": "structured",
+    "summary": "Once per battle per unit, at phase start, this Kasrkin unit may select one enemy within 3″ of this model. On D6 2+, deal D3 mortal wounds, or 2D3 if the enemy is a VEHICLE.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "melta-mine-draydens-lance-kasrkin-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At phase start, select one enemy within 3″ of this Drayden’s Lance Kasrkin model; on D6 2+, deal D3 mortal wounds or 2D3 against a VEHICLE. Source gap: unlike ordinary Kasrkin Melta Mine, no usage cap is supplied; confirm the limit before reuse.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "minefield-siege-regiment-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At the start of your opponent’s Charge phase, use on a friendly PLATOON unit. After an enemy ends a Charge move engaged with it, roll one D6 per model in that enemy, dealing 1 mortal wound per 5+, capped at six. Source review: the engaged condition has an unbound subject; confirm that it tests the charging enemy.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "mobile-command-vehicle-astra-militarum",
+    "state": "needs-summary",
+    "summary": "In the Command phase, friendly embarked OFFICER models may issue Orders. Source gap: Mobile Command Vehicle does not bind those officers to this Chimera or explain the range origin; confirm who may issue and where range is measured from.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "mobile-firebase-armoured-infantry-astra-militarum",
+    "state": "structured",
+    "summary": "After the friendly ARMOURED SKIRMISHER unit Advances or Falls Back, its ranged weapons gain Assault and it may shoot after Falling Back for the rest of the turn.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "mobile-hunter-killers-astra-militarum",
+    "state": "structured",
+    "summary": "This Armoured Sentinels unit re-rolls Wound rolls against MONSTER or VEHICLE targets.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "mordian-minute-grizzled-company-astra-militarum",
+    "state": "structured",
+    "summary": "Use on friendly Astra Militarum INFANTRY affected by First Rank, Fire! Second Rank, Fire! Add 1 Strength this phase. The effect supplies no weapon-type restriction; do not add a melee benefit in this Shooting-phase window.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "mount-up-astra-militarum",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Movement phase, if this Stormlord has no embarked units, select one unengaged friendly Astra Militarum INFANTRY unit within 6″, excluding ARTILLERY; it may embark in this transport. Apply capacity and core embark restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "move-out-mechanised-assault-astra-militarum",
+    "state": "needs-summary",
+    "summary": "The core Stratagem is used in your opponent’s Fight phase; the effect instead triggers at the end of their turn. If this unit is unengaged and every model is within 3″ of a friendly Astra Militarum TRANSPORT, it may embark. Source conflict: confirm Fight-phase versus turn-end timing.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "mow-down-the-enemy-astra-militarum",
+    "state": "structured",
+    "summary": "This Leman Russ Punisher model’s punisher gatling cannon gains Devastating Wounds against targets that are neither MONSTER nor VEHICLE.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "no-retreat-grizzled-company-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Use on a friendly Astra Militarum unit affected by Duty and Honour. A friendly-controlled objective in its control range becomes sticky until control is lost. Source gap: no activation event or objective selection is encoded; confirm when the objective is secured.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "ogryn-bodyguard-astra-militarum",
+    "state": "needs-summary",
+    "summary": "OFFICER models in this Nork/Ogryn Bodyguard unit gain Feel No Pain 4+ if the unit matches OFFICER. Source review: the outer condition tests a unit keyword rather than an OFFICER model’s presence; confirm eligibility and which models receive protection.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "omnissiahs-blessing-astra-militarum",
+    "state": "structured",
+    "summary": "In your Command phase, select one friendly Astra Militarum VEHICLE model within 3″ of this Enginseer. It heals D3 wounds and gains a 4+ invulnerable save until your next Command phase. The source limits the selection to once per turn.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "omnissian-unguents-aura-armoured-infantry-astra-militarum",
+    "state": "structured",
+    "summary": "Friendly ARMOURED SKIRMISHER units within this bearer’s 3″ aura gain Feel No Pain 5+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "on-my-position-bridgehead-strike-astra-militarum",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Charge phase, use on an engaged friendly REGIMENT unit. Roll D6 for each enemy engaged with it; on 2+, that enemy suffers D6 mortal wounds. Your selected unit then suffers 3D3 mortal wounds.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "one-man-army-astra-militarum",
+    "state": "structured",
+    "summary": "Once per turn per unit, after an enemy finishes shooting a friendly REGIMENT unit within 3″ of this Sly Marbo model, Marbo may shoot if eligible and must target that enemy. Retain the targeted-unit and eligibility gates.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "opening-salvo-armoured-infantry-astra-militarum",
+    "state": "structured",
+    "summary": "Use on a friendly Astra Militarum unit that disembarked this turn and has not shot. Add 1 to its Wound rolls this Shooting phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "order-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Order contains only a no-effect marker. It does not supply an additional Order option or replace Voice of Command’s menu.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "order-the-advance-armoured-infantry-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At the start of your Movement phase, the selected Astra Militarum OFFICER selects friendly Astra Militarum units within 6″ for Advance re-rolls this phase. Source conflict: the selector has no maximum and the re-roll targets this-unit instead of selected-unit; confirm recipients and count.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "orders-commissar-graves-astra-militarum",
+    "state": "structured",
+    "summary": "Commissar Graves may issue one Order per battle round to REGIMENT or SQUADRON units, choosing only Move! Move! Move!, Duty and Honour, or Fix Bayonets. Apply Voice of Command timing, range and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-commissar-astra-militarum",
+    "state": "structured",
+    "summary": "This Commissar may issue one Order per battle round to REGIMENT units, choosing only Duty and Honour or Fix Bayonets. Apply Voice of Command timing, range and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-cadian-castellan-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Cadian Castellan may issue two Orders per battle round to REGIMENT units. Source review: the allowance is provisional; apply Voice of Command timing, range and restrictions after checking current wording.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-astra-militarum",
+    "state": "structured",
+    "summary": "This Command Squad may issue one Order per battle round to REGIMENT units. Apply Voice of Command timing, range, menu and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-lord-solar-leontus-astra-militarum",
+    "state": "structured",
+    "summary": "Lord Solar Leontus may issue three Orders per battle round to REGIMENT, SQUADRON or TITANIC units. Apply Voice of Command timing, range, menu and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-lord-marshal-dreir-astra-militarum",
+    "state": "structured",
+    "summary": "Lord Marshal Dreir or Ursula Creed may issue three Orders per battle round to REGIMENT units. Apply Voice of Command timing, range, menu and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-leman-russ-commander-astra-militarum",
+    "state": "structured",
+    "summary": "This Rogal Dorn or Leman Russ Commander may issue two Orders per battle round to SQUADRON units. Apply Voice of Command timing, range, menu and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-gaunts-ghosts-astra-militarum",
+    "state": "structured",
+    "summary": "Gaunt’s Ghosts may issue two Orders per battle round to GAUNT’S GHOSTS or REGIMENT units. Apply Voice of Command timing, range, menu and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-draydens-lance-command-squad-astra-militarum",
+    "state": "structured",
+    "summary": "This Drayden’s Lance Command Squad may issue two Orders per battle round to DRAYDEN’S LANCE units. Apply Voice of Command timing, range, menu and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-commissar-yarrick-astra-militarum",
+    "state": "structured",
+    "summary": "Commissar Yarrick may issue two Orders per battle round to REGIMENT, SQUADRON or TITANIC units. Apply Voice of Command timing, range, menu and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "orders-commissar-graves-on-foot-astra-militarum",
+    "state": "structured",
+    "summary": "Commissar Graves on Foot may issue one Order per battle round to REGIMENT units, choosing only Move! Move! Move!, Duty and Honour, or Fix Bayonets. Apply Voice of Command timing, range and restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "over-the-top-siege-regiment-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Over the Top contains only a no-effect marker. Its core phase and CP metadata do not supply the rule’s effect.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "over-there-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, this Drayden’s Lance Command Squad may select one enemy within 24″ for +3 detection range this phase. Source gap: detection range and its measurement procedure are not defined in the supplied rules.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "point-blank-barrage-astra-militarum",
+    "state": "structured",
+    "summary": "Improve this Ogryn Squad unit’s ranged AP by 1 against the closest eligible enemy target.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "political-overwatch-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Commissar unit re-rolls Battle-shock tests while it contains at least two OFFICER models. Source review: Political Overwatch is provisional; confirm the officer count and current benefit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "shock"
+  },
+  {
+    "id": "precision-drop-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When this Tempestus Aquilons unit arrives by Deep Strike in your Movement phase, it may use Precision Drop to set up at the encoded 6″ enemy distance and cannot charge this turn. Source review: the provisional effect recursively activates itself, repeats setup and uses an unbound no-charge recipient; confirm the setup boundary and procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "priority-drop-beacon-bridgehead-strike-astra-militarum",
+    "state": "structured",
+    "summary": "In battle round 1, this unit may make an Ingress move in your Movement phase. Apply the core Ingress setup restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "psychic-barrier-astra-militarum",
+    "state": "structured",
+    "summary": "At the start of your opponent’s Shooting phase, this Primaris Psyker unit may roll D6: on 1 suffer D3 mortal wounds; on 2–6 gain a 4+ invulnerable save this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "purging-fire-grizzled-company-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected ordered friendly Astra Militarum unit has shot, its ranged weapons gain Lethal Hits while it is within control range of an objective marker this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "rapid-deployment-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Friendly units embarked in this Taurox may disembark after it Advances. They count as having made a Normal move until phase end and cannot declare a charge. Source review: the record has permanent scope without a no-charge expiry; confirm the intended turn limit.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "rapid-dispersal-mechanised-assault-astra-militarum",
+    "state": "needs-summary",
+    "summary": "The selected friendly Astra Militarum INFANTRY unit that disembarked this phase makes a D6″ Normal move. Source gap: no exact activation event is encoded; confirm whether the move is immediate after disembarking and its restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "rapid-strike-vehicle-astra-militarum",
+    "state": "needs-summary",
+    "summary": "While this Centaur RSV has embarked models and is not Battle-shocked, add 1 Objective Control per three embarked models. Source review: the provisional source does not specify rounding or bind the Battle-shocked check to the vehicle; confirm scaling.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ratling-battlemutt-astra-militarum",
+    "state": "structured",
+    "summary": "Once per battle per unit, when this Ratlings unit is selected to shoot, optionally give its ranged weapons Lethal Hits this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "reactive-command-combined-arms-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Reactive Command contains only a no-effect marker. Supply checked timing, recipients and effect before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "rearm-reload-fire-astra-militarum",
+    "state": "structured",
+    "summary": "If this Field Ordnance Battery unit is affected by an Order and Remained Stationary this turn, its Heavy weapons gain Sustained Hits 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "recon-star-upgrade-designation-force-astra-militarum",
+    "state": "structured",
+    "summary": "In battle round 1, this upgrade unit may make an Ingress move in your Movement phase. Apply the core Ingress setup restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "regimental-banner-hammer-of-the-emperor-astra-militarum",
+    "state": "structured",
+    "summary": "Add 3 to the bearer model’s Objective Control characteristic.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "regimental-standard-astra-militarum",
+    "state": "structured",
+    "summary": "Add 1 to this Command Squad unit’s Objective Control characteristic.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "regimental-standard-draydens-lance-command-squad-astra-militarum",
+    "state": "structured",
+    "summary": "Add 1 to this Drayden’s Lance Command Squad unit’s Objective Control characteristic.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "reinforced-cover-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Reinforced Cover grants the defender cover if this Aegis model prevents full visibility. Source conflict: it triggers when Damage is allocated, after the normal cover/save decision, and uses event-object instead of the defender; confirm recipient and timing.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "reinforcements-combined-arms-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Reinforcements contains only a no-effect marker. No replacement unit, exclusions, cost interaction or usage limit can be inferred from the name.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "remorseless-barrage-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Artillery Team shoots, enemies hit by its Indirect Fire weapons take Battle-shock tests, at -1 for INFANTRY hit by a Multiple rocket launcher. Source review: the general hit selector binds this-unit rather than each enemy recipient; confirm which enemies test and the weapon-specific branch.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "remote-mine-astra-militarum",
+    "state": "structured",
+    "summary": "Once per battle per unit, at the start of your Shooting phase, optionally select one visible enemy within 9″ of this Krieg Combat Engineers model. On D6 3+, deal D3 mortal wounds, or 2D3 against a FORTIFICATION or VEHICLE.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "rolling-fortress-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Rolling Fortress grants cover to friendly Astra Militarum models not fully visible because of this Baneblade. Source conflict: its trigger is Damage allocation, after the normal cover/save decision; confirm the correct timing and protected model.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "ruthless-discipline-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Friendly Astra Militarum OFFICER models gain one additional Voice of Command use, and friendly Astra Militarum units affected by Orders re-roll Hit rolls of 1. Source review: Ruthless Discipline is provisional; confirm allowance timing and the extra Order’s normal limits.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sacred-unguents-mechanised-assault-astra-militarum",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select one friendly TRANSPORT within 3″ of the bearer, excluding AIRCRAFT and TITANIC; that transport re-rolls Hit rolls this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "scare-gas-grenades-recon-element-astra-militarum",
+    "state": "structured",
+    "summary": "Once per battle per model, at phase start, optionally select one enemy within 8″ of this unit that is neither MONSTER nor VEHICLE; it takes a Battle-shock test.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "scouting-outriders-recon-element-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Scouting Outriders places the selected friendly Astra Militarum MOUNTED or WALKER unit in Strategic Reserves while wholly within 10″ of a battlefield edge and unengaged. Source conflict: core metadata uses the opponent’s Fight phase but the effect triggers at turn end; confirm the actual timing.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "scramble-field-recon-element-astra-militarum",
+    "state": "structured",
+    "summary": "At the start of your opponent’s Reinforcements step, the selected friendly Astra Militarum INFANTRY unit prevents enemy Strategic Reserves setup within 12″ of it this phase. Apply the source’s arrival-type restriction.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "arrivals"
+  },
+  {
+    "id": "screening-line-astra-militarum",
+    "state": "structured",
+    "summary": "When an enemy ends a move within 8″ in your opponent’s Movement phase, this Death Riders unit may make a 6″ Normal move if unengaged.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "senior-officer-astra-militarum",
+    "state": "structured",
+    "summary": "While this Cadian Castellan leads a unit, its ranged weapons gain Sustained Hits 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "servo-designators-bridgehead-strike-astra-militarum",
+    "state": "structured",
+    "summary": "After the friendly MILITARUM TEMPESTUS unit shoots, select one enemy hit by its ranged attacks. Friendly MILITARUM TEMPESTUS ranged attacks against that enemy gain Ignores Cover this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "servo-scribes-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Once per battle per unit, when using an Order, add one Voice of Command use to this Krieg Command Squad model and place a Servo-scribes token. Source review: the extra use has permanent duration and no token-removal/reset procedure; confirm whether it is a one-time extra Order or a lasting allowance increase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "servo-sentry-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Tempestus Aquilons unit arrives using Deep Strike, only its Tempestor Aquilon may shoot, using its sentry flamer, sentry grenade launcher or sentry hot-shot volley gun as if in your Shooting phase. Source review: the note labels this approximate and the effect has permanent permission scope; confirm the immediate shooting window.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "arrivals"
+  },
+  {
+    "id": "sharp-eyes-upgrade-abhuman-auxiliaries-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When this upgrade unit is selected to shoot, add 6 detection range to enemy units until this unit has shot. Source gap: no target selection or range limit is encoded and detection range is undefined; confirm all three before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "shattering-salvo-steel-hammer-astra-militarum",
+    "state": "structured",
+    "summary": "After the selected friendly Astra Militarum TITANIC unit shoots, select one enemy it hit; that enemy loses cover this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "shock-troops-astra-militarum",
+    "state": "structured",
+    "summary": "At the end of your Command phase, a friendly-controlled objective within this Cadian Shock Troops unit’s control range becomes sticky.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "shoot-sharp-and-scarper-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Ratlings unit shoots in your Shooting phase, if unengaged it may make a Normal move as in the Movement phase and cannot charge this turn. Source review: the mover uses an unbound event-subject instead of this-unit; confirm the recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "slabshield-astra-militarum",
+    "state": "structured",
+    "summary": "Set this equipped Bullgryn model’s Wounds characteristic to 4.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "slabshield-ogryn-bodyguard-astra-militarum",
+    "state": "structured",
+    "summary": "Set this equipped Ogryn Bodyguard model’s Wounds characteristic to 7.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "smoke-grenades-mechanised-assault-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This unit gains the Benefit of Cover and also Stealth while wholly within 3″ of a friendly TRANSPORT. Source gap: Smoke Grenades has permanent duration and no activation/use limit; confirm how and when the enhancement is applied.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "snap-to-it-grizzled-company-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Snap To It contains only a no-effect marker. Supply checked wording before using this Stratagem.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "spec-ops-veteran-grizzled-company-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Spec Ops Veteran contains only a no-effect marker. Supply checked wording before using this enhancement.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "squadron-command-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Friendly OFFICER units add SQUADRON to Voice of Command recipients and gain the On My Signal Order option. Source gap: On My Signal contains only a no-effect marker; confirm its benefit before using that option.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "stalwart-protector-combined-arms-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When the selected friendly Astra Militarum VEHICLE is targeted, Stalwart Protector would grant cover to friendly INFANTRY obscured by it. Source conflict: the nested cover effect triggers at Damage allocation, after saves; confirm the timing and protected recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "stalwarts-honours-siege-regiment-astra-militarum",
+    "state": "needs-summary",
+    "summary": "While the bearer leads a unit, using an Order on that unit also activates Take Cover from Voice of Command. Source gap: the record does not explain concurrency with the triggering Order or whether the normal one-Order limit is bypassed; confirm that interaction.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "stirred-to-action-abhuman-auxiliaries-astra-militarum",
+    "state": "structured",
+    "summary": "After an enemy finishes shooting the selected unengaged BULLGRYN SQUAD or OGRYN SQUAD, that unit makes a D6″ Surge move. Apply core Surge movement restrictions.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "storm-troopers-astra-militarum",
+    "state": "structured",
+    "summary": "This Tempestus Scions unit re-rolls Wound rolls of 1, or all Wound rolls against defenders within control range of an objective marker. The source supplies no attack-type restriction; keep the two branches distinct.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "summary-execution-astra-militarum",
+    "state": "structured",
+    "summary": "Once per battle round per unit, at phase start, this Commissar may select one Battle-shocked friendly Astra Militarum INFANTRY unit within 12″. Destroy one of its models, then remove Battle-shocked. The source supplies no two-model minimum; do not add Graves’ separate minimum without checked wording.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "sump-smog-screen-designation-force-astra-militarum",
+    "state": "structured",
+    "summary": "At the start of your opponent’s Shooting phase, the selected unit gains the Benefit of Cover this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "supporting-ordnance-armoured-infantry-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected friendly ARMOURED SKIRMISHER unit has shot, it re-rolls Hit rolls against MONSTER or VEHICLE targets this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "suppression-bombardment-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After this Wyvern shoots in your Shooting phase, select one non-MONSTER, non-VEHICLE enemy hit by its quad stormshard mortar. That enemy is suppressed for -1 Hit until the next Shooting phase. Source review: the suppressed condition uses an unbound subject and the expiry does not specify whose phase; confirm recipient and duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "supreme-commander-astra-militarum",
+    "state": "structured",
+    "summary": "If included in your army, Lord Solar Leontus must be your Warlord.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "survival-gear-recon-element-astra-militarum",
+    "state": "structured",
+    "summary": "The bearer model gains Scouts 6″. This model-only grant does not automatically give every model of an attached unit Scouts.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "swift-interception-mechanised-assault-astra-militarum",
+    "state": "structured",
+    "summary": "After an enemy ends a Normal, Advance or Fall Back move, the selected unengaged friendly TRANSPORT within 8″, excluding AIRCRAFT and TITANIC, makes a 6″ Normal move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "tactical-genius-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Once per battle round per army, when a friendly Stratagem targets a REGIMENT unit within 12″ of Ursula Creed, optionally reduce that triggering use’s cost by 1CP. Source review: the cost modifier targets this-unit rather than the triggering REGIMENT recipient; confirm the target binding and core cost interaction.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "tactical-withdrawal-hammer-of-the-emperor-astra-militarum",
+    "state": "structured",
+    "summary": "After the friendly SQUADRON unit Falls Back, it may still shoot this turn.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "tanglefoot-grenades-recon-element-astra-militarum",
+    "state": "needs-summary",
+    "summary": "At the start of your opponent’s Charge phase, select one visible enemy within 12″ of the selected friendly Astra Militarum GRENADES unit. Source conflict: when that enemy declares a charge, the -1 Charge modifier targets this-unit rather than the charging enemy; confirm the recipient.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "tanith-camo-cloaks-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Gaunt’s Ghosts unit gains the Benefit of Cover. The source marks Tanith Camo-cloaks provisional; confirm current wording.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "tank-killer-astra-militarum",
+    "state": "structured",
+    "summary": "This Leman Russ Vanquisher model re-rolls ranged Wound rolls with its vanquisher battle cannon against MONSTER or VEHICLE targets.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "tempestor-prime-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This Militarum Tempestus unit’s ranged weapons gain Sustained Hits 1 while its Tempestor Prime profile condition is met. Source review: the condition applies a model-profile test to this-unit; confirm whether it means the Tempestor Prime model must still be present.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "the-collegiate-astrolex-astra-militarum",
+    "state": "needs-summary",
+    "summary": "After deployment, optionally redeploy up to three friendly Astra Militarum units, including Strategic Reserves placement ignoring limits. Source conflict: this provisional effect sequences battlefield placement and reserve placement instead of alternatives; confirm the procedure.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "the-lord-solar-astra-militarum",
+    "state": "structured",
+    "summary": "At the start of your Command phase, gain 1CP if Lord Solar Leontus is on the battlefield. Apply core CP-gain limits.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "thick-skulled-obdurance-abhuman-auxiliaries-astra-militarum",
+    "state": "structured",
+    "summary": "When the selected BULLGRYN SQUAD or OGRYN SQUAD is targeted while within control range of an objective marker, worsen incoming AP by 1 for that attack sequence.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "thunderous-head-butt-astra-militarum",
+    "state": "structured",
+    "summary": "When Nork Deddog is selected to fight, optionally select one enemy engaged with this model and roll D6: 1 does nothing; 2–5 deals D3 mortal wounds; 6 deals D3+3.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "titan-killer-steel-hammer-astra-militarum",
+    "state": "structured",
+    "summary": "The bearer model re-rolls ranged Damage rolls. This Steel Hammer enhancement is distinct from the Shadowsword’s volcano cannon ability.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "titan-killer-astra-militarum",
+    "state": "structured",
+    "summary": "This Shadowsword model’s volcano cannon gains Devastating Wounds against MONSTER or VEHICLE targets.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "tough-to-kill-astra-militarum",
+    "state": "needs-summary",
+    "summary": "The first time Lord Marshal Dreir is destroyed this battle, at phase end roll D6; on 2+, set him up closest to his destruction point, unengaged, with D3 wounds. Source review: Tough to Kill is provisional; confirm current return and placement restrictions.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "transport-support-astra-militarum",
+    "state": "structured",
+    "summary": "After this Taurox Prime shoots in your Shooting phase, select one enemy it hit. Friendly models that disembarked from this Taurox Prime this turn re-roll Hit rolls against that enemy this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "tremor-quake-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When this Banehammer selects Tremor cannon targets in your Shooting phase, the enemy defender and each enemy INFANTRY unit within 3″ of it take Battle-shock tests. Source review: the trigger has not yet bound a defender and applies tests before attack resolution; confirm target selection and sequencing.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "trench-fighters-siege-regiment-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When the selected friendly Astra Militarum INFANTRY unit is targeted, destroyed models may fight after the attacker finishes, on D6 4+ with +2 for REGIMENT, then are removed after fighting. Source conflict: eligibility tests the triggering enemy rather than the defending unit for both not-yet-fought and REGIMENT; confirm recipient and gates before use.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "triggered-alerts-designation-force-astra-militarum",
+    "state": "structured",
+    "summary": "After an enemy ends a move within 8″ of friendly unengaged Astra Militarum INFANTRY, the selected unengaged friendly Astra Militarum INFANTRY unit within 8″ of that enemy makes a D3+3″ Normal move. Apply both the effect’s proximity condition and the core target restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "tripwires-recon-element-astra-militarum",
+    "state": "structured",
+    "summary": "After an enemy INFANTRY or MOUNTED unit ends a Normal, Advance, Fall Back or Charge move within 8″ of this unit, roll D6; on 4+, that enemy is stunned and subtracts 1 from Hit rolls until the start of your next turn.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "unstable-payload-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Before rolling Deadly Demise for this Cyclops unit, use the encoded success value of 4. Source review: succeeds-on does not specify 4+ or unmodified dice; confirm the complete explosion threshold.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "urban-warfare-astra-militarum",
+    "state": "structured",
+    "summary": "In the Shooting phase, reduce Damage allocated to this Leman Russ Eradicator unit by 1. Apply the core minimum Damage rule.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "using-commissar-graves-astra-militarum",
+    "state": "structured",
+    "summary": "Your army may contain at most one of Commissar Graves and Commissar Graves on Foot, counting both versions together.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "vanguard-honours-mechanised-assault-astra-militarum",
+    "state": "needs-summary",
+    "summary": "This unit may disembark after its transport Advances, counts as having made a Normal move until phase end and cannot charge. Source review: the record does not bind the bearer’s transport or give the no-charge expiry; confirm eligibility and duration.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "vengeance-for-the-omnissiah-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When a friendly Astra Militarum VEHICLE model is destroyed within 12″ of this Enginseer, set the Enginseer axe’s Attacks to 6 for the rest of the battle. Source review: the source is provisional; confirm current trigger and benefit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "veteran-crew-hammer-of-the-emperor-astra-militarum",
+    "state": "structured",
+    "summary": "This unit re-rolls ranged Hit rolls of 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "veteran-sharpshooters-grizzled-company-astra-militarum",
+    "state": "structured",
+    "summary": "Before the selected friendly Astra Militarum unit has shot, its ranged weapons gain Ignores Cover this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "veteran-skirmishers-draydens-lance-astra-militarum",
+    "state": "structured",
+    "summary": "After an enemy ends a move within 8″ of a friendly unengaged DRAYDEN’S LANCE unit, the selected unengaged DRAYDEN’S LANCE unit within 8″ of that enemy makes a D3+1″ Normal move. Retain both proximity gates.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "voice-of-command-astra-militarum",
+    "state": "needs-summary",
+    "summary": "For an ASTRA MILITARUM army, OFFICER models issue Orders in your Command phase, or at phase end if that issuing OFFICER disembarked or was set up that phase. Default range is 6″; each officer’s datasheet sets its per-battle-round allowance and recipients. Only ASTRA MILITARUM models benefit; Battle-shocked units cannot receive Orders and becoming Battle-shocked ends them. One Order affects a unit at a time, lasting until your next Command phase. Choose: Move! Move! Move! +3″ Move; Fix Bayonets improve melee Weapon Skill by 1; Take Aim improve ranged Ballistic Skill by 1; First Rank, Fire! Second Rank, Fire! +1 Attack for Rapid Fire ranged weapons; Take Cover +1 Save, never better than 3+; Duty and Honour improve Leadership by 1 and add 1 Objective Control. Source review: the phase-end effect does not bind its disembark/setup history to the issuing OFFICER, and its phase-start Command trigger differs from the note’s generic Command timing; confirm exact issue windows before use.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "vox-caster-draydens-lance-kasrkin-astra-militarum",
+    "state": "structured",
+    "summary": "When a friendly Stratagem targets this Drayden’s Lance Kasrkin unit, roll D6; on 5+, gain 1CP, improved to 4+ while within 6″ of a friendly OFFICER model. Apply core CP-gain limits.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "vox-caster-astra-militarum",
+    "state": "structured",
+    "summary": "When a friendly Stratagem targets this vox-caster unit, roll D6; on 5+, gain 1CP. Add 1 to that roll if a friendly OFFICER model is within 6″ of this unit. Apply core CP-gain limits.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "vox-net-astra-militarum",
+    "state": "needs-summary",
+    "summary": "When this Rogal Dorn or Leman Russ Commander issues Orders, set its Voice of Command range to 12″. The source marks Vox-net provisional; confirm current wording.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "vox-relay-mechanised-assault-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Vox Relay contains only a no-effect marker. Supply checked recipients, range and Order interaction before use.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "vox-relay-beacon-astra-militarum",
+    "state": "missing",
+    "summary": "Missing source mechanics: Vox Relay Beacon for the Cadian Recon Squad contains only a no-effect marker. Supply checked wording before use.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "wall-of-muscle-astra-militarum",
+    "state": "structured",
+    "summary": "Subtract 1 from incoming attacks’ Damage against this Bullgryn Squad unit. Apply the core minimum Damage rule.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "war-hymns-astra-militarum",
+    "state": "structured",
+    "summary": "While this Ministorum Priest leads a unit, that unit’s melee weapons gain Sustained Hits 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "warrior-elite-draydens-lance-kasrkin-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Once per battle round per unit, at phase start, this Drayden’s Lance Kasrkin unit may add one concurrent Order slot and activate Voice of Command until your next Command phase. Source gap: no option selection, self-issue bypass or Battle-shock handling is supplied; confirm how this version’s extra Order works.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "warrior-elite-astra-militarum",
+    "state": "needs-summary",
+    "summary": "Once per battle round per unit, at phase start, this Kasrkin unit may activate a player-selected Voice of Command option until your next Command phase. Source gap: the record does not restrict the phase or define self-issue and concurrency exceptions; confirm the full Warrior Elite rule.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "will-of-iron-astra-militarum",
+    "state": "needs-summary",
+    "summary": "The first time this Commissar Yarrick model is destroyed this battle, at phase end roll D6; on 2+, return it with 3 wounds and at least the encoded 1″ from enemies. Source review: this provisional rule lacks the return location and a clear distance boundary; confirm placement before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "withering-firepower-steel-hammer-astra-militarum",
+    "state": "structured",
+    "summary": "After the selected friendly Astra Militarum VEHICLE shoots, choose one enemy it hit; that enemy takes a Battle-shock test at -1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "withering-hail-astra-militarum",
+    "state": "structured",
+    "summary": "After this Leman Russ Exterminator shoots in your Shooting phase, select one enemy hit by its exterminator autocannon, limited to one selected enemy per phase. Friendly Astra Militarum attacks against that enemy improve AP by 1 this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  }
+]
