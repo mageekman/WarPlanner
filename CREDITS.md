@@ -65,3 +65,7 @@ The pinned source tables in `tests/fixtures/marines-audit-sources.json` are adap
 ### Orks study audit (2026-11-14)
 
 Original concise study wording derived from the preserved user-imported Orks mechanics and [pinned 40kdc Orks source](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/orks), Alpaca Software and the 40kdc community contributors, CC BY 4.0. Changes include readable descriptions, phase/turn placement, core target restrictions, retained variants and explicit source-gap explanations. Structured snapshots are retained in audit fixtures. No official rules verification is claimed. See `AUDIT-ORKS.md` and `docs/LICENSE-40KDC-DATA.txt`.
+
+### T’au Empire study audit (2026-11-15)
+
+Original concise study wording derived from preserved user-imported T’au mechanics and the [pinned 40kdc T’au source](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/tau-empire), Alpaca Software and the 40kdc community contributors, CC BY 4.0. Changes include readable descriptions, core target ownership/eligibility, timing, retained variants and explicit provisional/source-gap explanations. Structured snapshots are retained in audit fixtures. No official verification is claimed. See `AUDIT-TAU.md` and `docs/LICENSE-40KDC-DATA.txt`.
