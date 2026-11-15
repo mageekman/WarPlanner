@@ -1,0 +1,2224 @@
+[
+  {
+    "id": "ard-as-nails-ardmob-orks",
+    "state": "structured",
+    "summary": "While this ’Ardmob unit’s Waaagh! is active, subtract 1 from incoming Wound rolls when the attacker’s Strength exceeds its Toughness.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "ard-as-nails-orks",
+    "state": "structured",
+    "summary": "When this WARBOSS model is destroyed before its unit has fought, roll D6: on 3+ it fights when its unit fights, then is removed after that unit fights or at phase end. Add 1 to the roll while riled-up.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "ardboyz-upgrade-green-tide-orks",
+    "state": "structured",
+    "summary": "Set this upgrade unit’s Save characteristic to 4+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "eadbanger-wurrband-orks",
+    "state": "needs-summary",
+    "summary": "Source gap: grants the ’Eadbanger weapon by reference, but supplies no weapon profile. Confirm its range, attacks, hit, Strength, AP, Damage and abilities before use.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "ere-we-go-green-tide-orks",
+    "state": "structured",
+    "summary": "When the selected friendly BEAST SNAGGA BOYZ or BOYZ unit moves, add 2 to its Advance roll this phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "adrenaline-junkies-orks",
+    "state": "structured",
+    "summary": "WARBIKERS gain BATTLELINE. When a friendly SPEED FREEKS unit Advances or Falls Back, its ranged weapons gain Assault and it may declare a charge despite that move this turn.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "aerial-manoover-orks",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, this Deffkoptas unit may enter Strategic Reserves if it is not engaged.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "ammo-runts-orks",
+    "state": "needs-summary",
+    "summary": "When this Boyz or Nobz unit is selected to shoot in your Shooting phase, it may add 1 to its ranged Hit rolls this phase. Source review: the Ammo Runt expenditure and usage limit are not encoded; do not assume unlimited uses.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "armed-to-da-teef-bully-boyz-orks",
+    "state": "needs-summary",
+    "summary": "When the friendly MEGANOBZ or NOBZ unit is selected to attack, re-roll Hit rolls of 1 this phase; while riled-up, re-roll any Hit rolls instead. The imported effect permits your Shooting phase or either Fight phase, while the core Stratagem’s phase/turn metadata also allows either player’s Shooting phase; confirm that timing conflict.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "arrogant-invulnerability-orks",
+    "state": "structured",
+    "summary": "Worsen the AP of attacks targeting this Meganobz unit by 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "beast-snagga-following-orks",
+    "state": "needs-summary",
+    "summary": "Mozrog’s unit gains Lone Operative while within 3″ of a friendly BEAST SNAGGA unit. Source review: its exclusion uses not-all-of CHARACTER and MONSTER; confirm the intended qualifying units rather than treating this as an exclusion of either keyword.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "beastscent-orks",
+    "state": "needs-summary",
+    "summary": "When a friendly unit is selected to disembark in your Movement phase, if this Kill Rig is not Battle-shocked, optionally roll D6: on 1 the Rig becomes Battle-shocked. The disembarking unit gains +1 to Wound against MONSTER or VEHICLE targets this turn. Confirm the missing disembark-from-this-Rig binding and whether that benefit still applies after a failed roll.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "big-an-shooty-orks",
+    "state": "structured",
+    "summary": "In your Shooting phase, re-roll ranged Hit rolls of 1 for this Morkanaut unit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "big-an-stompy-orks",
+    "state": "structured",
+    "summary": "Re-roll melee Hit rolls of 1 for this Gorkanaut unit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "blastajet-force-field-orks",
+    "state": "structured",
+    "summary": "This Wazbom Blastajet has a 5+ invulnerable save and loses the SMOKE keyword.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "blitz-dem-gitz-orks",
+    "state": "structured",
+    "summary": "In your Shooting phase, this Big Mek Dakkarig’s blitzkannon gains 6 Attacks against targets that are neither MONSTER nor VEHICLE.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "blitzboss-brute-bosses-orks",
+    "state": "structured",
+    "summary": "While the bearer is embarked in a non-WALKER TRANSPORT, that transport gains +2″ Move and a 5+ invulnerable save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "bomb-squig-orks",
+    "state": "structured",
+    "summary": "Once per battle per unit, after a Normal move in your Movement phase, this Squighog Boyz or Kommandos unit may select one visible enemy within 12″. Roll D6: on 3+, it suffers D3 mortal wounds.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "bomb-squigs-orks",
+    "state": "structured",
+    "summary": "Twice per battle per unit, after a Normal move in your Movement phase, this Breaka Boyz or Tankbustas unit may select one visible enemy within 12″. Roll D6: on 3+, it suffers D3 mortal wounds.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "boom-bomb-orks",
+    "state": "needs-summary",
+    "summary": "At the end of your opponent’s Fight phase, select one visible enemy within 24″ without Lone Operative. Roll D6: 1–3 deals D3 mortal wounds, 4–5 deals 3, and 6 deals D3+3. Source review: confirm the Boom Bomb use limit; none is encoded.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "boss-boomer-upgrade-blitz-brigade-orks",
+    "state": "structured",
+    "summary": "While a friendly WARBOSS with Intimidating Motivation or Keep Huntin’ is embarked, this upgrade transport gains that matching ability. Follow the granted ability’s own selection, 6″ range and timing restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "boss-of-da-hunt-orks",
+    "state": "needs-summary",
+    "summary": "This Beastboss on Squigosaur unit gains Lone Operative while within 3″ of a friendly BEAST SNAGGA unit. Source review: confirm the not-all-of CHARACTER and MONSTER exclusion before choosing the supporting unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "boss-ammo-runt-orks",
+    "state": "needs-summary",
+    "summary": "When this Warboss is selected to shoot in your Shooting phase, it may add 1 to its own ranged Hit rolls this phase. Source review: the Boss Ammo Runt expenditure and usage limit are not encoded.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "breakin-heads-war-horde-orks",
+    "state": "structured",
+    "summary": "When the friendly attached ORKS INFANTRY unit becomes Battle-shocked, this Stratagem may be used despite that state. It suffers D3 mortal wounds, then ceases to be Battle-shocked this phase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "brutal-but-kunnin-brute-bosses-orks",
+    "state": "structured",
+    "summary": "Add 1 to the Damage characteristic of the bearer’s melee weapons.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "brutal-impact-orks",
+    "state": "needs-summary",
+    "summary": "If this Squighog Boyz unit charged this turn, add 1 Damage. Source review: no weapon type is specified; confirm whether the bonus is restricted to melee before applying it.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "burna-bomb-orks",
+    "state": "needs-summary",
+    "summary": "At the end of your opponent’s Fight phase, select a visible enemy within 36″ that is neither MONSTER nor VEHICLE and has no Lone Operative. On D6 2+, deal D3 mortal wounds and mark it unhideable; incoming ranged attacks gain Ignores Cover until the end of your next turn. Confirm the Burna Bomb use limit; none is encoded.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "bust-em-orks",
+    "state": "structured",
+    "summary": "After this Wartrakks unit shoots in your Shooting phase, select one enemy it hit. Friendly SPEED FREEKS attacks against that enemy gain Lethal Hits for the rest of the turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "catch-dat-red-bit-orks",
+    "state": "needs-summary",
+    "summary": "When this Painboy uses Crude Surgery, it may heal D3 wounds to its unit; the source then places and immediately removes a Grot Orderly token. Confirm the token expenditure, eligible model and use limit before applying this bonus.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "clever-know-wotz-orks",
+    "state": "structured",
+    "summary": "Before or after this Mek moves in your Movement phase, choose one friendly ORKS VEHICLE within 3″, excluding AIRCRAFT and TITANIC. One model heals D3 wounds and gains +1 to Hit until your next Movement phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "close-range-dakka-war-horde-orks",
+    "state": "structured",
+    "summary": "When selected to shoot in your Shooting phase, this unit’s ranged weapons gain Rapid Fire 1 this phase; increase an existing Rapid Fire value by 1 instead.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "competitive-streak-kult-of-speed-orks",
+    "state": "structured",
+    "summary": "Re-roll this unit’s Charge roll.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "crazed-rampage-dread-mob-orks",
+    "state": "structured",
+    "summary": "When the non-TITANIC ORKS WALKER is targeted, models destroyed before its unit has fought may fight on D6 4+ this phase; add 3 for a DEFF DREAD. Resolve when the unit fights, removing the model after its unit fights or at phase end.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "crude-surgery-orks",
+    "state": "needs-summary",
+    "summary": "In your Command phase, this Painboy’s unit heals 3 wounds. Source review: identify the eligible model and allocation rule; the import only targets the unit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "cybork-boosta-dread-mob-orks",
+    "state": "structured",
+    "summary": "Add 2″ to the bearer’s Move characteristic.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "da-bigger-dey-iz-orks",
+    "state": "structured",
+    "summary": "Re-roll this Mozrog Skragbad unit’s melee Wound rolls against enemy MONSTER or VEHICLE units.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "da-boss-orks",
+    "state": "structured",
+    "summary": "At the start of each battle round, gain 1CP if this model has Da Boss and is your Warlord.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "da-boss-is-watchin-war-horde-orks",
+    "state": "structured",
+    "summary": "Once per battle per army, designate the selected unit riled-up in your Movement phase, lasting until the start of your next turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "da-gobshot-thunderbuss-brute-bosses-orks",
+    "state": "needs-summary",
+    "summary": "Source gap: grants Da Gobshot Thunderbuss by weapon reference without its profile. Confirm the full weapon characteristics and abilities before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "da-grand-warlords-ladz-orks",
+    "state": "structured",
+    "summary": "This Ghazghkull Thraka unit has Lone Operative while within 3″ of another friendly ORKS INFANTRY unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "da-hunt-is-on-orks",
+    "state": "structured",
+    "summary": "Improve the AP of friendly BEAST SNAGGA attacks against MONSTER or VEHICLE targets by 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "da-jump-orks",
+    "state": "needs-summary",
+    "summary": "In your Movement phase, if this Weirdboy unit is not Battle-shocked, roll D6; on 1 it becomes Battle-shocked. The source then places it in Strategic Reserves and grants Deep Strike this phase. Confirm failure handling and the return/setup procedure; those steps are not fully encoded.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "da-krunch-wurrband-orks",
+    "state": "needs-summary",
+    "summary": "Source gap: grants Da Krunch by weapon reference without a weapon profile. Confirm its full characteristics and abilities before use.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "dakka-dakka-dakka-orks",
+    "state": "needs-summary",
+    "summary": "Friendly ORKS INFANTRY ranged weapons gain Assault. A riled-up unit also gains +3″ ranged weapon Range. Source review: the second branch targets an unbound this-unit; confirm which units receive the range bonus.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "dakkastorm-kult-of-speed-orks",
+    "state": "structured",
+    "summary": "When the friendly SPEED FREEKS unit is selected to shoot, its ranged weapons gain Sustained Hits 1 this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "deff-from-above-orks",
+    "state": "structured",
+    "summary": "In your Shooting phase, add 1 to this Deffkoptas unit’s ranged Hit rolls if it made an Ingress move this turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "deff-from-the-shadows-orks",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Movement phase, this Boss Snikrot unit in Strategic Reserves may make an Ingress move. Apply the core setup restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "delicious-eating-squigs-kult-of-speed-orks",
+    "state": "needs-summary",
+    "summary": "Select friendly ORKS INFANTRY within 3″ and heal 3 wounds per selected unit. Source review: no maximum number of units, activation event, frequency or eligible model is supplied; do not treat the selection as unlimited healing.",
+    "phase": [
+      0,
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "displays-of-savagery-orks",
+    "state": "structured",
+    "summary": "Friendly MEGANOBZ and NOBZ melee weapons gain Sustained Hits 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "dodge-dis-orks",
+    "state": "structured",
+    "summary": "Add 1 to this Beastboss unit’s Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "downtrodden-orks",
+    "state": "structured",
+    "summary": "When this Gretchin unit embarks, two models occupy one transport space; round the required spaces up.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "dread-ard-orks",
+    "state": "needs-summary",
+    "summary": "Source conflict: Dread ’Ard subtracts 1 Damage from this-unit, without identifying the incoming attack or attacker. Confirm the recipient before using it as damage reduction.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "dread-power-dread-mob-orks",
+    "state": "structured",
+    "summary": "Designate the selected unit riled-up until the start of your next turn. Apply the core Stratagem’s phase, CP and target gates.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "dreadherder-dread-mob-orks",
+    "state": "structured",
+    "summary": "While within 3″ of a friendly ORKS WALKER other than a BIG MEK, the bearer has Lone Operative. In your Shooting phase while that condition holds, select one friendly ORKS WALKER within 3″ to re-roll Hit rolls of 1 this turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "drive-by-bustin-wreckas-orks",
+    "state": "needs-summary",
+    "summary": "The imported record gives the selected friendly ORKS TRANSPORT +1 to ranged Hit rolls for its Firing Deck weapons this Shooting phase. Source conflict: both the effect and trigger differ from the pinned source; confirm the current rule before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "drive-by-skorchin-orks",
+    "state": "needs-summary",
+    "summary": "In your Movement phase, select one visible enemy within 6″, excluding MONSTER and VEHICLE. Source conflict: Drive-by Skorchin’ attaches its Fire Overwatch targeting prohibition to the enemy itself; confirm who cannot target whom before applying it.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "dubious-restraint-taktikal-brigade-orks",
+    "state": "structured",
+    "summary": "At the start or end of your Movement phase, a friendly-controlled objective in this unit’s control range becomes sticky. Both windows are encoded; retain the normal objective-control rules.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "enhanced-runt-maw-upgrade-madcap-meks-orks",
+    "state": "structured",
+    "summary": "After this upgrade unit shoots, mark one enemy it hit as infested with snotlings. Subtract 1 from that enemy’s Leadership rolls until the start of your next turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "even-more-dakka-orks",
+    "state": "structured",
+    "summary": "While this Big Mek Dakkarig unit is riled-up, its ranged weapons gain Sustained Hits 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "extra-platin-ardmob-orks",
+    "state": "structured",
+    "summary": "Set this ’Ardmob unit’s Save to 3+ and grant a 4+ invulnerable save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "extra-sneaky-upgrade-runt-swarm-orks",
+    "state": "needs-summary",
+    "summary": "Source gap: Extra Sneaky reduces this unit’s detection range by 3, but the import supplies no definition or measurement procedure for detection range. Confirm that mechanic before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ferocious-show-off-green-tide-orks",
+    "state": "structured",
+    "summary": "The bearer’s melee weapons gain 1 Attack, or 2 Attacks if its unit contains at least 11 models.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "finderz-keeperz-orks",
+    "state": "structured",
+    "summary": "In your Shooting phase, improve this Flash Gitz unit’s ranged AP by 1 if either it or the defending unit is within control range of an objective marker.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "fix-dat-armour-up-orks",
+    "state": "needs-summary",
+    "summary": "Once per battle per unit in your Command phase, this Big Mek in Mega Armour unit heals 3 wounds. Source review: confirm the eligible model and allocation; the source targets only the unit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "flyboss-upgrade-flyboyz-orks",
+    "state": "structured",
+    "summary": "This upgrade unit gains CHARACTER. After it ends an Ingress move, designate friendly ORKS AIRCRAFT and DEFFKOPTAS within 6″ riled-up until the start of your next turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "flyin-headbutt-flyboyz-orks",
+    "state": "needs-summary",
+    "summary": "When the friendly ORKS AIRCRAFT is destroyed, before Deadly Demise, suppress that ability and select one enemy within 12″. Roll eight D6, dealing 1 mortal wound per 4+, then remove this unit’s models. Source review: the alternative before-roll trigger does not bind AIRCRAFT; confirm that trigger and the removal sequence.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "follow-me-ladz-war-horde-orks",
+    "state": "structured",
+    "summary": "Add 2″ to this unit’s Move characteristic.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "fortification-orks",
+    "state": "structured",
+    "summary": "Enemies engaged only with friendly FORTIFICATION units can be shot; apply -1 to ranged Hit rolls except Close Quarters shooting. An enemy Falling Back from only friendly FORTIFICATION units skips Desperate Escape unless Battle-shocked. Apply each engagement condition separately.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "found-em-orks",
+    "state": "needs-summary",
+    "summary": "In your Movement phase, select one enemy within 12″ and increase its detection range by 3 this turn. Source gap: the detection-range mechanic is undefined in the supplied rules.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "fuel-mixa-grot-orks",
+    "state": "structured",
+    "summary": "Add 1 to this Deffkilla Wartrike unit’s Advance rolls.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "full-throttle-orks",
+    "state": "needs-summary",
+    "summary": "In your Command phase, choose one Throttlerokkit Shokka Engine benefit until your next Command phase: charge after Advance/Fall Back; enter Strategic Reserves while unengaged in your Command phase; or optionally Pulse Jet when selected to move while unengaged in your Movement phase. Confirm how the one-time reserve option interacts with the choice duration.",
+    "phase": [
+      0,
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "fully-loaded-butchery-orks",
+    "state": "structured",
+    "summary": "This Hunta Rig unit’s butcha boyz melee weapon gains 2 Attacks per embarked model, capped at a +22 Attack bonus.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fungus-fuel-injection-war-horde-orks",
+    "state": "structured",
+    "summary": "When the friendly ORKS MOUNTED or VEHICLE unit is selected to move, add 2″ to its Move characteristic this phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "get-back-in-da-race-orks",
+    "state": "structured",
+    "summary": "Before or after this Deffkilla Wartrike moves in your Movement phase, choose one friendly SPEED FREEKS unit within 6″. It and friendly units embarked in it cease being Battle-shocked and become riled-up until the start of your next turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "get-out-da-way-orks",
+    "state": "structured",
+    "summary": "During Charge moves, this Nobz unit may move through models other than MONSTER or VEHICLE models.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "get-stuck-in-ardmob-orks",
+    "state": "structured",
+    "summary": "After an enemy finishes shooting this ’Ardmob unit, make a D6+1″ Surge move. Apply the core Stratagem’s target restrictions and the core Surge movement rules.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "get-stuck-in-orks",
+    "state": "structured",
+    "summary": "Friendly ORKS melee weapons gain Sustained Hits 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "glory-hog-da-big-hunt-orks",
+    "state": "structured",
+    "summary": "When this unit Falls Back, it may still declare a charge this turn.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "glowin-dakka-shoota-boyz-orks",
+    "state": "structured",
+    "summary": "When the friendly ORKS INFANTRY unit is selected to shoot, improve its ranged AP by 1 against defenders within 9″ of the attacker this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "go-fer-da-weak-spot-orks",
+    "state": "structured",
+    "summary": "In your Shooting phase, add 1 to this Wazbom Blastajet unit’s ranged Wound rolls against enemy MONSTER or VEHICLE units.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "goaded-into-action-da-big-hunt-orks",
+    "state": "needs-summary",
+    "summary": "After an enemy finishes shooting, this unit makes a D6″ Surge move; while riled-up the source permits a re-roll. Source review: the re-roll is encoded as any roll rather than the Surge-distance roll; confirm its scope and the attacked-unit requirement.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "grab-dat-scrap-orks",
+    "state": "structured",
+    "summary": "While this ’Ardmob Boyz unit is engaged, add 1 to its Objective Control characteristic.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "grab-it-wreckas-orks",
+    "state": "structured",
+    "summary": "After the friendly BREAKA BOYZ, FLASH GITZ or TANKBUSTAS unit shoots while unengaged, it may make a 6″ Normal move ending within control range of an objective. It cannot declare a charge this turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "grot-infestation-orks",
+    "state": "needs-summary",
+    "summary": "Once per battle per unit, when this ’Ardmob Gretchin unit is destroyed, the source places this-model into Strategic Reserves, returns all models and grants this-model Deep Strike. Confirm the model/unit recipient and replacement/setup sequence before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "grot-shields-runt-swarm-orks",
+    "state": "needs-summary",
+    "summary": "When an enemy targets friendly ORKS INFANTRY other than GRETCHIN, successful ranged hits may end their attack sequence and inflict a mortal wound on this-unit. Source conflict: this-unit is not bound to a Gretchin shield, and no distance or expenditure limit is encoded. Confirm the shield recipient and limit.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "gun-crazy-show-offs-wreckas-orks",
+    "state": "needs-summary",
+    "summary": "After an enemy shoots, the source allows this unit to shoot normally and requires it to target that enemy. Source review: confirm the missing attacked-unit gate and return-fire limit before resolving Gun-crazy Show-offs.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "gut-hatch-orks",
+    "state": "structured",
+    "summary": "After this Morkanaut or Gorkanaut ends a Normal move in your Movement phase, friendly embarked units may make an Assault Disembark move. Apply Special Move Types eligibility and 3″ setup distance.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "hardy-bioniks-orks",
+    "state": "structured",
+    "summary": "When an attack’s Strength exceeds this Painboss unit’s Toughness, subtract 1 from the attacker’s Wound roll.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "headwoppas-killchoppa-war-horde-orks",
+    "state": "structured",
+    "summary": "If the bearer charged this turn, improve its melee AP by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "high-speed-carnage-orks",
+    "state": "structured",
+    "summary": "If this Warbikers unit charged this turn, add 1 to its melee Strength and Damage.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "hit-em-harder-war-horde-orks",
+    "state": "structured",
+    "summary": "When the friendly ORKS unit is selected to fight, its melee weapons gain Lethal Hits this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "hulking-brutes-bully-boyz-orks",
+    "state": "needs-summary",
+    "summary": "When the friendly MEGANOBZ or NOBZ unit is targeted by ranged attacks, the source offers either -1 to Wound only when Strength exceeds Toughness or unconditional ranged -1 to Wound. Confirm the missing condition that distinguishes those alternatives before use.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "idol-of-belligerence-orks",
+    "state": "structured",
+    "summary": "When a friendly unit embarked in this Stompa is selected to disembark in your Movement phase, designate that unit riled-up until the start of your next turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "impending-krunch-blitz-brigade-orks",
+    "state": "structured",
+    "summary": "After the friendly WAGON unit ends a Charge move, each enemy engaged with it takes a Battle-shock test at -1.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "impulsive-recon-upgrade-flyboyz-orks",
+    "state": "structured",
+    "summary": "In battle round 1, this upgrade unit may make an Ingress move in your Movement phase. Apply the core Ingress setup rules.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "indiscriminate-detonations-orks",
+    "state": "structured",
+    "summary": "After this ’Ardmob Wartrakk shoots in your Shooting phase, select one enemy it hit and suppress it: subtract 1 from its Hit rolls until the start of your next turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "infested-war-zone-runt-swarm-orks",
+    "state": "needs-summary",
+    "summary": "Source conflict: Infested War Zone copies a target unit into Strategic Reserves, but requires the same recipient to be both friendly and enemy, with two no-effect steps. Confirm the replacement target, destruction gate, exclusions and usage limit before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "instinctive-hunters-da-big-hunt-orks",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, place this unit in Strategic Reserves. Apply the core Stratagem’s unengaged and battlefield-edge target restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "intimidating-motivation-orks",
+    "state": "structured",
+    "summary": "Before or after this Warboss, Warboss in Mega Armour or Nazdreg moves in your Movement phase, select one friendly ORKS unit within 6″. It ceases being Battle-shocked and becomes riled-up until the start of your next turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "it-came-from-da-drops-da-big-hunt-orks",
+    "state": "structured",
+    "summary": "Add 1 to the bearer’s Toughness characteristic.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "kaptins-hat-wreckas-orks",
+    "state": "structured",
+    "summary": "After deployment, optionally redeploy up to three friendly ORKS INFANTRY units onto the battlefield or into Strategic Reserves, ignoring reserve limits for that placement.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "keep-huntin-orks",
+    "state": "structured",
+    "summary": "Before or after this Beastboss moves in your Movement phase, select one friendly BEAST SNAGGA unit within 6″. It ceases being Battle-shocked and becomes riled-up until the start of your next turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "keep-huntin-beastboss-on-squigosaur-orks",
+    "state": "structured",
+    "summary": "Before or after this Beastboss on Squigosaur moves in your Movement phase, select one friendly BEAST SNAGGA unit within 6″. It ceases being Battle-shocked and becomes riled-up until the start of your next turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "keep-it-runnin-blitz-brigade-orks",
+    "state": "structured",
+    "summary": "At the end of the Fight phase, this unit may embark into a transport within 6″. Apply the core Stratagem’s INFANTRY, embark eligibility and transport restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "kill-kommanda-taktikal-brigade-orks",
+    "state": "structured",
+    "summary": "While the bearer is attached to a unit, that unit gains Infiltrators and Stealth.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "krump-em-ardmob-orks",
+    "state": "structured",
+    "summary": "When the friendly ’ARDMOB unit is selected to fight, add 1 to its melee Strength this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "krumpin-time-orks",
+    "state": "structured",
+    "summary": "In the Fight phase while riled-up, add 1 to this Meganobz unit’s Hit rolls.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "krushin-impetus-orks",
+    "state": "structured",
+    "summary": "After this Warboss in Mega Armour unit charges, optionally select one engaged enemy. Roll one D6 for each friendly model in this unit engaged with that enemy, dealing 1 mortal wound for each 3+.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "kunnin-but-brutal-war-horde-orks",
+    "state": "structured",
+    "summary": "When this unit Falls Back, it may still shoot and declare a charge this turn.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "kunnin-infiltrator-orks",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, this Boss Snikrot unit may enter Strategic Reserves if it is hidden and unengaged.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "kustom-dakka-orks",
+    "state": "structured",
+    "summary": "This Mek unit’s ranged weapons gain Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "kustom-dakka-shoota-boyz-orks",
+    "state": "structured",
+    "summary": "When the friendly ORKS INFANTRY unit is selected to shoot in your Shooting phase, add 1 to ranged Wound rolls against MONSTER or VEHICLE targets this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "kustom-force-field-orks",
+    "state": "structured",
+    "summary": "This Big Mek in Mega Armour unit has a 4+ invulnerable save against ranged attacks.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "long-uncontrolled-bursts-flyboyz-orks",
+    "state": "structured",
+    "summary": "When the friendly ORKS AIRCRAFT or DEFFKOPTAS unit is selected to shoot in your Shooting phase, re-roll its ranged Hit rolls against FLY targets this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "madcap-artillery-orks",
+    "state": "needs-summary",
+    "summary": "After Mek Gunz with a uniform ranged loadout shoot in your Shooting phase, select one enemy hit: Bubblechukka marks it wobbled and grants cover; Kustom Mega-kannon marks it zapped with -1 Leadership; Smasha Gun marks it smashed with -2″ Move, until your next turn. Traktor Kannon has no encoded branch. Confirm the nested this-unit recipients and the missing weapon branch before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "makari-hoist-dat-banner-orks",
+    "state": "needs-summary",
+    "summary": "In your Movement phase, select up to the current battle-round number of friendly ORKS units and designate them riled-up until the start of your next turn. Source review: the Makari token is placed and immediately removed without an expenditure limit; confirm how often the ability may be used.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "medi-squigs-ardmob-orks",
+    "state": "structured",
+    "summary": "When the friendly ’ARDMOB unit is targeted in your opponent’s Shooting phase, it gains a 5+ invulnerable save this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "mekwaaagh-mastermind-madcap-meks-orks",
+    "state": "structured",
+    "summary": "This upgrade unit is permanently designated riled-up.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "might-is-right-orks",
+    "state": "structured",
+    "summary": "If this Warboss model charged this turn, add 3 to its melee Attacks and 2 to its melee Strength.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "mind-mostly-on-the-mission-taktikal-brigade-orks",
+    "state": "needs-summary",
+    "summary": "When the friendly BOYZ, KOMMANDOS or STORMBOYZ unit Advances or Falls Back, it may start an action despite that move this phase. Confirm the phase-only duration against the intended later action window.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "minefield-detail-upgrade-runt-swarm-orks",
+    "state": "structured",
+    "summary": "This upgrade unit gains Scouts 6″ while it is not embarked.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "mob-mentality-green-tide-orks",
+    "state": "needs-summary",
+    "summary": "At the start of the Battle-shock step, select one visible friendly ORKS unit within 12″ of the bearer to automatically pass its Battle-shock test this phase. Source conflict: the core Stratagem instead targets ORKS INFANTRY with at least 13 models, while the effect uses an unspecified bearer for visibility and range; confirm which unit is selected and which supplies the range origin.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "shock"
+  },
+  {
+    "id": "mob-handed-brutality-orks",
+    "state": "structured",
+    "summary": "Friendly BOYZ melee weapons gain Sustained Hits 1. Friendly ORKS INFANTRY that charged this turn gain melee Lethal Hits against targets that are neither MONSTER nor VEHICLE.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "mobbed-orks",
+    "state": "structured",
+    "summary": "After this Beast Snagga Boyz unit charges, each engaged enemy MONSTER or VEHICLE takes a Battle-shock test at -1, or -2 if this unit contains at least 13 models.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "mobile-arsenal-orks",
+    "state": "structured",
+    "summary": "In your Shooting phase, re-roll this Gunwagon unit’s ranged Hit rolls of 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "mobile-fortress-orks",
+    "state": "structured",
+    "summary": "Reduce the Damage characteristic of incoming ranged attacks against this Battlewagon unit by 1, applying the core minimum Damage rule.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "more-dakka-orks",
+    "state": "needs-summary",
+    "summary": "The imported More Dakka record grants this unit’s ranged weapons Ignores Cover and, while riled-up, Sustained Hits 1. Source conflict: its effect differs from the pinned source; confirm the current benefits before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "morgogs-finkin-cap-brute-bosses-orks",
+    "state": "needs-summary",
+    "summary": "Once per battle per army, at the end of your opponent’s Movement phase, this unit may make a D6″ Normal move if unengaged. Source review: while riled-up the re-roll is encoded as any roll rather than the movement-distance roll; confirm its scope.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "mow-em-down-war-horde-orks",
+    "state": "needs-summary",
+    "summary": "When the friendly non-WALKER ORKS VEHICLE that charged is selected to fight, its melee weapons gain Cleave 1 this phase, or increase existing Cleave by 1. Confirm the source’s choice branch rather than granting both alternatives.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "nazdregs-know-wotz-orks",
+    "state": "structured",
+    "summary": "This Nazdreg unit gains Deep Strike and its ranged weapons gain Ignores Cover.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "never-enough-dakka-shoota-boyz-orks",
+    "state": "structured",
+    "summary": "When the friendly ORKS INFANTRY unit is selected to shoot, its ranged weapons gain Sustained Hits 1 this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "never-too-busy-to-fight-orks",
+    "state": "structured",
+    "summary": "This Boyz unit may start an action while engaged.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "nowhere-to-hide-orks",
+    "state": "structured",
+    "summary": "Add 1 to this Kommandos unit’s Hit rolls against a HIDDEN defending unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "one-last-kill-orks",
+    "state": "structured",
+    "summary": "When this Mozrog Skragbad model is destroyed before its unit has fought, roll D6: on 2+ it fights when its unit fights. Remove it after that unit fights or at phase end.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "orks-is-never-beaten-war-horde-orks",
+    "state": "structured",
+    "summary": "When the friendly non-TITANIC ORKS unit is targeted, models destroyed before it has fought may fight on D6 4+ this phase; add 1 while riled-up. Resolve when the unit fights; remove those models after the unit fights or at phase end.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "paired-krumpas-orks",
+    "state": "needs-summary",
+    "summary": "The imported Paired Krumpas record allows this model to re-roll Hit and Wound rolls with Kustom Krumpa attacks. Source conflict: its effect differs from the pinned source; confirm the current weapon scope and benefits before use.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "pilin-out-orks",
+    "state": "needs-summary",
+    "summary": "When an enemy ends a move within 8″ of this Trukk in your opponent’s Movement phase, friendly units embarked in it may make a Rapid Disembark move. Source gap: the supplied Special Move Types record does not define Rapid Disembark; confirm its setup and eligibility restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "powers-of-da-waaagh-orks",
+    "state": "needs-summary",
+    "summary": "Friendly ORKS PSYKER models gain +1 Psychic weapon Strength, plus another +1 per five models in or embarked in the bearer. Roar of Mork and Visions of Violence spend Psychic Level and roll D6, becoming Battle-shocked on 1. Source review: confirm the resource refresh, failure handling, scaling and recipients before applying their Battle-shock or Fights First effects.",
+    "phase": [
+      1,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "proper-killy-brute-bosses-orks",
+    "state": "structured",
+    "summary": "Re-roll this unit’s Hit rolls of 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "prophet-of-da-great-waaagh-orks",
+    "state": "structured",
+    "summary": "Friendly ORKS units within 6″ of this Ghazghkull Thraka unit gain +1 to melee Hit and Wound rolls.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "pulsa-rokkit-orks",
+    "state": "needs-summary",
+    "summary": "Once per battle per unit, when selected to shoot in your Shooting phase, choose an enemy MONSTER or VEHICLE within 24″. Attacks against that target gain Lethal Hits and +1 AP this phase. Source review: the attacker ownership and weapon scope are not restricted; confirm which attackers benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "pulse-jet-orks",
+    "state": "structured",
+    "summary": "When selected to move in your Movement phase while unengaged, this Wazdakka Gutsmek unit may make a Pulse Jet move. Apply Special Move Types: D6+18″, no charge or action this turn and incoming -1 to Hit until your next turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "push-dat-bit-back-in-orks",
+    "state": "needs-summary",
+    "summary": "In your Command phase, select one friendly BEAST SNAGGA unit within 6″ and heal 3 wounds. Source review: confirm the eligible model; the import targets the unit without a model-allocation rule.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "rallying-war-cry-ardmob-orks",
+    "state": "structured",
+    "summary": "Once per battle per unit in your Command phase, return D3+2 destroyed Bodyguard models to this unit. Apply the core model-return and placement restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "ramshackle-cover-orks",
+    "state": "structured",
+    "summary": "When attack targets are selected, a defender not fully visible because of this Big’ed Bossbunka receives the Benefit of Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "raucous-occupants-orks",
+    "state": "needs-summary",
+    "summary": "While this Big’ed Bossbunka model is within control range of the home objective, add 1 to its Objective Control per model in or embarked in it. Source review: the home objective’s owner and bearer-model count are not fully specified.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "readied-brawlers-blitz-brigade-orks",
+    "state": "structured",
+    "summary": "After the friendly WAGON ends a Normal move, friendly units embarked in it may make an Assault Disembark move. Apply Special Move Types eligibility and 3″ setup distance.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "rokkit-barrage-orks",
+    "state": "structured",
+    "summary": "After this Tankbustas unit shoots in your Shooting phase, select one enemy it hit; that enemy takes a Battle-shock test at -1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "rokkit-charge-orks",
+    "state": "needs-summary",
+    "summary": "When selected to fight after charging this turn, this Stormboyz unit may gain +1 melee Attacks, +1 melee Strength and Hazardous this phase. Source conflict: the imported duration differs from the pinned scope; confirm duration before use.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "runnin-wiv-da-herd-orks",
+    "state": "structured",
+    "summary": "While this Painboss model is attached to a MOUNTED unit, it loses INFANTRY, gains MOBILE and MOUNTED, and adds 4″ to its Move characteristic.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "scarper-runt-swarm-orks",
+    "state": "structured",
+    "summary": "When an enemy ends a move within 8″ of an unengaged friendly GRETCHIN unit in your opponent’s Movement phase, the selected unit makes a D6″ Normal move, or 6″ if attached. Apply the core Stratagem’s target eligibility.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "shokk-attack-engine-orks",
+    "state": "structured",
+    "summary": "In your Command phase while unengaged, this Wazdakka Gutsmek unit may enter Strategic Reserves. This is a placement, not an effect that returns it automatically at phase end.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "shokk-boosta-orks",
+    "state": "needs-summary",
+    "summary": "When this Big Mek unit Advances in your Movement phase, it may set the Advance roll to 6 and move through models. After the Advance move, make a Hazard test per model. Source review: the hazard trigger is not explicitly gated by choosing the boost; confirm whether unboosted Advances test too.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "skyborne-loons-orks",
+    "state": "structured",
+    "summary": "Friendly ORKS AIRCRAFT are exempt from the Strategic Reserves points limit. Friendly ORKS AIRCRAFT and DEFFKOPTAS gain +1 to ranged Hit rolls while riled-up.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "smash-em-up-orks",
+    "state": "structured",
+    "summary": "When this ’Ardmob Warboss unit is selected to fight, choose either Lethal Hits or Sustained Hits 1 for its melee weapons this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "smoky-gubbinz-upgrade-kult-of-speed-orks",
+    "state": "structured",
+    "summary": "When attack targets are selected, a defender not fully visible because of this upgrade unit receives the Benefit of Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "sneaky-little-gitz-orks",
+    "state": "structured",
+    "summary": "Friendly GRETCHIN gain BATTLELINE. When they Advance or Fall Back, they may start an action; apply normal action eligibility except for the granted movement permission.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "special-move-types-orks",
+    "state": "needs-summary",
+    "summary": "Pulse Jet: move D6+18″ through models and terrain ignoring vertical distance; do not end engaged, charge or start an action this turn; incoming Hit rolls are -1 until your next turn. Assault Disembark: set up within 3″ if embarked in an on-battlefield transport, not embarked this phase, and that transport neither Advanced nor Fell Back this phase. Rapid Disembark is not defined here. Confirm whether Pulse Jet’s incoming Hit modifier is restricted by attack type; the source supplies no weapon scope.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "speediest-freeks-kult-of-speed-orks",
+    "state": "needs-summary",
+    "summary": "When the friendly SPEED FREEKS unit is targeted by ranged attacks in your opponent’s Shooting phase, the source says enemy Hit rolls fail on 3. Confirm whether this means unmodified 1–3 or exactly 3; do not infer a complete hit threshold.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "speednob-support-orks",
+    "state": "structured",
+    "summary": "This Wartrakks unit gains Lone Operative while every model is within 3″ of a friendly SPEED FREEKS unit other than a WARTRAKK or this unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "spiteful-power-trip-orks",
+    "state": "structured",
+    "summary": "Add 1 to this Killa Kans unit’s Hit rolls when the defending unit’s highest Toughness characteristic is below 7.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "squig-barrage-orks",
+    "state": "structured",
+    "summary": "After this Rukkatrukk Squigbuggies unit shoots in your Shooting phase, select a non-MONSTER, non-VEHICLE enemy hit by Squig Launchas. It is covered in squigs: subtract 1 from its Hit rolls until the start of your next turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "stomping-juggernaut-dread-mob-orks",
+    "state": "structured",
+    "summary": "When the friendly ORKS WALKER is selected to move or selects charge targets, it gains MOBILE this phase.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "strafing-run-orks",
+    "state": "structured",
+    "summary": "In your Shooting phase, add 1 to this Dakkajet unit’s ranged Hit rolls against targets without FLY.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "sumfin-to-prove-orks",
+    "state": "structured",
+    "summary": "Add 1 to this Bigboss unit’s melee Hit rolls.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "supa-glowy-fing-shoota-boyz-orks",
+    "state": "needs-summary",
+    "summary": "Source conflict: Supa-glowy Fing grants Anti-Infantry 4+, Devastating Wounds and Supa-hazardous to bearer ranged weapons, but incorrectly gates on an ORKS INFANTRY defender and an unbound non-VEHICLE recipient. Confirm bearer eligibility and take two Hazard tests per selected Supa-hazardous weapon only after checking the complete rule.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "supa-snazz-dakka-upgrade-wreckas-orks",
+    "state": "structured",
+    "summary": "This upgrade unit’s Snazzgun ranged weapons gain Rapid Fire 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "super-runts-orks",
+    "state": "structured",
+    "summary": "This Zodgrod Wortsnagga unit is permanently riled-up. Its scavenged shivs gain +1 Attack, and improve Weapon Skill and Strength by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "support-shokka-orks",
+    "state": "structured",
+    "summary": "This Big Mek with Shokk Attack Gun model gains Lone Operative while within 3″ of a friendly ORKS INFANTRY unit other than BIG MEK WITH SHOKK ATTACK GUN.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "supreme-commander-orks",
+    "state": "structured",
+    "summary": "If included in your army, this Ghazghkull Thraka model must be your Warlord.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "supreme-kunnin-orks",
+    "state": "structured",
+    "summary": "When an enemy ends a move within 8″ in your opponent’s Movement phase, this unengaged Nazdreg unit may make a D6″ Normal move, or choose a 5″ Normal move while riled-up.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "surly-as-a-squiggoth-brute-bosses-orks",
+    "state": "structured",
+    "summary": "Once per battle per army, at the end of a phase in which the bearer was destroyed, roll D6. On 2+, set it up closest to its destruction point with 3 wounds remaining and at least 1″ from enemies; apply the core setup restrictions.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "suspiciously-well-organised-orks",
+    "state": "structured",
+    "summary": "Friendly STORMBOYZ gain BATTLELINE. Friendly BOYZ, KOMMANDOS and STORMBOYZ that Fall Back may still declare a charge this turn.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "taktikal-know-wotz-orks",
+    "state": "needs-summary",
+    "summary": "When declaring battle formations, this Kommandos unit may split into two five-model units and gain Bomb Squig and Found ’Em. Source review: confirm which split unit gains each ability and the allocation of models and equipment.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "targetin-gizmos-upgrade-blitz-brigade-orks",
+    "state": "structured",
+    "summary": "While a friendly BIG MEK model is embarked in this upgrade unit, its ranged weapons gain Ignores Cover and, while riled-up, Sustained Hits 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "targetin-squigs-shoota-boyz-orks",
+    "state": "structured",
+    "summary": "Add 3″ to this unit’s non-Torrent ranged weapon Range.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "tellyporta-boss-bully-boyz-orks",
+    "state": "structured",
+    "summary": "The bearer model gains Deep Strike unless it is a VEHICLE. This grants the ability to the model, not automatically to every model of an attached unit.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "temperamental-shokka-upgrade-madcap-meks-orks",
+    "state": "structured",
+    "summary": "When selected to shoot in your Shooting phase, optionally roll D6 for the bearer’s Shokk Attack Gun this phase: 1 grants Torrent but destroys the bearer after shooting; 2–5 adds 1 Attack; 6 grants Sustained Hits 2.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "thatll-learn-ya-orks",
+    "state": "structured",
+    "summary": "Once per battle round per unit, after a failed Battle-shock test while at least four GRETCHIN remain, optionally destroy D3 GRETCHIN models in this Runtherd unit, then remove its Battle-shocked state.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "shock"
+  },
+  {
+    "id": "thievin-scavengers-orks",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, a friendly-controlled objective within this Gretchin unit’s control range becomes sticky.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "throat-slittas-upgrade-taktikal-brigade-orks",
+    "state": "structured",
+    "summary": "This upgrade unit’s melee weapons gain Lethal Hits against defenders that are neither MONSTER nor VEHICLE.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "thundering-stampede-orks",
+    "state": "structured",
+    "summary": "Friendly BEAST SNAGGA units within 6″ of this Beastboss on Squigosaur unit add 1 to Charge rolls.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "tide-of-muscle-orks",
+    "state": "structured",
+    "summary": "If this Boyz unit charged this turn, its melee weapons gain Lethal Hits in the Fight phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "too-arrogant-to-die-bully-boyz-orks",
+    "state": "structured",
+    "summary": "When the friendly MEGANOBZ or NOBZ unit is targeted, models destroyed before it has fought may fight on D6 4+ this phase; add 1 while riled-up. Resolve when the unit fights; remove them after the unit fights or at phase end.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "totem-of-mork-orks",
+    "state": "structured",
+    "summary": "At the end of your Command phase, a friendly-controlled objective within this ’Ardmob Weirdboy unit’s control range becomes sticky.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "tramplasquig-charge-orks",
+    "state": "structured",
+    "summary": "When Crushing Impact is used on this Hunta Rig unit, reduce that triggering Stratagem’s cost by 1CP. Apply the core cost-modification rules.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "trophy-hunters-orks",
+    "state": "structured",
+    "summary": "Add 1 to this Breaka Boyz unit’s Charge rolls.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "try-dat-button-orks",
+    "state": "needs-summary",
+    "summary": "Source conflict: Try Dat Button is explicitly approximate. Its community note describes Sustained Hits, Lethal Hits and a critical-wound AP benefit, while its effect table instead gives Attacks, Strength and AP increases. Hazardous escalation is also dropped. Do not resolve either version as a complete rule; check current wording.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "turbo-engine-orks",
+    "state": "structured",
+    "summary": "When this Wazdakka Gutsmek unit Advances or Falls Back, it may still declare a charge this turn.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "unbridled-carnage-green-tide-orks",
+    "state": "structured",
+    "summary": "When the friendly BOYZ unit that charged is selected to fight, add 1 to its melee Attacks this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "unpredictable-genius-orks",
+    "state": "needs-summary",
+    "summary": "When an eligible BIG MEK, MEK GUNZ, MORKANAUT or WAZBOM BLASTAJET unit selects all ranged targets as one enemy, roll D6 until it has shot: 1 grants that defender a 4+ invulnerable save; 2–3 deals D3 mortals to another enemy within 3″ of it; 4 grants this-unit +1 Hit; 5 grants the defender FLY and removes cover; 6 worsens its Toughness by 1. Confirm the unbound this-unit recipient on result 4.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "unstable-energies-orks",
+    "state": "needs-summary",
+    "summary": "At the start of each battle round, set friendly ORKS PSYKER units’ Psychic Level resource to their psyker-level characteristic. Source gap: Waaagh! Energy and Wurrboy supply no effects defining the base characteristics; confirm those values before spending resources.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "unstoppable-momentum-orks",
+    "state": "structured",
+    "summary": "Friendly WAGON units re-roll Charge rolls and set their Advance roll to 6 when selected to Advance.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "vindictive-artillerists-madcap-meks-orks",
+    "state": "structured",
+    "summary": "When the friendly MEK GUNZ unit is selected to shoot, choose ranged Lethal Hits or Sustained Hits 1 this phase, or gain both together with Hazardous.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "waaagh-orks",
+    "state": "needs-summary",
+    "summary": "Provisional source: units with Waaagh! re-roll Advance rolls. While riled-up they gain a 5+ invulnerable save, ranged Assault and permission to charge after Advancing. Once per battle per army at the start of a Command phase, designate friendly ORKS units with this ability riled-up until the end of the next turn. The source is carried from 10th into provisional 11th; confirm the current army rule and duration before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "waaagh-ardmob-orks",
+    "state": "needs-summary",
+    "summary": "The ’Ardmob Waaagh! record grants friendly ORKS Advance re-rolls. Once per battle per army at the start of a Command phase, designate friendly ORKS waaagh-called until the end of the next turn, with Assault and charge after Advance. Source review: benefits target this-unit while the designation targets all friendly ORKS; confirm their army/unit scope and relationship to the main provisional Waaagh!.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "waaagh-banner-orks",
+    "state": "structured",
+    "summary": "Add 1 to this Bannernob unit’s Charge rolls.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "waaagh-effigy-orks",
+    "state": "structured",
+    "summary": "This Stompa unit is permanently designated riled-up.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "waaagh-energy-orks",
+    "state": "missing",
+    "summary": "Missing source mechanics: Waaagh! Energy (Psyker level 1) contains only a no-effect marker. Its name is not a complete rule or a usable Psychic Level definition; supply checked wording before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "walking-bastion-orks",
+    "state": "structured",
+    "summary": "This Gargantuan Squiggoth unit ignores modifiers to its Weapon Skill and Ballistic Skill characteristics and to its Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "warpath-orks",
+    "state": "needs-summary",
+    "summary": "When this Kill Rig unit is selected to fight while not Battle-shocked, it may roll D6; on 1 it becomes Battle-shocked, then its melee weapons gain Lethal Hits and Psychic this phase. Confirm whether the benefits still apply after failure; the source does not gate them on success.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "warpath-weirdboy-orks",
+    "state": "needs-summary",
+    "summary": "When this Weirdboy unit is selected to fight while not Battle-shocked, it may roll D6; on 1 it becomes Battle-shocked, then it re-rolls melee Wound rolls of 1 and gains Psychic on melee weapons this phase. Confirm failure handling; the source does not gate the benefits on success.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "warphead-wurrband-orks",
+    "state": "structured",
+    "summary": "Set the bearer’s psyker-level characteristic to 2, grant it Deadly Demise D6, and re-roll this unit’s Psychic rolls.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "where-dya-fink-youre-going-da-big-hunt-orks",
+    "state": "needs-summary",
+    "summary": "When an enemy engaged with friendly BEAST SNAGGA Falls Back in your opponent’s Movement phase, suppress Ordered Retreat. Source review: the extra Hazard tests gate on an unbound MONSTER/VEHICLE defender rather than the triggering enemy; confirm the recipient and test procedure, including the Battle-shocked modifier.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "while-their-backs-are-turned-taktikal-brigade-orks",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Movement phase, the selected unit makes a 6″ Normal move. Apply the core Stratagem’s keyword, unengaged and engaged-at-phase-start restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "whirligig-evasion-flyboyz-orks",
+    "state": "needs-summary",
+    "summary": "After an enemy ends a move, this unit makes a D6″ Normal move, or 6″ while riled-up. Source review: confirm phase/turn timing and the core 8″, unengaged target gates; these are not present in the imported trigger.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "wimp-kickaz-upgrade-bully-boyz-orks",
+    "state": "structured",
+    "summary": "When an enemy engaged with this unit Falls Back, it takes a Desperate Escape test, with -1 while this unit is riled-up. Apply the core Desperate Escape procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "wreckin-and-lootin-orks",
+    "state": "structured",
+    "summary": "When the friendly BREAKA BOYZ, FLASH GITZ or TANKBUSTAS unit shoots in your Shooting phase, re-roll Hit rolls of 1 if either it or its defender is within control range of an objective marker.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "wurrboy-orks",
+    "state": "missing",
+    "summary": "Missing source mechanics: Wurrboy (psyker level 1) contains only a no-effect marker. Supply a checked ability and Psychic Level definition before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  }
+]
