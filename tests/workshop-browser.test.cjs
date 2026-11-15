@@ -32,7 +32,7 @@ test('review resolves shared rule aliases and chapter-specific shared unit links
  const model=W.review([shared,archive,unit,oldUnit],{faction:'Blood Angels',detachment:'Gladius'});assert.equal(model.rules.length,1);assert.equal(model.units.length,1);assert.equal(model.units[0].rules[0].key,shared.key);assert.equal(W.review([shared,unit],{faction:'Space Marines'}).units[0].rules.length,0);
 });
 test('core source preparation keeps provisional references separate from audited faction data',()=>{
- const source=require('./fixtures/core-review-source.json'),rows=require('../scripts/prepare-core-review.cjs').prepare(source),C=require('../dist/content.js');assert.equal(rows.length,26);assert.equal(rows.filter(r=>r.data.category==='stratagem').length,10);
+ const source=require('./fixtures/core-review-source.json'),rows=require('../scripts/prepare-core-review.cjs').prepare(source),C=require('../dist/content.js');assert.equal(rows.length,26);assert.equal(rows.filter(r=>r.data.category==='core-stratagem').length,10);
  for(const r of rows){assert.ok(r.key.startsWith('rule:core-'));assert.equal(r.faction,'*');assert.equal(r.data.referenceOnly,true);assert.equal(r.data.status,'source-reference');assert.equal(r.expectedRevision,0);C.validate(r);assert.ok(r.data.importSource.record);}
  const model=W.review(rows,{faction:W.SHARED});assert.equal(model.rules.length,26);assert.deepEqual(rows.find(r=>r.data.sourceRuleId==='insane-bravery').data.importSource.stratagem.phases,['command']);assert.ok(rows.every(r=>!r.data.phase.length&&r.data.window==='prebattle'));
 });

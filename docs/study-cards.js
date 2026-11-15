@@ -2,7 +2,7 @@
 (function(root){
  'use strict';
  const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule',stratagem:'Stratagem',enhancement:'Enhancement'};
+ const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule','core-stratagem':'Core Stratagems',stratagem:'Stratagem',enhancement:'Enhancement'};
  const phases=['Command','Movement','Shooting','Charge','Fight'];
  const windows={round:'Start of battle round','turn-start':'Start of turn',start:'Start of phase','core-cp':'Gain Command Points',shock:'Battle-shock',act:'During the phase',select:'When selected',before:'Before the unit acts',after:'After the unit acts',react:'Reaction',arrivals:'Reinforcements / arrivals',end:'End of phase','turn-end':'End of turn','round-end':'End of battle round',prebattle:'Pre-battle / reference'};
  function unitCard({id,title,preview,badges='',body='',open=false}){return `<details class="flash-card unit-flash-card collapsible-flash rule-ability" data-unit-card="${e(id)}" ${open?'open':''}><summary class="flash-summary"><span class="flash-title-row"><h3>${e(title)}</h3>${badges}</span><p class="flash-preview">${e(preview)}</p><span class="flash-chevron" aria-hidden="true">+</span></summary><div class="flash-expanded">${body}</div></details>`;}
