@@ -1,5 +1,11 @@
 # WarPlanner — personal study edition, v0.28
 
+Necrons catalog audit: all 230 native rules reviewed across 57 datasheets
+(58 profiles) and 13 detachments. There are 158 usable summaries, 57 source issues
+and 15 missing effects. The imported Reanimation procedure and Resurrection Orb
+records remain incomplete and explicitly flagged. See [AUDIT-NECRONS.md](AUDIT-NECRONS.md)
+for coverage, outstanding issues and the guarded repair.
+
 Drukhari catalog audit: 164 rules and 10 detachments reviewed, with four missing
 Coven of Agonies datasheets restored for 27 units and 28 profiles. There are 102
 usable study summaries, 43 source issues and 19 missing effects. Power From Pain

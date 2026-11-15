@@ -1,5 +1,13 @@
 # Research references and credits
 
+Necrons readiness audit: original study summaries derived from preserved
+user-imported 40kdc mechanics and the [pinned Necrons index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/necrons),
+Alpaca Software and community contributors, CC BY 4.0. Changes include timing,
+target eligibility, Reanimation and reserve reminders, Power Matrix snapshots and
+explicit source issues. Original mechanics, unit scopes and review flags remain
+unchanged. See `AUDIT-NECRONS.md` and `docs/LICENSE-40KDC-DATA.txt`; no official
+Codex verification is claimed.
+
 Drukhari readiness audit: original study summaries and restored datasheet
 associations derived from preserved user-imported 40kdc mechanics and the
 [pinned Drukhari index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/drukhari),
