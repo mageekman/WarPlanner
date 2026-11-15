@@ -79,6 +79,14 @@ test('catalog loads every page beyond 500 entries without dropping later units o
  fail=false;await service.reload();assert.equal(service.version,version+1);service.dispose();assert.equal(service.version,version+2);assert.deepEqual(service.records,[]);
 });
 
+test('counted catalog pages load with bounded concurrency and preserve order on out-of-order responses',async()=>{
+ const data=Array.from({length:2001},(_,i)=>{const r=row('rule:walker');r.key='rule:parallel-'+String(i).padStart(4,'0');r.data.id=r.key.slice(5);return r;}),ranges=[],pending=new Map();let active=0,peak=0,automatic=false,fail=false;
+ const client={from:()=>({select(_columns,options){this.count=options.count;return this},order(){return this},async range(start,end){ranges.push(start);if(start===0)return {data:data.slice(0,500),count:data.length};active++;peak=Math.max(peak,active);if(!automatic)await new Promise(resolve=>pending.set(start,resolve));active--;return fail&&start===1000?{error:{message:'Parallel page failed'}}:{data:data.slice(start,end+1)};}})};
+ const service=C.create(client,'owner'),loading=service.reload();await new Promise(resolve=>setImmediate(resolve));assert.deepEqual(ranges,[0,500,1000,1500]);assert.equal(peak,3);assert.deepEqual(service.records,[]);
+ pending.get(1500)();pending.get(500)();pending.get(1000)();await new Promise(resolve=>setImmediate(resolve));assert.equal(ranges.at(-1),2000);pending.get(2000)();await loading;assert.deepEqual(service.records.map(r=>r.key),data.map(r=>r.key));
+ const version=service.version;automatic=true;fail=true;await assert.rejects(service.reload(),/Parallel page failed/);assert.equal(service.version,version);assert.deepEqual(service.records.map(r=>r.key),data.map(r=>r.key));
+});
+
 test('Space Marines is a supported editable faction group',()=>{const faction={key:'faction:space-marines',kind:'faction',faction:'',name:'Space Marines',enabled:true,data:{id:'space-marines',name:'Space Marines',group:'Space Marines',aliases:['Adeptus Astartes']}};C.validate(faction);C.apply([faction]);assert.equal(B.factions().find(f=>f.name==='Space Marines').group,'Space Marines');faction.data.group='Unknown';assert.throws(()=>C.validate(faction),/Choose Space Marines/);});
 
 test('indexed unit-rule links preserve aliases, faction isolation, ordering and existing references',()=>{
