@@ -1,0 +1,2155 @@
+[
+  {
+    "id": "a-gory-path-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "After a Consolidation move, this Bloodmaster record grants the moving subject a 6″ Consolidation move. Source review: it does not distinguish extending one Consolidation from making an extra move or bind the mover to this unit; confirm the intended movement rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "argath-the-king-of-blades-daemonic-incursion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The bearer’s melee weapons gain +1 Attack and Strength, or +2 of each while Shadow of Chaos is active. Source review: the effect tests whether the army rule is active rather than whether the bearer is within its region; confirm the doubled-benefit condition.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "altered-reality-chaos-daemons",
+    "state": "structured",
+    "summary": "Once per battle round per unit, after a Hit, Wound or Save roll, optionally change this unit’s roll result to 6. Apply only to the triggering roll; the generic roll:any modifier does not grant changes to other roll types.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "apocalyptic-steeds-upgrade-cavalcade-of-chaos-chaos-daemons",
+    "state": "structured",
+    "summary": "Add 1″ to this upgrade unit’s Move characteristic.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "archagonists-legion-of-excess-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Choose either one friendly LEGIONES DAEMONICA SLAANESH MONSTER or up to two friendly non-MONSTER LEGIONES DAEMONICA SLAANESH units that have not fought; add 1 to Wound rolls this phase. Source conflict: the effect targets first and second simultaneously while core metadata defines alternative modes; confirm the mode-to-beneficiary binding.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "avatar-of-perfection-legion-of-excess-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At phase start, while no other friendly unit is within 6″ of the bearer, it may activate Advance/Charge re-rolls for its unit and ignore Move, Advance and Charge modifiers for the bearer. Source gap: permanent scope gives no expiry or reset if nearby units change; confirm the activation duration and model/unit recipients.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "bane-of-cowards-chaos-daemons",
+    "state": "structured",
+    "summary": "When a non-MONSTER, non-VEHICLE enemy starts Falling Back while engaged with a friendly unit with Bane of Cowards, it takes a Desperate Escape test, at -1 if Battle-shocked. Apply the core test procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "before"
+  },
+  {
+    "id": "bane-forged-weapons-upgrade-warptide-chaos-daemons",
+    "state": "structured",
+    "summary": "Improve this upgrade unit’s Strength by 1. The source does not restrict the bonus to one weapon type.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "beast-handler-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "While Horticulous leads a unit, it re-rolls Charges. Once per battle per unit, the source also permits Heroic Intervention despite another use this phase, reduces its triggering cost by 1CP and lifts a shared-use limit. Source gap: no activation trigger binds the discount to that Stratagem; confirm the exception and core limits.",
+    "phase": [
+      3
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "beguiling-aura-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly LEGIONES DAEMONICA SLAANESH units may charge after Falling Back. Beguiling Aura is provisional; confirm current wording and the apparent army-wide rather than ranged aura scope.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "bilious-blessing-lords-of-the-warp-chaos-daemons",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, the selected non-MONSTER friendly LEGIONES DAEMONICA NURGLE CHARACTER selects one visible enemy within 8″; roll seven D6, dealing 1 mortal wound for each 4+.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "binding-shadow-shadow-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Binding Shadow contains only a no-effect marker. Its core timing and CP cost do not supply an effect.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "blazing-warpfire-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Exalted Flamer leads a unit, its ranged weapons gain Assault.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "blessed-by-the-plague-god-chaos-daemons",
+    "state": "structured",
+    "summary": "While Epidemius leads a unit, that unit has a 4+ invulnerable save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "blood-begets-skulls-blood-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "Before the selected friendly KHORNE LEGIONES DAEMONICA unit selects charge targets, it may charge after Advancing this phase.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "blood-tainted-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At phase end, Blood-tainted secures an objective in control range if an enemy was destroyed that phase and it is controlled. Source gap: this provisional source does not bind the destroying unit, controller or objective selection; confirm the sticky-objective procedure.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "blood-throne-chaos-daemons",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, select one visible enemy within 18″ of this Rendmaster model. Friendly KHORNE LEGIONES DAEMONICA attacks against it gain +1 Strength, +1 AP and +1 Damage this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "bloodmaster-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Bloodmaster leads a unit, add 1 to that unit’s Wound rolls. The effect supplies no attack-type restriction.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "bounding-leaps-chaos-daemons",
+    "state": "structured",
+    "summary": "This Flamers unit may shoot after Falling Back.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "brass-collar-of-bloody-vengeance-chaos-daemons",
+    "state": "structured",
+    "summary": "This Karanak model has Feel No Pain 3+ against Psychic attacks and mortal wounds.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "brass-stampede-chaos-daemons",
+    "state": "structured",
+    "summary": "After this Bloodcrushers unit charges, select one engaged enemy. Roll one D6 per model in this unit; each 4+ deals D3 mortal wounds to that enemy.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "brazenmaw-blood-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "Add 2 to this unit’s Charge rolls.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "call-to-murder-lords-of-the-warp-chaos-daemons",
+    "state": "structured",
+    "summary": "When the selected friendly non-MONSTER KHORNE LEGIONES DAEMONICA CHARACTER unit is selected to fight after charging this turn, add 1 to its melee Attacks this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "cankerblight-aura-plague-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Cankerblight contains only a no-effect marker. Supply checked aura effects and eligibility before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "carnival-of-excess-lords-of-the-warp-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Carnival of Excess grants this unit Fights First and permission to fight next this phase. Source gap: no selection trigger, eligibility or interaction between those two permissions is supplied; confirm the full fight-order rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "cavalcade-of-blades-legion-of-excess-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Cavalcade of Blades contains only a no-effect marker. Supply checked wording before use.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "champion-slayer-chaos-daemons",
+    "state": "structured",
+    "summary": "This Rendmaster model re-rolls melee Wound rolls against CHARACTER or MONSTER targets. When it destroys an enemy CHARACTER or MONSTER unit, it heals D6 wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "changecaster-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Changecaster leads a unit, its ranged weapons gain Sustained Hits 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "channelled-wrath-shadow-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "Before the selected friendly SHADOW LEGION unit fights, its melee weapons gain Lance and, if it has KHORNE, +1 AP this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "collar-of-khorne-chaos-daemons",
+    "state": "structured",
+    "summary": "This Flesh Hounds model has Feel No Pain 3+ against Psychic attacks only. This differs from Karanak’s Psychic-and-mortal protection.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "corrupt-realspace-daemonic-incursion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Corrupt Realspace contains only a no-effect marker. No objective or Shadow-region effect can be inferred from its name.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "cover-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Cover would protect a defender obscured by this Skull Altar model. Source conflict: it is granted at Damage allocation, after the normal save/cover decision, and targets event-object instead of the defender; confirm timing and recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "cutting-down-the-foe-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "If this Hellflayers unit charged this turn, its melee attacks gain +1 Strength and Damage. Source review: the source is marked partial; confirm omitted conditions before use.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "daemon-lord-of-khorne-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly KHORNE LEGIONES DAEMONICA units within 6″ of this Bloodthirster gain +1 to melee Hit rolls.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "daemon-lord-of-nurgle-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly NURGLE LEGIONES DAEMONICA units within 6″ of this Great Unclean One gain +1 Toughness. Source review: this aura is provisional; confirm current wording.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "daemon-lord-of-slaanesh-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly SLAANESH LEGIONES DAEMONICA units within 6″ of this Keeper of Secrets improve melee AP by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "daemon-lord-of-tzeentch-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly TZEENTCH LEGIONES DAEMONICA units within 6″ of this Lord of Change gain +1 ranged Strength.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "daemonic-allegiance-soul-grinder-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When this Soul Grinder is added to the army, choose one allegiance for the battle: KHORNE with torrent of burning blood; TZEENTCH with warp gaze; NURGLE with phlegm bombardment; or SLAANESH with scream of despair. Source gap: the approximate record grants only weapon references without profiles; confirm the weapon characteristics and once-only selection.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "daemonic-allegiance-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Daemonic Allegiance for the Daemon Princes contains only a no-effect marker. Do not substitute Soul Grinder’s weapon-selection version.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "daemonic-icon-chaos-daemons",
+    "state": "structured",
+    "summary": "Set this icon-equipped unit’s Leadership characteristic to 6.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "daemonic-infestation-warptide-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly LEGIONES DAEMONICA BATTLELINE unit, excluding PINK HORRORS, heals 3 wounds in your Command phase. Source gap: the effect targets the unit without selecting an eligible model or exact activation event; confirm allocation and use limits.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "daemonic-invulnerability-daemonic-incursion-chaos-daemons",
+    "state": "structured",
+    "summary": "When the selected friendly LEGIONES DAEMONICA unit is targeted in your opponent’s Shooting phase, re-roll Save rolls of 1 this phase. The source says Save, without restricting this to invulnerable saves.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "daemonic-lord-chaos-daemons",
+    "state": "structured",
+    "summary": "This foot Daemon Prince model has Lone Operative while within 3″ of a friendly LEGIONES DAEMONICA INFANTRY unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "daemonic-pact-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Daemonic Pact prevents the selected LEGIONES DAEMONICA allies from being Warlord or taking enhancements. Source gap: its composition effect omits allied-army eligibility, points/model limits and god restrictions; confirm the full allied-unit procedure before adding Daemons to another army.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "damaged-1-7-wounds-remaining-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Skarbrand model has 1–7 wounds remaining, add 2 Attacks to slaughter and carnage. This source benefit is distinct from a generic damaged Hit penalty.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "dazzling-acrobatics-chaos-daemons",
+    "state": "structured",
+    "summary": "This Masque model may declare a charge after Advancing or Falling Back.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "death-denied-shadow-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly SHADOW LEGION unit heals 3 wounds to one model and, if TZEENTCH, returns one destroyed non-CHARACTER model. Source conflict: the imported one-model healing effect differs from the pinned per-unit effect; confirm that healing and returning are both allowed and apply core placement limits.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "deaths-heads-chaos-daemons",
+    "state": "structured",
+    "summary": "After this Plague Drones unit shoots in your Shooting phase, select one enemy it hit. Friendly NURGLE LEGIONES DAEMONICA attacks against that enemy re-roll Wound rolls for the rest of the turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "delightful-agonies-chaos-daemons",
+    "state": "structured",
+    "summary": "The first time this Syll’Esske model is destroyed this battle, roll D6 at phase end; on 2+, return it at full wounds closest to its destruction point and unengaged. Apply core return and placement restrictions.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "delirium-unmade-scintillating-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Delirium Unmade contains only a no-effect marker. Supply checked wording before use.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "deluge-of-nurgle-chaos-daemons",
+    "state": "structured",
+    "summary": "Enemy units within 6″ of this Rotigus suffer -2″ Move and -1 Objective Control.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "denizens-of-the-warp-daemonic-incursion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly LEGIONES DAEMONICA unit arriving by Deep Strike may set up at the encoded 6″ enemy distance. Source review: core eligibility requires setup already happened, while the effect performs setup again and does not say whether more than 6″ is required or impose a no-charge condition; confirm the complete arrival rule.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "devastating-charge-chaos-daemons",
+    "state": "structured",
+    "summary": "After this Skullmaster unit charges, each enemy engaged with it takes a Battle-shock test.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "discordant-disruption-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Enemy PSYKER units within 12″ of this Infernal Enrapturess give their Psychic weapons Hazardous. Source review: this aura is provisional; confirm current wording and Hazardous interactions.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "disease-of-mirth-chaos-daemons",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, each enemy within 6″ of this Sloppity Bilepiper that is neither MONSTER nor VEHICLE takes a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "diseased-cover-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Diseased Cover would protect a defender obscured by this Feculent Gnarlmaw. Source conflict: it triggers at Damage allocation after saves and uses event-object instead of the defender; confirm timing and recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "draught-of-terror-daemonic-incursion-chaos-daemons",
+    "state": "structured",
+    "summary": "Before the selected friendly LEGIONES DAEMONICA unit shoots or fights, improve its AP by 1 this phase; it also re-rolls Wound rolls against Battle-shocked defenders.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "dreaming-crown-aura-legion-of-excess-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly non-MONSTER SLAANESH LEGIONES DAEMONICA units within 6″ of the bearer gain +1 to melee Hit rolls.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "droning-shroud-aura-plague-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly NURGLE LEGIONES DAEMONICA units within the bearer’s 6″ aura have a ranged targeting permission for attackers within 18″. Source gap: the effect does not explicitly forbid attacks beyond 18″ and measures from this-unit rather than the recipient; confirm the intended protection and range origin.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "eldritch-flames-chaos-daemons",
+    "state": "structured",
+    "summary": "After this Burning Chariot shoots in your Shooting phase, select one enemy it hit; that enemy loses cover this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "encroaching-darkness-shadow-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Encroaching Darkness contains only a no-effect marker. Supply checked targeting and effects before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "exploding-horrors-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When this Blue Horrors unit is selected to fight, select an engaged enemy and one or more friendly BRIMSTONE models in this unit. On D6 4+, destroy the selected model and deal 1 mortal wound to that enemy. Source gap: the nested model selection supplies no per-model roll instruction or maximum; confirm how many models roll and are removed.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fade-to-darkness-shadow-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "At Fight-phase end, this unit may enter Strategic Reserves if it destroyed an enemy unit this phase and is now unengaged.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "false-majesty-aura-legion-of-excess-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly non-MONSTER SLAANESH LEGIONES DAEMONICA units within 6″ of the bearer gain +1 to melee Wound rolls.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fateborne-nightmares-scintillating-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly TZEENTCH LEGIONES DAEMONICA unit may pass through all terrain this phase. Source conflict: the effect triggers only when a move ends, too late to grant the movement permission; confirm activation and ending-position restrictions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "fates-in-flux-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Source conflict: Fates in Flux substitutes dice values from a Flux token pool in its effect, while its approximate note says tokens fund re-rolls. The starting three tokens, reciprocal opponent gains/re-rolls and Command-phase regain are omitted. Confirm the full economy and eligible rolls; do not use substitution as a complete rule.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "fateskimmer-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Fateskimmer leads a unit, its melee weapons gain Lethal Hits.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "feculent-despair-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Enemy units within 6″ of this Poxbringer subtract 1 from Battle-shock rolls. Source review: Feculent Despair is provisional; confirm current wording.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "shock"
+  },
+  {
+    "id": "fever-visions-plague-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "Before the selected friendly NURGLE LEGIONES DAEMONICA unit shoots or fights, it gains +1 Hit this phase. After its attacks, select one enemy it hit to take a Battle-shock test.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "ficklefire-scintillating-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Ficklefire contains only a no-effect marker. Supply checked wording before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "first-prince-of-chaos-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "For a Chaos Daemons army, First Prince of Chaos grants SHADOW LEGION god-specific packages: KHORNE gets ranged Assault and charge after Advance; TZEENTCH gets Stealth and incoming melee -1 Hit; NURGLE gets incoming -1 Wound when Strength exceeds Toughness; SLAANESH suppresses Overwatch against the bearer; UNDIVIDED gains Dark Pacts, with Be’lakor passing and HERETIC ASTARTES gaining Deep Strike. Source review: this provisional bundle lacks the cross-faction Dark Pacts procedure and clear nested recipient/keyword bindings; confirm each package before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "flames-of-change-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "After this Exalted Flamer shoots in your Shooting phase, select one enemy it hit that is neither MONSTER nor VEHICLE; on D6 4+ it is aflame and loses 2″ Move until the end of your opponent’s next turn. Source conflict: the accompanying -2 Advance/Charge modifiers target this-unit rather than that enemy; confirm the recipients.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "flickering-reality-scintillating-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Flickering Reality contains only a no-effect marker. Supply checked wording before use.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "fluxmaster-chaos-daemons",
+    "state": "structured",
+    "summary": "This Fluxmaster unit gains Stealth and incoming melee attacks suffer -1 to Hit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "foetid-resurgence-plague-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly on-battlefield NURGLE LEGIONES DAEMONICA unit returns one destroyed non-CHARACTER model if neither BATTLELINE nor MONSTER; returns D3 if BATTLELINE and not MONSTER; or heals D3+1 wounds to one model if MONSTER. Source conflict: the imported one-model healing differs from the pin’s per-model version; confirm recipients and core return restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "font-of-spores-aura-plague-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly NURGLE LEGIONES DAEMONICA units within 6″ of the bearer improve AP by 1. The source supplies no weapon-type restriction.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fools-flight-blood-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "After an enemy Falls Back, the selected unengaged friendly KHORNE LEGIONES DAEMONICA unit within 6″ may declare a charge. Source gap: the follow-up must-target restriction has no target and does not bind the falling-back enemy; confirm the target and out-of-phase Charge procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "formless-horror-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When an enemy selects attack targets, Formless Horror makes it take a Battle-shock test and, on failure, prevents attacks targeting this Changeling model this phase. Source review: the provisional trigger does not require this model to be a target and lacks the failed-test event binding; confirm eligibility and resolution.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "fortification-chaos-daemons",
+    "state": "structured",
+    "summary": "In the Shooting phase, subtract 1 from incoming Hit rolls against this Feculent Gnarlmaw or Skull Altar unit.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "from-beyond-the-veil-cavalcade-of-chaos-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected unit makes an Ingress move during Movement. Source gap: From Beyond the Veil has no arrival trigger, eligible-unit restriction or reserve-state gate; confirm when it may be used and apply core setup rules.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "arrivals"
+  },
+  {
+    "id": "furys-cage-blood-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "When the bearer is selected to fight, it may suffer D3+1 mortal wounds, then re-roll its Hit and Wound rolls this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "gateway-unto-damnation-blood-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Gateway Unto Damnation contains only a no-effect marker. Supply checked wording before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "gore-hungry-onslaught-blood-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly KHORNE LEGIONES DAEMONICA bearer may pass through all terrain this phase. Source conflict: the effect triggers at move-ended rather than during the move; confirm activation, model-versus-unit scope and ending-position restrictions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "greater-daemon-of-khorne-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly KHORNE LEGIONES DAEMONICA units within 6″ of this Greater Daemon count as within your Shadow of Chaos. Source review: this aura is provisional; confirm current region membership and placement requirements.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "greater-daemon-of-nurgle-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly NURGLE LEGIONES DAEMONICA units within 6″ of this Greater Daemon count as within your Shadow of Chaos. Source review: this aura is provisional; confirm current region membership and placement requirements.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "greater-daemon-of-slaanesh-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly SLAANESH LEGIONES DAEMONICA units within 6″ of this Greater Daemon count as within your Shadow of Chaos. Source review: this aura is provisional; confirm current region membership and placement requirements.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "greater-daemon-of-tzeentch-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly TZEENTCH LEGIONES DAEMONICA units within 6″ of this Greater Daemon count as within your Shadow of Chaos. Source review: this aura is provisional; confirm current region membership and placement requirements.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "grotesque-regeneration-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At phase end, a surviving wounded Beasts of Nurgle model sets its Wounds characteristic to 7. Source conflict: the provisional effect changes the characteristic rather than healing wounds remaining; confirm the intended recovery and expiry.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "harbinger-of-death-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When this winged Daemon Prince is selected to fight, choose Lethal Hits, Precision or Sustained Hits 1 for its hellforged weapons this phase. Source review: the source is marked partial; confirm omitted conditions before use.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "harmonic-alignment-chaos-daemons",
+    "state": "structured",
+    "summary": "In your Command phase while this Infernal Enrapturess leads a unit, return D3 destroyed Bodyguard models to it. Apply core return and placement restrictions.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "horrible-fascination-chaos-daemons",
+    "state": "structured",
+    "summary": "Once per phase per army, at the start of your opponent’s Shooting phase, this friendly Contorted Epitome PSYKER may select one visible enemy within 12″ and roll D6: 1 deals D3 mortals to this model; 2–5 gives that enemy -1 Hit this phase; 6 prevents it shooting this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "horrifying-beauty-chaos-daemons",
+    "state": "structured",
+    "summary": "Once per phase per army, at Fight-phase start, enemies engaged with friendly units with Horrifying Beauty take Battle-shock tests, at -1 while below Half-strength. Apply the stated engagement gate.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "horrors-are-pink-horrors-are-blue-where-once-there-was-one-now-there-are-two-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When no PINK models remain, this Pink Horrors unit uses the Blue Horrors datasheet. Source gap: the approximate note says Sullen Malevolence and Exploding Horrors do not apply while any Pink models remain, but the effect contains no explicit suppression or swap trigger; confirm mixed-model ability handling and timing.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "hunters-from-the-warp-chaos-daemons",
+    "state": "structured",
+    "summary": "At the end of your opponent’s turn, this Flesh Hounds unit may enter Strategic Reserves if unengaged.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "hysterical-frenzy-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When a model in this Tormentbringer unit is destroyed, it may fight after the attacker finishes and is removed after fighting if the unit has not fought. Source conflict: the not-yet-fought condition checks event-subject instead of this defending unit, without binding that subject; confirm eligibility before resolving fight-on-death.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "impossible-eclipse-scintillating-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Impossible Eclipse contains only a no-effect marker. Supply checked timing and effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "improbable-shield-aura-scintillating-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly TZEENTCH LEGIONES DAEMONICA units within 6″ of the bearer have Feel No Pain 4+ against Psychic attacks and mortal wounds only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "incorporeal-entities-warptide-chaos-daemons",
+    "state": "structured",
+    "summary": "When the selected friendly BATTLELINE LEGIONES DAEMONICA unit is targeted in your opponent’s Shooting phase, incoming Wound rolls suffer -1 when attack Strength exceeds defender Toughness this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "inescapable-eye-scintillating-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Inescapable Eye contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "inescapable-manifestations-cavalcade-of-chaos-chaos-daemons",
+    "state": "structured",
+    "summary": "When an enemy engaged with the selected friendly LEGIONES DAEMONICA MOUNTED unit is selected to Fall Back, it takes a Desperate Escape test, at -1 if Battle-shocked. Retain both engagement gates and apply the core test procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "infected-outbreak-chaos-daemons",
+    "state": "structured",
+    "summary": "At the end of your Command phase, a friendly-controlled objective within this Plaguebearers unit’s control range becomes sticky.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "infernal-puppeteer-scintillating-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Infernal Puppeteer contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "instrument-of-chaos-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Add 1 to this instrument-equipped unit’s Charge rolls. Source review: Instrument of Chaos is provisional; confirm current wording.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "jolly-gutpipes-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Sloppity Bilepiper leads a unit, that unit gains +1″ Move and re-rolls Advance rolls.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "keep-counting-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Spoilpox Scrivener leads a unit, its melee weapons gain Sustained Hits 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "leaping-shadows-shadow-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "This unit gains Scouts 9″.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "loci-of-power-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly non-MONSTER LEGIONES DAEMONICA CHARACTER models improve Leadership by 1 and gain +1 Objective Control.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "lord-of-decapitations-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Skulltaker leads a unit, its melee weapons gain Devastating Wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "maggot-maws-plague-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Maggot Maws contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "malefic-destruction-chaos-daemons",
+    "state": "structured",
+    "summary": "Once per battle per unit, at Fight-phase start, this winged Daemon Prince may add 3 Attacks to its hellforged melee weapons this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "malice-made-manifest-shadow-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, select one enemy engaged with this unit and roll D6: 1 does nothing; 2–5 deals D3 mortal wounds; 6 deals 3 mortal wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "manifestation-of-destruction-chaos-daemons",
+    "state": "structured",
+    "summary": "This Exalted Flamer cannot be your Warlord or take an enhancement.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "mantle-of-gloom-aura-shadow-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Enemy units engaged with this unit lose 1 Objective Control. Source review: the effect targets all enemies while its condition checks an unbound recipient; confirm which enemies receive the penalty.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "master-of-magicks-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "In your Shooting phase, choose Ignores Cover, Lethal Hits or Sustained Hits D3 for this Lord of Change model’s Bolt of Change this phase. Source gap: the partial source supplies no activation event or refresh rule for the choice; confirm selection timing.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "meet-your-quota-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Spoilpox Scrivener leads a unit, that unit gains +1 Objective Control.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "melancholic-miasma-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Enemies within 9″ of friendly NURGLE LEGIONES DAEMONICA units count as within Shadow of Chaos; the source also selects one enemy in the Shadow to take a Battle-shock test in Command. Source gap: this provisional bundle lacks the test’s activation event, player-turn limit and clear region-recipient binding; confirm the procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "mesmerising-form-chaos-daemons",
+    "state": "structured",
+    "summary": "Subtract 1 from incoming Hit rolls against this Keeper of Secrets unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "mischief-and-confusion-chaos-daemons",
+    "state": "structured",
+    "summary": "At the start of your opponent’s Shooting phase, this Changeling selects one visible enemy within 12″ and rolls D6: 1 does nothing; 2–5 gives it -1 Hit this phase; 6 prevents it shooting this phase. Unlike Horrible Fascination, the 1 result does not inflict mortals on this model.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "mischief-makers-chaos-daemons",
+    "state": "structured",
+    "summary": "When a non-TITANIC enemy engaged with a friendly unit with Mischief-makers is selected to fight, subtract 1 from its melee Hit rolls this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "monarch-of-the-hunt-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At the start of battle round 1, Shalaxi selects one enemy quarry. This model re-rolls melee Hit and Wound rolls against it; when the quarry is destroyed, replace it with a new quarry, with one active quarry per bearer unit. Source review: the partial source tests event-object instead of a bound defender for the consumer; confirm the attack-target and replacement procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "murdercall-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "After a non-AIRCRAFT enemy ends a move within 8″ of friendly KHORNE LEGIONES DAEMONICA in your opponent’s Movement phase, select one friendly KHORNE LEGIONES DAEMONICA unit within 8″ of that enemy for a D6″ Surge move. Source review: Murdercall is provisional; confirm eligibility and Surge restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "murderlust-chaos-daemons",
+    "state": "structured",
+    "summary": "This Skarbrand unit may declare a charge after Advancing.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "murkshadows-plague-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly NURGLE LEGIONES DAEMONICA INFANTRY unit gains +5″ Move this phase. Source conflict: the effect applies after a Normal move ends, too late to extend that move; confirm activation timing.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "neverblade-scintillating-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "The bearer’s melee weapons gain +2 Strength, +1 Attack and +1 AP, and its melee Hit rolls gain +1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "no-prey-can-evade-chaos-daemons",
+    "state": "structured",
+    "summary": "This Shalaxi Helbane unit re-rolls Advance and Charge rolls.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "nurgles-rot-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At the end of your Movement phase, this Great Unclean One may select one enemy within 12″; subtract 1 from its Toughness until the next Movement phase. Source review: the expiry does not say whose Movement phase; confirm duration.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "one-head-looks-back-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Once per turn per model, when an enemy Stratagem targets an enemy unit within 12″ of Kairos, optionally increase that triggering use’s cost by 1CP. Source conflict: the cost modifier targets this-unit instead of the triggering enemy; confirm recipient and core cost-modification rules.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "one-head-looks-forward-chaos-daemons",
+    "state": "structured",
+    "summary": "At the end of your Command phase, if Kairos Fateweaver is on the battlefield, take a Leadership test for this model; on success gain 1CP. Apply core CP-gain limits.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "overwhelming-excess-legion-of-excess-chaos-daemons",
+    "state": "structured",
+    "summary": "When the selected friendly SLAANESH LEGIONES DAEMONICA unit is targeted in Shooting or Fight, incoming Hit rolls suffer -1 this phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "ptarixs-sorcerous-syphon-chaos-daemons",
+    "state": "structured",
+    "summary": "Enemy units within 12″ of this Blue Scribes unit suffer -1 to Wound with Psychic attacks.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "pack-leader-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "While Karanak leads a unit, choose either Charge re-rolls or Advance re-rolls for that unit. Source gap: the choice has no timing or refresh rule; confirm whether one choice is fixed for a period or changes between activations.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "phantasmal-longing-legion-of-excess-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly SLAANESH LEGIONES DAEMONICA bearer may pass through all terrain this phase. Source conflict: the effect triggers at move-ended rather than during the move; confirm activation, model/unit scope and ending positions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "plague-of-woes-plague-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Plague of Woes contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "poxbringer-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "While this Poxbringer leads a unit, its Hit rolls score Critical Hits on the encoded value of 5. Source review: the effect does not specify unmodified rolls or a 5+ threshold; confirm attack scope and the critical range.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "prey-of-the-blood-god-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At the start of battle round 1, Karanak selects one enemy prey. This unit re-rolls melee Wound rolls against it; replace the prey when destroyed, with one active prey per bearer unit. Source review: the consumer tests an unbound designated subject rather than the defender; confirm attack-target binding and replacement.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "prince-of-darkness-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly LEGIONES DAEMONICA units within 6″ of this foot Daemon Prince gain Stealth. Source review: Prince of Darkness is provisional; confirm current wording.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "prince-of-slaanesh-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "While Syll’Esske leads a unit, its melee Wound rolls score Critical Wounds on the encoded value of 5. Source review: the effect does not specify unmodified rolls or a 5+ threshold; confirm the critical range.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "pyrogenesis-scintillating-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Pyrogenesis contains only a no-effect marker. Supply checked effects before use.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "rage-embodied-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly KHORNE LEGIONES DAEMONICA units within 6″ of this Skarbrand gain +1 melee Attack.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "rapturous-agony-legion-of-excess-chaos-daemons",
+    "state": "structured",
+    "summary": "When the selected friendly SLAANESH LEGIONES DAEMONICA unit, excluding MONSTER and VEHICLE, is targeted, subtract 1 from incoming Wound rolls when Strength exceeds Toughness this phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "relentless-carnage-chaos-daemons",
+    "state": "structured",
+    "summary": "At Fight-phase end, this Bloodthirster may select one enemy engaged with this model and roll eight D6; each 4+ deals 1 mortal wound to that enemy.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "rider-of-the-immaterial-winds-chaos-daemons",
+    "state": "structured",
+    "summary": "Once per battle per unit, at the end of your opponent’s turn, this Fateskimmer unit may enter Strategic Reserves if unengaged. This has a usage cap that Hunters from the Warp does not encode.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "rot-and-renewal-plague-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly NURGLE LEGIONES DAEMONICA unit may pass through all terrain this phase. Source conflict: the effect triggers only when a move ends; confirm the activation window and legal ending positions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "scuttling-walker-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "During Normal or Advance moves, this Soul Grinder model may pass through friendly MONSTER/VEHICLE models and terrain up to 4″ high. Source review: the provisional source attaches the permission to move-ended; confirm activation and ending restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "seductive-gambit-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly SLAANESH LEGIONES DAEMONICA units gain Seductive Gambit: after charging, optionally suppress Fights First and gain Hit re-rolls and Wound re-rolls of 1 this turn. Source review: the provisional grant recursively refers to itself and the activation uses unbound this-unit; confirm recipients and choice timing.",
+    "phase": [
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "seed-the-garden-of-nurgle-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Horticulous Slimux designates a terrain area as Shadow of Chaos for the battle while within it. Source conflict: the provisional trigger says turn-ended but simultaneously requires your Movement phase; confirm the actual timing, selected terrain area and region membership procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "seeping-virulence-plague-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Before the selected friendly NURGLE LEGIONES DAEMONICA unit fights, its Hit rolls score Critical Hits on the encoded value of 5 this phase. Source review: the effect lacks unmodified-roll wording and a 5+ threshold; confirm the critical range.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "sensory-excruciation-legion-of-excess-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Use on a friendly on-battlefield SLAANESH LEGIONES DAEMONICA MONSTER in your Command phase. On-battlefield units in Shadow of Chaos take Battle-shock tests, at -1 below Half-strength. Source conflict: the selector allows any owner, including friendly units, without a range or exact activation event; confirm the intended targets.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "shade-path-shadow-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At the start of your opponent’s Charge phase, select one visible enemy within 12″ of the selected SHADOW LEGION unit. When it declares a charge, the source subtracts 1 from this-unit’s Charge roll and, if NURGLE, tests that enemy for Battle-shock. Source conflict: the Charge penalty is assigned to the defending unit, and the NURGLE condition has no bound subject; confirm recipients.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "shadow-form-abilities-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At battle-round start, Be’lakor chooses one Shadow Form for the round: Wreathed in Shadows protects friendly LEGIONES DAEMONICA or SHADOW LEGION within 6″ from distant shooting using an encoded 18″ range; Pall of Despair tests enemies within 9″ and heals this model D3 per unit; Shadow Lord grants friendly units with those keywords within 6″ Hit re-rolls of 1. Source conflict: the approximate note says no menu exists, while the effect now enumerates it; confirm the shooting-distance direction and whether healing requires failed tests.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "shadow-of-khorne-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Units of either owner within 6″ of this Skull Altar count as in Shadow of Chaos. Friendly KHORNE LEGIONES DAEMONICA within 6″ may re-roll Battle-shock tests. Source conflict: the provisional re-roll targets this-unit instead of the testing unit; confirm the aura recipients and range measurements.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sheathed-in-brass-blood-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "When the selected friendly KHORNE LEGIONES DAEMONICA unit is targeted in your opponent’s Shooting phase, set its Save characteristic to 3 this phase. This sets a Save; it does not grant a 3+ invulnerable save.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "shining-aegis-chaos-daemons",
+    "state": "structured",
+    "summary": "Set this equipped Keeper of Secrets model’s Save characteristic to 3. This is not an invulnerable-save grant.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "shroud-of-flies-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Friendly NURGLE LEGIONES DAEMONICA units within 6″ of this Feculent Gnarlmaw gain Stealth. Source review: Shroud of Flies is provisional; confirm current wording.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "shudderblink-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When the friendly BATTLELINE LEGIONES DAEMONICA unit Advances, its ranged weapons gain Assault and it gains permission to charge this turn. Source review: the charge permission does not explicitly override having Advanced; confirm the exception before using it.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "skirling-magicks-lords-of-the-warp-chaos-daemons",
+    "state": "structured",
+    "summary": "When the selected friendly non-MONSTER TZEENTCH LEGIONES DAEMONICA CHARACTER unit is selected to shoot, its ranged weapons gain Lethal Hits this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "skullmasters-fury-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Skullmaster leads a unit, after it charges the unit’s Juggernaut’s bladed horns gain Devastating Wounds for the rest of the turn.",
+    "phase": [
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "skulls-beget-blood-blood-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Select one visible enemy within 8″ that is not engaged with friendly units. Roll six D6, dealing 1 mortal wound per 4+. The selected friendly KHORNE LEGIONES DAEMONICA INFANTRY or MOUNTED unit must be unengaged and must not have Fallen Back this turn. Source gap: no exact activation event is supplied; confirm when the selection occurs.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "skulls-for-khorne-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "This Skulltaker model re-rolls Hit and Wound rolls against CHARACTER targets and gains 1CP when it destroys an enemy CHARACTER unit. Source review: this partial source does not restrict the re-rolls by attack type; confirm omitted conditions and apply core CP limits.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "skulls-of-the-fallen-chaos-daemons",
+    "state": "structured",
+    "summary": "After this Skull Cannon shoots in your Shooting phase, select one enemy it hit; that enemy takes a Battle-shock test.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "slashing-dive-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "After this Screamers unit ends a Normal move in your Movement phase, optionally select one enemy this model moved over. Roll one D6 per model in this unit, dealing 1 mortal wound per 4+. Source review: the selector uses one model’s path but counts every model; confirm the qualifying models.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "slaughterthirst-aura-blood-legion-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly non-MONSTER KHORNE LEGIONES DAEMONICA units within 6″ of the bearer gain Lance. Apply the core weapon-keyword rules.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "soporific-musk-chaos-daemons",
+    "state": "structured",
+    "summary": "When a non-MONSTER, non-VEHICLE enemy starts Falling Back while engaged with a friendly unit with Soporific Musk, it takes a Desperate Escape test, at -1 if Battle-shocked. Apply the core test procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "before"
+  },
+  {
+    "id": "soul-glutton-legion-of-excess-chaos-daemons",
+    "state": "structured",
+    "summary": "At Fight-phase end, if the bearer destroyed an enemy model this phase, it may heal D3 wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "soul-hungry-slaughterers-upgrade-warptide-chaos-daemons",
+    "state": "structured",
+    "summary": "When Heroic Intervention or Fire Overwatch targets this upgrade unit, reduce that triggering use’s cost by 1CP. Apply the core Stratagem eligibility and cost-modification rules.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "soul-shattering-charge-upgrade-cavalcade-of-chaos-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "If this upgrade unit charged this turn, it may fight with the encoded 3″ reach this phase. Source gap: the record does not define whether that changes engagement, which models may attack or how reach is measured; confirm the full fighting eligibility rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "soulseeing-warptide-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, the selected friendly BATTLELINE LEGIONES DAEMONICA unit selects one visible enemy within 12″ to gain +6 detection range this phase. Source gap: detection range and its measurement are undefined in the supplied rules.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "soulstealer-daemonic-incursion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When the bearer destroys an enemy model with a melee attack, roll D6; on 4+, heal 1 wound, adding 1 to the die if Shadow of Chaos is active. Source review: the condition tests the army rule’s active state rather than whether the bearer is in its region; confirm the bonus condition.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "spiteful-demise-shadow-legion-chaos-daemons",
+    "state": "missing",
+    "summary": "Missing source mechanics: Spiteful Demise contains only a no-effect marker. Supply checked destruction, resolution and removal rules before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "split-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "After attacks destroy a BLUE model in this on-battlefield Blue Horrors unit, roll D6; on 4+, add one Brimstone Horror model to the same unit. Source conflict: the imported model-based addition differs from the pinned datasheet-based addition; confirm that it adds a model rather than a new unit, plus placement and destruction sequencing.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "split-pink-horrors-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "After attacks destroy a PINK or BLUE model in this on-battlefield Pink Horrors unit, roll D6; on 4+, add two Blue Horror models for a Pink casualty, or one Brimstone Horror for a Blue casualty, to the same unit. Source conflict: the provisional imported model additions differ from the pin’s datasheet references; confirm mixed-unit placement and sequencing with the datasheet swap.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "storm-of-mutating-sorcery-chaos-daemons",
+    "state": "structured",
+    "summary": "After this Changecaster unit shoots in your Shooting phase, select one enemy INFANTRY unit it hit; it takes a Battle-shock test.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "sullen-malevolence-chaos-daemons",
+    "state": "structured",
+    "summary": "While at least one BLUE model remains in this Blue Horrors unit, enemies within 6″ worsen Leadership by 1. Apply the separate Pink Horrors mixed-model restrictions only after checking their incomplete source.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "supreme-commander-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "If included in your army, Be’lakor must be Warlord. Source review: Supreme Commander is provisional; confirm current wording.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "swallow-energy-chaos-daemons",
+    "state": "structured",
+    "summary": "While this Contorted Epitome leads a unit, it has Feel No Pain 4+ against Psychic attacks and mortal wounds only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "swollen-with-power-upgrade-lords-of-the-warp-chaos-daemons",
+    "state": "structured",
+    "summary": "Add 2 to the bearer model’s Wounds characteristic.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "symphony-of-pain-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At the end of your Movement phase, this Tranceweaver may select one Battle-shocked enemy within 12″. Friendly SLAANESH LEGIONES DAEMONICA models re-roll Hit and Wound rolls against it this turn. Source review: this source is marked partial; confirm omitted conditions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "tally-of-pestilence-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Tally of Pestilence grants 1CP to this Epidemius model. Source gap: no trigger, tally threshold, frequency or reset is encoded; do not treat it as repeatable CP generation.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "the-dark-master-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The Dark Master designates a terrain area as Shadow of Chaos for Be’lakor. Source gap: this provisional source does not select the terrain area, define a radius or provide activation/expiry rules; confirm the complete region procedure.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "the-endless-gift-daemonic-incursion-chaos-daemons",
+    "state": "structured",
+    "summary": "The bearer model gains Feel No Pain 5+. No Shadow-dependent improvement is encoded; do not invent one.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "the-eternal-dance-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "At Fight-phase start, select one enemy within 6″ of the Masque. Friendly SLAANESH LEGIONES DAEMONICA melee attacks against it gain +1 Wound, and that enemy suffers -1 to its own melee Wound rolls this phase. Source review: the source is marked partial; confirm omitted limits.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "the-everstave-daemonic-incursion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The bearer’s ranged weapons gain +1 Strength and +3″ Range, or +2 Strength and +6″ Range while Shadow of Chaos is active. Source review: the condition checks the army rule’s active state rather than the bearer’s region membership; confirm which branch applies.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "the-realm-of-chaos-daemonic-incursion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "Choose either up to two unengaged friendly LEGIONES DAEMONICA units in Shadow of Chaos or one unengaged friendly LEGIONES DAEMONICA unit anywhere. They enter Strategic Reserves and the source permits next-Movement arrival even in round 1, plus Ingress in your Movement phase. Source conflict: the core Stratagem window is the opponent’s Fight phase but the effect says turn-end, targets all friendly units without binding the chosen mode and supplies a mismatched Ingress window; confirm the complete procedure.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "the-shadow-of-chaos-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "For a Chaos Daemons army, your deployment zone is always Shadow of Chaos. At each phase start, take a snapshot of objectives you control: at least half in No Man’s Land adds that whole territory for this phase; at least half in the enemy deployment zone adds that territory separately. Friendly LEGIONES DAEMONICA testing Battle-shock in the Shadow add 1 to the roll; on success, non-BATTLELINE heal D3 wounds to one model, while BATTLELINE instead return D3 destroyed non-CHARACTER models. Enemies testing in the Shadow, or within 6″ of a friendly Bloodthirster, Great Unclean One, Kairos, Keeper of Secrets, Lord of Change, Rotigus, Shalaxi or Skarbrand, subtract 1 and suffer D3 mortal wounds on failure. Source conflict: the imported one-model recovery differs from the pinned per-unit effect, and success/failure effects sit under before-roll triggers; confirm recovery recipients and post-test resolution. Army guide scope includes all eligible units, including Poxbringer.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "tormentbringer-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly SLAANESH LEGIONES DAEMONICA units within 6″ of this Tormentbringer gain Sustained Hits 1 on melee weapons.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "tranceweaver-chaos-daemons",
+    "state": "structured",
+    "summary": "This Tranceweaver unit re-rolls Hit rolls of 1, or all Hit rolls against defenders within control range of an objective marker. The effect has no leading or weapon-type condition; do not silently add one without checked wording.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "unholy-avalanche-chaos-daemons",
+    "state": "structured",
+    "summary": "Friendly LEGIONES DAEMONICA MOUNTED units may shoot and declare a charge after Falling Back this turn.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "unholy-speed-chaos-daemons",
+    "state": "structured",
+    "summary": "This Seekers unit re-rolls Advance and Charge rolls.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "unholy-vigour-chaos-daemons",
+    "state": "structured",
+    "summary": "Once per battle per unit, at phase start, this foot Daemon Prince model may gain a 3+ invulnerable save this phase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "virulent-blessing-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "In the Fight phase, Rotigus may select up to one visible enemy within 24″; friendly NURGLE LEGIONES DAEMONICA attacks against that enemy gain +1 Damage this phase. Source gap: no exact activation event or repeat-use limit is supplied; confirm target-selection timing and attack scope.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "warp-rifts-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "A friendly LEGIONES DAEMONICA unit using Deep Strike can set up more than 6″ from enemies if wholly within Shadow of Chaos, or wholly within 6″ of a friendly Bloodthirster, Great Unclean One, Kairos, Keeper of Secrets, Lord of Change, Rotigus, Shalaxi or Skarbrand sharing its god keyword. Source conflict: the approximate note says those gates are absent, while the effect includes them and performs setup again after setup triggers; confirm the strict distance boundary and replacement timing.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "arrivals"
+  },
+  {
+    "id": "warp-surge-daemonic-incursion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "The selected friendly LEGIONES DAEMONICA unit may charge after Advancing this phase, subject to the core Shadow of Chaos active-state gate. Source review: that gate tests the army rule’s active state rather than whether this unit is in the Shadow region; confirm the required position.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "warp-riders-cavalcade-of-chaos-chaos-daemons",
+    "state": "structured",
+    "summary": "When the selected friendly LEGIONES DAEMONICA MOUNTED unit is selected to move, it gains MOBILE this phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "wrath-undeniable-blood-legion-chaos-daemons",
+    "state": "needs-summary",
+    "summary": "When the selected friendly KHORNE LEGIONES DAEMONICA unit is targeted, models destroyed by melee may fight on D6 4+ after the attacker finishes, then are removed after fighting. Source conflict: the not-yet-fought condition tests event-subject instead of the defending unit; confirm eligibility before resolving fight-on-death.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "xiratps-sorcerous-barrages-chaos-daemons",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, roll D6 for each enemy within 6″ of this Blue Scribes model: 1 does nothing; 2–3 deals 1 mortal wound; 4–5 deals D3; 6 deals D6.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  }
+]
