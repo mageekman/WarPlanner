@@ -1,5 +1,12 @@
 # Research references and credits
 
+Adeptus Custodes readiness audit: original concise study summaries derived from
+the preserved user-imported 40kdc mechanics and the [pinned Custodes core index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/adeptus-custodes),
+Alpaca Software and community contributors, CC BY 4.0. Changes include timing,
+targets, bearer restrictions, explicit readiness consumption and named source
+conflicts. Imported mechanics and reference flags are preserved. This is not
+official rules verification; see `AUDIT-CUSTODES.md` and `docs/LICENSE-40KDC-DATA.txt`.
+
 Powered by [40kdc-data](https://40kdc.alpacasoft.dev).
 
 Community mechanics by Alpaca Software and the 40kdc community contributors were consulted under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), pinned to [commit 6ea813f](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b). Changes for this companion: selected roster scope, independently written study summaries and questions, explicit timing windows, and a correction to the token reminder’s Character exclusion and per-token limit from the official update. The upstream software and full dataset are not bundled; selected structured source snapshots used for study notes and regression fixtures are included under the same attribution and license. License notice: `docs/LICENSE-40KDC-DATA.txt`.
