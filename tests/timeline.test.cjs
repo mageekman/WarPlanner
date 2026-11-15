@@ -47,3 +47,25 @@ test('editing an imported ability without a sourceRuleId makes its saved placeme
  const army={faction:'Aeldari',detachments:['Warhost'],units:[{id:'autarch-one',name:'Autarch',details:[],role:'',group:''}]},state={phase:2,turn:'you',firstPlayer:'you',army},unit=A.units(army)[0];
  assert.ok(A.stages(state,unit,'shooting').find(s=>s.id==='after').cards.some(a=>a.id===saved.data.id));const deck=A.flashcards(state,A.steps(state).find(s=>s.activationMode==='shooting'));assert.ok(deck.unitCards.some(c=>c.items.some(a=>a.id===saved.data.id)));
 });
+
+test('detachment selection narrows timed and reference rules while retaining army-wide content and units',()=>{
+ const rows=[rule('army-wide',{detachment:'',phase:[2]}),rule('only-alpha',{detachment:'Alpha'}),rule('only-beta',{detachment:'Beta'}),rule('beta-reference',{detachment:'Beta',phase:[],window:'prebattle'}),rule('alpha-reference',{detachment:'Alpha',phase:[],window:'prebattle'}),...['Alpha','Beta'].map(name=>({...structuredClone(seed.find(r=>r.kind==='detachment')),key:'detachment:timeline-'+name,name,faction:'Aeldari',data:{...structuredClone(seed.find(r=>r.kind==='detachment').data),id:'timeline-'+name,name,rules:[],stratagems:[],enhancements:[]}}))];
+ C.apply(rows);const full=T.build(rows,{faction:'Aeldari'}),filtered=T.build(rows,{faction:'Aeldari',detachment:'Alpha'}),ids=new Set(filtered.index.map(r=>r.key));
+ assert.ok(full.index.some(r=>r.key==='rule:only-beta'));assert.equal(full.detachment,'');assert.equal(filtered.detachment,'Alpha');assert.ok(filtered.detachments.includes('Alpha'));assert.ok(filtered.detachments.includes('Beta'));
+ for(const key of ['rule:army-wide','rule:only-alpha','rule:alpha-reference','detachment:timeline-Alpha'])assert.ok(ids.has(key),key);
+ for(const key of ['rule:only-beta','rule:beta-reference','detachment:timeline-Beta'])assert.ok(!ids.has(key),key);
+ assert.ok(filtered.index.some(r=>r.kind==='unit'));assert.ok(slots(filtered).every(s=>s.items.every(x=>x.row.key!=='rule:only-beta')));assert.ok(!filtered.reference.items.some(x=>x.row.key==='rule:beta-reference'));
+});
+test('shared detachment memberships use the selected faction and retain unrestricted memberships',()=>{
+ const rows=[rule('shared-scope',{detachment:'',memberships:[{faction:'Aeldari',detachments:['Alpha','Beta']},{faction:'Space Marines',detachments:['Gamma']}]}),rule('unrestricted-scope',{detachment:'',memberships:[{faction:'Aeldari',detachments:[]},{faction:'Space Marines',detachments:['Gamma']}]})];
+ C.apply(rows);const options=T.build(rows,{faction:'Aeldari',query:'unmatched',selectedTypes:[]}).detachments;assert.ok(options.includes('Alpha')&&options.includes('Beta'));assert.ok(!options.includes('Gamma'));
+ assert.ok(T.build(rows,{faction:'Aeldari',detachment:'Beta'}).index.some(r=>r.key==='rule:shared-scope'));
+ const alpha=rule('alpha-anchor',{detachment:'Other'});rows.push(alpha);C.apply(rows);const other=T.build(rows,{faction:'Aeldari',detachment:'Other'});assert.ok(!other.index.some(r=>r.key==='rule:shared-scope'));assert.ok(other.index.some(r=>r.key==='rule:unrestricted-scope'));
+ const marines=T.build(rows,{faction:'Space Marines',detachment:'Gamma'});assert.ok(marines.index.some(r=>r.key==='rule:shared-scope'));assert.ok(!marines.detachments.includes('Alpha'));
+});
+test('detachment options include scoped rules without a folder and reset stale choices safely',()=>{
+ const rows=[rule('orphan-detachment',{detachment:'Unlisted detachment'})];C.apply(rows);
+ assert.ok(T.build(rows,{faction:'Aeldari',query:'missing',selectedTypes:['unit']}).detachments.includes('Unlisted detachment'));
+ const unknown=T.build(rows,{faction:'Aeldari',detachment:'Deleted detachment'});assert.equal(unknown.detachment,'');assert.ok(unknown.index.some(r=>r.key===rows[0].key));
+ const disabled={...rule('disabled-scope',{detachment:'Disabled detachment'}),enabled:false};assert.ok(!T.build([disabled],{faction:'Aeldari'}).detachments.includes('Disabled detachment'));assert.ok(T.build([disabled],{faction:'Aeldari',showDisabled:true}).detachments.includes('Disabled detachment'));
+});
