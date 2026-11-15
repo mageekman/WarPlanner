@@ -1,6 +1,7 @@
 """Create a directly openable single-file prototype and a source archive."""
 from pathlib import Path
 import zipfile
+import base64
 
 root = Path(__file__).resolve().parents[1]
 html = (root / 'dist/index.html').read_text()
@@ -19,6 +20,8 @@ end=html.index('<div id="app" hidden></div>', start)
 html=html[:start]+html[end:].replace('<div id="app" hidden></div>', '<div id="app"></div>', 1)
 html = html.replace('Sign out</button>', 'Offline edition</button>')
 html = html.replace('</body>', ''.join('<script>' + (root / ('dist/' + name)).read_text() + '</script>' for name in ['core.js', 'aeldari-data.js', 'lessons.js', 'activations.js', 'list-builder.js', 'unit-profiles.js', 'study-cards.js', 'practice.js', 'practice-ui.js', 'app.js']) + '</body>')
+logo = 'data:image/png;base64,' + base64.b64encode((root / 'dist/warplanlogowht.png').read_bytes()).decode('ascii')
+html = html.replace('src="warplanlogowht.png"', 'src="' + logo + '"')
 (root / 'warplanner.html').write_text(html)
 with zipfile.ZipFile(root / 'warplanner-source.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
     for path in sorted(root.rglob('*')):
