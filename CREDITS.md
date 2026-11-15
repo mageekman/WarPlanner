@@ -61,3 +61,7 @@ Aeldari current-import refresh: reuses the previously attributed original study 
 ### Space Marines and chapter study audit (2026-11-14)
 
 The pinned source tables in `tests/fixtures/marines-audit-sources.json` are adapted from [wn-mitch/40kdc-data](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b), commit `6ea813f7706bc9a492026d8b4403af99a965162b`, under CC BY 4.0. `scripts/marines-study-notes.json` contains original study wording derived from those structured records. The audit covers Adeptus Astartes and its eleven supplied chapter folders, preserves locally saved source variants, and identifies incomplete/conflicting source mechanics. See `AUDIT-SPACE-MARINES.md` for scope and limitations. These notes are unofficial and do not replace current published rules.
+
+### Orks study audit (2026-11-14)
+
+Original concise study wording derived from the preserved user-imported Orks mechanics and [pinned 40kdc Orks source](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/orks), Alpaca Software and the 40kdc community contributors, CC BY 4.0. Changes include readable descriptions, phase/turn placement, core target restrictions, retained variants and explicit source-gap explanations. Structured snapshots are retained in audit fixtures. No official rules verification is claimed. See `AUDIT-ORKS.md` and `docs/LICENSE-40KDC-DATA.txt`.

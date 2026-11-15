@@ -337,3 +337,7 @@ Unresolved entries are visible in Workshop summary-coverage filters and excluded
 from practice questions. See [AUDIT-CUSTODES.md](AUDIT-CUSTODES.md) for the review
 list and revision-checked repair workflow. Imported sources, stat profiles,
 reference flags and saved lists are preserved.
+
+## Orks readiness audit (2026-11-14)
+
+Audited all 209 Orks rules across 60 units, 69 stat profiles and 16 detachments. There are 148 usable study summaries, 59 specific source issues and two empty Psyker records. Waaagh! remains explicitly provisional, and Try Dat Button retains its source-conflict warning. Bomb Squig variants keep their distinct one/two-use allowances. Unresolved entries stay out of practice; original sources, flags, memberships and saved lists are preserved. See [AUDIT-ORKS.md](AUDIT-ORKS.md).
