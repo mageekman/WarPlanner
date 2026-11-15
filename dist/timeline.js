@@ -1,0 +1,116 @@
+/* Faction-wide guide map and revision-checked Workshop editor. */
+(function(root){
+ 'use strict';
+ const node=typeof module!=='undefined'&&module.exports;
+ const L=node?require('./lessons.js'):root.WarPlanLessons,A=node?require('./activations.js'):root.WarPlanActivations;
+ const C=node?require('./content.js'):root.WarPlannerContent,M=node?require('./mechanics.js'):root.WarPlannerMechanics,P=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles;
+ const copy=v=>structuredClone(v),norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const types={ability:'Unit abilities',army:'Army & detachment rules',stratagem:'Stratagems',enhancement:'Enhancements',core:'Core rules',unit:'Units',detachment:'Detachments'};
+ const windows={round:'Start of battle round','turn-start':'Start of turn',start:'Start of phase','core-cp':'Gain Command Points',shock:'Battle-shock',act:'During the phase',select:'When selected',before:'Before acting',after:'After acting',react:'Reaction to an event',arrivals:'Reinforcements / arrivals',end:'End of phase','turn-end':'End of turn','round-end':'End of battle round',prebattle:'Pre-battle / reference'};
+ const visible=r=>!r.data.sharedRuleId&&!r.data.sharedUnitId;
+ const inFaction=(r,faction)=>r.faction==='*'||(r.kind==='unit'?r.data.unitMemberships:r.data.memberships||null)?.some(m=>m.faction==='*'||L.factionMatches(m.faction,faction))||L.factionMatches(r.faction,faction);
+ function build(records,{faction,turn='both',selectedTypes=Object.keys(types),query='',showDisabled=false}={}){
+  const byKey=new Map(C.seed().map(r=>[r.key,{...r,revision:0}]));for(const r of records)byKey.set(r.key,r);
+  const source=[...byKey.values()].filter(r=>visible(r)&&inFaction(r,faction)&&(r.enabled||showDisabled)),rules=source.filter(r=>r.kind==='rule'),units=source.filter(r=>r.kind==='unit'),detachments=source.filter(r=>r.kind==='detachment');
+  const type=r=>r.kind==='rule'?r.data.category:r.kind;
+  const matches=r=>selectedTypes.includes(type(r))&&(!query.trim()||[r.name,r.data.summary,r.data.detachment,...(r.data.units||[])].join(' ').toLowerCase().includes(query.trim().toLowerCase()));
+  const runtime=new Map(L.abilities.filter(a=>a.faction==='*'||L.factionMatches(a.faction,faction)).map(a=>[a.id,a]));
+  const item=row=>({row,view:row.kind==='rule'?runtime.get(row.data.id)||M.enrich({...row.data,faction:row.faction}):row.data,type:type(row)});
+  const unitRefs=new Map(),unitNames=new Map(),detRefs=new Map(),detNames=new Map();
+  const link=(map,key,row)=>{if(!map.has(key))map.set(key,[]);map.get(key).push(row);};
+  for(const unit of units){link(unitNames,norm(unit.name),unit);const member=unit.data.unitMemberships?.find(m=>L.factionMatches(m.faction,faction));for(const ref of member?.abilities||unit.data.abilities||[])link(unitRefs,ref.id,unit);}
+  for(const det of detachments){link(detNames,norm(det.name),det);for(const ref of [...(det.data.rules||[]),...(det.data.stratagems||[]),...(det.data.enhancements||[])])link(detRefs,ref,det);}
+  const turns=turn==='both'?['you','opponent']:[turn],placed=new Set(),index=new Map();
+  function put(slot,row){if(!matches(row)||slot.items.some(x=>x.row.key===row.key))return;slot.items.push(item(row));index.set(row.key,row);}
+  const phases=L.phases.map((phase,p)=>({name:phase.name,phase:p,lanes:turns.map(player=>{
+   const state={phase:p,turn:player,firstPlayer:'you',army:{faction,units:[],detachments:detachments.map(d=>d.name)}},steps=A.steps(state).map(step=>{
+    const row=byKey.get('step:'+step.id)||{key:'step:'+step.id,kind:'step',faction:'*',name:step.title,data:copy(step),enabled:true,revision:0};
+    const result={id:step.id,title:step.title,body:step.body,row,step,items:[],slots:[]};
+    if(step.activationMode){
+     const dummy={members:[],leaders:[],body:{name:'',details:[]},attached:false};
+     result.slots=A.stages(state,dummy,step.activationMode).map(s=>({id:s.id,title:s.title,body:s.hint,items:[]}));
+    }
+    return result;
+   });
+   const extra={id:'event-windows',title:'Other event windows',body:'Follow the rule’s exact trigger. These events do not add a mandatory step.',items:[],slots:[]};
+   for(const row of rules){const a=runtime.get(row.data.id)||M.enrich({...row.data,faction:row.faction});if(!a.phase?.includes(p)||a.turn!=='either'&&a.turn!==player||a.window==='prebattle')continue;
+    if(a.window==='round'&&(p!==0||player!=='you')||a.window==='round-end'&&(p!==4||player!=='opponent'))continue;
+    let target=steps.find(s=>s.step.window===a.window&&!s.step.activationMode);
+    const activation=steps.find(s=>s.step.activationMode&&!['pile','consolidate'].includes(s.step.activationMode));
+    if(activation&&['act','select','before','react','after','arrivals'].includes(a.window)){
+     const slots=activation.slots;
+     target=a.window==='after'?slots.at(-1):['select','before','arrivals'].includes(a.window)?slots[0]:slots.find(s=>s.id==='attacks')||slots[0];
+    }
+    if(!target&&a.window==='react')target=steps.find(s=>s.step.window==='act');
+    target=target||extra;placed.add(row.key);put(target,row);
+    // Ownership is catalog-wide here: roster, detachment and equipment gates
+    // remain visible as conditions rather than filtering entries out of the map.
+    for(const name of a.units||[])for(const unit of unitNames.get(norm(name))||[])put(target,unit);
+    for(const id of [a.id,a.sourceRuleId,...(a.sharedRuleIds||[])]){for(const unit of unitRefs.get(id)||[])put(target,unit);for(const det of detRefs.get(id)||[])put(target,det);}
+    for(const name of L.ruleDetachments(a,faction))for(const det of detNames.get(norm(name))||[])put(target,det);
+   }
+   if(extra.items.length)steps.push(extra);
+   const priorities=new Map();
+   for(const step of steps)for(const slot of [step,...step.slots]){
+    for(const x of slot.items){if(!priorities.has(x.row.key))priorities.set(x.row.key,x.row.kind==='rule'?L.ruleGuideMeta(x.view,state):L.guideMeta(x.view,x.row.kind,state));x.guide=priorities.get(x.row.key);}
+    slot.items.sort((a,b)=>a.guide.priority-b.guide.priority||a.row.name.localeCompare(b.row.name));
+   }
+   return {turn:player,label:player==='you'?'Your turn':'Opponent’s turn',steps};
+  })}));
+  const reference={id:'reference',title:'Pre-battle / reference / no phase assigned',items:[]};
+  for(const row of [...rules,...units,...detachments])if(!placed.has(row.key)&&matches(row)&&!index.has(row.key)&&(row.kind!=='rule'||turn==='both'||row.data.turn==='either'||row.data.turn===turn))put(reference,row);
+  return {faction,phases,reference,index:[...index.values()].sort((a,b)=>a.name.localeCompare(b.name))};
+ }
+ function capture(row,fd,validate=true){
+  const result=copy(row),d=result.data,get=k=>String(fd.get(k)||'').trim(),lines=k=>get(k).split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  result.name=get('name');if(result.kind==='step'){d.title=result.name;d.body=get('body');d.why=get('why');}
+  else d.name=result.name;
+  if(result.kind==='rule'){
+   const summary=get('summary');if(summary!==d.summary)delete d.mechanicsPresentation;d.summary=summary;d.targetText=get('targetText');d.conditions=lines('conditions');
+   d.phase=fd.getAll('phase').map(Number);d.turn=get('turn');d.window=get('window');d.category=get('category');d.units=lines('units');d.referenceOnly=fd.has('referenceOnly');d.expanded=true;d.adminManaged=true;d.status='admin-reviewed';
+  }else if(result.kind==='unit'){
+   d.profiles=P.read(d).map((profile,i)=>{const next={...profile,name:get('profile-'+i+'-name')||profile.name};for(const f of P.fields)next[f.key]=P.parse(fd.get('profile-'+i+'-'+f.key),f.key);return next;});
+   d.modelCounts=get('modelCounts').split(',').map(s=>Number(s.trim()));d.keywords=lines('keywords');
+  }else if(result.kind==='detachment')d.description=get('description');
+  if(result.kind!=='step')d.guide={...L.guideSettings(d,result.kind),order:get('guideOrder'),rank:Number(get('guideRank')),note:get('guideNote')};
+  result.enabled=result.kind==='step'||fd.has('enabled');if(validate)C.validate(result);return result;
+ }
+ const api={build,capture,types,windows};if(node){module.exports=api;return;}
+ let service=null,active=false,faction='',turn='both',selectedTypes=['ability','army','stratagem','enhancement','core'],query='',showDisabled=false,selected=null,draft=null,dirty=false,busy=false,message='',error='',snapshot=null,snapshotVersion=null,cached=null,searchTimer=null;
+ const opened=new Set();
+ let hoveredKey=null,focusedKey=null;
+ function records(){if(!snapshot||snapshotVersion!==service.version){snapshot=service.records;snapshotVersion=service.version;cached=null;}return snapshot;}
+ function model(){const rows=records(),key=JSON.stringify([C.generation,faction,turn,selectedTypes,query,showDisabled]);if(cached?.key!==key)cached={key,value:build(rows,{faction,turn,selectedTypes,query,showDisabled})};return cached.value;}
+ const options=(values,current)=>values.map(([value,label])=>`<option value="${e(value)}" ${value===current?'selected':''}>${e(label)}</option>`).join('');
+ function field(name,label,value,area=false){return `<label class="timeline-field">${e(label)}${area?`<textarea name="${name}" rows="4">${e(value)}</textarea>`:`<input name="${name}" value="${e(value)}">`}</label>`;}
+ function select(name,label,values,current){return `<label class="timeline-field">${e(label)}<select name="${name}">${options(values,current)}</select></label>`;}
+ function card(x,instance){const r=x.row,d=x.view;return `<article class="timeline-card ${!r.enabled?'timeline-disabled':''}" data-timeline-item="${e(r.key)}"><button type="button" class="timeline-edit" data-timeline-edit="${e(r.key)}" aria-label="Edit ${e(r.name)}" title="Edit ${e(r.name)}">✎</button><details data-timeline-open="${e(instance)}" ${opened.has(instance)?'open':''}><summary data-timeline-hover="${e(r.key)}"><strong>${e(r.name)}</strong><small>${e(types[x.type]||x.type)}${x.guide?.order&&x.guide.order!=='normal'?' · '+e(x.guide.label||x.guide.order):''}${d.referenceOnly?' · Reference only':''}${!r.enabled?' · Disabled':''}</small></summary><div class="timeline-card-body"><p>${e(d.summary||d.description||(r.kind==='unit'?'Shared unit profile and chapter-specific ability links.':''))}</p>${d.targetText?`<p><strong>Targets:</strong> ${e(d.targetText)}</p>`:''}${d.detachment?`<p>Detachment: ${e(d.detachment)}</p>`:''}${d.memberships?`<p>Memberships: ${e(d.memberships.filter(m=>m.faction==='*'||L.factionMatches(m.faction,faction)).flatMap(m=>m.detachments).join(', ')||'Faction-wide')}</p>`:''}${d.phase?`<p>${e(windows[d.window]||d.window)} · ${e(d.turn)} turn</p>`:''}${d.conditions?.length?`<ul>${d.conditions.map(c=>`<li>${e(c)}</li>`).join('')}</ul>`:''}${d.units?.length?`<p>Units: ${e(d.units.join(', '))}</p>`:''}${x.guide?.note?`<p>${e(x.guide.note)}</p>`:''}</div></details></article>`;}
+ function slotHTML(slot,id){return `<section class="timeline-slot"><h4>${e(slot.title)}</h4>${slot.body?`<p class="timeline-hint">${e(slot.body)}</p>`:''}${slot.items.map(x=>card(x,id+':'+x.row.key)).join('')||'<p class="timeline-empty">No matching entries.</p>'}</section>`;}
+ function inspector(m){
+  if(!draft)return `<h2>Guide content</h2><p>Hover or focus a title to highlight every matching timeline card. Use ✎ to edit.</p><div class="timeline-index">${m.index.map(r=>`<div class="timeline-index-row"><button type="button" data-timeline-locate="${e(r.key)}" data-timeline-hover="${e(r.key)}">${e(r.name)}<small>${e(r.data.detachment||(r.data.units||[]).join(', ')||types[r.data.category||r.kind]||r.kind)}</small></button><button type="button" data-timeline-edit="${e(r.key)}" aria-label="Edit ${e(r.name)}">✎</button></div>`).join('')||'<p>No content matches these filters.</p>'}</div>`;
+  const d=draft.kind==='rule'?M.enrich(draft.data):draft.data;
+  let fields=field('name',draft.kind==='step'?'Step title':'Name',draft.name);
+  if(draft.kind==='rule')fields+=field('summary','Rule text / study summary',d.summary,true)+field('targetText','Eligible targets',d.targetText||'',true)+field('conditions','Conditions & restrictions',(d.conditions||[]).join('\n'),true)+`<fieldset><legend>Phases</legend>${L.phases.map((p,i)=>`<label><input type="checkbox" name="phase" value="${i}" ${d.phase.includes(i)?'checked':''}>${e(p.name)}</label>`).join('')}</fieldset>`+select('turn','Player turn',[['you','Your turn'],['opponent','Opponent’s turn'],['either','Either turn']],d.turn)+select('window','Timing window',Object.entries(windows),d.window)+select('category','Type',Object.entries(L.categories),d.category)+field('units','Applies to unit names',(d.units||[]).join('\n'),true)+`<label><input name="referenceOnly" type="checkbox" ${d.referenceOnly?'checked':''}> Reference only</label>`;
+  else if(draft.kind==='unit')fields+=P.read(d).map((p,i)=>`<fieldset><legend>Profile ${i+1}</legend>${field('profile-'+i+'-name','Profile name',p.name)}<div class="timeline-stat-grid">${P.fields.map(f=>field('profile-'+i+'-'+f.key,f.label,p[f.key]??'')).join('')}</div></fieldset>`).join('')+field('modelCounts','Model counts (comma-separated)',d.modelCounts.join(', '))+field('keywords','Common keywords',d.keywords.join('\n'),true);
+  else if(draft.kind==='detachment')fields+=field('description','Study notes',d.description||'',true);
+  else fields+=field('body','Instructions',d.body,true)+field('why','Why this matters',d.why||'',true);
+  if(draft.kind!=='step'){const guide=L.guideSettings(d,draft.kind);fields+=select('guideOrder','Suggested activation order',[['normal','Normal'],['early','Early'],['late','Late']],guide.order)+field('guideRank','Priority within order',guide.rank)+field('guideNote','Guide order note',guide.note,true)+`<label><input name="enabled" type="checkbox" ${draft.enabled?'checked':''}> Enabled</label>`;}
+  return `<div class="timeline-editor-header"><h2 tabindex="0" data-timeline-hover="${e(draft.key)}">${e(draft.name)}</h2><button type="button" data-timeline-close-editor aria-label="Close editor">×</button></div><p><span id="timeline-draft-status">${dirty?'Unsaved changes':'Revision '+draft.revision}</span>${d.memberships||d.unitMemberships?' · Shared entry: saves affect every membership.':''}</p><p class="timeline-editor-error" role="alert">${e(error)}</p><form id="timeline-edit-form"><fieldset class="timeline-edit-fields" ${busy?'disabled':''}>${fields}<button type="submit" class="primary" ${busy?'disabled':''}>${busy?'Saving…':'Save to database'}</button><button type="button" class="outline" data-timeline-close-editor ${busy?'disabled':''}>Cancel</button></fieldset></form>`;
+ }
+ function flowHTML(m){return ['you','opponent'].filter(player=>m.phases[0].lanes.some(l=>l.turn===player)).map(player=>`<section class="timeline-turn"><h2>${player==='you'?'Your turn':'Opponent’s turn'}</h2><div class="timeline-phases">${m.phases.map(p=>{const lane=p.lanes.find(l=>l.turn===player);return `<section class="timeline-phase"><h2>${e(p.name)}</h2><section class="timeline-lane"><h3>${e(lane.label)}</h3>${lane.steps.map(step=>`<section class="timeline-step" ${step.row?`data-timeline-item="${e(step.row.key)}"`:''}><header><h4 ${step.row?`data-timeline-hover="${e(step.row.key)}"`:''}>${e(step.title)}</h4>${step.row?`<button type="button" data-timeline-step="${e(step.row.key)}" aria-label="Edit ${e(step.title)}">✎</button>`:''}</header>${step.items.map(x=>card(x,p.phase+lane.turn+step.id+x.row.key)).join('')}${step.slots.map(slot=>slotHTML(slot,p.phase+lane.turn+step.id+slot.id)).join('')}${!step.items.length&&!step.slots.length?`<p class="timeline-hint">${e(step.body||'Core sequence')}</p>`:''}</section>`).join('')}</section></section>`;}).join('')}</div></section>`).join('');}
+ function render(){if(!service?.isAdmin)return '<p>Administrator access required.</p>';const m=model();return `<section id="workshop-timeline"><header class="heading"><div><div class="eyebrow">RULES WORKSHOP</div><h1>Guide timeline</h1><p>All units, detachments and equipment for this faction. List eligibility is not applied. Expand a card to inspect its conditions.</p></div><button type="button" class="outline" data-timeline-exit>Back to Workshop</button></header><div class="timeline-controls"><label>Faction<select id="timeline-faction" ${busy?'disabled':''}>${options(L.catalog.factions.map(f=>[f.name,f.name]),faction)}</select></label><label>Turn<select id="timeline-turn" ${busy?'disabled':''}>${options([['both','Full round'],['you','Your turn'],['opponent','Opponent’s turn']],turn)}</select></label><label>Find content<input type="search" id="timeline-query" ${busy?'disabled':''} value="${e(query)}" placeholder="Rule, unit or detachment"></label><label><input id="timeline-disabled" ${busy?'disabled':''} type="checkbox" ${showDisabled?'checked':''}> Show disabled</label><fieldset><legend>Content types</legend>${Object.entries(types).map(([id,label])=>`<label><input name="timeline-type" type="checkbox" ${busy?'disabled':''} value="${id}" ${selectedTypes.includes(id)?'checked':''}>${e(label)}</label>`).join('')}</fieldset></div><p class="timeline-message" role="status">${e(error||message||'Full-round order shows your turn first. Event-driven rules still follow their exact triggers.')}</p><div class="timeline-layout"><div class="timeline-canvas" tabindex="0" aria-label="Phase flowchart">${flowHTML(m)}<section class="timeline-reference">${slotHTML(m.reference,'reference')}</section></div><aside class="timeline-inspector" aria-label="Timeline content and editor">${inspector(m)}</aside></div></section>`;}
+ function refresh(){const old=document.querySelector('.timeline-canvas'),left=old?.scrollLeft||0,top=old?.scrollTop||0;root.refreshWarPlannerContent?.();const next=document.querySelector('.timeline-canvas');if(next){next.scrollLeft=left;next.scrollTop=top;}}
+ function canLeave(){return !busy&&(!dirty||root.confirm('Discard your unsaved timeline edits?'));}
+ function highlight(key){for(const el of document.querySelectorAll('[data-timeline-item]'))el.classList.toggle('timeline-highlight',el.dataset.timelineItem===key);}
+ function selectRow(key){if(!canLeave())return;const row=records().find(r=>r.key===key)||C.seed().find(r=>r.key===key);if(!row)return;draft=copy(row);if(!records().some(r=>r.key===key))draft.revision=0;selected=key;dirty=false;error='';refresh();document.querySelector('.timeline-inspector')?.scrollIntoView({block:'nearest'});highlight(key);}
+ document.addEventListener('click',event=>{if(!active)return;const b=event.target.closest('button');if(!b)return;if(b.dataset.timelineEdit||b.dataset.timelineStep){selectRow(b.dataset.timelineEdit||b.dataset.timelineStep);return;}if(b.hasAttribute('data-timeline-close-editor')){if(canLeave()){draft=null;dirty=false;refresh();}return;}if(b.hasAttribute('data-timeline-exit')){if(canLeave()){active=false;draft=null;dirty=false;refresh();}return;}if(b.dataset.timelineLocate){highlight(b.dataset.timelineLocate);const target=[...document.querySelectorAll('[data-timeline-item]')].find(el=>el.dataset.timelineItem===b.dataset.timelineLocate);target?.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});}});
+ document.addEventListener('input',event=>{if(!active)return;if(event.target.closest('#timeline-edit-form')){dirty=true;const status=document.querySelector('#timeline-draft-status');if(status)status.textContent='Unsaved changes';return;}if(event.target.id==='timeline-query'){if(dirty&&draft)draft=capture(draft,new FormData(document.querySelector('#timeline-edit-form')),false);query=event.target.value;if(searchTimer)clearTimeout(searchTimer);searchTimer=setTimeout(()=>{searchTimer=null;if(!active)return;refresh();document.querySelector('#timeline-query')?.focus();},150);}});
+ document.addEventListener('change',event=>{if(!active)return;if(event.target.closest('#timeline-edit-form')){dirty=true;const status=document.querySelector('#timeline-draft-status');if(status)status.textContent='Unsaved changes';return;}if(!event.target.closest('.timeline-controls'))return;if(!canLeave()){if(event.target.id==='timeline-faction')event.target.value=faction;if(event.target.id==='timeline-turn')event.target.value=turn;if(event.target.id==='timeline-disabled')event.target.checked=showDisabled;if(event.target.name==='timeline-type')event.target.checked=selectedTypes.includes(event.target.value);return;}draft=null;dirty=false;if(event.target.id==='timeline-faction')faction=event.target.value;if(event.target.id==='timeline-turn')turn=event.target.value;if(event.target.id==='timeline-disabled')showDisabled=event.target.checked;if(event.target.name==='timeline-type')selectedTypes=[...document.querySelectorAll('[name="timeline-type"]:checked')].map(el=>el.value);refresh();});
+ document.addEventListener('submit',async event=>{if(event.target.id!=='timeline-edit-form'||!service?.isAdmin)return;event.preventDefault();if(busy)return;const current=service;try{draft=capture(draft,new FormData(event.target),false);C.validate(draft);busy=true;error='';refresh();const saved=await current.save(draft);if(service!==current)return;draft=saved;dirty=false;C.apply(current.records);cached=null;message='Saved. The timeline and guide now use this revision.';}catch(failure){if(service===current)error=failure.message;}finally{if(service===current){busy=false;refresh();highlight(selected);}}});
+ document.addEventListener('toggle',event=>{const key=event.target.dataset?.timelineOpen;if(key){if(event.target.open)opened.add(key);else opened.delete(key);}},true);
+ document.addEventListener('pointerover',event=>{if(!active)return;const el=event.target.closest('[data-timeline-hover]');if(el){hoveredKey=el.dataset.timelineHover;highlight(hoveredKey||focusedKey);}});
+ document.addEventListener('pointerout',event=>{if(!active)return;const el=event.target.closest('[data-timeline-hover]');if(!el||event.relatedTarget?.closest?.('[data-timeline-hover]')===el)return;hoveredKey=null;highlight(focusedKey);});
+ document.addEventListener('focusin',event=>{if(!active)return;focusedKey=event.target.closest('[data-timeline-hover]')?.dataset.timelineHover||null;highlight(hoveredKey||focusedKey);});
+ document.addEventListener('focusout',event=>{if(!active)return;focusedKey=event.relatedTarget?.closest?.('[data-timeline-hover]')?.dataset.timelineHover||null;highlight(hoveredKey||focusedKey);});
+ root.WarPlannerTimeline={render,canLeave,get active(){return active;},get hasDraft(){return dirty||busy;},open(initial){faction=L.catalog.factions.some(f=>f.name===initial)?initial:L.catalog.factions.some(f=>f.name===faction)?faction:L.catalog.factions[0]?.name||'';active=true;draft=null;dirty=false;cached=null;},leave(){active=false;draft=null;dirty=false;},setService(next){hoveredKey=null;focusedKey=null;if(searchTimer)clearTimeout(searchTimer);searchTimer=null;faction='';turn='both';selectedTypes=['ability','army','stratagem','enhancement','core'];query='';showDisabled=false;service=next;active=false;draft=null;dirty=false;busy=false;snapshot=null;snapshotVersion=null;cached=null;selected=null;error='';message='';opened.clear();}};
+})(typeof window!=='undefined'?window:globalThis);

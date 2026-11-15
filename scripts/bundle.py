@@ -9,6 +9,7 @@ html = html.replace('<script defer src="core.js"></script>', '').replace('<scrip
 html = html.replace('<script defer src="app.js"></script>', '').replace('<script defer src="list-builder.js"></script>', '')
 html = html.replace('<script defer src="lessons.js"></script>', '').replace('<script defer src="aeldari-data.js"></script>', '')
 html = html.replace('<script defer src="activations.js"></script>', '').replace('<script defer src="content.js"></script>', '').replace('<script defer src="unit-profiles.js"></script>', '').replace('<script defer src="mechanics.js"></script>', '').replace('<script defer src="aeldari-audit.js"></script>', '').replace('<script defer src="rule-summaries.js"></script>', '').replace('<script defer src="rule-notes.js"></script>', '').replace('<script defer src="admech-notes.js"></script>', '').replace('<script defer src="admin.js"></script>', '').replace('<script defer src="workshop-browser.js"></script>', '').replace('<script defer src="rules-import.js"></script>', '').replace('<script defer src="import-ui.js"></script>', '')
+html = html.replace('<script defer src="timeline.js"></script>', '')
 html = html.replace('<script defer src="study-cards.js"></script>', '')
 html = html.replace('<script defer src="practice.js"></script>', '').replace('<script defer src="practice-ui.js"></script>', '')
 html = html.replace('<script defer src="rule-reports.js"></script>', '').replace('<script defer src="report-ui.js"></script>', '')
