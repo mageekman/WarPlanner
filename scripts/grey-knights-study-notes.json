@@ -1,0 +1,1471 @@
+[
+  {
+    "id": "a-threat-ended-argent-assault-grey-knights",
+    "summary": "When a friendly unit with PALADIN SQUAD is selected to fight.\nThis unit’s melee weapons gain Precision.\nLasts for this phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "abominus-class-targets-sanctic-spearhead-grey-knights",
+    "summary": "Before selecting an eligible Grey Knights unit to shoot or fight, give it +1 to Wound rolls against MONSTER or VEHICLE units for that phase.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "aegis-eternal-warpbane-task-force-grey-knights",
+    "summary": "Aegis Eternal is an empty no-effect source record. Its effect and target restrictions are missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "aerial-assault-grey-knights",
+    "summary": "Units with Deep Strike that disembark from this transport after it made a Normal move this turn can still declare a charge.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "react",
+    "timings": [
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "react"
+      },
+      {
+        "phase": [
+          3
+        ],
+        "turn": "you",
+        "window": "select"
+      }
+    ]
+  },
+  {
+    "id": "aggressive-anticipation-augurium-task-force-grey-knights",
+    "summary": "Before selecting an eligible GREY KNIGHTS PSYKER unit to shoot or fight, it can re-roll any Hit rolls for that phase.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "ancients-banner-grey-knights",
+    "summary": "Add 1 to this unit’s Objective Control while its Ancient’s Banner equipment applies.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "apothecarys-narthecium-grey-knights",
+    "summary": "During your Command phase, while this model is on the battlefield, you may return one destroyed non-CHARACTER model to its unit.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "appointed-hour-augurium-task-force-grey-knights",
+    "summary": "Before selecting an eligible GREY KNIGHTS PSYKER unit to shoot or fight, its Hit rolls score Critical Hits on 5+ for that phase.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "argent-wrath-sanctic-spearhead-grey-knights",
+    "summary": "After a friendly GREY KNIGHTS VEHICLE finishes a Charge move, the source creates a 3″ enemy aura imposing Battle-shock tests at −1. It does not specify the aura’s test frequency or expiry clearly; confirm whether each enemy tests once at resolution.",
+    "state": "needs-summary",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "armoured-aegis-sanctic-spearhead-grey-knights",
+    "summary": "The saved Armoured Aegis heals 3 lost wounds on one model in the selected GREY KNIGHTS PSYKER VEHICLE unit in your Command phase. The pin says “per model” instead of “one-model”; preserve the saved single-model reading pending confirmation.",
+    "state": "needs-summary",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "armoured-resilience-grey-knights",
+    "summary": "Subtract 1 from the Damage of attacks against this Stormraven Gunship. Apply the normal Damage rules; this source does not state a separate minimum.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "assault-ramp-grey-knights",
+    "summary": "Units disembarking from this transport after it made a Normal move this turn can still declare a charge.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "react",
+    "timings": [
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "react"
+      },
+      {
+        "phase": [
+          3
+        ],
+        "turn": "you",
+        "window": "select"
+      }
+    ]
+  },
+  {
+    "id": "astral-overlap-upgrade-immaterial-interdiction-grey-knights",
+    "summary": "The selected Interceptor Squad upgrade grants that unit Stealth.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "attuned-onslaught-grey-knights",
+    "summary": "After this unit finishes a Charge move, its PALADIN SQUAD models add 1 to their melee weapons’ Damage for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "aura-of-vengeance-argent-assault-grey-knights",
+    "summary": "When an enemy selects the eligible PALADIN SQUAD as an attack target in the Fight phase, the attacker’s melee weapons gain Hazardous for that phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "banishing-wave-psychic-brotherhood-strike-grey-knights",
+    "summary": "When this bearer is set up using Deep Strike, roll a D6 for each enemy unit within 12″ of the bearer: 1 has no effect; 2–5 inflicts 1 mortal wound; 6 inflicts D3 mortal wounds on that enemy unit.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "blades-from-the-beyond-immaterial-interdiction-grey-knights",
+    "summary": "When an eligible INTERCEPTOR SQUAD is selected to fight, its melee weapons gain Lance for the phase if it completed a Charge move this turn.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "blessing-of-the-omnissiah-grey-knights",
+    "summary": "Once per turn in your Command phase, you may choose one friendly GREY KNIGHTS VEHICLE model within 3″ of this model. It regains D3 lost wounds and adds 1 to Hit rolls until your next Command phase.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "blinding-aura-brotherhood-strike-grey-knights",
+    "summary": "After the bearer is set up using Deep Strike, enemy units cannot target its unit with Fire Overwatch for the rest of that turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "boons-of-deimos-upgrade-fires-of-purgation-grey-knights",
+    "summary": "The selected Purgation Squad upgrade improves that unit’s ranged weapon Strength by 2.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "by-thought-alone-immaterial-interdiction-grey-knights",
+    "summary": "When the eligible INTERCEPTOR SQUAD performs an action in your Shooting phase, it can still shoot despite performing that action for the phase. This does not supply a general action-completion exception.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "celerity-banishers-grey-knights",
+    "summary": "The eligible GREY KNIGHTS INFANTRY PSYKER unit can declare a charge after Advancing this turn.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "champion-of-the-order-of-purifiers-grey-knights",
+    "summary": "While leading a unit, that unit’s ranged Purifying Flame weapons gain 1 Attack.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "channelled-force-grey-knights",
+    "summary": "When a friendly GREY KNIGHTS unit is selected to fight, you may roll 2D6 against its Leadership. On a result equal to or above its Leadership, choose Sustained Hits 1 or Lethal Hits for its Psychic melee weapons for this phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "chaos-bane-banishers-grey-knights",
+    "summary": "Before selecting an eligible GREY KNIGHTS PSYKER unit to shoot in your Shooting phase, its ranged weapons gain Anti-CHAOS 4+ for that phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "circle-of-sanctuary-banishers-grey-knights",
+    "summary": "At the start of the opponent’s Movement phase, select an eligible friendly GREY KNIGHTS CHARACTER model. Enemy units coming from Strategic Reserves cannot be set up within 12″ of that model for the phase. The source names Strategic Reserves specifically.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "clarion-of-haste-grey-knights",
+    "summary": "While leading a unit, that unit can declare a charge after advancing.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "combat-manifestation-brotherhood-strike-grey-knights",
+    "summary": "The source offers a 6″ minimum enemy setup distance and prohibits charging that turn. Its core eligibility says the Grey Knights unit has already been set up using Deep Strike this phase; confirm the timing before changing placement or treating this as another setup.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "combat-squad-grey-knights",
+    "summary": "When declaring battle formations, you may split this unit into two units of 5 models.",
+    "state": "structured",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "dauntless-champions-grey-knights",
+    "summary": "When a friendly PALADIN SQUAD is selected to fight, add 1 to Wound rolls where the attack’s Strength is lower than the defender’s Toughness. The saved duration is that phase, while the pin says permanent; do not treat this as an unconditional permanent bonus.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "doomseers-amulet-augurium-task-force-grey-knights",
+    "summary": "After an ingress move, you may select one visible enemy unit within 12″ of this bearer. It must take a Battle-shock test with a −1 modifier.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "driven-by-duty-sanctic-spearhead-grey-knights",
+    "summary": "Add 3″ to this bearer model’s Pile-in and Consolidation distances. Normal positioning and engagement requirements still apply.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "duty-before-all-grey-knights",
+    "summary": "Friendly GREY KNIGHTS TERMINATOR units can shoot and declare a charge after Falling Back.",
+    "state": "structured",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "duty-unending-brotherhood-strike-grey-knights",
+    "summary": "Duty Unending is an empty no-effect source record. Its effect and target restrictions are missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "echojump-grey-knights",
+    "summary": "After a friendly INTERCEPTOR SQUAD shoots in your Shooting phase, you may have it make a D6+1″ Surge move instead of using Personal Teleporters. Personal Teleporters is suppressed for this phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "ephemeral-tome-banishers-grey-knights",
+    "summary": "At the start of your Shooting phase, if the bearer’s unit is not engaged, it may make a D6″ Normal move. It cannot declare a charge for the rest of that turn.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "exigent-assignments-crowes-sanctifiers-grey-knights",
+    "summary": "Exigent Assignments is an empty no-effect source record. Its effect and target restrictions are missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "expeditious-exit-brotherhood-strike-grey-knights",
+    "summary": "At the end of the opponent’s Fight phase, place the selected friendly GREY KNIGHTS INFANTRY PSYKER unit into Strategic Reserves if it has Deep Strike.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "eye-of-judgement-grey-knights",
+    "summary": "This model can re-roll any Wound rolls.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "eye-of-the-augurium-hallowed-conclave-grey-knights",
+    "summary": "The source permits another Heroic Intervention use without consuming its shared use and includes a 1 CP discount. It supplies no trigger binding “the-triggering-use” to that discount; verify the event before applying a cost reduction.",
+    "state": "needs-summary",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "fire-focus-grey-knights",
+    "summary": "After this transport shoots in your Shooting phase, choose one enemy unit it hit. Once per turn, mark that target: friendly models that disembarked from this transport this turn improve their attacks’ AP against it by 1 for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "fires-of-covenant-warpbane-task-force-grey-knights",
+    "summary": "At the start of the opponent’s Movement phase, select the eligible GREY KNIGHTS INFANTRY unit. For that phase, after an enemy is set up or finishes a Normal, Advance or Fall Back move within 6″ of it, roll a D6; add 2 if the selected unit is wholly within Hallowed Ground. On 4+, that enemy suffers D3 mortal wounds.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "flames-of-sanctity-warpbane-task-force-grey-knights",
+    "summary": "Flames of Sanctity is an empty no-effect source record. Its effect and target restrictions are missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "focused-immolation-fires-of-purgation-grey-knights",
+    "summary": "When an eligible PURGATION SQUAD is selected to shoot, designate one enemy unit. For this phase, the squad’s ranged attacks against that designated target gain Devastating Wounds and Sustained Hits 1.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "foesight-grey-knights",
+    "summary": "Against CHARACTER units, this model can re-roll any Hit rolls.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "foesight-sanctifiers-castellan-crowe-grey-knights",
+    "summary": "Against CHARACTER units, this unit can re-roll any Hit rolls.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "force-edge-crowes-sanctifiers-brotherhood-terminator-squad-grey-knights",
+    "summary": "Improve this unit’s melee AP by 1 against targets that are neither MONSTER nor VEHICLE units.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "force-edge-grey-knights",
+    "summary": "Improve this unit’s melee AP by 1 against targets that are neither MONSTER nor VEHICLE units.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "force-wave-sanctic-spearhead-grey-knights",
+    "summary": "The source grants movement through all terrain while ignoring vertical distance, but triggers after a Normal, Advance or Charge move ends. Its core gate requires a unit not yet selected to move or choose charge targets; confirm when to apply this before using it to cross terrain.",
+    "state": "needs-summary",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "forewarned-evasion-augurium-task-force-grey-knights",
+    "summary": "When the eligible friendly GREY KNIGHTS WALKER unit is selected as an enemy attack target, subtract 1 from the attacker’s Hit rolls for that phase.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "fury-of-titan-grey-knights",
+    "summary": "When a friendly unit is set up using Deep Strike, it re-rolls Hit rolls of 1 and Wound rolls of 1 for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "gate-of-infinity-crowes-sanctifiers-grey-knights",
+    "summary": "If your army faction is Grey Knights, at the end of your opponent’s Fight phase you may place friendly units with this Gate of Infinity ability into Strategic Reserves: up to 2 in Incursion, 3 in Strike Force, or 4 in Onslaught. They must be on the battlefield and not engaged. They arrive in your next Movement phase, including in the first battle round. This version replaces the standard Gate of Infinity.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "timings": [
+      {
+        "phase": [
+          4
+        ],
+        "turn": "opponent",
+        "window": "end"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "arrivals"
+      }
+    ]
+  },
+  {
+    "id": "gate-of-infinity-grey-knights",
+    "summary": "At the end of the opponent’s Fight phase, the source offers up to 2/3/4 reserve selections for Incursion/Strike Force/Onslaught and arrival next Movement phase, including round 1. Its eligibility incorrectly names the Crowe’s Sanctifiers Gate of Infinity ability. Confirm the eligible units before using this as the standard army teleport rule.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "timings": [
+      {
+        "phase": [
+          4
+        ],
+        "turn": "opponent",
+        "window": "end"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "arrivals"
+      }
+    ]
+  },
+  {
+    "id": "giants-of-the-battlefield-hallowed-conclave-grey-knights",
+    "summary": "Before selecting the eligible GREY KNIGHTS TERMINATOR unit to fight, add 1 to its melee weapons’ Attacks for the phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "grimoire-of-conjunctions-augurium-task-force-grey-knights",
+    "summary": "Once per battle for the bearer, at the start of either player’s Fight phase, add 4 to that model’s melee weapon Strength for the phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "grind-them-underfoot-hallowed-conclave-grey-knights",
+    "summary": "After the eligible friendly GREY KNIGHTS TERMINATOR unit finishes a Charge move, select one enemy unit engaged with it. Roll one D6 for each model in the charging unit engaged with that enemy; each 4+ inflicts 1 mortal wound, to a maximum of 6.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "guardians-of-the-machine-grey-knights",
+    "summary": "After an enemy finishes a Charge move within 6″ of this unit and engages a friendly GREY KNIGHTS VEHICLE, you may use Heroic Intervention on this unit for 1 CP less. You can do this even if that Stratagem was already used this phase; it does not consume its shared use.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "guidance-of-the-ancients-crowes-sanctifiers-venerable-dreadnought-grey-knights",
+    "summary": "After this unit shoots in your Shooting phase, you may choose one enemy unit it hit with a ranged attack. Friendly GREY KNIGHTS models add 1 to ranged Hit rolls against that target for the rest of the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "guidance-of-the-ancients-grey-knights",
+    "summary": "After this unit shoots in your Shooting phase, choose one enemy unit it hit. Friendly GREY KNIGHTS models add 1 to Hit rolls against that target for the rest of the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "hallowed-beacon-warpbane-task-force-grey-knights",
+    "summary": "The source offers a 6″ minimum enemy setup distance for a non-TERMINATOR GREY KNIGHTS INFANTRY unit wholly within Hallowed Ground. Its core gate says the unit was already set up using Deep Strike this phase; verify placement timing rather than granting a second setup.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "hallowed-ground-grey-knights",
+    "summary": "Friendly GREY KNIGHTS re-roll Hit rolls of 1. PURIFIER SQUAD units, and units wholly within Hallowed Ground, can re-roll any Hit rolls instead. This applies to melee attacks and ranged attacks against targets the attacker can see.  Hallowed Ground includes: • Your deployment zone. • Within 6″ of friendly PURIFIER SQUAD units. • No Man’s Land and/or the enemy deployment zone if you control at least half the objectives in that territory at the start of the phase. Check each territory separately; it counts for that phase.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "haloed-in-soulfire-grey-knights",
+    "summary": "While the Librarian leads a unit, the source describes an 18″ attacker targeting condition using “may target”. It does not establish an “only within 18″” prohibition or identify the attack types restricted; verify the full targeting rule.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "hammer-aflame-grey-knights",
+    "summary": "When selected to fight, you may choose one enemy unit engaged with this unit and roll a D6: 1 — nothing; 2–3 — 1 mortal wound; 4–5 — D3 mortal wounds; 6 — D3+3 mortal wounds.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "hammerhand-grey-knights",
+    "summary": "While leading a unit, that unit’s melee weapons gain Lethal Hits.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "hexwrought-reprisal-banishers-grey-knights",
+    "summary": "Hexwrought Reprisal is an empty no-effect source record. Its effect and target restrictions are missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "indomitable-spirit-grey-knights",
+    "summary": "This model’s ranged weapons gain Assault. This model can declare a charge after advancing. This model can shoot after falling back. This model can declare a charge after falling back.",
+    "state": "structured",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "inescapable-judgement-psychic-hallowed-conclave-grey-knights",
+    "summary": "Inescapable Judgement (Psychic) is an empty no-effect source record. Its effect is missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "inspiring-exemplar-grey-knights",
+    "summary": "When this model destroys an enemy CHARACTER model in the Fight phase, gain 1 CP and add 1 to its melee Nemesis Force Weapon’s Attacks for the rest of the battle.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "interceptor-grey-knights",
+    "summary": "For ranged attacks against FLY units, add 1 to this model’s Hit rolls.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "litanies-of-sanctity-grey-knights",
+    "summary": "Once per battle for this unit, at the start of any phase, you may select one friendly Battle-shocked GREY KNIGHTS unit within 12″ of this Chaplain. That selected unit is no longer Battle-shocked; later tests still resolve normally.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "mailed-fist-grey-knights",
+    "summary": "When a friendly GREY KNIGHTS VEHICLE starts an Advance, use a fixed 6″ Advance for that phase. Its ranged weapons gain Assault for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "mandulian-reliquary-warpbane-task-force-grey-knights",
+    "summary": "While not Battle-shocked, this bearer model adds 3 to its Objective Control. This is a bearer bonus, not +3 for every model in the unit.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "might-of-titan-grey-knights",
+    "summary": "Once per battle for this unit, at the start of either player’s Fight phase, improve the Grand Master model’s melee weapon Attacks and Strength by 3 for that phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "mirage-of-echoes-augurium-task-force-grey-knights",
+    "summary": "After an enemy is set up in the opponent’s Movement phase, select an eligible friendly GREY KNIGHTS PSYKER unit within 12″ of that enemy and not engaged. If it has Deep Strike, place it into Strategic Reserves.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "necessary-end-augurium-task-force-grey-knights",
+    "summary": "Necessary End is an empty no-effect source record. Its effect and target restrictions are missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "nemesis-rounds-hallowed-conclave-grey-knights",
+    "summary": "When Fire Overwatch is used on the bearer’s unit, its Hit rolls succeed on 5+ for that resolution. This is tied to that Stratagem use.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "one-foot-in-the-future-augurium-task-force-grey-knights",
+    "summary": "After an ingress move, the bearer’s unit may make a D6″ Normal move. It cannot declare a charge for the rest of that turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "paragon-of-sanctity-warpbane-task-force-grey-knights",
+    "summary": "Once per battle for the bearer, at the start of any phase, choose one visible friendly GREY KNIGHTS unit within 18″. That selected unit counts as within Hallowed Ground for the phase; this does not extend the region to nearby units.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "personal-teleporters-grey-knights",
+    "summary": "After this unit shoots in your Shooting phase, if it is not engaged, you may make a 6″ Normal move as if it were your Movement phase. It cannot charge this turn.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "phial-of-the-abyss-warpbane-task-force-grey-knights",
+    "summary": "This unit gains Stealth.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "point-blank-purgation-hallowed-conclave-grey-knights",
+    "summary": "This unit’s ranged Storm Bolter weapons gain Pistol and Twin Linked. Lasts for this phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "precognicient-volleys-upgrade-fires-of-purgation-grey-knights",
+    "summary": "For Snap Shots, the selected Purgation Squad upgrade makes the unit’s Hit rolls succeed on 5+. Apply this only to attacks with that shooting type.",
+    "state": "structured",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "precognitive-strategies-hallowed-conclave-grey-knights",
+    "summary": "After an enemy finishes a Normal, Advance or Fall Back move in its Movement phase, select an eligible unengaged friendly GREY KNIGHTS INFANTRY unit within 8″ of that enemy. It can make a D6″ Normal move.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "predestined-coordinates-upgrade-immaterial-interdiction-grey-knights",
+    "summary": "The selected Interceptor Squad upgrade allows an ingress move in your Movement phase of battle round 1. This source supplies no extra setup-distance exception; apply the normal ingress restrictions.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "prescient-redeployment-grey-knights",
+    "summary": "From battle round 2, at the start of your Movement phase, this source uses unused Gate of Infinity selections from the previous opponent’s turn to reserve one previously eligible unit on the battlefield. That eligibility depends on the conflicting standard Gate of Infinity record; confirm it before choosing a unit.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "psi-reactive-ammunition-crowes-sanctifiers-grey-knights",
+    "summary": "When an eligible CROWE’S SANCTIFIERS unit is selected to shoot, its ranged Storm Bolter weapons gain Psychic for that phase. Use the Combat Patrol detachment’s actual unit eligibility.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "psychic-celerity-argent-assault-grey-knights",
+    "summary": "Add 1 to this unit’s Charge rolls.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "purgation-pattern-brotherhood-strike-grey-knights",
+    "summary": "Before the selected friendly Grey Knights unit shoots, its weapons gain Sustained Hits 1 for your Shooting phase. It must have been set up using Deep Strike this turn and not yet selected to shoot this phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "purifying-force-crowes-sanctifiers-grey-knights",
+    "summary": "Once per battle for your army, when the upgraded Crowe’s Sanctifiers Brotherhood Terminator unit is selected to fight after charging this turn, the saved effect gives its melee weapons Lethal Hits for the phase. The pin instead says permanent; preserve the saved temporary version pending confirmation.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "purity-of-purpose-brotherhood-strike-grey-knights",
+    "summary": "After the bearer is set up using Deep Strike, its unit can re-roll Charge rolls for the rest of that turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals",
+    "timings": [
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "arrivals"
+      },
+      {
+        "phase": [
+          3
+        ],
+        "turn": "you",
+        "window": "select"
+      }
+    ]
+  },
+  {
+    "id": "pyresoul-psychic-banishers-grey-knights",
+    "summary": "At the start of your Shooting phase, this bearer may select one visible enemy unit within 24″. That selected unit suffers D3 mortal wounds.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "quickening-foci-sanctic-spearhead-grey-knights",
+    "summary": "If the bearer disembarks during your Movement phase, its unit can re-roll Charge rolls for the rest of that turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "react",
+    "timings": [
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "react"
+      },
+      {
+        "phase": [
+          3
+        ],
+        "turn": "you",
+        "window": "select"
+      }
+    ]
+  },
+  {
+    "id": "radiant-champion-warpbane-task-force-grey-knights",
+    "summary": "The saved bearer’s melee weapons gain Precision; while the bearer is wholly within Hallowed Ground, each successful melee Wound roll inflicts 1 mortal wound on the defender. The pin omits the melee and triggering-model gates on the mortal-wound part; confirm those gates before use.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "redirected-strike-augurium-task-force-grey-knights",
+    "summary": "At the end of your Command phase, select the eligible friendly, unengaged GREY KNIGHTS PSYKER unit. If it has Deep Strike, place it into Strategic Reserves.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "redoubled-assault-sanctic-spearhead-grey-knights",
+    "summary": "After an eligible friendly GREY KNIGHTS VEHICLE unit finishes Falling Back in your Movement phase, it can shoot and declare a charge for the rest of that turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "refusal-to-yield-crowes-sanctifiers-grey-knights",
+    "summary": "When the eligible Crowe’s Sanctifiers STRIKE SQUAD is selected as an enemy attack target in the opponent’s Shooting phase, subtract 1 from the attacker’s Wound rolls for ranged attacks whose Strength exceeds the target’s Toughness, for that phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "repelling-sphere-warpbane-task-force-grey-knights",
+    "summary": "At the start of the opponent’s Charge phase, this source gives the selected GREY KNIGHTS INFANTRY unit a −1 charge penalty, or −2 if wholly within Hallowed Ground, when chosen as a charge target. That target-selection trigger may follow the charge roll in the current sequence; verify when the penalty applies.",
+    "state": "needs-summary",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "responsive-displacement-immaterial-interdiction-grey-knights",
+    "summary": "After an enemy Falls Back from the Interceptor Squad it engaged at phase start, this source offers the selected squad a D3+3″ Normal move if it is not engaged. The current-state test names “defender” despite this being a movement event; confirm which unit it checks.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "righteous-persecution-grey-knights",
+    "summary": "After this unit shoots in your Shooting phase, choose one enemy unit it hit, excluding MONSTER and VEHICLE units. Until the start of your next turn, subtract 2 from that unit’s Move and Charge rolls.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "sanctic-hood-grey-knights",
+    "summary": "While leading a unit, that unit has Feel No Pain 4+ against Psychic attacks.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "sanctic-reaper-hallowed-conclave-grey-knights",
+    "summary": "This model’s melee weapons gain 3 Attacks.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sanctified-auspexes-crowes-sanctifiers-grey-knights",
+    "summary": "This Combat Patrol Venerable Dreadnought upgrade permits one ranged Hit re-roll. The source does not state whether that one re-roll refreshes per attack sequence, phase or battle; confirm its allowance before use.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "sanctified-kill-zone-warpbane-task-force-grey-knights",
+    "summary": "Before selecting a friendly GREY KNIGHTS unit wholly within Hallowed Ground to shoot or fight, re-roll Wound rolls of 1 for that phase; a PURIFIER SQUAD can instead re-roll any Wound rolls.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "sanctifying-ritual-crowes-sanctifiers-strike-squad-grey-knights",
+    "summary": "At the end of your Command phase, an objective you control that this unit is within range of becomes sticky: you keep control after moving away.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "sanctifying-ritual-grey-knights",
+    "summary": "At the end of your Command phase, an objective you control that this unit is within range of becomes sticky: you keep control after moving away.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "sanctity-of-purpose-grey-knights",
+    "summary": "Re-roll Wound rolls of 1. Against a unit within range of an objective marker, you can re-roll any Wound rolls instead.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sanctuary-grey-knights",
+    "summary": "This unit gains Stealth. If the attack is melee, subtract 1 from the attacker’s Hit rolls.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "searing-soulflame-grey-knights",
+    "summary": "An enemy unit selected by a friendly PURGATION SQUAD’s Righteous Persecution must take a Battle-shock test with a −1 modifier.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "shadow-of-anarch-banishers-grey-knights",
+    "summary": "After an enemy finishes a Normal, Advance or Fall Back move in the opponent’s Movement phase, select an eligible unengaged friendly GREY KNIGHTS PSYKER unit within 8″ of that enemy. It makes a 6″ Normal move, then enters Strategic Reserves if it has Deep Strike. The source encodes these as sequential effects, not a choice between them.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "shield-of-prophecy-augurium-task-force-grey-knights",
+    "summary": "Once per battle for the bearer, at the start of a battle round, add 2 to its unit’s Toughness for that battle round.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "shining-resolve-hallowed-conclave-grey-knights",
+    "summary": "When an eligible friendly GREY KNIGHTS INFANTRY unit is targeted in the opponent’s Shooting phase, subtract 1 from the attacker’s Wound rolls where the attack’s Strength exceeds the defender’s Toughness, for that phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "shining-veil-brotherhood-strike-grey-knights",
+    "summary": "When the eligible friendly GREY KNIGHTS unit is selected as an enemy attack target in the opponent’s Shooting phase, it gains Stealth for that phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "sigil-of-exigence-sanctic-spearhead-grey-knights",
+    "summary": "Sigil of Exigence is an empty no-effect source record. Its effect is missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "sigil-of-the-hunt-banishers-grey-knights",
+    "summary": "During your Shooting phase, this unit can re-roll Hit rolls of 1.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "sixty-sixth-seal-banishers-grey-knights",
+    "summary": "During your Shooting phase, improve the bearer’s unit’s AP by 1.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "soul-locked-fires-of-purgation-grey-knights",
+    "summary": "The source triggers when a PURGATION SQUAD is selected to Fall Back in your Movement phase and grants permission to shoot only for that phase. It neither lasts into Shooting nor explicitly overrides Fall Back; verify the timing and permission instead of granting a free shot.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "spiritsear-fires-of-purgation-grey-knights",
+    "summary": "After an eligible PURGATION SQUAD shoots in your Shooting phase, choose one Battle-shocked enemy unit it hit. That selected enemy suffers D3+1 mortal wounds.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "spiritus-machina-sanctic-spearhead-grey-knights",
+    "summary": "When the bearer’s unit is selected to shoot in your Shooting phase, if it disembarked this turn, it can re-roll any Wound rolls for that phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "strafing-run-grey-knights",
+    "summary": "For ranged attacks against units without FLY, add 1 to this Stormtalon model’s Hit rolls.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "strike-from-the-warp-grey-knights",
+    "summary": "Strike from the Warp is an empty no-effect source record. Its effect is missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "surge-of-wrath-grey-knights",
+    "summary": "For melee attacks against MONSTER or VEHICLE units, this model can re-roll any Hit, Wound and Damage rolls.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "techmarine-grey-knights",
+    "summary": "This model has Lone Operative while within 3″ of a friendly GREY KNIGHTS VEHICLE.",
+    "state": "structured",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "thunderhawk-cluster-bombs-grey-knights",
+    "summary": "After a Normal move, you may choose one enemy unit this model moved over. Roll six D6; each 3+ deals 1 mortal wound to that unit.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "tome-of-forbidden-ways-brotherhood-strike-grey-knights",
+    "summary": "While this bearer is on the battlefield or in Strategic Reserves, the source adds one selection to standard Gate of Infinity. It does not fix that rule’s Crowe’s Sanctifiers eligibility mismatch; verify the recipient pool before using the extra selection.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "truesilver-aegis-argent-assault-grey-knights",
+    "summary": "When damage is allocated to the eligible PALADIN SQUAD, it gains Feel No Pain 4+ against mortal wounds for that phase.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "truesilver-aegis-grey-knights",
+    "summary": "Friendly GREY KNIGHTS units wholly within 6″ of this unit have Feel No Pain 6+ against mortal wounds.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "truesilver-channelling-brotherhood-strike-grey-knights",
+    "summary": "Before selecting the eligible GREY KNIGHTS INFANTRY unit to fight, its Psychic weapons gain Devastating Wounds for the Fight phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "truesilver-will-sanctic-spearhead-grey-knights",
+    "summary": "When damage is allocated to the eligible GREY KNIGHTS PSYKER VEHICLE unit, it gains Feel No Pain 4+ against mortal wounds for that phase.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "unending-fidelity-hallowed-conclave-grey-knights",
+    "summary": "Unending Fidelity is an empty no-effect source record. Its effect and target restrictions are missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "vigilance-of-titan-argent-assault-grey-knights",
+    "summary": "At the start of your Shooting phase, select one enemy unit within 12″ of the bearer’s unit and visible to the bearer. The source adds 6″ to that enemy’s “detection-range”, but does not say whose detection or targeting allowance changes; do not assume a Lone Operative bypass.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "warding-chant-banishers-grey-knights",
+    "summary": "Warding Chant is an empty no-effect source record. Its effect and target restrictions are missing; no complete study rule or activation timing can be inferred.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "warrior-strategist-grand-master-in-nemesis-dreadknight-grey-knights",
+    "summary": "Once per battle round for your army, one of your Stratagems targeting this unit costs 1 CP less.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "warrior-strategist-grey-knights",
+    "summary": "Once per battle round for your army, one of your Stratagems targeting this unit costs 1 CP less.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "zealous-path-grey-knights",
+    "summary": "While leading a unit, that unit can re-roll any Charge rolls.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  }
+]

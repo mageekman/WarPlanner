@@ -389,3 +389,7 @@ The final pass archives 2,439 rule copies and leaves 621 active Marine/chapter r
 The Guide prepares at most two neighboring pages during idle time and reuses the incoming page when a swipe completes. Account, catalog, roster, setup and viewport changes invalidate prepared pages. Swipe settlement scales with the distance remaining (60–140 ms); arrows use 140 ms. Unit-preview measurements are batched and reused while their dimensions and font metrics remain unchanged. Backward navigation, phase changes, completion markers, saved progress, reduced motion and cancellation retain their existing behavior.
 
 In a Chromium mobile check with a 20-unit Marine roster and 4× CPU throttling, warmed swipes completed in approximately 90–125 ms after release, compared with 620–730 ms before. The measured first-drag work dropped from hundreds of milliseconds to a few milliseconds. These measurements describe that browser check rather than a guarantee for every device.
+
+## Grey Knights readiness audit (2026-11-15)
+
+Audited all 134 rules across 30 units/profiles and 10 detachments: 105 usable summaries, 18 specific source issues and 11 empty-effect records. Corrected teleport/phase reminders, leading requirements, bearer restrictions and six incomplete squad-size selectors. Original sources, existing review flags, two saved summaries, stats, attachments and saved armies are preserved. All 29 unresolved entries remain outside practice pools. See [AUDIT-GREY-KNIGHTS.md](AUDIT-GREY-KNIGHTS.md) for the findings and guarded repair workflow.
