@@ -15,3 +15,24 @@ test('unit and detachment links find the actual editable rules and never cross f
 });
 
 test('Space Marines group comes first and only explicitly assigned factions move into it',()=>{const marine=row('faction','space-marines','Space Marines','',{group:'Space Marines'}),chapter=row('faction','blood-angels','Blood Angels','',{group:'Space Marines'});const grouped=W.factions([...records,marine,chapter]);assert.deepEqual(grouped.slice(0,3).map(f=>f.name),['Blood Angels','Space Marines','Grey Knights']);assert.equal(grouped.find(f=>f.name==='Grey Knights').group,'Imperium');});
+
+test('faction review filters detachments while retaining faction-wide rules and units',()=>{
+ const extra=[row('detachment','other','Other','Grey Knights'),row('rule','other-rule','Other Rule','Grey Knights',{detachment:'Other',category:'army'}),row('rule','army','Army Rule','Grey Knights',{category:'army'})];
+ const model=W.review([...records,...extra],{faction:'Grey Knights',detachment:'Warpbane Task Force'});
+ assert.deepEqual(model.detachmentNames,['Other','Warpbane Task Force']);assert.deepEqual(model.detachments.map(d=>d.row.name),['Warpbane Task Force']);assert.equal(model.units.length,1);assert.equal(model.armyRules[0].name,'Army Rule');assert.ok(!model.rules.some(r=>r.name==='Other Rule'));
+});
+test('faction review searches rule contents and retains the unit using a matching ability',()=>{
+ const model=W.review(records,{faction:'Grey Knights',query:'sanctifying'});assert.equal(model.units[0].row.name,'Strike Squad');assert.equal(model.units[0].rules[0].name,'Sanctifying Ritual');assert.equal(W.review(records,{faction:'Aeldari',query:'sanctifying'}).units.length,0);
+});
+test('core review contains global rules and stratagems without faction or guide-page leakage',()=>{
+ const coreStrat=row('rule','reroll','Command Re-roll','*',{category:'stratagem'});const model=W.review([...records,coreStrat],{faction:W.SHARED,detachment:'Warpbane Task Force'});assert.deepEqual(model.rules.map(r=>r.name),['Command Re-roll','Core rule']);assert.equal(model.units.length,0);assert.equal(model.detachment,'');
+});
+test('review resolves shared rule aliases and chapter-specific shared unit links once',()=>{
+ const shared=row('rule','shared','Shared Rule','Space Marines',{category:'ability',memberships:[{faction:'Blood Angels',detachments:['Gladius']}],sharedRuleIds:['old-blood']}),archive=row('rule','old-blood','Archived duplicate','Blood Angels',{sharedRuleId:'shared'}),unit=row('unit','shared-unit','Intercessors','Space Marines',{unitMemberships:[{faction:'Space Marines',abilities:[]},{faction:'Blood Angels',abilities:[{id:'old-blood'}]}]}),oldUnit=row('unit','old-unit','Archived unit','Blood Angels',{sharedUnitId:'shared-unit'});
+ const model=W.review([shared,archive,unit,oldUnit],{faction:'Blood Angels',detachment:'Gladius'});assert.equal(model.rules.length,1);assert.equal(model.units.length,1);assert.equal(model.units[0].rules[0].key,shared.key);assert.equal(W.review([shared,unit],{faction:'Space Marines'}).units[0].rules.length,0);
+});
+test('core source preparation keeps provisional references separate from audited faction data',()=>{
+ const source=require('./fixtures/core-review-source.json'),rows=require('../scripts/prepare-core-review.cjs').prepare(source),C=require('../dist/content.js');assert.equal(rows.length,26);assert.equal(rows.filter(r=>r.data.category==='stratagem').length,10);
+ for(const r of rows){assert.ok(r.key.startsWith('rule:core-'));assert.equal(r.faction,'*');assert.equal(r.data.referenceOnly,true);assert.equal(r.data.status,'source-reference');assert.equal(r.expectedRevision,0);C.validate(r);assert.ok(r.data.importSource.record);}
+ const model=W.review(rows,{faction:W.SHARED});assert.equal(model.rules.length,26);assert.deepEqual(rows.find(r=>r.data.sourceRuleId==='insane-bravery').data.importSource.stratagem.phases,['command']);assert.ok(rows.every(r=>!r.data.phase.length&&r.data.window==='prebattle'));
+});
