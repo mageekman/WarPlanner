@@ -103,23 +103,29 @@ function unitName(u){if(state.renames[u.id])return state.renames[u.id];const sam
 function scope(){return `${state.round}-${state.turn}-${state.phase}`;}
 function stepKey(i){const step=lessons().steps[i];return Library.revision+'-'+(state.firstPlayer||'you')+'-'+scope()+'-'+(step?step.id:i);}
 function lessons(){return {...Library.phases[state.phase],steps:Activations.steps(state)};}
-function fitUnitPreview(element){
- const full=element.dataset.fullPreview;
- if(!full||element.clientWidth<=0)return;
- element.textContent=full;
- const lineHeight=Number.parseFloat(getComputedStyle(element).lineHeight);
- if(Number.isFinite(lineHeight)&&element.scrollHeight>lineHeight*2+1)element.textContent='Multiple Units';
+let unitPreviewSizes=new WeakMap();
+function fitUnitPreviews(elements){
+ const pending=[];
+ for(const element of elements){const full=element.dataset.fullPreview,width=element.clientWidth;if(!full||width<=0)continue;const style=getComputedStyle(element),signature=JSON.stringify([full,width,style.font,style.lineHeight]),previous=unitPreviewSizes.get(element);if(previous?.signature===signature&&previous.text===element.textContent&&previous.height===element.scrollHeight)continue;pending.push({element,full,signature,lineHeight:Number.parseFloat(style.lineHeight)});}
+ // Batch writes and measurements so each preview does not force its own layout.
+ for(const row of pending)row.element.textContent=row.full;
+ const fitted=pending.map(row=>({...row,text:Number.isFinite(row.lineHeight)&&row.element.scrollHeight>row.lineHeight*2+1?'Multiple Units':row.full}));
+ for(const row of fitted)if(row.text!==row.full)row.element.textContent=row.text;
+ for(const row of fitted)unitPreviewSizes.set(row.element,{signature:row.signature,text:row.text,height:row.element.scrollHeight});
 }
-const unitPreviewObserver=typeof ResizeObserver==='function'?new ResizeObserver(entries=>entries.forEach(entry=>fitUnitPreview(entry.target))):null;
+function fitUnitPreview(element){fitUnitPreviews([element]);}
+const unitPreviewObserver=typeof ResizeObserver==='function'?new ResizeObserver(entries=>fitUnitPreviews(entries.map(entry=>entry.target))):null;
 function refreshUnitPreviews(){
  if(!document.querySelectorAll)return;
  unitPreviewObserver?.disconnect();
- for(const element of document.querySelectorAll('[data-unit-preview]')){fitUnitPreview(element);unitPreviewObserver?.observe(element);}
+ const elements=[...document.querySelectorAll('[data-unit-preview]')];fitUnitPreviews(elements);
+ for(const element of elements)unitPreviewObserver?.observe(element);
 }
 window.addEventListener?.('resize',refreshUnitPreviews);
-document.fonts?.ready?.then(refreshUnitPreviews);
-document.fonts?.addEventListener?.('loadingdone',refreshUnitPreviews);
-function render(focusLesson=false){const detPicker=$('#builder-detachment-picker');if(listEditor&&detPicker)listEditor.detachmentPickerOpen=detPicker.open;cancelGuideMotion();save();if(state.view==='admin'&&!window.WarPlannerAdminPage?.canAccess)state.view='guide';const nav=[['overview','⌂','Study home'],['guide','▤','Guided play'],['army','◇','My army'],['practice','✧','Practice'],...(window.WarPlannerAdminPage?.canAccess?[['admin','⚙','Rules workshop']]:[])];$('#app').innerHTML=`<div class="shell${state.sidebarCollapsed?' nav-collapsed':''}"><aside class="sidebar"><button type="button" class="sidebar-toggle" data-action="toggle-nav" aria-controls="site-navigation" aria-expanded="${!state.sidebarCollapsed}" aria-label="${state.sidebarCollapsed?'Expand navigation':'Collapse navigation'}" title="${state.sidebarCollapsed?'Expand navigation':'Collapse navigation'}">${state.sidebarCollapsed?'›':'‹'}</button><div class="brand"><img class="brand-logo" src="warplanlogowht.png" width="1268" height="1241" alt=""><span class="brand-text">WARPLANNER</span></div><div class="tagline">KNOW YOUR NEXT MOVE.</div><div class="nav-label">YOUR FIELD GUIDE</div><nav id="site-navigation" class="nav" aria-label="Main navigation">${nav.map(([id,icon,label])=>`<button data-view="${id}" aria-label="${label}" title="${label}" class="${state.view===id?'active':''}" ${state.view===id?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span><span class="nav-text">${label}</span>${id==='admin'?window.WarPlannerReports?.badgeHTML()||'':''}</button>`).join('')}<button type="button" data-auth-signout aria-label="Sign out" title="Sign out"><span class="nav-icon" aria-hidden="true">↪</span><span class="nav-text">Sign out</span></button></nav><div class="sidebar-bottom"><div class="private">◈ &nbsp; A personal study companion<br>Made for the way you learn.</div><div class="profile"><div class="avatar">WP</div><div><strong>Your study space</strong><small>Personal study · v0.28.5</small></div></div></div></aside><main><div id="list-sync-banner" class="list-sync-banner" ${cloudStatus==='error'?'':'hidden'} role="status"><span>Your lists have not saved to your account yet. Keep this page open and retry.</span><button type="button" data-action="retry-list-save">Retry</button></div>${state.view==='guide'?'':`<div class="topbar"><span>YOUR STUDY SPACE &nbsp; / &nbsp; <strong>${state.view==='guide'?'Guided play':state.view==='army'?'My army':state.view==='practice'?'Practice':state.view==='admin'?'Rules workshop':'Study home'}</strong></span><span class="top-status"><span class="dot"></span><span data-list-sync-status>${listSaveStatus()}</span></span></div>`}${state.view==='admin'?window.WarPlannerAdminPage.render():state.view==='guide'?guide():state.view==='army'?armyView():state.view==='practice'?practiceView():overview()}</main></div>`;refreshUnitPreviews();updateCloudUI();if(focusLesson)document.querySelector('#lesson-title')?.focus({preventScroll:true});}
+function fontsReady(){unitPreviewSizes=new WeakMap();refreshUnitPreviews();}
+document.fonts?.ready?.then(fontsReady);
+document.fonts?.addEventListener?.('loadingdone',fontsReady);
+function render(focusLesson=false){const detPicker=$('#builder-detachment-picker');if(listEditor&&detPicker)listEditor.detachmentPickerOpen=detPicker.open;cancelGuideMotion();save();if(state.view==='admin'&&!window.WarPlannerAdminPage?.canAccess)state.view='guide';const nav=[['overview','⌂','Study home'],['guide','▤','Guided play'],['army','◇','My army'],['practice','✧','Practice'],...(window.WarPlannerAdminPage?.canAccess?[['admin','⚙','Rules workshop']]:[])];$('#app').innerHTML=`<div class="shell${state.sidebarCollapsed?' nav-collapsed':''}"><aside class="sidebar"><button type="button" class="sidebar-toggle" data-action="toggle-nav" aria-controls="site-navigation" aria-expanded="${!state.sidebarCollapsed}" aria-label="${state.sidebarCollapsed?'Expand navigation':'Collapse navigation'}" title="${state.sidebarCollapsed?'Expand navigation':'Collapse navigation'}">${state.sidebarCollapsed?'›':'‹'}</button><div class="brand"><img class="brand-logo" src="warplanlogowht.png" width="1268" height="1241" alt=""><span class="brand-text">WARPLANNER</span></div><div class="tagline">KNOW YOUR NEXT MOVE.</div><div class="nav-label">YOUR FIELD GUIDE</div><nav id="site-navigation" class="nav" aria-label="Main navigation">${nav.map(([id,icon,label])=>`<button data-view="${id}" aria-label="${label}" title="${label}" class="${state.view===id?'active':''}" ${state.view===id?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span><span class="nav-text">${label}</span>${id==='admin'?window.WarPlannerReports?.badgeHTML()||'':''}</button>`).join('')}<button type="button" data-auth-signout aria-label="Sign out" title="Sign out"><span class="nav-icon" aria-hidden="true">↪</span><span class="nav-text">Sign out</span></button></nav><div class="sidebar-bottom"><div class="private">◈ &nbsp; A personal study companion<br>Made for the way you learn.</div><div class="profile"><div class="avatar">WP</div><div><strong>Your study space</strong><small>Personal study · v0.28.5</small></div></div></div></aside><main><div id="list-sync-banner" class="list-sync-banner" ${cloudStatus==='error'?'':'hidden'} role="status"><span>Your lists have not saved to your account yet. Keep this page open and retry.</span><button type="button" data-action="retry-list-save">Retry</button></div>${state.view==='guide'?'':`<div class="topbar"><span>YOUR STUDY SPACE &nbsp; / &nbsp; <strong>${state.view==='guide'?'Guided play':state.view==='army'?'My army':state.view==='practice'?'Practice':state.view==='admin'?'Rules workshop':'Study home'}</strong></span><span class="top-status"><span class="dot"></span><span data-list-sync-status>${listSaveStatus()}</span></span></div>`}${state.view==='admin'?window.WarPlannerAdminPage.render():state.view==='guide'?guide():state.view==='army'?armyView():state.view==='practice'?practiceView():overview()}</main></div>`;refreshUnitPreviews();updateCloudUI();if(focusLesson)document.querySelector('#lesson-title')?.focus({preventScroll:true});queueGuideWarm();}
 function armyStrip(){return `<div class="army-strip"><div class="army-sigil" aria-hidden="true">⋈</div><div><h3>${escapeHTML(state.army.faction)} <span class="muted">/</span> ${escapeHTML(Library.armyDetachments(state.army).join(' · '))}</h3><p>${state.army.units.length} units · ${escapeHTML(state.army.disposition||'Disposition not provided')}</p></div><div class="strip-right"><span class="pill">${!state.army.units.length?'No army imported':state.army.units[0]?.id.startsWith('sample')?'Saved roster':'Imported roster'}</span><button class="text-button" data-view="army">View army ↗</button></div></div>`;}
 function referenceDetails(item){
  const confirmation=state.confirmed[Library.revision+'-'+item.id];
@@ -328,7 +334,24 @@ function guideDestination(direction){
  }
  return target;
 }
-let guideMotion=null;
+let guideMotion=null,guideWarmJob=null,guideWarmEpoch=0;
+const guideWarmPages=new Map();
+function clearGuideWarm(){
+ guideWarmEpoch++;
+ if(guideWarmJob!==null){if(window.cancelIdleCallback)window.cancelIdleCallback(guideWarmJob);else clearTimeout(guideWarmJob);guideWarmJob=null;}
+ for(const drag of guideWarmPages.values())drag.preview?.remove();guideWarmPages.clear();
+}
+function queueGuideWarm(){
+ if(guideWarmJob!==null||state.view!=='guide'||!state.guideStarted||reducedGuideMotion()||!document.createElement)return;
+ const epoch=guideWarmEpoch,directions=[1,-1];
+ function prepare(){
+  if(epoch!==guideWarmEpoch)return;guideWarmJob=null;if(guideMotion||guideGesture||state.view!=='guide')return;
+  const direction=directions.shift();if(!guideWarmPages.has(direction)){const drag=buildGuideDrag(direction);if(drag?.destination)guideWarmPages.set(direction,drag);}
+  if(directions.length)schedule();
+ }
+ function schedule(){guideWarmJob=window.requestIdleCallback?window.requestIdleCallback(prepare,{timeout:500}):setTimeout(prepare,80);}
+ schedule();
+}
 function reducedGuideMotion(){return !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;}
 function discardGuideDrag(drag){
  if(!drag)return;
@@ -336,12 +359,18 @@ function discardGuideDrag(drag){
  drag.preview?.remove();
 }
 function cancelGuideMotion(){
+ clearGuideWarm();
  const motion=guideMotion;guideMotion=null;
  if(motion){for(const animation of motion.animations)animation.cancel();discardGuideDrag(motion.drag);}
  if(guideGesture?.drag)discardGuideDrag(guideGesture.drag);
  guideGesture=null;
 }
 function makeGuideDrag(direction){
+ const cached=guideWarmPages.get(direction);guideWarmPages.delete(direction);
+ if(cached&&cached.current===document.querySelector('.guide-slide')&&cached.width===document.querySelector('.guide-viewport')?.clientWidth)return cached;
+ cached?.preview?.remove();return buildGuideDrag(direction);
+}
+function buildGuideDrag(direction){
  if(reducedGuideMotion())return null;
  const viewport=document.querySelector('.guide-viewport'),current=document.querySelector('.guide-slide');
  if(!viewport||!current||typeof current.animate!=='function'||!document.createElement)return null;
@@ -353,7 +382,7 @@ function makeGuideDrag(direction){
   let html;try{state={...original,...destination};html=guidePageHTML();}finally{state=original;}
   preview=document.createElement('div');preview.className='guide-slide guide-preview';preview.inert=true;preview.setAttribute('aria-hidden','true');preview.innerHTML=html;
   preview.style.transform=`translate3d(${direction*width}px,0,0)`;viewport.append(preview);
-  for(const element of preview.querySelectorAll('[data-unit-preview]'))fitUnitPreview(element);
+  fitUnitPreviews(preview.querySelectorAll('[data-unit-preview]'));
  }
  return {current,preview,direction,destination,width,offset:0};
 }
@@ -366,16 +395,26 @@ function paintGuideDrag(gesture,dx){
  drag.current.style.transform=`translate3d(${drag.offset}px,0,0)`;
  if(drag.preview)drag.preview.style.transform=`translate3d(${drag.offset+direction*drag.width}px,0,0)`;
 }
-function commitGuidePage(destination,direction){
+function commitGuidePage(destination,direction,drag=null){
  if(direction>0)state.completed[stepKey(state.open)]=true;
  if(destination.phase!==state.phase||destination.turn!==state.turn||destination.round!==state.round){state.history.push({round:state.round,turn:state.turn,phase:state.phase,open:state.open});state.history=state.history.slice(-100);}
- Object.assign(state,destination);render(true);
+ Object.assign(state,destination);
+ const header=document.querySelector('.guide-fixed-header'),popup=document.querySelector('#guide-info-popup');
+ if(drag?.preview?.removeAttribute&&drag.current?.remove&&header&&popup){
+  clearGuideWarm();drag.current.remove();
+  const incoming=drag.preview;incoming.classList.remove('guide-preview');incoming.id='guide-panel';incoming.setAttribute('role','tabpanel');incoming.setAttribute('aria-labelledby','phase-tab-'+state.phase);incoming.removeAttribute('aria-hidden');incoming.inert=false;incoming.style.transform='';
+  header.innerHTML=guideSettings()+turnToggle()+phaseTabs();popup.outerHTML=guideInfoPopup();
+  for(const button of incoming.querySelectorAll('[data-step]')){const index=Number(button.dataset.step);button.setAttribute('aria-current',index===state.open?'step':'false');const marker=button.querySelector('span');if(marker)marker.textContent=state.completed[stepKey(index)]?'✓':String(index+1);}
+  const previous=document.querySelector('.previous-page');if(previous)previous.disabled=!canPreviousPage();
+  save();refreshUnitPreviews();updateCloudUI();incoming.querySelector('#lesson-title')?.focus({preventScroll:true});queueGuideWarm();
+ }else render(true);
 }
 function animateGuideDrag(drag,commit){
  if(!drag){return false;}
  drag.current.inert=true;
  const end=commit?-drag.direction*drag.width:0;
- const duration=commit?240:170;
+ const remaining=Math.min(1,Math.abs(end-drag.offset)/drag.width);
+ const duration=commit?Math.max(60,Math.round(140*remaining)):110;
  const options={duration,easing:'cubic-bezier(.22,.75,.2,1)',fill:'forwards'};
  const animations=[];
  try{
@@ -386,7 +425,8 @@ function animateGuideDrag(drag,commit){
  Promise.all(animations.map(animation=>animation.finished)).then(()=>{
   if(guideMotion!==motion)return;
   guideMotion=null;
-  if(commit)commitGuidePage(drag.destination,drag.direction);else discardGuideDrag(drag);
+  for(const animation of animations)animation.cancel();
+  if(commit)commitGuidePage(drag.destination,drag.direction,drag);else{discardGuideDrag(drag);clearGuideWarm();queueGuideWarm();}
  },()=>{if(guideMotion===motion){guideMotion=null;discardGuideDrag(drag);}});
  return true;
 }
@@ -420,7 +460,7 @@ function moveGuideSwipe(event){
 function endGuideSwipe(event){
  const gesture=guideGesture;guideGesture=null;
  if(!gesture)return;
- const abort=()=>{if(gesture.drag&&!animateGuideDrag(gesture.drag,false))discardGuideDrag(gesture.drag);};
+ const abort=()=>{if(gesture.drag){if(!animateGuideDrag(gesture.drag,false))discardGuideDrag(gesture.drag);}else queueGuideWarm();};
  if(gesture.cancelled||state.view!=='guide'||$('#import-dialog').open||event.touches.length){abort();return;}
  const touch=Array.from(event.changedTouches).find(t=>t.identifier===gesture.id);if(!touch){abort();return;}
  const dx=touch.clientX-gesture.x,dy=touch.clientY-gesture.y;
@@ -442,7 +482,8 @@ window.addEventListener?.('resize',()=>document.querySelector('.guide-info-popup
 document.addEventListener('touchstart',startGuideSwipe,{passive:true});
 document.addEventListener('touchmove',moveGuideSwipe,{passive:true});
 document.addEventListener('touchend',endGuideSwipe,{passive:false});
-document.addEventListener('touchcancel',()=>{discardGuideDrag(guideGesture?.drag);guideGesture=null;},{passive:true});
+document.addEventListener('touchcancel',()=>{discardGuideDrag(guideGesture?.drag);guideGesture=null;clearGuideWarm();queueGuideWarm();},{passive:true});
+window.addEventListener?.('resize',()=>{cancelGuideMotion();queueGuideWarm();});
 function advancePhase(){const target=next(state);transition({round:target.round,turn:target.turn,phase:target.phase});}
 function transition(change){state.history.push({round:state.round,turn:state.turn,phase:state.phase,open:state.open});state.history=state.history.slice(-100);Object.assign(state,change);state.open=0;render(true);window.scrollTo({top:0,behavior:'smooth'});}
 let pendingImport=null;
