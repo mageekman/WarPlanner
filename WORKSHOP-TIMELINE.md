@@ -28,6 +28,13 @@ edits are guarded when changing views or closing the editor. Search is debounced
 and the model is cached by catalog generation and filters. Account changes clear
 the timeline and its draft. The offline single-file edition omits this admin tool.
 
+Timeline cards share the guide's category colors, title rows, badges, previews,
+target blocks, timing and expandable conditions and source references. The pencil
+automatically expands the chosen occurrence. Focusing an editor field highlights
+its matching section and pans the canvas to it, including individual unit stat
+cells and core-step instructions. Empty editable sections show placeholders while
+editing. Source references remain read-only. Focusing fields does not change data.
+
 Timeline scale (50–150%) and window-height (320–1,200 px) controls adjust the canvas
 without re-rendering or discarding edits. Reset size restores 100% and 640 px.
 These display preferences persist on the device. The site's navigation toggle
