@@ -18,6 +18,8 @@ hints; unit stats; detachment notes; and core-step instructions. Saving uses the
 existing administrator service and expected revision. It preserves stable IDs,
 scope memberships, imported mechanics and unrelated fields, reapplies the catalog,
 and updates the timeline and actual guide. Shared edits affect every membership.
+Explicit timing edits override legacy built-in placements, and edited imported
+abilities receive the stable source link required by guide activation cards.
 
 Hover or keyboard-focus a title in the right-hand content list or editor to
 highlight its matching cards. Click a list title to locate the cards. Unsaved

@@ -35,7 +35,7 @@
    const extra={id:'event-windows',title:'Other event windows',body:'Follow the rule’s exact trigger. These events do not add a mandatory step.',items:[],slots:[]};
    for(const row of rules){const a=runtime.get(row.data.id)||M.enrich({...row.data,faction:row.faction});if(!a.phase?.includes(p)||a.turn!=='either'&&a.turn!==player||a.window==='prebattle')continue;
     if(a.window==='round'&&(p!==0||player!=='you')||a.window==='round-end'&&(p!==4||player!=='opponent'))continue;
-    let target=steps.find(s=>s.step.window===a.window&&!s.step.activationMode);
+    let target=steps.find(s=>!s.step.activationMode&&L.timingMatches(a,state,s.step));
     const activation=steps.find(s=>s.step.activationMode&&!['pile','consolidate'].includes(s.step.activationMode));
     if(activation&&['act','select','before','react','after','arrivals'].includes(a.window)){
      const slots=activation.slots;
@@ -68,6 +68,8 @@
   if(result.kind==='rule'){
    const summary=get('summary');if(summary!==d.summary)delete d.mechanicsPresentation;d.summary=summary;d.targetText=get('targetText');d.conditions=lines('conditions');
    d.phase=fd.getAll('phase').map(Number);d.turn=get('turn');d.window=get('window');d.category=get('category');d.units=lines('units');d.referenceOnly=fd.has('referenceOnly');d.expanded=true;d.adminManaged=true;d.status='admin-reviewed';
+   if(JSON.stringify(d.phase)!==JSON.stringify(row.data.phase)||d.turn!==row.data.turn||d.window!==row.data.window)d.timingOverride=true;
+   d.sourceRuleId=d.sourceRuleId||d.id;
   }else if(result.kind==='unit'){
    d.profiles=P.read(d).map((profile,i)=>{const next={...profile,name:get('profile-'+i+'-name')||profile.name};for(const f of P.fields)next[f.key]=P.parse(fd.get('profile-'+i+'-'+f.key),f.key);return next;});
    d.modelCounts=get('modelCounts').split(',').map(s=>Number(s.trim()));d.keywords=lines('keywords');

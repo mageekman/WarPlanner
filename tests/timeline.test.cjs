@@ -37,3 +37,13 @@ test('core edits use the same step override read by the guide',()=>{
 test('turn filters do not move opponent-only rules into the reference lane',()=>{
  const row=rule('other-turn',{turn:'opponent'});C.apply([row]);assert.ok(!T.build([row],{faction:'Aeldari',turn:'you'}).index.some(r=>r.key===row.key));
 });
+test('legacy guide timing and explicit timing edits use one matcher in both the map and guide',()=>{
+ const row=rule('legacy-psychic',{phase:[0],window:'act',sourceRuleId:'psychic-guidance-example'});C.apply([row]);let model=T.build([row],{faction:'Aeldari'});assert.ok(slots(model).some(s=>s.id==='command-shock'&&s.items.some(x=>x.row.key===row.key)));
+ const saved=T.capture(row,fd({name:row.name,summary:'Checked timing.',targetText:'This unit',phase:['0'],turn:'you',window:'end',category:'ability',units:'Unlisted squad',guideOrder:'normal',guideRank:'20',guideNote:'',enabled:'on'}));C.apply([saved]);model=T.build([saved],{faction:'Aeldari'});assert.ok(!slots(model).some(s=>s.id==='command-shock'&&s.items.some(x=>x.row.key===row.key)));assert.ok(slots(model).some(s=>s.id==='command-end'&&s.items.some(x=>x.row.key===row.key)));
+});
+test('editing an imported ability without a sourceRuleId makes its saved placement appear in actual activation cards',()=>{
+ const row=rule('timeline-native',{units:['Autarch'],detachment:'',referenceOnly:false});delete row.data.sourceRuleId;
+ const saved=T.capture(row,fd({name:row.name,summary:'A checked after-shooting reminder.',targetText:'This unit',phase:['2'],turn:'you',window:'after',category:'ability',units:'Autarch',guideOrder:'normal',guideRank:'20',guideNote:'',enabled:'on'}));C.apply([saved]);
+ const army={faction:'Aeldari',detachments:['Warhost'],units:[{id:'autarch-one',name:'Autarch',details:[],role:'',group:''}]},state={phase:2,turn:'you',firstPlayer:'you',army},unit=A.units(army)[0];
+ assert.ok(A.stages(state,unit,'shooting').find(s=>s.id==='after').cards.some(a=>a.id===saved.data.id));const deck=A.flashcards(state,A.steps(state).find(s=>s.activationMode==='shooting'));assert.ok(deck.unitCards.some(c=>c.items.some(a=>a.id===saved.data.id)));
+});
