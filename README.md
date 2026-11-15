@@ -1,5 +1,12 @@
 # WarPlanner — personal study edition, v0.28
 
+Thousand Sons catalog audit: all 156 generic rule prompts now have source-based
+study text or a specific source-issue description. Two saved rule edits and three
+edited units are preserved. Coverage includes 158 rules, 38 units (44 profiles)
+and 10 detachments. There are 109 available summaries including the saved edits,
+47 source issues and two missing effects. See [AUDIT-THOUSAND-SONS.md](AUDIT-THOUSAND-SONS.md)
+for the review list and guarded repair workflow.
+
 A phone-friendly study companion for your 11th-edition Aeldari roster. The walkthrough teaches explicit core timing windows and offers roster-specific reminders. It is not a game-state tracker or a rules judge.
 
 ## Open

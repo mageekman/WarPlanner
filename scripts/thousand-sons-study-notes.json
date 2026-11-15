@@ -1,0 +1,1658 @@
+[
+  {
+    "id": "aetherstride-thousand-sons",
+    "summary": "When this model arrives using Deep Strike in your Movement phase, it can use Aetherstride to set up its unit more than 6″ from enemy units, grant the bearer’s Dark Blessing Sustained Hits D3 and prevent charges for the turn. The source is provisional and includes a self-activation step without defining further limits; check the arrival option and spacing.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "all-is-dust-thousand-sons",
+    "summary": "All Is Dust is intended to improve RUBRICAE armour saves against attacks whose unmodified Damage is 1. The encoded effect instead adds 1 to generic saving throws, without that Damage gate and without excluding invulnerable saves; check the full restriction before applying it.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "all-seeing-mutant-hordes-thousand-sons",
+    "summary": "Tzaangors gain BATTLELINE. In your Shooting phase, attacks by MUTANT models increase enemy detection range by 6″, but the source does not define detection range or identify the affected enemy selection. Check that part of All-Seeing.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ambushing-hunters-thousand-sons",
+    "summary": "At the end of your opponent’s turn, this unit can enter Strategic Reserves if no enemy unit is within 6″.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "arcane-focus-grand-coven-thousand-sons",
+    "summary": "In your Shooting phase, just after a friendly THOUSAND SONS model takes a Psychic test for a Ritual after Channelling the Warp, re-roll all dice in that test, including the extra Channelling die, before resolving the Ritual.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "arcane-might-hexwarp-thrallband-thousand-sons",
+    "summary": "This unit’s Psychic weapons gain +1 Strength, or +2 instead while the unit is wholly within the Flow of Magic. The bonuses are alternatives, not cumulative.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "arcane-shield-thousand-sons",
+    "summary": "While this Exalted Sorcerer is leading a unit, that unit has a 4+ invulnerable save.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "arcane-thralls-aura-rubricae-phalanx-thousand-sons",
+    "summary": "Friendly RUBRICAE units within 9″ of the bearer can re-roll Battle-shock tests.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "arcane-venting-sekhetar-cohort-thousand-sons",
+    "summary": "At the end of your Movement phase, select one friendly-controlled objective within this SEKHETAR ROBOTS unit’s control range and make it sticky. Apply the current sticky-control expiry rules.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "arch-sorcerer-of-tzeentch-thousand-sons",
+    "summary": "Add 1 to Ahriman’s Psychic tests when attempting a Ritual.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "ardent-automata-rubricae-phalanx-thousand-sons",
+    "summary": "After a friendly RUBRICAE unit Falls Back, it can shoot and declare a charge for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "assault-ramp-thousand-sons",
+    "summary": "A unit disembarking from this transport after the transport made a Normal move this turn can declare a charge despite disembarking. This does not grant permission after an Advance.",
+    "state": "structured",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "bestial-prophet-thousand-sons",
+    "summary": "While this Tzaangor Shaman leads a unit, add 1 to that unit’s Hit rolls.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "bestial-prophet-kaaskrek-thousand-sons",
+    "summary": "While Kaa’skrek is attached to a unit, add 1 to that unit’s Hit rolls.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "binding-tendrils-thousand-sons",
+    "summary": "After this unit shoots in your Shooting phase, select one enemy INFANTRY unit hit by its Arcane Fire. Until the start of your next turn, subtract 2″ from that target’s Move and 2 from its Charge rolls.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "biomechanical-mutation-warpforged-cabal-thousand-sons",
+    "summary": "In your Command phase, select one friendly THOUSAND SONS VEHICLE model within 6″ of the bearer. It regains up to D3 lost wounds.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "blazing-salvoes-thousand-sons",
+    "summary": "After this unit shoots in your Shooting phase, select one enemy unit hit by its attacks. That target suffers -1 to Hit until the start of your next turn.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "blessed-transmutations-warpmeld-pact-thousand-sons",
+    "summary": "In your Command phase, select a friendly THOUSAND SONS PSYKER model and a separate Tzaangors unit within 12″; return up to D3+1 destroyed non-CHARACTER models to the Tzaangors. The notes require the Tzaangors to be below Starting Strength, but the core record puts that condition on the Psyker target instead. Confirm which target must satisfy it.",
+    "state": "needs-summary",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "bounding-leaps-thousand-sons",
+    "summary": "This unit can shoot in a turn in which it Fell Back.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "bray-lord-warpmeld-pact-thousand-sons",
+    "summary": "The eligible Sorcerer or Infernal Master bearer gains Scouts 6″. Apply the Scouts requirements for every model in an attached unit.",
+    "state": "structured",
+    "phase": [],
+    "turn": "you",
+    "window": "prebattle"
+  },
+  {
+    "id": "brayhorn-thousand-sons",
+    "summary": "The Brayhorn lets this unit re-roll an Advance or Charge roll as applicable; it does not grant a new move or charge.",
+    "state": "structured",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "bringers-of-change-prism-of-zadophon-rubric-marines-thousand-sons",
+    "summary": "For ranged attacks, this unit re-rolls Wound rolls of 1, or any Wound rolls against a target within an objective marker’s control range.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "bringers-of-change-thousand-sons",
+    "summary": "In the Shooting phase, this unit re-rolls Wound rolls of 1. This imported Rubric Marines version does not encode the objective-based full re-rolls found in the Prism variant; confirm whether that omission is intentional.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "cabal-of-sorcerers-thousand-sons",
+    "summary": "At the start of your Shooting phase, eligible Cabal models may attempt a Ritual using a 2D6 Psychic test, with an optional extra D6 for Channelling. The source gives each model one use per turn and each Ritual one use per army per turn; doubles cause D3 mortal wounds to the caster’s unit. Destiny’s Ruin (warp charge 5) marks a visible enemy within 24″: friendly THOUSAND SONS and SCINTILLATING LEGIONS models re-roll Hit rolls of 1 against it for the phase, or all Hit rolls on a test of 10+. Temporal Surge (6) moves one visible, unengaged friendly unit of either faction within 24″ up to D6″, or 6″ on 10+, and forbids charging that turn. Doombolt (7) causes D3 mortal wounds to a visible enemy within 24″, or D3+3 on 11+; an unattached Lone Operative target must be within 12″. Twist of Fate (9) marks a visible enemy within 24″ and improves friendly models’ AP against it by 1 for the phase, or 2 on 12+. The source does not fully define the extra Channelling die and doubles/triples procedure; check that test procedure before resolving a Ritual.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "cabal-of-sorcerers-prism-of-zadophon-thousand-sons",
+    "summary": "This Prism of Zadophon version of Cabal permits a Ritual at the start of your Shooting phase: take a 2D6 Psychic test with optional extra Channelling D6; doubles cause D3 mortal wounds to the caster’s unit. Each model has one use per turn and each Ritual one army use per turn. Destiny’s Ruin (warp charge 5) marks a visible enemy within 24″ for friendly THOUSAND SONS/SCINTILLATING LEGIONS Hit re-rolls of 1, or full Hit re-rolls on 10+, for the phase. Temporal Surge (6) gives one visible unengaged friendly unit of either faction within 24″ a D6″ Normal move, or 6″ on 10+, with no charge that turn. Doombolt (7) deals D3 mortal wounds to a visible enemy within 24″, or D3+3 on 11+; an unattached Lone Operative must be within 12″. Twist of Fate (9) improves friendly models’ AP against a visible enemy within 24″ by 1 for the phase, or 2 on 12+. Check the incompletely specified extra-die and doubles/triples procedure before resolving Channelling.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "chronosorcerous-bleed-changehost-of-deceit-thousand-sons",
+    "summary": "At the start of your opponent’s Charge phase, an unengaged eligible THOUSAND SONS PSYKER or SCINTILLATING LEGIONS unit selects one visible enemy within 12″. The notes intend -1 to that enemy’s Charge rolls, but the nested effect applies the modifier to this unit instead; confirm the recipient before use.",
+    "state": "needs-summary",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "committed-to-the-ritual-thousand-sons",
+    "summary": "Committed to the Ritual has no effect mechanics in the imported source. Its name does not supply a playable detachment rule.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "curse-of-life-ritual-of-regeneration-thousand-sons",
+    "summary": "The bearer regains 3 lost wounds. The source gives no activation event or frequency for this heal; confirm when Curse of Life is used.",
+    "state": "needs-summary",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "cyberspirit-machinations-warpforged-cabal-thousand-sons",
+    "summary": "After a friendly THOUSAND SONS VEHICLE Falls Back, select a separate friendly THOUSAND SONS PSYKER unit within 6″. The Vehicle can shoot and declare a charge for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "daemon-lord-of-tzeentch-thousand-sons",
+    "summary": "Friendly SCINTILLATING LEGIONS units within 6″ of this Lord of Change add 1 to their ranged weapon Strength.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "daemonic-icon-thousand-sons",
+    "summary": "Set this unit’s Leadership characteristic to 6+.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "deceptive-glamour-changehost-of-deceit-thousand-sons",
+    "summary": "At the start of the Fight phase, enemy models in this unit’s Engagement Range can attack it only if they have no eligible SCINTILLATING LEGIONS target for those attacks. Check eligibility separately for each attacking model.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "deranged-ferocity-warpmeld-pact-thousand-sons",
+    "summary": "For the Fight phase, this unit can Pile in and consolidate up to 6″. Its models can fight from within 3″ of an enemy model and target an enemy unit within 3″ of them that is in Engagement Range of their unit. The source omits a specific activation event and friendly target gate; check when and on whom to use this Stratagem.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "desecration-of-worlds-grand-coven-thousand-sons",
+    "summary": "In your Command phase, select one eligible THOUSAND SONS PSYKER unit within control range of a friendly-controlled objective. That objective remains yours until the opponent’s Level of Control exceeds yours at the end of a phase.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "destined-by-fate-grand-coven-thousand-sons",
+    "summary": "Just after a saving throw is failed for an eligible THOUSAND SONS PSYKER model, change that attack’s Damage to 0. With fast rolling, choose one failed save; this does not nullify every attack for the phase.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "destroyer-of-futures-thousand-sons",
+    "summary": "This unit can use Counter-offensive even if it was already used this phase, with a 1CP discount. The additional use does not consume the shared use; normal fight eligibility still applies.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "devastating-sorcery-grand-coven-thousand-sons",
+    "summary": "For the phase, the eligible unit’s Psychic weapons gain +9″ Range and its Psychic attacks re-roll Hit and Wound rolls. The preserved import grants +9″, while the pinned enrichment differs; confirm the Range bonus rather than silently replacing the imported effect.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "devoted-to-destruction-thousand-sons",
+    "summary": "If this Helbrute has exactly two melee weapons other than its close combat weapon, plus one close combat weapon, improve those other melee weapons’ Attacks by 2.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "diabolic-savant-changehost-of-deceit-thousand-sons",
+    "summary": "While the bearer is within 6″ of a friendly SCINTILLATING LEGIONS unit, add 1 to its Psychic tests when it Channels the Warp. Apply this only to the bearer’s relevant test.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "diamond-of-distortion-warpmeld-pact-thousand-sons",
+    "summary": "While the bearer leads a unit, subtract 1 from Hit rolls for attacks against that unit.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "duplicitous-malediction-changehost-of-deceit-thousand-sons",
+    "summary": "After deployment, redeploy up to three friendly THOUSAND SONS units, optionally placing them into Strategic Reserves ignoring reserve limits. The source encodes battlefield setup and reserve setup as consecutive mandatory steps rather than alternatives; confirm the intended choice.",
+    "state": "needs-summary",
+    "phase": [],
+    "turn": "you",
+    "window": "prebattle"
+  },
+  {
+    "id": "ectoplasmic-extrusion-sekhetar-cohort-thousand-sons",
+    "summary": "When a SEKHETAR ROBOTS unit performs an action while within 12″ of a friendly THOUSAND SONS PSYKER unit, it can shoot while performing that action for the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "react"
+  },
+  {
+    "id": "egotistical-power-grand-coven-thousand-sons",
+    "summary": "In your Command phase, select Imbued Manifestation, Psychic Maelstrom or Wrath of the Immaterium for this unit until your next Command phase. That Kindred Sorcery option replaces any other active option for the unit and may be chosen even if already selected this battle.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "eldritch-vortex-of-etaph-grand-coven-thousand-sons",
+    "summary": "Add 1 to the bearer’s Psychic weapon Strength and Damage.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "embroiling-energies-prism-of-zadophon-thousand-sons",
+    "summary": "For the phase, this unit’s malefic curse gains Close Quarters and +1 to Hit. The source notes restrict the benefit to that weapon, while the structured effect grants it to every ranged weapon; confirm the weapon scope before use.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "empowered-manifestation-hexwarp-thrallband-thousand-sons",
+    "summary": "While the bearer is in the Flow of Magic, add 6″ to the range of its Psychic abilities and re-roll Hazardous tests for this unit’s Psychic weapons. This is a provisional source interpretation.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "empyric-guidance-thousand-sons",
+    "summary": "While this Sorcerer leads a unit, that unit’s weapons gain Lethal Hits.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "empyric-onslaught-hexwarp-thrallband-thousand-sons",
+    "summary": "While the bearer’s unit is wholly within the Flow of Magic, add 3 to the bearer’s ranged Attacks.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "ensorcelled-animus-thousand-sons",
+    "summary": "SEKHETAR ROBOTS weapons gain Psychic. Friendly THOUSAND SONS PSYKER units grant Infusion: friendly SEKHETAR ROBOTS within 12″ improve their melee Weapon Skill by 1.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ensorcelled-annihilation-thousand-sons",
+    "summary": "In the Shooting phase, this unit re-rolls failed Hit and Damage rolls. The partial source does not define what a failed Damage roll means or a per-selection limit; check the Damage re-roll rule before applying it.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "ensorcelled-destruction-thousand-sons",
+    "summary": "In the Shooting phase, improve this unit’s AP by 1 against targets that are neither MONSTER nor VEHICLE units.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "ensorcelled-infusion-warpforged-cabal-thousand-sons",
+    "summary": "For the phase, ranged weapons equipped by VEHICLE models in this unit gain Psychic and add 1 to Wound rolls for Psychic ranged attacks. Use only before the unit shoots and while it is within 6″ of a friendly THOUSAND SONS PSYKER unit.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "eruption-of-vitality-ritual-of-regeneration-thousand-sons",
+    "summary": "Once per battle per army, at the end of the phase in which the bearer was destroyed, roll a D6. On 2+, return it detached from its former unit, with 3 wounds and Starting Strength 1, as close as possible to where it died and more than 1″ from enemies.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "ethereal-phantasm-changehost-of-deceit-thousand-sons",
+    "summary": "After an enemy ends a Normal, Advance or Fall Back move within 8″ of an unengaged SCINTILLATING LEGIONS unit, that friendly unit can make a D6″ Normal move, or up to 6″ instead if wholly within 6″ of a friendly THOUSAND SONS unit.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "exploding-horrors-thousand-sons",
+    "summary": "When this unit is selected to fight, select one engaged enemy and one or more friendly BRIMSTONE models in this unit. For each selected model, roll a D6: on 4+, destroy that model and cause 1 mortal wound to the enemy.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "flame-wreathed-thousand-sons",
+    "summary": "After this model ends a Normal move, select one enemy unit it moved over. That enemy cannot receive the Benefit of Cover for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "flow-of-magic-thousand-sons",
+    "summary": "The Flow of Magic always includes your deployment zone. At the start of each phase, snapshot objective control: controlling at least half the objectives in no man’s land extends it there for that phase, and controlling at least half in the enemy deployment zone extends it there for that phase. Friendly THOUSAND SONS models normally re-roll Psychic Wound rolls of 1; models wholly within the Flow instead add 1 to Psychic Wound rolls. The qualified benefit replaces the default; do not combine them.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "flowing-flesh-warpmeld-pact-thousand-sons",
+    "summary": "The bearer has Feel No Pain 4+ and a Wounds characteristic of 5.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "foresight-of-the-changer-prism-of-zadophon-thousand-sons",
+    "summary": "Once per turn per unit, in your opponent’s Movement phase, after an enemy ends a move within 8″ of the bearer’s unengaged unit, that unit can make a D3+1″ Normal move.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "fractal-disjunction-changehost-of-deceit-thousand-sons",
+    "summary": "For your opponent’s Shooting phase, this eligible SCINTILLATING LEGIONS unit, excluding MONSTER units, can be targeted by ranged attacks only by models within 18″. The effect encodes positive targeting permission rather than a complete prohibition outside 18″; confirm the notes’ intended restriction.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "gift-of-change-warpmeld-pact-thousand-sons",
+    "summary": "Once per battle round, use after a non-MONSTER THOUSAND SONS CHARACTER model is destroyed. At phase end, add a one-model Tzeentch Chaos Spawn unit as close as possible to where it died and outside enemy Engagement Range. The source notes supply the destruction and phase-end timing omitted from the effect.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "glamour-of-tzeentch-zadophon-the-soul-eater-thousand-sons",
+    "summary": "Friendly THOUSAND SONS INFANTRY units within 6″ of Zadophon gain Stealth.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "glamour-of-tzeentch-thousand-sons",
+    "summary": "Friendly THOUSAND SONS INFANTRY units within 6″ of this Daemon Prince gain Stealth.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "glimmershift-portal-changehost-of-deceit-thousand-sons",
+    "summary": "At the end of your opponent’s Fight phase, place either up to two non-MONSTER SCINTILLATING LEGIONS units or one SCINTILLATING LEGIONS MONSTER unit into Strategic Reserves. Every chosen unit must be more than 3″ horizontally from all enemies. These are alternative target modes, not permission to take both groups.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "glimpse-of-eternity-thousand-sons",
+    "summary": "Once per turn per unit, change one Hit, Wound or saving throw result to 6. The source does not state whether this happens before or after rolling; confirm that choice window.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "herd-banner-thousand-sons",
+    "summary": "While this unit is within control range of a friendly-controlled objective, improve its Leadership by 1.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "hex-marked-armour-warpforged-cabal-thousand-sons",
+    "summary": "When an enemy targets this THOUSAND SONS VEHICLE unit, worsen the AP of incoming attacks by 1 until that attacking unit finishes its attacks.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "horrors-are-pink-horrors-are-blue-where-once-there-was-one-now-there-are-two-thousand-sons",
+    "summary": "Once no PINK models remain, this unit uses the Blue Horrors datasheet. The source places suppression of Blue Horrors abilities inside a no-PINK condition but then tests for a remaining PINK model, making that suppression branch unreachable. Confirm when the new abilities become available.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "hunter-of-souls-thousand-sons",
+    "summary": "Against CHARACTER targets, this unit re-rolls Hit and Wound rolls of 1. The source labels this partial and gives no other Hunter of Souls mechanics; check for omitted clauses.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "icon-of-flame-thousand-sons",
+    "summary": "This unit’s ranged weapons gain Ignores Cover.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "icon-of-flame-prism-of-zadophon-rubric-marines-thousand-sons",
+    "summary": "Ranged weapons equipped by non-CHARACTER models in this Prism unit gain Ignores Cover. This version does not grant it to attached CHARACTER models.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "illusions-of-tzeentch-thousand-sons",
+    "summary": "While this model leads a unit, its unit is intended to be targetable by ranged attacks only from within 18″. The source only encodes permission within 18″, rather than a complete prohibition beyond it; verify the intended targeting restriction.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "immaterial-flare-thousand-sons",
+    "summary": "Friendly PSYKER units within 6″ add 1 to Psychic test results. The source notes say this bonus does not stack with other modifiers to the Psychic test result; that exclusion is missing from the effect and must be checked.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "implacable-guardians-rubricae-phalanx-thousand-sons",
+    "summary": "When targeted in your opponent’s Shooting phase, reduce incoming Damage by 1 for non-PSYKER models in this unit for the phase. The source notes exclude PSYKER models, but the effect applies to the whole unit; confirm that model scope.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "incandaeum-grand-coven-thousand-sons",
+    "summary": "Once per battle, the bearer may select Doombolt even if another model in your army has already attempted it this phase. This is a Doombolt repeat exception, not permission to repeat every Ritual; the specific exception appears only in the source notes.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "inexorable-advance-rubricae-phalanx-thousand-sons",
+    "summary": "For the rest of the turn, this RUBRICAE unit ignores modifiers to Move and Advance rolls, and its ranged weapons gain Assault.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "infernal-fusillade-rubricae-phalanx-thousand-sons",
+    "summary": "For the phase, only this unit’s inferno bolt pistols, inferno boltguns, inferno combi-bolters and inferno combi-weapons gain Psychic. Other weapons do not gain it from this rule.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "infernal-pacts-thousand-sons",
+    "summary": "SCINTILLATING LEGIONS units grant Daemonic Illusions: friendly THOUSAND SONS PSYKER units within 6″ and visible to them gain a 4+ invulnerable save against ranged attacks. THOUSAND SONS units grant Mortal Sorcery: friendly SCINTILLATING LEGIONS PSYKER units within 6″ and visible to them gain Cabal of Sorcerers. Each granted ability keeps its own range, visibility and recipient conditions.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "instrument-of-chaos-thousand-sons",
+    "summary": "Add 1 to this unit’s Charge rolls.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "kaleidoscopic-tempest-hexwarp-thrallband-thousand-sons",
+    "summary": "When this unit is targeted in your opponent’s Shooting phase and is wholly within the Flow of Magic, it gains Stealth and reduces its detection range by 3″ for the phase. The provisional source does not define detection range; confirm that mechanic before applying it.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "kindred-sorcery-thousand-sons",
+    "summary": "At the start of your Command phase, choose a Kindred Sorcery option until your next Command phase: Imbued Manifestation gives this unit’s ranged Psychic weapons +6″ Range; Psychic Maelstrom adds 1 to Psychic Wound rolls; Wrath of the Immaterium gives Psychic weapons Devastating Wounds. The source marks the options consumable but does not state the reset or reuse procedure; check whether an option may be chosen again later in the battle.",
+    "state": "needs-summary",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "lord-of-forbidden-lore-grand-coven-thousand-sons",
+    "summary": "Add 6″ to the range of Rituals attempted by the bearer for that resolution.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "lord-of-the-planet-of-the-sorcerers-thousand-sons",
+    "summary": "Magnus can attempt up to two Rituals per turn and adds 2 to his Psychic tests for Rituals. This does not itself remove each Ritual’s army-wide use limit.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "lord-of-the-rubricae-rubricae-phalanx-thousand-sons",
+    "summary": "While the bearer leads a unit, add 1 to Hit rolls only for RUBRICAE models in that unit.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "malefic-maelstrom-thousand-sons",
+    "summary": "While this Infernal Master leads a unit, that unit’s weapons gain Sustained Hits 1.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "malevolent-animus-warpforged-cabal-thousand-sons",
+    "summary": "In your Command phase, select an eligible THOUSAND SONS VEHICLE unit within 6″ of a friendly THOUSAND SONS PSYKER unit. Until your next Command phase, ignore modifiers to its listed characteristics (Move, Toughness, Save, Wounds, Leadership, Objective Control, Weapon Skill and Ballistic Skill) and to its rolls except saving throws. Saving throw modifiers still apply.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "malign-trickery-thousand-sons",
+    "summary": "In your opponent’s Movement phase, after an enemy ends a move within 8″ of this unengaged unit, this unit can make a D6″ Normal move.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "marked-by-fate-thousand-sons",
+    "summary": "At the start of your Shooting phase, select one enemy unit visible to this Sorcerer in Terminator Armour. Add 1 to this unit’s Hit rolls against that enemy for the phase. The effect’s recipient is this unit, not every friendly attacker.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "master-of-magicks-thousand-sons",
+    "summary": "In your Shooting phase, choose one benefit for this Lord of Change’s Bolt of Change for the phase: Ignores Cover, Lethal Hits or Sustained Hits D3.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "multitudinous-limbs-ritual-of-regeneration-thousand-sons",
+    "summary": "When an eligible THOUSAND SONS PSYKER INFANTRY or MOUNTED unit is selected to Advance or Fall Back, it gains permission to start an action for the phase. The effect does not explicitly waive the Advance/Fall Back action restriction and expires in the Movement phase; confirm the intended permission and duration.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "mutagenic-magicks-ritual-of-regeneration-thousand-sons",
+    "summary": "At the start of the Fight phase, select one enemy unit engaged with the eligible friendly unit. Roll six dice: each 4+ causes 1 mortal wound to that enemy.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "mutate-landscape-warpforged-cabal-thousand-sons",
+    "summary": "In your Command phase, mutate a friendly-controlled objective in range of the eligible THOUSAND SONS PSYKER unit. It stays under your control until the opponent’s Level of Control exceeds yours at phase end. While mutated and friendly-controlled, an enemy ending a Normal, Advance, Fall Back or Charge move in its control range suffers D3 mortal wounds on a D6 roll of 4+.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "mutating-vortex-thousand-sons",
+    "summary": "At the end of your Movement phase, roll a D6 for each enemy unit within 6″ of this Mutalith Vortex Beast: 1 causes no mortal wounds, 2–3 causes 1, 4–5 causes D3 and 6 causes D6. Each affected enemy also takes a Battle-shock test, including on a roll of 1.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "nethershriek-mind-eater-changehost-of-deceit-thousand-sons",
+    "summary": "At the start of your Shooting phase, select one enemy visible to the bearer and within 12″. It takes a Battle-shock test; if failed, it also suffers 3 mortal wounds.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "noctilith-mantle-hexwarp-thrallband-thousand-sons",
+    "summary": "While this unit is on the battlefield, it is designated wholly within the Flow of Magic but cannot attempt Rituals. The source represents region membership as a tag without connecting it to the named-region state; confirm which Flow benefits apply.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "occulus-infernum-sekhetar-cohort-thousand-sons",
+    "summary": "Before or after moving in your Movement phase, select one friendly SEKHETAR ROBOTS unit within 6″ of the bearer’s unit. Improve its ranged Ballistic Skill by 1 until the start of your next turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "one-head-looks-back-thousand-sons",
+    "summary": "When an enemy uses a Stratagem on a unit within 12″ of Kairos, the source intends a 1CP increase for that use. It assigns the cost modifier to this unit rather than clearly to the enemy target; confirm which player and use pay the extra CP.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "one-head-looks-forward-thousand-sons",
+    "summary": "At the end of your Command phase, if Kairos is on the battlefield, take a Leadership test for him. If passed, gain 1CP.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "pact-of-sorcery-thousand-sons",
+    "summary": "These Pact of Sorcery entries prohibit a SCINTILLATING LEGIONS army-faction declaration. They do not by themselves prohibit including eligible SCINTILLATING LEGIONS allies in a THOUSAND SONS army.",
+    "state": "structured",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "perplexing-cloak-warpforged-cabal-thousand-sons",
+    "summary": "The bearer gains Lone Operative while within 3″ of a friendly THOUSAND SONS VEHICLE unit.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "prismatic-displacement-servants-of-change-thousand-sons",
+    "summary": "When a friendly MUTANT INFANTRY or MOUNTED unit is selected to Advance or Fall Back, its ranged weapons gain Assault and it gains shooting and charge permissions for the turn. The charge permission does not explicitly override the Advance/Fall Back restriction, and the shooting permission omits Fall Back; confirm which restrictions are waived.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "prophesied-doom-thousand-sons",
+    "summary": "After this unit ends a Charge move, select one enemy it is engaged with. Roll one D6 for each model in this unit engaged with that enemy: each 4+ causes 1 mortal wound to it.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "prophesied-doom-prism-of-zadophon-tzaangor-enlightened-thousand-sons",
+    "summary": "After this Prism unit ends a Charge move, you may select one enemy it is engaged with. Roll one D6 for each model in this unit engaged with that enemy: each 4+ causes 1 mortal wound to it.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "prophetic-sentinels-thousand-sons",
+    "summary": "Once per turn per unit, reduce the CP cost of Fire Overwatch or Heroic Intervention targeting this unit by 1. This is one discount choice per turn, not one for each Stratagem.",
+    "state": "structured",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "psychic-dominion-grand-coven-thousand-sons",
+    "summary": "Enemy weapons with Psychic get Hazardous, and your unit gets a 4+ Feel No Pain to Psychic attacks.",
+    "state": "preserved",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "rebind-rubricae-thousand-sons",
+    "summary": "In your Command phase, while the Exalted Sorcerer leads a unit, roll a D6: on 1, its unit suffers D3 mortal wounds; on 2–5, return one destroyed Bodyguard model; on 6, return two. Do not return a CHARACTER with this effect.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "regenerating-monstrosities-thousand-sons",
+    "summary": "At the start of the phase, if it is the Command phase.\nOne model in this unit regains 3 lost wounds.",
+    "state": "preserved",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "relentless-rebirth-ritual-of-regeneration-thousand-sons",
+    "summary": "When damage is allocated to an eligible THOUSAND SONS PSYKER INFANTRY or MOUNTED unit, that unit gains Feel No Pain 5+ against mortal wounds for the phase.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "revenge-of-the-rubricae-rubricae-phalanx-thousand-sons",
+    "summary": "Just after a friendly THOUSAND SONS PSYKER model is destroyed within 6″ of this eligible RUBRICAE unit, grant it a reactive shot after the attacking enemy finishes shooting. It may target only that enemy unit and only if the target is eligible.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "risen-rubricae-rubricae-phalanx-thousand-sons",
+    "summary": "At the start of Declare Battle Formations, select either two friendly RUBRICAE BATTLELINE units or one other friendly RUBRICAE unit. Models in the selected units gain Infiltrators for the battle.",
+    "state": "structured",
+    "phase": [],
+    "turn": "you",
+    "window": "prebattle"
+  },
+  {
+    "id": "rites-of-coalescence-thousand-sons",
+    "summary": "While this unit contains at least one PSYKER model, subtract 1 from incoming Wound rolls.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sacrificial-blessing-thousand-sons",
+    "summary": "While this Tzaangor Shaman leads a unit, it may destroy one Bodyguard model to gain D3 Psychic weapon Attacks and Strength until phase end. The encoded scope is permanent and it supplies no activation event; confirm when the sacrifice is made and when the bonus ends.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "sacrificial-blessing-kaaskrek-thousand-sons",
+    "summary": "When Kaa’skrek’s unit is selected to attack in your Shooting phase or either Fight phase and has a Bodyguard model, you may destroy one Bodyguard to add D3 to Kaa’skrek’s Attacks and Strength for the phase. The effect does not identify which weapon profiles these stat changes apply to; confirm the weapon scope rather than copying the ordinary Shaman’s Psychic-only limit.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "scouring-warpflame-hexwarp-thrallband-thousand-sons",
+    "summary": "Before this eligible unit shoots, while wholly within the Flow of Magic, its ranged weapons gain Ignores Cover for the phase. After it shoots, select one enemy hit by those attacks; that enemy cannot receive the Benefit of Cover for the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "scryer-of-fates-thousand-sons",
+    "summary": "After deployment, Ahriman may select up to three friendly THOUSAND SONS units to redeploy. Each may be set up on the battlefield or placed into Strategic Reserves ignoring reserve limits.",
+    "state": "structured",
+    "phase": [],
+    "turn": "you",
+    "window": "prebattle"
+  },
+  {
+    "id": "scuttling-walker-thousand-sons",
+    "summary": "This Defiler’s Normal, Advance and Fall Back moves can pass through non-TITANIC models and terrain, and it passes Desperate Escape tests. The source triggers these permissions only after the move ends and ambiguously allows moving while engaged; confirm the timing, allowed move types and required ending position.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "react"
+  },
+  {
+    "id": "servile-pawns-thousand-sons",
+    "summary": "This Daemon Prince has Lone Operative while within 3″ of a friendly THOUSAND SONS INFANTRY unit.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "siege-shield-thousand-sons",
+    "summary": "For ranged attacks, this model ignores worsening Hit modifiers. Its demolisher cannon can select a target subject to the condition that no other friendly unit is engaged with that target. The encoded permission does not explicitly waive the normal engagement targeting restriction; confirm that exception and any remaining Blast restriction.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "slashing-dive-thousand-sons",
+    "summary": "After this unit makes a Normal move in your Movement phase, select one enemy unit it moved over. Roll one D6 per model in this unit: each 4+ causes 1 mortal wound to the selected enemy.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "snarling-protector-thousand-sons",
+    "summary": "This unit can re-roll failed Charge rolls.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "sorcerous-invigoration-thousand-sons",
+    "summary": "Once per turn per unit, when a friendly non-MONSTER THOUSAND SONS PSYKER uses a Ritual, that model regains up to D3 lost wounds.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "sorcerous-support-thousand-sons",
+    "summary": "After this Rhino shoots in your Shooting phase, select one enemy unit it hit. Friendly models that disembarked from this Rhino this turn add 1 to Psychic Hit and Wound rolls against that target for the phase. The source labels this record partial; confirm any omitted scope before relying on it.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "spell-warded-armour-prism-of-zadophon-thousand-sons",
+    "summary": "When enemy ranged attacks target this PRISM OF ZADOPHON RUBRIC MARINES unit, subtract 1 from Wound rolls if the attack’s Strength exceeds the target’s Toughness, for the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "spirit-snare-thousand-sons",
+    "summary": "When a friendly THOUSAND SONS PSYKER with Cabal of Sorcerers is destroyed within 9″, choose a model with this Spirit Snare ability in range. That model gains +1 to Ritual Psychic tests for the battle, stacking to a maximum of +2. The trigger checks a shortened Cabal ability ID rather than the imported faction-specific IDs; confirm which casualties qualify.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "spirit-snare-zadophon-the-soul-eater-thousand-sons",
+    "summary": "Zadophon’s Spirit Snare has no effect mechanics in this imported record. Do not copy the Daemon Prince’s version merely because it has the same name.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "split-thousand-sons",
+    "summary": "After attacks resolve that destroy a BLUE model in this unit, while the unit is still on the battlefield, roll a D6: on 4+, add one Brimstone Horror to this unit. The pinned enrichment has a different Split effect; preserve this import and verify the replacement model and count.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "split-pink-horrors-thousand-sons",
+    "summary": "After attacks resolve that destroy a PINK or BLUE model in this unit, while the unit is still on the battlefield, roll a D6: on 4+, replace a PINK with two Blue Horrors or a BLUE with one Brimstone Horror. The pinned enrichment differs; confirm the current replacement counts rather than using the other Split version.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "stave-abominus-rubricae-phalanx-thousand-sons",
+    "summary": "The bearer’s melee weapons gain Sustained Hits D3 and Devastating Wounds.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "strands-of-time-hexwarp-thrallband-thousand-sons",
+    "summary": "After an eligible THOUSAND SONS PSYKER unit Falls Back, choose shooting or charging permission for the turn; while wholly within the Flow of Magic it receives both. The encoded base branch already grants both and lacks a clear Fall Back shooting exception; confirm the intended choice before use.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "sullen-malevolence-thousand-sons",
+    "summary": "While at least one BLUE model remains in this unit, enemy units within 6″ worsen their Leadership by 1.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "sulphurous-veil-changehost-of-deceit-thousand-sons",
+    "summary": "When this eligible THOUSAND SONS or SCINTILLATING LEGIONS unit is targeted, subtract 1 from incoming Hit rolls for the phase.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "supreme-commander-thousand-sons",
+    "summary": "Magnus must be your Warlord if included in the army.",
+    "state": "structured",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "temporal-instability-servants-of-change-thousand-sons",
+    "summary": "When an eligible MUTANT INFANTRY or MOUNTED unit is selected to Advance or Fall Back, it can start an action despite that move. The source gives only a phase duration, which ends before later action steps; confirm when this permission is used and expires.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "terrifying-assault-thousand-sons",
+    "summary": "After this unit’s attacks in your Shooting phase or either Fight phase, select one enemy unit hit by those attacks. It takes a Battle-shock test, at -1 if it is within 9″ of a friendly THOUSAND SONS PSYKER unit.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "the-land-writhes-servants-of-change-thousand-sons",
+    "summary": "When a friendly MONSTER MUTANT unit is selected to move, it gains MOBILE for that phase.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "thicket-of-bladed-bone-upgrade-servants-of-change-thousand-sons",
+    "summary": "Improve this upgraded unit’s melee AP by 1 and grant its melee weapons Cleave 1.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "through-the-veil-hexwarp-thrallband-thousand-sons",
+    "summary": "In your Reinforcements step, the eligible Rubric Marines unit gains Deep Strike for the phase. An eligible Scarab Occult Terminators unit using Deep Strike can instead set up wholly within the Flow of Magic and more than 6″ from enemies, but cannot charge that turn. Keep the two datasheet-specific branches separate.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "tome-of-true-names-changehost-of-deceit-thousand-sons",
+    "summary": "Once per battle per model, at the start of a phase, the bearer can gain a 2+ invulnerable save for that phase.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "touched-by-tzeentch-warpmeld-pact-thousand-sons",
+    "summary": "At the start of your Movement phase, an eligible unit gains permission to shoot or charge after Advancing this turn, choosing one when acting. The effect grants Assault and charging together without a choice, while its notes require one of the two; confirm that choice restriction.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "twist-of-fate-prism-of-zadophon-thousand-sons",
+    "summary": "When an enemy targets this friendly MUTANT PRISM OF ZADOPHON unit, it gains a 4+ invulnerable save for the phase.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "twisted-mirage-warpmeld-pact-thousand-sons",
+    "summary": "When this eligible MUTANT TZEENTCH unit arrives from Strategic Reserves in your Movement phase, it can be set up anywhere more than 6″ horizontally from enemies, or more than 8″ if it is a MONSTER. It cannot declare a charge that turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "twisted-sorceries-thousand-sons",
+    "summary": "Once per battle per unit, in your Shooting phase or either Fight phase, improve this Sorcerer’s Psychic weapon Attacks and Strength by 3 for that phase.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "umbralefic-crystal-grand-coven-thousand-sons",
+    "summary": "Once per battle per army, in your Command phase, if the bearer’s unit is unengaged, put it into Strategic Reserves. It gains Deep Strike until the start of your next Shooting phase and must ingress in your next Movement phase, including turn 1. The effect instead sequences reserves and ingress immediately with a turn duration; confirm the notes’ timing and expiry.",
+    "state": "needs-summary",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "unearthly-power-thousand-sons",
+    "summary": "At the start of each battle round, Magnus chooses one option until the next round: Impossible Form reduces incoming non-Psychic Damage by 1; Treason of Tzeentch selects one enemy within 24″ at the start of your opponent’s Shooting phase and gives its ranged weapons Hazardous for that phase; Time Flux gives friendly THOUSAND SONS units within 6″ +2″ Move. Only one option is active at a time.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "unravelled-fates-servants-of-change-thousand-sons",
+    "summary": "Before or after the bearer moves in your Movement phase, select one friendly Battle-shocked MUTANT unit within 6″. It is no longer Battle-shocked.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "unwavering-phalanx-rubricae-phalanx-thousand-sons",
+    "summary": "After an enemy ends a Charge move engaged with this eligible Rubric Marines unit, incoming attacks suffer -1 to Wound for the turn. The structured effect requires Strength to exceed Toughness, while its notes omit that condition; confirm whether the penalty is conditional.",
+    "state": "needs-summary",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "walking-rampart-sekhetar-cohort-thousand-sons",
+    "summary": "In your Movement phase, before or after the bearer moves, select one friendly SEKHETAR ROBOTS unit within 3″ to regain up to D3+1 lost wounds. The bearer also has Lone Operative while within 3″ of a friendly SEKHETAR ROBOTS unit. The healing effect targets a unit without naming which model regains wounds; confirm that model selection.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "warding-hex-hexwarp-thrallband-thousand-sons",
+    "summary": "In the Command phase, make this unit’s objective sticky until the next Command phase. The source does not identify an objective selection, ownership/range requirement or precise activation event; check those conditions before applying Warding Hex.",
+    "state": "needs-summary",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "warp-fields-sekhetar-cohort-thousand-sons",
+    "summary": "When targeted by ranged attacks in your opponent’s Shooting phase, this SEKHETAR ROBOTS unit suffers -1 to incoming Wound rolls for the phase if the attack’s Strength exceeds its Toughness and it is within 12″ of a friendly THOUSAND SONS PSYKER unit.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "warp-syphon-warpforged-cabal-thousand-sons",
+    "summary": "After rolling the extra Channelling die, while within 6″ of a friendly THOUSAND SONS VEHICLE unit, the bearer can cause 1 mortal wound to a selected Vehicle in range to re-roll that extra die before checking doubles or triples. The effect instead specifies a Psychic re-roll without binding it to the Channelling die; confirm the exact die and sequence.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "warp-cursed-runemaster-warpforged-cabal-thousand-sons",
+    "summary": "While the bearer is within 6″ of a friendly THOUSAND SONS VEHICLE unit, add 6″ to the range of its Rituals for that resolution.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "warp-tainted-shells-prism-of-zadophon-thousand-sons",
+    "summary": "Only the bearer’s infernal cannon gains Psychic.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "warped-vicissitude-warpmeld-pact-thousand-sons",
+    "summary": "When an enemy targets this eligible friendly Tzaangors unit, it gains a 4+ invulnerable save for the phase.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "warpfire-infusion-thousand-sons",
+    "summary": "When a friendly THOUSAND SONS VEHICLE is selected to shoot or fight, re-roll one Hit, Wound or Damage roll of your choice; if it is within 6″ of a friendly THOUSAND SONS PSYKER, re-roll one of each instead. A nearby qualifying Vehicle’s Deadly Demise threshold becomes 5+. The preserved import uses a phase scope while the pinned source differs, and its death branch modifies this model rather than clearly the destroyed Vehicle; confirm duration and recipient.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "warpflame-gargoyles-warpforged-cabal-thousand-sons",
+    "summary": "After an enemy ends a Charge move engaged with this eligible THOUSAND SONS VEHICLE unit, roll six dice: each 5+ causes 1 mortal wound to that enemy. The notes then require that enemy to take a Battle-shock test, but the effect tests this unit instead; confirm which unit takes the test.",
+    "state": "needs-summary",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "warpmeld-dagger-warpmeld-pact-thousand-sons",
+    "summary": "When attempting a Ritual, before determining the Psychic test result, the bearer may suffer D3 mortal wounds. If it survives, add 1 to the test result for each mortal wound suffered. The effect instead adds the D3 roll total regardless of damage prevention and triggers before rolling; confirm the timing and whether prevented wounds count.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "warpmeld-sacrifice-thousand-sons",
+    "summary": "Friendly TZEENTCH MUTANT INFANTRY or MOUNTED units may sacrifice when selected to shoot/fight for +1 to their Wound rolls, or when targeted for -1 to enemy Wound rolls against them. The chosen unit suffers D3 mortal wounds at phase end. Each benefit keeps its triggering event and the delayed self-damage cost.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "wrath-of-the-doomed-hexwarp-thrallband-thousand-sons",
+    "summary": "When an enemy selects this THOUSAND SONS unit as a target in the Fight phase, grant fight-on-death for the phase to models whose unit has not fought. On destruction, roll D6 for each: it fights on 4+, adding 1 to the roll if its unit is wholly within the Flow of Magic. Fight after the attacking unit finishes its attacks, then remove the destroyed model.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  }
+]
