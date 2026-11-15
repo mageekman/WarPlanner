@@ -70,6 +70,16 @@
    if(!row.faction)throw Error('Choose a faction, or All factions.');
   }
   if(row.kind==='unit'){
+   if(d.sharedUnitId!==undefined&&(typeof d.sharedUnitId!=='string'||!/^[a-zA-Z0-9_-]{1,180}$/.test(d.sharedUnitId)||d.sharedUnitId===d.id))throw Error('Choose a different shared unit ID.');
+   if(d.unitMemberships!==undefined){
+    if(!Array.isArray(d.unitMemberships)||!d.unitMemberships.length||d.unitMemberships.length>100)throw Error('Add between 1 and 100 unit faction memberships.');
+    const factions=new Set(),ids=new Set();for(const m of d.unitMemberships){
+     if(!m||typeof m.faction!=='string'||!m.faction.trim()||m.faction==='*'||m.faction.length>100||factions.has(norm(m.faction)))throw Error('Choose each unit faction once.');factions.add(norm(m.faction));
+     if(typeof m.unitId!=='string'||!/^[a-zA-Z0-9_-]{1,180}$/.test(m.unitId)||ids.has(m.unitId))throw Error('Each unit membership needs its original stable ID.');ids.add(m.unitId);
+     stringList(m.keywordAdditions,'Chapter keywords');if(!Array.isArray(m.abilities)||m.abilities.some(a=>!a||typeof a.id!=='string'))throw Error('Review the chapter ability links.');
+    }
+    if(!d.unitMemberships.some(m=>m.faction===row.faction&&m.unitId===d.id))throw Error('Keep the primary unit faction and stable ID in its memberships.');
+   }
    if(d.profiles!==undefined)Profiles.validate(d.profiles);
    for(const k of ['keywords','bodyguardIds'])stringList(d[k],k);
    if(!Array.isArray(d.abilities)||d.abilities.some(a=>!a||typeof a.id!=='string'))throw Error('Review this unit’s ability references.');
@@ -86,12 +96,17 @@
  function apply(rows){
   const entries=new Map(defaults.map(r=>[r.key,copy(r)]));
   for(const row of rows){validate(row);entries.set(row.key,copy(row));}
-  const enabled=[...entries.values()].filter(r=>r.enabled&&!r.data.sharedRuleId),select=kind=>enabled.filter(r=>r.kind===kind).flatMap(r=>{
+  const enabled=[...entries.values()].filter(r=>r.enabled&&!r.data.sharedRuleId&&!r.data.sharedUnitId),unitIds=new Map();
+  for(const row of enabled.filter(r=>r.kind==='unit'))unitIds.set(row.data.id,new Map((row.data.unitMemberships||[{faction:row.faction,unitId:row.data.id}]).map(m=>[m.faction,m.unitId])));
+  const select=kind=>enabled.filter(r=>r.kind===kind).flatMap(r=>{
    const data=kind==='rule'?M.enrich(r.data):r.data;
+   if(kind==='unit'&&data.unitMemberships)return data.unitMemberships.map(m=>({...data,id:m.unitId,faction:m.faction,keywords:[...new Set([...data.keywords,...m.keywordAdditions])],abilities:copy(m.abilities),bodyguardIds:data.bodyguardIds.map(id=>unitIds.get(id)?.get(m.faction)).filter(Boolean)}));
    return kind==='rule'&&data.memberships?data.memberships.map(m=>({...data,faction:m.faction,membershipFaction:m.faction})): [{...data,faction:r.faction}];
   });
   L.catalog.factions.splice(0,L.catalog.factions.length,...select('faction'));
-  L.catalog.units.splice(0,L.catalog.units.length,...select('unit'));
+  const units=select('unit');
+  if(units.some(u=>u.unitMemberships)){const order=new Map([...entries.keys()].map((key,i)=>[key,i]));units.sort((a,b)=>(order.get('unit:'+a.id)??Number.MAX_SAFE_INTEGER)-(order.get('unit:'+b.id)??Number.MAX_SAFE_INTEGER));}
+  L.catalog.units.splice(0,L.catalog.units.length,...units);
   L.catalog.detachments.splice(0,L.catalog.detachments.length,...select('detachment'));
   L.abilities.splice(0,L.abilities.length,...select('rule'));
   const sharedIds=new Map();for(const r of enabled.filter(r=>r.kind==='rule'))for(const id of r.data.sharedRuleIds||[])sharedIds.set(id,r.data.id);
@@ -122,7 +137,7 @@
  }
  function filterRecords(records,{kind='rule',query='',reference='all'}={}){
   const text=query.trim().toLowerCase();
-  return records.filter(row=>(!kind||row.kind===kind)&&(kind!=='rule'||reference==='all'||(reference==='reference')===(row.data.referenceOnly===true))&&(!text||[row.name,row.faction,row.data.detachment,...(row.data.memberships||[]).flatMap(m=>[m.faction,...m.detachments]),row.data.summary,row.data.importSource?.text].filter(Boolean).join(' ').toLowerCase().includes(text))).sort((a,b)=>a.name.localeCompare(b.name));
+  return records.filter(row=>(!kind||row.kind===kind)&&(kind!=='rule'||reference==='all'||(reference==='reference')===(row.data.referenceOnly===true))&&(!text||[row.name,row.faction,row.data.detachment,...(row.data.unitMemberships||[]).map(m=>m.faction),...(row.data.memberships||[]).flatMap(m=>[m.faction,...m.detachments]),row.data.summary,row.data.importSource?.text].filter(Boolean).join(' ').toLowerCase().includes(text))).sort((a,b)=>a.name.localeCompare(b.name));
  }
  function create(client,userId){
   let records=[],isAdmin=false,disposed=false,version=0;
