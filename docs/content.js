@@ -129,7 +129,17 @@
   const check=()=>{if(disposed)throw Error('This account session has ended.');};
   const result=r=>{if(r.error)throw Error(r.error.message||'The content database could not be reached.');return r.data;};
   async function read(){
-   const pageSize=500,all=[];for(let start=0;;start+=pageSize){check();const page=result(await client.from('rules_catalog').select('*').order('key').range(start,start+pageSize-1))||[];all.push(...page);if(page.length<pageSize)break;}
+   const pageSize=500;
+   async function page(start,count=false){check();const response=await client.from('rules_catalog').select('*',count?{count:'exact'}:{}).order('key').range(start,start+pageSize-1);const rows=result(response)||[];check();return {rows,count:response.count};}
+   const first=await page(0,true),all=[...first.rows];
+   if(Number.isInteger(first.count)&&first.count>=0){
+    // Fetch at most three independent ranges together; append in key order.
+    // No partial catalog is published if any request fails or the account changes.
+    for(let start=pageSize;start<first.count;start+=pageSize*3){const starts=[start,start+pageSize,start+pageSize*2].filter(n=>n<first.count);const pages=await Promise.all(starts.map(n=>page(n)));for(const p of pages)all.push(...p.rows);}
+    if(all.length!==first.count)throw Error('The rules catalog changed while loading. Please reload and try again.');
+   }else if(first.rows.length===pageSize){
+    for(let start=pageSize;;start+=pageSize){const next=await page(start);all.push(...next.rows);if(next.rows.length<pageSize)break;}
+   }
    all.forEach(validate);check();records=all;version++;return copy(records);
   }
   return {
