@@ -32,7 +32,7 @@
  function sourceUnit(state,unit,name){return units(state.army).filter(u=>u.id!==unit.id&&has(u,name));}
  function leading(unit,name,bodyguard){return unit.attached&&unit.leaders.some(m=>m.role==='leader'&&norm(m.name)===norm(name))&&(!bodyguard||norm(unit.body.name)===norm(bodyguard));}
  function fits(a,state,unit,armyMatched=false){
-  if(!a||(!armyMatched&&!L.matches(a,state.army))||!a.phase.includes(state.phase)||(a.turn!=='either'&&a.turn!==state.turn))return false;
+  if(!a||(!armyMatched&&!L.matches(a,state.army))||!L.ruleMatchesContext(a,state))return false;
   if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>m.role==='leader'&&a.units.includes(m.name))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
   if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
   if(a.expanded&&a.sourceRuleId){
@@ -142,7 +142,7 @@
   }
   return [];
  }
- function activationCandidates(state){return L.abilities.filter(a=>a.expanded&&a.phase.includes(state.phase)&&(a.turn==='either'||a.turn===state.turn)&&['act','select','before','react','after','arrivals'].includes(a.window)&&L.matches(a,state.army));}
+ function activationCandidates(state){return L.abilities.filter(a=>a.expanded&&L.ruleMatchesContext(a,state)&&L.matches(a,state.army)).flatMap(a=>L.timingsFor(a,state).filter(t=>['act','select','before','react','after','arrivals'].includes(t.window)).map(t=>a.timings?{...a,window:t.window}:a));}
  function stages(state,unit,mode,candidates){
   const rows=baseStages(state,unit,mode);
   if(!unit||!rows.length||['pile','consolidate'].includes(mode))return rows;
@@ -188,7 +188,7 @@
    for(const row of rows)for(const a of row.cards){
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
     const key=ruleKey(a);if(seen.has(key))continue;seen.add(key);
-    const item={...a,guideMeta:L.ruleGuideMeta(a,state),timing:a.expanded?(a.triggerText||row.title):row.title};
+    const item={...a,guideMeta:L.ruleGuideMeta(a,state),timing:a.timings?L.ruleTimingLabel(a):a.expanded?(a.triggerText||row.title):row.title};
     if(a.category==='army'||a.category==='stratagem'){
      if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[],battlefieldUnits:[]});
      const shared=sharedMap.get(key);shared.battlefieldUnits.push(unit);
