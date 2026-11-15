@@ -8,7 +8,7 @@
   const supported=!!(win.location&&win.history?.pushState&&win.history?.replaceState);
   let ready=false,index=0,restoring=false;
   const returnKey='warplanner.return-page.v1';
-  function remember(){const view=read(win.location.hash);if(view)try{win.sessionStorage?.setItem(returnKey,view);}catch{}}
+  function remember(){if(!supported)return;const view=read(win.location.hash);if(view)try{win.sessionStorage?.setItem(returnKey,view);}catch{}}
   function pending(){try{const view=win.sessionStorage?.getItem(returnKey);return Object.hasOwn(pages,view)?view:null;}catch{return null;}}
   function forget(){try{win.sessionStorage?.removeItem(returnKey);}catch{}}
   const meta=()=>win.history.state?.warplannerPage;
