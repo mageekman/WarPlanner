@@ -1,5 +1,11 @@
 # WarPlanner — personal study edition, v0.28
 
+Drukhari catalog audit: 164 rules and 10 detachments reviewed, with four missing
+Coven of Agonies datasheets restored for 27 units and 28 profiles. There are 102
+usable study summaries, 43 source issues and 19 missing effects. Power From Pain
+remains an empty source record and is flagged explicitly. See
+[AUDIT-DRUKHARI.md](AUDIT-DRUKHARI.md) for the review list and guarded repair.
+
 Thousand Sons catalog audit: all 156 generic rule prompts now have source-based
 study text or a specific source-issue description. Two saved rule edits and three
 edited units are preserved. Coverage includes 158 rules, 38 units (44 profiles)
