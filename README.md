@@ -341,3 +341,7 @@ reference flags and saved lists are preserved.
 ## Orks readiness audit (2026-11-14)
 
 Audited all 209 Orks rules across 60 units, 69 stat profiles and 16 detachments. There are 148 usable study summaries, 59 specific source issues and two empty Psyker records. Waaagh! remains explicitly provisional, and Try Dat Button retains its source-conflict warning. Bomb Squig variants keep their distinct one/two-use allowances. Unresolved entries stay out of practice; original sources, flags, memberships and saved lists are preserved. See [AUDIT-ORKS.md](AUDIT-ORKS.md).
+
+## T’au Empire readiness audit (2026-11-15)
+
+Audited all 166 T’au rules across 47 units, 48 stat profiles and eight detachments: 82 usable study summaries, 81 specific source issues and three empty records. For the Greater Good remains in source review; Farsight’s unrelated Necron ability gate and provisional detachment/drone records are explicit. Unresolved entries stay out of practice. Sources, memberships, review flags and saved lists are preserved. See [AUDIT-TAU.md](AUDIT-TAU.md).
