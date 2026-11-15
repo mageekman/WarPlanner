@@ -1,0 +1,1231 @@
+[
+  {
+    "id": "a-long-leash-traitoris-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "In your Command phase, select up to two friendly WAR DOG units to count as within range of your ABHORRENT model’s Aura abilities until your next Command phase. Source review: the effect refers to all friendly ABHORRENT auras without selecting a particular bearer; confirm the issuing model, affected auras and next-Command player binding.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "animalistic-rage-houndpack-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Just after a friendly WAR DOG unit that has not been selected to shoot or fight this phase is destroyed, it may shoot or fight before Deadly Demise, targeting only its destroyer. Source review: the trigger permits opponent Shooting or either Fight, while core metadata permits either turn in both phases; destroyer-only targeting and Deadly Demise order appear only in the note. Confirm those gates and any additional restrictions.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "annihilate-the-unworthy-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly KNIGHT TYRANT units add 1 to Hit rolls for attacks against Battle-shocked defenders. The benefit is restricted to Knight Tyrants, not all Chaos Knights.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "aspect-of-the-beast-helhunt-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "At the start of your Command phase, one additional Dread ability is active for this bearer until your next Command phase, in addition to the army’s active Dread abilities. Source review: the effect merely adds a selection without an activation event or bearer-only selection/persistence procedure; confirm how this temporary choice interacts with Harbingers of Dread.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "avenge-the-masters-iconoclast-fiefdom-chaos-knights",
+    "state": "needs-summary",
+    "summary": "When an enemy destroys a friendly CHAOS KNIGHTS unit, mark that enemy for the battle; friendly DAMNED attacks against it gain Lethal Hits. Source conflict: the effect writes marked but checks MARKED, and the core target specifies only the triggering unit without an owner. Confirm designation identity and which unit is selected.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "bastion-of-corruption-chaos-knights",
+    "state": "structured",
+    "summary": "Enemy units cannot set up from Strategic Reserves within 12″ of this Knight Tyrant. The imported restriction names Strategic Reserves; do not extend it to every other setup procedure without checking that procedure’s rules.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "arrivals"
+  },
+  {
+    "id": "bastion-of-firepower-chaos-knights",
+    "state": "structured",
+    "summary": "If this Chaos Acastus Knight Porphyrion Remained Stationary this turn, its ranged weapons gain Lethal Hits for the turn.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "beasthide-manifestation-helhunt-lance-chaos-knights",
+    "state": "structured",
+    "summary": "When an enemy selects the friendly CHAOS KNIGHTS unit as an attack target, worsen the AP of attacks targeting it by 1 until that attacking unit finishes its attacks. This lasts that attack sequence, not the whole phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "bestial-aspect-infernal-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "The bearer’s ranged weapons gain Assault. While using Unholy Hunger, its note permits ignoring Move-characteristic and Advance-roll modifiers. Source review: the effect tests possession of an unholy-hunger ability rather than the active Malefic Surge option; confirm when the modifier immunity starts and ends.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "blade-of-celerity-lords-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "The bearer’s ranged weapons gain Assault. Once per battle per bearer, its unit may gain Fights First for a Fight phase. Source gap: this compound effect has no precise activation event for the Fights First choice; confirm when it must be declared relative to fight order.",
+    "phase": [
+      1,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "blasphemous-engine-infernal-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Add 2 to the bearer’s Wounds characteristic. Its note permits re-rolling the Leadership test made for Malefic Surge. Source conflict: the encoded trigger is any ability use rather than that specific test; confirm the permitted re-roll and timing.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "blessing-of-the-dark-master-lords-of-dread-chaos-knights",
+    "state": "structured",
+    "summary": "The bearer has Stealth. Once per battle per bearer, after a saving throw for it, you may change that attack’s Damage to 0. The zero-Damage effect applies to one attack, not every attack in the sequence.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "bloodlust-chaos-knights",
+    "state": "structured",
+    "summary": "If this Knight Rampager made a Charge move this turn, its melee weapons gain Devastating Wounds for the turn.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "brigand-chaos-knights",
+    "state": "structured",
+    "summary": "This War Dog Brigand’s ranged attacks gain Ignores Cover against defenders within control range of an objective marker.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "claimed-for-the-dark-gods-lords-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "The note says at the start of your Command phase, a CHAOS KNIGHTS CHARACTER within range of a friendly-controlled objective makes it sticky with Level of Control 5 until the opponent exceeds your control at phase end. Source conflict: core metadata permits either Command phase, while the effect only says objective-sticky on this-unit and omits objective selection, control value and expiry. Confirm the full procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "close-range-killers-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 9″ of this Knight Ruinator improve AP by 1 when attacking their closest eligible target. Check the closest eligible target for the attacking model; the imported effect does not restrict the bonus to ranged weapons.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "conquerors-without-mercy-traitoris-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "For a CHAOS KNIGHTS model that charged this turn, improve its melee weapons’ AP by 1 this phase; if it destroys an enemy unit, enemies within 6″ take Battle-shock tests. Source gap: the effect omits the charge and destruction gates and supplies no exact use event or core target restriction; confirm those conditions before resolving the tests.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "consumed-with-hunger-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 6″ of this Chaos Cerastus Knight Atrapos can re-roll Hit rolls against TITANIC or TOWERING defenders. This is the Chaos War Dog aura, not the Imperial Atrapos Bondsman procedure.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "contemptuous-volleys-helhunt-lance-chaos-knights",
+    "state": "structured",
+    "summary": "After the selected friendly CHAOS KNIGHTS unit Falls Back in your Movement phase, it can shoot and declare a charge this turn despite Falling Back.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "corrupting-taint-infernal-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "After a CHAOS KNIGHTS CHARACTER makes a Malefic Surge in your Command phase, its note makes an objective it controls sticky until the opponent’s control exceeds yours at phase end. Source gaps: the trigger is any ability use, the selection can pick any friendly-controlled objective without the bearer’s control-range gate, and the effect targets this-unit rather than the selected objective; confirm binding and expiry.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "react"
+  },
+  {
+    "id": "coursing-thralls-iconoclast-fiefdom-chaos-knights",
+    "state": "needs-summary",
+    "summary": "At the start of your Shooting phase, the selected friendly DAMNED unit marks one visible enemy within 12″ Hunted and adds 6″ to its detection range for the phase. Source gap: detection range is not defined here, and visibility uses this-model while range uses this-unit; confirm the measurement and target binding.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "cruel-lashmaster-aura-iconoclast-fiefdom-chaos-knights",
+    "state": "structured",
+    "summary": "When a friendly DAMNED unit within 6″ of the bearer makes a Normal, Advance or Fall Back move, add 2″ to its Move characteristic for the phase. The aura is restricted to DAMNED recipients.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "crushed-like-vermin-lords-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "After the selected friendly CHAOS KNIGHTS CHARACTER finishes a Normal move, select a non-MONSTER, non-VEHICLE enemy it moved over; roll six D6, dealing 1 mortal wound per 4+. If a model dies, that enemy takes a Battle-shock test. Source review: the casualty condition can detect any enemy model destroyed in the event instead of explicitly one destroyed by these mortal wounds; confirm the victim/test binding.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "cunning-hunter-houndpack-lance-chaos-knights",
+    "state": "structured",
+    "summary": "After the selected friendly WAR DOG unit Falls Back in your Movement phase, it can shoot and declare a charge this turn despite Falling Back.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "dark-fervour-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 6″ of this Chaos Cerastus Knight Lancer gain Assault on ranged weapons. This does not grant the Imperial Lancer’s Advance-and-charge Bondsman effect.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "dark-sacrifice-iconoclast-fiefdom-chaos-knights",
+    "state": "structured",
+    "summary": "Select a friendly DAMNED unit excluding ACCURSED CULTISTS within 9″ of a friendly CHAOS KNIGHTS model. Choose one friendly CHAOS KNIGHTS model within 9″ of that DAMNED unit; roll D3+3 once. The DAMNED unit suffers that many mortal wounds and the chosen Knight regains that many lost wounds, using the same roll.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "diabolic-bulwark-infernal-lance-chaos-knights",
+    "state": "structured",
+    "summary": "When an enemy selects the friendly CHAOS KNIGHTS unit as an attack target in your opponent’s Shooting phase, models in it gain a 4+ invulnerable save for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "disdain-for-the-weak-traitoris-lance-chaos-knights",
+    "state": "structured",
+    "summary": "When the selected friendly unit is targeted in Fight, it gains Feel No Pain 6+ for the phase, improved to Feel No Pain 5+ against attacks made by Battle-shocked attackers. The stronger protection depends on the attacker’s state, not your unit’s state.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "dread-dominion-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 9″ of this Knight Despoiler improve their Leadership and Objective Control characteristics by 1. This improves Leadership; it is not a penalty to the test roll.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "dreadblades-chaos-knights",
+    "state": "structured",
+    "summary": "If every model in your army has CHAOS, you may include one TITANIC CHAOS KNIGHTS model or up to three WAR DOG models that lack the chosen Faction keyword. Those allied models cannot be your Warlord or take Enhancements. This is a composition reference, not an automatic legality check.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "encircling-pack-houndpack-lance-chaos-knights",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, select one friendly WAR DOG unit wholly within 12″ of a battlefield edge and not in Engagement Range. Place it into Strategic Reserves and follow the applicable later-arrival rules. This requires wholly within, unlike the Imperial Freeblade version’s within 9″ condition.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "executioner-chaos-knights",
+    "state": "needs-summary",
+    "summary": "This War Dog Executioner adds 1 to Hit rolls against defenders below Half-strength. When it destroys an enemy unit, the source also forces enemies within 3″ of the destroyed unit to take Battle-shock tests. Source gap: that second branch has no explicit activation event or frequency gate, and its origin is event-object; confirm destruction binding and resolution timing.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "feral-arrogance-helhunt-lance-chaos-knights",
+    "state": "structured",
+    "summary": "When damage is allocated to the selected friendly CHAOS KNIGHTS unit, it gains Feel No Pain 5+ against mortal wounds for the phase. Ordinary damage is not covered.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "final-howl-aura-houndpack-lance-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 6″ of the bearer re-roll Wound rolls of 1. This aura does not grant full Wound re-rolls.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "fleshmetal-fusion-infernal-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Add 1 to the bearer’s Toughness. While using Unnatural Fortitude, the note adds 1 to armour saves against Damage-1 attacks. Source conflict: the effect omits the Damage-1 and armour-only restrictions and triggers on damage allocation, after saves normally occur; confirm those restrictions and timing.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "flush-the-quarry-helhunt-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "At the start of your Movement phase, select one friendly TITANIC CHAOS KNIGHTS unit and up to three other WAR DOG units within 6″ of that first target. The source gives the second targets movement through terrain/models, permission while engaged, no ending in Engagement Range and automatic Desperate Escape passes. Source conflict: these permissions trigger after a Normal, Advance or Fall Back move has ended; confirm legal timing and paths/end positions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "frenzied-rampage-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 9″ of this Knight Rampager re-roll melee Hit rolls of 1. The aura is restricted to melee attacks.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "goaded-beast-helhunt-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "After an enemy finishes shooting in your opponent’s Shooting phase, select a friendly CHAOS KNIGHTS unit that has lost wounds; it makes a D6″ Surge move. Source gaps: the wound-loss condition is not bound to that enemy’s attacks or that event, and the legal Surge movement/end-position procedure is not supplied; confirm both.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "grav-pinned-chaos-knights",
+    "state": "needs-summary",
+    "summary": "After this Chaos Styrix shoots, enemy INFANTRY hit by its graviton crusher are designated grav-pinned, lose 2″ Move and subtract 2 from Charge rolls until the end of your opponent’s next turn. Source review: hit history points to this-unit rather than each selected enemy and the penalties use a self-referential active-rule gate; confirm victim and expiry.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "harbingers-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Deathly Terror is always active: worsen enemy Leadership by 1 within 9″. At the start of rounds 1, 3 and 5, choose one additional Dread ability or roll two D6 for two, lasting the battle: Despair (a further cumulative Leadership worsening by 1 within 9″), Doom (+1 to Wound against Battle-shocked targets), Darkness (Stealth, not the old Hit penalty), Dismay (below-Starting-Strength enemies within 9″ test in the opponent’s Battle-shock step), Delirium (D3 mortal wounds when a below-Half-strength enemy within 9″ fails Battle-shock), or Dominion (+3″ Aura range). Source review: the odd-round condition wraps the whole tree, selection is optional despite the always-active baseline, and duplicate/random-choice persistence is unspecified; confirm the full selection and stacking procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "harrying-hounds-houndpack-lance-chaos-knights",
+    "state": "structured",
+    "summary": "After an enemy finishes a Normal, Advance or Fall Back move in your opponent’s Movement phase, select one friendly WAR DOG unit within 8″ of that enemy. It makes a Normal move of up to 6″, following the normal restrictions. The source’s updated trigger distance is 8″, not the older 9″.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "hate-filled-dominion-bastions-of-tyranny-chaos-knights",
+    "state": "structured",
+    "summary": "The Knight Tyrant bearer can re-roll dice used to determine a weapon’s random Attacks characteristic. These are Attacks-characteristic dice, not Hit rolls.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "hellforged-construction-infernal-lance-chaos-knights",
+    "state": "structured",
+    "summary": "When an enemy selects your friendly CHAOS KNIGHTS unit as an attack target in Fight, worsen the AP of each attack targeting it by 1 until that attacker finishes its attacks. This is an attack-sequence duration.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "hungry-for-combat-houndpack-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "If at least two WAR DOG units are in Engagement Range of the same enemy, the note restricts them to attacking that enemy and gives Critical Hits on 5+ for the phase. Source gaps: only critical_on 5 is encoded, with no shared-enemy/target-lock condition, unmodified-roll wording or multi-unit core target restriction; confirm all gates and the threshold.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "hunters-helm-helhunt-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "The note permits re-rolling Advance and Charge rolls for the bearer’s unit. Source conflict: the effect encodes these as alternatives in a choice, without timing or a per-roll selection procedure; confirm that both benefits are available in their respective windows.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "huntmaster-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 6″ of this Chaos Questoris Knight Magaera gain Assault on ranged weapons. This is an aura, not the Imperial Magaera’s Bondsman benefit.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "huntsman-chaos-knights",
+    "state": "structured",
+    "summary": "This War Dog Huntsman can re-roll Wound rolls against MONSTER or VEHICLE defenders. Either keyword qualifies; the imported effect does not restrict this to ranged attacks.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "iconoclast-idol-aura-iconoclast-fiefdom-chaos-knights",
+    "state": "needs-summary",
+    "summary": "While a friendly DAMNED unit is within 6″ of the bearer, the note reduces the CP cost of Heroic Intervention targeting that unit by 1. Source review: the aura’s inner cost modifier targets this-unit rather than recipient and the trigger permits any Stratagem use; confirm the recipient and restriction to Heroic Intervention.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "imperious-advance-traitoris-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Imperious Advance describes moving through low/tall terrain, non-TITANIC models, and other models if the unit has not charged this turn, plus automatic Desperate Escape passes. Source conflict: core metadata permits Movement or Charge, but the effect is conditional on Movement only and has no target restriction, exact move event or complete end-position limits; confirm which moves are legal.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "infernal-aegis-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG units within 6″ of this Knight Tyrant have the Benefit of Cover when targeted by attacks. Apply cover’s normal ranged-attack restrictions; this does not grant a melee saving-throw bonus.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "insensate-bloodthirst-hunting-warpack-chaos-knights",
+    "state": "structured",
+    "summary": "When an enemy selects the friendly WAR DOG unit as an attack target in Fight, it gains Feel No Pain 5+ for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "intimidating-reminder-bastions-of-tyranny-chaos-knights",
+    "state": "needs-summary",
+    "summary": "After the selected friendly KNIGHT TYRANT shoots, select an enemy it hit; that enemy is suppressed and subtracts 1 from its Hit rolls until your next Command phase. Source conflict: the hit-history victim and suppressed-state test are unbound, while the penalty targets this-unit instead of the selected enemy; confirm who actually suffers the penalty.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "karnivore-chaos-knights",
+    "state": "structured",
+    "summary": "This War Dog Karnivore’s unit can re-roll Advance and Charge rolls. These are separate benefits in a sequence, not a choice between them.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "knight-diabolus-infernal-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Improve the bearer’s melee weapons’ Weapon Skill by 1. While using Diabolic Power, those weapons also gain Lance. Source review: the effect tests possession of a diabolic-power ability rather than whether the Malefic Surge option is active; confirm its activation and expiry and apply Lance’s own charge condition.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "leash-of-the-masters-hunting-warpack-chaos-knights",
+    "state": "structured",
+    "summary": "After the selected friendly WAR DOG unit shoots, it may start an action this phase despite having shot. Other action eligibility and timing restrictions still apply.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "loping-predator-houndpack-lance-chaos-knights",
+    "state": "structured",
+    "summary": "The WAR DOG bearer’s ranged weapons gain Assault.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "macro-extinction-protocols-chaos-knights",
+    "state": "needs-summary",
+    "summary": "This Chaos Atrapos adds 1 to Hit rolls against MONSTER or VEHICLE defenders and also adds 1 to Wound rolls if that defender is TITANIC or TOWERING. Source review: the record is explicitly auto-generated and partial; confirm weapon scope and remaining restrictions.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "malefic-surge-chaos-knights",
+    "state": "needs-summary",
+    "summary": "In your Command phase, a CHAOS KNIGHTS unit can take a Leadership test, suffering D3 mortal wounds on failure, then become Empowered until your next Command phase. It spends Empowered once on Unholy Hunger (+3″ Move for a Normal, Advance or Fall Back move), Diabolic Power (Lethal Hits OR Sustained Hits 1), or Unnatural Fortitude (5+ invulnerable save OR Feel No Pain 6+), for the phase. Source conflicts: the test targets this-unit rather than selected-unit, the Command-only gate wraps later use, Unholy Hunger triggers after moving, and the exact selection/consumption sequence is incomplete; confirm the procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "malevolent-heraldry-traitoris-lance-chaos-knights",
+    "state": "structured",
+    "summary": "While the bearer is on the battlefield, when rolling to randomly determine Harbingers of Dread abilities, you may re-roll one or both results. This applies to the Dread-selection rolls, not arbitrary dice.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "marked-prey-chaos-knights",
+    "state": "needs-summary",
+    "summary": "At the start of your Command phase, select one enemy as Marked Prey until your next Command phase. Friendly WAR DOG models gain Sustained Hits 1 against that enemy only while it is visible to the attacker. Source conflict: visibility is tested during selection with no attacker bound, rather than while resolving each beneficiary’s attacks; confirm the visibility gate and who can select the prey.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "masters-of-the-pack-chaos-knights",
+    "state": "needs-summary",
+    "summary": "A TITANIC CHAOS KNIGHTS unit with an aura affecting friendly WAR DOGS is also affected by that aura while at least two friendly WAR DOG models are within its range. Source gap: the effect adds TITANIC recipients without encoding the two-model gate or tying the benefit to the issuing model’s own aura; confirm both before applying it.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "merciless-fusillade-helhunt-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "One TITANIC CHAOS KNIGHTS unit and up to two friendly WAR DOG units must each focus one eligible enemy target; those attacks gain Sustained Hits 1 for the phase. Source gaps: the effect simply buffs this-unit without multi-target selection or focus-fire gates, and core target restrictions are absent; confirm selection, targeting and eligible attacks.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "methodical-destruction-chaos-knights",
+    "state": "structured",
+    "summary": "At the start of the first battle round, this Knight Ruinator selects one enemy unit as its victim. This model re-rolls Wound rolls against that selected victim for the battle. One victim is active per bearer unit; when it is destroyed, select a replacement. Replacement is mandatory in the import, unlike the Imperial Preceptor’s optional quarry replacement.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "mirror-of-fates-lords-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Source conflict: the effect is an optional immediate +1CP tax on a Stratagem targeting an enemy within 12″, once per turn per model. Its note instead grants Command Re-roll for this unit at 0CP once per battle round with repeat-use permission, plus a once-per-battle increase to the opponent’s future uses of a Stratagem. Confirm which version, target, timing and frequency are current; neither branch is treated as verified.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "nightmares-master-traitoris-lance-chaos-knights",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, every enemy unit in Engagement Range of the bearer takes a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "obsessive-ruthlessness-chaos-knights",
+    "state": "structured",
+    "summary": "When this Knight Desecrator makes ranged attacks against MONSTER or VEHICLE defenders, ignore modifiers to its Ballistic Skill characteristic and to its Hit and Wound rolls. Keep the ranged and target-keyword restrictions.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "octagram-of-conjuration-helhunt-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Knight Abominant bearer only. After a friendly WAR DOG model within 9″ of the bearer shoots, you may select one enemy hit by those attacks to take a Battle-shock test. Source review: the record is explicitly approximate and its hit-history object points to this-unit rather than the selected enemy; confirm the victim binding and permitted use frequency.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "offerings-for-the-dark-gods-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 6″ of this Chaos Cerastus Knight Castigator gain Sustained Hits 1 on ranged weapons. This is not the Imperial Castigator’s self-referential Duty effect and does not also grant improved AP.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "panoply-of-the-cursed-knights-houndpack-lance-chaos-knights",
+    "state": "structured",
+    "summary": "Worsen the AP characteristic of each attack targeting the WAR DOG bearer by 1. Apply it to attacks against that bearer, not every friendly unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "paragons-of-terror-chaos-knights",
+    "state": "structured",
+    "summary": "At the start of the first battle round, after determining the army’s Dread abilities, choose one additional Dread ability to remain active for the battle. This additional ability cannot be randomly determined.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "pitiless-focus-bastions-of-tyranny-chaos-knights",
+    "state": "needs-summary",
+    "summary": "For the selected friendly KNIGHT TYRANT, Falling Back does not prevent shooting. Source conflict: the permission lasts only the Movement phase and triggers when selected to Fall Back rather than granting an explicit shoot-after-Fall-Back exception for the turn; confirm persistence into Shooting.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "preysight-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 6″ of this Chaos Questoris Knight Styrix gain Ignores Cover on ranged weapons.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "preyslayers-mantle-houndpack-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "The WAR DOG bearer gains Super-heavy Walker. Source gap: the referenced generic ability ID differs from this faction’s imported ID, and the faction version itself has incomplete movement timing and terrain/end-position rules; confirm the intended procedure before using it.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "profane-symbiosis-infernal-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "At the end of any phase, select one friendly CHAOS KNIGHTS unit that is not Empowered to make a Malefic Surge; the same unit cannot use this more than once per battle round. Source conflict: the referenced Malefic Surge tree is itself Command-only and has incomplete test/selection timing; confirm how this out-of-phase activation overrides it. Preserve the per-unit round limit in addition to the Stratagem’s phase limit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "protection-protocols-chaos-knights",
+    "state": "needs-summary",
+    "summary": "This War Dog Moirax may use Heroic Intervention even if it was used this phase, reduce the triggering use’s CP cost by 1, and gain a lifted-use permission that does not consume the shared use. Source review: the cost modifier is not explicitly limited to Heroic Intervention and no frequency or protected-nearby-unit gate is supplied; confirm the full restrictions.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "pterrorshade-rookery-bastions-of-tyranny-chaos-knights",
+    "state": "needs-summary",
+    "summary": "When the Knight Tyrant bearer is selected to shoot, select one enemy within 24″; it gains 6″ detection range until this unit has shot. Source gap: detection range is not defined here and the expiry’s this-unit is ambiguous between the firing unit and selected enemy; confirm both.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "pterrorshades-traitoris-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Once per battle round across the army, after an enemy fails Battle-shock, select a friendly CHAOS KNIGHTS unit within 12″ of it and roll six D6. Each 4+ deals that enemy 1 mortal wound and restores 1 lost wound to one model in your unit using the same results. Source difference: the import heals one-model while the pin says per-unit; the approximate note claims healing/shared dice and the round limit are unmodeled although this import encodes them. Confirm the healing recipient and preserved round limit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "putrid-carapace-lords-of-dread-chaos-knights",
+    "state": "structured",
+    "summary": "Set the bearer’s Save characteristic to 2+. Once per battle per bearer, at the start of either player’s Command phase, it may regain up to D6 lost wounds. This is a Save characteristic, not a 2+ invulnerable save.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "repair-auto-simulacra-chaos-knights",
+    "state": "structured",
+    "summary": "At the end of your Command phase, this Chaos Questoris Knight Magaera regains D3 lost wounds.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "rune-cursed-stronghold-bastions-of-tyranny-chaos-knights",
+    "state": "structured",
+    "summary": "When damage is allocated to the selected friendly KNIGHT TYRANT unit, it gains Feel No Pain 5+ against mortal wounds for the phase. This is restricted to Knight Tyrants and mortal wounds.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "runes-of-disdain-lords-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "When an enemy selects your CHAOS KNIGHTS CHARACTER unit as an attack target, reduce the Damage characteristic of attacks allocated to it by 1 for the phase. Source review: the encoded reduction has no minimum Damage or detailed interaction with replacement/set-Damage effects; confirm the current minimum and application order.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "scenting-fear-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Once per battle round across the army, in your Shooting phase choose a visible enemy within 12″ of a friendly WAR DOG; it gains 6″ detection range for the phase. The detachment also declares the WAR DOGS-exclusive tag. Source gaps: detection range and the exclusive tag’s list restrictions are undefined, and the visibility observer/exact use event are unbound; confirm all three.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "searing-flames-chaos-knights",
+    "state": "needs-summary",
+    "summary": "After this Chaos Cerastus Knight Acheron shoots, select an enemy hit by its Acheron flame cannon; suppress that enemy’s Benefit of Cover for the rest of the phase. Source review: the hit-history object points to this-unit rather than the selected enemy; confirm the hit victim before applying the effect.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "seething-hatred-chaos-knights",
+    "state": "structured",
+    "summary": "When this Knight Despoiler is selected to shoot or fight, it may re-roll one Hit roll OR one Wound roll during that attack sequence. The choice is one re-roll of either kind, not one of each.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "shock-charge-chaos-knights",
+    "state": "needs-summary",
+    "summary": "This Chaos Cerastus Knight Lancer’s source sets Crushing Impact to 0CP when targeting its unit and lifts a use limit without consuming the shared use. Source gap: the referenced Crushing Impact rule is absent from this faction import and no activation event or frequency limit is supplied; do not silently substitute another charge Stratagem.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "snarling-rivalry-upgrade-hunting-warpack-chaos-knights",
+    "state": "structured",
+    "summary": "The EXECUTIONER upgrade unit’s ranged weapons gain Ignores Cover. Keep the Executioner bearer restriction and upgrade tag.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "soul-spoor-auspicator-upgrade-hunting-warpack-chaos-knights",
+    "state": "structured",
+    "summary": "Add 6″ to the HUNTSMAN upgrade unit’s ranged weapons’ Range characteristic. Keep the Huntsman restriction; this does not increase aura or ability ranges.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "spiteful-demise-lords-of-dread-chaos-knights",
+    "state": "structured",
+    "summary": "Just after the selected friendly CHAOS KNIGHTS CHARACTER unit is destroyed, this permission allows the Stratagem despite destruction. Its Deadly Demise triggers on 4+ instead of 6; resolve that model’s actual Deadly Demise damage and normal recipients.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "stalker-chaos-knights",
+    "state": "structured",
+    "summary": "This War Dog Stalker adds 1 to Wound rolls against a defender with no other enemy units within 6″ of that defender. The isolation test concerns nearby enemy units, not your own supporting units.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "stalking-focus-hunting-warpack-chaos-knights",
+    "state": "structured",
+    "summary": "When an enemy targets your friendly WAR DOG unit within control range of an objective in your opponent’s Shooting phase, worsen the AP of ranged attacks targeting it by 1 until that attacker finishes its attacks. Keep the objective-range gate and attack-sequence duration.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "storm-of-bolts-chaos-knights",
+    "state": "needs-summary",
+    "summary": "After this Chaos Castigator shoots, select one enemy it hit, excluding MONSTER and VEHICLE units. If this model is on the battlefield when the effect resolves, designate that enemy suppressed and subtract 1 from its Hit rolls until the start of the next turn. Source review: the hit victim is not bound to the selection and next-turn ownership is unspecified; confirm victim and expiry.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "storm-of-darkness-traitoris-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Source conflict: the effect grants Stealth and a melee Hit penalty of 1 for the phase when this unit is targeted; the note instead says Stealth and Benefit of Cover in the opponent’s Shooting phase. Core metadata permits either turn in Shooting or Fight. Confirm the correct protection, attack type, player and duration rather than treating both versions as cumulative.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "sunderer-of-fortresses-chaos-knights",
+    "state": "needs-summary",
+    "summary": "This Chaos Acastus Knight Asterius improves Strength and Damage by 1 against VEHICLE defenders, or by 2 instead if that VEHICLE is also a FORTIFICATION. Source review: the record is explicitly auto-generated and partial; confirm weapon scope and whether non-VEHICLE fortifications should qualify.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "super-heavy-walker-chaos-knights",
+    "state": "needs-summary",
+    "summary": "For Normal, Advance or Fall Back moves, the source describes moving through non-TITANIC models, terrain up to 4″ and taller terrain, even while engaged, without ending in Engagement Range. After moving through tall terrain, roll D6: on 1 the unit becomes Battle-shocked. Source conflict: movement permissions trigger after the move ends, with incomplete tall-terrain boundaries, paths/end positions and Battle-shock expiry; confirm the full procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "taskmaster-chaos-knights",
+    "state": "structured",
+    "summary": "Friendly WAR DOG models within 9″ of this Knight Desecrator re-roll ranged Hit rolls of 1. This is not a full Hit re-roll or a melee aura.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "throne-mechanicum-of-skulls-lords-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "The bearer’s unit can re-roll Charge rolls. Once per battle per bearer, it may declare a charge in your Charge phase even if it Advanced this turn. Source gap: the compound once-per-battle permission lacks a precise activation event; confirm when the option must be declared.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "throne-tyrannicus-helhunt-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "TITANIC CHAOS KNIGHTS bearer only. In your Command phase, select one other friendly CHAOS KNIGHTS CHARACTER within 9″; it is also affected by the bearer’s auras that affect WAR DOGS until your next Command phase. Source conflict: the designation is written onto this-model with selected-unit as a subject, while the recipient filter looks for the tag on the recipient; confirm the identity binding and activation event.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "titanic-duel-lords-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "The import selects one enemy MONSTER or VEHICLE for the phase: re-roll Hit and Wound rolls of 1 against it, or full Hit and Wound re-rolls if that chosen enemy is TITANIC. Source difference: the pin selects any enemy and only re-rolls 1s, without the TITANIC branch. The note also says your Shooting or Fight phase while core metadata permits either turn. Confirm the active version, player gate and attacking beneficiaries; do not substitute the Imperial +1 Hit/Wound version.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "trophy-hunter-lords-of-dread-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Before the selected friendly CHAOS KNIGHTS CHARACTER consolidates, the note permits up to 3″ extra Consolidation provided it ends in Engagement Range of an enemy. Source conflict: the nested move modifier triggers after Consolidation has ended and uses an ends-when predicate rather than a clear final-position requirement; confirm timing and the legal path/end position.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "tyrannical-court-chaos-knights",
+    "state": "needs-summary",
+    "summary": "Friendly CHAOS KNIGHTS CHARACTER models gain 2 Objective Control. Once per battle round, if your Warlord is on the battlefield, the note permits Claimed for the Dark Gods at 0CP. Source gaps: the OC target is broader than the applies-to filter, the cost effect lacks the round limit/Warlord gate, and its Stratagem ID is truncated; confirm scope and reference before using the free Stratagem.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "tyrants-shadow-traitoris-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "At the end of your Command phase, the note makes an objective controlled by the bearer sticky until enemy control exceeds yours and says that held objective has Deathly Terror. Source gap: only objective-sticky on this-unit is encoded, with no objective selection, control-range, transferred-aura or expiry binding; confirm the complete held-objective and aura procedure.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "unleash-balefire-infernal-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "After the selected friendly CHAOS KNIGHTS unit shoots, select an enemy it hit to take a Battle-shock test. On failure it becomes aflame, losing 2″ Move and subtracting 2 from Charge rolls until the end of your opponent’s next turn. Source conflict: core eligibility requires the friendly unit not yet selected to shoot, while the trigger is after shooting, and the hit victim is unbound; confirm selection timing and recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "unrestrained-terror-chaos-knights",
+    "state": "needs-summary",
+    "summary": "In Fight, this Chaos Cerastus Knight Acheron’s source forces enemy units within 6″ to take Battle-shock tests. Source gaps: the range has no origin, and there is no exact trigger or frequency limit; confirm when to test, which Acheron is the origin and any shared-use restriction.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "veil-of-medrengard-traitoris-lance-chaos-knights",
+    "state": "structured",
+    "summary": "The bearer has a 4+ invulnerable save against ranged attacks and a 5+ invulnerable save against melee attacks. Keep the two attack-type branches distinct.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "vortex-terrors-chaos-knights",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, this Knight Abominant selects one visible enemy within 24″; that enemy takes a Battle-shock test. This is the start-of-Shooting window, not after the Abominant shoots.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "vox-howl-houndpack-lance-chaos-knights",
+    "state": "needs-summary",
+    "summary": "The note says once per turn, enemies within 6″ of your WAR DOG CHARACTER take Battle-shock tests, and friendly WAR DOGS within 6″ may pass a Leadership test to lose Battle-shock. Source gaps: the effect only forces enemy tests, without an origin, friendly recovery, Character selection or turn limit; core metadata instead supplies a once-per-phase use. Confirm the full two-sided procedure and limits.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "warp-borne-stalker-lords-of-dread-chaos-knights",
+    "state": "structured",
+    "summary": "The bearer has Deep Strike. Once per battle per bearer, at the end of your opponent’s turn, if its unit is not in Engagement Range, you may remove it from the battlefield and place it into Strategic Reserves. Follow the normal later-arrival restrictions; this does not itself grant an immediate arrival.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "warp-storms-chaos-knights",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, once per phase across the army, roll one D6 for each enemy within 9″ of a friendly model with Warp Storms. On 3+ that enemy suffers D3 mortal wounds. Check each enemy once for the shared use, not once for each overlapping Abominant.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "warp-vision-infernal-lance-chaos-knights",
+    "state": "structured",
+    "summary": "Select one friendly CHAOS KNIGHTS unit that has not been selected to shoot this phase. Its ranged weapons gain Ignores Cover for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "wretched-thralls-chaos-knights",
+    "state": "structured",
+    "summary": "You may include DAMNED units from Codex: Chaos Space Marines with combined cost at most 500 points. Friendly DAMNED units can re-roll Leadership rolls. This source is a composition reference; it does not certify current official points, game-size allowances or every allied-list restriction.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  }
+]

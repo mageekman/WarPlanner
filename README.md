@@ -361,3 +361,7 @@ Audited all 160 rules across 41 source-matching units/profiles and ten detachmen
 ## Imperial Knights readiness audit (2026-11-15)
 
 Audited all 118 rules across 23 source-matching units/profiles and eight detachments: 43 usable summaries, 62 source issues and 13 empty effects. Bondsman, oath/reward approximations and the wrong-faction enhancement-reset trigger remain explicit. Full Tilt versions and same-name Thin Their Ranks records stay distinct. All 113 timed rules have Guide placements; five untimed records remain references. Original imports, memberships, flags, profiles and saved lists are preserved; unresolved entries stay outside practice. See [AUDIT-IMPERIAL-KNIGHTS.md](AUDIT-IMPERIAL-KNIGHTS.md).
+
+## Chaos Knights readiness audit (2026-11-15)
+
+Audited all 110 rules across 20 source-matching units/profiles and eight detachments: 56 usable summaries, 54 source issues and no empty effects. Harbingers/Malefic menus, incompatible Mirror/Storm versions and two imported pin differences stay explicit. All 110 reminders have Guide placements. Eight Imperial-matching chassis keep separate Chaos identities and abilities. Original imports, scopes, flags, profiles and saved lists are preserved; unresolved entries stay outside practice. See [AUDIT-CHAOS-KNIGHTS.md](AUDIT-CHAOS-KNIGHTS.md).
