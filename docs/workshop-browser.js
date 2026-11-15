@@ -3,8 +3,8 @@
  'use strict';
  const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),sort=(a,b)=>a.name.localeCompare(b.name);
  const ALL='__all__',SHARED='__shared__';
- const memberships=r=>r.kind==='rule'&&r.data.memberships||[{faction:r.faction,detachments:r.data.detachment?[r.data.detachment]:[]}];
- const visible=r=>!r.data.sharedRuleId;
+ const memberships=r=>r.kind==='unit'&&r.data.unitMemberships||r.kind==='rule'&&r.data.memberships||[{faction:r.faction,detachments:r.data.detachment?[r.data.detachment]:[]}];
+ const visible=r=>!r.data.sharedRuleId&&!r.data.sharedUnitId;
  const definitions=[
   {id:'faction',name:'Faction details',kind:'faction'},
   {id:'unit',name:'Units',kind:'unit'},
@@ -40,10 +40,11 @@
   for(const r of rows){counts.set(r.kind,(counts.get(r.kind)||0)+1);if(r.kind==='rule')counts.set('category:'+r.data.category,(counts.get('category:'+r.data.category)||0)+1);}
   return definitions.filter(d=>d.id!=='step'||scope===SHARED||scope===ALL).filter(d=>scope!==SHARED||!['faction','unit','detachment'].includes(d.id)).map(d=>({...d,name:d.id==='faction'&&scope===ALL?'Factions':d.name,count:counts.get(d.category?'category:'+d.category:d.kind)||0}));
  }
- function related(records,parent){
+ function related(records,parent,scope=parent?.faction){
   if(!parent||!['detachment','unit'].includes(parent.kind))return [];
-  const refs=(parent.kind==='unit'?parent.data.abilities||[]:[...(parent.data.rules||[]),...(parent.data.stratagems||[]),...(parent.data.enhancements||[])]).map(r=>norm(typeof r==='string'?r:r.id||r.name)).filter(Boolean);
-  return records.filter(r=>visible(r)&&r.kind==='rule'&&memberships(r).some(m=>norm(m.faction)===norm(parent.faction)||m.faction==='*')&&(parent.kind==='detachment'?memberships(r).some(m=>(norm(m.faction)===norm(parent.faction)||m.faction==='*')&&(r.data.memberships&&!m.detachments.length||m.detachments.some(d=>norm(d)===norm(parent.name))))||!r.data.memberships&&[r.data.id,r.data.sourceRuleId,r.name,...(r.data.sharedRuleIds||[])].some(id=>refs.includes(norm(id))):(r.data.units||[]).some(n=>norm(n)===norm(parent.name))||[r.data.id,r.data.sourceRuleId,r.name,...(r.data.sharedRuleIds||[])].some(id=>refs.includes(norm(id))))).sort(sort);
+  const member=parent.data.unitMemberships?.find(m=>norm(m.faction)===norm(scope)),faction=member?.faction||parent.faction;
+  const refs=(parent.kind==='unit'?member?.abilities||parent.data.abilities||[]:[...(parent.data.rules||[]),...(parent.data.stratagems||[]),...(parent.data.enhancements||[])]).map(r=>norm(typeof r==='string'?r:r.id||r.name)).filter(Boolean);
+  return records.filter(r=>visible(r)&&r.kind==='rule'&&memberships(r).some(m=>norm(m.faction)===norm(faction)||m.faction==='*')&&(parent.kind==='detachment'?memberships(r).some(m=>(norm(m.faction)===norm(faction)||m.faction==='*')&&(r.data.memberships&&!m.detachments.length||m.detachments.some(d=>norm(d)===norm(parent.name))))||!r.data.memberships&&[r.data.id,r.data.sourceRuleId,r.name,...(r.data.sharedRuleIds||[])].some(id=>refs.includes(norm(id))):(r.data.units||[]).some(n=>norm(n)===norm(parent.name))||[r.data.id,r.data.sourceRuleId,r.name,...(r.data.sharedRuleIds||[])].some(id=>refs.includes(norm(id))))).sort(sort);
  }
  const api={ALL,SHARED,definitions,factions,scoped,entries,folders,related};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerWorkshopBrowser=api;
 })(typeof window!=='undefined'?window:globalThis);
