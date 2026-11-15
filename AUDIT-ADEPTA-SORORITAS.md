@@ -1,5 +1,9 @@
 # Adepta Sororitas readiness audit — 2026-11-15
 
+Follow-up: [Army-defining rule corrections](ARMY-FOUNDATIONS.md) supersede this
+audit’s original warnings for ordinary Acts of Faith.
+The counts below describe the original audit snapshot.
+
 Source-derived study audit against preserved Adepta Sororitas imports and pinned community tables. This is not certification against the current official Codex. Partial, conflicting and provisional mechanics retain their source status and specific review explanations.
 
 ## Coverage

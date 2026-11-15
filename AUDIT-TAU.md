@@ -1,5 +1,9 @@
 # T’au Empire readiness audit — 2026-11-15
 
+Follow-up: [Army-defining rule corrections](ARMY-FOUNDATIONS.md) supersede this
+audit’s original warnings for For the Greater Good and Puretide’s Teachings.
+The counts below describe the original audit snapshot.
+
 Source-derived study audit of the imported T’au catalog. This is not certification against the current official Codex. Provisional, approximate and internally inconsistent source records remain visibly flagged.
 
 ## Coverage

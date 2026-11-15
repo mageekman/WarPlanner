@@ -1,5 +1,9 @@
 # Grey Knights readiness audit — 2026-11-15
 
+Follow-up: [Army-defining rule corrections](ARMY-FOUNDATIONS.md) supersede this
+audit’s original warnings for standard Gate of Infinity, Prescient Redeployment and Tome of Forbidden Ways.
+The counts below describe the original audit snapshot.
+
 Source-derived review of the preserved Grey Knights imports against `wn-mitch/40kdc-data@6ea813f7706bc9a492026d8b4403af99a965162b`. This is not certification against the current official Codex. Original source records and reference/review flags remain intact.
 
 | Coverage | Count |

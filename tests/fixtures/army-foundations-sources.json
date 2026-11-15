@@ -1,0 +1,42 @@
+{
+  "drukhari": {
+    "checked": "2026-11-15",
+    "referenceUrl": "https://wahapedia.ru/wh40k11ed/factions/drukhari/",
+    "referenceSha256": "5f4170ee58d0519e81f071ae0f5f7c49d8e60f3f6610cdad1b2562639fa8bdea",
+    "officialSupplementUrl": "https://assets.warhammer-community.com/eng_wh40k_faction_pack_drukhari-p7mpvgnmnn-clii96hzh6.pdf",
+    "officialSupplementSha256": "ab3baea55fa6e7b932a3f940a860b9c30348593615f5098c705de0bdaefddd50",
+    "note": "The official faction pack supplements the Codex; it is not a complete replacement for all base army rules."
+  },
+  "imperial-knights": {
+    "checked": "2026-11-15",
+    "referenceUrl": "https://wahapedia.ru/wh40k11ed/factions/imperial-knights/",
+    "referenceSha256": "2bf532f5a3717fbce72e24877f36d7bab6e3e4f894c0877d52211bf882f6b268",
+    "officialSupplementUrl": "https://assets.warhammer-community.com/eng_wh40k_faction_pack_imperial_knights-n1irjnjygs-w8jfnk8kdn.pdf",
+    "officialSupplementSha256": "7c8c814350363760acda3c53ba4a01d8c5c5703f8e5e16a7b5911d06d612fa81",
+    "note": "The official faction pack supplements the Codex; it is not a complete replacement for all base army rules."
+  },
+  "t-au-empire": {
+    "checked": "2026-11-15",
+    "referenceUrl": "https://wahapedia.ru/wh40k11ed/factions/t-au-empire/",
+    "referenceSha256": "0783012b17b25ce5c7cd3cb70d59b81acc4fd9760011c4bc139952700ee81888",
+    "officialSupplementUrl": "https://assets.warhammer-community.com/eng_wh40k_faction_pack_tau_empire-sxhzmfrlud-mpzjzuhupn.pdf",
+    "officialSupplementSha256": "143cf421a68cd067b376cd8b8d04c92301af9f4eb5a1d6717aba6d22940f5b9c",
+    "note": "The official faction pack supplements the Codex; it is not a complete replacement for all base army rules."
+  },
+  "adepta-sororitas": {
+    "checked": "2026-11-15",
+    "referenceUrl": "https://wahapedia.ru/wh40k11ed/factions/adepta-sororitas/",
+    "referenceSha256": "c8a2114bb4267021e07b02be0b965b8e46ddb8a27c7e6348fb6728f59367765d",
+    "officialSupplementUrl": "https://assets.warhammer-community.com/eng_14-10_wh40k_-faction_pack_adepta_sororitas-kby0nywexj-dg7kvr3iiy.pdf",
+    "officialSupplementSha256": "8137e43a7efdc516a5ebc1655ec232551252d711dfaf4e95260332179c60f729",
+    "note": "The official faction pack supplements the Codex; it is not a complete replacement for all base army rules."
+  },
+  "grey-knights": {
+    "checked": "2026-11-15",
+    "referenceUrl": "https://wahapedia.ru/wh40k11ed/factions/grey-knights/",
+    "referenceSha256": "c2a73a121e9fb2ef5a67b17fc335c9badf0241d9e6ec4e370013e465ea8b1f7e",
+    "officialSupplementUrl": "https://assets.warhammer-community.com/eng_22-07_warhammer_40,000_faction_pack_grey_knights-dlzvusufhy-uialb3pko4.pdf",
+    "officialSupplementSha256": "8df7b54292988edb5ef5a83260dd4c054f658f06ba7cacc2467e3f558a1dd797",
+    "note": "The official faction pack supplements the Codex; it is not a complete replacement for all base army rules."
+  }
+}
