@@ -1,0 +1,1258 @@
+[
+  {
+    "id": "acherons-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "At the start of the Fight phase, if this Acheron has at least one Bondsman-designated recipient, enemies engaged with a friendly model with Acheron’s Duty take Battle-shock tests at -1. The source limits this to once per phase per army. Source review: confirm which Acheron/recipient engagement qualifies and the shared limit; the base Bondsman procedure is missing.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "acquisitor-at-arms-gate-warden-lance-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Acquisitor-at-Arms contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule. No activation timing is supplied, so this remains a reference record outside active Guide steps.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "aggressive-assault-imperial-knights",
+    "state": "structured",
+    "summary": "This Knight Errant adds 1 to ranged Hit rolls against the closest eligible target to the attacker. Check the closest eligible target for each attack.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ancestral-overbleed-upgrade-throne-bonded-outriders-imperial-knights",
+    "state": "structured",
+    "summary": "When Fire Overwatch or Heroic Intervention targets this upgraded ARMIGER unit, reduce that triggering Stratagem use’s CP cost by 1. This is a reduction, not an instruction to set the cost to 0; apply the core cost limits.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "archeotech-autoloaders-dominus-foebreakers-imperial-knights",
+    "state": "structured",
+    "summary": "The eligible DOMINUS bearer’s unit can re-roll dice used to determine its weapons’ random Attacks characteristic. These are Attacks-characteristic dice, not Hit rolls.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "atrapos-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Friendly attackers designated as affected by this Atrapos’s Bondsman ability can re-roll Hit and Wound rolls against TITANIC or TOWERING models. Source review: the record is explicitly auto-generated and partial; confirm eligible recipients, selection, range and duration against the missing base Bondsman procedure.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "augury-halo-gate-warden-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "While the bearer’s unit is in the Defensive Line, the bearer’s ranged attacks gain Ignores Cover. Source gap: this import references the Defensive Line but does not define how that region is established or measured; confirm it before applying the effect.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "bastion-of-firepower-imperial-knights",
+    "state": "structured",
+    "summary": "If this Acastus Knight Porphyrion Remained Stationary this turn, its ranged weapons gain Lethal Hits for the turn.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "bearer-of-the-evanescent-ion-valourstrike-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "At the end of your Movement phase, select one other friendly IMPERIAL KNIGHTS model visible to and within 12″ of the bearer; it gains Stealth. Source review: the encoded duration is until-next-movement-phase without a player qualifier; confirm exactly when the protection expires.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "bearer-of-the-iron-chalice-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, select one other friendly IMPERIAL KNIGHTS model visible to and within 12″ of the bearer. It regains D3 lost wounds, or 3 lost wounds if your army is Honoured.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "bearer-of-the-judicants-helm-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select one other friendly IMPERIAL KNIGHTS model visible to and within 12″ of the bearer. Its ranged weapons gain Ignores Cover for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "bearer-of-the-lancers-sigil-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "At the start of your Charge phase, you may select one other friendly IMPERIAL KNIGHTS model visible to and within 12″ of the bearer. It can re-roll Charge rolls for the phase.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "blessed-plate-dominus-foebreakers-imperial-knights",
+    "state": "structured",
+    "summary": "Add 1 to the eligible DOMINUS bearer’s Toughness characteristic. The source is marked pre-launch provisional; retain that status when checking current wording.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "bold-gallantry-imperial-knights",
+    "state": "needs-summary",
+    "summary": "After a friendly IMPERIAL KNIGHTS unit Advances, Bold Gallantry encodes Assault for friendly IMPERIAL KNIGHTS ranged weapons for the turn. Source review: the effect’s recipient filter is broader than the advancing unit and is derived from provisional 10th-edition wording; confirm who gains Assault and its activation timing.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "bondsman-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Bondsman contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule. The missing base selection, range, recipients and duration cannot be reconstructed from the individual Duty abilities. No activation timing is supplied, so this remains a reference record outside active Guide steps.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "bringer-of-justice-freeblade-company-imperial-knights",
+    "state": "structured",
+    "summary": "Add 2 to the bearer’s melee weapons’ Attacks characteristic and add 1 to its melee Hit rolls.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "castigators-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Castigator’s Duty encodes Sustained Hits 1 and improved AP by 1 for this model’s ranged weapons while its own rule is active. Source gap: this self-referential activation does not define the Bondsman recipient, selection, range or duration; do not assume the buff automatically applies to the Castigator or every Armiger.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "chainbreaker-imperial-knights",
+    "state": "structured",
+    "summary": "Once per battle for this Canis Rex unit, at the start of a phase, you may select one friendly Battle-shocked IMPERIUM unit within 12″. It is no longer Battle-shocked.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "code-chivalric-imperial-knights",
+    "state": "needs-summary",
+    "summary": "At the start of the battle select or randomly determine a Deed and a Quality. The source menus list Martial Valour (Hit or Wound rolls of 1, ranged or melee), Eager for Challenge (+2″ Move or +1 Advance or Charge), and Legacy Unsullied (+2 OC or +1 Leadership characteristic). Source conflict: nested choices may incorrectly make simultaneous benefits alternatives; Deed victims/control comparisons are incomplete, one destruction test is trivially ≥0, Honoured state is not defined, and the noted 2/3CP reward is not encoded. Confirm the full oath, bonus signs, fulfillment and reward procedure before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "cogbound-alliance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "The source describes friendly ADEPTUS MECHANICUS within 6″ gaining +1 Ballistic Skill characteristic and Heavy on ranged weapons, plus a TECH PRIEST choosing up to one friendly IMPERIAL KNIGHTS model within 3″ to heal D3 wounds in Command. Source gaps: the 6″ aura origin is unbound, the BS sign may worsen rather than improve it, and the repair lacks an exact event/player gate; confirm allied composition, recipients and the once-per-phase repair limit.",
+    "phase": [
+      0,
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "courageous-stand-questoris-companions-imperial-knights",
+    "state": "structured",
+    "summary": "When an enemy selects your friendly IMPERIAL KNIGHTS TITANIC unit as an attack target, it gains Feel No Pain 6+ for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "crusaders-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Friendly attackers designated as affected by this Crusader’s Bondsman ability add 1 to ranged Hit rolls. Source gap: the base Bondsman record supplies no effect, so confirm recipient eligibility, selection, range and duration before applying this reminder.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "crushing-condemnation-questoris-companions-imperial-knights",
+    "state": "needs-summary",
+    "summary": "After the bearer’s melee attacks, if it destroyed an enemy unit in that event, you may select a visible enemy within 12″ that is not engaged; roll six D6 and inflict 1 mortal wound per 4+. The bearer is then tagged enhancement-expended. Source gap: no usage frequency or check of that tag prevents reuse here, and Valour’s Reward has a conflicting reset trigger; confirm the expenditure/reset limit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "dauntless-defenders-imperial-knights",
+    "state": "needs-summary",
+    "summary": "While in the Defensive Line, the source grants ignoring Hit-roll modifiers and Sustained Hits 1. Source gap: the Defensive Line region is not defined, and ignore-modifiers targets this-unit while the weapon grant targets this-model; confirm the region, beneficiaries and weapon scope.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "defenders-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Defender’s Duty encodes reducing Damage by 1 when damage is allocated while its own rule is active. Source gaps: activation is self-referential, the Bondsman recipient/duration is absent, and no minimum Damage is specified. Confirm those gates before applying a reduction.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "drive-them-out-gate-warden-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Before the selected friendly IMPERIAL KNIGHTS unit shoots or fights, attacks against a defender in the Defensive Line score Critical Hits on the encoded value of 5 for the phase. Source gaps: the Defensive Line is undefined and the effect does not specify unmodified rolls or a 5+ threshold; confirm both.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "driven-by-the-past-questoris-companions-imperial-knights",
+    "state": "structured",
+    "summary": "The selected friendly IMPERIAL KNIGHTS TITANIC unit can declare a charge this turn even if it Advanced.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "driven-from-their-lairs-imperial-knights",
+    "state": "needs-summary",
+    "summary": "While a friendly IMPERIAL KNIGHTS ARMIGER unit is affected by a Bondsman ability, its ranged weapons gain Ignores Cover. Source review: the Bondsman gate exists only in the community note, while the effect itself lasts the battle; confirm its conditional duration and the missing base Bondsman procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "errants-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Errant’s Duty encodes re-rolling Advance rolls and Assault on this unit’s ranged weapons while its own rule is active. Source gap: the self-reference does not establish Bondsman selection, recipient, range or duration; confirm those details instead of automatically granting the Errant its own buff.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "exemplar-of-the-code-imperial-knights",
+    "state": "structured",
+    "summary": "At battle start this Knight Preceptor selects one enemy unit as its quarry. It re-rolls Wound rolls against that selected unit. One quarry is active per bearer unit; when the quarry is destroyed, you may replace it with another enemy unit for the battle.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "exemplars-wisdom-spearhead-at-arms-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Exemplar’s Wisdom contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule.",
+    "phase": [],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "fables-of-nightmare-spearhead-at-arms-imperial-knights",
+    "state": "needs-summary",
+    "summary": "If at least two recipients are designated as affected by this bearer’s Bondsman ability, friendly ARMIGER recipients designated by that same bearer gain Precision on melee weapons. Source gap: confirm the base Bondsman eligibility, selection, range and duration; a designation alone does not supply them.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "fire-shocked-dominus-foebreakers-imperial-knights",
+    "state": "needs-summary",
+    "summary": "After the selected friendly DOMINUS IMPERIAL KNIGHTS unit shoots, select an enemy it hit to take a Battle-shock test at -1. Source review: the encoded hit-history object points to this-unit rather than the selected enemy, leaving the victim binding ambiguous; confirm the hit recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "flanking-manoeuvres-freeblade-company-imperial-knights",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, select one friendly ARMIGER unit within 9″ of a battlefield edge and not engaged. Remove it from the battlefield and place it into Strategic Reserves; follow the applicable later-arrival rules.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "foebreaker-firestorm-dominus-foebreakers-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When the selected friendly DOMINUS IMPERIAL KNIGHTS unit is engaged and selected to shoot, remove Blast from its Blast ranged weapons and improve their Attacks characteristic by 1 for the phase. Source review: the Attacks buff still filters by Blast after Blast is removed; confirm that the same original weapons receive both effects and any further restrictions on engaged shooting.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "fortress-of-intimidation-gate-warden-lance-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Fortress of Intimidation contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule.",
+    "phase": [],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "freeblades-imperial-knights",
+    "state": "structured",
+    "summary": "If every model in your army has IMPERIUM, the Freeblades composition rule permits either up to one TITANIC IMPERIAL KNIGHTS model or up to three ARMIGER models. Those allied models cannot be your Warlord or receive Enhancements. This is an army-composition reminder, not an automatic legality check.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "full-tilt-freeblade-company-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When advancing, the Freeblade Company version replaces the Advance roll with a fixed 6″; its note specifies 9″ for ARMIGER or DESTRIER. Source gap: only fixed-6 is encoded, with no exact trigger or core target restriction; confirm the 9″ branch, eligible models and total movement calculation. This differs from Valourstrike’s +2″ Move/+2 Advance version.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "full-tilt-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "Select one friendly IMPERIAL KNIGHTS unit that has not been selected to move this phase. For the phase add 2″ to its Move characteristic and add 2 to its Advance rolls. This is not the fixed Advance distance of Freeblade Company’s Full Tilt.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "gallants-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Gallant’s Duty encodes re-rolling Charge rolls and melee Hit rolls for this unit while its own rule is active. Source gap: this self-reference does not establish the Bondsman recipient, selection, range or duration; confirm who actually receives the benefit.",
+    "phase": [
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "grav-pinned-imperial-knights",
+    "state": "needs-summary",
+    "summary": "After this Styrix shoots, enemy INFANTRY hit by its graviton crusher are designated grav-pinned, lose 2″ Move and subtract 2 from Charge rolls until the end of your opponent’s next turn. Source review: the hit-history victim is bound to this-unit rather than each affected enemy and the penalties use a self-referential active-rule gate; confirm recipient and expiry.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "ground-shaking-strides-dominus-foebreakers-imperial-knights",
+    "state": "structured",
+    "summary": "When the selected friendly DOMINUS IMPERIAL KNIGHTS unit is selected to move, add 2″ to its Move characteristic for this phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "gyro-optimised-actuators-upgrade-throne-bonded-outriders-imperial-knights",
+    "state": "needs-summary",
+    "summary": "The upgraded ARMIGER unit gains the MOBILE keyword. Source gap: this import supplies no definition of MOBILE or its movement benefits; do not infer permissions from the keyword alone.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "helm-conditioning-throne-bonded-outriders-imperial-knights",
+    "state": "needs-summary",
+    "summary": "In your Command phase, set the selected target’s Bondsman range to 18″ for the phase. Source gap: the core target restriction and exact use event are absent, and the base Bondsman effect is empty; confirm who can be selected and how the extended range applies.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "herald-of-triumph-questoris-companions-imperial-knights",
+    "state": "needs-summary",
+    "summary": "After the bearer makes a Charge move, you may force every enemy engaged with it to take a Battle-shock test at -1 and tag the bearer enhancement-expended. Source gap: no frequency or expended-tag eligibility check prevents reuse, and the reset rule conflicts; confirm the expenditure/reset procedure.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "heroes-of-legend-imperial-knights",
+    "state": "needs-summary",
+    "summary": "At the start of your turn, if the current Oath is fulfilled, determine an additional Oath: exclude previously selected Deeds/Qualities, choose an unselected option on a duplicate roll and stop when all domains are exhausted. Qualities from fulfilled Oaths persist for Code Chivalric models; completing an additional Deed grants 1CP instead. Source review: the note is explicitly approximate and the base oath procedure/rewards are incomplete; confirm the interaction.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "turn-start"
+  },
+  {
+    "id": "heros-tread-questoris-companions-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Hero’s Tread contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule.",
+    "phase": [],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "honoured-to-serve-throne-bonded-outriders-imperial-knights",
+    "state": "structured",
+    "summary": "After the selected friendly ARMIGER unit finishes shooting, it can start an action this phase despite having shot. Other action eligibility and timing restrictions still apply.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "hunters-eye-freeblade-company-imperial-knights",
+    "state": "structured",
+    "summary": "The bearer’s ranged weapons gain Ignores Cover.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "impetuous-glory-imperial-knights",
+    "state": "structured",
+    "summary": "If this Armiger Warglaive made a Charge move this turn, add 1 attack to its reaper chain-cleaver strike profile and 2 attacks to its sweep profile for the turn. Apply the bonus to the profile used, not both profiles together.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "in-the-shadow-of-giants-questor-forgepact-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When the selected friendly ADEPTUS MECHANICUS unit is selected to Advance or Fall Back, the source permits it to start an action. Source gap: the permission is granted in Movement and lasts only that phase, without an explicit exception to the action window or later-phase duration; confirm when the action actually starts and what restrictions are waived.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "ion-aegis-imperial-knights",
+    "state": "structured",
+    "summary": "Friendly ARMIGER models within 6″ of this Knight Valiant or Knight Castellan have the Benefit of Cover against ranged attacks. This aura does not grant cover against melee attacks.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "knight-of-the-opus-machina-aura-questor-forgepact-imperial-knights",
+    "state": "structured",
+    "summary": "Friendly ADEPTUS MECHANICUS recipients within 6″ of the bearer improve their melee weapons’ Weapon Skill and AP characteristics by 1. Keep the aura’s allied-faction restriction.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "knightly-teachings-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When a friendly model uses a BONDSMAN ability, you may replace its selection with up to three friendly ARMIGER models within 12″, or 15″ if your army is Honoured, that are not already Bondsman-affected; recipients last until the next Command phase. Another friendly model must not already have used that same rule this turn. Source review: the range origin points to an event variable and the next-Command player and base Bondsman procedure are unspecified; confirm those bindings.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "knights-of-legend-imperial-knights",
+    "state": "structured",
+    "summary": "Friendly IMPERIAL KNIGHTS models gain Feel No Pain 6+. At the start of your Command phase, each friendly IMPERIAL KNIGHTS model regains 1 lost wound.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "lancebreaker-gate-warden-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When the friendly IMPERIAL KNIGHTS unit in the Defensive Line is targeted in Fight, subtract 1 from the attacker’s Wound rolls only if that attack’s Strength exceeds the defender’s Toughness, for the phase. Source gap: the Defensive Line region is undefined; confirm its boundaries and eligibility.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "lancers-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Friendly models designated as affected by this Lancer’s Bondsman ability may declare a charge even if they Advanced this turn. Source gap: confirm the missing base Bondsman selection, eligible recipients, range and duration.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "legendary-freeblade-imperial-knights",
+    "state": "structured",
+    "summary": "Once per turn, set the CP cost of a Stratagem targeting this Canis Rex unit to 0. The record names no specific Stratagem; apply current core restrictions and do not treat this as a repeat-use permission.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "let-duty-be-your-shield-spearhead-at-arms-imperial-knights",
+    "state": "structured",
+    "summary": "When the selected friendly ARMIGER unit is targeted in your opponent’s Shooting phase, worsen the attacking weapons’ AP characteristic by 1 for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "macro-extinction-protocols-imperial-knights",
+    "state": "needs-summary",
+    "summary": "This Atrapos adds 1 to Hit rolls against MONSTER or VEHICLE defenders and adds 1 to Wound rolls as well if that defender is TITANIC or TOWERING. Source review: the record is explicitly auto-generated and partial; confirm weapon scope and remaining restrictions before use.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "magaeras-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Magaera’s Duty encodes improved Strength and AP by 1 for ranged attacks against the closest eligible target while its own rule is active. Source gap: the self-reference does not establish the Bondsman recipient, selection, range or duration; confirm these before granting the benefit.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "magos-questoris-questor-forgepact-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Magos Questoris contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule. No activation timing is supplied, so this remains a reference record outside active Guide steps.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "mantle-of-the-mentor-spearhead-at-arms-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Mantle of the Mentor contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule.",
+    "phase": [],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "marshal-the-defence-gate-warden-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Select up to two friendly IMPERIAL KNIGHTS units not yet selected to move this phase; the source adds 3″ to this-unit’s Move characteristic for the phase. Source review: the singular effect does not explicitly bind both selected targets, and the Defensive Line interaction, if any, is absent; confirm which selected units receive the bonus.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "martial-pride-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Martial Pride encodes +3″ Consolidation distance for this Knight Gallant if at least one engagement-front condition is met. Source conflict: the trigger is after the Consolidation has ended and engagement-fronts is undefined; confirm the legal move timing, qualifying engagements and end-position restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "martial-tuition-spearhead-at-arms-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Martial Tuition contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule. No activation timing is supplied, so this remains a reference record outside active Guide steps.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "mentor-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Friendly attackers designated as affected by this Preceptor’s Bondsman ability can re-roll Wound rolls against a quarry. Source review: the quarry predicate has no subject or owner binding; confirm it is this Preceptor’s selected enemy and check the missing base Bondsman selection, range and duration.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "mentors-pride-spearhead-at-arms-imperial-knights",
+    "state": "needs-summary",
+    "summary": "If at least two recipients are designated as affected by the bearer’s Bondsman ability, friendly attackers designated by that same bearer re-roll Hit rolls of 1. Source gap: confirm the missing base Bondsman eligibility, selection, range and duration.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "moment-of-glory-questoris-companions-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Moment of Glory contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "mysterious-guardian-freeblade-company-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Once per battle per army, at the end of the opponent’s turn, you may remove the bearer’s unengaged unit to Strategic Reserves; it gains Deep Strike and the record schedules arrival next Movement, even in round one. The note says redeploy more than 9″ from enemies. Source conflict: an immediate ingress move and until-next-shooting duration also appear; confirm arrival timing, distances and whether Deep Strike persists.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end"
+  },
+  {
+    "id": "neural-lash-throne-bonded-outriders-imperial-knights",
+    "state": "structured",
+    "summary": "In a Command phase, select one friendly IMPERIAL KNIGHTS TITANIC unit. Select one friendly Battle-shocked ARMIGER within 12″ of that unit; the Armiger is no longer Battle-shocked. The core metadata permits either player’s Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "noble-sacrifice-freeblade-company-imperial-knights",
+    "state": "needs-summary",
+    "summary": "For the selected IMPERIAL KNIGHTS unit’s next Deadly Demise use, set its trigger threshold to 4+; an ARMIGER also adds 1 to that roll. Source gap: no exact destruction/use event or core target restriction is supplied; confirm when to spend CP and which destroyed model qualifies.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "omnissiahs-grace-questor-forgepact-imperial-knights",
+    "state": "structured",
+    "summary": "When damage is allocated to the selected friendly IMPERIAL KNIGHTS unit, it gains Feel No Pain 5+ against mortal wounds for the phase. This does not grant Feel No Pain against ordinary damage.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "paladins-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Paladin’s Duty encodes Lethal Hits on this unit’s weapons and Lance on its melee weapons while its own rule is active. Source gap: the self-reference does not establish the Bondsman recipient, selection, range or duration; confirm those details rather than automatically buffing the Paladin.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "pennant-of-silvered-fury-questoris-companions-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When the bearer is selected to fight, you may give its melee weapons Sustained Hits 2 for the phase and tag it enhancement-expended. Source gap: no frequency or expended-tag eligibility check prevents repeated use, and Valour’s Reward’s reset trigger conflicts; confirm the expenditure/reset limit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "point-blank-barrage-freeblade-company-imperial-knights",
+    "state": "needs-summary",
+    "summary": "The source permits the selected unit’s Blast weapons to target enemies within Engagement Range. Its note additionally says ignore the engaged Hit penalty and suffer self-inflicted mortal wounds on unmodified 1s. Source gaps: the latter effects lack counts, roll types and exact timing, and no core target restriction is supplied; confirm the full shooting and self-damage procedure.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "protection-protocols-imperial-knights",
+    "state": "needs-summary",
+    "summary": "This Armiger Moirax may use Heroic Intervention even if that Stratagem was used this phase, reduce the triggering use’s cost by 1, and gain a lifted-use permission that does not consume the shared use. Source review: the cost modifier is not explicitly limited to Heroic Intervention and no frequency or nearby-protected-unit condition is supplied; confirm all gates before applying it.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "punishing-salvoes-imperial-knights",
+    "state": "needs-summary",
+    "summary": "If this Knight Crusader Remained Stationary this turn, Punishing Salvoes describes Sustained Hits 1 for its ranged weapons for the turn. Source conflict: the effect is conditional on being in your Movement phase, so it would not remain active in Shooting without a stored grant; confirm application timing and persistence.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "purgations-hand-gate-warden-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "While the bearer’s unit is in the Defensive Line, the bearer re-rolls melee Hit and Wound rolls of 1. Source gap: the Defensive Line region is not defined in this import; confirm its construction and measurement.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "rain-of-devastation-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Friendly DOMINUS IMPERIAL KNIGHTS add 1 to Hit rolls against defenders in a terrain area. Source review: the effect does not restrict attack type, although its note says gated on Shooting, and the terrain footprint predicate is generic; confirm the ranged-only scope and qualifying terrain.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "ram-jets-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When this Knight Destrier is selected to make a Normal or Advance move, add D3″ to its Move characteristic. Source conflict: the effect lasts the phase while the note says only for that move; confirm duration, repeat movement and when to roll.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "repair-auto-simulacra-imperial-knights",
+    "state": "structured",
+    "summary": "At the end of your Command phase, this Questoris Knight Magaera regains D3 lost wounds. This is an end-of-phase repair.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "rotate-ion-shields-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "When the selected friendly IMPERIAL KNIGHTS unit is targeted in your opponent’s Shooting phase, it gains a 4+ invulnerable save for the phase. The source’s phase gate does not make this a melee defence.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "run-them-through-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "Select one friendly IMPERIAL KNIGHTS unit that has not been selected to fight this phase. Its melee weapons gain Lance for the phase; apply Lance’s own Charge condition.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "sanctuary-freeblade-company-imperial-knights",
+    "state": "structured",
+    "summary": "The bearer has a 5+ invulnerable save. The imported effect has no ranged-only qualifier; confirm current wording when comparing it with the bearer’s other saves.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "saturation-fire-imperial-knights",
+    "state": "structured",
+    "summary": "In the Shooting phase, when this Knight Destrier makes a ranged attack against a unit within control range of an objective marker, that attack gains Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "searing-flames-imperial-knights",
+    "state": "needs-summary",
+    "summary": "After this Cerastus Knight Acheron shoots, select one enemy hit by its Acheron flame cannon; suppress that enemy’s Benefit of Cover for the rest of the phase. Source review: the hit-history object points to this-unit instead of the selected enemy; confirm that victim binding before applying the debuff.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "seasoned-noble-imperial-knights",
+    "state": "structured",
+    "summary": "This Knight Paladin improves AP by 1 for ranged attacks against the closest eligible target to the attacker.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "selfless-protector-imperial-knights",
+    "state": "needs-summary",
+    "summary": "The source gives a friendly IMPERIAL KNIGHTS model cover and a 4+ invulnerable save against ranged attacks when it is not fully visible to the attacker because this Knight Defender blocks it. Source conflict: the trigger is damage allocation, after saves normally occur, and the visibility subject is defender while the recipient is event-object; confirm timing and the protected model.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "shock-charge-imperial-knights",
+    "state": "needs-summary",
+    "summary": "This Cerastus Knight Lancer’s source sets Crushing Impact to 0CP when targeting its unit and lifts a use limit without consuming the shared use. Source gap: no activation event or frequency limit is supplied, and the referenced Crushing Impact rule is absent from this faction import; do not silently substitute another charge Stratagem.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "squires-of-the-hunt-spearhead-at-arms-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Squires of the Hunt contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule.",
+    "phase": [],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "steadfast-superiority-gate-warden-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Select one engaged friendly IMPERIAL KNIGHTS unit in the Defensive Line that has not fought this phase. It can re-roll Hit rolls for the phase. Source gap: the Defensive Line region is undefined; confirm its boundaries and eligibility.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "storm-of-bolts-imperial-knights",
+    "state": "needs-summary",
+    "summary": "After this Castigator shoots, select one enemy it hit, excluding MONSTER and VEHICLE units. If this model is on the battlefield when the effect resolves, designate the enemy suppressed and subtract 1 from its Hit rolls until the start of the next turn. Source review: the hit victim is not bound to the selection and next-turn ownership is unspecified; confirm victim and expiry.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "strength-from-exile-freeblade-company-imperial-knights",
+    "state": "structured",
+    "summary": "Select one friendly IMPERIAL KNIGHTS unit that has not been selected to shoot or fight this phase and has no other friendly units within 9″. It re-rolls Hit and Wound rolls of 1 for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "styrixs-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Styrix’s Duty describes selecting an enemy hit by attacks to take a Battle-shock test at -1 while its own rule is active. Source conflict: shoot/fight-selection and attacks-resolved triggers are mixed, the hit victim is unbound, and Bondsman selection, recipient, range and duration are absent; confirm the full sequence.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "sunderer-of-fortresses-imperial-knights",
+    "state": "needs-summary",
+    "summary": "This Acastus Knight Asterius improves Strength and Damage by 1 against VEHICLE defenders, or by 2 instead if that VEHICLE is also a FORTIFICATION. Source review: the record is explicitly auto-generated and partial; confirm weapon scope and whether non-VEHICLE fortifications are intended to qualify.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "super-heavy-walker-imperial-knights",
+    "state": "needs-summary",
+    "summary": "For Normal, Advance or Fall Back moves, the source describes moving through non-TITANIC models, terrain up to 4″ and taller terrain, even while engaged, without ending in Engagement Range. After moving through tall terrain, roll D6: on 1 the unit becomes Battle-shocked. Source conflict: permissions trigger after the move has ended, and tall-terrain boundaries, paths/end positions and Battle-shock expiry are incomplete; confirm the full movement procedure before use.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "suppression-protocols-imperial-knights",
+    "state": "needs-summary",
+    "summary": "After this Armiger Helverin shoots, select one enemy hit by its Armiger autocannon, excluding MONSTER and VEHICLE units. Designate it suppressed and subtract 1 from its Hit rolls until the start of the next turn. Source review: hit history points to this-unit rather than the selected victim, and next-turn ownership is unspecified; confirm both.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "survivor-of-strife-freeblade-company-imperial-knights",
+    "state": "structured",
+    "summary": "When the selected friendly IMPERIAL KNIGHTS unit is targeted in your opponent’s Shooting phase, subtract 1 from the attacker’s Wound rolls only when that attack’s Strength exceeds the defender’s Toughness, for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "tactical-foil-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "After an enemy finishes a Normal, Advance or Fall Back move in your opponent’s Movement phase, select one friendly IMPERIAL KNIGHTS model within 8″ of that enemy. It makes a D6″ Normal move, following the normal movement restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "tales-of-heroism-spearhead-at-arms-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Tales of Heroism contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule. No activation timing is supplied, so this remains a reference record outside active Guide steps.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "thin-their-ranks-imperial-knights",
+    "state": "structured",
+    "summary": "This Knight Warden’s ranged attacks gain Devastating Wounds against defenders that are neither MONSTER nor VEHICLE units. This is the datasheet ability, not the empty Spearhead-at-Arms Stratagem with the same name.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "thin-their-ranks-spearhead-at-arms-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Thin Their Ranks contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule. Do not substitute the separate Knight Warden datasheet ability of the same name.",
+    "phase": [],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "thundercharge-imperial-knights",
+    "state": "structured",
+    "summary": "While this Knight Destrier is equipped with both a thundershock spear and a bellatus reaper chainsword, add 2 to its melee weapons’ Attacks characteristic. Both named weapons are required; the record does not require a Charge move.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "thundershock-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When this Knight Valiant selects a thundercoil harpoon shooting target, roll a D6 for that enemy and each enemy within 6″ of it; on 4+ designate that unit struck by arcing energies. After this model’s attacks, each designated unit suffers D3 mortal wounds. Source review: the consumer includes any owner and all matching designations, lacks a per-bearer link, and its attacks-resolved trigger has no kind; confirm recipient scope and resolution timing.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "thunderstomp-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "Select one friendly IMPERIAL KNIGHTS model that has not fought this phase. For the phase set armoured feet to 8 attacks and titanic feet to 12 attacks, and improve those feet weapons’ AP by 1. Apply only to a feet profile the model actually has and uses.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "titan-hunter-imperial-knights",
+    "state": "structured",
+    "summary": "This Knight Castellan can re-roll ranged Damage rolls against MONSTER or VEHICLE models. These are Damage rolls, not Wound rolls.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "titanic-bombardment-gate-warden-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Select one friendly IMPERIAL KNIGHTS TITANIC unit in the Defensive Line that Remained Stationary this turn and has not shot this phase. Its ranged weapons gain Sustained Hits 2 for the phase. Source gap: the Defensive Line region is undefined; confirm its boundaries and eligibility.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "titanic-duel-questoris-companions-imperial-knights",
+    "state": "structured",
+    "summary": "Select one friendly IMPERIAL KNIGHTS TITANIC model not yet selected to shoot or fight this phase. For the phase it adds 1 to Hit and Wound rolls against MONSTER, TITANIC or WALKER defenders. The target keyword test is an OR, not a requirement for all three.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "unstoppable-warrior-questoris-companions-imperial-knights",
+    "state": "structured",
+    "summary": "After the selected friendly IMPERIAL KNIGHTS TITANIC unit Falls Back in your Movement phase, it can shoot and declare a charge this turn despite Falling Back.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "using-sir-hekhtur-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When Canis Rex is destroyed, the source describes setting Sir Hekhtur up, forbids friendly Stratagems targeting him, and links their destruction state. Source gaps: this-model is used on both datasheets, setup is modeled from-transport with no distance/placement procedure, and the destruction link direction is unclear; confirm the complete replacement, scoring and destruction rules.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "valours-reward-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Valour’s Reward forbids using an enhancement while its model is tagged enhancement-expended and describes clearing that tag. Source conflict: the reset event is designation-resolved for OATH OF MOMENT TARGET, a different faction’s designation, rather than a defined Code Chivalric event. Confirm when and which spent enhancements refresh; do not reset them automatically.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "vengeance-of-the-machine-cult-questor-forgepact-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When a friendly IMPERIAL KNIGHTS TITANIC unit is destroyed, this describes marking an enemy so friendly ADEPTUS MECHANICUS re-roll Wound rolls against it for the battle. Source conflict: the core target is a friendly ADEPTUS MECHANICUS unit while the effect tests enemy ownership and marks this-unit; the destroying enemy is not bound. Confirm the intended selected unit and quarry.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "vengeful-tread-gate-warden-lance-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Once per turn per bearer model, set Crushing Impact to 0CP when it targets this unit. Source gap: the referenced Crushing Impact rule is absent from the faction import and no exact use event is supplied; confirm its identity and eligibility before applying the discount.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "virtue-of-courage-spearhead-at-arms-imperial-knights",
+    "state": "missing",
+    "summary": "Missing source mechanics: Virtue of Courage contains only a no-effect marker. Supply checked effects before use; its name and any CP/phase metadata do not establish the rule.",
+    "phase": [],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "vow-of-retribution-valourstrike-lance-imperial-knights",
+    "state": "structured",
+    "summary": "Select one friendly IMPERIAL KNIGHTS unit that has not been selected to shoot this phase. Its ranged weapons gain Lethal Hits for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "wardens-duty-imperial-knights",
+    "state": "needs-summary",
+    "summary": "Warden’s Duty encodes Sustained Hits 1 on this unit’s weapons and Ignores Cover on its ranged weapons while its own rule is active. Source gap: the self-reference does not establish the Bondsman recipient, selection, range or duration; confirm those details before granting the buff.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "wyrmslayer-divination-questoris-companions-imperial-knights",
+    "state": "needs-summary",
+    "summary": "When the bearer is selected to shoot at a FLY defender, you may tag it enhancement-expended; the source describes re-rolling Hit rolls against FLY targets for the phase. Source conflict: the re-roll grant triggers after attacks resolve and the defender is not bound at selection; frequency/expended checks and the reset rule are incomplete. Confirm activation, timing and use limits.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before"
+  }
+]
