@@ -7,6 +7,10 @@
  function create({window:win,getView,apply,canAccess=()=>true,canLeave=()=>true}){
   const supported=!!(win.location&&win.history?.pushState&&win.history?.replaceState);
   let ready=false,index=0,restoring=false;
+  const returnKey='warplanner.return-page.v1';
+  function remember(){const view=read(win.location.hash);if(view)try{win.sessionStorage?.setItem(returnKey,view);}catch{}}
+  function pending(){try{const view=win.sessionStorage?.getItem(returnKey);return Object.hasOwn(pages,view)?view:null;}catch{return null;}}
+  function forget(){try{win.sessionStorage?.removeItem(returnKey);}catch{}}
   const meta=()=>win.history.state?.warplannerPage;
   const validIndex=value=>Number.isSafeInteger(value)&&value>=0;
   const allowed=view=>Object.hasOwn(pages,view)&&canAccess(view);
@@ -20,11 +24,11 @@
    if(!supported)return;
    ready=false;restoring=false;
    index=validIndex(meta()?.index)?meta().index:0;
-   const requested=read(win.location.hash);let view=requested||getView();
+   const requested=read(win.location.hash);let view=requested||(!win.location.hash.startsWith('#/')?pending():null)||getView();
    if(!allowed(view)||!requested&&win.location.hash.startsWith('#/'))view='guide';
-   apply(view,{source:'initial'});write(view,true);ready=true;title(view);
+   apply(view,{source:'initial'});write(view,true);ready=true;forget();title(view);
   }
-  function pause(){ready=false;restoring=false;}
+  function pause(){remember();ready=false;restoring=false;}
   function sync(){
    if(!supported||!ready||restoring)return;
    const view=allowed(getView())?getView():'guide';
@@ -51,6 +55,7 @@
    index=validIndex(incoming?.index)?incoming.index:index+1;
    write(view,true);if(view!==current)apply(view,{source:'history'});title(view);
   }
+  if(supported)remember();
   win.addEventListener?.('popstate',traverse);
   win.addEventListener?.('hashchange',traverse);
   return {start,pause,sync,navigate,get ready(){return ready;}};
