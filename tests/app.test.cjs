@@ -367,3 +367,18 @@ test('account deletion removes only the selected list and switches the active ro
 test('a failed account delete keeps the list and renders a safe error',async()=>{
  const sample=require('../dist/core.js').sample,a=app(undefined,{hosted:true});a.cloudAccount({id:'owner'},[{id:'one',army:structuredClone(sample),renames:{},warnings:[]}],{schedule(){},dispose(){},remove:async()=>{throw Error('<offline>')}});a.click({view:'army'});a.click({deleteList:'one'});await new Promise(r=>setImmediate(r));assert.match(a.html(),/Could not delete this list/);assert.match(a.html(),/&lt;offline&gt;/);assert.match(a.html(),/data-open-list="one"/);
 });
+
+test('guide progress stays local while roster edits still reach account list storage',()=>{
+ const army=structuredClone(require('../dist/core.js').sample),calls=[];
+ const a=app(undefined,{hosted:true,setup:true});
+ a.cloudAccount({id:'guide-cache-owner'},[{id:'one',army,warnings:[],renames:{}}],{schedule:lists=>calls.push(structuredClone(lists)),dispose(){}});
+ const initial=calls.length;assert.ok(initial>0);
+ a.start();a.click({phase:'2'});a.click({step:'1'});a.click({turn:'opponent'});a.click({action:'toggle-nav'});
+ assert.equal(calls.length,initial,'navigation should not schedule unchanged lists');
+ const saved=JSON.parse(a.store.get('warplanner.account.guide-cache-owner.v1'));
+ assert.equal(saved.guideStarted,true);assert.equal(saved.phase,2);assert.equal(saved.turn,'opponent');
+ a.click({view:'army'});a.click({openList:'one'});a.click({action:'edit-list'});a.editorInput('name','Updated after game');a.saveEditor();
+ assert.equal(calls.length,initial+1);assert.equal(calls.at(-1)[0].army.name,'Updated after game');
+ const b=app([...a.store],{hosted:true,setup:true});b.cloudAccount({id:'guide-cache-owner'},calls.at(-1),{schedule:lists=>calls.push(structuredClone(lists)),dispose(){}});
+ assert.equal(calls.length,initial+2,'a new account connection must establish its own save baseline');
+});
