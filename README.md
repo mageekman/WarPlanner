@@ -345,3 +345,7 @@ Audited all 209 Orks rules across 60 units, 69 stat profiles and 16 detachments.
 ## T’au Empire readiness audit (2026-11-15)
 
 Audited all 166 T’au rules across 47 units, 48 stat profiles and eight detachments: 82 usable study summaries, 81 specific source issues and three empty records. For the Greater Good remains in source review; Farsight’s unrelated Necron ability gate and provisional detachment/drone records are explicit. Unresolved entries stay out of practice. Sources, memberships, review flags and saved lists are preserved. See [AUDIT-TAU.md](AUDIT-TAU.md).
+
+## Astra Militarum readiness audit (2026-11-15)
+
+Audited all 251 rules across 75 units, 84 source-matching stat profiles and 12 detachments: 132 usable summaries, 105 source issues and 14 empty records. Orders retain the full menu and officer-specific limits, with Voice of Command timing conflicts explicit. The saved faction edit, original imports, unit identities, flags and lists are preserved. Unresolved entries stay out of practice. See [AUDIT-ASTRA-MILITARUM.md](AUDIT-ASTRA-MILITARUM.md).
