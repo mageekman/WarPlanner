@@ -307,3 +307,14 @@ Regression checks cover pending-only rendering, direct/edited approvals, rejecti
 The live catalog now has reviewed study summaries or explicit source issues for all 640 unique Space Marine/chapter source abilities. Blood Angels and Dark Angels have their missing units and profiles; all eleven supplied chapters have their own faction folders, shared parent units/rules, detachments and faction-scoped quizzes. Original uploads and account lists are unchanged. Incomplete or contradictory effects remain outside quiz answer pools and retain their imported reference status.
 
 See [AUDIT-SPACE-MARINES.md](AUDIT-SPACE-MARINES.md) for coverage, source limits and the guarded one-time audit script.
+
+## Custodes readiness audit (2026-11-15)
+
+The live Adeptus Custodes catalog has descriptions and guide timing for all 158
+rules, covering 39 datasheets and 16 detachments. Of these, 116 have usable
+source-based study summaries; 41 identify specific source conflicts or incomplete
+conditions, and Fearless and Unrelenting remains an empty provisional stub.
+Unresolved entries are visible in Workshop summary-coverage filters and excluded
+from practice questions. See [AUDIT-CUSTODES.md](AUDIT-CUSTODES.md) for the review
+list and revision-checked repair workflow. Imported sources, stat profiles,
+reference flags and saved lists are preserved.

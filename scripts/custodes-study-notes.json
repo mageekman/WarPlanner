@@ -1,0 +1,1693 @@
+[
+  {
+    "id": "advanced-firepower-adeptus-custodes",
+    "summary": "Ranged attacks against enemy MONSTER or VEHICLE units allow one Hit, one Wound and one Damage re-roll. The source does not state the reset window for these three re-rolls; check their per-selection limit.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "advanced-stabilisers-grav-assault-force-adeptus-custodes",
+    "summary": "When a friendly GRAV-ASSAULT unit is selected to shoot, its ranged weapons gain Assault for the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "aegis-of-the-emperor-adeptus-custodes",
+    "summary": "Friendly ADEPTUS CUSTODES units with Aegis of the Emperor have Feel No Pain 5+ against mortal wounds.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "anathema-blademastery-null-maiden-vigil-adeptus-custodes",
+    "summary": "When a friendly Vigilator Squad is selected to fight, choose Sustained Hits 1 or Lethal Hits for the phase. The structured record omits the Battle-shocked-target Wound re-rolls mentioned in its notes and does not identify a melee-only weapon restriction; check the complete rule.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "anti-gravitic-mobility-upgrade-grav-assault-force-adeptus-custodes",
+    "summary": "This upgraded unit can shoot after Falling Back. The source does not specify how long this permission lasts after the Fall Back move; check the expiry window.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "aquila-commander-adeptus-custodes",
+    "summary": "At the start of each battle round, gain 1CP if a model with Aquila Commander is your Warlord.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "arae-shrike-honoured-companions-adeptus-custodes",
+    "summary": "Enemy ingress setup is prohibited within 12″ of this bearer’s unit. The source represents the trigger as selection for an ingress move; check the precise arrival and setup wording.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "archeotech-teleport-shunter-adeptus-custodes",
+    "summary": "Once per battle per unit, in your Movement phase, this unit can enter Strategic Reserves and then make an ingress move if it is unengaged and has not been selected to move this phase. Check the unencoded arrival distances and setup restrictions before using the shunter.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "assault-dropship-adeptus-custodes",
+    "summary": "Friendly ADEPTUS CUSTODES passengers selected for a Tactical disembark in your Movement phase gain permission to charge despite Advancing. The source expires that permission in the Movement phase, before charges are declared; check its intended duration.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "assault-vehicle-adeptus-custodes",
+    "summary": "After this transport ends an Advance in your Movement phase, friendly units embarked in it can make a Shock disembark move. Apply the Shock disembark setup and no-charge restrictions.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "assemblage-of-might-adeptus-custodes",
+    "summary": "In your Command phase, select one enemy unit as the Assemblage of Might target. Friendly ADEPTUS CUSTODES CHARACTER models add 1 to Wound rolls against it until your next Command phase.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "at-spears-length-solar-watch-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to Fall Back, it gains permission to shoot afterwards. The source gives a phase duration that expires before your Shooting phase; check the intended duration.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "augury-uplink-one-per-army-upgrade-might-of-the-moritoi-adeptus-custodes",
+    "summary": "The bearer has Feel No Pain 5+. This is a one-per-army upgrade for an eligible ADEPTUS CUSTODES DREADNOUGHT.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "auric-eagle-upgrade-solar-watch-adeptus-custodes",
+    "summary": "Add 1 to this upgraded unit’s Advance and Charge rolls.",
+    "state": "structured",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "auric-exemplar-dread-host-adeptus-custodes",
+    "summary": "The bearer’s melee weapons gain Cleave 1.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "auriferous-orb-emissaries-imperatus-adeptus-custodes",
+    "summary": "The bearer gains the Auriferous Orb weapon. The imported ability only identifies that weapon; its profile and attack rules are not included in this effect record.",
+    "state": "needs-summary",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "avenge-the-fallen-honoured-companions-adeptus-custodes",
+    "summary": "When a friendly TRUSTED SENTINEL unit below Starting Strength is selected to fight, the encoded effect adds 2 melee Attacks to its non-CHARACTER models for the phase. The notes instead describe a below-Half-strength escalation and an ANATHEMA PSYKANA exclusion; check the thresholds and eligible models.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "bane-of-abominations-guardians-of-the-throne-adeptus-custodes",
+    "summary": "The bearer adds 1 to Wound rolls against enemy CHARACTER, MONSTER or VEHICLE units.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "bearers-of-his-light-emissaries-imperatus-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to fight, ignore modifiers to its melee Hit and Wound rolls for the phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "captain-general-adeptus-custodes",
+    "summary": "Friendly ADEPTUS CUSTODES units within 6″ of Trajann, excluding MONSTER and VEHICLE units, re-roll Hit rolls of 1 and Wound rolls of 1.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "castellans-mark-guardians-of-the-throne-adeptus-custodes",
+    "summary": "After deployment, redeploy selected friendly ADEPTUS CUSTODES units, with the option to put them into Strategic Reserves ignoring reserve limits. The encoded rule allows up to three units, while its notes say two and exclude ANATHEMA PSYKANA; confirm the selection count and exclusions.",
+    "state": "needs-summary",
+    "phase": [],
+    "turn": "you",
+    "window": "prebattle"
+  },
+  {
+    "id": "celeritous-sentries-upgrade-honoured-companions-adeptus-custodes",
+    "summary": "This upgraded unit can use Heroic Intervention even if it was already used this phase, with a 1CP discount. Its extra use does not consume the shared use. Apply normal target and charge eligibility.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "combat-deployment-upgrade-grav-assault-force-adeptus-custodes",
+    "summary": "When friendly ADEPTUS CUSTODES passengers disembark from this upgraded transport, they can re-roll Charge rolls and cannot be targeted by Overwatch for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "companions-watch-adeptus-custodes",
+    "summary": "Friendly TRUSTED SENTINEL attackers within an objective marker’s control range re-roll Wound rolls of 1.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "comrades-in-wrath-tristraens-gilded-blades-adeptus-custodes",
+    "summary": "Add 1 to this unit’s Charge rolls. The source notes restrict this upgrade to a Gilded Blades Allarus Custodians unit.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "corner-the-quarry-adeptus-custodes",
+    "summary": "An enemy unit other than a MONSTER or VEHICLE that is engaged with the Knight-Centura must take Desperate Escape tests when selected to Fall Back. If it is Battle-shocked, subtract 1 from those tests.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "select"
+  },
+  {
+    "id": "coronal-plate-aquilan-talon-adeptus-custodes",
+    "summary": "The bearer gains Lone Operative with an encoded value of 15. Check whether that value replaces the normal targeting distance and how it applies while the bearer leads a unit.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "daughters-of-the-abyss-adeptus-custodes",
+    "summary": "ANATHEMA PSYKANA units have Feel No Pain 3+ against psychic attacks and grant friendly ADEPTUS CUSTODES units within 6″ Feel No Pain 5+ against psychic attacks. The source also permits ANATHEMA PSYKANA army composition while prohibiting an ANATHEMA PSYKANA faction declaration and Warlord; apply any explicit detachment override.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "death-blow-adeptus-custodes",
+    "summary": "If this unit made a Charge move this turn, improve its melee Armour Penetration by 1.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "deft-parry-adeptus-custodes",
+    "summary": "Subtract 1 from Hit rolls for melee attacks against this unit.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "destructor-optics-adeptus-custodes",
+    "summary": "Improve this unit’s ranged Armour Penetration by 1 against targets that are neither MONSTER nor VEHICLE units.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "divine-protection-adeptus-custodes",
+    "summary": "This unit has Feel No Pain 4+ against mortal wounds. Its source is marked pre-launch provisional.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "dread-foe-adeptus-custodes",
+    "summary": "Improve this unit’s melee Armour Penetration by 1 against targets that are neither MONSTER nor VEHICLE units.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "driven-by-duty-aquilan-wing-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES AQUILAN WING unit is selected to Advance, add 2 to its Advance roll for the phase.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "duty-unto-death-auric-champions-adeptus-custodes",
+    "summary": "When an enemy selects a friendly ADEPTUS CUSTODES unit as an attack target, grant fight-on-death for the phase to models that have not fought. On destruction, CHARACTER models pass on D6+1 ≥3 and other models on D6 ≥3. Resolve when the unit fights; remove them afterwards or at phase end.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "eagles-eye-guardians-of-the-throne-adeptus-custodes",
+    "summary": "Add 1 to the bearer’s Wounds. Once per battle per army, it can gain a 3+ invulnerable save when damage is allocated to it. The source gives no duration for that save and triggers after a save would normally be rolled; confirm the activation and expiry.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "eagles-pinions-upgrade-aquilan-wing-adeptus-custodes",
+    "summary": "The eligible Aquilan Wing Venatari with Kinetic Destroyers unit gains Hover from this upgrade.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "edge-of-the-blade-emissaries-imperatus-adeptus-custodes",
+    "summary": "If the bearer made a Charge move this turn, re-roll its Hit rolls of 1 and Wound rolls of 1.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "emperors-domain-honoured-companions-adeptus-custodes",
+    "summary": "When a friendly TRUSTED SENTINEL unit consolidates, it can choose the objective Consolidation mode without satisfying that mode’s usual pre-move requirement. The other Consolidation and movement restrictions still apply.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "emperors-light-guardians-of-the-throne-adeptus-custodes",
+    "summary": "The bearer gains the Emperor’s Light weapon. Its weapon profile is not included in this imported ability effect; check the weapon entry before attacking.",
+    "state": "needs-summary",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "fearless-and-unrelenting-adeptus-custodes",
+    "summary": "Fearless and Unrelenting is a provisional stub with no effect mechanics. Its detachment name alone does not supply a playable rule.",
+    "state": "missing",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "fight-to-the-death-adeptus-custodes",
+    "summary": "If this model is destroyed in the Fight phase before its unit has been selected to fight, roll a D6: on 4+, it can fight when the unit fights. Remove it after that fight or at phase end.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "flare-shields-adeptus-custodes",
+    "summary": "Friendly GRAV-ASSAULT units have a 4+ invulnerable save against ranged attacks.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act"
+  },
+  {
+    "id": "flawless-bladework-dread-host-adeptus-custodes",
+    "summary": "The bearer’s melee weapons gain Sustained Hits 1.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "from-golden-light-adeptus-custodes",
+    "summary": "Once per battle per unit, at the end of your opponent’s turn, this unit can enter Strategic Reserves if it is not engaged.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "turn-end"
+  },
+  {
+    "id": "from-the-hall-of-armouries-emperors-chosen-adeptus-custodes",
+    "summary": "The eligible SHIELD-CAPTAIN bearer’s melee weapons gain Devastating Wounds.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "fury-of-the-emperor-lions-of-the-emperor-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES TERMINATOR unit declares a charge after making an ingress move this turn, add 2 to its Charge roll for the phase.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "genalchemic-warding-shadowkeepers-adeptus-custodes",
+    "summary": "The bearer has Feel No Pain 5+.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "gilded-champion-auric-champions-adeptus-custodes",
+    "summary": "After an ADEPTUS CUSTODES CHARACTER model uses a once-per-battle datasheet ability, it can use that ability one additional time, in a different phase. Gilded Champion can affect the same model only once per battle.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "gilded-guardians-adeptus-custodes",
+    "summary": "Ranged attacks against friendly ADEPTUS CUSTODES units within objective control range, excluding MONSTER and VEHICLE units, suffer -1 to Wound if the attack’s Strength exceeds the target’s Toughness. While Salvus is active, the source also adds 6″ to this unit’s ranged weapon Range.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "gilded-spear-tristraens-gilded-blades-adeptus-custodes",
+    "summary": "This TRISTRAEN’S GILDED BLADES unit makes a D3+3″ Consolidation move. The source is provisional and lacks an activation event; check when the Stratagem is used.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "before"
+  },
+  {
+    "id": "golden-light-of-the-moiraides-dread-host-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected for ingress in your turn, attacks against it suffer -1 to Hit and it cannot be targeted by Overwatch until the start of your next turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "goldenwrath-upgrade-aquilan-talon-adeptus-custodes",
+    "summary": "The eligible Aquilan Talon Contemptor-Achillus Dreadnought’s Lastrum storm bolter gains Close Quarters.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "gravimetric-grenade-solar-watch-adeptus-custodes",
+    "summary": "At the start of your opponent’s Charge phase, select one enemy unit visible to the bearer and within 12″ of its unit. Subtract 1 from that enemy unit’s Charge rolls for the phase.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "grim-responsibility-shadowkeepers-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES INFANTRY unit is selected to fight, its melee weapons gain Lethal Hits against CHARACTER or MONSTER targets for the phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "guardian-eternal-adeptus-custodes",
+    "summary": "Reduce the Damage characteristic of ranged attacks against this unit by 1.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "heralds-of-the-throne-adeptus-custodes",
+    "summary": "Friendly ADEPTUS CUSTODES units have Fights First. While Conversai is active, this unit can start an action even if it Advanced or Fell Back this turn.",
+    "state": "structured",
+    "phase": [
+      0,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "honoured-interred-might-of-the-moritoi-adeptus-custodes",
+    "summary": "This unit grants friendly ADEPTUS CUSTODES units within 6″ re-rolls of Hit rolls of 1. The Stratagem source supplies neither an activation trigger nor an expiry for this aura; check when it is used and how long it lasts.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "huntress-eye-null-maiden-vigil-adeptus-custodes",
+    "summary": "The bearer can select one visible enemy unit within 12″ of its unit to take a Battle-shock test at -1. The encoded condition says your Movement phase, while the notes say your Command phase and omit the modifier; confirm timing and test penalty.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "impenetrable-bastion-emperors-chosen-adeptus-custodes",
+    "summary": "At the end of your Movement phase, select a friendly-controlled objective marker within this unit’s control range and make it sticky. Apply the current rules for when sticky control ends.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "impenetrable-defence-adeptus-custodes",
+    "summary": "This unit’s weapons gain Sustained Hits 1 against a target that is neither MONSTER nor VEHICLE if either this unit or the target is within an objective marker’s control range.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "in-auramite-clad-emperors-chosen-adeptus-custodes",
+    "summary": "When an enemy targets a friendly ADEPTUS CUSTODES unit other than CUSTODIAN WARDENS, worsen the attacking weapons’ Armour Penetration by 1 for that attack sequence.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "in-auramite-clad-guardians-of-the-throne-adeptus-custodes",
+    "summary": "When an enemy targets a friendly ADEPTUS CUSTODES unit other than CUSTODIAN WARDENS, worsen the attacking weapons’ Armour Penetration by 1 for that attack sequence.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "indomitable-avatars-adeptus-custodes",
+    "summary": "In your Command phase, select one friendly ADEPTUS CUSTODES AQUILAN WING unit. Add 1 to its Objective Control until your next Command phase.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "indomitable-guardians-shadowkeepers-adeptus-custodes",
+    "summary": "After an enemy unit finishes fighting in your opponent’s Fight phase, select one friendly ADEPTUS CUSTODES unit within objective control range that is eligible to fight. It gains Fights First and permission to fight next for the phase. Check how that next-fight permission interacts with current sequencing rules.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "inevitable-annihilation-grav-assault-force-adeptus-custodes",
+    "summary": "When a friendly GRAV-ASSAULT unit is selected to shoot, ignore modifiers to its Ballistic Skill and Hit rolls for the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "inevitable-wrath-tristraens-gilded-blades-adeptus-custodes",
+    "summary": "After an enemy unit shoots in your opponent’s Shooting phase, the Blade Champion unit can make a D6+1″ Surge move if it is unengaged and lost a wound to those attacks. The wound-loss and engagement restrictions come from the source notes.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "inexorable-solar-watch-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to move, ignore modifiers to its Move characteristic, Advance rolls and Charge rolls for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "infernus-firebombs-adeptus-custodes",
+    "summary": "At the end of your opponent’s Fight phase, select one visible enemy unit within 24″ that is not AIRCRAFT and lacks Lone Operative. Incoming ranged attacks gain Ignores Cover against it until the end of your next turn. Roll one die per target model: each 6 inflicts 1 mortal wound, to a maximum of 6.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "after"
+  },
+  {
+    "id": "inspirational-exemplar-auric-champions-adeptus-custodes",
+    "summary": "At the start of a phase, the bearer can remove Battle-shocked from a friendly ADEPTUS CUSTODES unit. The encoded rule says within 9″ and once per battle round, while its notes say 12″, once per battle and add Leadership 5+ to the bearer. Confirm range, usage and the missing Leadership effect.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "instruments-of-the-emperors-wrath-adeptus-custodes",
+    "summary": "Friendly ADEPTUS CUSTODES units can re-roll Charge rolls. While Dacatarai is active, enemy units engaged with this unit reduce their Pile-in and Consolidation distances by 2″.",
+    "state": "structured",
+    "phase": [
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "intimidating-presence-adeptus-custodes",
+    "summary": "Worsen the Leadership of enemy units engaged with the bearer by 1.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "leonine-ferocity-lions-of-the-emperor-adeptus-custodes",
+    "summary": "Once per phase per army, this unit can use Rapid Ingress even if it was already used that phase, with a 1CP discount. Its additional use does not consume the shared use. The effect lacks a specific activation event; check its eligible target and reserve conditions.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "lightning-descent-lions-of-the-emperor-adeptus-custodes",
+    "summary": "This unit can make an ingress move in your Movement phase of battle round 1. The source does not encode its reserve-state requirement or arrival distances; check the complete arrival rule.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "lightning-wrath-dread-host-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to Pile in, its Pile-in distance is D3+3″. Apply the remaining Pile-in restrictions.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "living-fortress-adeptus-custodes",
+    "summary": "Worsen the Armour Penetration of attacks against this unit by 1.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "magna-imperator-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to attack, it can re-roll one Hit and one Wound roll. While Rendax is active, select one engaged enemy MONSTER or VEHICLE and roll a D6: 1–2 causes 1 mortal wound, 3–5 causes D3, and 6 causes 3. The source omits an activation event for the mortal-wound branch; check its frequency.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "manoeuvre-and-fire-aquilan-shield-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to Fall Back in your Movement phase, it gains permission to shoot and charge afterwards. The source expires both permissions that same phase; check their intended turn-long duration.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "martial-katah-adeptus-custodes",
+    "summary": "At the start of your Command phase, ready eligible units with Martial Ka’tah. A readied unit may spend that readiness on one stance at its specified trigger: Conversai permits actions while engaged or Battle-shocked and shooting during actions for your turn; Calistus permits moving through models on Normal, Advance or Fall Back moves for the phase; Salvus ignores Ballistic Skill, Hit and Wound modifiers when selected to shoot for the phase; Dacatarai re-rolls melee Hit rolls of 1 against non-MONSTER/non-VEHICLE targets for the Fight phase; Kaptaris gives incoming melee attacks -1 to Hit for the Fight phase; Rendax grants melee Lethal Hits against MONSTER or VEHICLE targets when selected to fight for the phase. Each choice clears readiness; this is not permission to use all stances at once.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "martial-katah-tristraens-gilded-blades-adeptus-custodes",
+    "summary": "At the start of your Command phase, ready eligible Gilded Blades units with this version of Martial Ka’tah. Spend readiness on one stance at its trigger: Conversai permits actions while engaged or Battle-shocked and shooting during actions for your turn; Calistus permits moving through models on Normal, Advance or Fall Back moves; Salvus ignores Ballistic Skill, Hit and Wound modifiers when selected to shoot; Dacatarai re-rolls melee Hit rolls of 1 against non-MONSTER/non-VEHICLE targets; Kaptaris gives incoming melee attacks -1 to Hit; Rendax grants melee Lethal Hits against MONSTER or VEHICLE targets. Calistus, Salvus and the Fight stances last for the relevant phase. Choosing one clears readiness.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "martial-mastery-adeptus-custodes",
+    "summary": "When an eligible ADEPTUS CUSTODES unit is selected to fight, the structured record offers melee Sustained Hits 1 or Lethal Hits for the phase. Its notes require the Martial Ka’tah ability and mention an unencoded 5+ Critical Hit option. Confirm the actual choices and eligibility before applying Martial Mastery.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "master-of-katahs-adeptus-custodes",
+    "summary": "Once per battle round per unit, if this unit is not readied, it can become readied again for Martial Ka’tah. The source does not specify a narrower activation event; check when the extra readiness may be used.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "memento-moritoi-one-per-army-upgrade-might-of-the-moritoi-adeptus-custodes",
+    "summary": "Add 1 to the eligible DREADNOUGHT bearer’s melee Attacks, Strength and Damage. This is a one-per-army upgrade.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "mobile-hunter-adeptus-custodes",
+    "summary": "After this unit shoots in your Shooting phase, it can make a D6″ Normal move. It cannot declare a charge for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "moment-shackle-adeptus-custodes",
+    "summary": "Once per battle per army, at the start of a phase, Trajann can choose either +3 Attacks for the Watcher’s Axe melee profile or a 3+ invulnerable save for that phase.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "moritoi-ancients-adeptus-custodes",
+    "summary": "ADEPTUS CUSTODES DREADNOUGHT units gain +2 Objective Control while not below Starting Strength, re-roll Hit rolls of 1 while below Starting Strength, and also re-roll Wound rolls of 1 while below Half-strength. This source explicitly carries provisional wording derived from the prior edition; confirm the current thresholds.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "neutronium-cascade-mine-adeptus-custodes",
+    "summary": "Once per battle per unit, at the start of a phase, select one enemy unit within 3″ and roll a D6. On 2+, it suffers D3 mortal wounds, or 2D3 if it is a MONSTER or VEHICLE.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "never-outmatched-tristraens-gilded-blades-adeptus-custodes",
+    "summary": "When a friendly TRISTRAEN’S GILDED BLADES unit below Starting Strength is selected to fight, improve its melee Attacks by 1 for the phase.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "no-escape-shadowkeepers-adeptus-custodes",
+    "summary": "After an enemy Falls Back, the source gives this unit permission to charge, but its separate target condition refers to this unit having Fallen Back rather than the triggering enemy. Check which enemy must be targeted and when the reactive charge occurs.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "not-a-shell-wasted-aquilan-shield-adeptus-custodes",
+    "summary": "Improve this unit’s ranged Attacks by 1.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "oblivion-knight-null-maiden-vigil-adeptus-custodes",
+    "summary": "Add 1 to this unit’s Hit rolls. Against enemy PSYKER or Battle-shocked units, also add 1 to its Wound rolls; the two Hit branches are alternatives, not cumulative.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "on-gilded-wings-adeptus-custodes",
+    "summary": "At the end of your opponent’s Fight phase, friendly ADEPTUS CUSTODES TERMINATOR units that are not engaged can enter Strategic Reserves.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "on-gilded-wings-aquilan-wing-adeptus-custodes",
+    "summary": "At the end of your opponent’s Fight phase, select one friendly AQUILAN WING Venatari with Kinetic Destroyers unit that is not engaged and put it into Strategic Reserves. The unengaged condition and unit restriction come from the core Stratagem target record.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "pareldors-caducatrix-aquilan-shield-adeptus-custodes",
+    "summary": "Once per battle per army, at the start of a phase, heal D3+3 wounds on the bearer.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "praesidium-shield-adeptus-custodes",
+    "summary": "Subtract 1 from Wound rolls for attacks against this unit if the attack’s Strength exceeds its Toughness. Apply this version only to the datasheets linked to it.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "praesidium-shield-shield-captain-adeptus-custodes",
+    "summary": "Reduce damage allocated to this shield-bearing model by 1. Apply this shield version to its linked model only.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "praesidium-shield-tristraens-gilded-blades-adeptus-custodes",
+    "summary": "Add 1 to the shield-bearing model’s Wounds characteristic.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "praesidium-shield-wargear-adeptus-custodes",
+    "summary": "Add 1 to the shield-bearing model’s Wounds characteristic.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "preternatural-rapidity-dread-host-adeptus-custodes",
+    "summary": "After a friendly ADEPTUS CUSTODES unit Advances, it gains permission to charge. The source expires the permission that phase, before your Charge phase; confirm the intended duration.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "prime-target-guardians-of-the-throne-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to shoot, it can re-roll one Hit roll, one Wound roll and one Damage roll for that selection in the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "psy-chaff-volley-null-maiden-vigil-adeptus-custodes",
+    "summary": "After a friendly Prosecutor Squad shoots, select one enemy unit hit by those attacks as prosecuted for the turn. Friendly ANATHEMA PSYKANA models improve AP against it by 1; if that target is PSYKER or Battle-shocked, its models also suffer -1 to Hit. The structured effect incorrectly grants the AP benefit to all friendly units and omits the target’s Hit penalty; verify against the source notes.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "purgation-sweep-null-maiden-vigil-adeptus-custodes",
+    "summary": "When a friendly Witchseeker Squad is selected to shoot, improve its Torrent weapons’ Attacks by 1 for the phase, or by 2 instead against PSYKER or Battle-shocked units.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "purity-of-execution-adeptus-custodes",
+    "summary": "In your Shooting phase, select one enemy visible to the bearer and within 18″ of its unit and increase its detection range by 3″ for the phase. The partial source does not define detection range or what this changes; check that mechanic before applying it.",
+    "state": "needs-summary",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "quicksilver-execution-adeptus-custodes",
+    "summary": "If this unit made a Charge move this turn, its melee weapons gain Sustained Hits 1.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "radiant-mantle-emperors-chosen-adeptus-custodes",
+    "summary": "Subtract 1 from Hit rolls against the bearer only while the attacking model is within 12″ of the bearer’s unit. The range limit appears in the notes but is missing from the structured effect; confirm the bearer-versus-unit protection scope.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "rapid-reactions-aquilan-shield-adeptus-custodes",
+    "summary": "After an enemy ends a Fall Back move in your opponent’s Movement phase, select one friendly ADEPTUS CUSTODES INFANTRY unit that was engaged with it at the start of the phase. The source permits that unit to shoot normally at the enemy that Fell Back. Check the out-of-phase shooting and target-eligibility procedure.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "rapid-strike-adeptus-custodes",
+    "summary": "This unit can re-roll Advance rolls.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "reap-a-terrible-tally-adeptus-custodes",
+    "summary": "Against INFANTRY targets, this unit re-rolls Hit rolls of 1 and Wound rolls of 1.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "relentless-destroyers-aquilan-talon-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES AQUILAN TALON unit is selected to Fall Back, it gains permission to shoot. The source gives a phase duration that expires before your Shooting phase; confirm how long that permission lasts.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "repulsor-suspensor-technology-adeptus-custodes",
+    "summary": "Once per phase per unit, after an enemy shoots in your opponent’s Shooting phase and allocates damage to this unit, this unit can make a D6″ Normal move if it is not engaged.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "resolute-stride-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES AQUILAN TALON unit consolidates, it can move up to 4″ and choose any Consolidation mode without its usual pre-move requirement. Apply the remaining move and ending-position restrictions.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "resolute-will-adeptus-custodes",
+    "summary": "When Insane Bravery targets this unit, reduce that use’s CP cost by 1.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "sally-forth-solar-watch-adeptus-custodes",
+    "summary": "At the start of your Charge phase, select one friendly ADEPTUS CUSTODES INFANTRY unit within 6″ of the bearer. It can declare a charge despite having Advanced, for that phase.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "sanctified-flames-adeptus-custodes",
+    "summary": "After this unit shoots in your Shooting phase, select one enemy unit hit by those attacks. It takes a Battle-shock test, with -1 to the test if it is a PSYKER unit.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "seekers-instincts-adeptus-custodes",
+    "summary": "Add 2″ to this unit’s Move characteristic, and re-roll its Advance and Charge rolls.",
+    "state": "structured",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "selfless-service-emissaries-imperatus-adeptus-custodes",
+    "summary": "At the end of your opponent’s Charge phase, select one unengaged friendly ADEPTUS CUSTODES unit within 6″ of an enemy; it must be non-VEHICLE, CHARACTER or WALKER. It can declare a charge against an enemy within 6″. The encoded effect caps the Charge roll at 6; confirm the intended roll and reactive-charge procedure.",
+    "state": "needs-summary",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "sentinel-storm-adeptus-custodes",
+    "summary": "Once per battle per unit, after this unit shoots in your Shooting phase, it can shoot again that phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "shattering-charge-tristraens-gilded-blades-adeptus-custodes",
+    "summary": "After the bearer’s unit ends a Charge move, select one enemy unit engaged with it. That enemy takes a Battle-shock test at -1.",
+    "state": "structured",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "shield-of-honour-guardians-of-the-throne-adeptus-custodes",
+    "summary": "At the start of the Fight phase, this unit gains protection for the phase: an engaged enemy model suffers -1 to Hit and Wound unless it directs all its attacks into this unit. The pinned enrichment has a different Shield of Honour effect; the preserved imported version needs confirmation before use.",
+    "state": "needs-summary",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "shroud-of-the-hidden-blade-auric-champions-adeptus-custodes",
+    "summary": "The bearer gains Stealth and Lone Operative. These are bearer abilities, not a blanket grant to every model in an attached unit.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "silent-sisterhood-adeptus-custodes",
+    "summary": "ANATHEMA PSYKANA CHARACTER models may be your Warlord and Prosecutor Squads gain BATTLELINE. ANATHEMA PSYKANA units also gain Creeping Dread: at your opponent’s Battle-shock step, enemy units within 12″ that are PSYKER or below Starting Strength take a Battle-shock test at -1.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "shock"
+  },
+  {
+    "id": "slayer-of-tyrants-adeptus-custodes",
+    "summary": "This unit adds 1 to melee Wound rolls against a target whose Toughness exceeds the attacker’s Toughness. This compares Toughness to Toughness, not weapon Strength to Toughness.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "slayers-of-nightmares-emissaries-imperatus-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to fight, add 1 to its melee Wound rolls for the phase against a target whose Toughness exceeds the attacker’s Toughness.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "slayers-of-tyrants-adeptus-custodes",
+    "summary": "This unit can re-roll Wound rolls against CHARACTER, MONSTER or VEHICLE targets.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "special-move-types-adeptus-custodes",
+    "summary": "Shock disembark: an embarked unit can be set up within 3″ of its transport if the transport is on the battlefield and the unit has not embarked this phase. That unit cannot declare a charge for the rest of the turn. Apply the remaining current setup restrictions.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "stand-vigil-adeptus-custodes",
+    "summary": "This unit’s weapons gain Lethal Hits against a target that is neither MONSTER nor VEHICLE if either this unit or the target is within an objective marker’s control range.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "stand-vigil-gilded-blades-custodian-guard-adeptus-custodes",
+    "summary": "For melee attacks, choose re-rolls of Wound rolls of 1, or full Wound re-rolls against a target within an objective marker’s control range. The full re-rolls are conditional, not universal.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "strike-from-the-skies-adeptus-custodes",
+    "summary": "In your Shooting phase, if this unit made an ingress move this turn, re-roll its ranged Hit rolls.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "superhuman-focus-emperors-chosen-adeptus-custodes",
+    "summary": "Once per battle round per unit, at the end of a phase, this unit becomes readied. The source does not identify which phase or clarify how this interacts with spending Martial Ka’tah readiness; check the complete Stratagem before use.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "superhuman-focus-guardians-of-the-throne-adeptus-custodes",
+    "summary": "Once per battle round per unit, at the end of a phase, this unit becomes readied. The source does not identify which phase or clarify how this interacts with spending Martial Ka’tah readiness; check the complete Stratagem before use.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "superior-creation-auric-champions-adeptus-custodes",
+    "summary": "Once per battle per army, at the end of the phase in which the bearer was destroyed, roll a D6: on 2+, return it as close as possible to where it died and outside enemy Engagement Range. The encoded effect returns it with 3 wounds; its notes say full wounds. Confirm which wound total applies.",
+    "state": "needs-summary",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "supreme-commander-adeptus-custodes",
+    "summary": "This model must be your Warlord if included in your army.",
+    "state": "structured",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "sweeping-advance-adeptus-custodes",
+    "summary": "Once per battle per unit, at the end of the Fight phase, if this unit is eligible to fight it can make a Normal move if unengaged, or a Fall Back move if engaged.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end"
+  },
+  {
+    "id": "swift-as-the-eagle-guardians-of-the-throne-adeptus-custodes",
+    "summary": "This source conflicts with itself: the effect allows a D3+3″ reactive Normal move after an enemy move ends within 8″ of an unengaged TRUSTED SENTINEL, but its notes describe a non-VEHICLE unit moving D6″ after being shot in your opponent’s Shooting phase. Confirm trigger, target and distance.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "swift-as-the-eagle-honoured-companions-adeptus-custodes",
+    "summary": "After an enemy ends a move within 8″ of a friendly unengaged TRUSTED SENTINEL unit, this unit can make a D3+3″ Normal move. The effect does not explicitly bind this unit to that nearby TRUSTED SENTINEL; confirm the selected friendly target.",
+    "state": "needs-summary",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "swift-onslaught-adeptus-custodes",
+    "summary": "This unit can re-roll Advance and Charge rolls.",
+    "state": "structured",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "swift-ruin-adeptus-custodes",
+    "summary": "This unit can use Rapid Ingress even if it was already used this phase, with a 1CP discount. This extra use does not consume the shared use. Apply normal reserve and arrival eligibility.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "sword-of-the-throne-adeptus-custodes",
+    "summary": "At the start of battle round 1, select one enemy unit as this Blade Champion’s mark. The bearer adds 1 to Wound rolls against that enemy; replace the mark when it is destroyed, with only one active mark per bearer unit.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "round"
+  },
+  {
+    "id": "take-wing-adeptus-custodes",
+    "summary": "At the end of your opponent’s Fight phase, this unit can enter Strategic Reserves if it is not engaged.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "talon-sortie-adeptus-custodes",
+    "summary": "Friendly ADEPTUS CUSTODES units can charge after Falling Back. While Calistus is active, add 2″ to this unit’s Move characteristic.",
+    "state": "structured",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "terrible-might-aquilan-talon-adeptus-custodes",
+    "summary": "At the start of the Fight phase, select one enemy unit engaged with this unit. It takes a Battle-shock test.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start"
+  },
+  {
+    "id": "tip-of-the-talon-aquilan-shield-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES unit is selected to shoot, improve its ranged Strength by 1 against enemy targets within 9″ for the phase.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "unceasing-onslaught-might-of-the-moritoi-adeptus-custodes",
+    "summary": "After a friendly ADEPTUS CUSTODES DREADNOUGHT Advances, its ranged weapons gain Assault and it can declare a charge despite Advancing, for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "unleash-the-lions-lions-of-the-emperor-adeptus-custodes",
+    "summary": "In your Command phase, split one eligible Allarus Custodians or Aquilon Custodians unit on the battlefield into single-model units, each with Starting Strength 1. The timing and eligible unit types come from the source notes; the structured effect alone does not encode them.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "unlimited-endurance-guardians-of-the-throne-adeptus-custodes",
+    "summary": "After a friendly ADEPTUS CUSTODES unit Advances, its ranged weapons gain Assault and it can declare a charge despite Advancing, for the rest of the turn.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "unstoppable-champion-aquilan-talon-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES AQUILAN TALON CONTEMPTOR-ACHILLUS DREADNOUGHT is selected to move, it gains MOBILE for the phase.",
+    "state": "structured",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "unstoppable-destroyer-shadowkeepers-adeptus-custodes",
+    "summary": "When this unit is selected to Pile in or consolidate, it can move up to 4″. During Consolidation, it can choose any mode without its usual pre-move requirement; other movement and ending-position restrictions still apply.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "unstoppable-momentum-might-of-the-moritoi-adeptus-custodes",
+    "summary": "Friendly ADEPTUS CUSTODES DREADNOUGHT units gain MOBILE when selected to move in your Movement phase or when selecting charge targets in your Charge phase, for that phase.",
+    "state": "structured",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "unstoppable-will-adeptus-custodes",
+    "summary": "Improve this unit’s Leadership by 1.",
+    "state": "structured",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "unyielding-ancient-adeptus-custodes",
+    "summary": "Subtract 1 from Wound rolls against this unit if the attack’s Strength exceeds its Toughness.",
+    "state": "structured",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "vengeance-inescapable-aquilan-wing-adeptus-custodes",
+    "summary": "When a friendly ADEPTUS CUSTODES AQUILAN WING unit is selected to Pile in, its Pile-in distance is D3+3″. Apply the remaining Pile-in restrictions.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "vengeful-surge-adeptus-custodes",
+    "summary": "After an enemy shoots in your opponent’s Shooting phase and allocates damage to this unit, this unit makes a D6″ Surge move with a further +2″ distance modifier. Check the current Surge movement restrictions.",
+    "state": "structured",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "vexilla-adeptus-custodes",
+    "summary": "Add 1 to this unit’s Objective Control and ignore modifiers to its Leadership characteristic.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "vexilla-wargear-adeptus-custodes",
+    "summary": "Add 1 to this unit’s Objective Control.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "victory-before-death-grav-assault-force-adeptus-custodes",
+    "summary": "When a friendly GRAV-ASSAULT unit is destroyed within an objective marker’s control range, this Stratagem can still target it. Select one objective it controlled that has no enemy non-AIRCRAFT units in range and make it sticky. Apply the current sticky-control expiry rules.",
+    "state": "structured",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "vigil-unending-lions-of-the-emperor-adeptus-custodes",
+    "summary": "The encoded Vigil Unending protects a friendly ADEPTUS CUSTODES TERMINATOR unit with -1 incoming Damage for an attack sequence in your opponent’s Shooting phase or either Fight phase. Its notes instead describe a destroyed CHARACTER fighting before removal. Confirm which rule belongs to this Stratagem before applying either effect.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "wardens-of-the-dark-cells-adeptus-custodes",
+    "summary": "Melee attacks against friendly ADEPTUS CUSTODES units within objective control range, excluding MONSTER and VEHICLE units, suffer -1 to Wound if Strength exceeds the target’s Toughness. While Kaptaris is active, the source also permits one engaged enemy per phase to take a Battle-shock test at -1, but does not state an activation event for that branch; check when it occurs.",
+    "state": "needs-summary",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "will-of-auramite-aquilan-wing-adeptus-custodes",
+    "summary": "If the bearer is destroyed in the Fight phase before its unit has been selected to fight, roll a D6: on 4+, it can fight when the unit fights. Remove it after that fight or at phase end.",
+    "state": "structured",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  }
+]
