@@ -1,0 +1,12 @@
+{
+  "benedictions-of-the-omnissiah-adeptus-mechanicus": {
+    "effect": {
+      "imported": "acc78e693f97cb317a16f4efa77de5d5f5441d25ef53fcd7d24b61d988560e1d",
+      "pinned": "d5453983753163d28fd27836c458dc2d3d9c8dd1957249124b1428a80961accc"
+    },
+    "trigger": {
+      "imported": "cee01706b16ab37b0844fff6b87cd215f9509f3fe281e64160baefb0912bb555",
+      "pinned": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c"
+    }
+  }
+}

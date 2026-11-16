@@ -1,0 +1,2446 @@
+[
+  {
+    "id": "achillan-eye-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Re-roll this model’s Wound rolls with its Radium Jezzail against INFANTRY, and with its Skatros Transuranic Arquebus against MONSTER or VEHICLE units.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "0e9f8858a70070da591d1bd2d8cf478778cdf1fbc13ef0ac24540f8f1357ab9f",
+    "pinnedHash": "0e9f8858a70070da591d1bd2d8cf478778cdf1fbc13ef0ac24540f8f1357ab9f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "acquisition-at-any-cost-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Explorator Maniple offers Wound re-rolls of 1 when the attacker or its target is within control range of the Acquisition objective, until your next Command phase. Source gaps: no objective-designation or selection procedure is supplied, activation timing is absent, and the source is provisional. Confirm how and when the Acquisition objective is chosen before applying dependent rules.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          2,
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "9917384006ddfa58b43dcea0828fb617ee3200435b3161371b699ce903ba6a6c",
+    "pinnedHash": "9917384006ddfa58b43dcea0828fb617ee3200435b3161371b699ce903ba6a6c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "aerial-deployment-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "In battle round 1, this unit can make an Ingress move during your Movement phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals",
+    "sourceHash": "c45756db15e33c119f854337aff6c584f7dfbbdd5b1c9ad5c8d8b4934d95bc19",
+    "pinnedHash": "c45756db15e33c119f854337aff6c584f7dfbbdd5b1c9ad5c8d8b4934d95bc19",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "aggressive-impulse-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "In your Movement phase, before a friendly SKORPIUS DUNERIDER is selected to move, use Aggressive Impulse. For this turn, ADEPTUS MECHANICUS units disembarking from it after its Normal move remain eligible to declare a charge.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "officialPage": 8,
+    "targetText": "One friendly SKORPIUS DUNERIDER model not yet selected to move this phase; the charge permission applies to eligible disembarking ADEPTUS MECHANICUS units.",
+    "sourceHash": "a6b9e31a73229cfccf167eba013f360db0e3362fc9e811cac466f8395593dba8",
+    "pinnedHash": "d79454fc720ab16732b415e2e72b1eff53832cdf20a93763bf63cb50a2d73c72",
+    "coreHash": "102d94f97b4a6233a8360db27c9a71466929d3bdcc47abc551e8af42c8c12033"
+  },
+  {
+    "id": "aggressor-imperative-rad-zone-corps-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When each selected unit begins an Advance in your turn, it uses a fixed 6″ Advance for the phase. Select one eligible SKITARII unit, with an optional second non-BATTLELINE SKITARII unit only when the first target is BATTLELINE and the second satisfies the distinct-unit and 6″ restrictions in Targets.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "a1c67921d96f7f7ac547b98b1381319e9dcb69774f95168a7a263edf5552b6b0",
+    "pinnedHash": "e3fb20fb7891124e41c39f9f068ca47fde9c77cea65a65456a975abe743f1010",
+    "coreHash": "603d103c1099a011eca08ca50a737a19b98065a3d11579952c9932eb0d52350a"
+  },
+  {
+    "id": "analytic-reprisals-eradication-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After an enemy unit shoots during your opponent’s turn, this unit can shoot back as if it were your Shooting phase, provided it is eligible to shoot. Its attacks must target that enemy unit.\nSKITARII INFANTRY only.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "sourceHash": "f9fc4399a1a3b6c9a2868d0b7554048c29d3cdbfdce7b03a529e6b18fd37a428",
+    "pinnedHash": "f26b849f9846ec24817e3a1f22f890fc82e557310a64e3f86378780a244f8b77",
+    "coreHash": "e7639e5e0763e029e039e2b993cd31f86659cc69508f1363418cebaeff82cc58"
+  },
+  {
+    "id": "analytical-divination-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After an enemy finishes a Normal, Advance or Fall Back move in your opponent’s turn, this unit makes a D6″ Normal move, or a 6″ Normal move if it has HALO OVERRIDE.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "e7a169764c7e67b8bc6c76ccff30462bea01ee09fc05119a8df5973647cba7fc",
+    "pinnedHash": "ce945f208ab608200b86a0c99815c1c7b9674581e4b883f06435d0a46d48409b",
+    "coreHash": "a220cb3dbddd02080f7b0b5fcd54bfcad5726974ae15a7476b5ab624547fb829"
+  },
+  {
+    "id": "arch-negator-cohort-cybernetica-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This model’s ranged weapons gain Anti-VEHICLE 4+.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "db6ffd566adec7370b39819e20f9e2935dbbb84a5c7c1863f7f6338dd5a80da0",
+    "pinnedHash": "46e8f6070b1a803aa269c1828612b73dd0f9c82c90fda5ebaec5f05b3f9c9b7d",
+    "coreHash": "24616bc9d3b63d2c070341bd015046df7f2139d0fb5e851b0fc9624fd04eaaa1"
+  },
+  {
+    "id": "artisan-explorator-maniple-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Once per phase for this bearer, while leading a unit within range of the Acquisition objective, you may change one of that unit’s Hit, Wound or Save rolls to a 6.\nTECH-PRIEST bearer only.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "bf9614376fcd4a1c76f76d585dcde6fb1f96e6a8d96963a3f5145fd1affc3612",
+    "pinnedHash": "9d5fc157fa0f151bb6b41809da25fe3138a6fd2b2bac2679087d8af674bb8bdd",
+    "coreHash": "e28a8688a5b85b4d80f6fbe12fb55ea266c85444ea4ae950054b66e7e35d0d25"
+  },
+  {
+    "id": "attached-unit-servitor-battleclade-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Servitor Battleclade uses a Kataphron Breachers attachment proxy. Source review: this does not authorize every CHARACTER with Leader to attach; confirm the eligible Kataphron Breachers Leaders, formation window and attachment exceptions. The existing checked attachment links are retained.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "9807de40c608af7d9bc5341891bea25cb372317a5d4eff371052064df47c913f",
+    "pinnedHash": "9807de40c608af7d9bc5341891bea25cb372317a5d4eff371052064df47c913f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "auto-divinatory-targeting-cohort-cybernetica-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Auto-divinatory Targeting contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "686ca00c7f460872b87118461d8a0105abde43cc5272fb360c53377033229ebd",
+    "pinnedHash": "09aa83efcff4febd6d6350137e5886197bfb8ad7d2ff04a103858af9dd659122",
+    "coreHash": "4d24003c6bf38d9aeddad4ec171ec9663345a940d9ec19ef1043810b83c32538"
+  },
+  {
+    "id": "auto-oracular-retrieval-explorator-maniple-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, add 1 to this unit’s ranged Wound rolls against targets within range of the Acquisition objective. Lasts for this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "dfb4d2845e1e073c23c10b746909bb5061e1528675b98aea8586cdcd88227409",
+    "pinnedHash": "4a6f090e938540e8ef49b0da32f7744972e712753c3b2bd0f5c081f10b5a8d87",
+    "coreHash": "8cdeb5bd506e98cf0c15a3e85bf02ebebfe6716bca12e103f85f2efebebf2bd2"
+  },
+  {
+    "id": "autoclavic-denunciation-rad-zone-corps-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This model’s ranged weapons gain Anti-INFANTRY 2+.\nThis model’s ranged weapons gain Anti-MONSTER 4+.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e921e7e88606b595871f1162617264c2ad22a269efb5cf90cf9fa11f737b5a60",
+    "pinnedHash": "a43515fe22bfea45b0f94f7d7f30df448e3711c4af4a12c059373e46d32da46c",
+    "coreHash": "c6a1fc2c19cd99f5a01b10d69d8faf8b38b2c578aebb48fc792f9d38c140b395"
+  },
+  {
+    "id": "baleful-halo-rad-zone-corps-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Baleful Halo contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "9de100618c05c9024498d81c8749437f7ff6aac5bdae1b6fd2d6e60dd9eaf0a0",
+    "pinnedHash": "459bb070f92af3aefdc09b5c724f32bd0992f05a3ab5d2788fdaf38ea5468f98",
+    "coreHash": "62ae1bc5b67558f41502a34e731f8bb8c2172fcd79655ff56c2547966e8aa76b"
+  },
+  {
+    "id": "battle-protocols-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While this model leads KASTELAN ROBOTS, start with Aegis Protocol. In your Command phase, you may select one protocol for the Robots in this unit:\n• Protector: +2 ranged Attacks.\n• Conqueror: +2 melee Attacks.\n• Aegis: +1 Toughness.\nThe selected protocol stays active until changed. Requires the Cybernetica Datasmith to be attached to Kastelan Robots as their Support model; the Attack/Toughness bonuses affect Robot models, not the Datasmith.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          2,
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "a186493db64ce129f89de14c223daf301a4785af80957cea14fd15c5bfb56f2d",
+    "pinnedHash": "a186493db64ce129f89de14c223daf301a4785af80957cea14fd15c5bfb56f2d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "battle-sphere-uplink-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, if it is not engaged, you may make a 6″ Normal move. It cannot charge this turn.\nSKITARII bearer only.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "f04ae3249c504a93b0e9afe7779b13c684a3eb04f73761bcb739bc2b3cf26322",
+    "pinnedHash": "8ee866c116aad8fff723052ab2248a0d0bd794c8b8bec458473c4564d8781ef0",
+    "coreHash": "be799ce03a5e175b2334703cc53c95e2f1803394c585f20fae8d5badbc750beb"
+  },
+  {
+    "id": "belicosa-class-capacitor-vanes-eradication-cohort-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "This unit’s ranged weapons gain 6″ Range and 1 Strength.\nADEPTUS MECHANICUS bearer only. Source marked pre-launch provisional; verify this version before use.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0acc990b3311863e01b0733ae674c6c26e772fb85a35b6a911a4532294cc3d26",
+    "pinnedHash": "51ac921795ed19d2fd2534a6bb91e00c9f7d2ab10357a4a1f12454d499b51333",
+    "coreHash": "837b905960a46f475d69f4429d426838a2ed6393ca0f341801388d954322e450"
+  },
+  {
+    "id": "benedictions-of-the-omnissiah-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "At the start of battle round 1, choose one benefit for the battle:\n• Panegyric Procession: friendly CULT MECHANICUS models improve ranged AP by 1 against targets within half weapon range.\n• Citation in Savagery: when a friendly CULT MECHANICUS unit is selected to fight after charging that turn, its melee weapons gain 1 Attack and 1 Strength for that phase. Source snapshot conflict: the stored variant encodes the half-range gate and round-start trigger differently from the pinned enrichment. Both source hashes are retained; verify the current Benediction selection and recipient procedure before applying this variant.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "round",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "round"
+      },
+      {
+        "phase": [
+          2,
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "51aac587407651317704fcca11a8b30604336a67bec566fb6c10d6f47a1eecb1",
+    "pinnedHash": "d349e80c9c5ec22df9cbb62a42d30cac157d39c04fac03b68b7acf6cca678379",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "benevolence-of-the-omnissiah-cohort-cybernetica-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, give this unit Feel No Pain 6+, improved to 5+ against mortal wounds, until your next Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "6c1f40bb20b770527b388673a4f7954ec2a99b6fdc1d435b386667a691aec69f",
+    "pinnedHash": "9931254c0f62005bac7c005f4d7475edde320da7d3fd7b6a360389d69c35abfe",
+    "coreHash": "de016fdfd5d1842becf89f777ebe6ea90f20c1eba13c868b39f4cf223c2b39ef"
+  },
+  {
+    "id": "binharic-offence-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "For this phase, the first and second units selected by this Stratagem improve their AP by 1. Both must direct their attacks at the third selected unit.",
+    "phase": [
+      4,
+      2
+    ],
+    "turn": "either",
+    "window": "before",
+    "sourceHash": "7a5e6ec36a71f13e4f93ca78f4a196b647e31812ad19d7de51f407f601bdfb0f",
+    "pinnedHash": "c956149628290a5a46e3b6598059db29f0ec46658ce8682d99275f7a3fcc68e8",
+    "coreHash": "ce86fe590e0ff9661a138310a0a731e5e722a95926fda17cf181a89a78d6a213"
+  },
+  {
+    "id": "bionic-endurance-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When a enemy unit selects this unit as an attack target.\nThis unit has Feel No Pain 5+.\nLasts for this phase.",
+    "phase": [
+      4,
+      2
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "9b67b1d1c9aade970efe3a9986d4c7e412dacc7d91f605cc6635a32db6f6fed1",
+    "pinnedHash": "cc8f6da44c60dd79698f078240127a0885069fc5c8713e54c8f0a0e9fea1bc04",
+    "coreHash": "b1b84b2dbc474432ccc2976d21cc60891177b97ce105440a10a1b5690c0c8920"
+  },
+  {
+    "id": "blistering-salvoes-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Add 1 to this model’s Hit rolls with its Belleros Energy Cannon against INFANTRY, and with its Ferrumite Cannon against MONSTER or VEHICLE units.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5cb46827316f447c77f63c934f38d1aa5a2f0a71cbf531912dff0cb90a4699fe",
+    "pinnedHash": "5cb46827316f447c77f63c934f38d1aa5a2f0a71cbf531912dff0cb90a4699fe",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "bomb-rack-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, choose one visible enemy unit within 24″ that does not have Lone Operative. Roll six D6; each 4+ deals 1 mortal wound to that unit.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "106468a831a19ad979f8de83ca3763fa194d4c46ccc0744e1693b8a3ed24c574",
+    "pinnedHash": "106468a831a19ad979f8de83ca3763fa194d4c46ccc0744e1693b8a3ed24c574",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "breaching-command-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit re-rolls Hit rolls of 1. While within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit, it can re-roll any Hit rolls instead.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2ae18913b750835ba8cf01a6ca948f506fcd3c143fc5fc70b0e30468a8a333dc",
+    "pinnedHash": "2ae18913b750835ba8cf01a6ca948f506fcd3c143fc5fc70b0e30468a8a333dc",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "broad-spectrum-data-tether-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When this Ironstrider Ballistarii unit is targeted with a Stratagem, roll D6; on 5+, gain 1CP. Apply the core limit on additional CP gains.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "8c066d732863fe739f1b827ed574fba1466e9bba8fc7299f729fc698c3f5f18c",
+    "pinnedHash": "8c066d732863fe739f1b827ed574fba1466e9bba8fc7299f729fc698c3f5f18c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "broad-spectrum-data-tether-onager-dunecrawler-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "With the Broad spectrum data-tether equipment, this Onager model loses SMOKE. When it is targeted with a friendly Stratagem, roll D6; on 5+, gain 1CP. Keep this equipment replacement separate from Chaff Launcher, which grants SMOKE; apply core CP-gain limits.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "33b117d14f489e55973d74ef302194ea46e8c910325ce726fccf33b0c5ef2422",
+    "pinnedHash": "33b117d14f489e55973d74ef302194ea46e8c910325ce726fccf33b0c5ef2422",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "broad-spectrum-data-tether-skorpius-disintegrator-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When a Stratagem is used on this model, roll a D6; on a 5+, gain 1 CP. Apply the core additional-CP limit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "bc9a7d2e7ddb00ab4d49995e57cc84a55bc734d09a6345d3cceebb38fe9ee6a5",
+    "pinnedHash": "bc9a7d2e7ddb00ab4d49995e57cc84a55bc734d09a6345d3cceebb38fe9ee6a5",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "broad-spectrum-targeting-augurs-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit’s Eradication Casters gain Sustained Hits 1 against targets that are neither MONSTER nor VEHICLE units.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5187cf9e334c9963b1895776bda249329a56b20800938ef9f2885f43d86ffc06",
+    "pinnedHash": "5187cf9e334c9963b1895776bda249329a56b20800938ef9f2885f43d86ffc06",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "bulwark-imperative-rad-zone-corps-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When an enemy targets the first selected unit in your opponent’s turn, that unit and any valid optional second target gain a 4+ invulnerable save for the phase. Apply the BATTLELINE, distinct-unit and range conditions for adding the second target.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "f4b5e8657a394374e1ccf00ac5da8035b331cc17546a7ca05a6de65739468c09",
+    "pinnedHash": "cfe2a00f040d74a662fa87f161c0f7c7551715a3db04999a482e4b9625c913af",
+    "coreHash": "8098395ca2887bd2eb3c213ec68b11b1e3ed07c4e625cb1c9ecafbcd462b0e95"
+  },
+  {
+    "id": "cached-acquisition-explorator-maniple-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "When the selected unit is destroyed, Cached Acquisition can still target it and make an objective sticky. Source gap: the effect targets this-unit instead of binding an objective; confirm the controlled-objective selection, expiry and control-transfer procedure. The destroyed-unit and objective-range gates in the core target record still apply.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a16d52ef0a22863c017b89b40bf628f2ed2314703544bf965f2fef5df2d2fc1e",
+    "pinnedHash": "0748f1a0db33cc0f69762f5e3f9651bd26135e87fdd1f2248fdd71569d25bb4d",
+    "coreHash": "df9818ac52c7288bafd9bc05c9c98fd2009a8d0b931c9d70c384d2f04849dc34"
+  },
+  {
+    "id": "cantic-thrallnet-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "At the start of a battle round, you may choose one friendly SKITARII unit within 12″ of this bearer. Select either Conqueror or Protector Imperative for that unit, exclusively, until the next battle round.\nMARSHAL bearer only. Source conflict: exclusive activation encodes choosing one Imperative, without specifying whether this replaces or adds to the army’s active Imperative; confirm the intended combination.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "92cdb16b5ddb978fa7103b17cc774b01d7eeb3911afe1e42b7c90d09c235c5b9",
+    "pinnedHash": "c6f11db5f8e77041414ac868b55b431d8f9f83859371b30a3677f0dc072f8913",
+    "coreHash": "d1b7abcecae1f433d291e6409c9b31c740f09d4dac56900aff957c2baa99241d"
+  },
+  {
+    "id": "canticles-of-the-omnissiah-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of your Command phase, choose one Canticle until your next Command phase: Machine Vengeance selects one enemy unit for friendly ADEPTUS MECHANICUS Hit re-rolls against it; Mantra of Discipline gives Cawl BATTLELINE and grants friendly ADEPTUS MECHANICUS units within 6″ +1 OC and +1 to Battle-shock/Leadership tests; Shroudpsalm grants those nearby units Stealth. The test bonus is an aura benefit, not just Cawl’s own unit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "officialPage": 18,
+    "sourceHash": "94e3410b672efa6d3f89080816f8f5a67a771044f6c3f8578c8f0f8a61077962",
+    "pinnedHash": "94e3410b672efa6d3f89080816f8f5a67a771044f6c3f8578c8f0f8a61077962",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "chaff-launcher-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This model gains the SMOKE keyword.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d38a559dfd03ddfe914b9d08f6728c309826ddff77b0c2df082ad0e1a9956f4c",
+    "pinnedHash": "d38a559dfd03ddfe914b9d08f6728c309826ddff77b0c2df082ad0e1a9956f4c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "chant-of-electrotraction-luminen-auto-choir-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Imported source needs checking. The imported source grants a charge after Advancing, but activates in the Movement phase and expires that phase. Check how long it lasts before using it in the Charge phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select",
+    "sourceHash": "4a5a71d6d27f0851844e4e494b52f49690b7b96c8eb0b29dc3992c7ae7eb035d",
+    "pinnedHash": "62052c61084ca13810c28e92e69cd045550ca139f66e84ff458b0c759766306d",
+    "coreHash": "84569bde486fe196fee2c16a3b15f1c0af2cdbbb911da1ee2a7573d965f1c5ee"
+  },
+  {
+    "id": "chant-of-the-remorseless-fist-data-psalm-conclave-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "CULT MECHANICUS models in this unit add 1 to melee Wound rolls for this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before",
+    "sourceHash": "566aca5fd853e0f6be9fb38b10da59692fd2e672e2aaa45d40452dddae9fa7ad",
+    "pinnedHash": "e8e51d482509099b4a915233fb638936e2b2331891e4292c062f8981a058df14",
+    "coreHash": "2d5b2bb507793781761bec6e130a51178672dcea372353517920354fbcab8d67"
+  },
+  {
+    "id": "clandestine-infiltrator-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit gains Infiltrators and Scouts 6″.\nSKITARII bearer only.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "b28f3c6c46fa8b156f17d31ba2b56134b376ccc93a5719486209ed87dc3aec41",
+    "pinnedHash": "6b4b602aa4aab42696431708d154df832abbda94a8fd9e0518222db7cc7b4ddb",
+    "coreHash": "8580fe68d0017aad8048cc62f197f56fa80c1921739c4c211a8c6a8ab1d3b86a"
+  },
+  {
+    "id": "clandestine-reposition-cohort-acquisitus-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, place this unit into Strategic Reserves.\nADEPTUS MECHANICUS only.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "f9978de3e9bee45b6daa266b2c85fa7c23bf5506d9580ac2d5c618b9ec297dab",
+    "pinnedHash": "f37907102d8a2bff5d25663b5668dc0e3d37f0404719982391de8f1f8345b1a8",
+    "coreHash": "c6a2677553163d31ab7123ea29a7c61f9f3b89b1ebc73cd61d27e3215c738427"
+  },
+  {
+    "id": "cogitative-instincts-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Enemy units cannot be set up from Strategic Reserves within 12″ of this model.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e4be2affd0c059d693488b8d95d857163ec70b8ddd27283a1be41e7db99b2f15",
+    "pinnedHash": "e4be2affd0c059d693488b8d95d857163ec70b8ddd27283a1be41e7db99b2f15",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "cognitive-reinforcement-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "For this eligible bearer’s unit, both Protector and Conqueror Imperatives are active together. Cognitive Reinforcement excludes CYBERNETICA DATASMITH bearers; it is not a choice of only one Imperative.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 7,
+    "excludeDatasmith": true,
+    "sourceHash": "e210975b9f536ad6b40d8af775258cdbc00b0fcadf1a0ab495f8551427ebecc1",
+    "pinnedHash": "409549205e5de326a53612219cf7e9c9748afbca11fb9f0f2b001ef8c7b2e8d0",
+    "coreHash": "94079547c525a9f553100fa9dfe042e657e8e53fbfe0ea546f8e351eeac5282a"
+  },
+  {
+    "id": "command-uplink-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When a friendly Stratagem is used on this unit, roll a D6; on a 5+, gain 1 CP. Apply the core additional-CP limit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "171b87059a9253d50bb31a585859d178b4279efbae067989bd6a2d2e25ce5995",
+    "pinnedHash": "171b87059a9253d50bb31a585859d178b4279efbae067989bd6a2d2e25ce5995",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "control-edict-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While leading a unit, that unit can re-roll any Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "409cf870fdb4500e9890b69d6bb8c12adf56261cc0ec2f518e096f5673919915",
+    "pinnedHash": "409cf870fdb4500e9890b69d6bb8c12adf56261cc0ec2f518e096f5673919915",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "cyber-psalm-programming-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Friendly LEGIO CYBERNETICA units gain 2″ Move. They also gain 1 Objective Control while not Battle-shocked.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e2496833a0cbeb7546c0e7cf7de04bbc316477dda1b3627dacb888441f6e91a3",
+    "pinnedHash": "e2496833a0cbeb7546c0e7cf7de04bbc316477dda1b3627dacb888441f6e91a3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "cyber-static-canticles-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Friendly CORPUSCARII units gain Lethal Hits on ranged attacks. After a friendly FULGURITE unit fights, it heals D3 wounds under the core healing procedure. These benefits apply to your units, not to enemies with those keywords. Luminen Auto-choir has the DATA-PSALM tag and cannot combine with another DATA-PSALM detachment.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 4,
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "after"
+      }
+    ],
+    "sourceHash": "b5887f07c9bfda51725bb6407c87e3e07652620fb6f8450014ed1ac135524361",
+    "pinnedHash": "b5887f07c9bfda51725bb6407c87e3e07652620fb6f8450014ed1ac135524361",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "data-blessed-autosermon-data-psalm-conclave-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Data-blessed Autosermon contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "285decdb4859b648bbbd808989ef4f20341c1110cf316952b2017b87348cf1f2",
+    "pinnedHash": "ff25d1f843601f34d3f9a2b36327eac868aba192e3bf30528b1b432b30362259",
+    "coreHash": "07ff5d4a3e6c9d920740e37abe4eaa9af19c100c212c33e9a8d0855f96282e78"
+  },
+  {
+    "id": "data-severed-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When no KASTELAN ROBOT models remain in this unit, it loses VEHICLE and gains INFANTRY.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d4e9789cc09ab8bdb0305baf1a3d7939feb6d98f2323a0949073212f01fb4363",
+    "pinnedHash": "d4e9789cc09ab8bdb0305baf1a3d7939feb6d98f2323a0949073212f01fb4363",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "dataspike-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of the Fight phase, you may choose one enemy VEHICLE engaged with this unit and roll a D6. On a 4+, it suffers D6 mortal wounds and its melee Weapon Skill worsens by 1 for this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "c4c72e74d7eb1bb9ee94363bbb6092039685efaaf4474890630a0f6f4dcdb922",
+    "pinnedHash": "c4c72e74d7eb1bb9ee94363bbb6092039685efaaf4474890630a0f6f4dcdb922",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "defect-scrutiny-cohort-acquisitus-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When selected to shoot in your turn, choose one enemy unit visible to this model and within 12″ of a friendly RECON AUGURY unit. This unit’s ranged weapons gain Ignores Cover against that target for this phase.\nADEPTUS MECHANICUS only.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select",
+    "sourceHash": "8a8f05be5186f773d748ec1e62d5322ce526a0efdbac7fcbb257349a9ac94485",
+    "pinnedHash": "a60357889d171b9a989f880039b2dacb21dd5bad889cfeb0150fe7e68a273ec1",
+    "coreHash": "cc1b6c9c6b8deaffd26e3c74fbf1b2d03118a92fd99475355de780fc9e006205"
+  },
+  {
+    "id": "defend-the-divine-work-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Once per battle for this unit, at the start of a phase, you may give it a 4+ invulnerable save for that phase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "b729e2115cd10ba5d9a466f308c605efd56424bc234ea9d8004e8e40323b7d87",
+    "pinnedHash": "b729e2115cd10ba5d9a466f308c605efd56424bc234ea9d8004e8e40323b7d87",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "defend-the-divine-work-manipulus-skand-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "At phase start, Manipulus Skand’s unit may receive a 4+ invulnerable save for that phase. Source gap: this Combat Patrol record has no usage limit, unlike the ordinary Manipulus’s once-per-battle ability. Confirm its own limit; do not silently copy the ordinary version or assume unlimited use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "225385330479e19d3b482efa6340c0e0237b1f8f9a4cbb08625fb48adf9f7339",
+    "pinnedHash": "225385330479e19d3b482efa6340c0e0237b1f8f9a4cbb08625fb48adf9f7339",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "doctrina-imperatives-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of each battle round, you may choose one for that round:\n• Protector: ranged weapons gain Heavy and improve Ballistic Skill by 1.\n• Conqueror: ranged weapons gain Assault and melee weapons improve Weapon Skill by 1.\nIf this unit is BATTLELINE or within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit, Protector also subtracts 1 from enemy melee Hit rolls against it, while Conqueror also improves its AP by 1.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "round",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "round"
+      },
+      {
+        "phase": [
+          2,
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "9b68dc8280318b8d1fc27ef92547bd25fdb83adb5612a85704f5f48877c39c6e",
+    "pinnedHash": "9b68dc8280318b8d1fc27ef92547bd25fdb83adb5612a85704f5f48877c39c6e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "doctrina-imperatives-purge-corps-deltic-9-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of each battle round, you may choose one for that round:\n• Protector: ranged weapons gain Heavy and improve Ballistic Skill by 1.\n• Conqueror: ranged weapons gain Assault and melee weapons improve Weapon Skill by 1.\nIf this unit is BATTLELINE or within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit, Protector also subtracts 1 from enemy melee Hit rolls against it, while Conqueror also improves its AP by 1.\nThis version replaces standard Doctrina Imperatives for its listed units.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "round",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "round"
+      },
+      {
+        "phase": [
+          2,
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "26e095e9b3c40e72f8a35371c27ee0b9d02b03eb20623e18c729bb37efe74f30",
+    "pinnedHash": "26e095e9b3c40e72f8a35371c27ee0b9d02b03eb20623e18c729bb37efe74f30",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "dread-snipers-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, choose one enemy unit it hit. That unit must take a Battle-shock test.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "86d82e9b0d76ef28131cfa29100a44b88b4c7245d1506d73d586dd0c5f931f22",
+    "pinnedHash": "86d82e9b0d76ef28131cfa29100a44b88b4c7245d1506d73d586dd0c5f931f22",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "dynamic-efficiency-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit can declare a charge after Advancing or Falling Back, and can re-roll Desperate Escape tests.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "85fb989b54c9a53a26848172cd87464d3b17d547a891c64f91516c06749215bf",
+    "pinnedHash": "85fb989b54c9a53a26848172cd87464d3b17d547a891c64f91516c06749215bf",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "echoes-of-the-conduit-wars-luminen-auto-choir-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When this unit is selected to attack, it re-rolls Hit rolls of 1 and Wound rolls of 1 against targets within range of an objective marker for this phase.\nELECTRO-PRIESTS only.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "before",
+    "sourceHash": "1c5fae48eee20aa4bc683f749e132be0f666fae3b438d35896d56e53ba0c6edb",
+    "pinnedHash": "b5aba763c1c8598615c01d930923e82d4f721797ce18355a47251d1862e5e4b5",
+    "coreHash": "26ebfc32e3cc63ac70a396db09eddc85b94cddaf07c48cb789aea826786e7b36"
+  },
+  {
+    "id": "electro-infusion-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While this unit is led by a CHARACTER, subtract 1 from Wound rolls made against it.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "018536209ea84a211d2c7040b392d9300d016ddfb58adcdcc740b0ad870ccae2",
+    "pinnedHash": "018536209ea84a211d2c7040b392d9300d016ddfb58adcdcc740b0ad870ccae2",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "electro-shock-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "After this Corpuscarii unit shoots in your Shooting phase, select a non-MONSTER, non-VEHICLE enemy hit by those attacks. The source intends -2″ Move and -2 Advance/Charge until the end of your opponent’s next turn, but assigns the Advance and Charge penalties to this-unit, the shooter. Confirm the penalty recipient before applying it.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "39bf13e568c4e634c9f655b8ba0769110a2d154e30ab1927996470c98cf73282",
+    "pinnedHash": "39bf13e568c4e634c9f655b8ba0769110a2d154e30ab1927996470c98cf73282",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "electromiasmic-brazier-luminen-auto-choir-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit gains Stealth.\nTECH-PRIEST ADEPTUS MECHANICUS bearer only.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "57d6f2287461fe934bb738d15360d155b8e4c8d2ca2e9afff95d06149193b869",
+    "pinnedHash": "9ed35fb412e312f2cef6696046b3c163dab74354dbd2488a710aed6f8064d1e7",
+    "coreHash": "61a60ea3a5f9f75cb7d90cb81b81694d59dcdf293b089df727fb5ab992c0e80c"
+  },
+  {
+    "id": "elevated-strider-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Assault. It can shoot after Falling Back and can re-roll Desperate Escape tests.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c34c57415a72aef7218e4b66c4b001008b7288ec497dc99274c927ba523e2550",
+    "pinnedHash": "c34c57415a72aef7218e4b66c4b001008b7288ec497dc99274c927ba523e2550",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "emanatus-force-field-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Friendly ADEPTUS MECHANICUS BATTLELINE models wholly within 6″ of this model have a 4+ invulnerable save against ranged attacks.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "dc9ab39c53250df509090a79f36e5da0464663fba631724fed4b482152301d17",
+    "pinnedHash": "dc9ab39c53250df509090a79f36e5da0464663fba631724fed4b482152301d17",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "emotionless-clarity-cohort-cybernetica-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Emotionless Clarity contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "59fe49303ffe4dd667c62412c61f2c406c73d5661982f705f15f7bbb52aad84f",
+    "pinnedHash": "89560259b445ac56ec226274fc4059b99b253494165d03af6f394b7876f9574a",
+    "coreHash": "ebd0743906178f119ea57adf0b82c744cd458e98f5e62ad945f836a0ea468be5"
+  },
+  {
+    "id": "empowered-mechanisms-purge-corps-deltic-9-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Anti-INFANTRY 4+, and it can re-roll rolls that determine its number of attacks.\nUpgrade: Purge Corps Serberys Sulphurhounds.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "926f592f9304bbd31c8583225ecc2d798498adb3f3dd7e6d449125edfd3b07bf",
+    "pinnedHash": "0a01fb9e0172b09508c7a84fb3947f3876780f021b6f882e56d64ab5458d3653",
+    "coreHash": "e6f9d3ab2122ee03a0fb82a921c1fbe9b46e0f94ce21a5c0584801a063b91d07"
+  },
+  {
+    "id": "enginseer-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While this model is not leading a unit and is within 3″ of a friendly ADEPTUS MECHANICUS VEHICLE, its unit gains Lone Operative.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "34007eb482b5d5f8d3755947e99387429e72a5f8af46762ca984784a28477eb4",
+    "pinnedHash": "34007eb482b5d5f8d3755947e99387429e72a5f8af46762ca984784a28477eb4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "enhanced-data-tether-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When a friendly Stratagem is used on this unit, roll a D6; on a 5+, gain 1 CP. Apply the core additional-CP limit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "a2881c4b611537bac4efd37596131faecfd91673a88debde2203df5248184cd1",
+    "pinnedHash": "a2881c4b611537bac4efd37596131faecfd91673a88debde2203df5248184cd1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "eradication-protocols-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit re-rolls Wound rolls of 1 for this phase. If it has HALO OVERRIDE, it also re-rolls Hit rolls of 1.",
+    "phase": [
+      4,
+      2
+    ],
+    "turn": "either",
+    "window": "before",
+    "sourceHash": "20890833e43264322de21e3cdba9814f3d53c6507db7ec7fe21ee9a2c9f9b342",
+    "pinnedHash": "1d6cffc1eb90e61a2cab2fef82c8eeb5690f94547d08421d1caa7b8628deb426",
+    "coreHash": "6149f0f34947570fde654bc1b460a8b2d4201a1b4666ba62dabe1273b846b70e"
+  },
+  {
+    "id": "expedited-purge-protocol-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Expedited Purge Protocol grants a charge after Advancing, but the stored duration expires in Movement, before the Charge phase. Confirm the permission’s duration and the selected unit’s eligibility before charging.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select",
+    "sourceHash": "20ef37f731237d21043748dd32b6420edc205dfcc7c213ace225836856151b7d",
+    "pinnedHash": "2881b688c6a0e483bc4d26cb79af89e76812cacf8189f7efe3e11e0c3413a46c",
+    "coreHash": "28595c282422e9bc0ffc398328c01804c9826c3d5ea2648422659609a8f81670"
+  },
+  {
+    "id": "explorator-dispensation-cohort-acquisitus-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit gains Infiltrators.\nBearer: Skitarii Marshal (ADEPTUS MECHANICUS).",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "a760d2822c684c1b230645115c97c3243744f5a7b0c297ecb1902c018756fc20",
+    "pinnedHash": "54c5c99dadbb4e22a174022f0d8a1b3c1ee0ea3b865e4d1adaa0a5c846e6ceca",
+    "coreHash": "9b7075691a5e07cef05cd9f0eb88a505f31e616724c9de1d195f67b48f9a79dd"
+  },
+  {
+    "id": "extinction-order-rad-zone-corps-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Extinction Order contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "3668321868f23549a58d61d6a54389f127b58a61d92cd08f89dc92039b1f70bf",
+    "pinnedHash": "e42fdcf28a076a2ac01485d77113b487d6d4e496bdd9dcd31fbf5d7ca37f3a0f",
+    "coreHash": "17de94856d609a127007239b3c8ce2f279f1f7862b04ce6eb4787ae579ae4c40"
+  },
+  {
+    "id": "fire-support-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After this transport shoots in your Shooting phase, choose one enemy unit it hit during this phase. Friendly models that disembarked from this transport this turn can re-roll Wound rolls against that target for the rest of the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "d30c944145c37cf9e47cf923d1f727e56c7029d37d956533f072fa3367ed2a2e",
+    "pinnedHash": "d30c944145c37cf9e47cf923d1f727e56c7029d37d956533f072fa3367ed2a2e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "focused-hunters-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of the battle, choose one enemy unit. This unit can re-roll Hit rolls against that target for the battle.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cfc0f2a529951f5b3fb42df5410957c08b82d7dc8ab3b531ce829923653ec953",
+    "pinnedHash": "cfc0f2a529951f5b3fb42df5410957c08b82d7dc8ab3b531ce829923653ec953",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "galvanic-field-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While leading a unit, that unit’s weapons gain Lethal Hits.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c43e92a7031652ef0ca98ced99a2d2e23b03b7bc99044593943bdfe2982d5cbe",
+    "pinnedHash": "c43e92a7031652ef0ca98ced99a2d2e23b03b7bc99044593943bdfe2982d5cbe",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "genetor-explorator-maniple-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While this bearer leads a unit within range of the Acquisition objective, that unit has a 4+ invulnerable save.\nTECH-PRIEST bearer only.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c54678baf9983ebdbb665adf2c3f8afa136ebae331479e6369fe999172cbf9e0",
+    "pinnedHash": "fb2a66ac98aaed906169f3183e1beda32bfd59ff84733a1efe10fd5b139843cd",
+    "coreHash": "a9a445904a80aa0e4ba13a3f9a153b905398ac262eb675833e0716439ab12203"
+  },
+  {
+    "id": "guided-retreat-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Imported source needs checking. The imported source grants shooting and charging after Falling Back, but expires in the phase when the Fall Back is selected. Check its duration and the meaning of its hazard re-roll before using it.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select",
+    "sourceHash": "4a64dcc4d0740d21b495d1982b7b9db4b34884b0ec9397286fe2697a3d5f0b9c",
+    "pinnedHash": "4d6486dcc6022c4526e2c8efa94514a1733d8722ffc0dfb6724ce633af515ce3",
+    "coreHash": "0a44ff83de065e35ed9f3829a2401383fe56bc48b273d241fe1a7793b942cd95"
+  },
+  {
+    "id": "holy-avarice-lords-of-the-forge-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, this unit can shoot while performing an action for this phase.\nTECH-PRIEST only.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "react",
+    "sourceHash": "680d7804539e67df3e1bf1376e81fb5d5605057a3f48e13509caccffb5556565",
+    "pinnedHash": "327fc0527ecb8600704b15c5d7f71562e827a7c3e10b14f1876a9d01add0f4ba",
+    "coreHash": "665262ca7d9fd6b38846a1d3d0fb1421ae67479841d8482f86c6e5f4f85590af"
+  },
+  {
+    "id": "imperative-overload-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of a battle round, you may choose one friendly PURGE CORPS DELTIC-9 unit. Both options of its Doctrina Imperatives apply for that battle round.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "0586f8535ca47fe2a080ee70306caaf9bb819c2abc3463e665e4c31906a84b4c",
+    "pinnedHash": "0586f8535ca47fe2a080ee70306caaf9bb819c2abc3463e665e4c31906a84b4c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "incantation-of-the-iron-soul-data-psalm-conclave-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "When damage is allocated to a friendly CULT MECHANICUS model, CULT MECHANICUS models in this unit gain Feel No Pain 4+ against mortal wounds for this phase. Source review: the damage-allocation event does not bind the triggering CULT MECHANICUS model to the selected unit; confirm the recipient and activation before resolving the save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "fa2c9333aa3b488e39a4e9719eb65b350d4f771945a79e9696e676645e8d6e82",
+    "pinnedHash": "c3a7430bc3502e1ddf86fe3da05b41bd9d838255f58633037b5bfe181eb3cc06",
+    "coreHash": "f83dd28cf50b9da1a2e23943105779fe940bd640f007f8b759f297c11453c648"
+  },
+  {
+    "id": "incense-exhausts-explorator-maniple-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Incense Exhausts contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "8303d66e9398fd2add0da843c3a2a640c1db23c8202ace9857e1c71c30e923ea",
+    "pinnedHash": "7b2a5b7aa5f0646aebcba4a32ba67fc21a60fd976e3d870d05d6acc2ee00b9b8",
+    "coreHash": "c8d78f2e9cd73489905f32a889e41b274429d1f85bf6a10bd99ce5a89e6ebb14"
+  },
+  {
+    "id": "infoslave-skull-explorator-maniple-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Infoslave Skull contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "e1f51009522e3971e2338a9c47a05e6497ed7c2f3694bc10bfeb7d35d8fde6fb",
+    "pinnedHash": "dc4ee7728db7d384608953539a69c354deb9b2cf3df7c8969d7b01c3b62df33f",
+    "coreHash": "669e239bede439a1fcf5b99981d200d36eff8c2a4db7ec3bec0ca1ebad100623"
+  },
+  {
+    "id": "inloaded-lethality-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This model’s melee weapons gain 3 Attacks.\nThis model’s melee weapons gain 1 Damage.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2f9910e3c7520c2ac8b0f02d07ac846dc8e1f7efe08974b75c2129c21770c2f7",
+    "pinnedHash": "980e656f8fbaea357e1098b4d6d54adc2568da64b41a63825d34c7248481443c",
+    "coreHash": "eec8bad54c4e56fd4089aac42cef86caf64b19e0914c340c3f2c5911f012d43e"
+  },
+  {
+    "id": "isolate-and-destroy-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, this unit adds 1 to Wound rolls against an enemy target with no other enemy units within 6″ of it. Lasts for this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "3824a66c4426f4ebd405a04448d574622d3979ad2fe55edba612aa03e77e2892",
+    "pinnedHash": "57d907f875f6d3e094ef1b00e007cc5959b96d5a4c850c20fa7a65bd12f755e4",
+    "coreHash": "b1eb4ef7bd3569f06ab4dcc7572775e7d64e6e375abe50b7a3baa85cf961b91c"
+  },
+  {
+    "id": "lethal-dosage-rad-zone-corps-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Lethal Hits.\nLasts for this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "b51137b0fa740e4c19cb2c8e74a671d93100f8154b23f679da11b5eb4889399d",
+    "pinnedHash": "29713696ef94e55d9e39f2a8b4a25961f02144fb3446730ad68163be5f7f9377",
+    "coreHash": "da76a533c08e4f636c9c24359ee7f2f3584bdda5c3cdb5a90292adf9a32e5cb9"
+  },
+  {
+    "id": "line-breakers-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After this unit charges, choose one enemy unit engaged with it. Roll one D6 per friendly model in this unit engaged with that target; each 4+ deals 1 mortal wound. Use 2+ instead if this unit started its charge within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "ab9041f02fe83ba1a5a6048d694ec05e66a08c52ad00637d6d09e1376f86c6ad",
+    "pinnedHash": "ab9041f02fe83ba1a5a6048d694ec05e66a08c52ad00637d6d09e1376f86c6ad",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "litany-of-the-electromancer-data-psalm-conclave-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Litany of the Electromancer contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "7f8d76508c68aaa91d86331395db8f3ead10ac36e7153ca8bd7a7fd72d485fd6",
+    "pinnedHash": "b92c571e9247aebc9fd2afbf53e94cb94808c2cfc8a6f3a2e8829bb9c1eb1232",
+    "coreHash": "d17a8fbd3125f0689556737d388dd86360f26da656575c13afe76f5e1c18851e"
+  },
+  {
+    "id": "lockdown-protocols-purge-corps-deltic-9-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When a PURGE CORPS DELTIC-9 unit is targeted by an enemy’s attacks, subtract 1 from the attacker’s Wound rolls for the phase. Use only the selected defending unit and the attacks covered by this Stratagem.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "3c5c2406ebcc9eab3ff6cfc66fa20f538de805d01a6597809ae9cbed18119bd4",
+    "pinnedHash": "b36675ec47ad9119fa0a9c99c925712a6784dd298fcaceb8e71cb6011356dd7c",
+    "coreHash": "3b5d480e4c3b77a30243dac664f14d9aedb41c80db1bd11d19389666987cd4f0"
+  },
+  {
+    "id": "logis-explorator-maniple-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While this bearer leads a unit, that unit adds 1 to Hit rolls against targets within range of the Acquisition objective.\nTECH-PRIEST bearer only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2c014d139b427f0dc5c533b5a6b48188982fd4e59ef415b538e420577370c91e",
+    "pinnedHash": "449623c0bad52e45ed29b0c59bc996f54cafdf52223720bbb8a6417a2b25f470",
+    "coreHash": "9b0b6ab97ab20022edf0311bbf8604b958c5fce14f57fe11780f86f34f05e684"
+  },
+  {
+    "id": "lord-of-machines-cohort-cybernetica-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Once per turn for this bearer, at the start of your opponent’s Shooting phase, choose one visible enemy VEHICLE within 12″. It takes a Leadership test: if it passes, subtract 1 from its Hit rolls for this phase; if it fails, it cannot shoot this phase.\nTECH-PRIEST bearer only.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start",
+    "sourceHash": "483ff43c784c85517efb5e2cc27fb83908f72c180d6e83ead718f6eff63c40db",
+    "pinnedHash": "6c4c8a5d0052250f1e0484e1c1ffa1a15a296967930d1664ec750f3262ccc186",
+    "coreHash": "d4bfe294e4ca16e3501a50116aae3a94418e1c83f0ec4a82fc202ce427ff4860"
+  },
+  {
+    "id": "lord-of-the-machine-cult-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While this model leads a unit, that unit has Feel No Pain 5+, improved to 4+ if it is an ELECTRO-PRIESTS unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b82747404f5750a6c948776bb2ed4946e25bc34ee43288e493056081405407ab",
+    "pinnedHash": "b82747404f5750a6c948776bb2ed4946e25bc34ee43288e493056081405407ab",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "luminescent-blessing-data-psalm-conclave-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When an enemy selects this unit as an attack target in your opponent’s turn, the CULT MECHANICUS models targeted by this Stratagem gain a 4+ invulnerable save for this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "5a122bb1026d0bd520dbc4f1f0e284629521bf5cdaca56329334cacd22711fca",
+    "pinnedHash": "3de59b07b32010971ce1749ffb62ec8afadb03d4b4a4a76c151c547eb381e07e",
+    "coreHash": "6fca3f94a295e8ba1343f935c018843997c616b0da2b0f4205346a698f40a68d"
+  },
+  {
+    "id": "machine-spirit-resurgent-cohort-cybernetica-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, this unit can re-roll Hit rolls until your next Command phase. If below half-strength, it can also re-roll Wound rolls.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "650fe86623972e6932b8eb86c4fed3254ebab32cb4761d8552b4d1f7bc93b273",
+    "pinnedHash": "3563f60040c9aaab5b3202e64a7c4d33fb484d37dee0971b20330bdee8693c8f",
+    "coreHash": "bf5bca9c3525ee798d98a2e22d043dee616ba339815e75ff7f6ff41d5285d98a"
+  },
+  {
+    "id": "machine-superiority-cohort-cybernetica-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, this unit can shoot after Falling Back and ignores modifiers to its characteristics and all rolls except Save rolls. Lasts for this turn.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "cf9d64ad05db1fab81e8516d76f77efc27c4a1fe844eb948a90269894bbd2a30",
+    "pinnedHash": "d7bb6b893100a4c33b81c8cc6d51513fa7282ff00ceb889fe5c8bc30dc3a021e",
+    "coreHash": "3a62c91af3266c545af61736ebc5cbf10732d3d3a67ca27dabe202a515c12686"
+  },
+  {
+    "id": "magos-explorator-maniple-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the end of your Command phase, if this bearer is within range of the Acquisition objective, roll a D6; on a 4+, gain 1 CP.\nTECH-PRIEST bearer only. Apply the core additional-CP limit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "57a02483b64015503a8d0e5c6a1c9682aeb9c2d22cbdcde98262f9c7a860d06a",
+    "pinnedHash": "6537c2377380c8f40789b9eda36b791b486b74fc265d38740d56da9e6908ca32",
+    "coreHash": "909768a2a9bfa92497d1e3605f6ff46ef8ab209f8e91bad2d74335a494023a94"
+  },
+  {
+    "id": "malphonic-susurrus-rad-zone-corps-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While leading a unit, that unit gains Stealth.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "dcba51fac7cb745ebc8310c7819c71b7b7f2142e2273fed585d06622a43f289f",
+    "pinnedHash": "cbce730f41a2b0e0d531f405f6a723c5238577e85915be0e935e0feeead1f460",
+    "coreHash": "ea700497ec246082b6ea7971feff431702d02b3c4af2334d81d768c3f8f7d69a"
+  },
+  {
+    "id": "mantle-of-the-gnosticarch-data-psalm-conclave-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Mantle of the Gnosticarch contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "a40404f4cb18b491ec88b3355d1e4bf9e203d48c9d3bda70ca66ee4c68b6a79b",
+    "pinnedHash": "ea7e7da6837c70961ab5ae8cfef4df00a55917985b0d691ca19fbe2b8cbf38d3",
+    "coreHash": "2726e9d94bbc57b22e608099e650fbc7bec762c5e035ac8f558904c1f4d6187e"
+  },
+  {
+    "id": "martial-signatum-amplificator-eradication-cohort-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "This unit gains the SKITARII keyword.\nTECH-PRIEST bearer only. Source marked pre-launch provisional; verify this version before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "815c2c536ea1f51472f7551da982eb39db0c092696f72d242eec85f69576ef26",
+    "pinnedHash": "b8934adf7855fce6cf6d762e7f02394604829a3c00cd1cec8f09818a5e595628",
+    "coreHash": "1ae63fffec2f19e5930f24543265011a20444855fedad92e4effb1d124bd4393"
+  },
+  {
+    "id": "mechanical-guidance-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Mechanical Guidance (Once per turn, per unit) contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "bc90e3333a18a2d63c4986390d47bbc7dd902297f25f228d41825a3d14899fe7",
+    "pinnedHash": "bc90e3333a18a2d63c4986390d47bbc7dd902297f25f228d41825a3d14899fe7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "mechanicus-bodyguard-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This model has Lone Operative while within 3″ of another friendly ADEPTUS MECHANICUS unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2942b45133b588d825ef5a3ad69b78dc1686e56a5e8a5dc85af703c6a54901df",
+    "pinnedHash": "2942b45133b588d825ef5a3ad69b78dc1686e56a5e8a5dc85af703c6a54901df",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "mechanicus-locum-data-psalm-conclave-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Set this bearer’s Leadership to 6+. Once per battle for this bearer, at the start of a phase, you may choose one Battle-shocked friendly CULT MECHANICUS unit within 12″; it is no longer Battle-shocked.\nTECH-PRIEST bearer only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "26f094e3d6c5c4b71590101ba5c631cb67c9a677c4c0a87b0c11c6a285430000",
+    "pinnedHash": "128150eac04ae6e80bf1f7ecb470651637a569fac19b8110a36c7a1faf8c96d2",
+    "coreHash": "929619b1743eb20c2ee6351f85afb05ccd75ad265dd3d8331ddb7f04091ec1e1"
+  },
+  {
+    "id": "miniaturised-autosimulacra-purge-corps-deltic-9-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Once per battle for the upgrade unit, at phase start choose one friendly PURGE CORPS DELTIC-9 unit to regain D3+2 wounds. Source gap: the selector chooses a unit rather than a particular wounded model and supplies no range or model-allocation procedure; confirm the recipient and healing restriction.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "a540ce5d736bb878b13e9ce3498ed789e773e9e04875363dfd6385b8cd7f46d8",
+    "pinnedHash": "df63a1fbd135dd5adea2964eb838c694d4871514e4829232ca3952b3e3cc33c9",
+    "coreHash": "5e96b3fdd3f2a2013c976875f35a85c2d9e44f0d7c9c5d10437af4cbe14bfd31"
+  },
+  {
+    "id": "momentum-feedback-luminen-auto-choir-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "After an enemy shoots at the selected ELECTRO-PRIESTS unit in your opponent’s Shooting phase, it makes a D6″ Surge move. Source gap: the full Surge movement and legal end-position procedure are absent; confirm those restrictions before moving.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "sourceHash": "ccd1eded51c534000c3f24a836485d23d28c96e0e6a93a8484adc4f1a87838a0",
+    "pinnedHash": "49b6e118038987dbd7b63d30933db8c1804250786c69b3ba3fc93c06cbf07302",
+    "coreHash": "b9aeec5b47b86df591cfcf7700de0b91e63aa0048975ff379f78c75b9f1ec15c"
+  },
+  {
+    "id": "monocular-targeting-helms-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit’s Neutron Fusils gain Ignores Cover against MONSTER or VEHICLE units.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "08abd0cf7ec222c9d40c3e0456e8b203f97ddcd12dc9bc83121dd9dc6590e966",
+    "pinnedHash": "08abd0cf7ec222c9d40c3e0456e8b203f97ddcd12dc9bc83121dd9dc6590e966",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "motive-imperative-cohort-cybernetica-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, this unit gains 3″ Move and adds 1 to Advance and Charge rolls until your next Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "302314a98f5e1ec0185003ae240b763b954e5c5cd84a567c66137118deb3e0cd",
+    "pinnedHash": "d3309974d8c092d75a143ce7da9883773271b9b1dbf80fce7c2e16793a98e6c6",
+    "coreHash": "488f930f945286c199fbdff7ee054a9ec81f96cb0fb85c3b22e4026587cbb872"
+  },
+  {
+    "id": "murderous-imperative-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Friendly SKITARII units re-roll Hit rolls of 1 while Protector Imperative is active, or Wound rolls of 1 while Conqueror Imperative is active.\nSKITARII only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "11566acc76d26e4e7674f642f8dd7c516cf2b3d7f49cc9cca3146af0c166eb53",
+    "pinnedHash": "11566acc76d26e4e7674f642f8dd7c516cf2b3d7f49cc9cca3146af0c166eb53",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "necromechanic-cohort-cybernetica-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Necromechanic contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "88c90129ff31f2916ce893c0c346155472c7a0e1846a074306ebd53a00fe5040",
+    "pinnedHash": "16e62b5bb6f4b4567c9a8be325a739dd68bb5f33f42b568e9302b4dff26761a2",
+    "coreHash": "4dd9411ae0db30a5239a65fc9ea1595d3b53e4d03492748e3e579ae894d924a5"
+  },
+  {
+    "id": "network-override-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While this unit contains a TECH-PRIEST, it can start an action after Advancing and can shoot while performing an action.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d9c4eddf5c5d5cfb5c0c8860a6cc202d40cde65678ffefe5fe519cb73b299924",
+    "pinnedHash": "d9c4eddf5c5d5cfb5c0c8860a6cc202d40cde65678ffefe5fe519cb73b299924",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "neural-overload-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "In your Movement phase, select one friendly ADEPTUS MECHANICUS unit and one Override ability until your next Command phase. If it already has HALO OVERRIDE, it suffers D3 mortal wounds and adds this ability to its other active Overrides. Otherwise it receives only this chosen Override, without gaining HALO OVERRIDE or the other active abilities.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "officialPage": 8,
+    "targetText": "One friendly ADEPTUS MECHANICUS unit. Apply Neural Overload’s separate existing-HALO and non-HALO branches; this does not itself grant HALO OVERRIDE.",
+    "sourceHash": "9bb384f0185bfef32adf62d21226c7afb725bf883e3009dd96ed5a9705ab4e9a",
+    "pinnedHash": "18b226b2e7dce88bc73d3cbacb1a68ce9017f73ebc9250e7e879ca9c60d40f80",
+    "coreHash": "92ac842e2d2809769211ca1e7b379d6df48e2dad80bb4d8842b60b08a545b4b3"
+  },
+  {
+    "id": "neurostatic-interference-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Enemy units within 6″ subtract 1 from Battle-shock and Leadership tests. Subtract 2 instead while this unit is within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1c9f61faf818c334fc1a0eb0a8ed6a6598cb5561acf8aaad8237c78f99c93f8d",
+    "pinnedHash": "1c9f61faf818c334fc1a0eb0a8ed6a6598cb5561acf8aaad8237c78f99c93f8d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "noospheric-recon-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Cohort Acquisitus gives Serberys Raiders and Sicarian Infiltrators RECON AUGURY and describes selecting a visible enemy within 12″ in your Shooting phase to increase its detection range by 3″. Source gaps: detection range and its measurement, activation frequency and expiry are not fully defined; confirm those procedures.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d95a522ce3bb02dee60ca41ef284e625a14319cff588fbb5c658f4e7ab6ed2ff",
+    "pinnedHash": "d95a522ce3bb02dee60ca41ef284e625a14319cff588fbb5c658f4e7ab6ed2ff",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "noospheric-transference-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "In your Command phase, select one or more ADEPTUS MECHANICUS units, up to 1/2/3 for Incursion/Strike Force/Onslaught, including embarked units. They gain HALO OVERRIDE until your next Command phase. Choose one shared Override for all friendly HALO OVERRIDE units until then: +2″ Move; +1 Toughness; charge after Advancing; or Stealth. Units excluded by Transoracular Dyad Wafers cannot be selected, but their existing HALO OVERRIDE still receives the shared benefit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "officialPage": 7,
+    "sourceHash": "c36bcd491248b6658fd00b0fb151a7722cf526d00a5d498ec748c9e936c50630",
+    "pinnedHash": "c36bcd491248b6658fd00b0fb151a7722cf526d00a5d498ec748c9e936c50630",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "objective-scouted-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the end of your Command phase, an objective you control that this unit is within range of becomes sticky: keep control after moving away.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "48280a4fac173b01ab3d0ccf065221eba2c711e8182da99d6d8108e7fe23dcb5",
+    "pinnedHash": "48280a4fac173b01ab3d0ccf065221eba2c711e8182da99d6d8108e7fe23dcb5",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "omnicogitator-eradication-cohort-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Select either Conqueror or Protector Imperative for this unit, exclusively.\nSKITARII MARSHAL bearer only. Source review: the exclusive one-option activation does not establish whether both Imperatives should apply; check this Enhancement’s own wording rather than substituting a similarly named ability.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "5b3d71557b5ea21e792a7650cd1c6c5130e3adc7132f1a68709deefb7e8a5114",
+    "pinnedHash": "32878f9210563011b0fcb959c2f4349d92e84e5d5b4a88a1ad455a091cecc43d",
+    "coreHash": "a9317739df069cf5304c625205c9fc53ee25d5efacec02d22db7efec94a84be4"
+  },
+  {
+    "id": "omnispex-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "905c5bf6bf44797a1b52296717f1ab51dfdde7f295687e91ac57e97cb77d41ff",
+    "pinnedHash": "905c5bf6bf44797a1b52296717f1ab51dfdde7f295687e91ac57e97cb77d41ff",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "omnispex-purge-corps-skitarii-vanguard-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "This unit’s ranged weapons gain Ignores Cover. Source marked pre-launch provisional; verify this version before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "ec38e0f51bff73767b5910ce2b05be35a8c9c43fd9b1a5b9546e8b7315e9482c",
+    "pinnedHash": "ec38e0f51bff73767b5910ce2b05be35a8c9c43fd9b1a5b9546e8b7315e9482c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "omnissiahs-blessing-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Omnissiah’s Blessing selects one friendly ADEPTUS MECHANICUS model within 3″, heals D3 wounds and grants Feel No Pain 5+ if it is a VEHICLE, until your next Command phase. Source gap: no activation event is supplied. A once-per-phase recipient selector does not make this permission repeatable in every phase; confirm the actual healing window.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "11062113b7f7158a6d00ac827095df350086273345ef561118352869a3d3d9d2",
+    "pinnedHash": "11062113b7f7158a6d00ac827095df350086273345ef561118352869a3d3d9d2",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "omnissiahs-fury-eradication-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This bearer’s melee weapons gain 2 Attacks, improve AP by 1 and improve Damage by 1.\nSKITARII MARSHAL bearer only.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "49af32885f430ca8bf37c4ecaf59b755961cd6b45315847bcd6dea2d62636681",
+    "pinnedHash": "b3cde858a30a64502305ce7f75567cddfbcdbcae5fef8309c53f31a48e4cf89a",
+    "coreHash": "e797098fc5391e2e82aa9dd6d55bcc1af693deba6fba0b60a321f013bac61843"
+  },
+  {
+    "id": "optimised-gait-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Add 1 to this unit’s Advance and Charge rolls. Add 2 instead while within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0ceb7d6b89dc495c4a1a78fccb206c07a4fe776a11710bbbbc48cf7b4e429638",
+    "pinnedHash": "0ceb7d6b89dc495c4a1a78fccb206c07a4fe776a11710bbbbc48cf7b4e429638",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "optimised-targeting-purge-corps-deltic-9-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When a friendly unit with PURGE CORPS DELTIC-9 is selected to shoot.\nIf the attack is ranged, this unit can re-roll Hit rolls of 1.\nLasts for this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select",
+    "sourceHash": "ac50b99a76536c513939eb227507fa07a038d2392da3b07170916994553adc13",
+    "pinnedHash": "e6a784a5fbf09aeee98c07714ef7b9b5cca6086a7b8bd4fd01ae9f73aa860316",
+    "coreHash": "41155d982b4b7d6f7fddecfaaeb8a20e5557bc6fc6569257c12ff9eb56283ed0"
+  },
+  {
+    "id": "overloaded-safeguards-lords-of-the-forge-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "When the selected TECH-PRIEST unit Falls Back in your Movement phase, Overloaded Safeguards permits shooting and charging despite that move. The encoded duration ends in Movement, before either later phase. Confirm the lasting permission before using it.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select",
+    "sourceHash": "a9e374f04e09d6d2638c1d6e082cb8699bd0af2caf68f19529fe9d1d8a45cec0",
+    "pinnedHash": "fec91e9658230a35902cc0f90e72ac2798b18edf0345a622bff7d9d646fe7805",
+    "coreHash": "101659e466176f39cf0c0329e421c67571daaf6afcf38233e51c3e9836a60733"
+  },
+  {
+    "id": "peerless-eradicator-rad-zone-corps-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While leading a unit, that unit’s ranged weapons gain Sustained Hits 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7502f0785d2e21ef39de2791d878776c8e8f7e6c7dc1ae7bb50a13ea64172dae",
+    "pinnedHash": "1d789dd21db5314e0f673a3119cb73ec1ebf0a9f9b4e8ead00c74151ee859f5f",
+    "coreHash": "7595f00c1e3cef9d099b07b1f816607b79b8abadf20c50a0a696ff01d3251c28"
+  },
+  {
+    "id": "pinning-fire-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, you may choose one enemy unit it hit. Subtract 2 from that target’s Move and Charge rolls until the start of your next turn. The target must be hit by this unit’s attacks; do not pin an unrelated enemy.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "9d8e718a3beb9bd8fb1be3ecbd1ac038f4753195bf08175dfe4f546ecd6bd748",
+    "pinnedHash": "9d8e718a3beb9bd8fb1be3ecbd1ac038f4753195bf08175dfe4f546ecd6bd748",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "pre-calibrated-purge-solution-rad-zone-corps-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, this Stratagem’s first and second selected units can re-roll ranged Hit rolls against targets in the enemy deployment zone for this phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "1c3405be122c21e3d99d84f3f8754aa1c49320a8569d44cef37b9a3ecbba3ddc",
+    "pinnedHash": "dba6c588152d4a00c47f7b30595e7f2d6104584f9f4432e052cef878279cc54b",
+    "coreHash": "bbc6fde472457102de48ae2169939e423bff4c3fd567f11b4562ebb6120ffecf"
+  },
+  {
+    "id": "precision-onslaught-eradication-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When a friendly SICARIAN unit selects charge targets in your turn, apply this for the phase: after it finishes a Charge move, choose one enemy unit engaged with it. Roll one D6 for each friendly model in the charging unit engaged with that target; each 4+ deals 1 mortal wound.\nSICARIAN only.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select",
+    "sourceHash": "399d971851256f2442df86b92d5975bf37e330a5f66c6416d91863263373e986",
+    "pinnedHash": "7a71762b2709fdea2868e65aaa97dc2aab3d213d50c8c1e7ccc917d09ad14fe3",
+    "coreHash": "6cdd0b94abcda0b5da7ff0479a7458a9605691a288c6e0fcee30b8f5410e5fed"
+  },
+  {
+    "id": "preservation-imperatives-purge-corps-deltic-9-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After a friendly PURGE CORPS DELTIC-9 unit shoots in your turn, if it is not engaged, it makes a D3+1″ Normal move. It cannot charge this turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "e013707af4235ab2bd30f86185be02b24f96d6f444d8b93cffb0be9922298d72",
+    "pinnedHash": "dacfe4b5864692523b7273fe71927dec6eae130fffe5351d35c8b9a78819b73c",
+    "coreHash": "dccf0cf7f1502e098504d82acfa7e81a3be4870f6b863a988c1df1497d5d16aa"
+  },
+  {
+    "id": "priority-reclamation-explorator-maniple-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Priority Reclamation contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "76156bfb55025c531bd37da5b966f337c27a17411df69d0fa46f66e3de2a4019",
+    "pinnedHash": "b6fde10ca4d25acbb68ca0b0c1006a901da46ee2745bc90053280b2de047f646",
+    "coreHash": "8a09dd59befe323d0c12bc3abe915eb271170730f452da404d751b5d57fa44d2"
+  },
+  {
+    "id": "programmed-withdrawal-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "At the end of your opponent’s Fight phase, select up to two SICARIAN units OR one SKITARII INFANTRY/MOUNTED unit, with every selected unit outside 3″ of enemy units, to enter Strategic Reserves. Source conflict: the core target modes are alternatives, but the imported effect applies to both target slots without a mode gate. Confirm the selected branch; never combine both modes.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "42634af5c79ec13a12ee0f05706a13dfa1b4fbe50aa9a975386e1fc3046bdbf8",
+    "pinnedHash": "611629ba39e6a10f4d717fd16e11c95d464986ec0bc231b1804026d9b883000d",
+    "coreHash": "ef1163e6c3fc4ed918dfbaea921975fbc23ff55088133c2f273fe1ec49b14fcc"
+  },
+  {
+    "id": "rad-bombardment-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Battle round 1, at the start of the round: for each enemy unit in the enemy deployment zone, your opponent chooses either to risk D3 mortal wounds on a D6 roll of 3+, or to become Battle-shocked and risk D3 mortal wounds on a 5+.\n\nBattle rounds 2–5, at the start of your Command phase: roll a D6 for each enemy unit in the enemy deployment zone. On a 3+, it suffers 1 mortal wound and must take a Battle-shock test. Source review: the approximation note contradicts the fuller encoded branches and there is no explicit Battle-shock expiry in this record. Check the full Bombardment/Fallout resolution; keep their timing and thresholds distinct.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "round"
+      },
+      {
+        "phase": [
+          0
+        ],
+        "turn": "you",
+        "window": "start"
+      }
+    ],
+    "sourceHash": "b75f6b101028960d255537407cfcead496c55190a96a753bd46a8aeb1d15cffe",
+    "pinnedHash": "b75f6b101028960d255537407cfcead496c55190a96a753bd46a8aeb1d15cffe",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rad-saturation-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Enemy units within 3″, excluding VEHICLE units, reduce their Objective Control by 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "108762affb6230d21c259623bc1330e146b24deacf81d35e1d6188c152a3dfa1",
+    "pinnedHash": "108762affb6230d21c259623bc1330e146b24deacf81d35e1d6188c152a3dfa1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rad-saturation-purge-corps-skitarii-vanguard-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Enemy units within 3″, excluding VEHICLE units, reduce their Objective Control by 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "90d57f297afdacfb45c1e4f1b5724fdc4d913ab19680b4dedfe750603431836f",
+    "pinnedHash": "90d57f297afdacfb45c1e4f1b5724fdc4d913ab19680b4dedfe750603431836f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "radial-suffusion-rad-zone-corps-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Radial Suffusion contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "cb9939fc7adbec5b1216bb34f93635bd3ea3fdbff1da8fe4f04dc862b066c78f",
+    "pinnedHash": "8a7199927cb01aaa48f5aaf204ee1ebb837f041a4ac0ca2ca7395c2033096338",
+    "coreHash": "b0711e08b01de5ddb8f6b4e8b460ba60559c2e42f380085af7f0be646d3561d7"
+  },
+  {
+    "id": "reactive-safeguard-explorator-maniple-adeptus-mechanicus",
+    "state": "missing",
+    "summary": "Missing source mechanics: Reactive Safeguard contains only a no-effect marker. Supply checked effects, timing, eligibility and usage limits before use; core CP/phase metadata alone does not establish its effect.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "4126667501b2b3a8fe7ff655395b3ea08d37a01dcb5a0df63aed18303c149ec5",
+    "pinnedHash": "92b318f11d77a2b35c56e112f0895ca48804899b1f7715627e181c64f39b84a4",
+    "coreHash": "9aefe6378e95e2b960a984efbecd72518574528158be5fd24ce7b484db8b2502"
+  },
+  {
+    "id": "repolarised-augurs-cohort-acquisitus-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "At the start of your opponent’s Movement phase, Repolarised Augurs subtracts 3″ from the selected unit’s detection range for the turn. Source gap: detection range is undefined in the supplied mechanics; confirm the measurement and stacking procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "start",
+    "sourceHash": "ec10f8b93138355fc901d9cc872a7a2ffc2b3e18f2e71de75148289ef6461972",
+    "pinnedHash": "e51b508b6ac1f44922221b022d98374f21db6d846137bce03e129ae1ce46219d",
+    "coreHash": "10fba5cbffa6419d7364e9563b0334474302b43c7adb98bb5dcfb03dc11cb2e6"
+  },
+  {
+    "id": "repulsor-grid-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When an enemy unit shoots at this unit, each unmodified Save roll of 6 deals 1 mortal wound to that enemy unit after it finishes shooting.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7123ead661c0aa4ea97828504db6ef5c3fc95d29d857f8c6a94ab1ab084d5195",
+    "pinnedHash": "7123ead661c0aa4ea97828504db6ef5c3fc95d29d857f8c6a94ab1ab084d5195",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "ride-the-thermals-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After this unit shoots in your Shooting phase, if it is not engaged, you may make a 6″ Normal move, or a 12″ Normal move that ends wholly within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit. This unit cannot charge this turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "5286109d0b518a85fdfda58e736c699b56f2580167c91f39fca903708e01a21e",
+    "pinnedHash": "5286109d0b518a85fdfda58e736c699b56f2580167c91f39fca903708e01a21e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "robotic-bodyguard-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "CYBERNETICA DATASMITH models leading this unit have Feel No Pain 4+ while leading it.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "afe5377d33c9712c7a51108d61b965430252941c99740a94fa565232fdc3236c",
+    "pinnedHash": "afe5377d33c9712c7a51108d61b965430252941c99740a94fa565232fdc3236c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rod-of-the-war-forge-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "In your Command phase, choose one friendly SKITARII or THULIA GHULD unit within 6″ of this model and one benefit until your next Command phase:\n• Ranged weapons gain Assault, and the unit can charge after Advancing.\n• The unit can shoot and charge after Falling Back.\n• Select either Conqueror or Protector Imperative for that unit, exclusively.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ebb5e5ffeb23c042de7cf4d15502759b7cef4b7e3625cafd16cc0a11bb5a3593",
+    "pinnedHash": "ebb5e5ffeb23c042de7cf4d15502759b7cef4b7e3625cafd16cc0a11bb5a3593",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "sanctified-ordnance-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain 6″ Range. You may re-roll its Hazardous tests.\nADEPTUS MECHANICUS bearer only.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "09b912fe26622b6ffc1b25332f373727532fdcd44c2b9134158d89d61d01063b",
+    "pinnedHash": "12081efd6a41b1548620d7eed1b3fca37990ab31d212147685211b9bb486a77c",
+    "coreHash": "ebc40133a5d8b18d20e9f153786b6a381937932141a6051c8ebf892f9e982e54"
+  },
+  {
+    "id": "scriptural-prognosis-lords-of-the-forge-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When an enemy selects a friendly TECH-PRIEST unit as an attack target, worsen the attacker’s AP by 1 for that attack sequence.\nTECH-PRIEST only.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "5ea9000257558d5fe8a63496e518ef5fa75879c9d80d8a447ddf3cffce90f649",
+    "pinnedHash": "94dac1541d12af569a8592781fa3b486872c7ef6109d2f5f92b29e8421aea12c",
+    "coreHash": "f06c3123893b392d1dd136f476e517d05d73837a18b6b3b84f29402ea1fb6a6c"
+  },
+  {
+    "id": "scuttling-walker-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During this Onager Dunecrawler’s Normal, Advance or Fall Back move, it may pass through friendly MONSTER and VEHICLE models and terrain sections no taller than 4″. This is permission during the move, not an effect applied after moving; normal legal end-position restrictions still apply.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "officialPage": 18,
+    "sourceHash": "bd0d653fa5a3a7c558ac2395723b54cf4b9a473f0ddebc348fa8c67a9651cf5c",
+    "pinnedHash": "bd0d653fa5a3a7c558ac2395723b54cf4b9a473f0ddebc348fa8c67a9651cf5c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "searing-conflagration-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "With Phosphor Torches against targets within range of an objective marker, this unit re-rolls Wound rolls of 1. It can re-roll any Wound rolls instead while within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "7ecbc6e860d8e7b161d353e96e79177a842182f5b9b0e5e8b41d7393c26a4239",
+    "pinnedHash": "7ecbc6e860d8e7b161d353e96e79177a842182f5b9b0e5e8b41d7393c26a4239",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "searing-conflagration-purge-corps-pteraxii-sterylizors-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "With Phosphor Torches against targets within range of an objective marker, this unit re-rolls Wound rolls of 1. It can re-roll any Wound rolls instead while within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "837f73748756f3a6a2d59a94e35c3a6be50ee6ca7fea64f848ac18207c62344e",
+    "pinnedHash": "837f73748756f3a6a2d59a94e35c3a6be50ee6ca7fea64f848ac18207c62344e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "secutor-of-olympus-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, choose one enemy VEHICLE within 12″ of this model. Roll a D6; on a 2+, it suffers D3+1 mortal wounds.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "01be6ae5d85b7a90f18438eeadaa928ed550347bf164d49e5cc9ff7ee6b17ce1",
+    "pinnedHash": "01be6ae5d85b7a90f18438eeadaa928ed550347bf164d49e5cc9ff7ee6b17ce1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "seekers-of-divine-arcana-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While leading a unit, add 1 to this unit’s Objective Control.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2c63774dd0b1bf183c3ec248e85bac6e2fea2548c5c641f481991ecc0d04c7ac",
+    "pinnedHash": "2c63774dd0b1bf183c3ec248e85bac6e2fea2548c5c641f481991ecc0d04c7ac",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "self-repair-mechanisms-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of your Command phase, Belisarius Cawl regains D3 lost wounds.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "7149de3455fb0beae102906eceffc2789afdf12feedc58270c86c337fd716e28",
+    "pinnedHash": "7149de3455fb0beae102906eceffc2789afdf12feedc58270c86c337fd716e28",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "sentinel-directives-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When Fire Overwatch is used on this unit, its Hit rolls succeed on 5+ for that use.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "addb58f1721c41e36190c095258da8caffe567e5b2177d20c135aa066923f734",
+    "pinnedHash": "addb58f1721c41e36190c095258da8caffe567e5b2177d20c135aa066923f734",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "servo-driven-charge-eradication-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit’s melee weapons gain Lance for this phase.\nADEPTUS MECHANICUS only.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before",
+    "sourceHash": "0b5733d224a407f86e700f62f7f435e4ac1174ebff5435d2bbb0453c01639c7a",
+    "pinnedHash": "2f61f67bad7bb08d333470600d58df037b80fdbc286e83ef41b34db170b00279",
+    "coreHash": "1f2dc40ccdcfb1675884170155ac2bac82d25ff89d9e86cd27791f0da9d0a3fb"
+  },
+  {
+    "id": "servo-skull-uplink-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Once per battle for the bearer’s unit, at phase start select one Battle-shocked friendly SKITARII unit within 6″ of this model. It is no longer Battle-shocked.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "7c05cbe316f281d1afc4034857482ba7adb6b380a2ba4ed5d3605be8cd860087",
+    "pinnedHash": "7c05cbe316f281d1afc4034857482ba7adb6b380a2ba4ed5d3605be8cd860087",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "shroud-protocols-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "When the selected SKITARII INFANTRY unit is targeted in your opponent’s Shooting phase, the source permits ranged targeting within 18″, but does not prohibit targeting from farther away. Confirm the intended outside-18″ restriction before treating this as protection.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "45aad921344fac203ef7ee0838b704bd15e9cde54a9b020b59f01ae2da57ce16",
+    "pinnedHash": "99e8aa130e7657ea7982a0661448a0c1af29be23a02ebde28eac8e120c52c378",
+    "coreHash": "cee09c169571f2c31ffdbc97628f381608014bea98d22c9413b9d5f745e6eb33"
+  },
+  {
+    "id": "stealth-optimisation-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Friendly SKITARII INFANTRY, SKITARII MOUNTED and IRONSTRIDER BALLISTARII units gain Stealth.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "9c5a3f56ae43da6877c483fe3ee41627a6c0d9e1bbdc02c0e69f9428e51ea3fb",
+    "pinnedHash": "9c5a3f56ae43da6877c483fe3ee41627a6c0d9e1bbdc02c0e69f9428e51ea3fb",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "stealth-screened-cybercanids-upgrade-cohort-acquisitus-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit gains Lone Operative.\nUpgrade: Serberys Raiders (ADEPTUS MECHANICUS).",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f068730693e23e8d03e63a2343744e3e7ab2bbc6bccefca4046a9b8562ba3f96",
+    "pinnedHash": "344282b9933e351c5b8151f30de79f78dd773b44d8f5466a238408eaacdfe918",
+    "coreHash": "798e9037c3b6f34010b0df07eac8571e87531c50da44ab45a071afc3b774e1b7"
+  },
+  {
+    "id": "strafing-run-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This Archaeopter Stratoraptor adds 1 to ranged Hit rolls against targets without FLY.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "4908c0dbde016ea8bc284bd8eb3dff459ecea9b1ee3f886699645b8f3bda24e2",
+    "pinnedHash": "4908c0dbde016ea8bc284bd8eb3dff459ecea9b1ee3f886699645b8f3bda24e2",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "supreme-commander-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "If this model is included in your army, it must be your Warlord.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "148def4cf51299bb2af5437a6b9461de3270ddfb80ee48bbbad04b491a5f52b4",
+    "pinnedHash": "148def4cf51299bb2af5437a6b9461de3270ddfb80ee48bbbad04b491a5f52b4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "sydonian-sentinel-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit cannot be your Warlord.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "e0c6639d700278e4483ea7ffde6e521beabbc483bf6db67b2a76fffa7ad7b707",
+    "pinnedHash": "e0c6639d700278e4483ea7ffde6e521beabbc483bf6db67b2a76fffa7ad7b707",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "tactica-obliqua-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After an enemy finishes a move within 8″ in your opponent’s Movement phase, if this unit is not engaged, you may make a D6″ Normal move, or a 6″ Normal move that ends wholly within 6″ of a friendly ADEPTUS MECHANICUS BATTLELINE unit.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "5eaf1283714f2031ff847b5f37b25a2719dcbc9edb493bd7b7b31b870826cf2c",
+    "pinnedHash": "5eaf1283714f2031ff847b5f37b25a2719dcbc9edb493bd7b7b31b870826cf2c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "targeting-override-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit scores Critical Hits on 5+.\nLasts for this phase.",
+    "phase": [
+      4,
+      2
+    ],
+    "turn": "either",
+    "window": "before",
+    "sourceHash": "bc0cf5bb2a92e65c79b37deb02c8b34e2d2261e3b518ebe94cc7336135b353bf",
+    "pinnedHash": "2d932236a86feb7fbcf70a7dbcde5cdf75288a74f5557d00d524c646d7f5023a",
+    "coreHash": "2f0b4680e454e830a8d258e505e2d3d96acc4e663aa7e2238b7232687b9a5b68"
+  },
+  {
+    "id": "temporcopia-data-psalm-conclave-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "This unit gains Fights First.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "20fea51bfce101b12f9280006c30d7e8afeba7c970046edb83b220790d493ceb",
+    "pinnedHash": "30e5ea01e4c90b1839ba08ca0cde6501a11f4dadc024c50caa6ab7a542b72bb4",
+    "coreHash": "448e1e18bbbe6f114a4db27ebb7ca2699401584c9aaa91388d2f1fe8b10a6b82"
+  },
+  {
+    "id": "threat-cogitation-targeters-eradication-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, this unit can re-roll ranged Damage rolls against MONSTER or VEHICLE models for this phase.\nSKITARII VEHICLE only.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "02271d9fea5bff7313b90180b61746f195a14d03b56254591cd85b2fe85584a8",
+    "pinnedHash": "ddaba05d13c23e41bd7de1dcfb4c806f3981829681e11ec7a39c8cc89abb3aee",
+    "coreHash": "545b0057571d943b457d3eaadc502a93aa8196a2a7da57c77e31c31f336f71e2"
+  },
+  {
+    "id": "tl-4-9-lords-of-the-forge-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "The eligible TECH-PRIEST bearer gains TL-4Ø9: ranged 24″, 3 attacks, BS 2+, Strength 11, AP -2, Damage D3+2, Devastating Wounds and Hazardous. Use only this granted weapon profile, not the bearer’s other weapons.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "officialPage": 3,
+    "sourceHash": "6361e6e9f260b8da78dcd83ea625761a366036e3802414f215be06daf3f5e1ff",
+    "pinnedHash": "1da55220cfd5ac812beff49c4e55d32053ce133a0dc3aada26b755097f0f222a",
+    "coreHash": "b661b4b88a2af448af607b6139967606788cf6fe46cfa78f6226cc3d4100f19f"
+  },
+  {
+    "id": "transcendent-cogitation-cohort-cybernetica-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "During your turn, select either Conqueror or Protector Imperative for this unit, exclusively, until your next Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "00f16dd1e969be86c9a04092743bf41f8a4947ff6928af296a1f967f960cf66e",
+    "pinnedHash": "af080511e1797d4d14acc723f5819b3cfca74edab140cfa1defd1e23ee04dba7",
+    "coreHash": "e76f19709a992a9225fec11a272942bfd1f5b8d4b74f8af996e8d7cc822c68ef"
+  },
+  {
+    "id": "transoracular-dyad-wafers-haloscreed-battle-clade-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "While this Cybernetica Datasmith is attached to KASTELAN ROBOTS, its unit gains HALO OVERRIDE for the battle and cannot be targeted by Noospheric Transference.\nCYBERNETICA DATASMITH bearer only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b3daaec4093ce20246fa494d94f901239ece6285d0af603bea4c7fbe1b44ad49",
+    "pinnedHash": "ffa6d7ecf6f6e3de66c0b4d21d700169df6cc8795c2ec8c4bd929ebfa3b713bd",
+    "coreHash": "cb8a68cacace5703b7d60ecbbe92f275f9ea7cfbfb2cc615b8fc8eb41bbbda93"
+  },
+  {
+    "id": "tribute-of-emphatic-veneration-data-psalm-conclave-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "At your Movement-phase start, Tribute of Emphatic Veneration targets one friendly CULT MECHANICUS unit and a distinct enemy within 18″; the enemy takes Battle-shock and suffers -1 Hit on failure until your next Command phase. Source gap: the failure condition is not explicitly tied to the second target’s test; confirm test-result binding before applying the penalty.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "4befea742ce548310966878563d629ea49b6ef1a5657b4e69a32f4dc6ba1fcf7",
+    "pinnedHash": "c00e431bbdba23307f271d3f5e43f10f51ddf149b3492e82d7a79e13cf7927f9",
+    "coreHash": "3a4b9b6ae3aa001c2e0ec03d5eb4903e42c604e4447f4ccaa7bfab6ed4db6afb"
+  },
+  {
+    "id": "unrelenting-aggression-eradication-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After this unit Falls Back in your turn, it can still shoot this turn. If it is SKITARII, it can also charge this turn.\nADEPTUS MECHANICUS only.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select",
+    "sourceHash": "33f438ee4eb775a67ef56f2a67dbb3f1e21ce626b1bbbde9ae23b9b46baa8964",
+    "pinnedHash": "1f1170059e230f832020968b6a60439602c9a4935d56689827baec14c9552ae4",
+    "coreHash": "fa08c0d57d733ad34b689df61db5752940e19a30eb714f97689f96a28f6eb2fe"
+  },
+  {
+    "id": "unshackled-wrath-eradication-cohort-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "During your turn, choose one benefit for this unit’s ranged weapons for this phase: Sustained Hits 1; Lethal Hits; or both together with Hazardous.\nSKITARII only. Source marked pre-launch provisional; verify this version before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "46e11bcc06f39ef3a5643d37cc98638dad3dabecb9f463f9bda8115579e3f346",
+    "pinnedHash": "fd7a1dc6bba87105f4bc37e557ce7aad44ba8afc212e7b54b12e6a5a04b2b55f",
+    "coreHash": "1eb73b1a2107d645b2cbe5fcddafc5d16833da033acbccb0c0b0b91679043d10"
+  },
+  {
+    "id": "veiled-hunter-skitarii-hunter-cohort-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "After deployment ends, you may select up to three friendly SKITARII INFANTRY units. For each, either redeploy it on the battlefield or place it into Strategic Reserves, ignoring reserve limits.\nMARSHAL bearer only.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "50b005d075caa8877cf0f2d5ee87c8cc24411095d1b5e8d3bf996c90e79de375",
+    "pinnedHash": "3089181509655a1b6d95c4af798d8f35154799d3cce982ef9997f99ac9a6c1df",
+    "coreHash": "06cc8ab3cf3e61ca372ea9b7cd830e030524be8382c572b2bebf86197ccedf25"
+  },
+  {
+    "id": "vengeance-for-the-omnissiah-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "When a friendly ADEPTUS MECHANICUS VEHICLE model is destroyed within 12″ of this model, set this model’s melee Omnissian Axe to 6 Attacks for the rest of the battle.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "54fbbd81bfdc322c846435799d6b78cbc3af93fb3178775a2856db620eb62cc5",
+    "pinnedHash": "54fbbd81bfdc322c846435799d6b78cbc3af93fb3178775a2856db620eb62cc5",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "verse-of-vengeance-data-psalm-conclave-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "When an enemy selects this unit as an attack target, apply this for the phase: each destroyed CULT MECHANICUS model in this unit that has not been selected to fight this phase rolls a D6. On a 4+, it fights after the attacking unit finishes, then is removed. Source review: the not-yet-selected-to-fight predicate has no subject, so its binding to the destroyed model/unit is unclear; confirm eligibility before resolving fight-on-death.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "5d74f63ed3209693d5feb5f29600887193402118aa8149398edfe866af73959d",
+    "pinnedHash": "a30a52ea62420422a636671a29453aa436d6ce92dac210654fea5f2358e6831b",
+    "coreHash": "7bf56218b33aa05bee9970dca40fed767eaf0419c5c1ce8381650cdbfa8c4c98"
+  },
+  {
+    "id": "vinghs-wafers-of-dynamism-lords-of-the-forge-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "At the start of battle round 1, if this unit is attached, it gains MOBILE for the battle.\nBearer: Cybernetica Datasmith (ADEPTUS MECHANICUS).",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "c78eaef322d213e1f5af251d7e5b4829f5a0f6e9a4dae758f106dab59caac2cc",
+    "pinnedHash": "6d8e00723360ed32b7ae9d3ca46b69889d1b4eec27aedc6e4924a6769c5aafc1",
+    "coreHash": "b4f9c6ab36aa362ecfbf73a93ce8bc0fc4e6d801405b857e245f69604a77dd62"
+  },
+  {
+    "id": "voices-in-the-code-adeptus-mechanicus",
+    "state": "structured",
+    "summary": "Once per Fight phase for your army, at the start of that phase, each enemy unit engaged with a friendly unit that has Voices in the Code must take a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "96781dc785444c36202ac989de400ad4191127fe9fa73b35755b2d3b98abba60",
+    "pinnedHash": "96781dc785444c36202ac989de400ad4191127fe9fa73b35755b2d3b98abba60",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "voltagheist-reliquary-luminen-auto-choir-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Voltagheist Reliquary suppresses an undefined overwatch-against-bearer rule in the import. The current supplement instead prohibits enemy snap-shooting attacks from targeting this unit. Confirm the complete snap-shooting restriction; do not assume it only affects the Fire Overwatch Stratagem.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "581ce126b5207fdbc2759e7526117b2d241637af1226f776f2776c5cb53e2148",
+    "pinnedHash": "af8307de0057121b820024a016896b2045585cb7f8c443cd1d866339b9579311",
+    "coreHash": "2531ba155cca11d3d6f5498a29e5ce2cc8bc86e4d4d44da6dea9293c21eb931b"
+  },
+  {
+    "id": "war-form-mantles-adeptus-mechanicus",
+    "state": "needs-summary",
+    "summary": "Lords of the Forge grants friendly TECH-PRIEST models a 4+ invulnerable save and Feel No Pain 5+. Source gap: the import omits the Baffling Data Screed shooting ability supplied by the official supplement, and encodes unfiltered friendly recipients. Check the full TECH-PRIEST model scope, optional test/target branches and usage restriction before treating this as the complete detachment rule.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e4f6d5a8b229f007ed3f302fb598c13ea278e35ce775fe96e8fd42867c394008",
+    "pinnedHash": "e4f6d5a8b229f007ed3f302fb598c13ea278e35ce775fe96e8fd42867c394008",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  }
+]

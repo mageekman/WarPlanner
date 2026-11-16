@@ -33,7 +33,9 @@
  function leading(unit,name,bodyguard){return unit.attached&&unit.leaders.some(m=>m.role==='leader'&&norm(m.name)===norm(name))&&(!bodyguard||norm(unit.body.name)===norm(bodyguard));}
  function fits(a,state,unit,armyMatched=false){
   if(!a||!L.guideRule(a,state)||(!armyMatched&&!L.matches(a,state.army))||!L.ruleMatchesContext(a,state))return false;
-  if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>m.role==='leader'&&a.units.includes(m.name))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
+  // Native Support models can supply their own attached-unit abilities. A
+  // manually assigned Support role alone cannot bypass the catalog requirement.
+  if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>a.units.includes(m.name)&&(m.role==='leader'||m.role==='support'&&L.unitHasRule(m,'support',state.army.faction)))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
   if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
   if(a.expanded&&a.sourceRuleId){
    const refs=unit.members.flatMap(m=>(L.unitInfo(m.name,state.army.faction)?.abilities||[]).filter(r=>r.id===a.sourceRuleId).map(r=>({entry:m,ref:r})));
