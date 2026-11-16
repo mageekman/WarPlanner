@@ -2,6 +2,8 @@
 
 ## In-game cheat sheet
 
+Administrators can enable **Edit rules in guide (admin)** in the guide settings gear. Pencil buttons replace the optional review checkboxes. A pencil opens the Workshop rule editor in a popup; cards containing several rules first offer a rule chooser. **Save to Workshop** uses the existing catalog validation, revision checks and admin-only database permissions, then refreshes the guide at the same step. Shared and allied rule links edit their original Workshop entry. Turn editing off to restore checkboxes and their saved marks.
+
 Starting or resuming a guide prepares every step for both players before opening the walkthrough. A progress indicator appears while loading, with a way back to setup. The prepared pages are reused across rounds; review marks remain specific to their list, round, turn and phase. Changing the army, rules catalog or reminder settings rebuilds the prepared guide. Rapid swipes finish the previous transition immediately rather than dropping the next gesture.
 
 Collapsed guide cards show the name and a short unit or target preview. Open a card for timing, effects, conditions, tactical notes and sources; use **Explanations & learning** for the reasoning behind the current step. Phase tabs and turn controls remain available at any time.

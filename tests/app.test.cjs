@@ -21,6 +21,7 @@ function app(saved,options={}){
  context.WarPlanActivations=context.window.WarPlanActivations;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/list-builder.js'),'utf8'),context);
  context.WarPlannerListBuilder=context.window.WarPlannerListBuilder;
+ if(options.admin)context.window.WarPlannerAdminPage={canAccess:true,openGuideRules:rules=>context.window.openedGuideRules=rules};
  for(const name of ['navigation.js','unit-profiles.js','study-cards.js','practice.js','practice-ui.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+name),'utf8'),context);
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
@@ -472,4 +473,14 @@ test('leaving during guide preparation cancels it and returning to Start can res
  assert.match(a.html(),/Start your guide/);assert.equal(a.prepared(),null);
  a.start();a.flushGuide();assert.equal(a.prepared().ready,true);
  a.toggle('guide-show-core-stratagems',true);assert.match(a.html(),/Preparing your guide/);a.flushGuide();assert.equal(a.prepared().ready,true);
+});
+
+test('guide editing is available only to admins and replaces checklist controls',()=>{
+ const user=app();user.click({phase:'2'});user.click({step:'1'});
+ assert.doesNotMatch(user.html(),/id="guide-rule-editing"|data-guide-edit=/);
+ user.toggle('guide-rule-editing',true);assert.doesNotMatch(user.html(),/data-guide-edit=/);
+ const admin=app(undefined,{admin:true});admin.click({phase:'2'});admin.click({step:'1'});
+ assert.match(admin.html(),/id="guide-rule-editing"/);assert.match(admin.html(),/data-review-reminder=/);
+ admin.toggle('guide-rule-editing',true);assert.match(admin.html(),/data-guide-edit=/);assert.doesNotMatch(admin.html(),/data-review-reminder=/);
+ admin.toggle('guide-rule-editing',false);assert.match(admin.html(),/data-review-reminder=/);assert.doesNotMatch(admin.html(),/data-guide-edit=/);
 });
