@@ -63,6 +63,8 @@
 
 .development-notice{margin:0 0 18px;padding:11px 14px;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:7px;background:var(--panel)}
 .development-notice h2{margin:0 0 4px;color:var(--gold);font-size:12px;font-weight:600;line-height:1.4}
+.development-notice .development-notice-help{margin-top:7px}
+.development-notice a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
 .development-notice p{margin:0;color:var(--muted);font-size:12px;line-height:1.6;overflow-wrap:anywhere}
 .saved-lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
 .saved-list-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;text-align:left;color:var(--ink)}

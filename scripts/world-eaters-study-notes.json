@@ -1,0 +1,2242 @@
+[
+  {
+    "id": "a-trophy-for-the-throne-butchers-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly TERMINATOR SQUAD is selected to fight, its attacks gain +1 to Wound rolls against MONSTER or VEHICLE units for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "32d96175e5a546c68cdf8e504c3c36fca31ba0f39c4d5cf3f9ec19935e728df4",
+    "pinnedHash": "86cb6f8e671a04cc4a854abb406314af43bb3f9805f00989ae03ba9e3368a857",
+    "coreHash": "c4b5bb18d36561b0ac48f43c5ab832b0ebb9e75627364531455a0123b1858ece"
+  },
+  {
+    "id": "a-worthy-skull-frenzied-reavers-master-of-executions-world-eaters",
+    "state": "structured",
+    "summary": "This Master of Executions can re-roll melee Hit and Wound rolls against CHARACTER units. When its unit destroys an enemy CHARACTER model, gain 1CP. This is the named Frenzied Reavers version.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1ee06e8e5c2d95d8c16851da9da6b94fb3c00a8b0f52d45c2f10931af3ebd4ac",
+    "pinnedHash": "1ee06e8e5c2d95d8c16851da9da6b94fb3c00a8b0f52d45c2f10931af3ebd4ac",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      },
+      {
+        "phase": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "turn": "either",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "a-worthy-skull-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "Just after a friendly BLOOD LEGIONS or WORLD EATERS unit fights and its attacks destroy an enemy CHARACTER or MONSTER model, gain D3 Blood Tithe points. You may then spend your available points to activate one Blood Tithe ability at its normal cost.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2ebcb8bfa7aca82c14b1a07122f226ef24fce58e3bb3e2d741dd210aaec473d1",
+    "pinnedHash": "fbde708ecc0892eb57f78cc1a1a5b95d8f3fd38df9e497a0973d85d65890daed",
+    "coreHash": "cef69b7e729a48fa0d7fd7839991e265b0b122f77367d15bc2e0d02a5b23461c"
+  },
+  {
+    "id": "a-worthy-skull-world-eaters",
+    "state": "structured",
+    "summary": "This Master of Executions can re-roll melee Hit and Wound rolls against CHARACTER units. When its unit destroys an enemy CHARACTER model, gain 1CP.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "280e91a61fb9f59201db5ff6263b70791e012bdc3c3e4b74097df686488f0dfc",
+    "pinnedHash": "280e91a61fb9f59201db5ff6263b70791e012bdc3c3e4b74097df686488f0dfc",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Master-of-Executions",
+    "timings": [
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      },
+      {
+        "phase": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "turn": "either",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "adamantine-avalanche-world-eaters",
+    "state": "structured",
+    "summary": "At the start of either Fight phase, if a friendly TERMINATOR SQUAD is engaged, make a Blessings of Khorne roll and activate one Blessing for friendly TERMINATOR SQUAD units until phase end, in addition to active Blessings.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "officialPage": 3,
+    "sourceHash": "8f804af61a85ec9a75a641fd6ce69a946925934899574d9324fb48bdb07d8254",
+    "pinnedHash": "8f804af61a85ec9a75a641fd6ce69a946925934899574d9324fb48bdb07d8254",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "aggressive-advance-world-eaters",
+    "state": "structured",
+    "summary": "While this Lord on Juggernaut leads a unit, models in that unit have Move 10″ and can move horizontally through terrain during Normal, Advance, Fall Back and Charge moves. Apply this while moving; it does not itself authorize moving through enemy models.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "46c3c1e8c0da990b8a6f02be78677dc52e3d0374a35560f989981c6d44c33dd3",
+    "pinnedHash": "46c3c1e8c0da990b8a6f02be78677dc52e3d0374a35560f989981c6d44c33dd3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lord-on-Juggernaut"
+  },
+  {
+    "id": "aggressive-deployment-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. At Declare Battle Formations, if the bearer starts embarked in a DEDICATED TRANSPORT, that transport gains Scouts 9″. Apply the normal Scout-move and passenger restrictions.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "a123d4b916195fdb8a67025be2015729930311085b40c0c0e57cba67e7ad76a3",
+    "pinnedHash": "4bbb5b47dc34c9e7d0ece0925ba0086fc01a9dd390ae6ca0d3b7400d00fe13f2",
+    "coreHash": "616834e13bc5055933d2643151ecbec2a5a7c8d95a53b218471c063205e49693"
+  },
+  {
+    "id": "aggressive-disembarkation-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "In your Movement phase, before a WORLD EATERS RHINO is selected to move, choose one friendly WORLD EATERS unit embarked in it. That unit can disembark wholly within 6″ of the Rhino, including within enemy Engagement Range.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "4b9dc44dab3041311df5088ffa349e48293c01393059b8d5bcf5daa602f48ebc",
+    "pinnedHash": "9e93143ce9f269ab60559bad58c2508bbdbc5e56700139e300cf872112da68bb",
+    "coreHash": "0aa76640be029fa0368ba2bf93b030c3e7767398b7bf650b452e3cfd258f7923"
+  },
+  {
+    "id": "airborne-predator-world-eaters",
+    "state": "structured",
+    "summary": "Against FLY units, add 1 to this model’s Hit rolls.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "4212a04417ead48287a090237d369a15dab01f3f06ae6746e64f2a44285d6fe4",
+    "pinnedHash": "4212a04417ead48287a090237d369a15dab01f3f06ae6746e64f2a44285d6fe4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "apoplectic-clarity-brazen-engines-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly DAEMON VEHICLE unit is selected to attack in your Shooting phase or either Fight phase, its attacks may ignore modifiers to BS, WS, Hit rolls and Wound rolls for that phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "6446776d76512aabf67948f0f6f520dbd454dc6136d1fc64c9defd84ee708e32",
+    "pinnedHash": "e4d3fad5408eb017c2e5f481b1f34c93193234f3eb22cbf1327f92341a0138c4",
+    "coreHash": "3ac4db86d06ca69b7dbc4211c9aa687a3f860cbd4fb19babeceb73094d87d0ba"
+  },
+  {
+    "id": "apoplectic-frenzy-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "When an eligible friendly KHORNE BERZERKERS unit is selected to Advance in your Movement phase, it can declare a charge after Advancing that turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "1dd473bf8946c274129c99079f781864e885cab2acc90a8dcbf92207ffec8b84",
+    "pinnedHash": "608d8508cb7551b3279ef00ac9241260e966e5f18fa7c5b91460cb6056b4bd9b",
+    "coreHash": "3efe2c3ce612e3978ec33df58d623ec0c4e54954000261ab5f1a913a345750b3"
+  },
+  {
+    "id": "archslaughterer-vessels-of-wrath-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. Once per battle per army, in your Command phase, activate every Blessing of Khorne for the bearer’s unit until the start of your next turn.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "officialPage": 4,
+    "sourceHash": "079ba0c8f84f80e2c4e0883242082ca715e21cbe1728eed0d0ba8a4342c3752e",
+    "pinnedHash": "d8cc933badd74dc2bebadc6b634cc55496053f4f566bb9d2a435195fadb7bcd1",
+    "coreHash": "edc3315e36d536c7d3fe5a92b2b31f069cbd7f218a865c7fb6d10dadb8c8b0b7"
+  },
+  {
+    "id": "aspire-to-infamy-vessels-of-wrath-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly WORLD EATERS CHARACTER unit, excluding EPIC HERO units, is selected to fight, only its CHARACTER models’ melee attacks gain +1 Attack and +2 Strength for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 4,
+    "sourceHash": "c862a16374ce0df9777c14bff4b4b1355b26df894b2d220134212210d1932179",
+    "pinnedHash": "60093918c2a3eb2a1dd75170ed2d7ba162bfbd85682a24b14a28c26b07da26bc",
+    "coreHash": "5d3958b1fea081f293f9f28f291481299b65a67ccd10432d5c4352aee1a28586"
+  },
+  {
+    "id": "assault-ramp-world-eaters",
+    "state": "structured",
+    "summary": "A unit disembarking from this Chaos Land Raider after it made a Normal move this turn can still declare a charge. This does not waive other charge restrictions.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "7561f74f14c483050f9e86dbde210f926120e22f9fabf02c28609149da9e4f29",
+    "pinnedHash": "7561f74f14c483050f9e86dbde210f926120e22f9fabf02c28609149da9e4f29",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "bane-of-cowards-world-eaters",
+    "state": "structured",
+    "summary": "When a non-MONSTER, non-VEHICLE enemy Falls Back while engaged with this Bloodletters unit, it must make Desperate Escape tests; subtract 1 from those tests if it is Battle-shocked.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "5600d3ed93a72c8e87732992b1d64091cbe7fe397907ddac15fd779105c67e1c",
+    "pinnedHash": "5600d3ed93a72c8e87732992b1d64091cbe7fe397907ddac15fd779105c67e1c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "bane-of-the-craven-frenzied-reavers-world-eaters",
+    "state": "structured",
+    "summary": "Frenzied Reavers Master of Executions only. An enemy unit selected to Fall Back while engaged with the bearer’s unit must make Desperate Escape tests; subtract 1 from those tests if it is Battle-shocked.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "d270570971edf703167c480e6c515f82e2a1f282fa409852ae146093db521e3c",
+    "pinnedHash": "af4dcb84627481fbc2dde36d73b2b971d60ed931156335c512533a8fba3cae93",
+    "coreHash": "4aa6f9a3aa5a203ba9cf6a9d2f80783b5482e4e2219b379bb2275106335ef0c8"
+  },
+  {
+    "id": "battle-lust-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. The bearer’s unit can re-roll Charge rolls. While Unbridled Bloodlust is active, add 1 to its Charge rolls as well as that Blessing’s own benefit.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "1f56d5371fcf091b3fb29c28db47eba071f3b2f0b78bd2e6fbaeecc1c5332983",
+    "pinnedHash": "311b8669179a1e9f08eee085adc734bfcf1b6e0afa41e73070e775b495e2b05c",
+    "coreHash": "972b6e6d59c3e07840ce129391597fa7a18fca23f64a7476d7adcbbc6de09296"
+  },
+  {
+    "id": "beacons-of-rage-world-eaters",
+    "state": "structured",
+    "summary": "For friendly WORLD EATERS units within 6″ of this Eightbound unit, melee attacks against non-MONSTER, non-VEHICLE units gain +1 to Hit; they also gain +1 to Wound against such a target below Half-strength.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "61a3b5e384da3a3fde4be85c13cf39913da86869aac6b3ccaeb7b8a0163af41f",
+    "pinnedHash": "61a3b5e384da3a3fde4be85c13cf39913da86869aac6b3ccaeb7b8a0163af41f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "berserk-resilience-frenzied-reavers-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, just after an enemy selects this friendly FRENZIED REAVERS INFANTRY unit as a target, subtract 1 from Wound rolls for ranged attacks whose Strength exceeds that unit’s Toughness, until phase end.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select",
+    "sourceHash": "86631cb894d3fbffa1792462e12d604864dd95c8597089049836152edf71def2",
+    "pinnedHash": "b3740f042da35184ed4589afcfcc2fb2367c33b859c79c01812cf3f2b9500168",
+    "coreHash": "085f4a6139e63ce78c8554371a0967582f1cfc33d683c4fce2064e3d39370091"
+  },
+  {
+    "id": "berzerker-charge-world-eaters",
+    "state": "missing",
+    "summary": "Missing effect mechanics: Berzerker Charge contains only a no-effect marker. Supply checked timing, effects, eligibility and usage limits before use; do not borrow the ordinary version for this named Combat Patrol entry.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "8d8eae222defdd6af97d3e20e5be0618fcf88dcf98589aa24a3c243e7a79979f",
+    "pinnedHash": "8d8eae222defdd6af97d3e20e5be0618fcf88dcf98589aa24a3c243e7a79979f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "berzerker-frenzy-world-eaters",
+    "state": "needs-summary",
+    "summary": "The first time Khârn is destroyed in the battle, the source calls for a D6 at phase end: on 2+, return him with 3 wounds as close as possible to where he was destroyed and outside enemy Engagement Range. Source review: confirm the exact phase eligibility and the destruction/removal/return procedure before resolving it.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "c5342b83fbf542c6bbbe95f6b7a9d0345bce247cb73f6117ace37c4ae43ea031",
+    "pinnedHash": "c5342b83fbf542c6bbbe95f6b7a9d0345bce247cb73f6117ace37c4ae43ea031",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "berzerker-glaive-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. Add 1 to the Attacks and Damage of the bearer’s melee weapons, excluding Extra Attacks weapons.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "45b5e4bf8ee1f9ade4499dbae396234b79235e2a7128327cadd200c088c574a4",
+    "pinnedHash": "89a1443408cb3c4df2ee408a943a87443880ea20145dddb9573edb9b00483c48",
+    "coreHash": "8b546eecfeaf7d968918e0fb1f1755f3dda20c4259693eb0408d2ecfced1a05d"
+  },
+  {
+    "id": "berzerkers-wrath-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, target a KHORNE BERZERKERS unit eligible to make a surge move because of the triggering attacks. Replace its surge-distance roll with a move of up to 8″; do not add Blood Surge’s +2″ again.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "officialPage": 7,
+    "sourceHash": "73a344570cfab71ea1a9201c8d8c128446560de48d56ef2f7d78010cbfec348b",
+    "pinnedHash": "ec66c8629dd903a8c7d5909e65102fbd9f0b4814d41791767e0b6ea64ea0b2b1",
+    "coreHash": "d07c36c463cf1ef0276c8d939e5c9768fb0854610ee6958b765d75bb534bdc4f"
+  },
+  {
+    "id": "blade-of-endless-bloodshed-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. The bearer’s melee weapons gain +1 Attack, Strength and Damage. When its unit destroys an enemy unit in melee, gain the Blood Tithe point automatically rather than making the normal 3+ roll.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c7f7f29745cd994552c44945acbad0ae54b9f4e2d398fc9f5fc760f99ae3c75e",
+    "pinnedHash": "f585e4f25ded98beb18e445f2786d252d14b701075be5ce1a583240c5208d44f",
+    "coreHash": "f113177c8f50b08d824236c59d224e30e92d29229177c266270212a3229f6546"
+  },
+  {
+    "id": "blessing-of-burning-blood-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "Just after an enemy selects attack targets in your opponent’s Shooting phase or either Fight phase, target a friendly BLOOD LEGIONS unit within 6″ of the attacked friendly WORLD EATERS unit. The attacked WORLD EATERS unit gains a 5+ invulnerable save for the phase, improved to 4+ if Boon of Blood is active. The daemon is the relay, not the save recipient.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "05e67704c47d474af152cafbc32019e0315bb7c574f72a633d8184a51d8c56b6",
+    "pinnedHash": "50da1b9ba9353aef23796ff3ea2be3672a67949791efc49c5b5a3b13cca7a725",
+    "coreHash": "7f1d3dc387d9878c5e9f96fbb68eb329daeb97a288f6ff13d9a4508ed4a3c854"
+  },
+  {
+    "id": "blessings-of-khorne-frenzied-reavers-world-eaters",
+    "state": "needs-summary",
+    "summary": "If your Army Faction is WORLD EATERS, at each battle-round start you may roll 8D6 and allocate dice to up to two different Blessings. Each may be activated only once that round; discard unused dice. Benefits last that battle round for units with this ability. • Unbridled Bloodlust (any double): +1 Charge. • Rage-Fuelled Invigoration (double 2+): Pile-in and Consolidation up to 6″ instead of 3″. • Total Carnage (double 3+): a model destroyed by a melee attack that has not fought this phase fights after the attacker finishes on a 4+, then is removed. • Martial Excellence (double 4+ or any triple): melee Sustained Hits 1. • Warp Blades (double 5+ or triple 2+): melee Lethal Hits. • Decapitating Strikes (double 6+ or triple 3+): melee attacks against INFANTRY gain Devastating Wounds. Dice spent on one Blessing cannot also pay for another. This is the separately scoped Frenzied Reavers record; do not grant it to other units merely by name. Source review: the Combat Patrol Total Carnage import lacks the ordinary melee-destruction restriction; confirm that variant’s full wording.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "ffd50da68d19ce5cf02910cc72e2b9049bf0bde77a4f0ed42cf76a60dac0f2fb",
+    "pinnedHash": "ffd50da68d19ce5cf02910cc72e2b9049bf0bde77a4f0ed42cf76a60dac0f2fb",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "blessings-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "If your Army Faction is WORLD EATERS, at each battle-round start you may roll 8D6 and allocate dice to up to two different Blessings. Each may be activated only once that round; discard unused dice. Benefits last that battle round for units with this ability. • Unbridled Bloodlust (any double): +1 Charge. • Rage-Fuelled Invigoration (double 2+): Pile-in and Consolidation up to 6″ instead of 3″. • Total Carnage (double 3+): a model destroyed by a melee attack that has not fought this phase fights after the attacker finishes on a 4+, then is removed. • Martial Excellence (double 4+ or any triple): melee Sustained Hits 1. • Warp Blades (double 5+ or triple 2+): melee Lethal Hits. • Decapitating Strikes (double 6+ or triple 3+): melee attacks against INFANTRY gain Devastating Wounds. Dice spent on one Blessing cannot also pay for another.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "9e7e33d64199505673296f57335e60e9ceb527ed764742aec8694d4e148d5b1b",
+    "pinnedHash": "9e7e33d64199505673296f57335e60e9ceb527ed764742aec8694d4e148d5b1b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "blood-forged-armour-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "BLOOD LEGIONS or WORLD EATERS bearer only. Set the bearer’s Save to 2+. If the bearer is destroyed, gain 1 Blood Tithe point before removing it.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "280a6c372c24786c60b49d38fc8f0e8f0132989c5b81c45c763d8ec48cbf0f5d",
+    "pinnedHash": "e84b79309b5c9e875108931f01122a4142ce7a9fdb1a20954df6a21b42cfb330",
+    "coreHash": "bba50cd3500a080bbc416c4dfd8a84074b362493d951141eb17572756f0faa35"
+  },
+  {
+    "id": "blood-hungry-annihilator-world-eaters",
+    "state": "needs-summary",
+    "summary": "For ranged attacks against the closest eligible MONSTER or VEHICLE target within 18″, the import offers Wound and Damage re-rolls. Source review: both are encoded as re-rolling failures, but Damage has no ordinary success threshold; confirm the actual re-roll permission and nearest-target scope.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "98437dac69016e81afba8a858a0e5b3a66f8227fcc8910fd9336e1eed06b5d2f",
+    "pinnedHash": "98437dac69016e81afba8a858a0e5b3a66f8227fcc8910fd9336e1eed06b5d2f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "blood-offering-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly WORLD EATERS unit is destroyed while controlling an objective, this Stratagem may target it despite destruction. The objective remains yours until the opponent’s Level of Control exceeds yours at phase end. Apply the current objective-selection wording.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "633671027ece292f6b03e1ab4ec5be1f204766084f5b686232055804806f08d2",
+    "pinnedHash": "10dfd118ba13cab7694f59fb67febc131aa285735ecb6bfc4cc0f9a1d0b5d602",
+    "coreHash": "caefe52cb0d7059f493cf790209b0eb3bd9fea86f8dbd3f808e202e94004312e"
+  },
+  {
+    "id": "blood-surge-frenzied-reavers-khorne-berzerkers-world-eaters",
+    "state": "structured",
+    "summary": "Once per turn per unit, after an enemy shoots in your opponent’s Shooting phase and its attacks destroy a model in this Frenzied Reavers Berzerkers unit, if it is unengaged it can make a surge move of up to D6+2″. This named Combat Patrol version keeps its own conditions.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "sourceHash": "12ac86d163de780a409d55f1c4f60acf78ffb311ddafc27b3fd2d25f486ba365",
+    "pinnedHash": "12ac86d163de780a409d55f1c4f60acf78ffb311ddafc27b3fd2d25f486ba365",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "blood-surge-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy shoots and its attacks destroy a model in this Khorne Berzerkers unit, this unit can make a surge move of up to D6+2″. Apply the normal surge-move restrictions.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "officialPage": 8,
+    "sourceHash": "fb94872f760c446f8ae355f9a28c0396751c677a8bf6c1697311daf5bfdb8bf9",
+    "pinnedHash": "fb94872f760c446f8ae355f9a28c0396751c677a8bf6c1697311daf5bfdb8bf9",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "blood-tithe-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly BLOOD LEGIONS or WORLD EATERS unit destroys an enemy unit, roll a D6: on 3+, gain 1 Blood Tithe point. At the start of the Command phase, spend points to activate one ability until battle end: 2 — Enraged Abjuration, Feel No Pain 5+ against Psychic Attacks and mortal wounds for BLOOD LEGIONS and WORLD EATERS models; 3 — Daemonic Rage, BLOOD LEGIONS melee Lance; 4 — Boon of Blood, BLOOD LEGIONS 4+ invulnerable save; 5 — Might of Khorne, BLOOD LEGIONS gain Blessings of Khorne. This detachment permits Blood Legions allies up to 500/1000/1500 points for Incursion/Strike Force/Onslaught; none may be Warlord.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "start"
+      },
+      {
+        "phase": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "turn": "either",
+        "window": "react"
+      }
+    ],
+    "sourceHash": "40186d7944d869797a658d7347ba8ad3c4c16d3d9f84ae513169a4023de8af99",
+    "pinnedHash": "40186d7944d869797a658d7347ba8ad3c4c16d3d9f84ae513169a4023de8af99",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "bloodied-terror-world-eaters",
+    "state": "structured",
+    "summary": "At the start of either Fight phase, each enemy unit engaged with this winged Daemon Prince takes a Battle-shock test; subtract 1 from the test if that enemy unit is below Half-strength.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "5da784188e4478d1e0f634385a7a1bf8ab6cc03527ae4a47d824f3f4af315ed3",
+    "pinnedHash": "5da784188e4478d1e0f634385a7a1bf8ab6cc03527ae4a47d824f3f4af315ed3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "bloodthirsty-horde-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "In either Fight phase, target a friendly JAKHALS or GOREMONGERS unit that is engaged and has not yet fought. For this phase, models within 3″ of an enemy can fight that enemy unit if it is also engaged with their own unit. This extends model eligibility, not the unit’s initial eligibility to fight.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "100a2873a9c9e2f0c8355e576298e1c94683088b92b48c39cb20cb9e49fcc1ef",
+    "pinnedHash": "16ad11e3c0dadb13f5bdf5a8ccea6114def3b370575ded77348b81c2d7601405",
+    "coreHash": "862ee752944a3c4317f2594782d582322e2f0c182bc8b3c4339c6bf8c675a59c"
+  },
+  {
+    "id": "bloody-fury-world-eaters",
+    "state": "structured",
+    "summary": "Ranged attacks from this Chaos Terminators unit can re-roll Hit rolls against the closest eligible target. When it declares a charge, it may re-roll the Charge roll, but must finish that charge engaged with the closest charge target.",
+    "phase": [
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "officialPage": 8,
+    "sourceHash": "4adb51d72577c1f1fc758ad5943bac1d588887d89ea422d48561d4ccd0c2bf12",
+    "pinnedHash": "4adb51d72577c1f1fc758ad5943bac1d588887d89ea422d48561d4ccd0c2bf12",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "bloody-stampede-world-eaters",
+    "state": "structured",
+    "summary": "After Lord Invocatus’s unit completes a Charge move, select an enemy within his Engagement Range and roll a D6: 1 — no effect; 2–3 — 1 mortal wound; 4–5 — D3 mortal wounds; 6 — D3+3 mortal wounds.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "5b824c011f1507e0e37fb19d9c530ba7892301569e1cf328379ad04ae1bf3e53",
+    "pinnedHash": "5b824c011f1507e0e37fb19d9c530ba7892301569e1cf328379ad04ae1bf3e53",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "bloody-vengeance-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "Target a friendly WORLD EATERS MONSTER or TITANIC unit just destroyed by an enemy, even though it is destroyed. Until battle end, friendly JAKHALS and GOREMONGERS can re-roll Hit rolls against that specific enemy destroyer, not arbitrary enemies.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "1f320542ebb89bea18770ab87c02291fe29c19aa9b1b7a77c3adef2c94fb8469",
+    "pinnedHash": "264fb16d4823474b9effa537ac4b6b3c60015621538f03db12cffc91d977af2d",
+    "coreHash": "642614ccafefd37c488526651852f8f638e59c567d2469204bfcbc6039b5ddc6"
+  },
+  {
+    "id": "boon-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "Blood Tithe option, costing 4 points at Command-phase start: friendly BLOOD LEGIONS units gain a 4+ invulnerable save until battle end. This is a purchased option, not an always-active detachment bonus.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "e3651b8477231884f157a3cc7654e0af20f5a0a3d2619e8f9e2e247211e6e0d9",
+    "pinnedHash": "e3651b8477231884f157a3cc7654e0af20f5a0a3d2619e8f9e2e247211e6e0d9",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "brass-stampede-world-eaters",
+    "state": "structured",
+    "summary": "After this Bloodcrushers unit completes a Charge move, select an engaged enemy unit. Roll one D6 for each model in this unit; for each 4+, that enemy suffers D3 mortal wounds.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "fdfe2c24cbff704a80999ecae120dd17396cd53d62b1cbd1036313d892e0464a",
+    "pinnedHash": "fdfe2c24cbff704a80999ecae120dd17396cd53d62b1cbd1036313d892e0464a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "brazen-form-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS MONSTER bearer only. The bearer gains +1 Toughness and Feel No Pain 5+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "994d91dbe087a687de2ceb0bab9d55137e9c772ea1c9582b08084a5204691a8d",
+    "pinnedHash": "622b02b21844a712e07b24e16fd4cebb7a3b6a6653b4427403d68ac813a1afea",
+    "coreHash": "04224cb30c95e160d9f1a95642c546bf2ffe3a2bb220f33e33721c8a2fcf2b4f"
+  },
+  {
+    "id": "brazen-fury-world-eaters",
+    "state": "structured",
+    "summary": "Friendly WORLD EATERS POSSESSED units gain Brazen Fury: in your opponent’s Shooting phase, after an enemy shoots and those attacks destroy a model in this unit, it may make a surge move of up to D6″. Losing wounds without losing a model is insufficient.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "officialPage": 7,
+    "sourceHash": "0084f9666c6956f68072fbb1edaca909a18d08383f008e2d267269f3a43e7af3",
+    "pinnedHash": "0084f9666c6956f68072fbb1edaca909a18d08383f008e2d267269f3a43e7af3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "brazen-idol-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "Once per battle, in your Command phase, select a friendly WORLD EATERS MONSTER or TITANIC unit and choose one Idol of Khorne. It replaces the army’s active Idol for that unit until your next Command phase, and may repeat an Idol already used this battle.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "fe465a6c40b6d0ecec8b06d26f2e751b42fea8ee5bb11ece99a3bde67669aa4b",
+    "pinnedHash": "e5fd085a71165f11ce33d7fd75bc0effbdd22642a11c38426bea4e929b5cb714",
+    "coreHash": "ff63cf656db2c97ca36dabaa4d1257382aa23d2ad53d295db17b4ce55dad856f"
+  },
+  {
+    "id": "butcher-lord-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS INFANTRY bearer only. The bearer gains Infiltrators. Apply the enhancement’s separate JAKHALS/GOREMONGERS attachment eligibility; the keyword restriction is not a blanket attachment permission.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "officialPage": 7,
+    "sourceHash": "7ad07b7e18b9bb671d38a2a669b1310856fe2aaaf45e6c15fcb697ba259b4a3a",
+    "pinnedHash": "7af55a9e4258138ca815ffba897313323d79eba9b8864044ffc3ef44f43077c6",
+    "coreHash": "2417288e4abfa2a17f07a518559e80e4108dac54a3faeaf6a540e8f8d69cbd73"
+  },
+  {
+    "id": "chosen-of-the-blood-god-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS MONSTER bearer only. Add 3″ to the range of the bearer’s Aura abilities.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d1175508c342c5c2a4b04a507766c4e3ee0da1c4235e9c399b6ffdb27d7ed899",
+    "pinnedHash": "2dd0180394115fa589102af7af6868cd6933e13271ae00ec3d06c7a2479a27ae",
+    "coreHash": "71dbd8ce501fa5a73fd693ce7c4df67337aa7ef5d5f3536c5fd7483dfd6d47fd"
+  },
+  {
+    "id": "collar-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "This Flesh Hound model has Feel No Pain 3+ against Psychic Attacks only.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c7978c74c4f478312b4974f0ee81e0567808eb10842e5b6cfd1a3e878f9fde29",
+    "pinnedHash": "c7978c74c4f478312b4974f0ee81e0567808eb10842e5b6cfd1a3e878f9fde29",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "crush-all-who-stand-before-us-world-eaters",
+    "state": "structured",
+    "summary": "Whenever this Lord on Juggernaut’s unit is selected to fight, its models within 3″ of an enemy model may fight. Such attacks must target an enemy unit within 3″ of the attacking model and within Engagement Range of its unit; this does not turn 3″ into general Engagement Range.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "12587753a2c4a22d5fd88a0560eb6d04f799be85acc37109293a1fa3f2da445b",
+    "pinnedHash": "12587753a2c4a22d5fd88a0560eb6d04f799be85acc37109293a1fa3f2da445b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lord-on-Juggernaut"
+  },
+  {
+    "id": "daemon-lord-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "Friendly BLOOD LEGIONS units within 6″ of this Bloodthirster gain +1 to melee Hit rolls.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "41e2973f71873d237834a754cfbba25dbfcd517f88d39be2715fa18faff231e6",
+    "pinnedHash": "41e2973f71873d237834a754cfbba25dbfcd517f88d39be2715fa18faff231e6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "daemonic-fury-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "At the start of your Fight phase, target a friendly BLOOD LEGIONS unit and select a friendly WORLD EATERS unit within 6″. The selected WORLD EATERS unit’s melee weapons gain Lance until turn end, plus Twin-linked until phase end if Daemonic Rage is active. The core source incorrectly lists either turn; the current community wording specifies your Fight phase.",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "fe6a892d85f40782b8b522fdd411dbb9a0bde602fcfadbd29285b446292e8b3d",
+    "pinnedHash": "17943b55108079db118725b0ec447d08aa08d423bc408ac4e1b92f8b34395b4d",
+    "coreHash": "09bcf0ccdb80dc45a6e44336680f8c73a23da3e0af84db7257dc79813e13b7bb"
+  },
+  {
+    "id": "daemonic-icon-world-eaters",
+    "state": "structured",
+    "summary": "A unit equipped with a Daemonic Icon has Leadership 6+. Keep the equipment gate.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cc93101a7289343a2e7794fa05f85aaf468eb659ca49fe870cef69bc493e7c37",
+    "pinnedHash": "cc93101a7289343a2e7794fa05f85aaf468eb659ca49fe870cef69bc493e7c37",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "daemonic-rage-world-eaters",
+    "state": "structured",
+    "summary": "Blood Tithe option, costing 3 points at Command-phase start: friendly BLOOD LEGIONS units’ melee weapons gain Lance until battle end.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "707c73b16baf37ed5b9982182ab67308dabdb8ea5c059cab68d3ba66d08927c8",
+    "pinnedHash": "707c73b16baf37ed5b9982182ab67308dabdb8ea5c059cab68d3ba66d08927c8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "daemonic-resistance-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "Just after an enemy selects this friendly WORLD EATERS POSSESSED unit as an attack target in your opponent’s Shooting phase or either Fight phase, subtract 1 from the attacker’s Wound rolls against it until phase end.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "7fe68cbee7ba430c4dba8a1d352fada31f47b7ce181c53a2f3f39f99390ec1ce",
+    "pinnedHash": "2ffa1ac781979b2a80fe54104cd1c61dc82a6489a2a3f9d0749af472e4fb67a0",
+    "coreHash": "60dbe789ae0adcaf9e3a24ce8f715e22d2292d06079831d0e7635cb80478f321"
+  },
+  {
+    "id": "daemonic-strength-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "In either Fight phase, before the selected friendly WORLD EATERS POSSESSED unit fights, add 1 Damage to its melee attacks: EIGHTBOUND against non-MONSTER, non-VEHICLE models; EXALTED EIGHTBOUND against MONSTER or VEHICLE models instead. Do not combine both branches on the same attack.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "44d8a4afbe9fa971239f3c5502781b5fd92be393e84eef76dcf4c3664f306536",
+    "pinnedHash": "b76429a87ee2eb87ba3f53e5180cf3e22c1a5a80046e4220b13d1d33a0d4adf2",
+    "coreHash": "36c6e7e1aeca17188120a84bc98c9a853498b6abc1f1d05837fd33f7f478c725"
+  },
+  {
+    "id": "daemontide-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "In your Command phase, target a friendly WORLD EATERS unit and choose a friendly BLOOD LEGIONS unit within 6″. Return one destroyed MOUNTED model, up to D3 BEAST models, or up to D6 INFANTRY models with full wounds. Do not return destroyed CHARACTER models to Attached units.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d2acca686d03f11bba33debfd153aaf5844dd08588cc216c0f262dcd881bb8c4",
+    "pinnedHash": "a91578c435352a58fc7d1182dbec52e297c22d4d03cfeba8cc0e5a0492616c42",
+    "coreHash": "cb3edec3bf5684b1e712c99a7ea0f747150be33929666c5722bdff6663586641"
+  },
+  {
+    "id": "damaged-1-7-wounds-remaining-world-eaters",
+    "state": "structured",
+    "summary": "While Skarbrand has 1–7 wounds remaining, add 2 to the Attacks of his Slaughter and Carnage melee weapons. This is his specific damaged profile, not a generic penalty.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "de5f7e3755f19b2fb25e3403e3dee4e543ad4446891a9c723f4d6a7228780058",
+    "pinnedHash": "de5f7e3755f19b2fb25e3403e3dee4e543ad4446891a9c723f4d6a7228780058",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "devastating-assault-vorrakh-lord-of-the-frenzied-reavers-world-eaters",
+    "state": "structured",
+    "summary": "If Vorrakh’s unit charged this turn, that unit’s melee weapons gain Devastating Wounds. This is the separate Frenzied Reavers version.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f1c147fac3a9855faac0e31429c1f9d3df797609c5c1a477b8cf3fb4af928be4",
+    "pinnedHash": "f1c147fac3a9855faac0e31429c1f9d3df797609c5c1a477b8cf3fb4af928be4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "devastating-assault-world-eaters",
+    "state": "structured",
+    "summary": "After this Daemon Prince completes a Charge move, its Hellforged Weapons gain Devastating Wounds for that turn.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "5e51312ca5be56bdf1794b93b8501a0646f6ecebf71e9ca8ab3c8dfae7376fad",
+    "pinnedHash": "5e51312ca5be56bdf1794b93b8501a0646f6ecebf71e9ca8ab3c8dfae7376fad",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "devoted-to-destruction-world-eaters",
+    "state": "structured",
+    "summary": "If this Helbrute has exactly two melee weapons other than its Close Combat Weapon, add 2 to the Attacks of those other melee weapons; the Close Combat Weapon does not gain the bonus.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f085f89e0600be4d8761cf6f076798edc26118f64d5e490691984b3fd072e47a",
+    "pinnedHash": "f085f89e0600be4d8761cf6f076798edc26118f64d5e490691984b3fd072e47a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "direct-the-slaughter-vorrakh-lord-of-the-frenzied-reavers-world-eaters",
+    "state": "structured",
+    "summary": "Once per battle round per army, when a Stratagem targets a friendly FRENZIED REAVERS unit within 12″ of Vorrakh, reduce that use’s CP cost by 1. Apply the normal CP-cost limits.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "771eb2ba8601671a832eb41bd6d8dedbbf8d7551889db25b2573de5fc62d9228",
+    "pinnedHash": "771eb2ba8601671a832eb41bd6d8dedbbf8d7551889db25b2573de5fc62d9228",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "direct-the-slaughter-world-eaters",
+    "state": "structured",
+    "summary": "Once per battle round per army, when a Stratagem targets a friendly WORLD EATERS unit within 12″ of this Daemon Prince, reduce that use’s CP cost by 1. Apply the normal CP-cost limits.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "612fe1261b7ebed789500b03358810cf9c661625c48cb96e01d3b69963b48235",
+    "pinnedHash": "612fe1261b7ebed789500b03358810cf9c661625c48cb96e01d3b69963b48235",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "disciple-of-khorne-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "LORD ON JUGGERNAUT bearer only. The bearer gains Deep Strike and replaces its WORLD EATERS Faction keyword with BLOOD LEGIONS. It can lead the specified Bloodcrushers or Flesh Hounds units. It cannot be Warlord; the official FAQ confirms that the attached unit can benefit from its Blessings of Khorne ability.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "officialPage": 7,
+    "sourceHash": "c215d1537f46d20551c737a0b00aedd721834c1699608a90c7ff625f10cef20f",
+    "pinnedHash": "42b0ddd6aa8aaf575e8d9a5eecfe7fba81ac48cd050138034fd1f52b39323b77",
+    "coreHash": "511a4980ebab3130bf985d5740156c28df30b97025e13f8737658e9540a6c88e"
+  },
+  {
+    "id": "drawn-to-the-slaughter-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "Once per battle, target a friendly JAKHALS unit just destroyed, despite its destruction. Add an identical new unit at Starting Strength in Strategic Reserves. This does not restore destroyed CHARACTER units to Attached units.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "aa25de51698ae4f629b9d7b60b39afca4590803d29c952aacc4921f106d70241",
+    "pinnedHash": "53f900756001dd4cc559e147c26446fc4aee23dcdd07d2a53c3697b790060d29",
+    "coreHash": "64714f4b8816611856b66f0cb37da3f9e5a10b5f77e59096f2da0f8ed4c36bc9"
+  },
+  {
+    "id": "endless-pursuit-of-violence-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "At the end of either Fight phase, select a friendly WORLD EATERS INFANTRY unit and a friendly transport it can legally embark in. If the infantry is wholly within 6″ of that transport, it may embark. Do not substitute within 6″ for wholly within 6″.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "086c1f6eb6ffe54c836a0d6b8d33d2b3af6d86c0a8282861b4346eabdc89f94b",
+    "pinnedHash": "339549cb7a5bc7a8b764a77ccd871ea1a62e2f38459aea5747f7348b378bdb6e",
+    "coreHash": "81581b68bc31672eaf9256aaf452bdf8744b019d460c122f660339f9972a6405"
+  },
+  {
+    "id": "enraged-abjuration-world-eaters",
+    "state": "structured",
+    "summary": "Blood Tithe option, costing 2 points at Command-phase start: friendly BLOOD LEGIONS and WORLD EATERS models gain Feel No Pain 5+ against Psychic Attacks and mortal wounds until battle end. It is not Feel No Pain against all damage.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "a3bbafbd04e1831a8f5ed935dc14bb36d0a58b268c3acefc6438805d7c6adb9c",
+    "pinnedHash": "a3bbafbd04e1831a8f5ed935dc14bb36d0a58b268c3acefc6438805d7c6adb9c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "fail-not-the-blood-god-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "For a friendly JAKHALS or GOREMONGERS unit in either Fight phase, re-roll Hit rolls of 1 until phase end. Re-roll any Hit roll instead while its unit is within 6″ of a friendly WORLD EATERS MONSTER or 9″ of a friendly WORLD EATERS TITANIC unit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b3571974b32dafcc645f5afb1b11816931a8652cfaeead8316d974d0e5dcee62",
+    "pinnedHash": "6e1dbe33b66e39ab8ea79556b38875754960bfd1600086e89c226ef9d507e9b4",
+    "coreHash": "5881de979eb1efea87d6a3a4bb3cad5ba44b5dd0ff7b9d906722a488ebfc3d51"
+  },
+  {
+    "id": "favoured-of-khorne-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. While the bearer is on the battlefield, you may re-roll up to two individual dice in a Blessings of Khorne roll. This is not a re-roll of the whole pool.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "288cdab4b897d497f5d6e9197a680b4fa67c07469f8ba80281e902df4f671195",
+    "pinnedHash": "48eb29c9a7bbf54ba1eee7d65aedb5b1daf6563e66e84b0c57d98feb0215533b",
+    "coreHash": "29768fcb0d5b992674ddc61f57c438a048ef7e99af2a8d4eed6b9f7c1aa0419f"
+  },
+  {
+    "id": "fearsome-presence-frenzied-reavers-world-eaters",
+    "state": "structured",
+    "summary": "Set this Frenzied Reavers bearer’s Objective Control to 5. This changes the bearer, not every model in its unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b4fd3d627cfcd4e876ef468c39f91d8c7c52684e66b4d510cdf98a0599a59aff",
+    "pinnedHash": "137807dfb6d7fbfb2f837e52a1e15dde8a74e43cfe352ffea4f434823836bb7d",
+    "coreHash": "4b6a8fa1bdbc01b4f7f82862090ade0b20719e086733f7a261bf520c6236c58c"
+  },
+  {
+    "id": "fire-riders-world-eaters",
+    "state": "needs-summary",
+    "summary": "While Lord Invocatus leads a unit, the source grants it Deep Strike and movement through terrain and models, with engagement and Desperate Escape exceptions. Source review: movement permissions are attached to move-ended and the end-position scope is incomplete; confirm the current Normal/Advance/Fall Back/Charge procedure before use.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "107107cb8a4cc195cf4a428be9457a198bb87893d4aef7c9117d7f606a36a307",
+    "pinnedHash": "107107cb8a4cc195cf4a428be9457a198bb87893d4aef7c9117d7f606a36a307",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "focused-ferocity-butchers-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly TERMINATOR SQUAD is selected to fight, its melee attacks gain +1 Attack for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "706b0e1146d83631b9106df6d1968017cbf0a5e6ad91d5a5ff1680e1ccea081d",
+    "pinnedHash": "fe299cdf30d84ce553120981bf1c5776eab40184d8e32000d9de15787e2d5c5c",
+    "coreHash": "1a664631c07edba7cddb360d35231091cee0f557d330d9353e028bec3c4a76c8"
+  },
+  {
+    "id": "forwards-for-blood-world-eaters",
+    "state": "structured",
+    "summary": "While this Master of Executions leads a unit, that unit can re-roll Advance rolls and may re-roll its surge-distance roll. This does not make otherwise ineligible surge moves legal.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "95786e9cc4e485aa2ce1bb40106ff7a98bccebb7f891f4706b15b5564c4e8467",
+    "pinnedHash": "95786e9cc4e485aa2ce1bb40106ff7a98bccebb7f891f4706b15b5564c4e8467",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "frenzied-focus-possessed-slaughterband-world-eaters",
+    "state": "needs-summary",
+    "summary": "WORLD EATERS DAEMON bearer only. The import makes the unit’s Hit rolls critical on 5+. Source review: it does not distinguish ranged and melee attacks; confirm which attacks gain the improved Critical Hit threshold before applying it.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e700303b46b522fbdde266ae848ceea667cf2f71ec89275025e73de3959c5b1c",
+    "pinnedHash": "7140f166c83d336d939c4a37d5cc6430233d77f91ec99bc82fb2bccd4b7f5a2f",
+    "coreHash": "b41aa0538b8fe315f408114c2630e3f981822d50bd0125fa25004f21d49cbe07"
+  },
+  {
+    "id": "frenzied-resilience-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "In either Fight phase, just after an enemy selects a friendly WORLD EATERS unit as an attack target, reduce the Damage of attacks allocated to that unit by 1 until phase end. Apply the core minimum Damage restriction.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "07608fc33e53721792efa2ad7cffc162e76db4c9ef3e36d39ebcf391a4723c48",
+    "pinnedHash": "2a701354922ba19d9bcbc5e98ce0a93b33699ad3cbc6c15d6de76db953177542",
+    "coreHash": "e4b402515c39cb5aa1a10aea7e55aee8ffc3a4fe29e83dab971f689100139e3b"
+  },
+  {
+    "id": "frenzy-world-eaters",
+    "state": "structured",
+    "summary": "Once per turn per Helbrute, in either Fight phase, after an enemy that targeted it finishes its attacks, it may use Frenzy: it becomes eligible to fight even if it already fought this phase, and must be selected to fight next.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 8,
+    "sourceHash": "eb609cfc36713a47785ac9a9d4c66621a42fb5f66c21ea9f9102fc871af4dd9b",
+    "pinnedHash": "eb609cfc36713a47785ac9a9d4c66621a42fb5f66c21ea9f9102fc871af4dd9b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "full-throttle-assault-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "In your Movement phase, target a friendly WORLD EATERS RHINO not yet selected to move. For that phase, WORLD EATERS units disembarking after that Rhino makes a Normal move make an assault disembark move, using the current core assault-disembark procedure. The Rhino is the target; its passengers receive the permission.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "5f9d45066c85fa3c38df4ea2c7a76616b5e2f83b6d2d2021a02f0443d0a5169a",
+    "pinnedHash": "a4702f857e93467917ae3331d0a6c9dd4f05dc667a0718cdb8f239cbfb72971d",
+    "coreHash": "d58c34adc7b6483c4463fa020b89e81b4526bc809b55a27b3e206c1abb538121"
+  },
+  {
+    "id": "furious-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "For this Forgefiend’s ranged attacks against the closest eligible target within 18″, you may re-roll Hit rolls.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "23ab8a1728e68d9f9fd28551e5a15a0c048658b4bbd7431f8d778a0a85cd1ecb",
+    "pinnedHash": "23ab8a1728e68d9f9fd28551e5a15a0c048658b4bbd7431f8d778a0a85cd1ecb",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "fury-unleashed-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, just after an enemy shoots, target a friendly WORLD EATERS RHINO with wounds remaining that was hit by those attacks. One embarked KHORNE BERZERKERS unit can disembark and then surge up to D6+2″; the passengers make both moves, not the Rhino. The Rhino cannot also be targeted by Unrelenting Advance in that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "officialPage": 7,
+    "sourceHash": "865e83836739b39e1ff2f2f74bea7ea8b963a56bd3b531071678373550bb1697",
+    "pinnedHash": "d5854d61a3d0392989fe202a9f1a8094d388ec7e806537b0d9c3f5c238cc3acf",
+    "coreHash": "819ea70cd2c8febf08d4cc003d7b8e3b7737145943c567cf7b97ef6e1c3cbc7a"
+  },
+  {
+    "id": "gateways-to-glory-vessels-of-wrath-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS DAEMON PRINCE bearer only. The bearer has MOBILE and +1 to Charge rolls.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "officialPage": 4,
+    "sourceHash": "957c45b58385d62f2923f98f9dc575fbf6b895d81c6d32bd5f0eaf82e3c742d9",
+    "pinnedHash": "c96d4cef703752d0c42070a67c23621e92e4e2128d8e148423d0df22d2b2d298",
+    "coreHash": "f60a865734189bdfb225865b58eb84e72f5e06195466462ef7a9331c7838f563"
+  },
+  {
+    "id": "goaded-to-fury-brazen-engines-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy that targeted an unengaged friendly DAEMON VEHICLE, excluding TITANIC, finishes shooting, that vehicle may make a surge move of up to D6″.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "officialPage": 2,
+    "sourceHash": "c5d0942bde7565de2b005eaadd12b4335ad46f32e279bc1fb505ec5a5d7cc0b9",
+    "pinnedHash": "f402254a899d12efaf818ec711c77b08730e31f8b0e87e4e18d16671635694e8",
+    "coreHash": "a6a53972b0ea93b000014869597dce3540b010b6b589b8ba0c5fef2fd7ca3231"
+  },
+  {
+    "id": "gore-stained-veterans-upgrade-butchers-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "TERMINATOR SQUAD upgrade only. Improve that unit’s melee Weapon Skill by 1. This changes WS, not the Hit-roll modifier.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 3,
+    "sourceHash": "55f31722f116f6230bdacccb889a2d46dc71918d0b00e9109369f8c62b214964",
+    "pinnedHash": "ec4aca29e01648278a65b3f27f034bf8b791fb330f1af6a58ca3535b607e0d45",
+    "coreHash": "c7f0d5ea4600b5dd0f8d2e97e8ba941ef5fcf19b1c574ed9f96360cd4b70a19e"
+  },
+  {
+    "id": "hack-and-slash-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "In either Fight phase, select a friendly WORLD EATERS unit that charged this turn and has not fought this phase. Improve its melee Armour Penetration by 1 until phase end.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "06a9b3c216c95ecc8171f97bc887954412c0b665ad4c8e2196e6e49e247e2ad2",
+    "pinnedHash": "d18f04f8e469f561a371f17d5fb9ce7b3b078520669a5c0835b9366db0caa9db",
+    "coreHash": "32231d9d5065d107e40ba4059af31dac602a430828020238dc1cdc891afbca23"
+  },
+  {
+    "id": "helm-of-brazen-ire-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. Reduce Damage allocated to the bearer by 1, applying the normal minimum. This protects the bearer, not every model in its unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "32560e5a3225d8b2659668be11eeb56b37d5352792c9baa671e76cc13c88dbcc",
+    "pinnedHash": "e9be515bbdfdb7ac95f1b9a818cec9081c9df374d3668534ea43a7803ad8051f",
+    "coreHash": "52112de5647e31e891fbe4d8534e3c7629720d801babaac5adb721beb1ece90a"
+  },
+  {
+    "id": "horrifying-butchery-frenzied-reavers-world-eaters",
+    "state": "structured",
+    "summary": "At the start of either Fight phase, target an engaged friendly FRENZIED REAVERS KHORNE BERZERKERS unit. Select an enemy engaged with it; that enemy takes a Battle-shock test at -1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "1c0a0c6d74a46df97904f3851b4e8b60c81e2f5c36536eb1e52b03d60c3ba063",
+    "pinnedHash": "a1551ce4d0bc9988f1134a24b958ad771af4ecabaf974e5ecd2d00d1c2bb4e4b",
+    "coreHash": "25cd4a773311e690d5fc241d023b26e8a0b5ddac0d8b5487a8020c6ca5c301b8"
+  },
+  {
+    "id": "horrifying-violence-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Command phase, target a friendly WORLD EATERS POSSESSED unit. Each enemy engaged with it takes a Battle-shock test at -1.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "3fedc88944309bce62d0901157b874c9faf6cc5d4356999d850bcb10ab8384fb",
+    "pinnedHash": "ce66cdbf470ef41f83be70463395862bb2665142cebb6062f49847ceebb45523",
+    "coreHash": "4872313d57b7bc8874c7412568b5d14e99e2f54cb0495057f0df17d0dcaed458"
+  },
+  {
+    "id": "hunters-from-the-warp-world-eaters",
+    "state": "structured",
+    "summary": "At the end of your opponent’s turn, if this Flesh Hounds unit is unengaged, you may remove it to Strategic Reserves. Normal return restrictions still apply.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end",
+    "sourceHash": "891c1fb7c7c16f8c9524046370a48273373ec4bbc4008616ec4f62ebf24f68cc",
+    "pinnedHash": "891c1fb7c7c16f8c9524046370a48273373ec4bbc4008616ec4f62ebf24f68cc",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "icon-of-khorne-frenzied-reavers-jakhals-world-eaters",
+    "state": "missing",
+    "summary": "Missing effect mechanics: Icon of Khorne contains only a no-effect marker. Supply checked timing, effects, eligibility and usage limits before use; do not borrow the ordinary version for this named Combat Patrol entry.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "054ea57945c956f082a150cdaf08dd4f375d87b7a5e2dfb80fe720042c5614ec",
+    "pinnedHash": "054ea57945c956f082a150cdaf08dd4f375d87b7a5e2dfb80fe720042c5614ec",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "icon-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "Equipment gate: if a Khorne Berzerkers or Jakhals unit has one or more Icons of Khorne, each enemy unit it destroys earns 1 Bloodshed point. Add one rolled D6 per banked point to each Blessings roll, then lose all banked points. Multiple Icons do not multiply the points earned.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "officialPage": 8,
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "round"
+      },
+      {
+        "phase": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "turn": "either",
+        "window": "react"
+      }
+    ],
+    "sourceHash": "fb520b01c23657cfbf3c7a015896bfb5546cc8f482d2a64c69d403a9c5161190",
+    "pinnedHash": "fb520b01c23657cfbf3c7a015896bfb5546cc8f482d2a64c69d403a9c5161190",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "icon-of-war-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. Friendly BLOOD LEGIONS units within 6″ gain Blessings of Khorne. If Might of Khorne is active for your army, those nearby units may re-roll Battle-shock tests.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d51f675057fc280d11a2831d8a9bb643efc49df0bdc0bc29623a39805bcd5173",
+    "pinnedHash": "98628dcf75de430dde81973a51e05f9aee3964c54be2fa0366c359a76b5bcf86",
+    "coreHash": "498eadda9106968d7fc9d613d3ba34e0774c76435b20093c412e2c3216583aa0"
+  },
+  {
+    "id": "idol-of-blessed-blood-khorne-lord-of-skulls-world-eaters",
+    "state": "structured",
+    "summary": "At each battle-round start while this Khorne Lord of Skulls is on the battlefield, add one extra rolled D6 to your Blessings of Khorne roll.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "a99a21df5e7d2a4d730bc7e6dc52df99a80c9f7f6ab640d72d5ff51d2929e984",
+    "pinnedHash": "a99a21df5e7d2a4d730bc7e6dc52df99a80c9f7f6ab640d72d5ff51d2929e984",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "idols-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "At your Command-phase start, choose one Idol until your next Command phase; each Idol is normally selectable once per battle. Friendly WORLD EATERS MONSTER and TITANIC units emit its aura to JAKHALS/GOREMONGERS within 6″, or 9″ from TITANIC emitters: Infinite Rage gives +1 Hit and Wound; Burning Wrath gives +1″ Move and +1 Advance and Charge; Blessed Blood gives a 4+ invulnerable save. Choose one Idol, not all three. This detachment also gives JAKHALS/GOREMONGERS BATTLELINE.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "4ef072068c1f4c8527bacd07e87a590065b7cafb3788c945b8b418b98b51788c",
+    "pinnedHash": "4ef072068c1f4c8527bacd07e87a590065b7cafb3788c945b8b418b98b51788c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "immortal-fury-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "In either Fight phase, just after an enemy targets a friendly WORLD EATERS POSSESSED unit, its models destroyed before they have fought may fight after that attacker finishes, then are removed. The benefit lasts that phase; already-fought models do not gain another fight from it.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "13f509acef81f344b54a74d30d53dc4aa190b056c8ee8f6c83deee6c5689c93c",
+    "pinnedHash": "3d3549531315c3d223f23f1f122aad0415327eac15bb1be30b55b01d7e48947e",
+    "coreHash": "ac75f376e9a3621a787b1c7c8ea82eaca945e5a632b542b3eb51fb1bc0fce4e9"
+  },
+  {
+    "id": "in-the-shadow-of-brass-idols-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase or either Fight phase, just after an enemy targets a friendly JAKHALS or GOREMONGERS unit, it gains Feel No Pain 6+ until phase end, improved to 5+ while within 6″ of a friendly WORLD EATERS MONSTER or 9″ of a friendly WORLD EATERS TITANIC unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "c9fa61f762de1b70993a74e417193c43c4ca34daa08e8d6d1a5d8b41198b9fbe",
+    "pinnedHash": "a0ff1fd84cd4f71326d86dc321af6c4401f87719b147f284dd93225334e4914e",
+    "coreHash": "755b5a0114152373f6a92187ca59eae58e761341cb215b3882a35a129b0b7423"
+  },
+  {
+    "id": "infernal-infusion-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. Once per battle per bearer, at the start of either Fight phase, its unit may gain Fights First until phase end.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "9aaba474ac5e8634752c28e171d8f57bd5b8db49498405caf714ed72a865195c",
+    "pinnedHash": "23d35b049f26d1e565892e0c045fcd123f1a1f17b7bf8a8dcf5e189f2a77dc04",
+    "coreHash": "48fc0b62ab915fef4f2a957286a999116f6bf4739081ce689043793fd4f12421"
+  },
+  {
+    "id": "instrument-of-chaos-world-eaters",
+    "state": "structured",
+    "summary": "Add 1 to this unit’s Charge rolls.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d244011fb821dcd21466d5f06f17417d914a7b8c2261aadbcdbd4b3e98b1c3c6",
+    "pinnedHash": "d244011fb821dcd21466d5f06f17417d914a7b8c2261aadbcdbd4b3e98b1c3c6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "killing-clarity-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "When this bearer’s unit destroys an enemy unit, roll a D6: on 4+, gain 1CP. Apply the normal limits on gaining CP.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "830a7168fb9deb80ea6465f15ca5724d9cfe83c0ec78438176f33bd88babd23e",
+    "pinnedHash": "d2cd1cee5b7d2dd825cbdd6bf29f7013e58ecc89ff576935418e73555607fc4d",
+    "coreHash": "f5d0dbf339d3b3912a4836bdd5470de8d221a1365a5ac2716843b1e1146ba09b"
+  },
+  {
+    "id": "legendary-killer-world-eaters",
+    "state": "structured",
+    "summary": "If (this model is leading a unit) and (the attack is melee), this unit can re-roll Hit and Wound rolls of 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e75f240330b10192a922f841fdcd045003baf79c736a7313d434c72b9e8f09ce",
+    "pinnedHash": "e75f240330b10192a922f841fdcd045003baf79c736a7313d434c72b9e8f09ce",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "loping-speed-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Movement phase, if an enemy ends a move within 8″ of this unengaged Goremongers unit, this unit may make a Normal move of up to D6″. This is not a charge or surge move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "officialPage": 8,
+    "sourceHash": "287fc493de67b81c45ca2ef58cc4f86ab1dae09731b9c90126ea527723db8026",
+    "pinnedHash": "287fc493de67b81c45ca2ef58cc4f86ab1dae09731b9c90126ea527723db8026",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "lord-of-murder-vorrakh-lord-of-the-frenzied-reavers-world-eaters",
+    "state": "structured",
+    "summary": "Vorrakh gains Lone Operative while within 3″ of a friendly FRENZIED REAVERS INFANTRY unit. Keep the named Combat Patrol keyword gate.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ac74fe234e1577e574d441da4d44e15dbce79592361411c13aa26ecbe7a6e100",
+    "pinnedHash": "ac74fe234e1577e574d441da4d44e15dbce79592361411c13aa26ecbe7a6e100",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "lord-of-murder-world-eaters",
+    "state": "structured",
+    "summary": "This Daemon Prince gains Lone Operative while within 3″ of a friendly WORLD EATERS INFANTRY unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "3b06d89f4d2ea69dbbda6eb0271216379d8791ddf2498b609af707d035343085",
+    "pinnedHash": "3b06d89f4d2ea69dbbda6eb0271216379d8791ddf2498b609af707d035343085",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "lord-of-the-eightbound-world-eaters",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, if this Slaughterbound is attached to a WORLD EATERS POSSESSED unit, that unit gains Deep Strike and Scouts 6″ for the battle. Keep its actual attachment requirements.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "dcdc69dbe18c21d10f4cb9649ff760dbc1a73ffdbe4e4a6eaa568f4dfeab3bf5",
+    "pinnedHash": "dcdc69dbe18c21d10f4cb9649ff760dbc1a73ffdbe4e4a6eaa568f4dfeab3bf5",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "malicious-vigour-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "SLAUGHTERBOUND bearer only. Each time the bearer’s unit makes a Brazen Fury move, treat its distance die as a 6; this does not grant extra moves or waive Brazen Fury’s trigger.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "bb62067b7da80a760ff533afddce9244efa2cbc5b5673e11f87d683d28977782",
+    "pinnedHash": "499e925d3db9b2ff6695cc1a121b485faebc14a1ffe8765d3ca862525d531402",
+    "coreHash": "5608bda3d668878d9558b318a9c52f7644da9242700ff24e31d2017c320c8193"
+  },
+  {
+    "id": "meet-any-challenge-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Movement phase, whenever an enemy is set up or ends a Normal, Advance or Fall Back move within 8″ of this Chaos Rhino, any units embarked within it can disembark. Apply the normal disembark procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "3894183ba243ad6445b982daf93b1abeed9a9a51611b38de719f90aadad9cdab",
+    "pinnedHash": "3894183ba243ad6445b982daf93b1abeed9a9a51611b38de719f90aadad9cdab",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Chaos-Rhino"
+  },
+  {
+    "id": "might-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "Blood Tithe option, costing 5 points at Command-phase start: friendly BLOOD LEGIONS units gain Blessings of Khorne until battle end.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "143ea95b75f7669a9a8aad53112cf938d15e0f6d0bb0a6f3d16076b97c6d7a20",
+    "pinnedHash": "143ea95b75f7669a9a8aad53112cf938d15e0f6d0bb0a6f3d16076b97c6d7a20",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "murder-call-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, select a friendly BLOOD LEGIONS unit that is on the battlefield and unengaged; remove it to Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "97889c1a0337acb62c611fae24b9fa3cecd03f60be36e571bef4304054e0f879",
+    "pinnedHash": "084d028285d0c48fb1865213816a4c27db7f8eea9e90648b4e926535377fa463",
+    "coreHash": "445219f95c360723cc0c19f9b78e089a7d2384b73905d7e3b138430ff8b98c7c"
+  },
+  {
+    "id": "murder-forged-entity-upgrade-brazen-engines-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS VEHICLE upgrade only. That unit gains the DAEMON keyword.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 2,
+    "sourceHash": "64636777806df8ac10e140cc47e4ff134099ee7a17ef45c1c84e3004df97c38c",
+    "pinnedHash": "b44a602bdad0d7b441bfe046f35dc68be449b9f07c417d545b41877689744af0",
+    "coreHash": "acbbde38820cdda9ea98907feeee208ea91b9e35c9be54c1c28aebdcd990d9d1"
+  },
+  {
+    "id": "murderlust-world-eaters",
+    "state": "structured",
+    "summary": "This unit can declare a charge after advancing.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "ce0d9f40438c1f9711f7db9e484e123f3fb49c79e47d701e2dca7130891484d6",
+    "pinnedHash": "ce0d9f40438c1f9711f7db9e484e123f3fb49c79e47d701e2dca7130891484d6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "murderous-charge-world-eaters",
+    "state": "structured",
+    "summary": "If this Khorne Berzerkers unit charged this turn, its melee attacks gain +1 Strength.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a05a48e8e47a65fb2991732e3161b58688b5e07c5be53126004a66d5a65e8b51",
+    "pinnedHash": "a05a48e8e47a65fb2991732e3161b58688b5e07c5be53126004a66d5a65e8b51",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "murderous-onslaught-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. During a turn when the bearer’s unit disembarked, enemies cannot use Fire Overwatch to target that unit. This is specific to Fire Overwatch, not all reactive shooting.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "1ff64f94354dcb72d979ac9d8d37025bb985cfe6ac1b851098ea2b6df083ace1",
+    "pinnedHash": "3a548f25bfc260bcd213c0b16e08a42d4291ebf047e9617e280b0ecd1f3cf964",
+    "coreHash": "3a8655453e97c7b85fd010f3db78ed56302abd684bb9fb3ccb0633fc02619a06"
+  },
+  {
+    "id": "objective-ravaged-frenzied-reavers-jakhals-world-eaters",
+    "state": "structured",
+    "summary": "At the end of your Command phase, if this Jakhals unit is within control range of an objective you control, that objective remains yours until the opponent’s Level of Control exceeds yours at the end of a phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "ad563ce1ef07e83b9d577bd397bfc9a9956b9a14162183945dd9b38db6eadb1c",
+    "pinnedHash": "ad563ce1ef07e83b9d577bd397bfc9a9956b9a14162183945dd9b38db6eadb1c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "objective-ravaged-world-eaters",
+    "state": "structured",
+    "summary": "At the end of your Command phase, if this Jakhals unit is within control range of an objective you control, that objective remains yours until the opponent’s Level of Control exceeds yours at the end of a phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "e31eb1c2346744d8785d365ec06eef15baab556512ebd4c8ddbd017178110eec",
+    "pinnedHash": "e31eb1c2346744d8785d365ec06eef15baab556512ebd4c8ddbd017178110eec",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Jakhals"
+  },
+  {
+    "id": "pact-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "When mustering this army, you cannot choose BLOOD LEGIONS as your Army Faction unless another rule specifically permits it. This does not itself give daemon allies Blessings of Khorne or override Khorne Daemonkin restrictions.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "593c4d83d32cbb6cdb947b48326235adafa0612307fda4c33f65f58d26f5895f",
+    "pinnedHash": "593c4d83d32cbb6cdb947b48326235adafa0612307fda4c33f65f58d26f5895f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "possessed-lord-world-eaters",
+    "state": "structured",
+    "summary": "Once per battle per Slaughterbound unit, at the start of either Fight phase, this model’s melee weapons may gain +3 Attacks and Devastating Wounds for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "6de0e7a9ba6ea62dea7970f9464ce8dac22053bc79741bcbf19255a7f48b5e1b",
+    "pinnedHash": "6de0e7a9ba6ea62dea7970f9464ce8dac22053bc79741bcbf19255a7f48b5e1b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "punish-the-craven-vessels-of-wrath-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Movement phase, when an enemy engaged with a friendly WORLD EATERS CHARACTER unit is selected to Fall Back, target that friendly CHARACTER unit. The enemy must use Desperate Escape; if Battle-shocked, subtract 1 from its hazard rolls.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "select",
+    "officialPage": 4,
+    "sourceHash": "9073a05ecf62aa387f04838f73c8ae0c54fe97c2a7e323b494a6b6958307ce69",
+    "pinnedHash": "74bb9442703e29d105bda73be286cc33c16e49529f02f71f49a2e562cced79b5",
+    "coreHash": "5ab12c85595cddce1f695340dbfc2ae07147f1918940f4ed4cd8401526fc4882"
+  },
+  {
+    "id": "punishing-suppression-world-eaters",
+    "state": "structured",
+    "summary": "After this Chaos Predator Destructor shoots in your Shooting phase, select a non-MONSTER, non-VEHICLE enemy hit by those attacks. It is suppressed and subtracts 1 from Hit rolls until the start of your next turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "b1b9b8507914ce582954fb1f01f674f4fc7d8ea293ec04807a566b4f5efd7100",
+    "pinnedHash": "b1b9b8507914ce582954fb1f01f674f4fc7d8ea293ec04807a566b4f5efd7100",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rabid-response-frenzied-reavers-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy shoots at a friendly FRENZIED REAVERS JAKHALS unit, if that Jakhals unit is unengaged, it can make a Normal move of up to D6″.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "sourceHash": "d590cdaf87b21e92d0ab80be2d06ff859facb60593fe3895e62675d7609f3843",
+    "pinnedHash": "4820fa248c892cda0da8a04cedb65eb13bbf053cd963dfe2e799e5d51d74452f",
+    "coreHash": "866609c2fdd0a1c61a50a435ec9d94080379b50e3c5c3c0824eed20f1d300f6c"
+  },
+  {
+    "id": "rage-embodied-world-eaters",
+    "state": "structured",
+    "summary": "Friendly BLOOD LEGIONS units within 6″ of Skarbrand gain +1 Attack to their melee weapons.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "46ca04916ee326b98448da9a00046b14968cf66625e5dade994c1c7f57ef0842",
+    "pinnedHash": "46ca04916ee326b98448da9a00046b14968cf66625e5dade994c1c7f57ef0842",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rage-eternal-world-eaters",
+    "state": "structured",
+    "summary": "In your Command phase, while this Slaughterbound leads a unit, you may return one destroyed Bodyguard model to that unit. This cannot return the attached Character.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "5934ebb23a429675d27bb7e39e30466aa873cf0172cec6a4f76da8e0e96f4f05",
+    "pinnedHash": "5934ebb23a429675d27bb7e39e30466aa873cf0172cec6a4f76da8e0e96f4f05",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rampaging-terrors-world-eaters",
+    "state": "structured",
+    "summary": "Friendly DAEMON VEHICLE units gain Terror of Khorne: at either Fight-phase start, each may select an engaged enemy to take a Battle-shock test at -1. The same enemy cannot be selected more than once per phase. Brazen Engines has the ONSLAUGHT tag and cannot accompany another ONSLAUGHT detachment.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "officialPage": 2,
+    "sourceHash": "59b593b54eb7b01ba5b1f528758447003fe7f14c77400d3b02c415d24e2c7b69",
+    "pinnedHash": "59b593b54eb7b01ba5b1f528758447003fe7f14c77400d3b02c415d24e2c7b69",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rapid-manifestation-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "In your Movement phase, when a friendly EXALTED EIGHTBOUND unit arrives using Deep Strike, it may set up more than 6″ horizontally from enemy models instead of the normal distance. It cannot declare a charge that turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals",
+    "sourceHash": "ed125d10477be16f14e719de596af32d64ad466ea2a209f9ac9c316b2b791135",
+    "pinnedHash": "c5806781806387238e17fd4fcece8f0dcd827306c5a93dc2f92b9113344775ea",
+    "coreHash": "308c93d6e8fa94c173571d920fbc7945bc7a7e09be5ab90a25582a5eeacf64b3"
+  },
+  {
+    "id": "reborn-in-blood-world-eaters",
+    "state": "structured",
+    "summary": "At battle-round start, when making a Blessings of Khorne roll, if Angron is destroyed you may spend a triple 6 to use Reborn in Blood instead of activating any Blessings at that round start. He is no longer destroyed and returns with 8 wounds in the Reinforcements step of your next Movement phase using Deep Strike. This is not an immediate set-up or a return from ordinary Reserves.",
+    "phase": [
+      0,
+      1
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "161a039ec24a1b295c962483425c72024773c719cf7fa0de649d9b811e9b6e2f",
+    "pinnedHash": "161a039ec24a1b295c962483425c72024773c719cf7fa0de649d9b811e9b6e2f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Angron",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "round"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "arrivals"
+      }
+    ]
+  },
+  {
+    "id": "relentless-carnage-world-eaters",
+    "state": "structured",
+    "summary": "At the end of either Fight phase, this Bloodthirster may select an enemy engaged with it and roll 8D6; each 4+ inflicts 1 mortal wound on that enemy.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "148b4518c8c960a957fd068fc819eb6e647d77ba2d339331a9bd3d038aa9973d",
+    "pinnedHash": "148b4518c8c960a957fd068fc819eb6e647d77ba2d339331a9bd3d038aa9973d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "relentless-rage-world-eaters",
+    "state": "structured",
+    "summary": "Friendly WORLD EATERS units’ melee attacks gain +1 Attack. This is the current Relentless Rage benefit, not the older charge-only Strength bonus.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 7,
+    "sourceHash": "99f58f2ee24f50508ef1c5343a04bcd10ac0fce3f99bd428b082dbff2bb8d182",
+    "pinnedHash": "99f58f2ee24f50508ef1c5343a04bcd10ac0fce3f99bd428b082dbff2bb8d182",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rend-and-tear-world-eaters",
+    "state": "structured",
+    "summary": "When this Exalted Eightbound unit makes melee attacks against a MONSTER or VEHICLE unit, improve those attacks’ Damage by 1 for that phase. This is not a bonus against every target.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 8,
+    "sourceHash": "6e57c60d0f0b9cc46540acb257161044a0dc1f4023e3b3bf7210e0e76bb0b207",
+    "pinnedHash": "6e57c60d0f0b9cc46540acb257161044a0dc1f4023e3b3bf7210e0e76bb0b207",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rush-to-the-fray-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly WORLD EATERS unit disembarks, it gains +1 to Charge rolls and its melee weapons gain Lance for that turn.",
+    "phase": [
+      1,
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "a64d5fc87fc4f51cf984e5c0efa7e5150aa3f8160472dbc58d86bf9a331e7cef",
+    "pinnedHash": "a64d5fc87fc4f51cf984e5c0efa7e5150aa3f8160472dbc58d86bf9a331e7cef",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "sanctified-in-slaughter-upgrade-butchers-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "TERMINATOR SQUAD upgrade only. Add 1 to that unit’s Objective Control.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 3,
+    "sourceHash": "906b5d0fef8577acbaa11285f4e086c46a4c1b4942ca8c4ed226a99c35394423",
+    "pinnedHash": "0669e129679bc590cbf7a310ff492f1a8bdd8bc4934a077633380eb7a81c391f",
+    "coreHash": "b2b8b807fcf5dfe1522150279e3dde74af4b5ec7cbd5ea2c75c1e6821ccd029f"
+  },
+  {
+    "id": "savage-exaltation-world-eaters",
+    "state": "structured",
+    "summary": "For this Maulerfiend’s melee attacks against a unit below Starting Strength, add 1 to Hit rolls; also add 1 to Wound rolls if that target is below Half-strength.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a25ba88bd7911a86bb461cf8e5e9748963d02cf157a6051065226146fa0efca0",
+    "pinnedHash": "a25ba88bd7911a86bb461cf8e5e9748963d02cf157a6051065226146fa0efca0",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "scorn-the-witch-vessels-of-wrath-world-eaters",
+    "state": "structured",
+    "summary": "In any phase when a friendly WORLD EATERS CHARACTER unit, excluding EPIC HERO units, suffers a mortal wound, it gains Feel No Pain 4+ against mortal wounds for that phase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "officialPage": 4,
+    "sourceHash": "84d354c4e6be48102a640251e462dec7b931626be63a2c14aa8ad6a544aa1a4b",
+    "pinnedHash": "14fa2ff6d18ae54e52e6c112be9744620867149c0a6d591b7b5e1583e364f3c4",
+    "coreHash": "9832eba510646870983fdb080996d44281d70dedb60815530f091f0fc93b08d0"
+  },
+  {
+    "id": "scuttling-walker-world-eaters",
+    "state": "structured",
+    "summary": "During this Defiler’s Normal, Advance or Fall Back moves, it may pass through non-TITANIC models and terrain, including enemy Engagement Range, but cannot end engaged. It automatically passes Desperate Escape tests during those moves. The permission applies while moving, not after the move.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "officialPage": 5,
+    "sourceHash": "7be551cca0c0586d7f02aba1d7a663117c5f5ce7686ef782d8cf11ebabf19d78",
+    "pinnedHash": "7be551cca0c0586d7f02aba1d7a663117c5f5ce7686ef782d8cf11ebabf19d78",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "skulls-for-the-skull-throne-berzerker-warband-world-eaters",
+    "state": "structured",
+    "summary": "In either Fight phase, just after a friendly WORLD EATERS unit destroys an enemy CHARACTER or MONSTER model, make a Blessings roll and activate one additional Blessing alongside those already active for the remainder of the battle round.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after",
+    "sourceHash": "d5879ae015fb21643d6b8c0bcc600bd2a73ebbb54d456d8d27c235f41d10c5d9",
+    "pinnedHash": "642e83476e1eb8665c07d69bd11207aa5ad89cf2cf793ad144f5850beb9daaf9",
+    "coreHash": "978f0e8070a4dfff3734733d32e116a51c818349495cbe24b3bd0eb48f703e92"
+  },
+  {
+    "id": "smash-through-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "In your Movement phase, before a friendly WORLD EATERS VEHICLE is selected to move, it may pass through terrain, ignoring its vertical distance, for Normal and Advance moves that phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "aeaad34a23259e029ce8511c108f29a90e7294e7d710cd0c08bf65934d9b2b70",
+    "pinnedHash": "51c8fd48707967f59756661751120cf844025c5920ea56ba51b64bb0134dee38",
+    "coreHash": "5bbe1142bd25de1c5d126aaf4b80bfd9ce09849d9c8800bb4a1d3e2728e30894"
+  },
+  {
+    "id": "strategic-slaughter-cult-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS bearer only. After both players deploy, redeploy up to three friendly JAKHALS and/or GOREMONGERS units. You may place them in Strategic Reserves regardless of the normal number already there.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "b3ca05643e1df1bf560589f61250cc45da4f2a02f2e55017a29f27231a99e35c",
+    "pinnedHash": "b26e117af6071ec7b5ddfb3efc3b40e289f357e559079141b12dde09ad5c4b95",
+    "coreHash": "292f2bc727c29fbfa90f4835674eb549fc8536c325baab19a8c9007200d71d68"
+  },
+  {
+    "id": "summoned-by-slaughter-khorne-daemonkin-world-eaters",
+    "state": "structured",
+    "summary": "Once per battle round, in any phase when the last model of any unit is destroyed, before removing it, select a friendly BLOODLETTERS unit in Reserves. If the destroyed model is a transport, resolve its passengers’ disembarkation first. Set up the Bloodletters wholly within 9″ of the destroyed model and more than 6″ horizontally from enemies, then remove that model. This brings an existing Reserves unit; it does not create or resurrect one.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "officialPage": 7,
+    "sourceHash": "337cbd267a9786477a4c5e9398d05bfac4a6cf0a0670761a4dafe54ad660217a",
+    "pinnedHash": "a4ee2f54045dc0b6a1f35939594e527507025372d3f1a8ee08293b9d6eec0738",
+    "coreHash": "14fd278502f5e89fc9d9985fa70bb8b4e30d65f860c4340a4d7be62f274126f4"
+  },
+  {
+    "id": "super-heavy-war-engine-world-eaters",
+    "state": "needs-summary",
+    "summary": "The imported provisional Super-heavy War Engine permits Normal, Advance and Fall Back moves through non-TITANIC models and low terrain, with an additional tall-terrain roll that causes Battle-shock on 1. Source review: it is explicitly borrowed from an Imperial Knight mechanic and does not fully define tall terrain or movement/end-position exceptions; confirm the Khorne Lord of Skulls wording.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "6538a2931ae9db9f27056e91d603364a5e5c7a6fb0c5fd58d1384630793d5896",
+    "pinnedHash": "6538a2931ae9db9f27056e91d603364a5e5c7a6fb0c5fd58d1384630793d5896",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "supreme-commander-world-eaters",
+    "state": "structured",
+    "summary": "If Angron is included in your army, he must be your Warlord.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "533727995466c99331389d8d5561d84b4c43a70b1f70aa24bd1341d442f16a9a",
+    "pinnedHash": "533727995466c99331389d8d5561d84b4c43a70b1f70aa24bd1341d442f16a9a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "swooping-predator-world-eaters",
+    "state": "structured",
+    "summary": "After this winged Daemon Prince makes a Normal move, you may select an enemy it moved over and roll 6D6; each 4+ inflicts 1 mortal wound on that unit.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "3f0916e13511f7fbb50dd236906817677321aa2786f77deab22c10510cb6f193",
+    "pinnedHash": "3f0916e13511f7fbb50dd236906817677321aa2786f77deab22c10510cb6f193",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "talons-of-butchery-upgrade-brazen-engines-world-eaters",
+    "state": "structured",
+    "summary": "MAULERFIEND upgrade only. That unit’s Maulerfiend Fists gain Cleave 2.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 2,
+    "sourceHash": "bf74ca7a7b3d185262267033290db467064d7793dda38331be3189c4a6297cef",
+    "pinnedHash": "2f62e55e2a202f154ce3b7bcce9abd78ee523d29d8184f05d728888423d09b78",
+    "coreHash": "2a45071227a21f21f5d6533bcd02aec9894658ee8fdf538b8994090d8f6cd6fd"
+  },
+  {
+    "id": "the-betrayer-world-eaters",
+    "state": "structured",
+    "summary": "At the end of your Charge phase, if Khârn’s unit is on the battlefield, unengaged and contains a Bodyguard model, make a Leadership roll for it. On failure, destroy one Bodyguard model in that unit.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "end",
+    "officialPage": 8,
+    "sourceHash": "c376d01872493688b964e226b60b82ca1a3271fdc63a08f76b5b4af6b9532f8e",
+    "pinnedHash": "c376d01872493688b964e226b60b82ca1a3271fdc63a08f76b5b4af6b9532f8e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "the-scent-of-blood-world-eaters",
+    "state": "structured",
+    "summary": "When this Maulerfiend declares a charge, add 1 to its Charge roll if an enemy below Starting Strength is within 9″, or add 2 instead if an enemy below Half-strength is within 9″. These are alternatives, not a cumulative +3.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "select",
+    "officialPage": 8,
+    "sourceHash": "e16e9a5ce4c8ba495f15318161dabb641eadb28736d412b28b0d9f7057c67cb4",
+    "pinnedHash": "e16e9a5ce4c8ba495f15318161dabb641eadb28736d412b28b0d9f7057c67cb4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "to-slake-its-rage-world-eaters",
+    "state": "structured",
+    "summary": "This unit can declare a charge after advancing.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "325c43fb241a2c6e2c6ec9966bcf6d123c5d4d2f3960f4f6bab27199012cb394",
+    "pinnedHash": "325c43fb241a2c6e2c6ec9966bcf6d123c5d4d2f3960f4f6bab27199012cb394",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "trail-of-destruction-brazen-engines-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly DAEMON VEHICLE is selected to move in your Movement phase, it gains MOBILE for that phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "officialPage": 2,
+    "sourceHash": "59c8d6129379c85eeb76c4fd619eeec19e7d3ca26d9b44e17e1eed6f84c9047f",
+    "pinnedHash": "57d058839dc48da5e7000a58ba031d938ce022719a28d33f2db808c93123f3de",
+    "coreHash": "57ea7c5d1ae16d57734103fefa4a8073f313bfeb61719d56ae85f7c98a295d67"
+  },
+  {
+    "id": "unleash-hell-goretrack-onslaught-world-eaters",
+    "state": "needs-summary",
+    "summary": "In your Shooting phase, choose a friendly VEHICLE within 6″ of this bearer, or its transport. After that vehicle shoots, an enemy it hit is intended to suffer -1 to Hit until your next Command phase. Source review: the effect has no hit gate and the transport exception is absent; confirm the exact selection, recipient and duration before use.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "cb69ab39932146f323761d92d5b7d7cc88598510cdfc4e9d63d00550e277beaa",
+    "pinnedHash": "42f76275f0fe39d141516e0d4735fcf37aa14a7bd932941d7a2a8f876e1ff791",
+    "coreHash": "601f3630eb2860fe9387072b8c04770e7b635a828eb24d1b4189c0877f09b5a5"
+  },
+  {
+    "id": "unleash-wrath-world-eaters",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Movement phase, choose an enemy set up on the battlefield within 12″ of this Defiler that phase. Either shoot at it if it is an eligible target, or declare a charge that must finish engaged with it. Choose one; a successful out-of-turn charge grants no Charge bonus.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "officialPage": 5,
+    "sourceHash": "c1cdaff7100ab3a0c4d85e38ebae73a2628066c3a17562d1df103377f6117274",
+    "pinnedHash": "c1cdaff7100ab3a0c4d85e38ebae73a2628066c3a17562d1df103377f6117274",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "unrelenting-advance-goretrack-onslaught-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, just after an enemy shoots, a friendly WORLD EATERS VEHICLE model hit by those attacks may make a Normal move of up to 6″. It cannot also be targeted by Fury Unleashed that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "after",
+    "sourceHash": "27471726b054d8d7a35c908f9baa781940c965505c0307b40cba81f1b36ba11b",
+    "pinnedHash": "b7829754fd1bea5577d7c86841bfe698698e4d2089b723c3505b2f9711095d6a",
+    "coreHash": "b0cdd420436df854ad41215632f106535ceaf5c7209d55844257e60cb15b04bc"
+  },
+  {
+    "id": "violent-demise-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "WORLD EATERS DAEMON bearer only. Its Deadly Demise activates on 2+ and has damage D3+1. This changes the bearer, not its whole unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "54813d5537c5b6eba7132de43e317e809bf4d2caf31600ab5ed7daf708aa7953",
+    "pinnedHash": "3b24963f9c6962f192e5fa307eba8dd59883c5c4ea86ef2b388445ca46318775",
+    "coreHash": "613bab10d91f97b666c7ec9d444f617357fdcd9b82583d03d39e030d781ddb46"
+  },
+  {
+    "id": "warp-stalkers-possessed-slaughterband-world-eaters",
+    "state": "structured",
+    "summary": "In your Movement or Charge phase, before the selected WORLD EATERS POSSESSED unit moves or declares a charge, its models may move through enemy models excluding MONSTERS and VEHICLES for that phase. They can pass through Engagement Range; only Charge moves may end engaged. Desperate Escape tests are automatically passed.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "before",
+    "officialPage": 7,
+    "sourceHash": "05d7d65e360dd9d3c3f16400a346bfbfc3c980056e3c6a7303e7d2fad9d4e51d",
+    "pinnedHash": "9fc9de6099418c34e0c77b342c44ff585562df6ee7317557c1cb00fd0e6dff3f",
+    "coreHash": "bf69c7d26ed315175cd8eed233bfef2b1d3cfad1660879e31b09b59229a9b92d"
+  },
+  {
+    "id": "wrath-beyond-reason-butchers-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, when an enemy targets a friendly TERMINATOR SQUAD, reduce the Damage of its ranged attacks against that unit by 1 until that enemy finishes attacking. This does not last the entire phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select",
+    "officialPage": 3,
+    "sourceHash": "8c043857aaff88c80f137e0ac9ee159e13280aacc9e46b22ce069cd5d5ad1709",
+    "pinnedHash": "9db3f8a006c2702ff3512afeab9892b62b961e3a007a1092accca296af9f18f5",
+    "coreHash": "dd6bb72f81b52ec0fa671409cd96719aa9bac8f26051200aa1cb425bb0a83ee5"
+  },
+  {
+    "id": "wrath-of-khorne-world-eaters",
+    "state": "structured",
+    "summary": "When a friendly WORLD EATERS CHARACTER unit, excluding EPIC HERO units, is selected to fight, choose Cleave 1 or improved Armour Penetration by 1 for only its CHARACTER models’ melee attacks that phase. Choose one benefit; Bodyguards do not receive it.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 4,
+    "sourceHash": "84acc0d7ea34f9d5c51c9fa4e7b053c05804cf636e0414624f4c79ab5eadb3e9",
+    "pinnedHash": "a044aeab072d812d927cc7a15625c9868ef8335283a270bdc45f93fb039151d4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "wrathful-presence-world-eaters",
+    "state": "structured",
+    "summary": "At battle-round start, choose one Wrathful Presence until the next battle round. • The Blood God’s Favour: while Angron is on the battlefield, re-roll up to six individual dice in a Blessings roll. • Overwhelming Wrath: an enemy within 6″ selected to Fall Back must pass a Leadership test or Remain Stationary that phase. • Driven by Ultimate Rage: friendly WORLD EATERS units within 6″ may re-roll melee Hit and Wound rolls of 1. Choose one option, not all three; the old ignore-modifiers version of Driven by Ultimate Rage is superseded.",
+    "phase": [
+      0,
+      1,
+      4
+    ],
+    "turn": "either",
+    "window": "round",
+    "officialPage": 7,
+    "sourceHash": "90486f198fd644abf8e27f39516bc20f4fdea2e077e3ef9cf4b3eb40f9c1f7b4",
+    "pinnedHash": "90486f198fd644abf8e27f39516bc20f4fdea2e077e3ef9cf4b3eb40f9c1f7b4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Angron",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "round"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  }
+]
