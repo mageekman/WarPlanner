@@ -1,0 +1,2315 @@
+[
+  {
+    "id": "a-chink-in-their-armour-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "After the bearer is set up as Reinforcements, its unit’s ranged weapons gain Lethal Hits until the end of your next Fight phase. This is an arrival trigger, not a permanent benefit.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a4748b2bd0820fddf3a4d3e5f19eb1b2636d86ed3146b00310e212e94b05b315",
+    "pinnedHash": "3d68d53443a339af3ab2dad61bb5cd5a986fc02163e0c5f4f7c1176c798a39f8",
+    "coreHash": "582d955347e5ea7ee20f16db21723a74df8cb0209fee181ef4088d1e9ca98bc5"
+  },
+  {
+    "id": "a-dark-network-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy arrives from Reserves in the opponent’s Movement phase’s Reinforcements step, select friendly ASTRA MILITARUM or GSC within 12″ of it, excluding MONSTERS/VEHICLES. That unit may make a Normal move up to 6″.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "3c67597975f1b306889fded737a47629a2fa2d5462e673a565c2e5c2fff4e9a0",
+    "pinnedHash": "0eecd3f87283795b268c8c6c79a21394b84025d49304776dfe7e0aba4bcfccf0",
+    "coreHash": "7a4be2376e5c275f2547916188b91611b8772f160c28325f93cca7a43b053407"
+  },
+  {
+    "id": "a-deadly-snare-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy declares a charge in the opponent’s Charge phase, select targeted GSC INFANTRY and roll D6: 1 does nothing, 2–4 inflicts D3 mortal wounds on that enemy, 5+ inflicts 3 mortal wounds.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "2589a97fa9d0e09b2bcbde2d53c2180e9455f034e3c9c9caf5cadacd01d73d73",
+    "pinnedHash": "32ca090e08488ee229d93dcfbcd951159775dbe3d4e8f1a4ee28fc4a686ef74b",
+    "coreHash": "817aa7f817bca4455dfcc88699b1cf85103fd81803cfbad2a2c24f982d03d0ba"
+  },
+  {
+    "id": "a-perfect-ambush-genestealer-cults",
+    "state": "structured",
+    "summary": "When a friendly GSC unit arrives as Reinforcements, its weapons gain Sustained Hits 1 and Ignores Cover until the end of your next Fight phase. This does not give the bonuses to units that did not arrive.",
+    "phase": [
+      1,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f1dcf403f04620dd92ccfb959a3a7580f3d22b9ebc891845487122448120cd18",
+    "pinnedHash": "f1dcf403f04620dd92ccfb959a3a7580f3d22b9ebc891845487122448120cd18",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "a-plan-generations-in-the-making-genestealer-cults",
+    "state": "structured",
+    "summary": "At the end of your Command phase, an objective you control within range of Neophytes stays yours until the opponent has greater Level of Control there at the end of a phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "79624106d60c86a58c8485a7f5d1c4e117026f875bace0e608f30d765f56a5c0",
+    "pinnedHash": "79624106d60c86a58c8485a7f5d1c4e117026f875bace0e608f30d765f56a5c0",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Neophyte-Hybrids"
+  },
+  {
+    "id": "acceptable-losses-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Shooting phase, select friendly ASTRA MILITARUM and one enemy engaged with friendly GSC units. The selected Astra unit may shoot that enemy this phase. After resolving those attacks, roll D6 for each GSC unit engaged with that enemy: each 5+ makes that GSC unit suffer D3+1 mortal wounds. The risk is to your cult units, not the enemy.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "62e764efa417885098d6e08552b154063d46b8f403998e7664f50ea13cf36194",
+    "pinnedHash": "4d0c80e642289a200bd0028d4172e19d46b6c7e12995b51644e33b5dd5603095",
+    "coreHash": "6f3c7ddf4db31ee55f0c4bfcc0cc0fbf971087f78138bd32f9ba524c96ce9fe0"
+  },
+  {
+    "id": "adaptable-fighters-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Adaptable Fighters. The import offers Sustained Hits 1 or Lethal Hits when the Jackals attack, without full current duration or weapon restrictions. Do not copy this onto ordinary Jackals.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "60473eccca34b6eeaad940445c2be090d8201e60c71b986a77dfed57003303e1",
+    "pinnedHash": "60473eccca34b6eeaad940445c2be090d8201e60c71b986a77dfed57003303e1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "adaptive-reprisal-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "GSC INFANTRY bearer only. Heroic Intervention targeting its unit costs 1CP less. This discount alone does not allow extra uses.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "715fda8d1ba37de6435662b1adde33a86bbf44bb6ae0a97fad7432c6ccd0fd97",
+    "pinnedHash": "2e37be269968a592aff118632d8a15cce3ad6c0eedac68fbadfd40bb9d95c631",
+    "coreHash": "36971865a21ef386f2c689c51bf57ae82cf4aaf9078fe640cc7a929f63657013",
+    "officialPage": 7
+  },
+  {
+    "id": "alchemicus-familiar-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle, when the Biophagus’s unit is selected to fight, use its Alchemicus Familiar: for the phase, models in that unit gain +1 to Wound against INFANTRY. Requires that equipment and affects only eligible attacks.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7cdc82784219aa86492ad1edff51627a09e34ef648526f09e471f35e9f27f819",
+    "pinnedHash": "7cdc82784219aa86492ad1edff51627a09e34ef648526f09e471f35e9f27f819",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Biophagus"
+  },
+  {
+    "id": "alien-majesty-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "ABOMINANT, BIOPHAGUS or PATRIARCH only. Enemy models in units engaged with the bearer’s unit lose 1 Objective Control, to a minimum of 1. This does not reduce OC to zero.",
+    "phase": [
+      0,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "53cc2c2c49a1620533f6f56337a5a7103234282693857f78a23ed0f03e129023",
+    "pinnedHash": "0db97bbd11fd26c22d064fb3825480578dc045f9cf2c6eca2e0b4a777be2f334",
+    "coreHash": "2d4388b80ed6fa85cd358b687f13d63e2d023cc7a020d6a997b9800a7fea88e2"
+  },
+  {
+    "id": "along-shadowed-trails-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "In any phase, after an enemy ends a move within 8″ of a Cult Ambush marker, select one affected marker and relocate it more than 8″ horizontally from all enemies. This rescues a marker from that movement trigger; it does not move a unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "032c92c2d908ec3c405acf639831ffdc5141f09c8e13824c871e268e6a652c89",
+    "pinnedHash": "f6f11ee44aa6fabde5211d39ab90da4019a4caff4aa1b6980a360d4d7b11bf56",
+    "coreHash": "a9e017e53796b4226ff28da6c62951ee3782a6bc850f000610bc1420478f8041",
+    "officialPage": 8
+  },
+  {
+    "id": "assassination-edict-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "The bearer’s unit gains +1 to Hit against CHARACTER units. Non-CHARACTER targets do not qualify.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cccdf1f36cfe1d7f8355315cc7ccfea84c82e60f89d953568613404149f96c6e",
+    "pinnedHash": "429983ad9b1633e3ee17526edbb78565b9df29c586cf82c9e6a43509d02f8655",
+    "coreHash": "fcf8b74bc8f62cc468b2b7e541f51e4a3aca869f84b7268d5980c188baa176f8"
+  },
+  {
+    "id": "assault-commando-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "The bearer’s unit re-rolls ranged Hit rolls in a turn in which it disembarked from a TRANSPORT. This does not grant a permanent re-roll or a charge permission.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "4903efe659735865fc68a4de661669c859700c3f7d428e194afea5e9fd60159b",
+    "pinnedHash": "3b25a60d94b081639d89262086f0263d3c7882abece2ef098031a99bf75fa853",
+    "coreHash": "1a703b7b1c66180800285a856ce64f65cc7596de0c787f247a100665a86b7224"
+  },
+  {
+    "id": "avenge-the-star-children-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy shoots in the opponent’s Shooting phase or fights in either Fight phase, target a friendly TYRANIDS CHARACTER unit it destroyed that phase, even though destroyed. For the battle, friendly GSC models gain +1 to Hit and Wound against that enemy unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e490f0c5631ea9da6898f0afb0eede14a21032d826d473e2f55d90177d8a6b66",
+    "pinnedHash": "263533281d4d59173271f635f166ad4dcb71ffdbe4ccc506650d6919ada18adf",
+    "coreHash": "199fe1a976ea6c8fdae468fa3559a0bfb3ba29e4171195cf385418ab750efba5",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 6
+  },
+  {
+    "id": "battlefield-analysis-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle round across your army, one Nexos may reduce a stratagem’s CP cost by 1 when it targets its own unit. Multiple Nexos do not each grant a discount that round.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7e3d5d6ff07e4d978b998309d3658705471d2ad18326bbdef98e6fc7bc16104d",
+    "pinnedHash": "7e3d5d6ff07e4d978b998309d3658705471d2ad18326bbdef98e6fc7bc16104d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 8,
+    "referencePage": "Nexos"
+  },
+  {
+    "id": "bio-horror-revelation-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "At the start of the opponent’s Shooting phase, select friendly ABERRANTS, BIOPHAGUS or PURESTRAIN GENESTEALERS. For the phase, enemies within 9″ selected to shoot take Leadership tests at -1; a failed unit suffers -1 to Hit only against your selected unit for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start",
+    "sourceHash": "0136d1bde931f4a61451614c200fe7b1684af4ae32d763a903f3495fe58cf49d",
+    "pinnedHash": "1718df67f0620e2e453a4a7c2de60cf2a025aee858183deb5897f3abc55b4f29",
+    "coreHash": "0513a2a6c7f16f522ad4653282de026142bfe3c0a2a9bbbe194d58ab5cda7e26"
+  },
+  {
+    "id": "bio-horror-disruption-genestealer-cults",
+    "state": "structured",
+    "summary": "While the Benefictus leads a unit, its ranged weapons gain Lethal Hits.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "62b137f23125f784c0c27d0db146ccfb002fb49a87f6fb4b55a36c5695ae415e",
+    "pinnedHash": "62b137f23125f784c0c27d0db146ccfb002fb49a87f6fb4b55a36c5695ae415e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Benefictus"
+  },
+  {
+    "id": "biological-warfare-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle, when the Biophagus’s unit is selected to fight, add 3 Attacks and 3 Damage to that model’s injector goad for the phase. This does not improve every model’s weapons.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "8c811fdd6ae2fdb81ca0375e62c529d3be7f60ed26d387c07e53d6369be766d0",
+    "pinnedHash": "8c811fdd6ae2fdb81ca0375e62c529d3be7f60ed26d387c07e53d6369be766d0",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Biophagus"
+  },
+  {
+    "id": "biomorph-adaptation-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "ABOMINANT or PATRIARCH only. Improve the bearer’s melee AP and Damage by 1. The whole unit does not receive those changes.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7010e150f227db5204068d79a798acbc2350e1cdfb7b28d61e4320e58e2ad064",
+    "pinnedHash": "3f4a0fda8ef40beda57a2b93e52adf824cc69c1cabb82ff6215df4c954eee8cf",
+    "coreHash": "4898d7b75151be841b953492c304e4be0c824ffdb15857749aa2cff797ba1a6e"
+  },
+  {
+    "id": "bodyguard-genestealer-cults",
+    "state": "structured",
+    "summary": "While the Locus leads a unit, other CHARACTER models attached to that unit have Feel No Pain 4+. The Locus itself and ordinary bodyguards do not receive this save from Bodyguard.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "5939ef0a483a809ab14f10d562c5a50f7807da3e0fd91ccb671e63e635344ffd",
+    "pinnedHash": "5939ef0a483a809ab14f10d562c5a50f7807da3e0fd91ccb671e63e635344ffd",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Locus"
+  },
+  {
+    "id": "brood-brothers-genestealer-cults",
+    "state": "structured",
+    "summary": "Brood Brothers Auxilia permits ASTRA MILITARUM allies up to 500/1000/1500 points in Incursion/Strike Force/Onslaught. A GSC model must be Warlord; allied Astra models lose Voice of Command. Exclude AIRCRAFT, COMMISSAR, EPIC HERO, MILITARUM TEMPESTUS, OGRYN, RATLING, TECH-PRIEST ENGINSEER and MINISTORUM PRIEST units. The official FAQ still allows Kasrkin Warrior Elite to select an Order. This is a detachment-specific allowance, not access to all Astra units in every GSC army.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "516c466f066f456a7e453f29d6f164b8227cfefcfafa6d59aca2bb9adb1ed372",
+    "pinnedHash": "516c466f066f456a7e453f29d6f164b8227cfefcfafa6d59aca2bb9adb1ed372",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 8
+  },
+  {
+    "id": "brood-surge-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy shoots in the opponent’s Shooting phase, if its attacks destroyed a model in the Metamorphs unit, that unit may surge up to D6″. Merely being targeted or losing a wound without a destroyed model is insufficient.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "a333332ba1ea67f5c08e95732aa60f1328251d0a54db77f2828257cb1a7901e4",
+    "pinnedHash": "a333332ba1ea67f5c08e95732aa60f1328251d0a54db77f2828257cb1a7901e4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 8,
+    "referencePage": "Hybrid-Metamorphs"
+  },
+  {
+    "id": "cartographic-data-leech-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "While the bearer is embarked in a TRANSPORT, when that transport is selected to shoot, improve BS by 1 only for ranged weapons it gains through Firing Deck for the phase. Its native weapons do not gain this bonus.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8ce60af46012f178105664b5d1f9156d935e2eafb9208d455b4fa882e4a9147e",
+    "pinnedHash": "32b96399192da62959f927dd421224f85546a0a91eef5d56d569a308b2297005",
+    "coreHash": "5aef699721d91437b7c9b632735a2a4527ae3faeb76b08a52dee39978e6f5c76"
+  },
+  {
+    "id": "claimed-for-the-cult-genestealer-cults",
+    "state": "structured",
+    "summary": "At your Command phase’s start, roll D6 for each controlled objective within range of at least one friendly unit with this ability. If any result is 4+, gain 1CP, subject to core gain limits. Multiple qualifying units at one objective do not add dice, and multiple successes still give only 1CP.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "6269c407076f5161795ce8a7bdde8f0eb7f27a1cafd9be1e0277b37319cb9f19",
+    "pinnedHash": "6269c407076f5161795ce8a7bdde8f0eb7f27a1cafd9be1e0277b37319cb9f19",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Acolyte-Hybrids-With-Autopistols"
+  },
+  {
+    "id": "cloaked-assassin-genestealer-cults",
+    "state": "structured",
+    "summary": "Enemy units cannot target the Sanctus with snap shooting attacks. Use the current snap-shooting restriction, not the historical wording that mentioned only Fire Overwatch.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "6d4ff83e7f7179aeb8923f665215c31e418876c748bcf490956f0f568d9cc2cc",
+    "pinnedHash": "6d4ff83e7f7179aeb8923f665215c31e418876c748bcf490956f0f568d9cc2cc",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 9,
+    "referencePage": "Sanctus"
+  },
+  {
+    "id": "close-range-shoot-out-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Shooting phase, select GSC MOUNTED or VEHICLE not yet selected to shoot. For the phase, its ranged weapons gain Lethal Hits against enemies within 18″.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8068676f803401de29c30f14b5ceb3d045b47cf856ff97950e13729eb15f1eaa",
+    "pinnedHash": "2686c7860ec1076a89b92326a20a5e3f99f27ca2f0b9144f22bfbbf9c21d15a3",
+    "coreHash": "d4640570e47a257ae8d4b7f8db8aa32522757d646f1c6fec7aecbb264ae59ae3"
+  },
+  {
+    "id": "contraband-munitions-heroes-of-the-uprising-genestealer-cults",
+    "state": "structured",
+    "summary": "KELERMORPH or REDUCTUS SABOTEUR only. This unit’s ranged attacks gain +2 Strength.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "285816aa25903340f97af5d1a2b759b167a885f9ec8770d5e88d71d965de1604",
+    "pinnedHash": "50ae2a2db61dd985e96c5377cacf92959d24da8bb5850d0d51b950c7d01909cb",
+    "coreHash": "fa9366f6e7933386585aa65691ce638599b15752b62db4d3fb9d0ac2bfb4722e",
+    "officialPage": 2
+  },
+  {
+    "id": "coordinated-trap-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase or either Fight phase, select two GSC units not yet selected to shoot/fight and one enemy; in Fight that enemy must be engaged with both. For the phase, both units can attack only that enemy if eligible, gaining +1 to Wound against it.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1a3c5a4ace672ac34e5224c2cbde110f4c446f27125d8ee8f4ca9464f0bbefba",
+    "pinnedHash": "e1072158286576b94aacada98969079b2625b43ce8544127518c7f56162f4b92",
+    "coreHash": "58dd314a5f22424c22487ec657ad1fdd2ee90e2b478f365eac97f92bc623363d",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "start"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "start"
+      }
+    ]
+  },
+  {
+    "id": "cosmic-horror-genestealer-cults",
+    "state": "structured",
+    "summary": "At the start of either Fight phase, each enemy within 6″ of the Patriarch takes a Battle-shock test.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "3da9621d48ffcec2d41154d5fbd6940d27da2f16dedc73caf53836f0938d2c2f",
+    "pinnedHash": "3da9621d48ffcec2d41154d5fbd6940d27da2f16dedc73caf53836f0938d2c2f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Patriarch"
+  },
+  {
+    "id": "crawling-horror-purestrain-broodswarm-genestealer-cults",
+    "state": "structured",
+    "summary": "At the start of the opponent’s Movement phase, select friendly PURESTRAIN GENESTEALERS. Reduce that unit’s detection range by 6″ for the turn.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "start",
+    "sourceHash": "c666a5ef40027c86878fbc56389f3e7447b9adef07c4a2a742df1dde8cb77b8c",
+    "pinnedHash": "08d6431133cb40d4b7d4df476f7949a86e1158f9f58c332f1bc2416ae8daee5a",
+    "coreHash": "3207f6d3c0dfd0c026d4e3922c3027018b97f21309b576672ae26dbbbef9a957",
+    "officialPage": 3
+  },
+  {
+    "id": "creeping-shadow-genestealer-cults",
+    "state": "structured",
+    "summary": "A Sanctus equipped with a cult sniper rifle, while unengaged, may make a Normal move up to 6″ after an enemy ends a move within 8″ in the opponent’s Movement phase. The rifle equipment is required.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "ed114886289bfa0d10090e04af84a5fb5d237b526e3787221447acb43e8a0762",
+    "pinnedHash": "ed114886289bfa0d10090e04af84a5fb5d237b526e3787221447acb43e8a0762",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 9,
+    "referencePage": "Sanctus"
+  },
+  {
+    "id": "crossfire-claw-of-ascension-achilles-ridgerunner-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Crossfire. The import marks a hit enemy for improved friendly AP but differs from the ordinary datasheet’s limit wording. Keep this variant separate pending current Combat Patrol verification.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "bfc1c65df450cf3f760812f228540054804e76834caf908a1501e60a643c0b6b",
+    "pinnedHash": "bfc1c65df450cf3f760812f228540054804e76834caf908a1501e60a643c0b6b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "crossfire-genestealer-cults",
+    "state": "structured",
+    "summary": "After Ridgerunners shoot in your Shooting phase, select one enemy hit. Friendly GSC attacks against it improve AP by 1 until turn end. The same enemy can be affected only once per turn across all Crossfire providers; multiple Ridgerunner units cannot stack it.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "31a3ed534d88a53c6881ed09b893d71f8a9cb3bf4fd62e90983760b63c10d9c1",
+    "pinnedHash": "31a3ed534d88a53c6881ed09b893d71f8a9cb3bf4fd62e90983760b63c10d9c1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Achilles-Ridgerunners"
+  },
+  {
+    "id": "cult-ambush-claw-of-ascension-genestealer-cults",
+    "state": "missing",
+    "summary": "Source review required: the Combat Patrol Cult Ambush import has no effect text. Do not substitute the ordinary Resurgence-point procedure without verifying the current Combat Patrol rules.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "076fdc0e399f17d817adefc3781b1fb87ec5ccb145b7664ffa9550cb3cc1c233",
+    "pinnedHash": "076fdc0e399f17d817adefc3781b1fb87ec5ccb145b7664ffa9550cb3cc1c233",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "cult-ambush-genestealer-cults",
+    "state": "structured",
+    "summary": "With GSC as Army Faction, start with 6/10/14 Resurgence points for Incursion/Strike Force/Onslaught. When a unit is destroyed, if every non-CHARACTER model has Cult Ambush, pay its table cost based on Starting Strength excluding attached Characters: Aberrants 5/10 cost 4/8; either Acolyte type or Metamorphs 5/10 cost 2/4; Jackals 5/10 cost 2/6; Neophytes 10/20 cost 3/6; Purestrains 5/10 cost 2/6. Do not invent costs for unlisted starting sizes. Add an identical full-strength replacement without Characters, with full wounds and refreshed One Shot weapons, in Cult Ambush. Place a 32mm marker more than 8″ horizontally from enemies, or no marker if impossible. Cult Ambush is Strategic Reserves: no Rapid Ingress; later ordinary Strategic Reserves arrival is allowed; no automatic round-three destruction. A non-AIRCRAFT enemy ending any move within 8″ removes a marker unless rescued. At the end of the opponent’s next Movement phase, each remaining marker may bring in one Cult Ambush unit, including in round 1: at least one model touches the marker, all others wholly within 3″, then remove that used marker. Enemy reserve-denial restrictions still apply. Unused markers remain even when no units await arrival.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f326e0f38a5bd7b596b7f8687bc49abc5aea49abde26ea9d5ca0af732396c7e1",
+    "pinnedHash": "f326e0f38a5bd7b596b7f8687bc49abc5aea49abde26ea9d5ca0af732396c7e1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "opponent",
+        "window": "end"
+      }
+    ],
+    "officialPage": 7,
+    "referencePage": "Atalan-Jackals"
+  },
+  {
+    "id": "cult-demagogue-genestealer-cults",
+    "state": "structured",
+    "summary": "While the Primus leads a unit, models in that unit gain +1 to Hit on their attacks.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "8f0d9921ff429adf3743ea2656a95a0aa6e909bbeb133c45967b2226faff165d",
+    "pinnedHash": "8f0d9921ff429adf3743ea2656a95a0aa6e909bbeb133c45967b2226faff165d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Primus"
+  },
+  {
+    "id": "cult-icon-genestealer-cults",
+    "state": "structured",
+    "summary": "With the Acolyte/Metamorph Cult Icon bearer present, in your Command phase return up to D3 destroyed models to its unit, or up to 3 instead if within range of a controlled objective. No CHARACTER models can return, and returned models’ previously fired One Shot weapons remain spent. Follow core placement rules.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "fc22c2a55c9fc277a79fb0a50716b5f23872eea28ce92b5667858f74c1ff594d",
+    "pinnedHash": "fc22c2a55c9fc277a79fb0a50716b5f23872eea28ce92b5667858f74c1ff594d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Acolyte-Hybrids-With-Autopistols"
+  },
+  {
+    "id": "cult-icon-neophyte-hybrids-genestealer-cults",
+    "state": "structured",
+    "summary": "With the Neophyte Cult Icon bearer present, in your Command phase return up to 3 destroyed models, or D3+3 instead if within range of a controlled objective. Do not return CHARACTER models or refresh spent One Shot weapons. This differs from the Acolyte/Metamorph icon.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d4ae1c114b08cc71b441f5de13ce8125843d38eb97f5ded648a3f764fc6b6184",
+    "pinnedHash": "d4ae1c114b08cc71b441f5de13ce8125843d38eb97f5ded648a3f764fc6b6184",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Neophyte-Hybrids"
+  },
+  {
+    "id": "cult-infiltration-genestealer-cults",
+    "state": "structured",
+    "summary": "At each player’s Command phase start, if the Nexos is on the battlefield, move one of your on-battlefield Cult Ambush markers up to 6″, only if it has not already moved this turn.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "2fe425e30f4140bb2576f4443398d5c6b3f648a5c6d58165355386fdf93f16e4",
+    "pinnedHash": "2fe425e30f4140bb2576f4443398d5c6b3f648a5c6d58165355386fdf93f16e4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Nexos"
+  },
+  {
+    "id": "cult-zealotry-claw-of-ascension-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Cult Zealotry. The import gives melee Wound re-rolls to a selected unit; complete current Combat Patrol targets and duration remain unverified.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "45ebf987c4da42b6ae8a72cfd317bc30a2d7c879f83c2f77144791e28f18dd3e",
+    "pinnedHash": "4c834112e96e01dbf1476a46ba1993d477582e76414e9eae79ab4b548c0e228c",
+    "coreHash": "27886a3ad30766262182e2f63b968151f4912bd215d144a9f82053895797b907"
+  },
+  {
+    "id": "darting-attacks-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Shooting or Charge phase, select a friendly TYRANIDS unit. It may shoot and charge despite Falling Back this turn for that phase. This targets the Tyranid ally, not a GSC unit.",
+    "phase": [
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "63e6bf46cbffef8def4b5bceac620b4d7c205234c38396c4a7eae4f9a925eef1",
+    "pinnedHash": "4826945705afab24ecb41737a1474bdf596af17e7478c79713bc7bbd40f552a0",
+    "coreHash": "485b1a8a583898c0052ab37ef505564141c40687952f920c4283e8528853902e",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          3
+        ],
+        "turn": "you",
+        "window": "act"
+      }
+    ],
+    "officialPage": 6
+  },
+  {
+    "id": "decoys-and-misdirection-genestealer-cults",
+    "state": "structured",
+    "summary": "If your army contains any Primus with this ability, after both armies deploy, redeploy up to three GSC units, optionally into Strategic Reserves regardless of its normal quantity limit. Multiple Primus do not multiply the three-unit allowance.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "e5a2c5f3877f98f38365bdc7d7c46af0396dda055d834575bbedbc1e6f360df8",
+    "pinnedHash": "e5a2c5f3877f98f38365bdc7d7c46af0396dda055d834575bbedbc1e6f360df8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Primus"
+  },
+  {
+    "id": "dedicated-to-the-end-claw-of-ascension-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Dedicated to the End. Its import has a 3+ fight-on-death effect with unit-based eligibility and removal after fighting/phase end. Do not replace it with an ordinary detachment’s different death sequence.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "76782308c3642c36ae5223b328c869075964761ede7f017da1fae3de47f90b14",
+    "pinnedHash": "715bbb511ee81d786262b5c08a5ba0ba6010ad061e8114ebc86b45fef3f200df",
+    "coreHash": "ba19f8d3e109d2bbeaef95840210c2a6e8df4cbb0ebf23910696eeb54b335035"
+  },
+  {
+    "id": "deeds-that-speak-to-the-masses-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "MAGUS, PRIMUS or ACOLYTE ICONWARD only. Start the battle with 2 additional Resurgence points. This is not a recurring gain.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "1aa2fe16e12bd61300582c3398668c32890b3cf7c340ab667cca672496ac4570",
+    "pinnedHash": "e3d9b7f7ec251ab337a025b57f86953207c9b0ee59229724073b02c70fd0f568",
+    "coreHash": "a22ae343bd6c8102b0805dd5b1d079129b0b6fc9e7261dc4f21c23533a78f684",
+    "officialPage": 8
+  },
+  {
+    "id": "deft-manoeuvring-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "After enemy target selection in the opponent’s Shooting phase, select targeted ACHILLES RIDGERUNNERS or ATALAN JACKALS. Their models gain a 4+ invulnerable save for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "f552aa724d6f31e09f1aa22eb1b96b050aa70d1fef1a458125605073b54f44dd",
+    "pinnedHash": "5605b5000f48a40a5a5307d3bffb8d21549b8def88f665678685ad70b0d46130",
+    "coreHash": "6ceb6944ebb621407a4966023b28f111f4d78064965793c3ffa3947f1f43752e"
+  },
+  {
+    "id": "demolition-run-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per turn, after Jackals end a Normal/Advance/Fall Back move in your Movement phase, select an enemy within 6″ and visible. Roll D6 per ATALAN JACKALS model in your unit; each 4+ inflicts 1 mortal wound, maximum 6. Count Jackals models, not attached Characters or Wolfquads.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "14c6a75e398db3776f9b89798c259fe634e272b3381b9a46bbe9167caba1643e",
+    "pinnedHash": "14c6a75e398db3776f9b89798c259fe634e272b3381b9a46bbe9167caba1643e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Atalan-Jackals"
+  },
+  {
+    "id": "denunciator-of-tyrants-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "MAGUS, PRIMUS or ACOLYTE ICONWARD only. The bearer’s unit gains +1 to Hit and Wound against CHARACTER units.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "47eb27d10ac5dfe1d8d352e8145c40112c80c4bd1fc8a956d982c9413bbf2c19",
+    "pinnedHash": "67cfc6cd477c276784403fc9a954e44f06b1c12e5d08200d186929ac30f8e222",
+    "coreHash": "175684f62d433c0d93ea686461d9c1de38a9facc25a60aec9322ec3a3c6f69a4"
+  },
+  {
+    "id": "devious-disguises-upgrade-xenocult-masses-genestealer-cults",
+    "state": "structured",
+    "summary": "NEOPHYTE HYBRIDS unit upgrade: reduce its detection range by 3″.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "2647f2a9359636f4dd22860c83481bac8edf2b81850d36d515f81d6b03da2e1a",
+    "pinnedHash": "e410a3ea5c559c8e088fb92b80978ee5ac46bca3d6587bd8bd49f5fd4c750d91",
+    "coreHash": "50f59d9b60a84126147e17ddfb41d5e69c174e6a3b480bf71c5e2f00e91b3924",
+    "officialPage": 4
+  },
+  {
+    "id": "devoted-crew-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "After enemy target selection in the opponent’s Shooting phase or either Fight phase, select a targeted GOLIATH ROCKGRINDER or GOLIATH TRUCK. Subtract 1 from incoming attack Damage for the phase, applying core minimum-Damage rules.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "4b7ddc185f0c5c6f5ce6d7a3a81a2ce54eecb5dc36b5197e542de2f3bb469c0a",
+    "pinnedHash": "df954c91ca116e06516a97280bf88364d51e39d655bae7a39e6ba26e0f523e03",
+    "coreHash": "483a76901049758e20e18f55834f5ab598f2a989fa4877b1948d991e2d943305",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "divine-imperative-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "When friendly GSC within 12″ of friendly engaged TYRANIDS declares a charge in your Charge phase, add 1 to the charge roll. Optionally re-roll that charge roll, but then it must end engaged with an enemy engaged with that friendly Tyranid unit.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "19e6809b500d28a251fce8af9f2e24acba8f2781d446f239c2e82bf9024d91a6",
+    "pinnedHash": "1a29f8319f689195f88bc91d588c056301af6b755981756df00946518d73b931",
+    "coreHash": "00adc0d1033dc0f9a1f5980d73a0dc2f51ba1dd196b4717187e15ad2c8900158",
+    "officialPage": 6
+  },
+  {
+    "id": "encircling-the-prey-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, select unengaged GSC MOUNTED or VEHICLE wholly within 9″ of a battlefield edge and remove it into Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "5a8c7e6077ff40d9cf57a3f8349594d6dc360d41837fb2d37b228fb8dc9ceb61",
+    "pinnedHash": "93ea270ffde06405eb41fdbafdf2512cbce597d45d74d2639aae589aca28dea5",
+    "coreHash": "9e3fe59885088768870576f5db52765fe341ec5304aef70308ec3ddb85e2532d"
+  },
+  {
+    "id": "enemy-within-genestealer-cults",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, friendly unengaged PURESTRAIN GENESTEALERS may enter Strategic Reserves. The detachment’s PURESTRAIN tag prevents combining it with another PURESTRAIN detachment.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "9d27e366523c21b6b93ca0d7784748f3df478d347b06b843522a4475353695b1",
+    "pinnedHash": "9d27e366523c21b6b93ca0d7784748f3df478d347b06b843522a4475353695b1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 3
+  },
+  {
+    "id": "enraptured-damnation-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "GSC bearer only. Enemies cannot use Fire Overwatch to shoot the bearer’s unit.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "226aeb937f7f821391b2b814074310e216afd0035f1a3606b226935b7d729809",
+    "pinnedHash": "9b44a36203a062e395457b79b1df82d6f213c9fce13f4c9fe2c70dadec6b9c9c",
+    "coreHash": "051971fc498efcaea32a2d769e33f4fc10d3032c542c06133e455f6eec33a678",
+    "officialPage": 5
+  },
+  {
+    "id": "evasive-vanguard-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "In any phase, after an enemy ends a move within 8″ of your Cult Ambush markers, before their removal, select one affected marker and relocate it more than 8″ horizontally from every enemy. This rescues the marker; it does not bring in a unit immediately.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "da8212540d14203b7eb61330640e6e87057e79ea2ec93b541a1da34fff628097",
+    "pinnedHash": "5a3762f19124ca79f5fe52cac1fdd22eaa998b950c8ef3ba8a6ac6c628e95037",
+    "coreHash": "c5557b1a549cb3548811d9a76f4561b2cf2294f459adb5dd274bd8531f90fbf5",
+    "officialPage": 7
+  },
+  {
+    "id": "eyes-of-the-cult-xenocult-masses-genestealer-cults",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select friendly NEOPHYTE HYBRIDS within a terrain area. Enemies within that same terrain area gain +6″ detection range. The checked supplement states no separate expiry; do not invent one.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "5a223c532b48bc25f6a1524eeafccce5f62e179b78b129c3f5ecf72c88670039",
+    "pinnedHash": "1a99b0d9cbbfd02de708af0fa6d89b2067c27ca2ab3e624964384651858ecf75",
+    "coreHash": "ed30e02cb403946505b2bb4c9ae3961cbb732e5d026c866ca1f61765bff78b5c",
+    "officialPage": 4
+  },
+  {
+    "id": "fanatical-hail-xenocult-masses-genestealer-cults",
+    "state": "structured",
+    "summary": "When friendly NEOPHYTES are selected to shoot in your Shooting phase, select one enemy. Their ranged attacks against that selected enemy can re-roll Hit rolls. Other targets do not gain the re-roll.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "3c579d5f016cd22519eb239d045fa10ca1e202695c61e1d8fb152055eea2dc2d",
+    "pinnedHash": "6cf0dd109d11510dd4b88c24fd250bdca38bbd816fdc742be1002d855e482508",
+    "coreHash": "4190aee24fc019543b5eabc5ffdaa9b94d3c54aeb8f32243176813add71e1a4e",
+    "officialPage": 4
+  },
+  {
+    "id": "fire-support-genestealer-cults",
+    "state": "structured",
+    "summary": "After the Truck shoots in your Shooting phase, select one enemy it hit that phase. Friendly models that disembarked from that specific Truck this turn re-roll Wound rolls against that enemy for the phase. Being nearby or disembarking from a different transport is insufficient.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "485dcab2b77d2cff197d04e575d52ac93b5bf3f73edecbe331a5731116ebe32b",
+    "pinnedHash": "485dcab2b77d2cff197d04e575d52ac93b5bf3f73edecbe331a5731116ebe32b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Goliath-Truck"
+  },
+  {
+    "id": "fire-point-commander-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "GSC INFANTRY bearer only. Fire Overwatch targeting the bearer’s unit scores hits on unmodified 5+. This does not grant extra stratagem uses.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "2b1b127f1fe14442b5361e1a78411fb976d3e44cce30ca954498f3b1f67113d8",
+    "pinnedHash": "204e9752b011e61a204d85c6c28205ae8adb3c52be9d2d197af30cc236aaa316",
+    "coreHash": "dbc42485027524d060c7dc9e59195b3f0be98890793ef04c7537a318cf633e92"
+  },
+  {
+    "id": "flare-launcher-genestealer-cults",
+    "state": "structured",
+    "summary": "With a Flare Launcher bearer present, its Ridgerunner unit gains SMOKE and may be targeted by Smokescreen for 0CP. Normal use limits and eligibility still apply.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "b29bee184c483521118d51f2a1f5be982aeaced63fd9d6be4dd41e16afa7b9b1",
+    "pinnedHash": "b29bee184c483521118d51f2a1f5be982aeaced63fd9d6be4dd41e16afa7b9b1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Achilles-Ridgerunners"
+  },
+  {
+    "id": "frenzied-devotion-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "In either Fight phase, select ACOLYTE HYBRIDS, HYBRID METAMORPHS or NEOPHYTE HYBRIDS not yet selected to fight. For the phase, non-CHARACTER models’ melee weapons gain +1 Attacks, improved Weapon Skill by 1 and Hazardous. Attached Characters receive none of these weapon changes, including Hazardous.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "4f2342d5a607a8f53e9897dae7d5c9a900637a6c151bfae8204d9f28f15174b4",
+    "pinnedHash": "957d909e0377fac480fd15c6cc1caab5b7fc9a57294df4ffda54d0f18fd222c2",
+    "coreHash": "a951a40092ac2c28f65313246c47c67a082d3ab638b520334ec27a1aedc5506b"
+  },
+  {
+    "id": "gene-sires-reliquant-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "MAGUS, PRIMUS or ACOLYTE ICONWARD only. Re-roll Battle-shock tests for the bearer’s unit.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0f8260d4c3f693d5ee8cd572b34054af6f0efc4122b9a1091b8d8f0b5ecd5145",
+    "pinnedHash": "5c923aab5ec8c11e354cd91cd3607b37938bc6c7303f26de4be4acb2f2e2d040",
+    "coreHash": "b48c25063061c72151efb5998f9ad9f8068c8bad1485e2b5a55f35c98f5b9c87"
+  },
+  {
+    "id": "gene-tailored-toxins-heroes-of-the-uprising-genestealer-cults",
+    "state": "structured",
+    "summary": "LOCUS or SANCTUS only. Add 1 Damage to that model’s attacks, not the whole unit’s attacks.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "424b74878f038586185780de30e8853d4cc3556d0197e00933ee4f7ed2c49528",
+    "pinnedHash": "dcefea01d719df39b0c655f1a1823c97637aad05b24054590127e1fffbd7bb21",
+    "coreHash": "96f38c4c0adb821861c2cba4bc527a4325ee8d15a0d71caea6d6dc1e12af9e75",
+    "officialPage": 2
+  },
+  {
+    "id": "gene-twisted-muscle-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "In either Fight phase, select friendly ABERRANTS, BIOPHAGUS or PURESTRAIN GENESTEALERS not yet selected to fight. Their attacks gain +1 to Wound against MONSTERS/VEHICLES for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "80666d333bd1e852bd85f655e917e6343c8c3cb9c83f5d63b27d2cc6f8ef152f",
+    "pinnedHash": "b221928742d8be0b1611b59d2525bc151bb35e73308c37ba26fe3a6e7f341024",
+    "coreHash": "0a57edd7614eb0bf044a440e344619d2c571ae1d6f6c9c8b2196a5f558250595"
+  },
+  {
+    "id": "grinding-line-breaker-genestealer-cults",
+    "state": "structured",
+    "summary": "Enemies other than MONSTERS/VEHICLES Falling Back from Engagement Range of this Rockgrinder take Desperate Escape tests for all their models; subtract 1 if that enemy is Battle-shocked.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "a947549851c8c5c52694a207d9c021b96a8e9303e67bd1fc2faddbded2538dc2",
+    "pinnedHash": "a947549851c8c5c52694a207d9c021b96a8e9303e67bd1fc2faddbded2538dc2",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Goliath-Rockgrinder"
+  },
+  {
+    "id": "guerrilla-warriors-claw-of-ascension-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Guerrilla Warriors. The import grants shooting/charge permissions after Fall Back but lacks complete current turn-duration and target restrictions. Do not apply it to ordinary units.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "11672658e9679c7f60d88b46b0a8215635783da2113dd5d980c1d4d070af7874",
+    "pinnedHash": "1f326847106ffad96ee66ca091895d4efffca4b63397d749ab00775f9f6d3951",
+    "coreHash": "721e0176b7dce2a88e1e4b8d934fb6f96a7af472a2c6d2321b7182ab859b4bd9"
+  },
+  {
+    "id": "heavy-munitions-claw-of-ascension-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Heavy Munitions. The import improves Attacks, Strength and AP of Achilles missile launchers by 1, but current variant-specific equipment and scope need confirmation.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "cf6a692cc87882f17dfc3758edaa1d743ddf53f3638a18d1065c0c4513a31186",
+    "pinnedHash": "cd085e75465d9a0a9be17d7117b9d2d5bc0a0d5433e22083ca723a94accee50d",
+    "coreHash": "e27596bed554a8ad5a0b5ae523ec5c47a0f1c2b53dbbf8d4fba2867c40c94683"
+  },
+  {
+    "id": "heroic-fusillade-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per turn across your army, after one Kelermorph shoots, select one INFANTRY unit hit by those attacks to take a Battle-shock test. Multiple Kelermorphs do not each trigger it that turn.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "12f481981a48d71eeb96c0b5cb835975103ac14932da995c4de685cffe1b8ea5",
+    "pinnedHash": "12f481981a48d71eeb96c0b5cb835975103ac14932da995c4de685cffe1b8ea5",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Kelermorph"
+  },
+  {
+    "id": "hordes-of-the-faithful-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Command phase, friendly NEOPHYTE HYBRIDS within a terrain area heal 3 wounds under the current healing rules. Preserve this wording rather than inventing a Cult Icon return count. This detachment has HOSTS and cannot combine with another HOSTS detachment.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "4c1607e0c797f0b103082dbd3c47c552bd8da12eb45f3c02d2391944c14d919f",
+    "pinnedHash": "4c1607e0c797f0b103082dbd3c47c552bd8da12eb45f3c02d2391944c14d919f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 4
+  },
+  {
+    "id": "hulking-bodyguards-genestealer-cults",
+    "state": "structured",
+    "summary": "While a CHARACTER leads the Aberrants, incoming attacks suffer -1 to Wound if Strength exceeds their Toughness. This is a bodyguard ability requiring an attached Character, not an aura or an independent Abominant bonus.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "26bddbfa5e966640b76dca1cf802998dc3fd0edd95120e4f1cd4a67bf6970ffb",
+    "pinnedHash": "26bddbfa5e966640b76dca1cf802998dc3fd0edd95120e4f1cd4a67bf6970ffb",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Aberrants",
+    "leadingUnitRequired": false,
+    "requiredLeaderKeywords": [
+      "Character"
+    ]
+  },
+  {
+    "id": "hyper-metabolic-vigour-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "In either Fight phase, select friendly ABERRANTS, BIOPHAGUS or PURESTRAIN GENESTEALERS not yet selected to fight. For the phase, their Pile In/Consolidation moves can be up to 6″ and need not finish closer to the nearest enemy model if they finish as close as possible to the nearest enemy unit. Other core restrictions still apply.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b093659c5657b61d506057e8f0fe372df338e1295d827b93fb24b3c6929b768f",
+    "pinnedHash": "744ed9b29f83b399c4a6ea3e50c0bb0aa7aafc3c6e8f2e0e2aab0e6433164c44",
+    "coreHash": "9f71604a1d6e91e9d9eb7e649d02c6982f7faff76bfd1774660e83812ad5d26f"
+  },
+  {
+    "id": "hyperferocity-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "In either Fight phase, select GSC not yet selected to fight. Re-roll Wound rolls of 1 for the phase, or re-roll Wound rolls instead against an enemy within 6″ of friendly TYRANIDS. The distance is from the enemy target to the Tyranids.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0411d9db788a5e3b8f443018b38af7a96aff69aa3e28f6cfefac8806ed7d63ad",
+    "pinnedHash": "aa9623e459789f8ceca406c6bba3549310a1cefc35c93288ce80cbf3c2dd5185",
+    "coreHash": "db6b91a86d507d06ee1d9fe6bf149ad41d3d3af8d62f29bfea45ee0e39db7b46",
+    "officialPage": 6
+  },
+  {
+    "id": "hypermorphic-fury-genestealer-cults",
+    "state": "structured",
+    "summary": "Friendly ABERRANTS, BIOPHAGUS and PURESTRAIN GENESTEALERS units gain +1 to Charge rolls. If such a unit charged this turn, add 1 Attacks to its melee weapons for the Fight phase. Other unit types do not gain these bonuses.",
+    "phase": [
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "16ce0d4c825b69ac49ddec77e35af8330fa16dbf09d8a23fd846956b623fcf98",
+    "pinnedHash": "16ce0d4c825b69ac49ddec77e35af8330fa16dbf09d8a23fd846956b623fcf98",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "hypersensory-abilities-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per turn, in the opponent’s Movement phase, after an enemy ends a Normal/Advance/Fall Back move within 8″ of an unengaged Kelermorph, it may shoot that enemy as if your Shooting phase, only if eligible, then make a Normal move up to D6″. It cannot embark as part of that move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "22d56b17e8e1393a090be8e9ea753cdb3e2490aa4449146de51f882ba9ddef73",
+    "pinnedHash": "22d56b17e8e1393a090be8e9ea753cdb3e2490aa4449146de51f882ba9ddef73",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 8,
+    "referencePage": "Kelermorph"
+  },
+  {
+    "id": "in-the-shadow-of-iron-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "In any phase, after an enemy ends a move within 8″ of your Cult Ambush markers, select friendly ASTRA MILITARUM VEHICLE and one affected marker. Relocate it more than 8″ horizontally from all enemies and wholly within 6″ of that vehicle. This is not a general movement permission for the vehicle.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b6ee61bad43f06b443e3631c096a692a4413281a55b60425ccc83fc46108b450",
+    "pinnedHash": "02c836ce9641610e0905238556e00fc123a3c68030f587cd1adb7661fd24f78b",
+    "coreHash": "a09b7dc5551a562462798825a929937a55f61faf4bad431ba1da2bbc1b8f876c"
+  },
+  {
+    "id": "incendiary-inspiration-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "MAGUS, PRIMUS or ACOLYTE ICONWARD only. The bearer’s unit can charge after Advancing.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5a7842e06aaf128eee3a0462afef1edb1b1d1abf6e5491dbfc7fcb587132248f",
+    "pinnedHash": "8c0e919b4d594bb399aca0e6b7a3145729896a8094201981dd114ff6fbf6296d",
+    "coreHash": "19195a0fa85159537ffe7a792f6af1ea1f266f311b47ce91908523972bc9ee54"
+  },
+  {
+    "id": "industrialised-destruction-genestealer-cults",
+    "state": "structured",
+    "summary": "Hand-flamer Acolytes re-roll Wound rolls of 1 on attacks. Against an enemy within objective range, they can re-roll Wound rolls instead.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "dc9a7de01104813fe82467147604000f31b6fb7190cd6ee7589c4146363e85d7",
+    "pinnedHash": "dc9a7de01104813fe82467147604000f31b6fb7190cd6ee7589c4146363e85d7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Acolyte-Hybrids-With-Hand-Flamers"
+  },
+  {
+    "id": "inhuman-integration-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "GSC bearer only. Its unit’s weapons gain Sustained Hits 1 against enemies within 6″ of friendly TYRANIDS. Nearby Tyranids must be close to the enemy target, not merely the bearer.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "574f2a476f1817e6e23cbdf0daf6d3b15a3417133e79d8261b2044eee345a848",
+    "pinnedHash": "244bae3b83ac10d4432cffc851cedc43e03cec4b4ecfb144a2c112d001e1a46b",
+    "coreHash": "f489ecf1b16a77d2e376be177096bd46b8c233b1312adedb28b5985358c1db3f",
+    "officialPage": 5
+  },
+  {
+    "id": "inhuman-reactions-purestrain-broodswarm-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy ends a move within 8″ of friendly unengaged PURESTRAIN GENESTEALERS in the opponent’s Movement phase, those Purestrains may make a Normal move up to D3+3″.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "be79515bddc1d8cb98accf66f454f8c83e3bb498f0c95a420b9be32c256cb387",
+    "pinnedHash": "9a9459560b593071fc49b6e8cf857573a5fac429e59695ca724a05505087f696",
+    "coreHash": "3fa98de3c59204ee72b4b328c99a22d9037ccd7263f70a2aa6f735502f1efa98",
+    "officialPage": 3
+  },
+  {
+    "id": "inspired-to-greatness-xenocult-masses-genestealer-cults",
+    "state": "structured",
+    "summary": "MAGUS or PRIMUS only. This unit’s attacks may re-roll Damage rolls. This is not a Wound re-roll or a fixed Damage increase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "3d7c9fee885c8610590d69c7234918777c3941987a7a963e579ac269a20c2378",
+    "pinnedHash": "eb7a1f6a30a502b5a5cdb343bc63783243ceb6d8bff95227a9023d2797051c85",
+    "coreHash": "702870ccba9354e77c920fbc54dd4402011b03a77bc1c668c8e826d7012db6be",
+    "officialPage": 4
+  },
+  {
+    "id": "integrated-tactics-genestealer-cults",
+    "state": "structured",
+    "summary": "When friendly ASTRA MILITARUM is selected to shoot in your Shooting phase, it may mark one enemy within 18″ and visible. That Astra unit can attack only that enemy if eligible for the phase. Friendly GSC ranged attacks gain +1 to Hit against that marked enemy for the phase. The target lock is the price of the benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "204acdfdda17f2f15464b411aeef89284b20d8f4ed8df217560320aae0c55587",
+    "pinnedHash": "204acdfdda17f2f15464b411aeef89284b20d8f4ed8df217560320aae0c55587",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "killer-reputation-genestealer-cults",
+    "state": "structured",
+    "summary": "Friendly KELERMORPH, LOCUS, REDUCTUS SABOTEUR and SANCTUS models gain KILLER. KILLER models re-roll Hit and Wound rolls of 1. This does not turn all accompanying bodyguards into KILLER models.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ea82dcd39be1675f54addce1cd1a6621ee24544fc40826f753cc3672ad9b0157",
+    "pinnedHash": "ea82dcd39be1675f54addce1cd1a6621ee24544fc40826f753cc3672ad9b0157",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 2
+  },
+  {
+    "id": "living-up-to-legend-heroes-of-the-uprising-genestealer-cults",
+    "state": "structured",
+    "summary": "After a friendly KILLER unit attacks in your Shooting phase or either Fight phase and destroys an enemy unit or CHARACTER model, visible friendly Battle-shocked GSC units within 12″ of that KILLER unit cease to be Battle-shocked.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "03a2d00d62fcca0f6117d67d3ed670569c31476bf3e8ea4e4fe15d691b71c4f5",
+    "pinnedHash": "f51883fa118f3690583e66b73ee120760c56a7db33786f7ece6cc267da92e545",
+    "coreHash": "cf47d36023991b3674ea3729cb83b2f0eadf8e58cb0d3782f10a49d360c39c96",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 2
+  },
+  {
+    "id": "loyal-to-the-end-heroes-of-the-uprising-genestealer-cults",
+    "state": "structured",
+    "summary": "When an enemy targets friendly KILLER in either Fight phase, select that unit. Each KILLER model destroyed before the unit has been selected to fight rolls D6: on 1, the attacking enemy suffers 1 mortal wound; on 2+, keep the model until the unit fights or the phase ends, whichever is first, then remove it. Do not replace this with an after-attacker death sequence.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "5e4b0d39fdb13576853c90c55e2f27ad4d6896d05070f7d9bb961dbb3be0d3fa",
+    "pinnedHash": "4bc9572433aced92847612e0a5c7d8c744fcf6b0d1ea7ab8609f0723b6b12e0e",
+    "coreHash": "19552bafaf834fd7a143b0d267cab5707c861f3ae86d47677572c93b8f9b2999",
+    "officialPage": 2
+  },
+  {
+    "id": "lurk-and-strike-purestrain-broodswarm-genestealer-cults",
+    "state": "structured",
+    "summary": "When friendly PURESTRAIN GENESTEALERS are selected to Fall Back in your Movement phase, that move does not prevent them charging this turn. This alone does not permit shooting.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "26547bf18395a5ccfc43d5d206cb0bcc54cc6fd69a02197f7bf4d54a400be7c5",
+    "pinnedHash": "ee7669832dedb4c55af15376d30f1c12416f56540e4018dd77f4c1b09ad710ac",
+    "coreHash": "39d0a433f95c8ef8715eb0612ad34ddf37fd010be00769dc1009f16918dbd2dd",
+    "officialPage": 3
+  },
+  {
+    "id": "lying-in-wait-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "In the opponent’s Movement phase, select GSC BATTLELINE in Cult Ambush. When arriving through a marker this phase, it may deploy wholly within 6″ of that marker and outside enemy Engagement Range. Enemy reserve-denial rules still apply.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "6d411a568a5366f0ef5a85f7f7a52f70dec44f6fb2c0cb26144ed5923de4cbf4",
+    "pinnedHash": "377613b2c9cb8b19f89b64878a73d0e1b1c6b88a47b6c55d9f90f0735d462281",
+    "coreHash": "7d2eaf3b2eb3bf0efa6a3305f4380c9a454b956c7e4f4baf016bc75a1d53ce9a"
+  },
+  {
+    "id": "mark-of-the-star-children-upgrade-purestrain-broodswarm-genestealer-cults",
+    "state": "structured",
+    "summary": "PURESTRAIN GENESTEALERS unit upgrade: add 1 Toughness, set armour Save to 4+, and add 1 Strength to melee attacks. This does not give a 4+ invulnerable save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "424a7aa9aff93f5259b29d78e3fd2517cd6efe5b50f3e0db3d793162af40c9c4",
+    "pinnedHash": "6664df1354d3fa2e6af70deb07dcb65e4b70a61fecf283741192b13d4b2a99b4",
+    "coreHash": "1ec6c0fa3a22a7ec29bc05d280bbf0a84bdfb0b37d6674feb726ffca56ceb8d8",
+    "officialPage": 3
+  },
+  {
+    "id": "martial-espionage-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "GSC INFANTRY bearer only. Once per turn, when friendly ASTRA MILITARUM INFANTRY or MOUNTED within 9″ is selected to shoot, improve that selected unit’s ranged AP by 1 for the phase. The bearer’s own GSC unit is not the recipient.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "b3d3ca934a2996df49b25f5dc933587c07caf6cebead6540d8d023a83cfb6f50",
+    "pinnedHash": "240a10070010a2202aeb41858ecd7214800f0e1c48562f08e27397dbf9af126d",
+    "coreHash": "ff4a1b990d94280a1c49e9dd4c0fb0344b2cae235d16a51aa5a17156c0c402b7"
+  },
+  {
+    "id": "master-outrider-genestealer-cults",
+    "state": "structured",
+    "summary": "After the Alphus’s unit shoots in your Shooting phase, if unengaged, it may make a Normal move up to 6″. If it does, it cannot charge for the rest of the turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "42567c4215f8cc330aa4a42b20ee03553cbc62bc8e5965c350d9cc5693b4b835",
+    "pinnedHash": "42567c4215f8cc330aa4a42b20ee03553cbc62bc8e5965c350d9cc5693b4b835",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Jackal-Alphus"
+  },
+  {
+    "id": "master-outrider-shanus-daskovian-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Shanus’s Combat Patrol Master Outrider. The import contains both an unspecified Normal move and a 6″ Normal move in sequence. Do not turn that into two moves or silently copy the ordinary Alphus rule.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8eaa52a0370f3a202a183b495127a5197736c169148ca81c41dc44fb7674696e",
+    "pinnedHash": "8eaa52a0370f3a202a183b495127a5197736c169148ca81c41dc44fb7674696e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "might-from-beyond-genestealer-cults",
+    "state": "structured",
+    "summary": "While the Patriarch leads a unit, its melee weapons gain Devastating Wounds.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f3a914d307e6fb11d8ef1afa37debcc7ea5f0ee62e04052f820fc1900324931b",
+    "pinnedHash": "f3a914d307e6fb11d8ef1afa37debcc7ea5f0ee62e04052f820fc1900324931b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Patriarch"
+  },
+  {
+    "id": "mind-control-genestealer-cults",
+    "state": "structured",
+    "summary": "At the start of the opponent’s Shooting phase, one PSYKER in your army with Mind Control may select an enemy within 18″ and roll D6: 1 inflicts D3 mortal wounds on that Psyker; 2–5 gives the enemy -1 to Hit for the phase; 6 also gives it -1 to Wound for the phase. One user across the army, not every Magus.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start",
+    "sourceHash": "03969dee6d1748dbcb8acf085457bc5755097b14fa08639192ddd90aef2fea9c",
+    "pinnedHash": "03969dee6d1748dbcb8acf085457bc5755097b14fa08639192ddd90aef2fea9c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Magus"
+  },
+  {
+    "id": "mutagenic-regeneration-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "ABOMINANT, BIOPHAGUS or PATRIARCH only. In each player’s Command phase, one model in the bearer’s unit regains 1 lost wound. This does not heal every model or return destroyed models.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0ac5c4a8f323d968b0f935f79f1ea136e853a2f25ee1779f446737e541f8a58d",
+    "pinnedHash": "5b02acad5582005ce923764752177d317d13bd0d2796e199396b2b24465199b7",
+    "coreHash": "cfa366d8a4b4b375d7896b91c73b97292c9fe8258be2f76b29ea86bba2c42af0"
+  },
+  {
+    "id": "nexus-of-devotion-genestealer-cults",
+    "state": "structured",
+    "summary": "While the Iconward leads a unit, its models gain Feel No Pain 5+, or 4+ instead if the unit has HYBRID METAMORPHS. The replacement does not stack with the 5+ roll.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "50e60af3961bf622e85d5da8e92706215cc42581ce1470060974d91a61d36f7e",
+    "pinnedHash": "50e60af3961bf622e85d5da8e92706215cc42581ce1470060974d91a61d36f7e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Acolyte-Iconward"
+  },
+  {
+    "id": "our-time-is-nigh-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle, when the bearer’s unit declares a charge, add 2 to its Charge rolls for the phase.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "6e7f2033006b4a7667848af8559da00326487d520c662564ee581c77cc6420b3",
+    "pinnedHash": "07c24d813477711ed000a8f2b59bac93bf759945e209db8bf47ca9c91d97f69f",
+    "coreHash": "e058e61a59667a592147be1be6532e515cc6d8dc6513c3d58256b099d3aa60e3"
+  },
+  {
+    "id": "outrider-gangs-genestealer-cults",
+    "state": "structured",
+    "summary": "When Jackals return through Cult Ambush, apply its normal rules and additionally place every model wholly within 9″ of a battlefield edge, with at least one model touching a Cult Ambush marker, then remove that marker. If this is impossible, they cannot return this way.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "4bda3473897e2c5c8f47a39205cf3395d02164a341ac82fee74abc7b7148f86a",
+    "pinnedHash": "4bda3473897e2c5c8f47a39205cf3395d02164a341ac82fee74abc7b7148f86a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Atalan-Jackals"
+  },
+  {
+    "id": "planted-explosives-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle per Saboteur, after an enemy ends a Normal/Advance/Fall Back move within 8″, use its Reductus mine and roll D6. On 2+, inflict D3+3 mortal wounds. Only one model across the army may use this ability in the same battle round.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "03fcc5558748f3a3f3778295dde1f8ce1e7f27bf0c96aed0a6d247a7bf5ff3ea",
+    "pinnedHash": "03fcc5558748f3a3f3778295dde1f8ce1e7f27bf0c96aed0a6d247a7bf5ff3ea",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Reductus-Saboteur"
+  },
+  {
+    "id": "practiced-eye-claw-of-ascension-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Practiced Eye. The import marks one enemy in your Shooting phase to give friendly Claw of Ascension units +1 to Hit; current selection/range restrictions need confirmation.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "da5524fec4a249bc13e3f68d1d2520773a090426c89d5defa72a8e2f640e6317",
+    "pinnedHash": "19c390d1c38198116aeaafbdd7506d70d3efdaa07a5a9774c8d5058a6096808e",
+    "coreHash": "6d3f84e245bf3821004b93c6aced52975018efc721ba7bd50d0d5fcfcf12fc2d"
+  },
+  {
+    "id": "predatory-instincts-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "ABOMINANT, BIOPHAGUS or PATRIARCH only. The bearer’s unit gains Infiltrators. It may use Heroic Intervention despite other uses that phase; that use costs 1CP less and does not prevent use on other units. All other eligibility still applies.",
+    "phase": [
+      0,
+      3
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "15d91a0890d2cbabc6064b93003f10c86108585db3cd7c3b123db569a198c8ff",
+    "pinnedHash": "cb287ef7e93f67d75ab1c6c43f927ec80f2769d7d23a997b9a9cf28483cc29e5",
+    "coreHash": "e1e1af20a79b9e9831f0a251337168245ace67e0014b0b04d31b6cdd779447f3",
+    "officialPage": 7
+  },
+  {
+    "id": "primed-and-readied-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Shooting phase or either Fight phase, select GSC not yet selected to shoot/fight. Its attacks score Critical Hits on unmodified 5+ for the phase. The current stratagem costs 2CP.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a78c46e9baa0e2d9e975e7c9ab0e737d16aacc9976718ab73de0085914e8b719",
+    "pinnedHash": "c39e3c4ee6ad0f14a36d1b41fe22527a26e5b9b0e68288193166321bb2440f02",
+    "coreHash": "2f495e2c98c5de0b4fcbb030ad3136dba4724a1217a60affb83ad6d0d7dde1b3",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 8
+  },
+  {
+    "id": "primed-and-ready-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Shooting phase, one model from your army with this ability may be targeted by the Explosives Stratagem for 0CP, provided it has not already been targeted by that stratagem this phase. Use the current Explosives name, not the old Grenade import; do not infer unlimited uses.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "ef42752cdb8cd1bc2dd61539953023bf9bb6342aab66898780719142f65b633e",
+    "pinnedHash": "ef42752cdb8cd1bc2dd61539953023bf9bb6342aab66898780719142f65b633e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Reductus-Saboteur"
+  },
+  {
+    "id": "priority-target-genestealer-cults",
+    "state": "structured",
+    "summary": "After the Alphus’s unit shoots in your Shooting phase, select one enemy hit by its cult sniper rifle. Friendly GSC models re-roll Hit rolls of 1 against that enemy for the phase. Hits from other weapons alone do not qualify.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "81f9f090a865a934f34aae31184c71eee9861ee1dd48d03dbcf490ce1d2b53aa",
+    "pinnedHash": "81f9f090a865a934f34aae31184c71eee9861ee1dd48d03dbcf490ce1d2b53aa",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Jackal-Alphus"
+  },
+  {
+    "id": "priority-target-shanus-daskovian-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Shanus’s Combat Patrol Priority Target: the import marks an enemy hit by its sniper rifle for friendly GSC Hit re-rolls of 1. Confirm the current variant’s recipients and duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "0e30db5f1b1cdd990260431487e4e2fff933590fa48ee93767d1c5db573a76c7",
+    "pinnedHash": "0e30db5f1b1cdd990260431487e4e2fff933590fa48ee93767d1c5db573a76c7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "prowling-agitant-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy ends a move within 8″ of the bearer’s unengaged unit in the opponent’s Movement phase, it may make a Normal move up to D6″.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "be08d1bf2c2f20da91b3fd306e9069e003a88bf566f8a4b564cb74b988690a65",
+    "pinnedHash": "9e8dac03fcf53de11007c0e620ed8452e4c6a39a4d7783c888877f1a936cfd81",
+    "coreHash": "6c01de937ae1d27e05105ecf02326ddef4f44057183f0ad5f97f7d96195dcc10",
+    "officialPage": 8
+  },
+  {
+    "id": "psi-surge-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "At the start of any phase, select friendly TYRANIDS to extend its Catalyst aura by 3″ until the start of your next Command phase. After using this stratagem, it cannot be used again until the end of your next Command phase; these expiry and reuse windows differ.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "16685f3a8fc2aed819e589ff0eb65c44951752f0f5b841feca7d433e5484bedc",
+    "pinnedHash": "2466dc5a42c6336696221dabe3a499feb6b1f8f19f9abafab5126bbda5bc460b",
+    "coreHash": "4d2bca4c13d5eab6123767f8d95e378a711113cc926b55f847499c0183b8bd66",
+    "officialPage": 6
+  },
+  {
+    "id": "psionic-parasitism-genestealer-cults",
+    "state": "structured",
+    "summary": "At your Movement phase’s end, for each friendly TYRANIDS SYNAPSE unit, you may pair a visible friendly GSC unit other than PURESTRAIN GENESTEALERS/PATRIARCH with a visible friendly TYRANIDS unit, both within 9″ of that Synapse unit. Roll D3+1: the GSC unit suffers that many mortal wounds, one model in the paired Tyranid unit regains up to that many wounds, and that Tyranid unit gains +1 to Hit until your next Movement phase starts. All friendly TYRANIDS also gain Catalyst: GSC attacks against enemies within 6″ of those Tyranids gain +1 to Hit. Final Day permits TYRANIDS VANGUARD INVADER allies up to 500/1000/1500 points, excluding AIRCRAFT, BROODLORD and GENESTEALERS; none may be Warlord. This allowance is specific to Final Day.",
+    "phase": [
+      1,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b02e8f6f8b5f21217afa3f979b14bf686c87fb5f6a4185a4a4b19be6b5ebae9b",
+    "pinnedHash": "b9a99e8addc18e28446e7331634a50978056801a01334fb54a66989c3ded20ea",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "end"
+      },
+      {
+        "phase": [
+          2,
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 5
+  },
+  {
+    "id": "psionic-shield-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle, at the start of any phase, the Benefictus gains a personal 4+ invulnerable save for that phase. This does not protect its whole unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "0a3e03870601e9ddd48463c3b3b0109e583fa22924c0c43e8f118f046952e261",
+    "pinnedHash": "0a3e03870601e9ddd48463c3b3b0109e583fa22924c0c43e8f118f046952e261",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Benefictus"
+  },
+  {
+    "id": "psychic-familiar-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle, at the start of the opponent’s Shooting phase, the Magus may use its Psychic Familiar to extend Mind Control’s range by 6″ for the phase, from 18″ to 24″.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start",
+    "sourceHash": "52a97c1fd12d92c65e614c28637f6beea0262bf118a9123c7b7f3e2054d8aa75",
+    "pinnedHash": "52a97c1fd12d92c65e614c28637f6beea0262bf118a9123c7b7f3e2054d8aa75",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Magus"
+  },
+  {
+    "id": "psychic-familiar-patriarch-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle, at the start of either Fight phase, the Patriarch may use its Psychic Familiar to extend Cosmic Horror by 6″ for the phase, from 6″ to 12″.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "60258d31fa392724db829aad2d99924ea0ee039fed3f98ebb217af2773d86a27",
+    "pinnedHash": "60258d31fa392724db829aad2d99924ea0ee039fed3f98ebb217af2773d86a27",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Patriarch"
+  },
+  {
+    "id": "psychic-spoor-genestealer-cults",
+    "state": "structured",
+    "summary": "At the first battle round’s start, the Sanctus chooses one enemy prey. It re-rolls Hit and Wound rolls against that prey for the battle. This does not grant re-rolls against every enemy or automatically select a new prey after destruction.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ff2a5dca342d7478b1a12db439bb65e46fd062afd132f70684cde0c8c0e20b4c",
+    "pinnedHash": "ff2a5dca342d7478b1a12db439bb65e46fd062afd132f70684cde0c8c0e20b4c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Sanctus"
+  },
+  {
+    "id": "rapid-feint-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy ends a Normal/Advance/Fall Back move in the opponent’s Movement phase, select friendly ACHILLES RIDGERUNNERS or ATALAN JACKALS within 8″ of it. They may make a Normal move up to 6″.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "8bbcf4b35ce132c3542208efb972a4ab734968ef1240d7bc52333aef062e6392",
+    "pinnedHash": "eb50cd48fe9353f8dde33645cadc43d3a6d0fbc668484fd0ddfde8be639e0dbd",
+    "coreHash": "f104527514315785465a4a3b89c1ce19e97f182e7f25c9fd019b1ae7c71d29b0",
+    "officialPage": 8
+  },
+  {
+    "id": "rapid-takeover-genestealer-cults",
+    "state": "structured",
+    "summary": "Non-Battle-shocked friendly GSC MOUNTED/VEHICLE models gain +1 Objective Control. At your Command phase’s end, a controlled objective within range of friendly ATALAN JACKALS stays yours until the opponent has greater Level of Control at phase end. The OC bonus does not apply to all GSC infantry.",
+    "phase": [
+      0,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "054fbb3ad83da067a307ee73e2dd4c8b6b70459fa94ffee87006eee1a4469be5",
+    "pinnedHash": "054fbb3ad83da067a307ee73e2dd4c8b6b70459fa94ffee87006eee1a4469be5",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "you",
+        "window": "end"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 8
+  },
+  {
+    "id": "regenerating-gene-mass-genestealer-cults",
+    "state": "structured",
+    "summary": "The first time the Abominant is destroyed, roll D6 at phase end. On 2+, return it as close as possible to its destruction position and outside enemy Engagement Range, with full wounds. This is not unlimited resurrection.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "4c5d35f0ffbfb61332242106e89231fc14efcb59f492e3e5cace87b13d20aae4",
+    "pinnedHash": "4c5d35f0ffbfb61332242106e89231fc14efcb59f492e3e5cace87b13d20aae4",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Abominant"
+  },
+  {
+    "id": "regimental-reinforcements-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle, after friendly ASTRA MILITARUM INFANTRY REGIMENT excluding ARTILLERY/CHARACTER is destroyed in the opponent’s Shooting phase or either Fight phase, target it despite destruction and roll D6. On 3+, add an identical full-strength replacement in Cult Ambush with full wounds and refreshed One Shot weapons; place a marker more than 8″ horizontally from enemies, or none if impossible. This does not automatically replenish attached Characters.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "37826a77ac5a3462b03fa41b38e51ec9dcfa8357bf4dd467217a6012ff681815",
+    "pinnedHash": "0886a55c7b294d08af88f2812677145321ee9d3cb062dad7d3680114a7a2fd20",
+    "coreHash": "e15ed566f7bf65e0db7aa0bab38a713ac1f4684e8fd7ebe9b428b3601e42a744",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 7
+  },
+  {
+    "id": "resistance-tunnels-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, remove one unengaged friendly GSC or TYRANIDS unit into Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "6877e44516d0e29f6153c145373493cf49d86dc7c3e0d3e3a0ddb838474ed001",
+    "pinnedHash": "1456f0a16edaea9625d659bc43e4aed44c18de75e986ed589325e9043ac8c1e9",
+    "coreHash": "ee6544ae12ba66a0db6f67c123118e877e012767bda33a9f197f788f27c1dfa7",
+    "officialPage": 6
+  },
+  {
+    "id": "return-to-the-shadows-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, remove one unengaged friendly GSC INFANTRY unit into Strategic Reserves. This is not any vehicle or mounted unit.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "10c96e48fb7a8320ca20dda035fdc70887644dee286d1fed883c13eda7ca2548",
+    "pinnedHash": "8b91e1cb04ae7828d0970b90fae2e7994d00cdcd5b75a13c2f223434c324ed68",
+    "coreHash": "055c3dccadf74d1c7106adf9ae2806201d2a9c1f6bfbace901c3414e78ef6d48",
+    "officialPage": 8
+  },
+  {
+    "id": "saintly-paroxysm-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy destroys a friendly GSC CHARACTER in either Fight phase, target that model despite destruction and roll D6. On 2+, that enemy suffers D3 mortal wounds, or 2D3 instead if the destroyed model was ABOMINANT/PATRIARCH.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0c18339a541f4460c30c1bd15399ac58e1dc549078b77b1c275001eef04506b8",
+    "pinnedHash": "8f8cc552cf6d56f1e7dd4e85bb2bfe1b994ee409083ce71da0ff0ba69c4a36a1",
+    "coreHash": "5d200064c11bb313be5aa57cfe3fc1f9fe8e4ec715fdc1787e4f7f796b10023e"
+  },
+  {
+    "id": "scrambler-array-genestealer-cults",
+    "state": "structured",
+    "summary": "Enemies arriving as Reinforcements cannot be set up within 12″ of the Clamavus. This also restricts otherwise shortened arrival distances.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "fda09c9d9dc1de038a7df91b419e4b5701e9d845c64a33ca1aafdaa47af2856e",
+    "pinnedHash": "fda09c9d9dc1de038a7df91b419e4b5701e9d845c64a33ca1aafdaa47af2856e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Clamavus"
+  },
+  {
+    "id": "serpentine-tactics-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "The bearer’s unit may shoot after Falling Back this turn. This alone does not permit charging.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5b901c705d168a508eca1d307ed3b158d9509e34ad69fe19b2ed105c33bcfd38",
+    "pinnedHash": "ac7cf21a48cebefa2d01b21fa13fb843a725cb486ae1fa1797ce72ed9759a869",
+    "coreHash": "cbce827250e0c251a957d7efc72fe24ebc3d318e627b94fa88b058020e3a54d5"
+  },
+  {
+    "id": "slunk-from-the-underbelly-xenocult-masses-genestealer-cults",
+    "state": "structured",
+    "summary": "When an enemy targets NEOPHYTES with every model within a terrain area in the opponent’s Shooting phase, worsen incoming ranged AP by 1 until that attacker finishes its attacks. Both terrain coverage and the attack-sequence duration apply.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "a3f3f9381165267c9861d30ebb0826e46601f7fc904533ca4210b0f8e64d86cf",
+    "pinnedHash": "aa4ea1214d82cccb2217b8cc64cb3485e40e736a592fb20ec09503e40dc26c65",
+    "coreHash": "020cc7b4febb5310963a82895c4a3564ef543674bf3efd41ca9483375e349aa4",
+    "officialPage": 4
+  },
+  {
+    "id": "spiritual-leader-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle, at the start of any phase, the Magus may choose a friendly Battle-shocked GSC unit within 12″; it is no longer Battle-shocked.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "62044517b897197410eb1d6f5723b244575abe35bb01f4ccbdc065d8d142f82a",
+    "pinnedHash": "62044517b897197410eb1d6f5723b244575abe35bb01f4ccbdc065d8d142f82a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Magus"
+  },
+  {
+    "id": "spotter-genestealer-cults",
+    "state": "structured",
+    "summary": "The Spotter bearer’s ranged weapons have Ballistic Skill 3+. Equipment on one Ridgerunner does not automatically improve every model in a multi-model unit.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c3d0d5bd1cf7015aa9369574a5e94ccde28f825861b18d25f98d91940c700150",
+    "pinnedHash": "c3d0d5bd1cf7015aa9369574a5e94ccde28f825861b18d25f98d91940c700150",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Achilles-Ridgerunners"
+  },
+  {
+    "id": "starfall-shells-outlander-claw-genestealer-cults",
+    "state": "structured",
+    "summary": "JACKAL ALPHUS only. After its unit shoots in your Shooting phase, select one enemy hit by its cult sniper rifle; it suffers -1 to Hit until the start of your next Shooting phase. Other weapons’ hits do not qualify.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "317b92dc19b7136fd4dd81f5379f5d6c7abd3a65ba05dd521cbbb00fce60d4bd",
+    "pinnedHash": "0a31270ca91349bcb010e6f7325ff0aa1374b2d17d28fcdb787e3e26fb0d5e4a",
+    "coreHash": "adf428cbc34f71dd2a316037cfe33f0f47255d72843b3dc7bf92a9bbe408d931"
+  },
+  {
+    "id": "stimulated-bio-surge-biosanctic-broodsurge-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Charge phase, select ABERRANTS, BIOPHAGUS or PURESTRAIN GENESTEALERS not yet declared to charge. Add 2 to its Charge rolls. This is a bonus, not a replacement charge distance.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8c11040716107cfe41581a5b45fcd9ef8c9ffa0c1f62db143387411fe8fbe458",
+    "pinnedHash": "f68960b632c0aac6d439bf848a555afeefee6c0420b011c854e2afebe54a485a",
+    "coreHash": "c93864c738f385ab4d3e22299baf90c8390dbd87e1bbf73facb92d9b7abb1b28",
+    "officialPage": 7
+  },
+  {
+    "id": "sudden-assault-genestealer-cults",
+    "state": "structured",
+    "summary": "While the Locus leads a unit, models in that unit gain Fights First.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ae2378737cbc2a8b871021f56fd09617de7948eeb95d5bbcf2d01ccde20bb1c0",
+    "pinnedHash": "ae2378737cbc2a8b871021f56fd09617de7948eeb95d5bbcf2d01ccde20bb1c0",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Locus"
+  },
+  {
+    "id": "summon-the-cult-genestealer-cults",
+    "state": "structured",
+    "summary": "Once per battle across the army, when a marker would be removed because an enemy moved too close, if an Iconward with this ability is on the battlefield, relocate it instead within 12″ of a model with this ability and more than 8″ from all enemies. Multiple Iconwards do not each grant a separate rescue. If no legal placement exists, remove the marker normally and the ability is not considered used.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cb496c20dbf1a1eef6a4a20bc3e9109458e6ff16e093f7f0aa37eda3e1f786f2",
+    "pinnedHash": "cb496c20dbf1a1eef6a4a20bc3e9109458e6ff16e093f7f0aa37eda3e1f786f2",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 8,
+    "referencePage": "Acolyte-Iconward"
+  },
+  {
+    "id": "suppress-and-overwhelm-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "After friendly ASTRA MILITARUM shoots in your Shooting phase, select one enemy hit. For the turn it cannot be targeted by Fire Overwatch, and friendly GSC charging that enemy can re-roll Charge rolls. The Overwatch ban prevents that enemy being the firing unit, not a universal immunity against every enemy.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "ab457a4efcba60f442596058144ced1fac38e5b5be6895b9272e70775b47cadf",
+    "pinnedHash": "9b03d73fc7a828157cc0d9fe81227664ff628f823ecd676ae64170e67d258952",
+    "coreHash": "7ab7bd0e34421f78b928e45e90d2cae3efb5da810cda63baba9d9cf301f10ee9"
+  },
+  {
+    "id": "supreme-commander-genestealer-cults",
+    "state": "structured",
+    "summary": "Include at most one PATRIARCH. If included, it must be your Warlord.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "96aa5853d7906f59d0462573d4ef614dba36da40d87f9bb479412e5766a2d510",
+    "pinnedHash": "96aa5853d7906f59d0462573d4ef614dba36da40d87f9bb479412e5766a2d510",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Patriarch"
+  },
+  {
+    "id": "surging-broodworship-heroes-of-the-uprising-genestealer-cults",
+    "state": "structured",
+    "summary": "When friendly KILLER is selected to attack in your Shooting phase or either Fight phase, attacks by KILLER models in that unit gain Devastating Wounds. Other models in the unit do not receive the keyword.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "911c1fb423744a5a6d6388821f50aa6793439d80526861bc76f64945cb20d4a9",
+    "pinnedHash": "732c1c30012cc9b474cfa847d00b276c1641c170ce5f9ce5a6e51c19b7717e56",
+    "coreHash": "a051b571dc33615794604582ee55bef50bf712973c900d3f4cd2032d30ec6151",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 2
+  },
+  {
+    "id": "survey-augur-claw-of-ascension-achilles-ridgerunner-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Survey Augur: the import marks a hit enemy for friendly Ignores Cover. Current equipment, bearer-hit and duration restrictions need confirmation; preserve this distinct variant.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "4bea5bb2b1e9b7e1c0422ff5ead1391645da6e5660c492688fd76e25c916ca4a",
+    "pinnedHash": "4bea5bb2b1e9b7e1c0422ff5ead1391645da6e5660c492688fd76e25c916ca4a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "survey-augur-genestealer-cults",
+    "state": "structured",
+    "summary": "After the Survey Augur bearer’s unit shoots, select an enemy hit by that bearer’s attacks this phase. Friendly GSC models’ attacks against it gain Ignores Cover for the phase. A hit from a different Ridgerunner in the unit alone does not qualify.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "9fc9c9ac45252f4ee7a3562d775f4da6f084ca8ba7c7c48330f75cf3ee353984",
+    "pinnedHash": "9fc9c9ac45252f4ee7a3562d775f4da6f084ca8ba7c7c48330f75cf3ee353984",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Achilles-Ridgerunners"
+  },
+  {
+    "id": "swift-and-deadly-genestealer-cults",
+    "state": "structured",
+    "summary": "Purestrain Genestealers may charge after Advancing this turn.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "704c11605d8c5033b4580eb5d17cd8e939551da85d67521df74e7306bc6796b5",
+    "pinnedHash": "704c11605d8c5033b4580eb5d17cd8e939551da85d67521df74e7306bc6796b5",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Purestrain-Genestealers"
+  },
+  {
+    "id": "symbiotic-destruction-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Shooting phase, select one friendly ASTRA MILITARUM and one GSC unit, neither yet selected to shoot, and an enemy visible to both and in range of at least one ranged weapon from each. For the phase, both units may attack only that enemy if eligible and re-roll Wound rolls of 1 against it.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "584fcc55a506583f72ad8978b518f6fc56bc6ad713f17c1c3cd6a3ea57e2d353",
+    "pinnedHash": "cd30c6a076e3f5c2167062bd39dc546619c22396653d770a08f6139715cce9d5",
+    "coreHash": "5a43336081fd01c415daa61ccef07a3ecc537ad74b54ff5affd944fc346f401f"
+  },
+  {
+    "id": "synaptic-auger-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "TYRANIDS bearer only. When Psionic Parasitism would heal it, it regains up to twice as many lost wounds instead. This does not double the mortal wounds on the paired cult unit or all sources of healing.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "598d0b8a5c7b47b7a4b491b309b8ddd1029fb03793adc0c9aa1eb292b299882f",
+    "pinnedHash": "2b7e785229b16de2d26adde5befb1fa5bd01ec79bedc067c73ccaf7e394e873f",
+    "coreHash": "72f0295a4daf22039956d1bfc837ede73f2c38dd89c17dce76f0b87ca57e5cfd",
+    "officialPage": 5
+  },
+  {
+    "id": "talons-of-the-sire-purestrain-broodswarm-genestealer-cults",
+    "state": "structured",
+    "summary": "PATRIARCH only. Its unit’s attacks re-roll Wound rolls of 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0ad0ac96614e32c9bdb0dd96c11b73f99c40f6ffdec424d489fd0ec968838852",
+    "pinnedHash": "ece4aa3184a0b73289f689034010e79a1355f1e5b8d1c47e39422fea6f09ffe6",
+    "coreHash": "56d08d24952bc6e3698d6922b174fed2f25b4e0acd0f21408b886b520d9ae5aa",
+    "officialPage": 3
+  },
+  {
+    "id": "the-chosen-one-genestealer-cults",
+    "state": "structured",
+    "summary": "While the Abominant leads a unit, each model destroyed by a melee attack before that model has fought rolls D6. On 4+, it fights after the attacker finishes, then is removed. This is a model-based eligibility check and requires the attached provider.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "88be75d88981e5903b7991b2ca734f9e157e9e4a3117c90d192fd08e019b493f",
+    "pinnedHash": "88be75d88981e5903b7991b2ca734f9e157e9e4a3117c90d192fd08e019b493f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Abominant"
+  },
+  {
+    "id": "the-downtrodden-rise-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Movement phase, select ACOLYTE HYBRIDS, HYBRID METAMORPHS or NEOPHYTES in Cult Ambush. Set it up more than 6″ horizontally from all enemies without using a marker. Enemy reserve-denial restrictions still apply; the FAQ permits Tunnel Crawlers when setting up without a marker.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "ec0a8076106e3304a8eb06f98c065a39d7cc4e169908bf9cef36810fd07c6b65",
+    "pinnedHash": "8e8adc155dce5020d3234d1d2d1e3115bb86e28823475cde8ef424a33a3f4dd5",
+    "coreHash": "1bb3de56add48e4596825470212eae4c8b86565d58d3c5db88c4bb728929a423",
+    "officialPage": 8
+  },
+  {
+    "id": "the-hero-returned-brood-brothers-auxilia-genestealer-cults",
+    "state": "structured",
+    "summary": "GSC INFANTRY bearer only. Improve Leadership by 1 and add 1 Objective Control to models in its unit. Lower Leadership is better.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1c40274676c81b081f68efef2f7026f782c8fa8f17601c71bea6d5eef2e7bbb5",
+    "pinnedHash": "91718d3f50691825cdd8e877f4be3cfd551826d60675b87675684816bdf4258b",
+    "coreHash": "8e3383224445605f7af750d688ee16bb4f69448a2fc15b71d4643b9a28e12e48"
+  },
+  {
+    "id": "the-path-of-anguish-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "After enemy shooting destroys models in friendly ACOLYTE HYBRIDS or NEOPHYTES in the opponent’s Shooting phase, that unit may move up to D6″, ending as close as possible to the nearest non-AIRCRAFT enemy. It may enter that enemy’s Engagement Range. This is not an unrestricted Normal move in any direction.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "d3880055f1b3cbbcd45797a9dbf52d53f61f29793bf40bf457135fd53cdb072b",
+    "pinnedHash": "324ef459a4f11d4e72dfb3a14620b347768df39794d52dfcdbfee9492d0701da",
+    "coreHash": "017afa8c5f74faf0484d7494986ecefefb2c38171e3d1366a6e20f72eb19cc69"
+  },
+  {
+    "id": "tireless-fervour-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Charge phase, select ACOLYTE HYBRIDS, HYBRID METAMORPHS or NEOPHYTES not yet declared to charge. They may charge after Advancing/Falling Back. Optionally re-roll a charge roll, but then finish engaged with an enemy engaged with a friendly CHARACTER. The re-roll rider has an endpoint restriction.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "f6997803c27af15da3448b1d7e4fb21a5b571905e42d6fcaa64cf35bca2c655a",
+    "pinnedHash": "29ec921c70c7d44a5802a2850050c380522c8055852bf5530674526494fd23ad",
+    "coreHash": "1b280a08f66c82919f0a9c05d263399be9425539ef3efb61889892c52e01b63e",
+    "officialPage": 8
+  },
+  {
+    "id": "transcendent-celerity-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Shooting phase, select ACOLYTE HYBRIDS, HYBRID METAMORPHS or NEOPHYTES not yet selected to shoot. Their ranged weapons gain Assault for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d88cf362b0b0bfbb429bbe8a8ea80bb473957b65ff73459db1ff54c63b5c349e",
+    "pinnedHash": "d2ee25d6d22a5696929c868530ec395e86dd9f1bcabf6380ce50ec8be254cc09",
+    "coreHash": "0dddf5e6c6098cf88c4738c2ae6d1d48cd2601f79d3826d6e9e47a38446d29e9"
+  },
+  {
+    "id": "tunnel-crawlers-host-of-ascension-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Movement phase, choose GSC arriving by Deep Strike: it may be set up more than 6″ horizontally from all enemies, but cannot charge that turn. The FAQ permits use for a Cult Ambush arrival without a marker; other enemy reserve-denial rules still apply.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "105640142c7349b362d06424cd7b6e0829288d572ec6e9798f063f873c3e8f74",
+    "pinnedHash": "33c98516966b0aa737d31458e01d6050b12a4c991ca905a78d50e1741c0bea25",
+    "coreHash": "7a84e658722f59e9221a0c161adb5847e7eddb6e31131a9820573c2fb823b03d"
+  },
+  {
+    "id": "twisted-science-genestealer-cults",
+    "state": "structured",
+    "summary": "While the Biophagus leads a unit, its melee weapons gain Lethal Hits.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "01822a0d0f0b9938368ef4d57302042c15b0a86feaf61b647f3347dd498801d8",
+    "pinnedHash": "01822a0d0f0b9938368ef4d57302042c15b0a86feaf61b647f3347dd498801d8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Biophagus"
+  },
+  {
+    "id": "unquestioning-fanaticism-genestealer-cults",
+    "state": "structured",
+    "summary": "ACOLYTE HYBRIDS, HYBRID METAMORPHS and NEOPHYTES led by a CHARACTER re-roll Advance and Charge rolls. If the attached Character is MAGUS, PRIMUS or ACOLYTE ICONWARD, that Character itself gains Feel No Pain 3+ while leading; the whole bodyguard unit does not.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "66ebcc468749fb5b321f80fca08f958f9adefbee033d4fdde82f9dab05243b6e",
+    "pinnedHash": "66ebcc468749fb5b321f80fca08f958f9adefbee033d4fdde82f9dab05243b6e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "vanguard-tyrant-final-day-genestealer-cults",
+    "state": "structured",
+    "summary": "WINGED HIVE TYRANT only. Improve the bearer’s melee Strength and AP by 1. This is not available to every Tyranid or GSC Character.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "da7ae9c7cc0856461afc6aab757d8f43d7d0219a377a1ca6cccf28e168f4acd0",
+    "pinnedHash": "c543318cda86bd4960954c8ba3cb651b9d7b686bbf960d40e68add1f2565b5b2",
+    "coreHash": "993cef9c8aaf4dd971702fe10cd62a9c47733198b222dcea2b5eae950ec8ccf1",
+    "officialPage": 5
+  },
+  {
+    "id": "vengeance-for-the-martyr-xenocreed-congregation-genestealer-cults",
+    "state": "structured",
+    "summary": "After an enemy destroys a friendly GSC CHARACTER in the opponent’s Shooting phase or either Fight phase, target another friendly GSC CHARACTER on the battlefield or in Reserves. For the battle, friendly ACOLYTE HYBRIDS, HYBRID METAMORPHS and NEOPHYTE models re-roll Hit rolls of 1 against that enemy, or re-roll Hit rolls instead if the destroyed model was MAGUS, PRIMUS or ACOLYTE ICONWARD. The official FAQ requires the other Character to exist.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d3894e1d1152ed35e923887ebba04935a4ce99c416c71e335f6b3961044f689c",
+    "pinnedHash": "644f1b2a0a09bd87a7a5637ef70e216b4fd4a9e73bfd5f5e4c2da586d157a00c",
+    "coreHash": "8f966a2bd6c6d863e6b13a0d5726059261a855ead5e6f316d0368f7a4fcda614",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 9
+  },
+  {
+    "id": "voice-of-new-truths-genestealer-cults",
+    "state": "structured",
+    "summary": "In your Command phase, one model from your army with Voice of New Truths selects an enemy within 18″ to take a Battle-shock test. Multiple Clamavus do not each trigger this in the same phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "2288400b621014440af1fedf8851aabb07b3eb3a551eb04f54706d3bb7fea34c",
+    "pinnedHash": "2288400b621014440af1fedf8851aabb07b3eb3a551eb04f54706d3bb7fea34c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Clamavus"
+  },
+  {
+    "id": "xenos-resilience-genestealer-cults",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Xenos Resilience. The import reduces incoming ranged Wound rolls by 1 when Strength exceeds Toughness for Claw of Ascension units. Confirm current Combat Patrol recipients and restrictions; it is not a universal GSC defensive rule.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "012ff5acac6da3774ebcc45237ba41c3053b19fb35158ee890822bd24c60dc6d",
+    "pinnedHash": "012ff5acac6da3774ebcc45237ba41c3053b19fb35158ee890822bd24c60dc6d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  }
+]
