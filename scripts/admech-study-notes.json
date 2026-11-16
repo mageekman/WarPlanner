@@ -1596,7 +1596,7 @@
   {
     "id": "noospheric-transference-adeptus-mechanicus",
     "state": "structured",
-    "summary": "In your Command phase, select 1/2/3 ADEPTUS MECHANICUS units for Incursion/Strike Force/Onslaught, including embarked units. They gain HALO OVERRIDE until your next Command phase. Choose one shared Override for all friendly HALO OVERRIDE units until then: +2″ Move; +1 Toughness; charge after Advancing; or Stealth. Units excluded by Transoracular Dyad Wafers cannot be selected, but their existing HALO OVERRIDE still receives the shared benefit.",
+    "summary": "In your Command phase, select one or more ADEPTUS MECHANICUS units, up to 1/2/3 for Incursion/Strike Force/Onslaught, including embarked units. They gain HALO OVERRIDE until your next Command phase. Choose one shared Override for all friendly HALO OVERRIDE units until then: +2″ Move; +1 Toughness; charge after Advancing; or Stealth. Units excluded by Transoracular Dyad Wafers cannot be selected, but their existing HALO OVERRIDE still receives the shared benefit.",
     "phase": [
       0
     ],
