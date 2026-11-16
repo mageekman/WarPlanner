@@ -23,8 +23,9 @@
   if(!memberships.length)return false;if(memberships.some(m=>!m.detachments.length))return true;
   const selected=armyDetachments(army).map(normalized);return memberships.some(m=>m.detachments.some(d=>selected.includes(normalized(d))));
  }
- function unitInfo(name,faction='Aeldari'){const key=normalized(name);return catalog.units.find(u=>normalized(u.name)===key&&factionMatches(u.faction,faction));}
- function unitHasRule(unit,id,faction='Aeldari'){return !!unitInfo(unit.name,faction)?.abilities.some(a=>a.id===id);}
+ function unitInfo(entry,faction='Aeldari'){const allies=typeof module!=='undefined'&&module.exports?require('./allies.js'):root.WarPlannerAllies;if(allies)return allies.resolve(catalog,entry,catalog.factions?.find(f=>factionMatches(f.name,faction))?.name||faction);const key=normalized(typeof entry==='object'?entry.name:entry);return catalog.units.find(u=>normalized(u.name)===key&&factionMatches(u.faction,faction));}
+ function unitInRule(unit,rule,army){const source=unitInfo(unit,army.faction);if(rule.allied)return !!source&&rule.alliedUnitIds.includes(source.id);if(source?.allied)return rule.faction==='*';if(!source&&catalog.units.some(u=>u.allied&&factionMatches(u.faction,army.faction)&&normalized(u.name)===normalized(unit.name)))return false;return true;}
+ function unitHasRule(unit,id,faction='Aeldari',army=null){if(unitInfo(unit,faction)?.abilities.some(a=>a.id===id))return true;const allies=typeof module!=='undefined'&&module.exports?require('./allies.js'):root.WarPlannerAllies;return !!(id==='deep-strike'&&army&&allies?.grantsDeepStrike(catalog,army,unit));}
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule','core-stratagem':'Core Stratagems',stratagem:'Stratagem',enhancement:'Enhancement'};
  function core(id,title,body,why,question,answer,section,window){return {id,title,body,why,question,answer,section,window,sourceIds:['core'],status:'official-checked',kind:'Core sequence',category:'core'};}
  const phases=[
@@ -137,6 +138,7 @@
  function isAeldari(army){return ['aeldari','asuryani'].includes(normalized(army.faction));}
  function armyDetachments(army,available=catalog.detachments){const names=Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[],core=typeof module!=='undefined'&&module.exports?require('./core.js'):root.WarPlan;return core?.resolveDetachmentNames?core.resolveDetachmentNames(names,available.filter(d=>factionMatches(d.faction,army.faction)),{knownOnly:true}):[...new Map(names.filter(Boolean).map(name=>[normalized(name),name])).values()];}
  function enhancementEquipped(ability,unit,army){
+  if(ability.automaticForDetachment){const source=unitInfo(unit,army.faction);return !source?.allied&&ruleInArmy(ability,army)&&(ability.bearerKeywords||[]).every(k=>source?.keywords.some(v=>normalized(v)===normalized(k)));}
   if(!ability.enhancement||!unit.details.some(d=>/^enhancement\s*:/i.test(d)&&normalized(d.replace(/^enhancement\s*:/i,'')).includes(normalized(ability.enhancement))))return false;
   const sourceId=ability.sourceRuleId||Object.keys(aliases).find(id=>aliases[id]===ability.id)||ability.id;
   if(unit.enhancementId)return unit.enhancementId===sourceId||(ability.sharedRuleIds||[]).includes(unit.enhancementId);
@@ -147,7 +149,8 @@
  }
  function matches(ability,army){
   if(!ruleInArmy(ability,army))return false;
-  if(ability.units.length&&!army.units.some(u=>ability.units.some(n=>normalized(n)===normalized(u.name))))return false;
+  if(ability.allied&&!army.units.some(u=>ability.alliedUnitIds.includes(unitInfo(u,army.faction)?.id)))return false;
+  if(ability.units.length&&!army.units.some(u=>unitInRule(u,ability,army)&&ability.units.some(n=>normalized(n)===normalized(u.name))))return false;
   if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(ability.id)&&!army.units.some(u=>aspectUnits().some(n=>normalized(n)===normalized(u.name))))return false;
   if(ability.enhancement&&!army.units.some(u=>enhancementEquipped(ability,u,army)))return false;
   return true;
@@ -245,6 +248,6 @@
  }
  const stepOverrides=new Map();
  const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
- const api={isDeepStrike,guideRule,guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={isDeepStrike,guideRule,guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitInRule,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

@@ -5,6 +5,7 @@
  const L=node?require('./lessons.js'):root.WarPlanLessons;
  const A=node?require('./activations.js'):root.WarPlanActivations;
  const M=node?require('./mechanics.js'):root.WarPlannerMechanics;
+ const Allies=node?require('./allies.js'):root.WarPlannerAllies;
  const Profiles=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles;
  const copy=v=>structuredClone(v),norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
  let generation=0;
@@ -96,9 +97,10 @@
     if(d.detachment)throw Error('Use the membership detachments for a shared rule.');
    }
    for(const key of ['sourceRuleId','detachment','enhancement','leadingBodyguard'])if(d[key]!=null&&(typeof d[key]!=='string'||d[key].length>180))throw Error(key+' must be a short text value.');
+   if(d.requiredLeaderKeywords!==undefined)stringList(d.requiredLeaderKeywords,'Required attached Leader keywords');
    if(d.bearerKeywords!==undefined)stringList(d.bearerKeywords,'Bearer keywords');
    if(d.bearerRestrictions!==undefined&&(!Array.isArray(d.bearerRestrictions)||d.bearerRestrictions.some(r=>!r||typeof r!=='object'||Array.isArray(r)||r.keywords!==undefined&&(!Array.isArray(r.keywords)||r.keywords.some(k=>typeof k!=='string')))))throw Error('Review the enhancement bearer restrictions.');
-   for(const key of ['leadingUnitRequired','referenceOnly','enhancementUpgrade','timingOverride'])if(d[key]!==undefined&&typeof d[key]!=='boolean')throw Error(key+' must be true or false.');
+   for(const key of ['leadingUnitRequired','referenceOnly','enhancementUpgrade','timingOverride','automaticForDetachment'])if(d[key]!==undefined&&typeof d[key]!=='boolean')throw Error(key+' must be true or false.');
    if(!Object.hasOwn(L.categories,d.category)||!['you','opponent','either'].includes(d.turn)||!windows.includes(d.window))throw Error('Choose a valid category, player turn and timing.');
    if(!Array.isArray(d.phase)||d.phase.some(n=>!Number.isInteger(n)||n<0||n>4))throw Error('Choose valid phases.');
    if(d.timings!==undefined)validateTimings(d.timings);
@@ -125,6 +127,8 @@
   if(['unit','detachment'].includes(row.kind)&&(!row.faction||row.faction==='*'))throw Error('Choose one faction.');
   if(row.kind==='detachment')for(const k of ['rules','stratagems','enhancements','dispositions','gameModes'])stringList(d[k],k);
   if(row.kind==='faction'){
+   if(d.assignedAgents!==undefined){const p=d.assignedAgents;if(!p||typeof p.enabled!=='boolean'||typeof p.sourceRuleId!=='string'||!p.sourceRuleId)throw Error('Review the Assigned Agents policy.');stringList(p.excludedUnitIds,'Excluded Agents datasheets');stringList(p.battlelineLeaderIds,'Inquisitor attachment sources');for(const tier of ['incursion','strike-force','onslaught'])for(const slot of ['character','retinue','requisitioned'])if(!Number.isInteger(p.limits?.[tier]?.[slot])||p.limits[tier][slot]<0||p.limits[tier][slot]>10)throw Error('Review the Assigned Agents allowances.');}
+
    if(!['Space Marines','Imperium','Chaos','Xenos'].includes(d.group))throw Error('Choose Space Marines, Imperium, Chaos or Xenos.');stringList(d.aliases,'Aliases');
   }
   if(row.kind==='step'&&(!row.enabled||typeof d.body!=='string'||!d.body.trim()))throw Error('Core pages must remain enabled and have instructions.');
@@ -169,6 +173,8 @@
    for(const id of links.get(factionKey(unit.faction))?.get(norm(unit.name))||[])if(!refs.has(id))refs.set(id,{id});
    unit.abilities=[...refs.values()];
   }
+  Allies?.project(L.catalog,L.abilities);
+  Allies?.invalidate(L.catalog);
   generation++;
 
  }
