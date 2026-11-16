@@ -11,8 +11,9 @@
  sources.missions={name:'Mission deck — Secondary Missions',version:'Mission-pack-dependent reminder',url:'https://wahapedia.ru/wh40k11ed/the-rules/mission-deck-2026-27/',status:'source-reference'};
  const catalog=typeof module!=='undefined'&&module.exports?require('./aeldari-data.js'):root.WarPlannerAeldariData;
  sources.catalog={name:'40kdc Aeldari structured source',version:'Pinned '+catalog.pin.slice(0,7)+' · source reference, not official verification',url:'https://github.com/wn-mitch/40kdc-data/tree/'+catalog.pin+'/data/enrichment/aeldari',status:'source-reference'};
+ const normalizedNames=new Map();
  const aliases={'battle-focus-aeldari':'battle-focus','diviner-of-futures-aeldari':'eldrad-cp','doom-aeldari':'doom','whirling-death-aeldari':'whirling','superlative-strategist-aeldari':'strategist','flickerjump-aeldari':'flickerjump','grenade-pack-flyover-aeldari':'hawks','path-of-the-warrior-aeldari':'path-warrior','hand-of-asuryan-aeldari':'asurmen-hand','bladestorm-aeldari':'bladestorm','aspect-shrine-token-aeldari':'token','inescapable-accuracy-aeldari':'reapers','assured-destruction-aeldari':'dragons','crystalline-targeting-aeldari':'walker','fire-support-aeldari':'falcon','tactical-acumen-aeldari':'asurmen-move','acrobatic-aeldari':'acrobatic','the-bloody-handed-aeldari':'avatar-aura','molten-form-aeldari':'avatar-defence','wave-serpent-shield-aeldari':'serpent-shield','storm-of-silence-aeldari':'jain-attacks','aspect-of-murder-aspect-host-aeldari':'murder','path-of-command-aeldari':'autarch-discount','khaines-vengeance-aspect-host-aeldari':'khaines','skyborne-sanctuary-aspect-host-aeldari':'skyborne','to-their-final-breath-aspect-host-aeldari':'final-breath'};
- function factionMatches(a,b){const n=x=>{const key=normalized(x),f=catalog.factions?.find(f=>normalized(f.name)===key||(f.aliases||[]).some(a=>normalized(a)===key));return f?normalized(f.name):['asuryani','aeldari'].includes(key)?'aeldari':key;};return n(a||'Aeldari')===n(b||'Aeldari');}
+ function factionMatches(a,b){if(normalized(a||'Aeldari')===normalized(b||'Aeldari'))return true;const n=x=>{const key=normalized(x),f=catalog.factions?.find(f=>normalized(f.name)===key||(f.aliases||[]).some(a=>normalized(a)===key));return f?normalized(f.name):['asuryani','aeldari'].includes(key)?'aeldari':key;};return n(a||'Aeldari')===n(b||'Aeldari');}
  function ruleMemberships(rule){return Array.isArray(rule.memberships)?rule.memberships:[{faction:rule.faction,detachments:rule.detachment?[rule.detachment]:[]}];}
  function ruleFactions(rule){return [...new Set(ruleMemberships(rule).map(m=>m.faction))];}
  function ruleDetachments(rule,faction){return [...new Set(ruleMemberships(rule).filter(m=>m.faction==='*'||factionMatches(m.faction,faction)).flatMap(m=>m.detachments))];}
@@ -23,7 +24,7 @@
   if(!memberships.length)return false;if(memberships.some(m=>!m.detachments.length))return true;
   const selected=armyDetachments(army).map(normalized);return memberships.some(m=>m.detachments.some(d=>selected.includes(normalized(d))));
  }
- function unitInfo(entry,faction='Aeldari'){const allies=typeof module!=='undefined'&&module.exports?require('./allies.js'):root.WarPlannerAllies;if(allies)return allies.resolve(catalog,entry,catalog.factions?.find(f=>factionMatches(f.name,faction))?.name||faction);const key=normalized(typeof entry==='object'?entry.name:entry);return catalog.units.find(u=>normalized(u.name)===key&&factionMatches(u.faction,faction));}
+ function unitInfo(entry,faction='Aeldari'){const allies=typeof module!=='undefined'&&module.exports?require('./allies.js'):root.WarPlannerAllies;if(allies)return allies.resolve(catalog,entry,faction);const key=normalized(typeof entry==='object'?entry.name:entry);return catalog.units.find(u=>normalized(u.name)===key&&factionMatches(u.faction,faction));}
  function unitInRule(unit,rule,army){const source=unitInfo(unit,army.faction),allies=typeof module!=='undefined'&&module.exports?require('./allies.js'):root.WarPlannerAllies;if(allies&&!allies.allowsRule(catalog,rule,source,army))return false;if(!source&&catalog.units.some(u=>u.allied&&factionMatches(u.faction,army.faction)&&normalized(u.name)===normalized(unit.name)))return false;return true;}
  function unitHasRule(unit,id,faction='Aeldari',army=null){if(unitInfo(unit,faction)?.abilities.some(a=>a.id===id))return true;const allies=typeof module!=='undefined'&&module.exports?require('./allies.js'):root.WarPlannerAllies;return !!(id==='deep-strike'&&army&&allies?.grantsDeepStrike(catalog,army,unit));}
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule','core-stratagem':'Core Stratagems',stratagem:'Stratagem',enhancement:'Enhancement'};
@@ -133,8 +134,8 @@
   if(aliases[entry.id]||duplicateStrats.has(entry.id)||entry.id==='burning-lance-aeldari')continue;
   abilities.push({...entry,id:'expanded-'+entry.id,sourceRuleId:entry.id,question:'What must you confirm before applying '+entry.name+'?',answer:'Confirm the current source, the correct bearer or target, its precise timing, and every restriction. A reference reminder does not grant an effect.'});
  }
- const aspectUnits=()=>catalog.units.filter(u=>u.keywords.some(k=>normalized(k)==='aspectwarrior'||normalized(k)==='aspectwarriors')||u.name==='Avatar of Khaine').map(u=>u.name);
- function normalized(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
+ // Pure string normalization is shared by the matching loops; bound its memory.
+ function normalized(s){const text=String(s||'');if(normalizedNames.has(text))return normalizedNames.get(text);const value=text.toLowerCase().replace(/[^a-z0-9]/g,'');if(normalizedNames.size>=4096)normalizedNames.delete(normalizedNames.keys().next().value);normalizedNames.set(text,value);return value;}
  function isAeldari(army){return ['aeldari','asuryani'].includes(normalized(army.faction));}
  function armyDetachments(army,available=catalog.detachments){const names=Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[],core=typeof module!=='undefined'&&module.exports?require('./core.js'):root.WarPlan;return core?.resolveDetachmentNames?core.resolveDetachmentNames(names,available.filter(d=>factionMatches(d.faction,army.faction)),{knownOnly:true}):[...new Map(names.filter(Boolean).map(name=>[normalized(name),name])).values()];}
  function enhancementEquipped(ability,unit,army){
@@ -153,7 +154,7 @@
   if(!ruleInArmy(ability,army))return false;
   if(ability.allied&&!army.units.some(u=>unitInRule(u,ability,army)))return false;
   if(ability.units.length&&!army.units.some(u=>unitInRule(u,ability,army)&&ability.units.some(n=>normalized(n)===normalized(u.name))))return false;
-  if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(ability.id)&&!army.units.some(u=>aspectUnits().some(n=>normalized(n)===normalized(u.name))))return false;
+  if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(ability.id)&&!army.units.some(u=>{const source=unitInfo(u,army.faction);return source&&(source.name==='Avatar of Khaine'||source.keywords.some(k=>['aspectwarrior','aspectwarriors'].includes(normalized(k))));}))return false;
   if(ability.enhancement&&!army.units.some(u=>enhancementEquipped(ability,u,army)))return false;
   return true;
  }
