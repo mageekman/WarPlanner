@@ -22,11 +22,11 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/list-builder.js'),'utf8'),context);
  context.WarPlannerListBuilder=context.window.WarPlannerListBuilder;
  if(options.admin)context.window.WarPlannerAdminPage={canAccess:true,openGuideRules:rules=>context.window.openedGuideRules=rules};
- for(const name of ['navigation.js','unit-profiles.js','study-cards.js','practice.js','practice-ui.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+name),'utf8'),context);
+ for(const name of ['dispositions.js','navigation.js','unit-profiles.js','study-cards.js','practice.js','practice-ui.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+name),'utf8'),context);
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {flushGuide(){for(let i=0;i<500&&(frames.length||timers.length);i++){frames.shift()?.();timers.shift()?.();}},prepared:()=>vm.runInContext('guidePrepared&&({ready:guidePrepared.ready,total:guidePrepared.total,count:guidePrepared.pages.size})',context),rejectPageBuilds(){vm.runInContext('buildGuidePageHTML=()=>{throw Error("Page rebuilt during navigation")}',context);},review(key,checked){listeners.change({target:{dataset:{reviewReminder:key},checked}})},toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(deadline){idle.shift()?.(deadline);},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {ruleType(type,checked){listeners.change({target:{checked,dataset:{guideRuleType:type}}})},at(id){vm.runInContext('state.open=lessons().steps.findIndex(s=>s.id==='+JSON.stringify(id)+');render();',context)},flushGuide(){for(let i=0;i<500&&(frames.length||timers.length);i++){frames.shift()?.();timers.shift()?.();}},prepared:()=>vm.runInContext('guidePrepared&&({ready:guidePrepared.ready,total:guidePrepared.total,count:guidePrepared.pages.size})',context),rejectPageBuilds(){vm.runInContext('buildGuidePageHTML=()=>{throw Error("Page rebuilt during navigation")}',context);},review(key,checked){listeners.change({target:{dataset:{reviewReminder:key},checked}})},toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(deadline){idle.shift()?.(deadline);},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -312,12 +312,12 @@ test('empty-account guide setup offers import and disables Start',()=>{
 });
 
 test('font preference persists across reload and guide reset without changing the current step',()=>{
- const a=app();a.click({phase:'2'});a.click({step:'1'});a.change('guide-font-size','large');
+ const a=app();a.click({phase:'2'});a.click({step:'1'});a.change('guide-font-size','large');a.click({action:'reload-guide'});
  let saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.guideFontSize,'large');assert.equal(saved.phase,2);assert.equal(saved.open,1);
  const b=app([...a.store]);assert.match(b.html(),/data-font-size="large"/);assert.match(b.html(),/<option value="large" selected>/);
  b.click({action:'reset-guide'});b.start();assert.match(b.html(),/data-font-size="large"/);
  b.change('guide-font-size','unexpected');assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).guideFontSize,'large');
- b.change('guide-font-size','medium');assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).guideFontSize,'medium');
+ b.change('guide-font-size','medium');b.click({action:'reload-guide'});assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).guideFontSize,'medium');
 });
 
 test('account storage loads server lists over a stale cache and submits changes through its service',()=>{
@@ -400,10 +400,10 @@ test('idle preparation reuses the neighboring page and invalidates it when leavi
 
 test('Guide reminder settings persist independently and default safely for older saved sessions',()=>{
  const a=app();assert.match(a.html(),/id="guide-show-core-stratagems" type="checkbox" >/);assert.match(a.html(),/id="guide-show-deep-strike" type="checkbox" checked/);
- a.toggle('guide-show-core-stratagems',true);a.toggle('guide-show-deep-strike',false);
+ a.toggle('guide-show-core-stratagems',true);a.toggle('guide-show-deep-strike',false);a.click({action:'reload-guide'});
  let saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.guideShowCoreStratagems,true);assert.equal(saved.guideShowDeepStrike,false);
  const b=app([...a.store]);assert.match(b.html(),/id="guide-show-core-stratagems" type="checkbox" checked/);assert.match(b.html(),/id="guide-show-deep-strike" type="checkbox" >/);
- b.click({phase:'1'});b.click({step:'1'});assert.doesNotMatch(b.html(),/<h4>Deep Strike<\/h4>/);b.toggle('guide-show-deep-strike',true);assert.match(b.html(),/<h4>Deep Strike<\/h4>/);
+ b.click({phase:'1'});b.click({step:'1'});assert.doesNotMatch(b.html(),/<h4>Deep Strike<\/h4>/);b.toggle('guide-show-deep-strike',true);b.click({action:'reload-guide'});assert.match(b.html(),/<h4>Deep Strike<\/h4>/);
  saved=JSON.parse(b.store.get('warplan.prototype.v1'));assert.equal(saved.guideShowCoreStratagems,true);
 });
 
@@ -472,7 +472,7 @@ test('leaving during guide preparation cancels it and returning to Start can res
  const a=app(undefined,{setup:true,preload:true});a.start();a.click({action:'choose-guide-army'});a.flushGuide();
  assert.match(a.html(),/Start your guide/);assert.equal(a.prepared(),null);
  a.start();a.flushGuide();assert.equal(a.prepared().ready,true);
- a.toggle('guide-show-core-stratagems',true);assert.match(a.html(),/Preparing your guide/);a.flushGuide();assert.equal(a.prepared().ready,true);
+ a.toggle('guide-show-core-stratagems',true);assert.doesNotMatch(a.html(),/Preparing your guide/);a.click({action:'reload-guide'});assert.match(a.html(),/Preparing your guide/);a.flushGuide();assert.equal(a.prepared().ready,true);
 });
 
 test('guide editing is available only to admins and replaces checklist controls',()=>{
@@ -481,6 +481,34 @@ test('guide editing is available only to admins and replaces checklist controls'
  user.toggle('guide-rule-editing',true);assert.doesNotMatch(user.html(),/data-guide-edit=/);
  const admin=app(undefined,{admin:true});admin.click({phase:'2'});admin.click({step:'1'});
  assert.match(admin.html(),/id="guide-rule-editing"/);assert.match(admin.html(),/data-review-reminder=/);
- admin.toggle('guide-rule-editing',true);assert.match(admin.html(),/data-guide-edit=/);assert.doesNotMatch(admin.html(),/data-review-reminder=/);
- admin.toggle('guide-rule-editing',false);assert.match(admin.html(),/data-review-reminder=/);assert.doesNotMatch(admin.html(),/data-guide-edit=/);
+ admin.toggle('guide-rule-editing',true);admin.click({action:'reload-guide'});assert.match(admin.html(),/data-guide-edit=/);assert.doesNotMatch(admin.html(),/data-review-reminder=/);
+ admin.toggle('guide-rule-editing',false);admin.click({action:'reload-guide'});assert.match(admin.html(),/data-review-reminder=/);assert.doesNotMatch(admin.html(),/data-guide-edit=/);
+});
+
+test('rule-type settings stay pending through navigation and apply together on Reload Guide',()=>{
+ const a=app();a.click({phase:'2'});a.at('shooting-activations');assert.match(a.html(),/Assured Destruction/);
+ a.ruleType('ability',false);a.ruleType('army',false);assert.match(a.html(),/Assured Destruction/);
+ assert.deepEqual(JSON.parse(a.store.get('warplan.prototype.v1')).guideRuleTypes,{});
+ a.click({phase:'1'});a.click({phase:'2'});a.at('shooting-activations');assert.match(a.html(),/Assured Destruction/);
+ a.click({action:'reload-guide'});assert.doesNotMatch(a.html(),/<h4>Assured Destruction<\/h4>|<h4>Aspect Shrine Token<\/h4>/);
+ let saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.guideRuleTypes.ability,false);assert.equal(saved.phase,2);assert.equal(saved.guideRuleTypes.army,false);
+ a.ruleType('ability',true);assert.doesNotMatch(a.html(),/Assured Destruction/);a.click({action:'reload-guide'});assert.match(a.html(),/Assured Destruction/);
+ const b=app([...a.store]);b.click({phase:'2'});b.at('shooting-activations');assert.match(b.html(),/Assured Destruction/);
+});
+test('disposition setup is optional, requires a valid opponent and uses the selected list',()=>{
+ const a=app(undefined,{setup:true});assert.match(a.html(),/Add Disposition actions/);assert.doesNotMatch(a.html(),/id="guide-opponent-disposition"/);
+ a.toggle('guide-add-disposition',true);assert.match(a.html(),/Opponent's Disposition\?/);assert.match(a.html(),/Your disposition: <strong>Priority Assets/);
+ a.start();assert.match(a.html(),/Start your guide/);assert.match(a.elements['#toast'].textContent,/opponent disposition/);
+ a.change('guide-opponent-disposition','Disruption');assert.match(a.html(),/Your primary mission: <strong>Extract Relic/);a.start();
+ a.click({phase:'2'});a.at('shooting-activations');assert.match(a.html(),/Sensor Sweep/);assert.match(a.html(),/rule-disposition/);assert.match(a.html(),/Extract Relic/);
+ a.ruleType('disposition',false);assert.match(a.html(),/Sensor Sweep/);a.click({action:'reload-guide'});assert.doesNotMatch(a.html(),/Sensor Sweep/);
+});
+test('round-specific disposition reminders update from preloaded templates without rebuilding army pages',()=>{
+ const a=app(undefined,{setup:true,preload:true});a.toggle('guide-add-disposition',true);a.change('guide-opponent-disposition','Disruption');a.start();a.flushGuide();a.rejectPageBuilds();
+ a.at('command-end');assert.doesNotMatch(a.html(),/Primary scoring · End of Command/);
+ a.click({action:'round-up'});a.at('command-end');assert.match(a.html(),/Primary scoring · End of Command/);
+ for(let i=0;i<3;i++)a.click({action:'round-up'});
+ a.at('command-end');assert.doesNotMatch(a.html(),/Primary scoring · End of Command/);
+ a.click({phase:'4'});a.at('turn-end');assert.match(a.html(),/Round 5 primary scoring/);
+ a.click({turn:'opponent'});a.at('round-end');assert.match(a.html(),/End-of-battle primary scoring/);
 });

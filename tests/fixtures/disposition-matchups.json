@@ -1,0 +1,127 @@
+[
+  {
+    "you": "Purge the Foe",
+    "opponent": "Take and Hold",
+    "mission": "UNSTOPPABLE FORCE"
+  },
+  {
+    "you": "Purge the Foe",
+    "opponent": "Purge the Foe",
+    "mission": "MEATGRINDER"
+  },
+  {
+    "you": "Purge the Foe",
+    "opponent": "Disruption",
+    "mission": "PUNISHMENT"
+  },
+  {
+    "you": "Purge the Foe",
+    "opponent": "Reconnaissance",
+    "mission": "CONSECRATE"
+  },
+  {
+    "you": "Purge the Foe",
+    "opponent": "Priority Assets",
+    "mission": "DESTROYER'S WRATH"
+  },
+  {
+    "you": "Disruption",
+    "opponent": "Take and Hold",
+    "mission": "DEATH TRAP"
+  },
+  {
+    "you": "Disruption",
+    "opponent": "Purge the Foe",
+    "mission": "DELAYING ACTION"
+  },
+  {
+    "you": "Disruption",
+    "opponent": "Disruption",
+    "mission": "OUTMANOEUVRE"
+  },
+  {
+    "you": "Disruption",
+    "opponent": "Reconnaissance",
+    "mission": "SMOKE AND MIRRORS"
+  },
+  {
+    "you": "Disruption",
+    "opponent": "Priority Assets",
+    "mission": "LOCATE AND DENY"
+  },
+  {
+    "you": "Reconnaissance",
+    "opponent": "Take and Hold",
+    "mission": "RECONNAISSANCE SWEEP"
+  },
+  {
+    "you": "Reconnaissance",
+    "opponent": "Purge the Foe",
+    "mission": "TRIANGULATION"
+  },
+  {
+    "you": "Reconnaissance",
+    "opponent": "Disruption",
+    "mission": "SURVEIL THE FOE"
+  },
+  {
+    "you": "Reconnaissance",
+    "opponent": "Reconnaissance",
+    "mission": "GATHER INTEL"
+  },
+  {
+    "you": "Reconnaissance",
+    "opponent": "Priority Assets",
+    "mission": "SEARCH AND SCOUR"
+  },
+  {
+    "you": "Priority Assets",
+    "opponent": "Take and Hold",
+    "mission": "SECURE ASSET"
+  },
+  {
+    "you": "Priority Assets",
+    "opponent": "Purge the Foe",
+    "mission": "VITAL LINK"
+  },
+  {
+    "you": "Priority Assets",
+    "opponent": "Disruption",
+    "mission": "EXTRACT RELIC"
+  },
+  {
+    "you": "Priority Assets",
+    "opponent": "Reconnaissance",
+    "mission": "VANGUARD OPERATION"
+  },
+  {
+    "you": "Priority Assets",
+    "opponent": "Priority Assets",
+    "mission": "SABOTAGE"
+  },
+  {
+    "you": "Take and Hold",
+    "opponent": "Take and Hold",
+    "mission": "BATTLEFIELD DOMINANCE"
+  },
+  {
+    "you": "Take and Hold",
+    "opponent": "Purge the Foe",
+    "mission": "IMMOVABLE OBJECT"
+  },
+  {
+    "you": "Take and Hold",
+    "opponent": "Disruption",
+    "mission": "DETERMINED ACQUISITION"
+  },
+  {
+    "you": "Take and Hold",
+    "opponent": "Reconnaissance",
+    "mission": "PURGE AND SECURE"
+  },
+  {
+    "you": "Take and Hold",
+    "opponent": "Priority Assets",
+    "mission": "INESCAPABLE DOMINION"
+  }
+]

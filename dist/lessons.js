@@ -183,6 +183,7 @@
  // Guide preferences affect reminders only; keep Workshop/catalog records intact.
  function isDeepStrike(rule){return rule.category==='core'&&(rule.id==='deep-strike'||rule.sourceRuleId==='deep-strike'||rule.importSource?.sourceId==='deep-strike');}
  function guideRule(rule,state){
+  if(state.guideRuleTypes?.[rule.category]===false)return null;
   if(isDeepStrike(rule)){
    if(state.guideShowDeepStrike===false)return null;
    if(rule.id==='deep-strike'&&abilities.some(a=>a.id!=='deep-strike'&&isDeepStrike(a)))return null;

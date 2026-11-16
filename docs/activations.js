@@ -190,6 +190,7 @@
    const rows=step.activationMode?stages(state,unit,step.activationMode,candidates):[{title:'At this step',cards:stepCards.filter(a=>fits(a,state,unit,true))}];
    const seen=new Set();
    for(const row of rows)for(const a of row.cards){
+    if(state.guideRuleTypes?.[a.category]===false)continue;
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
     const key=ruleKey(a);if(seen.has(key))continue;seen.add(key);
     const item={...a,guideMeta:L.ruleGuideMeta(a,state),timing:a.timings?L.ruleTimingLabel(a):a.expanded?(a.triggerText||row.title):row.title};
@@ -217,12 +218,12 @@
    for(const record of entry.records){record.items.delete(key);record.sharedIds.add(sharedKey);}
   }
   const unitCards=[...types.values()].map(r=>{
-   const source=L.unitInfo(r.unit.body,state.army.faction)||{},unitMeta=L.guideMeta(source,'unit',state);
+   const source=L.unitInfo(r.unit.body,state.army.faction)||{},unitMeta=L.guideMeta(state.guideRuleTypes?.ability===false?{}:source,'unit',state);
    const items=[...r.items.values()].sort((a,b)=>a.guideMeta.priority-b.guideMeta.priority);
    const hints=[unitMeta,...items.map(a=>a.guideMeta)],order=chooseOrder(hints);
    const mainActivation=!!step.activationMode&&!['pile','consolidate'].includes(step.activationMode);
-   const first=state.phase===4&&r.instances.every(unit=>fightsFirst(state,unit));
-   const conditionalFirst=state.phase===4&&source.fightsFirst==='yes'&&!first;
+   const first=state.guideRuleTypes?.ability!==false&&state.phase===4&&r.instances.every(unit=>fightsFirst(state,unit));
+   const conditionalFirst=state.guideRuleTypes?.ability!==false&&state.phase===4&&source.fightsFirst==='yes'&&!first;
    const flags=[...new Set([...(conditionalFirst?['Fights First · check attachments']:[]),...hints.flatMap(h=>h.flags).filter(flag=>!first||norm(flag)!=='fightsfirst')])];
    const notes=[...new Set([...(conditionalFirst?['This datasheet is marked Fights First. Every model in its attached unit must also qualify.']:[]),...hints.filter(h=>h.note&&(h.priority!==100||h.flags.length)).map(h=>h.note)])];
    return {unit:{...r.unit,priority:order.priority,orderHint:order.note},instances:r.instances,items,sharedIds:[...r.sharedIds],guideMeta:{...order,flags,notes},fightsFirst:first,show:items.length>0||mainActivation&&(first||flags.length>0||order.priority!==100)};
@@ -237,7 +238,7 @@
   function reset(){context=null;decks.clear();coverageCache.clear();}
   function prepare(state){
    const generation=root.WarPlannerContent?.generation;
-   const next=JSON.stringify([generation??null,state.army,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false]);
+   const next=JSON.stringify([generation??null,state.army,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false,state.guideRuleTypes]);
    if(context!==next){reset();context=next;}
   }
   function deck(state,step){
