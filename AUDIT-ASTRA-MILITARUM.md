@@ -2,7 +2,19 @@
 
 Source-derived study audit of the imported Astra Militarum catalog against its preserved mechanics and pinned community source. This is not certification against the current official Codex. Approximate, provisional and conflicting records retain specific review explanations.
 
-## Coverage
+## Regular-army completion follow-up — 2026-11-16
+
+Resolved **all 111 remaining active summary flags**, updating 121 rules (including ten related Officer/setup records). The active uploaded scope is now **236 usable rule summaries, 72 units and 11 detachments**. Combat Patrol’s 19 archived records remain inactive and unchanged. This follows the current Astra faction/datasheet reference, the official July 2026 faction pack v1.1, and current Core Hidden/disembark rules; it is not official certification or a full Codex/Legends import.
+
+The reference supplies the previously empty effects and resolves provisional target/timing conflicts. Corrections include the full Voice of Command issue windows and menu, current Officer allowances, Kasrkin’s extra self-Order, Master Vox and Bombast-class targets, the missing On My Signal Order, 2CP Flexible Command, once-per-battle 2CP Reinforcements, transport reactions, current assault/shock disembarks, true detection range, marker-based Deathstrike firing, Yarrick’s conditional stances, model-specific shoot/fight-on-death and resurrection placement. Omitted expiry statements are identified explicitly rather than invented. Normal shooting/charge and transport restrictions still apply.
+
+Brood Brothers projections now exclude Officer allowance and related range/concurrency cards that explicitly require Voice of Command. Kasrkin Warrior Elite remains available under its FAQ. No profiles, points, equipment, unit IDs, attachment targets, source imports or archived Combat Patrol content are overwritten.
+
+Sources and per-rule context fingerprints are in `tests/fixtures/astra-finish-sources.json`; original review wording is in `scripts/astra-finish-notes.json`. The baseline is `tests/fixtures/astra-finish-before.json`. Run `node scripts/finish-astra.cjs tests/fixtures/astra-finish-before.json /tmp/astra-finish` to generate the revision-checked payload. It refuses any changed/added/missing Astra record.
+
+Scope remains the uploaded regular-army rules. The current combined reference also contains additional new and legacy/Legends sheets absent from this catalog; this follow-up does not automatically import them or certify weapon profiles/points or full roster legality. Earlier results below are preserved as audit history.
+
+## Initial coverage
 
 | Catalog | Count |
 | --- | ---: |
@@ -170,3 +182,9 @@ Applied all 251 rule updates through the existing authorized catalog import RPC.
 - **Warrior Elite** (`warrior-elite-draydens-lance-kasrkin-astra-militarum`): Once per battle round per unit, at phase start, this Drayden’s Lance Kasrkin unit may add one concurrent Order slot and activate Voice of Command until your next Command phase. Source gap: no option selection, self-issue bypass or Battle-shock handling is supplied; confirm how this version’s extra Order works.
 - **Warrior Elite** (`warrior-elite-astra-militarum`): Once per battle round per unit, at phase start, this Kasrkin unit may activate a player-selected Voice of Command option until your next Command phase. Source gap: the record does not restrict the phase or define self-issue and concurrency exceptions; confirm the full Warrior Elite rule.
 - **Will of Iron** (`will-of-iron-astra-militarum`): The first time this Commissar Yarrick model is destroyed this battle, at phase end roll D6; on 2+, return it with 3 wounds and at least the encoded 1″ from enemies. Source review: this provisional rule lacks the return location and a clear distance boundary; confirm placement before use.
+
+## Completion validation
+
+All 121 updated records advanced one revision through the existing import RPC after exact comparison of all 339 Astra records. Complete live read-back matched every expected field in those 339 records; the other 9,340 catalog records kept their revision/content digest (`598486b7c58b4768488f555e51add8c8`). Combat Patrol remains archived. No unit/profile/points, schema, auth or user-list changes.
+
+712 tests passed, including ten completion regressions. Syntax/build/bundle checks passed. Desktop/mobile checks at 1440px/390px cover the real Command Guide, Voice of Command’s two timing rows, recovered Reinforcements and all 236 available summaries across eleven regular detachments.

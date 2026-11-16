@@ -65,7 +65,7 @@
  function projectGsc(catalog,rules){
   const host=catalog.factions.find(f=>gsc(f.name));if(!host)return;
   for(const mode of gscModes){if(!catalog.detachments.some(d=>gsc(d.faction)&&norm(d.name)===norm(mode.detachment)))continue;
-   const sourceRules=rules.filter(r=>norm(r.faction)===norm(mode.faction)&&!r.allied),forbidden=new Set([...mode.blocked,...sourceRules.filter(r=>r.category==='army').map(r=>r.sourceRuleId||r.id)]),prefix='gsc-'+mode.id+'-',id=x=>prefix+x;
+   const sourceRules=rules.filter(r=>norm(r.faction)===norm(mode.faction)&&!r.allied),forbidden=new Set([...mode.blocked,...sourceRules.filter(r=>r.category==='army'||mode.id==='brood-brothers'&&r.requiresArmyAbility==='voice-of-command-astra-militarum').map(r=>r.sourceRuleId||r.id)]),prefix='gsc-'+mode.id+'-',id=x=>prefix+x;
    const native=catalog.units.filter(u=>!u.allied&&norm(u.faction)===norm(mode.faction)&&!u.legend&&!((u.importSource?.record?.game_modes||[]).length&&(u.importSource.record.game_modes).every(m=>m==='combat-patrol'))&&has(u,mode.faction)&&(mode.required||[]).every(k=>has(u,k))&&!mode.excluded.some(k=>has(u,k)||norm(k)==='ratling'&&has(u,'Ratlings')));
    const ids=new Set(native.map(u=>u.id)),views=native.map(u=>({...u,id:id(u.id),faction:host.name,originFaction:mode.faction,sourceUnitId:u.id,sourceCatalogKey:u.sourceCatalogKey||'unit:'+u.id,allied:true,alliedKind:'gsc',alliedDetachment:mode.detachment,bodyguardIds:(u.bodyguardIds||[]).filter(b=>ids.has(b)).map(id),abilities:u.abilities.filter(a=>!forbidden.has(a.id)).map(a=>({...a}))}));
    const ruleMap=new Map();for(const r of sourceRules){if(r.detachment||r.enhancement||!['ability','core'].includes(r.category)||forbidden.has(r.id)||forbidden.has(r.sourceRuleId))continue;
