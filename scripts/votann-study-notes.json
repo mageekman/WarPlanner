@@ -1,0 +1,2373 @@
+[
+  {
+    "id": "adaptable-avarice-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the start of any phase, while your army has Fortify Takeover, select a friendly Votann CHARACTER unit and spend any number of YP. If you then have 6YP or fewer, your army has Hostile Acquisition instead until the start of your next turn.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "9368b41c05d81336c4f00641ddf210d4fa2c592f082ed44d7c919274dcb6a696",
+    "pinnedHash": "6063e7e2d69ada8d4113c3ec519da1d5100c90e4e88e14a026403f90f278925d",
+    "coreHash": "a14a47116e4892a3ae42a89a798de6a33dc216df4b5c774d75cf82ea8d24ba03"
+  },
+  {
+    "id": "ancestral-crest-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per turn, when Command Re-roll targets the bearer’s unit, spend 1YP to reduce that use’s CP cost by 1. This does not grant extra uses.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cc83a702d155b10adea93390e011fb3061ab4ea1a95d149fbc4761092fb0b26d",
+    "pinnedHash": "c37d62225f5b1817f7370abf0f0292d1ccb07280745ae5f86085528a5f0d3549",
+    "coreHash": "2be71c556553bfd2a8335473de30c7153c304c30b1a9bfc407dd648d4ccccc26"
+  },
+  {
+    "id": "ancestral-fortune-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per turn, spend 1YP to change one Hit roll, Wound roll or saving throw for Ûthar himself to an unmodified 6. One shared use across those roll types; other models do not benefit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7e1c44b4df19ee3971a82b5f1153c22633203dfa2af5d3eeb5d0054390ee3fca",
+    "pinnedHash": "7e1c44b4df19ee3971a82b5f1153c22633203dfa2af5d3eeb5d0054390ee3fca",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 11,
+    "referencePage": "Ûthar-the-Destined"
+  },
+  {
+    "id": "ancestral-sentence-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase, select a Votann unit not yet selected to shoot. Its ranged weapons gain Sustained Hits 1 for the phase; optionally spend 3YP to give Sustained Hits 2 instead.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "3b723d797606bcee6697457e0ed25d6bf0467d3c0400d73d94a4988d081ef6f9",
+    "pinnedHash": "6c5e4c07a4d705d3ac16d03c8604a4eb5cbc4bbfb01ec6b4e60a83ee3b897a11",
+    "coreHash": "8a619d0a991dc35fa42ca1b95eb1b0a182d7eb06998523f5e72ed820ebf7e949"
+  },
+  {
+    "id": "assailed-from-every-angle-leagues-of-votann",
+    "state": "structured",
+    "summary": "When a Votann unit is selected to shoot in your Shooting phase, it may choose one enemy other than a MONSTER/VEHICLE and restrict all its attacks to that enemy, if eligible. If any attack hits, mark that enemy assailed until your next Shooting phase starts; if already assailed, also mark it pinned for that duration. Pinned means -2″ Move and -2 to Charge rolls. The first application alone does not pin.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "25e95bd0cb4060d092b3a55f01b5a4fd5e22e47ccfed43a5ff04100520dc007b",
+    "pinnedHash": "25e95bd0cb4060d092b3a55f01b5a4fd5e22e47ccfed43a5ff04100520dc007b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "asset-manipulator-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the start of either Command phase, spend 3YP to give the bearer an aura for that turn: enemy units within 3″ subtract 1 from their models’ Objective Control.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "1b90cd5d215462f363766f4da7ee5f7ec872ed1383e116e79960f1c6097e11e6",
+    "pinnedHash": "0fa2efb878bd2cdfbe95d7ef83268489fcce19fa54754b2283fc10582fa80c8d",
+    "coreHash": "ed13c91a7691dd4ed8c0daeb3e6058f134675e63649e138151ae3bb63404d789",
+    "officialPage": 7
+  },
+  {
+    "id": "augmented-assault-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Movement phase, select CTHONIAN BESERKS not yet selected to move. Optionally spend up to 2YP; add that many inches to their Move for the turn. They may charge after Advancing this turn, including if no YP were spent.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5b0bf3c87b4dfd92ae975f6cb1d66ea29c71ebb4f7e4b491e67b8eccfce93f68",
+    "pinnedHash": "b3f0c2b67e03bc90d8856044325e4cb5d411800bfc515ef76f59c2a90b94e4fb",
+    "coreHash": "6f166a79740bd822c0a8f7926d9f8ee5fe745cfa1e51a9a3b15a8723cc627e10"
+  },
+  {
+    "id": "auxiliary-contract-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase or either Fight phase, select friendly Votann INFANTRY or MOUNTED not yet selected to shoot/fight. Their weapons gain Precision for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0e7d6316236540fa605634eb6a1fdea6e28b703d9dd7902517137369269915d4",
+    "pinnedHash": "2e9f65f61c4a8c843091063c8ffe382b24d709a573b48cec0ca5b2c35af1f314",
+    "coreHash": "bd75f9e09d1d195d5195e1a185f00b46c098e382ecb4074d478f6d384ea08522",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 8
+  },
+  {
+    "id": "avatars-of-the-ancestors-leagues-of-votann",
+    "state": "structured",
+    "summary": "Friendly KÂHL, EINHYR CHAMPION, EINHYR HEARTHGUARD and ÛTHAR units re-roll ranged Wound rolls of 1 against targets within 9″. This detachment’s HEARTHGUARD tag prevents combining it with another HEARTHGUARD detachment.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "872224aa05dbaad9d193e798813a76d290e702ce5c9834d09cdb79279c918e33",
+    "pinnedHash": "872224aa05dbaad9d193e798813a76d290e702ce5c9834d09cdb79279c918e33",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 4
+  },
+  {
+    "id": "bastion-running-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Movement phase, a HEKATON LAND FORTRESS not yet selected to move may pass horizontally through terrain on Normal/Advance moves for the phase. This does not permit passing through models or apply to charges.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "fa453524f0e568beab9c8520496ba19cfb8238aed436f9e33e9ab0a73b26151a",
+    "pinnedHash": "bdd6ea3c151512eff1c5e36df667edb7a51e9a50f09e2562401a5a6f6b61a305",
+    "coreHash": "5574641a89ea83447565c1a6e45ac6f5e3a094f092e811d2e56a20f9f3d16268"
+  },
+  {
+    "id": "bastion-shield-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "Ranged attacks from models within 12″ of the bearer’s unit have their AP worsened by 1. You may spend 1YP to extend that distance to 18″ for the phase; this replaces the distance, not a second stacking AP penalty.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e2bca2c42ff0a392168f6baf30001ba896d40ec0010cb14c450f633014c4b9dd",
+    "pinnedHash": "ae46b050018b7f1b0e61fb02d9eb855cb1d7cd32d2fb9f5c80d63d5f282e88f6",
+    "coreHash": "fad9c3dcc9e1a26035aae6fb63dbe7133fd11bb0c417ffbe64568d15e4372d84",
+    "officialPage": 5
+  },
+  {
+    "id": "blistering-advance-leagues-of-votann",
+    "state": "structured",
+    "summary": "Passengers may disembark after this Sagitaur Advances, using a shock disembark move (Core Rules 18.07). Its capacity is 6 Votann INFANTRY, excluding ARTILLERY, EXOARMOUR, EXOFRAME and IRONKIN STEELJACKS. Resolve the core disembark restrictions; this is not free permission to charge.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "1c5ae798224b725ab74c7bfae26afddb3d265e829dcd8ec75d6555cbbc5a5272",
+    "pinnedHash": "1c5ae798224b725ab74c7bfae26afddb3d265e829dcd8ec75d6555cbbc5a5272",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Sagitaur"
+  },
+  {
+    "id": "breaching-fire-bane-slayers-bulwark-brokhyr-thunderkyn-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Thunderkyn Breaching Fire: the import marks a hit enemy and grants friendly ranged attacks Ignores Cover for the phase, unlike the ordinary datasheet’s longer cover denial. Confirm the current Combat Patrol variant; do not merge them.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5fb9d364fe299bee2877aa54e3dc3c32c86502852d5ce61fb463d20cf5687b02",
+    "pinnedHash": "5fb9d364fe299bee2877aa54e3dc3c32c86502852d5ce61fb463d20cf5687b02",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "breaching-fire-leagues-of-votann",
+    "state": "structured",
+    "summary": "After ordinary Thunderkyn shoot in your Shooting phase, select one enemy unit hit. It cannot have Benefit of Cover until the start of your next Shooting phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8d0d6a3c71121427418ddaaa9923ae6ff9ecc17bbdfe4964cebac8fb8dbb01b6",
+    "pinnedHash": "8d0d6a3c71121427418ddaaa9923ae6ff9ecc17bbdfe4964cebac8fb8dbb01b6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Brôkhyr-Thunderkyn"
+  },
+  {
+    "id": "break-the-foe-leagues-of-votann",
+    "state": "structured",
+    "summary": "Melee weapons in Berehk’s unit gain Sustained Hits 1. This affects his actual unit, not every nearby CTHONIAN unit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "71e299f3b42ac295f8b165517b9482e3139dc594fcb0b511ea1f6cd081ef9f7f",
+    "pinnedHash": "71e299f3b42ac295f8b165517b9482e3139dc594fcb0b511ea1f6cd081ef9f7f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 9,
+    "referencePage": "Berehk-Stornbröw"
+  },
+  {
+    "id": "brekkeknots-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After enemy target selection in the opponent’s Shooting phase or either Fight phase, select a targeted KÂHL, ÛTHAR or EINHYR HEARTHGUARD unit. Its models gain a 4+ invulnerable save for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b5820bb0202d07d0a1a9b7534b45b762415b50c1a8f1fef37e8a0b569998ff8b",
+    "pinnedHash": "5140eee914fa35c5fb138f0d2c0d17bd5c82aec808227302569630456a91c13b",
+    "coreHash": "262b1f65f521b960c6534e6e42720f31b243c691791498112319a96ab9cb3321",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 6
+  },
+  {
+    "id": "brekkeknots-hearthguard-covenant-leagues-of-votann",
+    "state": "structured",
+    "summary": "When an enemy targets friendly EINHYR HEARTHGUARD in the opponent’s Shooting phase or either Fight phase, that unit gains a 4+ invulnerable save. Use Hearthguard Covenant’s own target restriction, not Hearthband’s broader menu.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "069f0046fa1c54a6e3666b0e04469ece56b980a7bc16b5c1ee933af33d1d516e",
+    "pinnedHash": "c91668094efa70958816229101bc61ae7e731c2b489f775cc72b3c784a5c85a6",
+    "coreHash": "d808091389f999cd25ec65305c90682a1ce01c0e88c12a83b5fc764d647f1987",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 4
+  },
+  {
+    "id": "brokhyr-barrage-bane-slayers-bulwark-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for the Combat Patrol Brôkhyr Barrage enhancement: the import grants ranged Ignores Cover and a post-shooting Battle-shock trigger against a hit enemy. Confirm current bearer, timing and target restrictions before play.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "a1f4b457a557d669cc7ee1e2837ce936c969170df81c351fa660c5192bd22f8d",
+    "pinnedHash": "a8ca13fabcf6bee698f506ef123ca20a3fe941ee8a3004af438bf86f4214aa6f",
+    "coreHash": "522233168ca3fd34eb85256fb323a15f27f054448cfbd629e4ad6a417daaed0a"
+  },
+  {
+    "id": "brokhyr-guild-support-leagues-of-votann",
+    "state": "structured",
+    "summary": "The Iron-master’s unit gains Lone Operative while within 3″ of friendly Votann VEHICLE or IRONKIN STEELJACKS units, only while it is not an Attached unit.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "086543fda83658ce7929da853975a62af806460ef19fc34ee6ac9018d634fd3e",
+    "pinnedHash": "086543fda83658ce7929da853975a62af806460ef19fc34ee6ac9018d634fd3e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Brôkhyr-Iron-master"
+  },
+  {
+    "id": "built-to-last-armoured-trailblazers-leagues-of-votann",
+    "state": "structured",
+    "summary": "In the opponent’s Shooting phase, when an enemy targets a friendly SAGITAUR, its ranged attacks suffer -1 to Wound where their Strength exceeds the Sagitaur’s Toughness.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "46d79a72a4438c942be321cef83e279a8b081deb2d28ec2782910eda8ffaeb20",
+    "pinnedHash": "ec8903a0357381521f8ba3f458465297ce6c414b419acfe643cb29f24cf45f4e",
+    "coreHash": "e7599082f0f9eb5342f2bba8ba12c70e5db7ca0e9c653fbcdaddd48710a2f7df",
+    "officialPage": 2
+  },
+  {
+    "id": "calculated-tenacity-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "IRON-MASTER or MEMNYR STRATEGIST only: while the bearer leads a unit, add 1 Objective Control to models in that unit.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1b3d55a13e9deef3f3918203014354cd54f074dae47f38df578d0649b0fb4c2d",
+    "pinnedHash": "012044ef7d3e08d8a188aee0ea9dcf6e76c79f93c84460b9fdf566cd9518636c",
+    "coreHash": "c2a832f65215757b9c9f98a6a8eae8d1391e5b99fa013ae0fabb5c10f37767f5"
+  },
+  {
+    "id": "claimed-for-the-kindred-bane-slayers-bulwark-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Claimed for the Kindred: the import adds 1 Objective Control for the turn, but does not supply complete current target/timing wording. Retained separately from matched-play stratagems.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7c8af5307ff6ccfd23c5170ca52adc53693e434268ce30c5fce9757e46e78a37",
+    "pinnedHash": "8986e1adf4d2427d5c683c689ce0236643325749e9e38aad8545c7cdd3286580",
+    "coreHash": "67ab5def5c56a23d86050198600af420efce331756b90459a5c6c1e2da45cef8"
+  },
+  {
+    "id": "claimstaker-reflex-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "After an enemy ends a Normal/Advance/Fall Back move in the opponent’s Movement phase, select a Votann unit within 8″ of it, excluding ARTILLERY/VEHICLES. Make a Normal move up to D6″, or spend 2YP for up to 6″ instead. The unit cannot embark as part of this move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "7809a8144bbacf550ec3236e6e61d6b5ad649662692c95e6a86a39d425a4883b",
+    "pinnedHash": "d717b4fb13d1747a8d45c9879f9b648c899acdba8824d2a8d6ced88ebf4e83e0",
+    "coreHash": "83dd79e2b99d418cb5667f2a14c1cfceb7a7d3f7195669acf300407ae1f91f9d",
+    "officialPage": 11
+  },
+  {
+    "id": "cogitated-need-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Movement phase, select friendly IRONKIN STEELJACKS to make a Normal move, ending as close as possible to the closest objective marker. All other Normal-move restrictions still apply.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "f1a14e27de3e81d8fec7a020460b9fdc5432fe4f0ea2309e5897788da576c7bd",
+    "pinnedHash": "1b7e94c3ab108a1483fd5c014b89ed1fc4436d63bf99d73b1e92fbaeb31d5693",
+    "coreHash": "6430005e93d957a8a0aefd5ca5d71903650a8c3f8bfc1e890f7c8ea1f224e606"
+  },
+  {
+    "id": "computational-mastermind-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of your Command phase, before checking Hostile Acquisition/Fortify Takeover, for each controlled objective with at least one model having this ability in range, either gain 1YP or spend 1YP. Multiple Strategists at one objective do not multiply its contribution.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "126ff71141a955a9e9c00ef0877e2d864f6d21608dea892b9d10dc257d7fa828",
+    "pinnedHash": "126ff71141a955a9e9c00ef0877e2d864f6d21608dea892b9d10dc257d7fa828",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Memnyr-Strategist"
+  },
+  {
+    "id": "coordinated-crossfire-armoured-trailblazers-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select up to two friendly SAGITAURS and one enemy unit. Those selected Sagitaurs re-roll ranged Hit and Wound rolls of 1 against that enemy. Other friendly shooters do not gain this benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "c317802d8575f73b58be3880e12b29b3b27de3566927f0f2a03990ea53d929db",
+    "pinnedHash": "33bc9c951c0ee077d7f3bf0d963046a3393bf2c8ccb0bd390c790a08cc7e94aa",
+    "coreHash": "fb5b3f1a921a966abb0eae43d1d08fbe9463e8edf996aec218798bdbdd1139ad",
+    "officialPage": 2
+  },
+  {
+    "id": "cyberstimm-infusion-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "In either Fight phase, select CTHONIAN BESERKS not yet selected to fight. Re-roll Wound rolls of 1 for the phase; optionally spend 2YP to re-roll their Wound rolls instead.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "40ac3e39039144da402baa2ea99c5a571876c52c4418ce2d8f20ff7c4ec63028",
+    "pinnedHash": "22aee207bdfef13f8ee6c396b7768b8e23a8b0aedd3c66c5c0aa081d9ea71e32",
+    "coreHash": "dc8457b4d032d606e44896e2434782ef4efd27ec93089608cbc4a255fe7bb838"
+  },
+  {
+    "id": "cyberstimms-leagues-of-votann",
+    "state": "structured",
+    "summary": "When a Beserk is destroyed by a melee attack before that model has fought this phase, roll D6, adding 1 while the army has Fortify Takeover. On 4+, that model fights after the attacker finishes, then is removed. Ranged destruction does not qualify.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2b1cbed824891ab80681a31c6a120d06fe95086301f2771ca1da210cfbfc845b",
+    "pinnedHash": "2b1cbed824891ab80681a31c6a120d06fe95086301f2771ca1da210cfbfc845b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Cthonian-Beserks"
+  },
+  {
+    "id": "dead-reckoning-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "At either turn’s end, if the bearer remains on the battlefield and you spent no YP that turn, gain 1YP. Having gained YP does not prevent this; having spent any does.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "turn-end",
+    "sourceHash": "a76a257e7791ecef3afc310759a8bc54a7f2c4d20df97d04b70a7991a776f577",
+    "pinnedHash": "9c29011c56c16d62aa1d39de5df5bbc183c2d19908d6eaf731607c0bf6acec08",
+    "coreHash": "7a53ed147cc20a9b48276011fb9a74f1a74431cee3711b63f7383642c9676dca"
+  },
+  {
+    "id": "decisive-destruction-bane-slayers-bulwark-einhyr-hearthguard-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Hearthguard Decisive Destruction: the import re-rolls ranged Hit rolls of 1 against the closest eligible target. Confirm the current Combat Patrol datasheet; preserve this separate identity.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c78ccb576a1fa9f2a2e6a3cae88e7b658a7365588ad337d36d98faf0219bbfcc",
+    "pinnedHash": "c78ccb576a1fa9f2a2e6a3cae88e7b658a7365588ad337d36d98faf0219bbfcc",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "decisive-destruction-leagues-of-votann",
+    "state": "structured",
+    "summary": "Ordinary Hearthguard re-roll ranged Hit rolls of 1 when attacking the closest eligible target. A farther target does not qualify merely because it is visible.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c8a7df1013ac2f9e9b4deaf569d9077ea11234f9a00d5e70d78b9bbf3d27f193",
+    "pinnedHash": "c8a7df1013ac2f9e9b4deaf569d9077ea11234f9a00d5e70d78b9bbf3d27f193",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Einhyr-Hearthguard"
+  },
+  {
+    "id": "delayed-fire-rounds-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "After a BRÔKHYR, IRONKIN STEELJACKS or ARKANYST EVALUATOR unit shoots in your Shooting phase, select a hit enemy other than a MONSTER/VEHICLE. Until your next Shooting phase starts, whenever it makes a Normal/Advance/Fall Back move, roll D6 per model in that enemy unit: each 1 causes 1 mortal wound, maximum 6 per move.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "2131a08720f2b4e423630a8f4370dc66c05ca4ff61c8f3de3d1e064fd1d372c1",
+    "pinnedHash": "412764d5e2109a90cb7ab7386b2ee2c66d6f87d066fe2f12ce88043ed8d4af45",
+    "coreHash": "7c34ffefa32c3ea868534df4886fef1deacfeb7571f6d86590d953f57e7c82af"
+  },
+  {
+    "id": "delvewerke-navigator-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Movement phase’s Reinforcements step, the bearer may select visible friendly CTHONIAN BESERKS and spend any number of YP. Return one destroyed non-CHARACTER model, plus up to one additional destroyed non-CHARACTER per 2YP spent. Apply core return-model placement limits.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "d53d08da890db3c69f3026f081fdce1f7cf1b14a9611a6998956fc575b5a0f23",
+    "pinnedHash": "a5f7204bf9c2a0b75266244a06bb99c035ca978b79f7ce621b48a9502d7b5f23",
+    "coreHash": "cdd9f3c166f65ed07b43514bbb3a105a503f487ba862b6b64d573c0296a99fb3",
+    "officialPage": 11
+  },
+  {
+    "id": "destabilising-quakes-leagues-of-votann",
+    "state": "structured",
+    "summary": "After Earthshakers shoot in your Shooting phase, select an enemy hit by tremor shells. It takes a Battle-shock test at -1. Hits from other weapons alone do not qualify.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "ff9def6debe5b5d4a92db3287e9df1a4ac65962ccb1232724be8279c844ba7c0",
+    "pinnedHash": "ff9def6debe5b5d4a92db3287e9df1a4ac65962ccb1232724be8279c844ba7c0",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Cthonian-Earthshakers"
+  },
+  {
+    "id": "dispersed-formation-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "After enemy target selection in the opponent’s Shooting phase, select a targeted Votann INFANTRY or MOUNTED unit. It gains Stealth and Benefit of Cover against ranged attacks for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "4ed3391b583cab515507a71dd426751a354a4cce32bdee2aa19f738e28d26844",
+    "pinnedHash": "3ff13261959fd8de65e6e3a0a8db09898ad18fbbbed2501c1df00ecdfd351b8b",
+    "coreHash": "eed3981002dc75a7aa511d5630b9e8f682b7428c4d22246a9b165388422f585a"
+  },
+  {
+    "id": "economy-of-motion-farseekers-leagues-of-votann",
+    "state": "structured",
+    "summary": "After an enemy ends a move within 8″ of friendly unengaged PIONEERS in the opponent’s Movement phase, those Pioneers may make a Normal move up to D3+3″.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "35c27c588ab1f93ef518d4aa87fdebcc755d2bcf4b9297fdcacc6d25b379f441",
+    "pinnedHash": "57a339f77e3978751552c0d9a983d2ad079195cfb6994309030c3d137874e0d6",
+    "coreHash": "39688708276e7422b3307cc975eae772589d8b45eab5ccc37e31a613e114b478",
+    "officialPage": 3
+  },
+  {
+    "id": "etacarn-sb9-targeting-implant-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "The bearer’s unit re-rolls Hit rolls of 1. Whenever it is selected to shoot or fight, you may spend 3YP to give its attacks Sustained Hits 1 for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "83e985b29bd10cab1f45b262274fa9abe62d58f935f9ac52d4b118eb7084b2de",
+    "pinnedHash": "b18598ef793ec4cd0b6922ad5d3b0232bc12bf422433baee5d54f4927b914abe",
+    "coreHash": "52ced4ffaf794ecaeb7dee3d0c29bbaff4c17d4f551e4cfebce538cf49ecf100",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 7
+  },
+  {
+    "id": "exemplar-of-the-einhyr-leagues-of-votann",
+    "state": "structured",
+    "summary": "While the Einhyr Champion leads a unit, add 1 to that unit’s Advance and Charge rolls.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "38a74f41cb055c5673eb89361fd4e507315bd9202b693928a84a669c4d19a184",
+    "pinnedHash": "38a74f41cb055c5673eb89361fd4e507315bd9202b693928a84a669c4d19a184",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Einhyr-Champion"
+  },
+  {
+    "id": "exposed-flaws-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase, select HERNKYN not yet selected to shoot; optionally spend 2YP. For the phase re-roll their Wound rolls if YP were spent and/or the target is assailed. Without either condition there is no Wound re-roll.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8e0b5418bf1581148b4b81a2faeb30378e2da2ea7b8109d9f1b946b19713147d",
+    "pinnedHash": "4c11e6f3d52e9672d84ef778c94df8dc617616570f4fe65e63b7743def833d28",
+    "coreHash": "8d45718ffdc3c86cacec09317ff47c64a6af1a87ccfe4bd1f9a6ff6be64a4737"
+  },
+  {
+    "id": "eye-for-weakness-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "Attacks by the bearer’s unit gain +1 to Wound against assailed enemy units. Being pinned alone is not the named condition.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "8ac4eda3daadfb2af9493ac2ae2a734bfe8b7f6c03856b20b8dc366da9e7c523",
+    "pinnedHash": "7de36686e8bf9dd51c7582c2281be1e530e8feb603d25b2b9fd5ab1aa3ab3b0f",
+    "coreHash": "80414db4544d11ca3a0120cba8c1a94aefbc2718732616237b4348c17ba5ed20"
+  },
+  {
+    "id": "eye-of-the-hunt-leagues-of-votann",
+    "state": "structured",
+    "summary": "Friendly HERNKYN ranged attacks gain +1 to Hit against targets within 12″.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a15e01cffb6f01bb9f3fa2e0f001854772c50a20dafee5035b57c1d0d6866ae6",
+    "pinnedHash": "a15e01cffb6f01bb9f3fa2e0f001854772c50a20dafee5035b57c1d0d6866ae6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 3
+  },
+  {
+    "id": "farstrydr-node-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "IRON-MASTER or MEMNYR STRATEGIST only: models in the bearer’s unit gain Deep Strike.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "939e0d629fcec9d5ec4e023746387170d928afb31e8662b22dd2a5a6d940e46b",
+    "pinnedHash": "71386eef092170a9f7180d0639c2306e86b17fcd6f89cfa885e231dd07ef984a",
+    "coreHash": "b80c7a092bc4c3db89e4653121242f4a9fb5a8146e7836ac7ed5c11abf6d4e35"
+  },
+  {
+    "id": "fast-firing-targeters-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Vynn Bane-Slayer’s Combat Patrol Fast-firing Targeters. The import grants Assault to the unit’s ranged weapons; confirm current scope and applicability before use.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "917a3037ede5d97c0aba172a0e3c8ec75562e110c9e1a37380f10b05764e0121",
+    "pinnedHash": "917a3037ede5d97c0aba172a0e3c8ec75562e110c9e1a37380f10b05764e0121",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "first-concern-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "After a BRÔKHYR, IRONKIN STEELJACKS or ARKANYST EVALUATOR unit shoots in your Shooting phase, it may make a Normal move only if it Remained Stationary in your Movement phase that turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5cade621bfb7c612b2ae9101b0afeef51fdb8e16b50a7904f7809075c4e8a04a",
+    "pinnedHash": "5624f58edced72a791e6abef349687019de57dbf4e9e8d4ea7aa3defabbf78c2",
+    "coreHash": "73c73d573844b9ca25cbd7cc97cf869d3aded6ec7803b9a3fa802f41b3a901f6"
+  },
+  {
+    "id": "forgewrought-expertise-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, the Iron-master’s unit can repair one friendly Votann VEHICLE, EXOFRAME or IRONKIN STEELJACKS unit within 3″. One model regains up to D3 wounds, or up to 3 instead if the repairing unit still contains an Ironkin Assistant. Each recipient unit can be repaired only once per turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "fc467ed459aeecce38f1d7e3d06c09de1e7384975ff9da3eefaa93e49bb6b585",
+    "pinnedHash": "fc467ed459aeecce38f1d7e3d06c09de1e7384975ff9da3eefaa93e49bb6b585",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Brôkhyr-Iron-master"
+  },
+  {
+    "id": "fortify-leagues-of-votann",
+    "state": "structured",
+    "summary": "While the Grimnyr leads a unit, models in that unit have Feel No Pain 5+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "bb5922440d9be74e77332c996657ea050ec4378e22c61c355763ac8a2e8dc803",
+    "pinnedHash": "bb5922440d9be74e77332c996657ea050ec4378e22c61c355763ac8a2e8dc803",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Grimnyr"
+  },
+  {
+    "id": "frontier-momentum-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Movement phase, select HERNKYN not yet selected to move. If they Advance this phase, replace the Advance roll with +6″ Move for the phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "fe77fd831deed44c9d2cac40850654cbf546c0f50230853535168d67d04fb3da",
+    "pinnedHash": "39cbb48476162345a37d0c03b6ef188a28d3d81faa8c4eef9dd92e2dcf4a02ea",
+    "coreHash": "cc9636ebf691b405beb8b229244e8a90d9e77a631ad6be767744093080cd4a9d"
+  },
+  {
+    "id": "fury-from-the-delve-leagues-of-votann",
+    "state": "structured",
+    "summary": "Friendly CTHONIAN BESERKS gain Deep Strike and BATTLELINE in this detachment. The army-list keyword change is part of this rule, not a universal datasheet change.",
+    "phase": [
+      0,
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "6732a0ab57b24486c126fa4117f3b0bde4eaafc8b561abb1d5f132050775daa5",
+    "pinnedHash": "6732a0ab57b24486c126fa4117f3b0bde4eaafc8b561abb1d5f132050775daa5",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "fury-of-the-hearth-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase, select EINHYR HEARTHGUARD not yet selected to shoot. Improve their ranged Strength by 1 for the phase. Optionally spend 1YP to also give those weapons Sustained Hits 1; the Strength bonus requires no YP.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d4e3e1fe3efcd0f5442bc0b856b6aec7edb49d432eeee505fb4c2c10da031b35",
+    "pinnedHash": "03e63dae7270dfd728869eb47c373a4dbc32758d33d3b5b5e2789017b2afd536",
+    "coreHash": "e28ed44f2e3e8e7ea678a14bb149e0e6a682c916a8e8c9e148ef9895168b42c2",
+    "officialPage": 6
+  },
+  {
+    "id": "fury-of-the-hearth-hearthguard-covenant-leagues-of-votann",
+    "state": "structured",
+    "summary": "When friendly EINHYR HEARTHGUARD are selected to shoot in your Shooting phase, their ranged attacks gain +1 Strength. You may spend 1YP to also give those attacks Sustained Hits 1. The extra keyword is optional, not a mandatory cost for the Strength bonus.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "007b95351a2fbe83a58d362155a1b52099774a672157e7b36b412b4663ed4ac5",
+    "pinnedHash": "bc8cdcd80b06a83f12a0bc2387312efbefcdef08734360ddd9bbb520cabe73b4",
+    "coreHash": "360d7390b8b32f89167d656fadbce1381fb1633260ee15ba34f3281d5e400773",
+    "officialPage": 4
+  },
+  {
+    "id": "geomantic-hunters-leagues-of-votann",
+    "state": "structured",
+    "summary": "Up to twice per battle, when Earthshakers are selected to shoot in your Shooting phase, they may re-roll Wound rolls for breacher ordnance attacks for the phase. Other weapons do not gain that re-roll.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "526f484bd94f29eb62b497be6681fe4c3c6a9eae964b1624f772889e42a12f00",
+    "pinnedHash": "526f484bd94f29eb62b497be6681fe4c3c6a9eae964b1624f772889e42a12f00",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Cthonian-Earthshakers"
+  },
+  {
+    "id": "grand-artifice-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After a friendly Votann unit Falls Back in your Movement phase, it may shoot and charge this turn despite that Fall Back.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "b23495061bc93d3087355c4d8775af442579d4c897530de17b5daf3f43752691",
+    "pinnedHash": "2ee1ebe6a99d16d5ac23e901f3923b5190b2bdcae4c8c4c15cce1d5edaccdcb6",
+    "coreHash": "55f95e1f1b99b5e3382e6ecb1cd70bb67453c3cf42d624dc214cb5eb09dbdbcb",
+    "officialPage": 8
+  },
+  {
+    "id": "graviton-vault-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "IRON-MASTER only. After the bearer shoots in your Shooting phase or fights in either Fight phase, select one enemy MONSTER/VEHICLE hit by its attacks. Until the start of your next turn that enemy suffers -1 to Hit. The two triggers are alternatives, not simultaneous phase requirements.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "bd9cac91eecd07b42d5ba6f137a5b0bccc139052f7ca26000758615927c233c2",
+    "pinnedHash": "53ff7eb1aeb670710dc3eb994e4c5255d64af85f012d9524db7810c53bee0598",
+    "coreHash": "dfc3c07450c4511db39a0c7b81d655e0f58d61a8d8b065e20ba89f189e801737",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "grim-efficiency-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per battle round, when a friendly Votann unit within 12″ of Ûthar is targeted by a stratagem, reduce that use’s CP cost by 1. This is not a CP refund or a separate use per nearby unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d1c2a01480a7093248a4d2cb755a890fa3a80d3ed6a8172012a5762708861b7f",
+    "pinnedHash": "d1c2a01480a7093248a4d2cb755a890fa3a80d3ed6a8172012a5762708861b7f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Ûthar-the-Destined"
+  },
+  {
+    "id": "grimnyrs-regard-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per battle, at the start of any phase, the Grimnyr may remove Battle-shocked status from one friendly Votann unit within 12″ of the GRIMNYR model. CORVs do not extend the measurement point.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "a2437fa87ba13b972ce8c3b65491d2677bd2228828a9bfe6b497f52ef27bdcd9",
+    "pinnedHash": "a2437fa87ba13b972ce8c3b65491d2677bd2228828a9bfe6b497f52ef27bdcd9",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Grimnyr"
+  },
+  {
+    "id": "grudge-fuelled-fortitude-leagues-of-votann",
+    "state": "structured",
+    "summary": "The first time Buri is destroyed, at phase end roll D6. On 2+, return him with full wounds as close as possible to where he died and outside all enemy Engagement Ranges. This triggers once, not after every destruction.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "1b232e0a233567b794bfba77e48fcf4b85aa27d8f4c15a5895adc410a8cda7c7",
+    "pinnedHash": "1b232e0a233567b794bfba77e48fcf4b85aa27d8f4c15a5895adc410a8cda7c7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Buri-Aegnirssen"
+  },
+  {
+    "id": "hidden-accessways-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, remove one unengaged friendly CTHONIAN BESERKS, HEARTHKYN WARRIORS or HERNKYN YAEGIRS unit into Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "02f5d98f22a85b6977391af2ec943e7547e4a2cce00bdca42be1f20b9b6b79ea",
+    "pinnedHash": "34053ad1bf1ca4f796abc523b7cccde557347fd95b9ac8abd77720e1a63c92e3",
+    "coreHash": "9a82bde9a8a6dd64a731a35743f984e0a2c989873b182f116fd66964cbc1cb69"
+  },
+  {
+    "id": "high-kahl-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "KÂHL only. When a model in the bearer’s unit is destroyed by a melee attack and that model has not fought this phase, roll D6. On 4+, it fights after the attacker finishes, then is removed. This is Hearthband’s model-based trigger.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c711bf74acdd53a51074fd79035adb44d7ea0bceca08bd694366a39c839c08cb",
+    "pinnedHash": "62b48fecb1d295f2847d3482bbd4e4d919e6a04d9654b397c2631d6a2a806673",
+    "coreHash": "66c346f2386719ba966b36ce6031fe8841b5bb812c8714b706e7a4d3123a5ae2",
+    "officialPage": 5
+  },
+  {
+    "id": "high-kahl-hearthguard-covenant-leagues-of-votann",
+    "state": "structured",
+    "summary": "KÂHL only. In the Fight phase, when a model in this unit is destroyed before this unit has been selected to fight, roll D6. On 4+, keep it until after this unit fights or the phase ends, whichever comes first, then remove it. Preserve Covenant’s unit-based eligibility and removal sequence rather than substituting Hearthband’s after-attacker procedure.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b3066a827d8ce5927ea78062121ba887f2f6bf4e732bbfaacf491b89aeea039f",
+    "pinnedHash": "a2743d45a90701459ac3944d87b7e251f8db27d2d08ea66f8016605bacf87b7f",
+    "coreHash": "6d176d8079dca8304e435e808b3a51dbff49450d944c555d521c4a9be332468f",
+    "officialPage": 4
+  },
+  {
+    "id": "honour-of-the-hold-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In either Fight phase, select a Votann unit not yet selected to fight and one enemy in its Engagement Range. Its melee attacks against that enemy improve AP by 1 for the phase, or by 2 instead if you spend 3YP. Other enemy targets do not gain the marked-target bonus.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "625d77208eb26cdc66d5b258cb6a1a672ae7a344125953804ad8632c3dd2e533",
+    "pinnedHash": "17338e49f8c957d3aea932af79af016ca5225e57653ec2ea22cada62a3c83890",
+    "coreHash": "c68a021f9a4417e16f3f2a34fe7649b3816411684bcca373146734140320fca4"
+  },
+  {
+    "id": "huntrs-mark-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase, select a Votann unit not yet selected to shoot. Re-roll its Hit and Wound rolls of 1 for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "e0a157314b62e375bbeaaa1fde13800b3e09708ae969614fa1e65860445bf604",
+    "pinnedHash": "6a47088c34971435f1bd53b7bbeca81ec510d59402d6a2904864731aca074978",
+    "coreHash": "a1cd4a6ca8c7cd71129631bca31d8b610b071cfd560f6a4fd676eee05e4e2b18"
+  },
+  {
+    "id": "illuminated-priority-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After a friendly Votann VEHICLE shoots in your Shooting phase, select one enemy it hit. Friendly Votann INFANTRY models re-roll Hit rolls of 1 against that enemy for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "cffa8736edc9180c85696db1a159f56b94630b422c0a256ae7dd9b2aa70a973e",
+    "pinnedHash": "621f20e59312e6d95e9e833ff28ba4360280a0f8750b3f49c4ccbf967180191b",
+    "coreHash": "0740fc17c78ae7434d356247a382f95a407495e5a6d9d200b609d720411b711f"
+  },
+  {
+    "id": "indomitable-exemplar-bane-slayers-bulwark-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Indomitable Exemplar: the import describes a 2+ fight-on-death effect but has incomplete destruction/eligibility sequencing. Do not substitute the ordinary High Kâhl enhancement.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "bac80df481fd8ba3d8a9c7705a0f4d45c80d217a3a80710f2cb9c7f05c63afda",
+    "pinnedHash": "c7f1c0751b1946be7b7325807fe32094602cfe474ac26cc81536dff51c961b61",
+    "coreHash": "5933001685a3d119f5f588723c37952f4c126964fd2fdcaf2f8884879653b5fe"
+  },
+  {
+    "id": "inexorable-efficiency-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase, select a friendly Votann unit. It is eligible to shoot this phase after Falling Back this turn. This does not grant charge permission.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "3fc217e3b4590c84b96f0606d58ebf0fc50b5d3a4412cfc29cffa34c14885cb7",
+    "pinnedHash": "593e5eaeaf661cf5b5d229ed06fd374e0b3ca3dd3dee05c6c86928256d1ce83a",
+    "coreHash": "9fcef1a79e1605d38bd6cdfad542f9b5defa82da264eb52727fc30db0ebb98cf"
+  },
+  {
+    "id": "iron-ambassador-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "Votann bearer with an Autoch-pattern combi-bolter only. Once per battle, when its unit is selected to shoot, spend up to 3YP and add that many Damage to the bearer’s ranged weapons for the phase. Other models do not benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "ec9920e0bdacda7ac035759691c1ea17e5934e808747a14655bf269164a633b7",
+    "pinnedHash": "760c40dc5fbeff4d4346bbde4ad79dff712070e4d65262a504071c55b67e43dc",
+    "coreHash": "cef629d3554c16af0f74cdabbd952d939b72ba2b8d20cac1f5f1518f79c13ad6"
+  },
+  {
+    "id": "ironskein-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "Add 2 to the bearer’s Wounds characteristic. This is Hearthband’s Votann-bearer enhancement, not a unit-wide increase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "16952e4ce38fa2c054b0a9a16cd5d9157354c9552ee91c932bf2764ce1fffa54",
+    "pinnedHash": "201ff43676e4e5487f54fe1dc656976eba09379a7634d6f860b52818f8e8fd11",
+    "coreHash": "720b909e25864311422c0acd36b96c6c0530ce0d72ec923b6146145e5145165a",
+    "officialPage": 5
+  },
+  {
+    "id": "ironskein-hearthguard-covenant-leagues-of-votann",
+    "state": "structured",
+    "summary": "KÂHL only: add 2 to this model’s Wounds characteristic. Preserve Hearthguard Covenant’s narrower bearer restriction.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "dede6e882ee714f9f1deb77bc113a9314daf3008e6bdeb6f88a02fb5cc314116",
+    "pinnedHash": "5582682bbad74391b8fd7eb31498de3ebaab2c42a5f624ee8bcbd6297c604d13",
+    "coreHash": "025b63bb2aa736759628602404a65eac19d8aba2f7f9c4afe7b032b4f617d44c",
+    "officialPage": 4
+  },
+  {
+    "id": "kindred-hero-leagues-of-votann",
+    "state": "structured",
+    "summary": "While the Kâhl leads a unit, weapons equipped by models in that unit gain Lethal Hits.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "9d9666621bedf1023203f366cd2734a82a8cef8a3cf7926b78b0d0cf79e46b74",
+    "pinnedHash": "9d9666621bedf1023203f366cd2734a82a8cef8a3cf7926b78b0d0cf79e46b74",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "K-hl"
+  },
+  {
+    "id": "luck-has-need-keeps-toil-earns-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of your Command phase, an objective you control within range of Hearthkyn Warriors stays yours until the opponent has greater Level of Control there at the end of a phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "54688f3f6b6926775377a01500b3a433cde02bf4d2618cf3e9cc812a8fa1c97a",
+    "pinnedHash": "54688f3f6b6926775377a01500b3a433cde02bf4d2618cf3e9cc812a8fa1c97a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Hearthkyn-Warriors"
+  },
+  {
+    "id": "mantle-of-elders-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "MEMNYR STRATEGIST only. When the bearer’s unit is selected to shoot and you spend YP through Optimal Application, roll D6; on 2+, gain 1YP. This requires that specific detachment-rule expenditure.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "da6d22af551606578583df73eceb56ccee93c8496b3fabb0b7db92cfe93b4855",
+    "pinnedHash": "9e0e071ef22f353ab872a7c95d7d4404c203a30af772327278a7ff393fb3baf8",
+    "coreHash": "11d331e826d0ed2cf5242c80ea1cae5bdfcc52055532d74405b989feaaee94de"
+  },
+  {
+    "id": "martial-leverage-leagues-of-votann",
+    "state": "structured",
+    "summary": "Whenever an enemy unit is destroyed, gain 1YP. This is a gain per destroyed enemy unit, not a rule for giving enemies Judgement tokens.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "36f6329d34355a2735c9688f7cbfed2bc5cc545412d2eaf1fa43601d966c4776",
+    "pinnedHash": "36f6329d34355a2735c9688f7cbfed2bc5cc545412d2eaf1fa43601d966c4776",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "mass-driver-accelerators-leagues-of-votann",
+    "state": "structured",
+    "summary": "After the Champion ends a Charge move, choose one enemy in its Engagement Range and roll D6: 1 does nothing, 2–5 inflicts D3 mortal wounds, 6 inflicts D3+3 mortal wounds.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d64968f431a8ee8c31b2566c9749947bf5a7a06ce7d1fb2be30008fad334ded8",
+    "pinnedHash": "d64968f431a8ee8c31b2566c9749947bf5a7a06ce7d1fb2be30008fad334ded8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Einhyr-Champion"
+  },
+  {
+    "id": "materialisation-matrices-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "During your Movement phase’s Reinforcements step, choose a friendly Votann unit in Reserves with Deep Strike. It may Deep Strike more than 6″ horizontally from all enemies this phase, but cannot declare a charge for the rest of the turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "b41c69a147552d37492fbedcc1371a878b30277092c61f236bff5f446051d25c",
+    "pinnedHash": "7aa7433cd8d0794c616cb0e02ef45c390176379ddd569cf8120e7681bbdbbd4b",
+    "coreHash": "136de39720956114e3688273a2d22887afdfb48a0efce74b68cfa1bdcaafbd48",
+    "officialPage": 6
+  },
+  {
+    "id": "materialisation-matrices-hearthguard-covenant-leagues-of-votann",
+    "state": "structured",
+    "summary": "When a friendly EINHYR HEARTHGUARD unit with Deep Strike is selected to make an ingress move in your Movement phase, it may be set up more than 6″ horizontally from enemies. It cannot charge this turn. Preserve Covenant’s specific ingress trigger and target, not Hearthband’s broader wording. This placement may be inside the opponent’s deployment zone.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "09e1f1a29fe1103821e3d1b75caa76d048c47d52d2ce4a77a4874f1ae124f528",
+    "pinnedHash": "85b0bef69c881df3c1df4a8085a39865dd6562f8ddcf25e5aaeb59956a72b280",
+    "coreHash": "25a67f0f8251ac57eba700aff17877e82fce7265602b37ba8da44022efec1bca",
+    "officialPage": 4
+  },
+  {
+    "id": "mercenary-prospector-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "KÂHL only. Each enemy unit destroyed by the bearer’s unit earns 2YP. Kills by other nearby units do not qualify.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "536c3b2763164b1ea554bacc33a234657855fc9f3966c4990a5fa480fe3a6baa",
+    "pinnedHash": "deb70d8461cb5c71e238edc09d941cd726a2c2fd465a40d6fca8caec23d49c4c",
+    "coreHash": "a47e54f41a32896e5adb5f1857b8e9863e07a8e13665eb039ce88220dd75c9bc",
+    "officialPage": 7
+  },
+  {
+    "id": "merciless-eradication-leagues-of-votann",
+    "state": "structured",
+    "summary": "Enemy units other than MONSTERS/VEHICLES Falling Back from melee Steeljacks take Desperate Escape tests, subtracting 1 from those tests if that enemy is Battle-shocked.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "f1f1ce3789a9f0186af3f1478a5181051b49ab2e055848b2e4e24891610bba08",
+    "pinnedHash": "f1f1ce3789a9f0186af3f1478a5181051b49ab2e055848b2e4e24891610bba08",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Ironkin-Steeljacks-with-Melee-Weapons"
+  },
+  {
+    "id": "metaphysical-brokerage-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "MEMNYR STRATEGIST only. At your turn’s end, if the bearer is on the battlefield and you gained fewer than 3YP during that turn, gain the difference. Count YP gained, not the YP currently banked after spending.",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "turn-end",
+    "sourceHash": "f04e8bd53e900e3e0f1b657ad330471b4d79ff4b51c71fd6b8cbc4a2bef4de0c",
+    "pinnedHash": "01b40ec4614781448c53aedb497fd8b9ec69ac0754fb9c74963fecf464581f08",
+    "coreHash": "5c36b6e4c56692e4980f56eb2f2dedea17f094a3c2c0c6272d92502fdab9c237",
+    "officialPage": 7
+  },
+  {
+    "id": "methodical-annihilation-leagues-of-votann",
+    "state": "structured",
+    "summary": "When a Votann model attacks the closest eligible enemy or an enemy in Engagement Range of its unit, re-roll Wound rolls of 1. If its unit is KÂHL, EINHYR HEARTHGUARD or ÛTHAR, also improve that attack’s AP by 1. The AP gate is the unit’s identity, not a requirement that every attacking model personally has that keyword.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "783e5b93a92e5c5f97127e6fcacd64d461c8d911e7114c06ed75054c574450cd",
+    "pinnedHash": "783e5b93a92e5c5f97127e6fcacd64d461c8d911e7114c06ed75054c574450cd",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 5
+  },
+  {
+    "id": "mobile-exploitation-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, remove one unengaged HERNKYN unit into Strategic Reserves, or spend 2YP to select up to two unengaged HERNKYN units instead.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "6258dc72df4cbecc0a36323efb9647dbcf082b8ed9f552ef5fc95b81f3afae24",
+    "pinnedHash": "6e14ed854d5b33a6864d9eba2172864d0d34bb8d8a4f98702c4a285d4ace9018",
+    "coreHash": "9e5b216f2a42e9e1655d4a98c14da574b5c388a1d771d3a355cfefeaf18c8a8c",
+    "officialPage": 8
+  },
+  {
+    "id": "mobile-sensor-relays-leagues-of-votann",
+    "state": "structured",
+    "summary": "Friendly Votann TRANSPORTS project Firebase Control: Votann INFANTRY wholly within 6″ gain Sustained Hits 1 on ranged weapons. Mere partial proximity does not qualify.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7bed3c8f836e499028ec2374ee2a3d9ab8ab6a87af7d1c3c5df29adc22e6111d",
+    "pinnedHash": "7bed3c8f836e499028ec2374ee2a3d9ab8ab6a87af7d1c3c5df29adc22e6111d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "multicog-targeting-leagues-of-votann",
+    "state": "structured",
+    "summary": "For the Hekaton’s ranged attacks, you may ignore modifiers to Ballistic Skill and Hit rolls. This does not ignore every weapon characteristic or Wound modifier.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "01f069349303ba9073f0b56611c57f9ad1952051152676cf7125b7bfa4e15595",
+    "pinnedHash": "01f069349303ba9073f0b56611c57f9ad1952051152676cf7125b7bfa4e15595",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Hekaton-Land-Fortress"
+  },
+  {
+    "id": "multispectral-visor-leagues-of-votann",
+    "state": "structured",
+    "summary": "Models in the Iron-master’s unit re-roll ranged Wound rolls of 1.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "bd79456d6a2b0b187ab9ffa5d2a9ff718e67cc05496b3264d7cb5b70c70d8ac6",
+    "pinnedHash": "bd79456d6a2b0b187ab9ffa5d2a9ff718e67cc05496b3264d7cb5b70c70d8ac6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Brôkhyr-Iron-master"
+  },
+  {
+    "id": "multiwave-comms-array-leagues-of-votann",
+    "state": "structured",
+    "summary": "With the Multiwave Comms Array bearer present, when a stratagem targets its Pioneers unit, roll D6; on 5+, gain 1CP, subject to core CP-gain limits. This is equipment-dependent, not automatic on every Pioneers unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "27c128df3ae23be353ace1f2c42c8502e4a548ecf8c12fffd9196ab129435019",
+    "pinnedHash": "27c128df3ae23be353ace1f2c42c8502e4a548ecf8c12fffd9196ab129435019",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Hernkyn-Pioneers"
+  },
+  {
+    "id": "multiwave-system-jammer-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per battle, in your Movement phase, if the bearer is on the battlefield, choose a friendly CTHONIAN unit in Reserves. For that phase its arrival treats the battle round as one higher. This does not grant unrestricted placement.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "40b6ff5449a4254511e6db071ad0505d2e98232052b8a260638b46d9ac16b544",
+    "pinnedHash": "bd7cdcb14e37cc92db16a9a3e567236cea9f5c5fb7968c415ab44e5488d91235",
+    "coreHash": "53184387fce853402bd8155169086260b075ef9621c623a7b128acf2d0970ec2"
+  },
+  {
+    "id": "new-horizons-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, select unengaged friendly Votann INFANTRY and a friendly TRANSPORT they can embark within. If wholly within 6″ of that transport, they may embark. Capacity and passenger eligibility still apply.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "b4c38640adbc8940d2fc4b956e23638156e4726f3966b775a37ed037dd0660c6",
+    "pinnedHash": "18d66aad0d70d9fa9b8975db2a5a578b6b09a779231da195c009595e8ac7dcb5",
+    "coreHash": "aa79a8c554b095f61335eecc7a651b85503ea05c243ef7b65d8514b94c92cade",
+    "officialPage": 8
+  },
+  {
+    "id": "no-shot-wasted-farseekers-leagues-of-votann",
+    "state": "structured",
+    "summary": "When friendly HERNKYN are selected to shoot in your Shooting phase, their ranged attacks gain Lethal Hits.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d89b4513f2258b390b7387995737b6923517a372d7442b32429077b451591110",
+    "pinnedHash": "25ee385f718a243c34a38b4d75be0581993ceea07e0a2715f02d3473896d046b",
+    "coreHash": "a6beeb1269befdf950da524f453a14ce5dff2f3ecaef5f0966077f9c8bb9cc60",
+    "officialPage": 3
+  },
+  {
+    "id": "nomad-strategist-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per battle, at the end of the opponent’s Fight phase, if the bearer is on the battlefield, spend up to 4YP. Remove one friendly HERNKYN unit into Strategic Reserves, plus up to one additional HERNKYN unit per 2YP spent. A selected unit cannot be engaged with enemies other than assailed units.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "a6da0e0ec06c96aafb77d7c3695aec444ede3f154f9d46a5cc9c1da9ef4eec5f",
+    "pinnedHash": "1a924b340a9c5f448720eab1177cce021628ec23ea22d60409743e82e853c920",
+    "coreHash": "0111b3d6bd7e6e3cf194d247fe9ef8776e1a00e4e62c697cb653d4c9b6e135ad"
+  },
+  {
+    "id": "oathbound-speculator-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "The bearer’s unit re-rolls Wound rolls of 1. Each time it is selected to shoot or fight, you may spend 3YP to also add 1 to its Wound rolls for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e936d2991627fe6af7623c501e9789cf051a3707cf0017564b5c0afe05efb9a5",
+    "pinnedHash": "b179bb9641b9e73e0a85423a1bff8ddeb60410be1a4b7aa5a0b780a692ec00da",
+    "coreHash": "c1de28aedd5bbcb32999f85d48b05118067136d47522a90d4c49cfa0fc7a2aa8",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "opportune-advance-bane-slayers-bulwark-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Opportune Advance: the import describes a D6+1″ surge for targeted Hearthguard after enemy shooting, but full current restrictions are unverified. Preserve the distinct Combat Patrol version.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "845409d35265b6abe3b2b157605ba579f3eb520d40a15399119d50053de94a2a",
+    "pinnedHash": "02f9ae97ba5e97ec584f62556e455a96ca661aa81e49e62495066d2d5e0ce001",
+    "coreHash": "436e93411ce8a307670b57c7d9c766c6f2520b7f7766660ccf9e33d6cc534499"
+  },
+  {
+    "id": "opportunistic-escalation-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After enemy shooting hits a friendly Votann VEHICLE other than a HEKATON LAND FORTRESS in the opponent’s Shooting phase, while your army has Hostile Acquisition, that vehicle may make a Normal move up to D6″.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "509a152db6a1c79de901c56ea58210bc42d7147ba01cf6b8b8fdd3e447fc1b4d",
+    "pinnedHash": "78cbfc0a0dfab803fb0536013b449669e54da0bddb7e268fe1e617a90a2ac227",
+    "coreHash": "2cbc2f64a486c9bf6d4bceb2466c584831b2b02e5bf5b9322e5284d687c3aaf8"
+  },
+  {
+    "id": "opportunistic-manoeuvre-leagues-of-votann",
+    "state": "structured",
+    "summary": "After Kapricus Defenders shoot in your Shooting phase, they may make a Normal move up to D6″. If they do, they cannot charge this turn.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "11ade57a7cc193435061d4c695c0eab5f3d6c5309e2ef806bbb74664658fad9e",
+    "pinnedHash": "11ade57a7cc193435061d4c695c0eab5f3d6c5309e2ef806bbb74664658fad9e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Kapricus-Defenders"
+  },
+  {
+    "id": "optimal-application-leagues-of-votann",
+    "state": "structured",
+    "summary": "At your Command phase’s end, gain 1YP per controlled objective outside your deployment zone with a friendly IRON-MASTER and/or MEMNYR STRATEGIST in range, capped at 2YP per turn from this rule. When friendly BRÔKHYR, IRONKIN STEELJACKS or ARKANYST EVALUATOR units are selected to shoot in your Shooting phase, you may spend 1YP to re-roll their Hit rolls of 1 for that phase.",
+    "phase": [
+      0,
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "7291dffec5904da37a76327ea7e7a60e98e2581f3828e4e1cf0c84bde42fb7a6",
+    "pinnedHash": "7291dffec5904da37a76327ea7e7a60e98e2581f3828e4e1cf0c84bde42fb7a6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "you",
+        "window": "end"
+      },
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "optimal-expenditure-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In either Fight phase, select Votann INFANTRY not yet selected to fight. Re-roll Hit and Wound rolls of 1 for the phase. If you spend 3YP, keep Hit re-rolls of 1 but re-roll Wound rolls instead.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "9cf395f2bfcf8fc85e0a2125f3facd4c1df6c70ee7c5c1389998a3c07bd5b1e4",
+    "pinnedHash": "27440252d9f40f725ee485717384cebddc4f37117d19563c4b82fbc588f1f90b",
+    "coreHash": "cce8def68a228c0257fd6953d195d673b00cd1b8fdd74264bc905c87e8540a32",
+    "officialPage": 8
+  },
+  {
+    "id": "optimised-attack-lines-upgrade-armoured-trailblazers-leagues-of-votann",
+    "state": "structured",
+    "summary": "SAGITAUR unit upgrade: this unit gains MOBILE.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8670c4a6d132c806a09bfd19b8fa16d0ac5436cfd8639c94f6feecb706c23cf2",
+    "pinnedHash": "c153ebeffadf946d07e10367b907c6c01e6028f42edb3cab1058f568c9448397",
+    "coreHash": "81cc6203384c045be81475f3eaf9e1fff1102c901713e6af45fbb61c44610f59",
+    "officialPage": 2
+  },
+  {
+    "id": "ordered-retreat-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After a friendly Votann unit Falls Back in your Movement phase, it may shoot and charge this turn despite that Fall Back.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "291db32e75180f381e20859620565755a1f07b355aa5e644aba1e06058f91eb5",
+    "pinnedHash": "ba609e2470ae912b937bb47403ee59dfd3f050cb987fd61b1dcf4e5b0d1b39c2",
+    "coreHash": "5262ed81e27619996112523b8b855864cb4e4eb7215bb4684276f457eedb861d"
+  },
+  {
+    "id": "outflanking-armour-armoured-trailblazers-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Movement phase from battle round 2 onward, select up to two friendly SAGITAURS in Strategic Reserves. Each makes an ingress move, following core arrival restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "3814017c02c6c47ac63416ffbe1354148456ee5311cfcb5cb7eaac61ab1e1bd0",
+    "pinnedHash": "753824e33e8bec7b5ebcef1f271e92d35806762ff98b6f0fdbe2a9e554b312f5",
+    "coreHash": "d6ddf259e5afa5c27159fef6c13e98904138e92ba40375a26c2d8a1850be2545",
+    "officialPage": 2
+  },
+  {
+    "id": "outflanking-mag-riders-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of the opponent’s turn, if Pioneers are wholly within 9″ of a battlefield edge and unengaged, they may be removed into Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "turn-end",
+    "sourceHash": "7d6bdb2488d241477fbaa7abcd9a97afb4d6c76cf594d222aef9ba7d907bfb38",
+    "pinnedHash": "7d6bdb2488d241477fbaa7abcd9a97afb4d6c76cf594d222aef9ba7d907bfb38",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Hernkyn-Pioneers"
+  },
+  {
+    "id": "pan-spectral-lockons-upgrade-farseekers-leagues-of-votann",
+    "state": "structured",
+    "summary": "PIONEERS unit upgrade. In your Shooting phase, choose one visible enemy within 12″; it becomes spotted, increasing its detection range by 3″. The checked text specifies no separate expiry; do not invent one.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "b03a484b976d69e6cb09e6a100ae282d68d61a17640f4c9554de00e1df3a2093",
+    "pinnedHash": "1ac704848c88c8acd639d95692676605e6d48aa245ce0548347403cad8c22cf4",
+    "coreHash": "575d7e3e8c623ce64105efec33e06c3d06b451d1f4ff888f2d2acb85b6eb2b7e",
+    "officialPage": 3
+  },
+  {
+    "id": "panspectral-scanner-leagues-of-votann",
+    "state": "structured",
+    "summary": "With the Panspectral Scanner bearer present, models in its unit re-roll ranged Hit rolls of 1. Applies only to the equipped Pioneers/Hekaton unit, not nearby units.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "55699939c040dd348451d5f26f766800dba10cd313f7ab2f3b2e7262616ccf58",
+    "pinnedHash": "55699939c040dd348451d5f26f766800dba10cd313f7ab2f3b2e7262616ccf58",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Hernkyn-Pioneers"
+  },
+  {
+    "id": "panspectral-scanning-bane-slayers-bulwark-hearthkyn-warriors-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Panspectral Scanning: the import re-rolls ranged Hit rolls of 1, but its current variant/equipment wording is unverified. Keep it separate from ordinary Hearthkyn.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "57f3fdbf463706ec62c5ce8f5b0a9d74ac25e448f626110af283970d98d7ac24",
+    "pinnedHash": "57f3fdbf463706ec62c5ce8f5b0a9d74ac25e448f626110af283970d98d7ac24",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "panspectral-scanning-leagues-of-votann",
+    "state": "structured",
+    "summary": "With the Panspectral Scanner bearer present, models in its Hearthkyn unit re-roll ranged Hit rolls of 1.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "5266cc2967f352e10df61f14d3aa74472db6a1010686522672e90fbbfc9582c7",
+    "pinnedHash": "5266cc2967f352e10df61f14d3aa74472db6a1010686522672e90fbbfc9582c7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Hearthkyn-Warriors"
+  },
+  {
+    "id": "piledriver-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "Whenever the bearer’s unit is selected to fight, spend up to 2YP to add that many Damage to the bearer’s melee weapons for the phase. Other models’ weapons do not gain Damage.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "58817e99d5004f912bd998dd671fcb2aecc54b079249bd9bb580b86c84e10927",
+    "pinnedHash": "eed01e91e05c26f8cb4712491bfe73d06aefd4bb21ef993304abb8695d5f9fb6",
+    "coreHash": "0ab3bc7100f731274b5c78e9ec9fcc79bf22d4574986ef9e9d47c25e870a4231"
+  },
+  {
+    "id": "point-blank-fusillade-bane-slayers-bulwark-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Point-blank Fusillade: the import grants Close Quarters to a selected unit’s ranged weapons in your Shooting phase. Confirm current Combat Patrol targets and duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "7e395da12450693e32cf0e12e53157b0f77cc78d79c5a3db2c5928514842ceae",
+    "pinnedHash": "0ce44c0eaf1265e1e9fb8cd335cfbb7276928be7f7b657eedf1a72171d0e44da",
+    "coreHash": "f6993965d6de7c738c875b3c2f6cb9b988c58f8b464ebb78203833ef96270d2c"
+  },
+  {
+    "id": "pragmatic-hunters-leagues-of-votann",
+    "state": "structured",
+    "summary": "In the opponent’s Movement phase, after an enemy ends a move within 8″ of unengaged Yaegirs, the Yaegirs may make a Normal move up to D6″. The official update says any move, not just a Normal move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "2a3e509dc990304b893648cb695f38e13cb49e4ff3d999c9734bc44d007e8608",
+    "pinnedHash": "2a3e509dc990304b893648cb695f38e13cb49e4ff3d999c9734bc44d007e8608",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 11,
+    "referencePage": "Hernkyn-Yaegirs"
+  },
+  {
+    "id": "precursive-judgement-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "KÂHL only. While the bearer’s unit is wholly within 6″ of a friendly Votann TRANSPORT, Fire Overwatch can target it for 0CP and scores hits on unmodified 5+ for that use. This does not itself grant extra stratagem uses.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "232e0fa84ef0be52b0939061f795c384c5d2a7c50541d80179dc5e9929a73d67",
+    "pinnedHash": "355d42225308171cd8fb957b40e948c50e35de91976fd5606a708e9c4aeef24a",
+    "coreHash": "ed5370c59f668c6b18e5d738525aee2c8e1de63242bbde86f295ce4aaf8debd1"
+  },
+  {
+    "id": "predictive-guidance-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per battle round, when Fire Overwatch or Heroic Intervention targets the Memnyr’s unit, reduce that use’s CP cost by 1. The limit is shared between both stratagems.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "912ee14189db51115a3771446bbea3b85d18e9ecb0c3d1a73b56845adef48c0b",
+    "pinnedHash": "912ee14189db51115a3771446bbea3b85d18e9ecb0c3d1a73b56845adef48c0b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 11,
+    "referencePage": "Memnyr-Strategist"
+  },
+  {
+    "id": "preventative-purge-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "After an enemy ends a Fall Back move in the opponent’s Movement phase, choose friendly BRÔKHYR THUNDERKYN or IRONKIN STEELJACKS to shoot as if it were your Shooting phase, only at that enemy if eligible, with -1 to Hit.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "c581c1c23645c0dadadd419eed8084ece71ae26f26120c79b826dd0cd58db89c",
+    "pinnedHash": "d30ac7f9a549965e077a9465b7eef9a888c1916a0272fc99d898e7d4f507728e",
+    "coreHash": "6b1ee26ed3626bb0cf4ede4c8ab8f17e93c9782e1f98e4237625a61552fb2a18"
+  },
+  {
+    "id": "preymark-crest-leagues-of-votann",
+    "state": "structured",
+    "summary": "With a Preymark Crest bearer present, attacks by models in its unit gain Precision on Critical Wounds only when the enemy target is within objective range. This is not unconditional Precision on every attack.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c3240285d4e8e43ee1139eb4d558514ae6c19c32d7e49a63213cab27d0e65209",
+    "pinnedHash": "c3240285d4e8e43ee1139eb4d558514ae6c19c32d7e49a63213cab27d0e65209",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Ironkin-Steeljacks-with-Heavy-Volkanite-Disintegrators"
+  },
+  {
+    "id": "prioritised-efficiency-leagues-of-votann",
+    "state": "structured",
+    "summary": "With Votann as Army Faction, start with Hostile Acquisition. At your Command phase’s end, after gaining YP, use Hostile Acquisition below 7YP or Fortify Takeover at 7YP+, until your next Command phase starts. Hostile: +1 to Hit against enemies within objective range and re-roll Advance/Charge rolls. Fortify: +1 to Hit while your attacking unit is within range of a controlled objective; non-VEHICLE units suffer -1 to incoming Wound rolls when Strength exceeds Toughness. At each player’s Command phase end gain 1YP for controlling any home-zone objective; from round 2 also gain 1 each for controlling one non-home objective, two non-home objectives, and more objectives than the opponent (maximum 4 from these conditions). Gain before checking the state in your turn. Spending cannot take YP below zero and does not immediately switch abilities; explicit detachment overrides still apply.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f3ca21f1f1aa07af8dd0a896afb107a2c893665a693d890db7cb84cfb7bb6bfa",
+    "pinnedHash": "f3ca21f1f1aa07af8dd0a896afb107a2c893665a693d890db7cb84cfb7bb6bfa",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "end"
+      },
+      {
+        "phase": [
+          1,
+          3
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          2,
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "referencePage": "Memnyr-Strategist"
+  },
+  {
+    "id": "privateer-arsenal-mercenary-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase, select Votann INFANTRY not yet selected to shoot. Re-roll Hit and Wound rolls of 1 for the phase. If you spend 3YP, re-roll Hit rolls instead while keeping Wound re-rolls of 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "fd5d2ba2b378b34a938d94c36bb836359cc934f997a554350a79ef91a8071db8",
+    "pinnedHash": "433f336013d971ba4836730d15126fd9a92f0bb76d53115fa16ecbb1f8845601",
+    "coreHash": "7c4365c055dcedd3497547b6dbce79bd43f5baa1d1e2f5950e623360137e92d0",
+    "officialPage": 8
+  },
+  {
+    "id": "purge-response-leagues-of-votann",
+    "state": "structured",
+    "summary": "When Fire Overwatch targets ranged Steeljacks, they hit on unmodified 5+, or unmodified 4+ while your army has Fortify Takeover. This changes Overwatch’s hit threshold only.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "26bc9f8d5b4bbbe2066d6ec5ad8c68a19cc21915f38475122e8f68239e4c245f",
+    "pinnedHash": "26bc9f8d5b4bbbe2066d6ec5ad8c68a19cc21915f38475122e8f68239e4c245f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Ironkin-Steeljacks-with-Heavy-Volkanite-Disintegrators"
+  },
+  {
+    "id": "quake-multigenerator-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "KÂHL only. After the bearer shoots in your Shooting phase, select one non-TITANIC enemy hit by its attacks. Until your next turn starts, that enemy is suppressed and suffers -1 to Hit on its attacks. Hits by bodyguards alone do not qualify.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d8081b6058ab73e5299ebe781f25c2a5690a0205f46ea7f40927caaadb7bfc72",
+    "pinnedHash": "2c3359e872315fa36c57cfc43563718aa8ba7997919df448e404128a39d45eab",
+    "coreHash": "63ed251ac29908ef269077d3fdf5ad202472f7b65bc0ffd214a121bddf2cd1ad",
+    "officialPage": 5
+  },
+  {
+    "id": "quake-supervisor-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "While the bearer is within 3″ of friendly Votann ARTILLERY, it gains Lone Operative. Those nearby ARTILLERY units gain +1 to Hit on ranged attacks against enemies visible to the bearer. Visibility to the artillery alone is insufficient for this bonus.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "40112b8db7257ab23fbef8d35fafd9172f222de092f6fb00cc43b2cc1d3754f2",
+    "pinnedHash": "862a58bac747eafa722810efa5d58afb96e81886163842e2fd068510979d67fa",
+    "coreHash": "e96fe7347c3d98d2873bfab91e0a56bfc867233bd3bf59811de45fd81f8fc4c6"
+  },
+  {
+    "id": "rampart-crest-leagues-of-votann",
+    "state": "structured",
+    "summary": "While the Kâhl bearing a Rampart Crest leads a unit, models in that unit gain a 5+ invulnerable save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "5009606925eaba8d6aa0796be22c93b73ae1d8e1ff862a779eff1701fcd8edc0",
+    "pinnedHash": "5009606925eaba8d6aa0796be22c93b73ae1d8e1ff862a779eff1701fcd8edc0",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "K-hl"
+  },
+  {
+    "id": "rampart-crest-uthar-the-destined-leagues-of-votann",
+    "state": "structured",
+    "summary": "While Ûthar leads a unit, models in that unit gain a 5+ invulnerable save from his Rampart Crest.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2640dcdf80ec055c2cf66c4839165ae0963e9554f1bad61429e1dd2502a295b8",
+    "pinnedHash": "2640dcdf80ec055c2cf66c4839165ae0963e9554f1bad61429e1dd2502a295b8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Ûthar-the-Destined"
+  },
+  {
+    "id": "ranger-tactics-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase, select a Votann unit not yet selected to shoot. Re-roll its Hit rolls for the phase against assailed targets and/or if the firing unit is HERNKYN. Neither condition means no re-roll.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "7542849fe2b49f8bba1fd25de4813ed4ba2e53352d6dfb432ff75e41edbe3d20",
+    "pinnedHash": "422595a12e39376adc93967ee84afd44fea997091cedc7187cf27c3bd393166c",
+    "coreHash": "ef7c321a17c07077246a61eaa3305f80694840cfe3a6329b18f74be8f329eee0"
+  },
+  {
+    "id": "reactive-reprisal-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After enemy shooting targets a friendly Votann unit in the opponent’s Shooting phase, while your army has Fortify Takeover, that unit may shoot as if it were your Shooting phase. It can target only that enemy, and only if it is an eligible target; this is not unrestricted retaliation.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "255bd32bd420900e90450d343eb5e7a41ae46cf14dc90947eda9f8640268401b",
+    "pinnedHash": "7df0f9868872b4a4d228b8d6c60ab002c36f9e0213625ed9d6ef00be770668de",
+    "coreHash": "d8a7487afd8bec666d8bac6e9d290b1b6089b4fd167888343b992becdce7630a",
+    "officialPage": 11
+  },
+  {
+    "id": "relentless-avalanche-leagues-of-votann",
+    "state": "structured",
+    "summary": "Berehk’s unit can use Heroic Intervention despite other uses that phase. That use costs 1CP less and does not prevent uses on other units. All normal charge eligibility still applies.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "13a31697c25e8b32bb3892150f8b17627b761785e66678ca3b5d3c954dc0cdca",
+    "pinnedHash": "13a31697c25e8b32bb3892150f8b17627b761785e66678ca3b5d3c954dc0cdca",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 9,
+    "referencePage": "Berehk-Stornbröw"
+  },
+  {
+    "id": "resource-transmutation-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per turn, one Evaluator selected to shoot in your Shooting phase may spend 1YP. Its ranged weapons gain Sustained Hits 1 for the phase; after it shoots, if those attacks destroyed any enemy units, gain up to 2YP. The limit is shared across models with this ability, not once per Evaluator.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "61d4c3d8d32be74dcfb13bb12d065f3ea7c6f248eefcbd733fbdda06a620ba81",
+    "pinnedHash": "61d4c3d8d32be74dcfb13bb12d065f3ea7c6f248eefcbd733fbdda06a620ba81",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Arkanyst-Evaluator"
+  },
+  {
+    "id": "rollbar-searchlight-leagues-of-votann",
+    "state": "structured",
+    "summary": "With the Rollbar Searchlight bearer present, models in its unit may ignore Hit-roll modifiers for ranged attacks. This does not ignore Wound or Ballistic Skill modifiers.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "031a063e668dfc0b9112b31b999472aa7e2ebf4db1c3e382d275b0207a27b46e",
+    "pinnedHash": "031a063e668dfc0b9112b31b999472aa7e2ebf4db1c3e382d275b0207a27b46e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Hernkyn-Pioneers"
+  },
+  {
+    "id": "ruthless-reinvestment-leagues-of-votann",
+    "state": "structured",
+    "summary": "This detachment replaces the normal Hostile/Fortify assignment: begin with Hostile Acquisition. At your Command phase’s end, you may spend 3YP to swap Hostile Acquisition for Fortify Takeover, or vice versa. The normal 7YP automatic threshold does not also apply; YP generation still does.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "211758fe92a48713389df29d555a28655b19acbfc617071944bd6f2b391b1540",
+    "pinnedHash": "211758fe92a48713389df29d555a28655b19acbfc617071944bd6f2b391b1540",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 7
+  },
+  {
+    "id": "sagitaur-spearhead-leagues-of-votann",
+    "state": "structured",
+    "summary": "Friendly SAGITAURS gain Scouts 6″.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "031dc810c16e3c1fbbe4d074bb953f1069c3fa7f96dcc0fae21283cd045c9cef",
+    "pinnedHash": "031dc810c16e3c1fbbe4d074bb953f1069c3fa7f96dcc0fae21283cd045c9cef",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 2
+  },
+  {
+    "id": "saturation-rounds-upgrade-armoured-trailblazers-leagues-of-votann",
+    "state": "structured",
+    "summary": "SAGITAUR unit upgrade: its ranged attacks gain Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "27db1a4031683bbacb196a11f04fe5230076d6545e5dab8aaab1acf0997b4f9f",
+    "pinnedHash": "b22a3fb8613a4ba36e490870ca7d081c9e1690be18ab4e0a4b6d2a6c77ed1dc6",
+    "coreHash": "eeab49d2aede92e3f85948bc70274a31ba4c0427986ea85f9e8b9d9d7faba015",
+    "officialPage": 2
+  },
+  {
+    "id": "scanner-uplinks-leagues-of-votann",
+    "state": "structured",
+    "summary": "After the Kapricus Carrier shoots in your Shooting phase, select a hit enemy other than a MONSTER/VEHICLE. It is suppressed until your next turn starts, suffering -1 to Hit on its attacks.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "bbd0c728fc1a7f65472dedc0bce62ce5e50c217789ed48fb7feee5bea9085d61",
+    "pinnedHash": "bbd0c728fc1a7f65472dedc0bce62ce5e50c217789ed48fb7feee5bea9085d61",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Kapricus-Carrier"
+  },
+  {
+    "id": "science-guild-support-leagues-of-votann",
+    "state": "structured",
+    "summary": "The Evaluator gains Lone Operative while within 3″ of another friendly Votann INFANTRY unit that does not have Lone Operative. The official FAQ says another Evaluator alone cannot satisfy this support condition; they cannot grant it to each other.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "72c83c7875aa24841c6fcdd95e496da3c87a956b6b093e2b408fcfe325547b95",
+    "pinnedHash": "72c83c7875aa24841c6fcdd95e496da3c87a956b6b093e2b408fcfe325547b95",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 11,
+    "referencePage": "Arkanyst-Evaluator"
+  },
+  {
+    "id": "scornful-analysis-farseekers-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select a friendly HERNKYN unit and one visible enemy within 12″ of it. Friendly Votann attacks against that enemy gain Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "3f1b272a0887dec03be73e4155d9f0aac27e4d4f648456d8f8eeab3f758e8dc1",
+    "pinnedHash": "0d92503e1c88d106584bcc1b6951ebf856ce4bf4aa2beffd02a4f90df324aa66",
+    "coreHash": "0161b07ed361c3bca32bfd5034289792d675a4a2781621dce03e9097f0ad3f2e",
+    "officialPage": 3
+  },
+  {
+    "id": "secure-positions-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "At the end of any of your phases, select a friendly Votann TRANSPORT. One embarked Votann unit may disembark wholly within 6″ of it, cannot charge that turn, but may otherwise act normally for the remaining turn. This is not an opponent-phase trigger.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "b15a02aa8f843a4092d3a922985272a427eb86ff96e67339b8bfa1fc70ec8e27",
+    "pinnedHash": "c19f855616dab91d262fc2bd49e7dc4554d93b4ef96ee6386649b843dc4a9951",
+    "coreHash": "bbb3f6dc4b6f4c9ffcfabddc28d913999ba224b75b8d145b345bafb06854de30",
+    "officialPage": 11
+  },
+  {
+    "id": "secure-resources-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Secure Resources: the import models sticky objectives at the end of your Movement phase without complete objective/recipient conditions. Confirm the current Combat Patrol procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "45f4454307911af1c1e1b9d1efd8100ab357f9844b69619dfd4cbe07c100fd5f",
+    "pinnedHash": "45f4454307911af1c1e1b9d1efd8100ab357f9844b69619dfd4cbe07c100fd5f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "seized-opportunity-leagues-of-votann",
+    "state": "structured",
+    "summary": "Once per phase across your army, one Kâhl with this ability may gain 1YP when its own unit destroys an enemy. Multiple Kâhls do not each generate an extra YP that phase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "9c6de5cb202e50d90ab5ce1b264bfbdba955230a98f2881beeccb4f564f11651",
+    "pinnedHash": "9c6de5cb202e50d90ab5ce1b264bfbdba955230a98f2881beeccb4f564f11651",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "K-hl"
+  },
+  {
+    "id": "shroudwerke-talismans-upgrade-farseekers-leagues-of-votann",
+    "state": "structured",
+    "summary": "YAEGIRS unit upgrade: reduce this unit’s detection range by 3″.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "deba336ce4647937637a3631995fa6dd9986c665a0b183f13e1025fb24ef9f79",
+    "pinnedHash": "7ecb4cc86bf047d0400742c445ccaffab1a8df31828b51581978726aba24eb37",
+    "coreHash": "4745214bb86a83757fcdf026d73995e09eaf7fc86c01f6644a9d889c4ef71dfd",
+    "officialPage": 3
+  },
+  {
+    "id": "signature-restoration-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "IRON-MASTER only. Each friendly Votann model repaired by the bearer’s Forgewrought Expertise regains 1 additional lost wound. It does not permit repairing the same unit twice.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "f1aaba5f6b767fc1eb58efe9e430be0182b0989e8b82889b4fdf528e1d18dc49",
+    "pinnedHash": "fda39a549eab1fe05f64f48037d82903a303127cdbcd1eddf48b36ef5977ef5e",
+    "coreHash": "14af28d323be5e428e147e7499c765c41165c3534df33b192cae86afa924d8d7"
+  },
+  {
+    "id": "smoke-launcher-leagues-of-votann",
+    "state": "structured",
+    "summary": "The Smoke Launcher bearer gains SMOKE. This is equipment-dependent access to rules requiring that keyword, not an automatic defensive modifier.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "b1a220fb9f400a9d41193c0142084f83b037ab0f2cc14949722c93b85f0e0322",
+    "pinnedHash": "b1a220fb9f400a9d41193c0142084f83b037ab0f2cc14949722c93b85f0e0322",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Kapricus-Carrier"
+  },
+  {
+    "id": "subterranean-explosives-leagues-of-votann",
+    "state": "structured",
+    "summary": "After Beserks shoot in your Shooting phase, select a non-MONSTER/non-VEHICLE enemy hit by their mole grenade launcher. Until your next Shooting phase starts, Fire Overwatch cannot target that enemy unit. The ban is on using that enemy as the Overwatch firing unit; it is not a blanket immunity for your entire army.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "749dbaf7b92c3d1ad12ca35d1b896731dd8fb1f4044b726586b2e5ef856454d9",
+    "pinnedHash": "749dbaf7b92c3d1ad12ca35d1b896731dd8fb1f4044b726586b2e5ef856454d9",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Cthonian-Beserks"
+  },
+  {
+    "id": "superior-craftsmanship-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In either Fight phase, select a Votann unit not yet selected to fight. Its attacks against MONSTERS/VEHICLES gain +1 Damage for the phase. Other targets do not qualify.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "186ac9a1e137cb16f9bdcbec9ff11272c8965ffadddf1961083b3bc42d4cbfb7",
+    "pinnedHash": "a638dc0b49cd9af2b3d1d5b578735da8e2ac793cffc2aab1d8820dcf77a53d9c",
+    "coreHash": "abebe41cc9df120bbdf4f47ca3c0987aa29c4411389c96efbf5b50da719053bf",
+    "officialPage": 6
+  },
+  {
+    "id": "sure-of-purpose-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "In either Fight phase, select a Votann unit not yet selected to fight. Its models can Pile In and Consolidate up to 6″ for the phase, following remaining core move restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c1fdb072d9ff2e2e5c7dccc854aa954704b2e15776f8fc2be31d312319245a92",
+    "pinnedHash": "f292be0d43f5b013aacd0e9385e7707b61821e932a801bf6960046cfb643fd23",
+    "coreHash": "4506ef736676ee117ec79ad7eb8625556da4b6dfbe3e9b5c2714fb6cb0a018b6",
+    "officialPage": 6
+  },
+  {
+    "id": "surgical-saboteur-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "After the bearer’s unit shoots in your Shooting phase, select one hit enemy MONSTER/VEHICLE. It is pinned until your next Shooting phase starts: -2″ Move and -2 to Charge rolls.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "9799ecad58c559e73f6184e3fb7f22b2d634b24db2e40d5a50ee423c98177067",
+    "pinnedHash": "284d7618983cae4602b5ef2555bba34cc33f039131bece25b9ca545398711889",
+    "coreHash": "8b40adfb88d89a4c2e0c9249ec56a2ef900e103f4f7f65cdd9dd30fb40a07028"
+  },
+  {
+    "id": "tactical-alchemy-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "KÂHL only. In your Command phase, if the bearer’s unit is within range of a controlled objective outside your deployment zone, spend 1YP and roll D6; on 4+, gain 1CP, subject to core CP-gain limits.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "b344d4a6d6eb136cee39bd8e8560723645e4de044f022fcf46f043870959441d",
+    "pinnedHash": "2835929dbeab724e7b2c1327915ba55f50f63a58709c3bc717c889277957b49f",
+    "coreHash": "90e2385a23f5b84254f220236654fb19909e51893afb8aa43e1902e90073e18e"
+  },
+  {
+    "id": "tectonic-fracture-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "After friendly CTHONIAN EARTHSHAKERS shoot in your Shooting phase, select one enemy hit by their attacks that phase. It suffers -2″ Move until your next Shooting phase starts; optionally spend 2YP to also give it -2 to Charge rolls for that duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "dd28add316445149a141c896b52bbe09b8c45b773e2138c1ae37bee4bfb4aaf3",
+    "pinnedHash": "07008db0f2de0ffa72c396b6ce16b9321c1a56f5681ad74de2e0398d51d7d7b3",
+    "coreHash": "97ae06ee72df5df3a5ceda01188ddc48311b8ec20299136f2e1d875f6cf31976"
+  },
+  {
+    "id": "teleport-crest-einhyr-hearthguard-leagues-of-votann",
+    "state": "structured",
+    "summary": "With the Hearthguard Teleport Crest bearer present, models in its unit have Deep Strike. This is a bodyguard equipment ability, not an attached-leader requirement.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "10bfb9f9f6462c8bd8b2090a13aa494a731115614a761392aad28b7718c80a93",
+    "pinnedHash": "10bfb9f9f6462c8bd8b2090a13aa494a731115614a761392aad28b7718c80a93",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Einhyr-Hearthguard",
+    "leadingUnitRequired": false
+  },
+  {
+    "id": "teleport-crest-kahl-leagues-of-votann",
+    "state": "structured",
+    "summary": "While the Kâhl bearing a Teleport Crest leads a unit, models in that unit gain Deep Strike. The bearer must have the correct crest and remain attached.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "5c6150949ba54be23e403dbe50a34111cf86aabf593bc71846a25bb11bc65d4f",
+    "pinnedHash": "5c6150949ba54be23e403dbe50a34111cf86aabf593bc71846a25bb11bc65d4f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "K-hl"
+  },
+  {
+    "id": "teleport-crest-leagues-of-votann",
+    "state": "structured",
+    "summary": "While the Champion bearing a Teleport Crest leads a unit, models in that unit gain Deep Strike. The crest and attachment conditions both apply.",
+    "phase": [
+      1
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "43119ad31a1634fc48c14b6efd87f5d49a48441e701a87ab715ddd6409fcb5ec",
+    "pinnedHash": "43119ad31a1634fc48c14b6efd87f5d49a48441e701a87ab715ddd6409fcb5ec",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Einhyr-Champion"
+  },
+  {
+    "id": "trivarg-cyber-implant-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "When the bearer’s unit is selected to shoot in your Shooting phase, its ranged weapons gain Sustained Hits 2 for the phase if it disembarked from a TRANSPORT this turn, or if you spend 2YP. Disembarking satisfies the condition without the YP cost.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "fe607604cde09f77e932a762e04ed11ae77183863bada41b3dd855d216face68",
+    "pinnedHash": "f8f3b9f6e6372c312539e215d4640e10382bdd7e680c57b29901bc019ac1db92",
+    "coreHash": "15399cabae9e58b3b0c5a7154bf953640781133e84a90098cddffa43f3457e5a"
+  },
+  {
+    "id": "unhinged-vengeance-leagues-of-votann",
+    "state": "structured",
+    "summary": "After an enemy shoots in the opponent’s Shooting phase, if Buri himself lost wounds to those attacks, his unit may surge up to D6+2″. Losses on other models alone do not qualify.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "a1f9c7765e3cf9a13b3673d3f0d663b833aa345e688f8bbbfb8bdb9ddb9a3a05",
+    "pinnedHash": "a1f9c7765e3cf9a13b3673d3f0d663b833aa345e688f8bbbfb8bdb9ddb9a3a05",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 11,
+    "referencePage": "Buri-Aegnirssen"
+  },
+  {
+    "id": "unstoppable-force-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "In either Fight phase, select a friendly Votann unit not yet selected to fight. Its models can Pile In and Consolidate up to 6″ for the phase, following remaining core move restrictions.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "43c50875bf5b54a97e2465d99fe511c408fab60126055386710f6c2051966d4f",
+    "pinnedHash": "e6f87f1494fbc6ea57188498f54db49fd3798a2b9b621fb70c7023b9538b8e28",
+    "coreHash": "c89baf0ba40a76f40a679d1e83e135ea86dbef1b56a25a3780e75d3bb99a08f2"
+  },
+  {
+    "id": "unwavering-accuracy-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "In your Shooting phase, select BRÔKHYR THUNDERKYN not yet selected to shoot. Their attacks may ignore modifiers to Ballistic Skill, Hit rolls, Wound rolls and AP for the phase. Other characteristics are not covered.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "a631d507f369eb30262f71bb84065c58cc40192a3f705f56a0debe32cbf5307c",
+    "pinnedHash": "fc781fecab26049cb8be587dbb9ee166e3e7b71dd94ada41b31de2d422cd21e7",
+    "coreHash": "2245ec69a7871d6d1b467281a78703c8cd9add62787dfcb75a84270a4471184f"
+  },
+  {
+    "id": "unyielding-aggression-hearthband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After friendly Votann INFANTRY Fall Back in your Movement phase, they may shoot and charge this turn despite that Fall Back.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "6cc0f7c37d75c1b3033adec38d22d1d975638f572e9cdcc30e3ab1131076f98c",
+    "pinnedHash": "3d03dbbd19844f41ec4b55137abed5318a72cacb98d07013dc9c207c036b8f82",
+    "coreHash": "82454797de99dca6d74bb3c7e0f99e3e50a76e0b3b506e11a19c986c4424fa02",
+    "officialPage": 6
+  },
+  {
+    "id": "vengeance-flare-brandfast-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After enemy shooting hits friendly Votann INFANTRY in the opponent’s Shooting phase, target those Infantry. A friendly KAPRICUS or SAGITAUR within 6″ may shoot at that attacker if eligible, as if your Shooting phase; spend 2YP to choose a HEKATON LAND FORTRESS within 6″ instead. The retaliating vehicle need not be the unit that was hit.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "329e8857bdc63560c229d0affbc72e7d259ea2bf72966882c6de4b438443affe",
+    "pinnedHash": "17c7f1e69467bd3a6e401e6cd45a39768ad8884b206548fd2e993fb76a080fe0",
+    "coreHash": "b1d092802c40fb65f37d7d0d9b1d5aa14192fcf0ea4b70bfde5fd529e34a1f99"
+  },
+  {
+    "id": "void-hardened-needgaard-oathband-leagues-of-votann",
+    "state": "structured",
+    "summary": "After enemy target selection in the opponent’s Shooting phase or either Fight phase, while your army has Fortify Takeover, select a targeted Votann unit. Worsen incoming AP by 1 until that attacking unit finishes, not until the phase ends.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f8e0242d6cc7c67f85bf2325187476960bd2d7e8be6bd01761883e8a61ddd85e",
+    "pinnedHash": "967bc6fe128d1b7edbdc4c91f43564354e3fbfe4d0fee423906669ea28f6c039",
+    "coreHash": "7418476d5265478e235dc44574df339fd23a4ebb5f7617ea091506b633eb8b82",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 11
+  },
+  {
+    "id": "wall-of-steel-hearthfyre-arsenal-leagues-of-votann",
+    "state": "structured",
+    "summary": "After friendly IRONKIN STEELJACKS finish a Charge move in your Charge phase, select one enemy in their Engagement Range, excluding MONSTERS/VEHICLES. Roll D6 per model in your Steeljacks unit, plus two dice if you spend 2YP; each 4+ inflicts 1 mortal wound, capped at 6 mortal wounds.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "cbe1263b6f70c73f686e59a1c82e7313704b10dc5ae9460a8be1d1556dd654d9",
+    "pinnedHash": "757d2b01c7d63051d0c04be8cc5e3cbf4b1872ce9d256098b21e6d76826072df",
+    "coreHash": "166dfb9830e295177006d5b4895e658638c652c987bd3f34d9c813cd94e1f814"
+  },
+  {
+    "id": "weavefield-crest-leagues-of-votann",
+    "state": "structured",
+    "summary": "With the ordinary Hearthguard/Hearthkyn Weavefield Crest bearer present, models in its unit have a 5+ invulnerable save. Do not apply the Champion’s personal 4+ value to these units.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ae64d66bb5fe110bdb157950410b7b2c60fc46e81303415f606fce3652b997d9",
+    "pinnedHash": "ae64d66bb5fe110bdb157950410b7b2c60fc46e81303415f606fce3652b997d9",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Einhyr-Hearthguard"
+  },
+  {
+    "id": "weavefield-crest-bane-slayers-bulwark-einhyr-hearthguard-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Combat Patrol Weavefield Crest: the import grants a 5+ invulnerable save to its unit. Confirm equipment and recipient scope on the current Combat Patrol datasheets.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1fd0058c2031fd3eda41d7293e753bf3fc33ff03bea9694befa025c012cedd81",
+    "pinnedHash": "1fd0058c2031fd3eda41d7293e753bf3fc33ff03bea9694befa025c012cedd81",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "weavefield-crest-einhyr-champion-leagues-of-votann",
+    "state": "structured",
+    "summary": "The Einhyr Champion bearing a Weavefield Crest has a personal 4+ invulnerable save. Other models do not gain that save from this crest.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "620e9891dd3ce6d708bc5eccdb2cf721c9f58a583f21a520655fa2e44e8da3b1",
+    "pinnedHash": "620e9891dd3ce6d708bc5eccdb2cf721c9f58a583f21a520655fa2e44e8da3b1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Einhyr-Champion"
+  },
+  {
+    "id": "weavefield-crest-vynn-bane-slayer-leagues-of-votann",
+    "state": "needs-summary",
+    "summary": "Source review required for Vynn Bane-Slayer’s Combat Patrol Weavefield Crest: the import gives this model a 4+ invulnerable save. Confirm the current named datasheet and equipment restriction.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0009167788c45c359ebd651c2a04c64341ee4e1139a69ee8e5c97d9b42db8d29",
+    "pinnedHash": "0009167788c45c359ebd651c2a04c64341ee4e1139a69ee8e5c97d9b42db8d29",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "weavewerke-buttress-delve-assault-shift-leagues-of-votann",
+    "state": "structured",
+    "summary": "After enemy target selection in the opponent’s Shooting phase, while your army has Hostile Acquisition, select targeted friendly Votann INFANTRY. Incoming attacks against them suffer -1 to Wound for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "3ced97a5033831891922b31bf165e0f50f177b235a540ef8d7a6d3c1921a1a3f",
+    "pinnedHash": "393989e6cd1483f2ebed354a0a38446a9516bfbde82b71b83802d802679d61f0",
+    "coreHash": "9afa296940281986dd896794f63fe527e0df8c5defb7cbd4b3c1f1dd82fc21f1"
+  },
+  {
+    "id": "writ-of-acquisition-persecution-prospect-leagues-of-votann",
+    "state": "structured",
+    "summary": "After the bearer’s unit shoots in your Shooting phase, gain 1YP per assailed enemy hit by those attacks, capped at 3YP. Count assailed units hit, not hit rolls or destroyed models.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "da537befec96edf801b05e49c65bb5a4774e53a24494902c837fec71354340dc",
+    "pinnedHash": "6f4116ec99878593da8217b39ebb3a732f7f2cd69c011afec14a410782954348",
+    "coreHash": "b8bc97cc987e17070bee033d9ed140941e4936a7ecda121d97f4a0d916d13d61"
+  }
+]
