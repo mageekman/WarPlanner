@@ -25,14 +25,14 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(){idle.shift()?.();},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {review(key,checked){listeners.change({target:{dataset:{reviewReminder:key},checked}})},toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(){idle.shift()?.();},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
  assert.match(a.html(),/Start of Battle Round/);
- a.click({action:'study-next'});assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).completed).length,1);a.click({action:'study-next'});assert.match(a.html(),/Diviner of Futures/);
+ a.click({action:'study-next'});assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).completed).length,0);a.click({action:'study-next'});assert.match(a.html(),/Diviner of Futures/);
  a.click({action:'next'});assert.match(a.html(),/id="phase-tab-1"[^>]*aria-selected="true"/);
- a.click({action:'back'});assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).completed).length,2);
+ a.click({action:'back'});assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).completed).length,0);
  a.click({turn:'opponent'});assert.match(a.html(),/data-turn="opponent" class="selected"/);assert.doesNotMatch(a.html(),/Diviner of Futures/);
  const reloaded=app([...a.store]);assert.match(reloaded.html(),/data-turn="opponent" class="selected"/);
  a.click({view:'army'});assert.match(a.html(),/My saved lists/);
@@ -423,4 +423,31 @@ test('saved lists group by army alliance and alphabetize names without changing 
 
 test('home development notice retains pending areas, explains accuracy checks and links to rule reports',()=>{
  const a=app(undefined,{setup:true});a.click({view:'overview'});assert.match(a.html(),/WarPlanner is still in early development/);assert.match(a.html(),/confirm it against the current official rules/);assert.match(a.html(),/Early development<\/h2>/);assert.doesNotMatch(a.html(),/<p>(World Eaters|Emperor’s Children|Leagues of Votann|Genestealer Cults) ·/);assert.match(a.html(),/data-view="guide" data-action="open-rule-report">Report a rule error/);a.click({view:'guide',action:'open-rule-report'});assert.match(a.html(),/start the Guide to open the rule-report form/);
+});
+
+test('optional review marks persist without changing reminders or blocking navigation',()=>{
+ const a=app();a.click({step:'2'});
+ const match=a.html().match(/data-review-reminder="([^"]+)"/);assert.ok(match);
+ const key=match[1].replace(/&quot;/g,'"').replace(/&amp;/g,'&');
+ a.review(key,true);
+ let saved=JSON.parse(a.store.get('warplan.prototype.v1'));
+ assert.equal(saved.reviewedReminders[key],true);
+ assert.equal(Object.keys(saved.completed).length,0);
+ const reloaded=app([...a.store]);assert.match(reloaded.html(),/reminder-reviewed/);
+ assert.match(reloaded.html(),/Diviner of Futures/);
+ reloaded.review(key,false);
+ assert.equal(JSON.parse(reloaded.store.get('warplan.prototype.v1')).reviewedReminders[key],undefined);
+ a.click({phase:'1'});assert.match(a.html(),/id="phase-tab-1"[^>]*aria-selected="true"/);
+ a.click({action:'clear-phase-reviews'});
+ assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).reviewedReminders[key],true);
+ a.click({phase:'0'});a.click({action:'clear-phase-reviews'});
+ assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).reviewedReminders).length,0);
+ a.review(key,true);a.click({action:'reset-guide'});
+ assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).reviewedReminders).length,0);
+});
+test('forward page navigation does not mark gameplay or reading as complete',()=>{
+ const a=app();a.click({action:'page-next'});a.click({action:'page-next'});
+ assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).completed).length,0);
+ assert.match(a.html(),/review marks are optional/);
+ assert.match(a.html(),/Explanations &amp; learning|Explanations & learning/);
 });

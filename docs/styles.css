@@ -431,3 +431,14 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
 .review-controls select,.review-controls input{padding:11px 12px;border:1px solid #3c515c;border-radius:6px;background:#101e27;color:var(--ink);font:inherit}.review-controls select:disabled{opacity:.5}.review-editor-dialog .admin-editor-top{position:sticky;top:-22px;padding:12px 0;background:#15272f;z-index:1}@media(max-width:700px){.review-editor-dialog .admin-fields{grid-template-columns:minmax(0,1fr)}.review-editor-dialog .admin-editor-top{top:-14px}}
 
 .nav a{text-decoration:none}.nav a:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+/* Optional checklist marks never hide reminders or change their availability. */
+.reminder-item { min-width: 0; }
+.reminder-review { display: flex; align-items: center; gap: .5rem; padding: .55rem .8rem; font-size: .8rem; cursor: pointer; }
+.reminder-review input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent, #6dc9c0); }
+.reminder-reviewed .reminder-review { font-weight: 700; }
+.reminder-quick-fact { display: block; margin-top: .8rem; }
+.reminder-quick-fact > span { display: block; }
+.guide-carousel .flash-summary .flash-fact { font-size: .9rem; line-height: 1.5; margin-top: .4rem; font-weight: 400; }
+.guide-carousel .flash-summary .flash-timing { margin-top: .5rem; }
+.checklist-help { font-size: .85rem; line-height: 1.5; }
