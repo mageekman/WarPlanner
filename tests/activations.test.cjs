@@ -119,7 +119,7 @@ test('shared army rules and separate stratagems expose target restrictions',()=>
   const s=state(sample,phase,turn);
   for(const step of A.steps(s))for(const rule of A.flashcards(s,step).shared){
    const target=A.targeting(rule,s);
-   if(['army','stratagem'].includes(rule.category)){assert.ok(target);assert.doesNotMatch(target.text,/Check this rule’s conditions for eligible targets/);}
+   if(rule.guideShared||['army','stratagem'].includes(rule.category)){assert.ok(target);assert.doesNotMatch(target.text,/Check this rule’s conditions for eligible targets/);}
    else assert.equal(target,null);
   }
  }

@@ -1,13 +1,14 @@
 /* Personal-study summaries. No original rulebook prose or upstream dataset bundled. */
 (function(root){
  'use strict';
- const revision='11e-personal-2026-11-13.1';
+ const revision='11e-personal-2026-11-16.1';
  const sources={
   core:{name:'11th-edition Core Rules',version:'June 2026 · checked 13 Nov 2026',url:'https://assets.warhammer-community.com/eng_01-06_warhammer40k_new40k_core_rules-was6fbu1ix-hfewhmxyiy.pdf',status:'official-checked'},
   pack:{name:'Aeldari Faction Pack',version:'14 Oct 2026 · v1.4',url:'https://assets.warhammer-community.com/eng_14-10_wh40k_-faction_pack_aeldari-seqmcs1mu0-g8gzewikcm.pdf',status:'official-checked'},
   community:{name:'Aeldari community reference',version:'Export 12 Nov 2026 · compared with 40kdc snapshot',url:'https://wahapedia.ru/wh40k11ed/factions/aeldari/',status:'community-checked'},
   fuegan:{name:'Fuegan community reference',version:'11th edition · checked 13 Nov 2026; confirm in your app',url:'https://wahapedia.ru/wh40k11ed/factions/aeldari/Fuegan',status:'community-checked'}
  };
+ sources.missions={name:'Mission deck — Secondary Missions',version:'Mission-pack-dependent reminder',url:'https://wahapedia.ru/wh40k11ed/the-rules/mission-deck-2026-27/',status:'source-reference'};
  const catalog=typeof module!=='undefined'&&module.exports?require('./aeldari-data.js'):root.WarPlannerAeldariData;
  sources.catalog={name:'40kdc Aeldari structured source',version:'Pinned '+catalog.pin.slice(0,7)+' · source reference, not official verification',url:'https://github.com/wn-mitch/40kdc-data/tree/'+catalog.pin+'/data/enrichment/aeldari',status:'source-reference'};
  const aliases={'battle-focus-aeldari':'battle-focus','diviner-of-futures-aeldari':'eldrad-cp','doom-aeldari':'doom','whirling-death-aeldari':'whirling','superlative-strategist-aeldari':'strategist','flickerjump-aeldari':'flickerjump','grenade-pack-flyover-aeldari':'hawks','path-of-the-warrior-aeldari':'path-warrior','hand-of-asuryan-aeldari':'asurmen-hand','bladestorm-aeldari':'bladestorm','aspect-shrine-token-aeldari':'token','inescapable-accuracy-aeldari':'reapers','assured-destruction-aeldari':'dragons','crystalline-targeting-aeldari':'walker','fire-support-aeldari':'falcon','tactical-acumen-aeldari':'asurmen-move','acrobatic-aeldari':'acrobatic','the-bloody-handed-aeldari':'avatar-aura','molten-form-aeldari':'avatar-defence','wave-serpent-shield-aeldari':'serpent-shield','storm-of-silence-aeldari':'jain-attacks','aspect-of-murder-aspect-host-aeldari':'murder','path-of-command-aeldari':'autarch-discount','khaines-vengeance-aspect-host-aeldari':'khaines','skyborne-sanctuary-aspect-host-aeldari':'skyborne','to-their-final-breath-aspect-host-aeldari':'final-breath'};
@@ -98,7 +99,7 @@
  add('skyborne','Skyborne Sanctuary',[],[4],'either','end','At the end of Fight, Aspect Host can use this Stratagem to embark an eligible unengaged Asuryani unit that was eligible to fight, if wholly within 6 inches of a compatible transport.',['Transport eligibility and available capacity still matter.','Check CP cost and the exact current Stratagem before declaring it.'],'Can any unit near a transport use it?','No. The unit must also have been eligible to fight and satisfy the unengaged, faction, and embark conditions.',{detachment:'Aspect Host',sourceIds:['community','pack']});
  add('aspect-stratagems','Before selecting an attacker',[],[2,4],'either','select','Aspect Host has before-selection options such as Warrior Focus. In your Shooting phase, Preternatural Precision and Doom Inescapable may also be relevant.',['These are not automatic effects. Check the full Stratagem, CP cost, eligible target and timing.','Preternatural Precision uses Aspect Warriors; Doom Inescapable uses the Avatar.'],'Should you decide after rolling the unit’s attacks?','No. Check the before-selection window. These reminders are reference prompts, not complete Stratagem instructions.',{detachment:'Aspect Host'});
  add('final-breath','To Their Final Breath',[],[4],'either','react','Aspect Host offers a fight-on-death reaction just after an enemy selects attack targets, for an eligible targeted Aspect Warriors or Avatar unit.',['Check the full Stratagem for its roll, timing, token option, CP cost and the requirement that the destroyed model has not fought.','This card is a timing reminder, not the full resolution procedure.'],'Can it let a model that already fought fight again?','Do not assume so. Its condition explicitly concerns models that have not fought this phase.',{detachment:'Aspect Host'});
- add('deep-strike','Deep Strike',['Falcon','Swooping Hawks','Warp Spiders'],[1],'you','arrivals','For an ingress move, a unit whose every model has Deep Strike can use its alternate setup option, more than 8 inches horizontally from enemy units, including in the enemy deployment zone.',['Check when that ingress move is permitted and all applicable setup restrictions.','An attached model without the ability can matter to the every-model condition.'],'Is Deep Strike an extra unrestricted move after arriving?','No. It changes the setup option for an ingress move; do not add a further move without another rule.',{sourceIds:['core'],status:'official-checked'});
+ add('deep-strike','Deep Strike',[],[1],'you','arrivals','For an ingress move, a unit whose every model has Deep Strike can use its alternate setup option, more than 8 inches horizontally from enemy units, including in the enemy deployment zone.',['Check when that ingress move is permitted and all applicable setup restrictions.','An attached model without the ability can matter to the every-model condition.'],'Is Deep Strike an extra unrestricted move after arriving?','No. It changes the setup option for an ingress move; do not add a further move without another rule.',{sourceIds:['core'],status:'official-checked',faction:'*'});
  add('battle-focus-end','Unused Battle Focus expires',[],[4],'either','round-end','At the end of the battle round, discard unspent Battle Focus tokens. The next allocation belongs to the next round’s opening.',['This is after the second player’s turn, not after each Fight phase.'],'Can you carry an unspent token into the next round?','Not under the Battle Focus rule reviewed here.');
  add('deadly-demise','Deadly Demise',['Avatar of Khaine','Wave Serpent','Falcon'],[2,4],'either','act','When a model with Deadly Demise is destroyed, resolve any emergency passenger disembarkation first, then check its demise roll. A 6 causes the listed mortal-wound amount to nearby units.',['Use the destroyed model’s printed Deadly Demise value; units from both sides can be affected.','This is a destruction trigger, not an ability to use whenever you attack.'],'Does every vehicle automatically explode?','No. Check whether the model has the ability and whether its die result triggers it.',{sourceIds:['core','community'],status:'community-checked'});
  abilities.push({id:'fuegan-burning-lance',expanded:true,leadingUnitRequired:true,leadingBodyguard:'Fire Dragons',name:'Burning Lance · Fuegan leading',category:'ability',units:['Fuegan'],phase:[2],turn:'you',window:'before',status:'community-checked',sourceIds:['fuegan'],
@@ -109,9 +110,10 @@
   {id:'preternatural-precision-stratagem',name:'Preternatural Precision',phase:[2],turn:'you',summary:'A before-shooting option for an Aspect Warriors unit. Check the full rule, including its optional Aspect Shrine Token choice.'},
   {id:'doom-inescapable-stratagem',name:'Doom Inescapable',phase:[2],turn:'you',summary:'A before-shooting option for the Avatar of Khaine. Check the full current effect and cost before declaring it.'}
  ])abilities.push({units:[],detachment:'Aspect Host',window:'select',expanded:false,status:'community-checked',sourceIds:['community'],conditions:['This is an optional Stratagem window, not an automatic bonus.','Check the full current rule for CP cost, effect and restrictions before using it.'],question:'When do you decide?',answer:'Check the full rule before selecting the unit to attack.',...extra});
+ add('draw-secondaries','Draw secondaries',[],[0],'you','start','If you are using Tactical Secondary Missions, draw the Secondary Mission cards required by your mission pack at the start of your Command phase, then resolve any When Drawn instructions. Check retained cards, draw limits and any mission-specific exceptions. If you are using Fixed Missions, keep your chosen missions instead of drawing new ones.',['This is a reminder to use your mission deck; it does not draw cards or track your active missions.','The number of cards drawn and whether you retain or refill cards depend on the mission pack you are playing.'],'Should you draw new cards while using Fixed Missions?','No. Follow your chosen mission pack and its Fixed/Tactical rules.',{faction:'*',expanded:true,timingOverride:true,guideShared:true,targetText:'You, when using Tactical Secondary Missions at the start of your Command phase. Follow your selected mission pack.',sourceIds:['missions'],sourceLabel:'Mission pack — Secondary Missions',sourceUrl:'https://wahapedia.ru/wh40k11ed/the-rules/mission-deck-2026-27/',status:'source-reference'});
  const prebattle=[{id:'scout-walkers',name:'War Walkers: pre-battle Scouts',summary:'Your War Walkers have a Scouts entry. Resolve its options in the pre-battle-abilities window, not as a bonus every Movement phase. Check the current datasheet value and the full scout-move restrictions before deploying.',sourceIds:['core','community'],status:'community-checked',units:['War Walkers']},{id:'attachments',name:'Confirm leaders and passengers',summary:'Your export identifies three attached groups, but does not identify transport passengers or reserve assignments. Confirm these in battle formations. A leader-dependent ability stops being available when its leading condition no longer holds.',sourceIds:['core','community'],status:'community-checked',units:[]}];
  const armyIds=new Set(['battle-focus','battle-focus-end','swift','flitting','star-engines','opportunity','fade','sudden','path-warrior']);
- const coreIds=new Set(['deep-strike','deadly-demise','fights-first']);
+ const coreIds=new Set(['deep-strike','deadly-demise','fights-first','draw-secondaries']);
  const stratagemIds=new Set(['khaines','skyborne','aspect-stratagems','final-breath']);
  for(const a of abilities)a.category=a.enhancement?'enhancement':(stratagemIds.has(a.id)||a.id.endsWith('-stratagem'))?'stratagem':armyIds.has(a.id)?'army':coreIds.has(a.id)?'core':'ability';
  for(const p of prebattle)p.category='core';
@@ -121,7 +123,7 @@
   if(rule&&entry?.detachment&&!rule.detachment)rule.detachment=entry.detachment;
   if(rule?.units.length&&entry?.units.length)rule.units=[...new Set([...rule.units,...entry.units])];
  }
- for(const [id,sourceId] of [['deep-strike','deep-strike'],['deadly-demise','deadly-demise'],['fights-first','fights-first']]){
+ for(const [id,sourceId] of [['deadly-demise','deadly-demise'],['fights-first','fights-first']]){
   const rule=abilities.find(a=>a.id===id);rule.units=[...new Set([...rule.units,...catalog.units.filter(u=>u.abilities.some(a=>a.id===sourceId)).map(u=>u.name)])];
  }
  abilities.find(a=>a.id==='star-engines').units=catalog.units.filter(u=>u.keywords.some(k=>normalized(k)==='vehicle')&&u.abilities.some(a=>a.id==='battle-focus-aeldari')).map(u=>u.name);
@@ -171,7 +173,31 @@
    return !!(timing||preview);
   });
  }
- function forStep(state,step){return abilities.filter(a=>{
+ // Guide preferences affect reminders only; keep Workshop/catalog records intact.
+ function isDeepStrike(rule){return rule.category==='core'&&(rule.id==='deep-strike'||rule.sourceRuleId==='deep-strike'||rule.importSource?.sourceId==='deep-strike');}
+ function guideRule(rule,state){
+  if(isDeepStrike(rule)){
+   if(state.guideShowDeepStrike===false)return null;
+   if(rule.id==='deep-strike'&&abilities.some(a=>a.id!=='deep-strike'&&isDeepStrike(a)))return null;
+   if(ruleTimings(rule).some(t=>t.phase?.length&&t.window!=='prebattle'))return rule;
+   return {...rule,phase:[1],turn:'you',window:'arrivals',timings:[{phase:[1],turn:'you',window:'arrivals'}],timingOverride:true};
+  }
+  if(rule.category!=='core-stratagem')return rule;
+  if(state.guideShowCoreStratagems!==true)return null;
+  // Respect authored timings. Imported reference cards carry their core timing
+  // metadata separately, so project it into Guide reminders without editing them.
+  if(ruleTimings(rule).some(t=>t.phase?.length&&t.window!=='prebattle'))return rule;
+  const source=rule.importSource?.stratagem;
+  if(!source)return null;
+  const phase=(source.phases||[]).map(p=>['command','movement','shooting','charge','fight'].indexOf(p)).filter(p=>p>=0);
+  if(!phase.length)return null;
+  const turn=source.player_turn==='your-turn'?'you':source.player_turn==='opponent-turn'?'opponent':'either';
+  const id=source.id||rule.sourceRuleId,window={'fire-overwatch':'end','rapid-ingress':'end','heroic-intervention':'end','smokescreen':'start','insane-bravery':'shock','epic-challenge':'select','crushing-impact':'after'}[id]||'react';
+  const timings=[{phase,turn,window}];
+  if(id==='command-re-roll')timings.push({phase:[0],turn:'either',window:'shock'});
+  return {...rule,phase,turn,window,timings,timingOverride:true,triggerText:timings.map(timingLabel).join('; ')};
+ }
+ function forStep(state,step){return abilities.map(a=>guideRule(a,state)).filter(Boolean).filter(a=>{
   return timingMatches(a,state,step)&&matches(a,state.army);
  }).map(a=>!a.adminManaged&&sequencing[a.id]&&sequencing[a.id].steps.includes(step.id)?{...a,sequencePreview:true,sequence:sequencing[a.id]}:a)
  .sort((a,b)=>(sequencing[a.id]?.priority??100)-(sequencing[b.id]?.priority??100));}
@@ -219,6 +245,6 @@
  }
  const stepOverrides=new Map();
  const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
- const api={guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={isDeepStrike,guideRule,guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

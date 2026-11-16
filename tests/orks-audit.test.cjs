@@ -45,7 +45,7 @@ test('61 unresolved Orks records are excluded from practice answers and distract
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('Orks timeline filtering retains army rules and the actual unit guide uses audited after-move timing',()=>{
- C.apply(after);const all=T.build(after,{faction:'Orks'});assert.equal(all.index.filter(r=>r.kind==='rule').length,209);assert.equal(all.index.filter(r=>r.kind==='unit').length,60);
+ C.apply(after);const all=T.build(after,{faction:'Orks'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,209);assert.equal(all.index.filter(r=>r.kind==='unit').length,60);
  const filtered=T.build(after,{faction:'Orks',detachment:'War Horde'});assert.ok(filtered.index.some(r=>r.key==='rule:close-range-dakka-war-horde-orks'));assert.ok(!filtered.index.some(r=>r.key==='rule:dakkastorm-kult-of-speed-orks'));assert.ok(filtered.index.some(r=>r.key==='rule:waaagh-orks'));
  const s={phase:1,turn:'you',round:1,firstPlayer:'you',army:{faction:'Orks',detachments:['War Horde'],units:[{id:'kommandos',name:'Kommandos',models:10,details:[]}]}};
  assert.ok(A.stages(s,A.units(s.army)[0],'movement').find(s=>s.id==='after').cards.some(c=>c.sourceRuleId==='bomb-squig-orks'));

@@ -46,7 +46,7 @@ test('all 84 unresolved T’au records are excluded from practice answers and di
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('filtered T’au timeline retains army rules and actual guide places Fieldcraft at Command end',()=>{
- C.apply(after);const all=T.build(after,{faction:"T'au Empire"});assert.equal(all.index.filter(r=>r.kind==='rule').length,166);assert.equal(all.index.filter(r=>r.kind==='unit').length,47);
+ C.apply(after);const all=T.build(after,{faction:"T'au Empire"});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,166);assert.equal(all.index.filter(r=>r.kind==='unit').length,47);
  const filtered=T.build(after,{faction:"T'au Empire",detachment:'Mont’ka'});assert.ok(filtered.index.some(r=>r.key==='rule:focused-fire-montka-tau-empire'));assert.ok(!filtered.index.some(r=>r.key==='rule:point-blank-ambush-kauyon-tau-empire'));assert.ok(filtered.index.some(r=>r.key==='rule:for-the-greater-good-tau-empire'));
  const s={phase:0,turn:'you',round:1,firstPlayer:'you',army:{faction:"T'au Empire",detachments:['Kroot Hunting Pack'],units:[{id:'kroot',name:'Kroot Carnivores',models:10,details:[]}]}};const cards=A.flashcards(s,A.steps(s).at(-1)).unitCards.flatMap(c=>c.items);assert.ok(cards.some(c=>c.id==='fieldcraft-tau-empire'));
 });

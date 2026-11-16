@@ -44,7 +44,7 @@ test('same-name shield and reserve abilities retain their distinct mechanics and
  const wings=result.changes.filter(r=>r.name==='On Gilded Wings');assert.equal(wings.length,2);assert.notDeepEqual(wings[0].data.importSource.record.effect,wings[1].data.importSource.record.effect);assert.notEqual(wings[0].data.summary,wings[1].data.summary);
 });
 test('timeline and actual unit activations use the audited phase, turn and stable rule links',()=>{
- C.apply(after);const model=T.build(after,{faction:'Adeptus Custodes'});assert.equal(model.index.filter(r=>r.kind==='rule').length,158);
+ C.apply(after);const model=T.build(after,{faction:'Adeptus Custodes'});assert.equal(model.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,158);
  const s={phase:2,turn:'you',round:1,firstPlayer:'you',army:{faction:'Adeptus Custodes',detachments:[],units:[{id:'caladius',name:'Caladius Annihilator Grav‑Tank',models:1,details:[]}]}};
  const unit=A.units(s.army)[0],cards=A.stages(s,unit,'shooting').flatMap(s=>s.cards);assert.ok(cards.some(c=>c.sourceRuleId==='advanced-firepower-adeptus-custodes'));
  assert.ok(!A.stages({...s,phase:4},unit,'fight').flatMap(s=>s.cards).some(c=>c.sourceRuleId==='advanced-firepower-adeptus-custodes'));

@@ -32,7 +32,7 @@
  function sourceUnit(state,unit,name){return units(state.army).filter(u=>u.id!==unit.id&&has(u,name));}
  function leading(unit,name,bodyguard){return unit.attached&&unit.leaders.some(m=>m.role==='leader'&&norm(m.name)===norm(name))&&(!bodyguard||norm(unit.body.name)===norm(bodyguard));}
  function fits(a,state,unit,armyMatched=false){
-  if(!a||(!armyMatched&&!L.matches(a,state.army))||!L.ruleMatchesContext(a,state))return false;
+  if(!a||!L.guideRule(a,state)||(!armyMatched&&!L.matches(a,state.army))||!L.ruleMatchesContext(a,state))return false;
   if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>m.role==='leader'&&a.units.includes(m.name))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
   if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
   if(a.expanded&&a.sourceRuleId){
@@ -40,7 +40,7 @@
    if(refs.length&&refs.every(({entry,ref})=>ref.wargear&&!entry.details.some(d=>norm(d).includes(norm(ref.wargear)))))return false;
   }
   if(['swift','flitting','star-engines','opportunity','fade','sudden'].includes(a.id)&&!unit.members.every(m=>L.unitHasRule(m,'battle-focus-aeldari',state.army.faction)))return false;
-  if(a.id==='deep-strike'&&!unit.members.every(m=>L.unitHasRule(m,'deep-strike',state.army.faction)))return false;
+  if(L.isDeepStrike(a)&&!unit.members.every(m=>L.unitHasRule(m,'deep-strike',state.army.faction)))return false;
   if(a.units.length&&!a.units.some(name=>has(unit,name)))return false;
   if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(a.id)&&!unitIsAspect(unit)&&!has(unit,'Avatar of Khaine'))return false;
   if(a.id==='warrior-focus-stratagem'&&!unitIsAspect(unit)&&!has(unit,'Avatar of Khaine'))return false;
@@ -78,7 +78,7 @@
   });
  }
  function targeting(a,state){
-  if(!['army','stratagem','core-stratagem'].includes(a.category))return null;
+  if(!a.guideShared&&!['army','stratagem','core-stratagem'].includes(a.category))return null;
   if(a.expanded||a.targetText)return {label:['stratagem','core-stratagem'].includes(a.category)?'Target':'Applies to',text:a.targetText||'Check this rule’s target restrictions.'};
   const descriptions={
    'battle-focus':'Your army’s Battle Focus pool; no individual unit is targeted.',
@@ -142,7 +142,7 @@
   }
   return [];
  }
- function activationCandidates(state){return L.abilities.filter(a=>a.expanded&&L.ruleMatchesContext(a,state)&&L.matches(a,state.army)).flatMap(a=>L.timingsFor(a,state).filter(t=>['act','select','before','react','after','arrivals'].includes(t.window)).map(t=>a.timings?{...a,window:t.window}:a));}
+ function activationCandidates(state){return L.abilities.map(a=>L.guideRule(a,state)).filter(Boolean).filter(a=>a.expanded&&L.ruleMatchesContext(a,state)&&L.matches(a,state.army)).flatMap(a=>L.timingsFor(a,state).filter(t=>['act','select','before','react','after','arrivals'].includes(t.window)).map(t=>a.timings?{...a,window:t.window}:a));}
  function stages(state,unit,mode,candidates){
   const rows=baseStages(state,unit,mode);
   if(!unit||!rows.length||['pile','consolidate'].includes(mode))return rows;
@@ -189,7 +189,7 @@
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
     const key=ruleKey(a);if(seen.has(key))continue;seen.add(key);
     const item={...a,guideMeta:L.ruleGuideMeta(a,state),timing:a.timings?L.ruleTimingLabel(a):a.expanded?(a.triggerText||row.title):row.title};
-    if(['army','stratagem','core-stratagem'].includes(a.category)){
+    if(a.guideShared||['army','stratagem','core-stratagem'].includes(a.category)){
      if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[],battlefieldUnits:[]});
      const shared=sharedMap.get(key);shared.battlefieldUnits.push(unit);
      for(const member of unit.members){const record=typeFor(member);if(!shared.appliesTo.some(u=>norm(u.body.name)===norm(member.name)))shared.appliesTo.push(record.unit);record.sharedIds.add(key);}
@@ -233,7 +233,7 @@
   function reset(){context=null;decks.clear();coverageCache.clear();}
   function prepare(state){
    const generation=root.WarPlannerContent?.generation;
-   const next=JSON.stringify([generation??null,state.army,state.firstPlayer]);
+   const next=JSON.stringify([generation??null,state.army,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false]);
    if(context!==next){reset();context=next;}
   }
   function deck(state,step){
@@ -252,7 +252,7 @@
     if(coverageCache.size>=80)coverageCache.delete(coverageCache.keys().next().value);
     coverageCache.set(key,{
      unsupported:state.army.units.filter(u=>!L.unitInfo(u.name,state.army.faction)),
-     phaseHasAbilities:L.phases[state.phase].steps.some(step=>L.forStep(state,step).length>0)
+     phaseHasAbilities:L.phases[state.phase].steps.some(step=>L.forStep(state,step).some(a=>!['core','core-stratagem'].includes(a.category)))
     });
    }
    return coverageCache.get(key);
