@@ -14,4 +14,6 @@ Guide settings are staged separately from active preferences. Font, previews, ru
 
 Skip empty steps is opt-in and also applies through Reload Guide. Sequential swipes and arrows search for the next or previous step containing a visible rule card or disposition reminder. Manual phase and step selection remains available. Preloaded reminder counts keep navigation from rebuilding army decks. Mission reminders are checked for the destination’s actual round and player. Searching is bounded to one round; if everything is hidden, navigation moves across a phase boundary instead of looping indefinitely.
 
+The Start screen places Settings beside Start. Its native dialog uses the same settings fields as the active guide. Save settings applies choices before Start prepares the pages; Cancel, the close button and Escape restore the prior preferences. Start does not begin until explicitly pressed. Account changes clear pending dialog state.
+
 Validation includes all 25 source matchups, action eligibility reminders, completion timing, scoring round ranges, both first-player orders, pending settings across navigation, account reset, preload reuse and review preservation. Browser checks cover mobile and desktop setup, yellow mission cards, deferred settings, round-five scoring and horizontal overflow.
