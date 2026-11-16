@@ -89,7 +89,7 @@ test('all 54 unresolved entries are excluded from practice answers and distracto
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('timeline filters detachments and every one of the 110 rules is reachable in real Guide decks',()=>{
- C.apply(after);const all=T.build(after,{faction:'Chaos Knights'});assert.equal(all.index.filter(r=>r.kind==='rule').length,110);assert.equal(all.index.filter(r=>r.kind==='unit').length,20);
+ C.apply(after);const all=T.build(after,{faction:'Chaos Knights'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,110);assert.equal(all.index.filter(r=>r.kind==='unit').length,20);
  const filtered=T.build(after,{faction:'Chaos Knights',detachment:'Houndpack Lance'});assert.ok(filtered.index.some(r=>r.key==='rule:marked-prey-chaos-knights'));assert.ok(!filtered.index.some(r=>r.key==='rule:malefic-surge-chaos-knights'));assert.ok(filtered.index.some(r=>r.key==='rule:harbingers-of-dread-chaos-knights'));
  // Synthetic coverage roster tests reachability, not simultaneous list legality.
  const details=after.filter(r=>r.kind==='rule'&&r.data.enhancement).map(r=>'Enhancement: '+r.data.enhancement),army={faction:'Chaos Knights',detachments:after.filter(r=>r.kind==='detachment').map(r=>r.name),units:after.filter(r=>r.kind==='unit').map(r=>({id:r.data.id,name:r.name,models:1,details}))},seen=new Set();

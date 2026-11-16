@@ -53,7 +53,7 @@ test('all 101 unresolved Daemons records stay out of practice answers and distra
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('Daemons timeline isolates detachments and real guide puts Infected Outbreak at Command end',()=>{
- C.apply(after);const all=T.build(after,{faction:'Chaos Daemons'});assert.equal(all.index.filter(r=>r.kind==='rule').length,195);assert.equal(all.index.filter(r=>r.kind==='unit').length,53);
+ C.apply(after);const all=T.build(after,{faction:'Chaos Daemons'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,195);assert.equal(all.index.filter(r=>r.kind==='unit').length,53);
  const filtered=T.build(after,{faction:'Chaos Daemons',detachment:'Blood Legion'});assert.ok(filtered.index.some(r=>r.key==='rule:sheathed-in-brass-blood-legion-chaos-daemons'));assert.ok(!filtered.index.some(r=>r.key==='rule:foetid-resurgence-plague-legion-chaos-daemons'));assert.ok(filtered.index.some(r=>r.key==='rule:the-shadow-of-chaos-chaos-daemons'));
  const s={phase:0,turn:'you',round:1,firstPlayer:'you',army:{faction:'Chaos Daemons',detachments:['Plague Legion'],units:[{id:'plague',name:'Plaguebearers',models:10,details:[]}]}};const cards=A.flashcards(s,A.steps(s).at(-1)).unitCards.flatMap(c=>c.items);assert.ok(cards.some(c=>c.id==='infected-outbreak-chaos-daemons'));
 });

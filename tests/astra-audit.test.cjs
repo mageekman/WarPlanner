@@ -51,7 +51,7 @@ test('all 119 unresolved Astra records are excluded from practice answers and di
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('Astra guide and timeline use audited Command-end Shock Troops and detachment isolation',()=>{
- C.apply(after);const all=T.build(after,{faction:'astra militarum'});assert.equal(all.index.filter(r=>r.kind==='rule').length,251);assert.equal(all.index.filter(r=>r.kind==='unit').length,75);
+ C.apply(after);const all=T.build(after,{faction:'astra militarum'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,251);assert.equal(all.index.filter(r=>r.kind==='unit').length,75);
  const filtered=T.build(after,{faction:'astra militarum',detachment:'Combined Arms'});assert.ok(filtered.index.some(r=>r.key==='rule:fields-of-fire-combined-arms-astra-militarum'));assert.ok(!filtered.index.some(r=>r.key==='rule:blazing-advance-hammer-of-the-emperor-astra-militarum'));assert.ok(filtered.index.some(r=>r.key==='rule:voice-of-command-astra-militarum'));
  const s={phase:0,turn:'you',round:1,firstPlayer:'you',army:{faction:'astra militarum',detachments:['Combined Arms'],units:[{id:'cadians',name:'Cadian Shock Troops',models:10,details:[]}]}};const cards=A.flashcards(s,A.steps(s).at(-1)).unitCards.flatMap(c=>c.items);assert.ok(cards.some(c=>c.id==='shock-troops-astra-militarum'));
 });

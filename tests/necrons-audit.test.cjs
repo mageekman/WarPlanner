@@ -46,7 +46,7 @@ test('all 72 unresolved records are excluded from practice answers and distracto
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('actual guide and filtered timeline place ordinary Reanimation at Command end and Chronometron after shooting',()=>{
- C.apply(after);const all=T.build(after,{faction:'Necrons'});assert.equal(all.index.filter(r=>r.kind==='rule').length,230);assert.equal(all.index.filter(r=>r.kind==='unit').length,57);
+ C.apply(after);const all=T.build(after,{faction:'Necrons'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,230);assert.equal(all.index.filter(r=>r.kind==='unit').length,57);
  const s={phase:0,turn:'you',round:1,firstPlayer:'you',army:{faction:'Necrons',detachments:['Awakened Dynasty'],units:[{id:'warriors',name:'Necron Warriors',models:10,details:[]}]}};const shared=A.flashcards(s,A.steps(s).at(-1)).shared;assert.ok(shared.some(c=>c.id==='reanimation-protocols-necrons'));assert.ok(!shared.some(c=>c.id==='reanimation-protocols-amonhotekhs-guard-necrons'));
  const shooting={...s,phase:2,army:{...s.army,units:[{id:'chrono',name:'Chronomancer',models:1,details:[]}]}};assert.ok(A.stages(shooting,A.units(shooting.army)[0],'shooting').find(s=>s.id==='after').cards.some(c=>c.sourceRuleId==='chronometron-necrons'));
  const filtered=T.build(after,{faction:'Necrons',detachment:'Hypercrypt Legion'});assert.ok(filtered.index.some(r=>r.key==='rule:hyperphasing-necrons'));assert.ok(!filtered.index.some(r=>r.key==='rule:protocol-of-the-sudden-storm-awakened-dynasty-necrons'));assert.ok(filtered.index.some(r=>r.key==='rule:reanimation-protocols-necrons'));

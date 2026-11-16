@@ -49,7 +49,7 @@ test('unresolved rules are excluded from practice answers and distractors while 
  assert.equal(M.summaryState(get('committed-to-the-ritual')),'missing');assert.equal(M.summaryState(get('spirit-snare-zadophon-the-soul-eater')),'missing');
 });
 test('timeline and actual guide place rituals at Shooting start and preserve unit/phase eligibility',()=>{
- C.apply(after);const model=T.build(after,{faction:'Thousand Sons'});assert.equal(model.index.filter(r=>r.kind==='rule').length,158);
+ C.apply(after);const model=T.build(after,{faction:'Thousand Sons'});assert.equal(model.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,158);
  const state={phase:2,turn:'you',round:1,firstPlayer:'you',army:{faction:'Thousand Sons',detachments:['Grand Coven'],units:[{id:'rubric',name:'Rubric Marines',models:5,details:[]}]}};
  const shared=A.flashcards(state,A.steps(state)[0]).shared.map(a=>a.id);assert.ok(shared.includes('cabal-of-sorcerers-thousand-sons'));assert.ok(shared.includes('arcane-focus-grand-coven-thousand-sons'));
  const unit=A.units(state.army)[0],cards=A.stages(state,unit,'shooting').flatMap(s=>s.cards);assert.ok(cards.some(a=>a.id==='bringers-of-change-thousand-sons'));assert.ok(!cards.some(a=>a.id==='cabal-of-sorcerers-thousand-sons'));

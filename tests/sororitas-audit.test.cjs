@@ -108,7 +108,7 @@ test('all 79 unresolved records are excluded from practice answers and distracto
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('timeline retains 148 rules and actual Guide decks reach all 144 rules with known phase metadata',()=>{
- C.apply(after);const all=T.build(after,{faction:'Adepta Sororitas'});assert.equal(all.index.filter(r=>r.kind==='rule').length,148);assert.equal(all.index.filter(r=>r.kind==='unit').length,37);
+ C.apply(after);const all=T.build(after,{faction:'Adepta Sororitas'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,148);assert.equal(all.index.filter(r=>r.kind==='unit').length,37);
  const filtered=T.build(after,{faction:'Adepta Sororitas',detachment:'Bringers of Flame'});assert.ok(filtered.index.some(r=>r.key==='rule:fervent-purgation-adepta-sororitas'));assert.ok(!filtered.index.some(r=>r.key==='rule:sacred-rites-adepta-sororitas'));assert.ok(filtered.index.some(r=>r.key==='rule:acts-of-faith-adepta-sororitas'));
  // Synthetic coverage roster tests reachability, not simultaneous list legality.
  const details=[...after.filter(r=>r.kind==='rule'&&r.data.enhancement).map(r=>'Enhancement: '+r.data.enhancement),...new Set(after.filter(r=>r.kind==='unit').flatMap(r=>r.data.abilities.filter(a=>a.wargear).map(a=>a.wargear)))],army={faction:'Adepta Sororitas',detachments:after.filter(r=>r.kind==='detachment').map(r=>r.name),units:after.filter(r=>r.kind==='unit').map(r=>({id:r.data.id,name:r.name,models:1,details}))},seen=new Set();

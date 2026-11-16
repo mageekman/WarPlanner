@@ -273,6 +273,18 @@
 .saved-list-entry{min-width:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--panel)}
 .saved-list-entry .saved-list-card{border:0;border-radius:0;margin:0;flex:1;width:100%}
 .saved-list-actions{display:flex;justify-content:flex-end;border-top:1px solid var(--line);padding:2px 8px}
+.saved-list-group{margin:0 0 22px}.saved-list-group>h2{display:flex;align-items:center;gap:10px;margin:0 0 10px;font-size:17px}.saved-list-group>h2>span{font-size:11px;font-weight:400;color:var(--muted)}
+.saved-list-group .saved-lists{gap:10px}
+.saved-list-entry .saved-list-card{padding:8px 12px}
+.saved-list-entry .saved-list-heading{font-size:16px;line-height:1.25;gap:8px}
+.saved-list-entry .saved-list-heading strong{min-width:0;overflow-wrap:anywhere}
+.saved-list-entry .list-metadata{gap:2px;margin:6px 0 0}
+.saved-list-entry .list-metadata div{grid-template-columns:76px minmax(0,1fr);gap:6px}
+.saved-list-entry .list-metadata dt{font-size:9px;line-height:1.2;letter-spacing:.7px;margin:2px 0 0}
+.saved-list-entry .list-metadata dd{font-size:12px;line-height:1.25}
+.saved-list-entry .saved-list-actions{align-items:center;min-height:28px;padding:0 8px;gap:8px}
+.saved-list-entry .saved-list-actions .pill{margin-right:auto;font-size:10px;padding:2px 6px}
+.saved-list-entry .delete-list-button{padding:5px 6px;font-size:11px;line-height:1.3}
 .delete-list-button{color:#d9a7a1}.delete-list-button:hover{color:#f0b4ad;border-color:#9b655f}.delete-list-button:disabled{opacity:.5;cursor:wait}
 .list-delete-error{padding:12px 15px;margin:15px 0;border:1px solid #80544f;border-radius:6px;color:#efb0a9;font-size:13px}
 

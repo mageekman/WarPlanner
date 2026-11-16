@@ -87,7 +87,7 @@ test('all 75 unresolved records are excluded from practice answers and distracto
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('timeline filters all entries while 113 rules with timing are reachable in real guide decks',()=>{
- C.apply(after);const all=T.build(after,{faction:'Imperial Knights'});assert.equal(all.index.filter(r=>r.kind==='rule').length,118);assert.equal(all.index.filter(r=>r.kind==='unit').length,23);
+ C.apply(after);const all=T.build(after,{faction:'Imperial Knights'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,118);assert.equal(all.index.filter(r=>r.kind==='unit').length,23);
  const filtered=T.build(after,{faction:'Imperial Knights',detachment:'Valourstrike Lance'});assert.ok(filtered.index.some(r=>r.key==='rule:full-tilt-valourstrike-lance-imperial-knights'));assert.ok(!filtered.index.some(r=>r.key==='rule:full-tilt-freeblade-company-imperial-knights'));assert.ok(filtered.index.some(r=>r.key==='rule:code-chivalric-imperial-knights'));
  // Synthetic coverage roster equips every enhancement and includes every detachment;
  // it checks reachability, not list legality or simultaneous legal effects.

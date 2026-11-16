@@ -25,7 +25,7 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {warm(){idle.shift()?.();},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(){idle.shift()?.();},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -394,4 +394,29 @@ test('swipe settlement shortens with the distance remaining instead of adding a 
 test('idle preparation reuses the neighboring page and invalidates it when leaving the guide',async()=>{
  const a=app(undefined,{motion:true,warm:true});a.warm();const preview=a.viewport.children[0];assert.ok(preview);const count=a.viewport.children.length;a.click({action:'page-next'});assert.equal(a.viewport.children.length,count);assert.equal(a.animations.length,2);a.animations.forEach(animation=>animation.finish());await new Promise(r=>setImmediate(r));assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).open,1);
  const b=app(undefined,{motion:true,warm:true});b.click({view:'army'});b.warm();assert.equal(b.viewport.children.length,0);assert.equal(JSON.parse(b.store.get('warplan.prototype.v1')).view,'army');
+});
+
+test('Guide reminder settings persist independently and default safely for older saved sessions',()=>{
+ const a=app();assert.match(a.html(),/id="guide-show-core-stratagems" type="checkbox" >/);assert.match(a.html(),/id="guide-show-deep-strike" type="checkbox" checked/);
+ a.toggle('guide-show-core-stratagems',true);a.toggle('guide-show-deep-strike',false);
+ let saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.guideShowCoreStratagems,true);assert.equal(saved.guideShowDeepStrike,false);
+ const b=app([...a.store]);assert.match(b.html(),/id="guide-show-core-stratagems" type="checkbox" checked/);assert.match(b.html(),/id="guide-show-deep-strike" type="checkbox" >/);
+ b.click({phase:'1'});b.click({step:'1'});assert.doesNotMatch(b.html(),/<h4>Deep Strike<\/h4>/);b.toggle('guide-show-deep-strike',true);assert.match(b.html(),/<h4>Deep Strike<\/h4>/);
+ saved=JSON.parse(b.store.get('warplan.prototype.v1'));assert.equal(saved.guideShowCoreStratagems,true);
+});
+
+test('Draw secondaries appears at own Command start and never in the opponent turn',()=>{
+ const a=app();a.click({step:'2'});assert.match(a.html(),/Draw secondaries/);assert.match(a.html(),/Fixed Missions/);
+ a.click({turn:'opponent'});assert.doesNotMatch(a.html(),/Draw secondaries/);
+});
+
+test('saved lists group by army alliance and alphabetize names without changing stored list order',()=>{
+ const {sample}=require('../dist/core.js');
+ const lists=[['x-z','Orks','Zulu'],['i-z','Astra Militarum','Zulu Guard'],['m-z','Space Marines','Zulu Marines'],['c-z','World Eaters','Zulu Chaos'],['x-a','Aeldari','alpha'],['i-a','Adeptus Custodes','Alpha Guard'],['m-a','Space Marines','Alpha Marines'],['c-a','Chaos Space Marines','Alpha Chaos'],['other','Unlisted faction','Unknown']].map(([id,faction,name])=>({id,army:{...sample,faction,name},warnings:[],renames:{}}));
+ const a=app([['warplan.prototype.v1',JSON.stringify({army:lists[0].army,savedLists:lists,activeListId:'x-z',phase:0})]]);a.click({view:'army'});const html=a.html();
+ const groups=['Space Marines','Imperium','Chaos','Xenos','Other'];for(let i=1;i<groups.length;i++)assert.ok(html.indexOf('data-army-group="'+groups[i-1]+'"')<html.indexOf('data-army-group="'+groups[i]+'"'),JSON.stringify(groups.map(g=>[g,html.indexOf('data-army-group="'+g+'"')])));
+ for(const group of ['x','i','m','c'])assert.ok(html.indexOf('data-open-list="'+group+'-a"')<html.indexOf('data-open-list="'+group+'-z"'));
+ assert.deepEqual(JSON.parse(a.store.get('warplan.prototype.v1')).savedLists.map(l=>l.id),lists.map(l=>l.id));
+ for(const {id} of lists){assert.match(html,new RegExp('data-open-list="'+id+'"'));assert.match(html,new RegExp('data-delete-list="'+id+'"'));}
+ a.click({openList:'x-a'});assert.match(a.html(),/alpha/);
 });
