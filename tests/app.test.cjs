@@ -420,3 +420,7 @@ test('saved lists group by army alliance and alphabetize names without changing 
  for(const {id} of lists){assert.match(html,new RegExp('data-open-list="'+id+'"'));assert.match(html,new RegExp('data-delete-list="'+id+'"'));}
  a.click({openList:'x-a'});assert.match(a.html(),/alpha/);
 });
+
+test('home development notice retains pending areas, explains accuracy checks and links to rule reports',()=>{
+ const a=app(undefined,{setup:true});a.click({view:'overview'});assert.match(a.html(),/WarPlanner is still in early development/);assert.match(a.html(),/confirm it against the current official rules/);assert.match(a.html(),/Emperor’s Children.*Leagues of Votann.*Genestealer Cults.*Imperial Agents.*Core Rules/s);assert.doesNotMatch(a.html(),/<p>World Eaters ·/);assert.match(a.html(),/data-view="guide" data-action="open-rule-report">Report a rule error/);a.click({view:'guide',action:'open-rule-report'});assert.match(a.html(),/start the Guide to open the rule-report form/);
+});
