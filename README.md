@@ -2,6 +2,8 @@
 
 ## In-game cheat sheet
 
+Starting or resuming a guide prepares every step for both players before opening the walkthrough. A progress indicator appears while loading, with a way back to setup. The prepared pages are reused across rounds; review marks remain specific to their list, round, turn and phase. Changing the army, rules catalog or reminder settings rebuilds the prepared guide. Rapid swipes finish the previous transition immediately rather than dropping the next gesture.
+
 Collapsed guide cards show the name and a short unit or target preview. Open a card for timing, effects, conditions, tactical notes and sources; use **Explanations & learning** for the reasoning behind the current step. Phase tabs and turn controls remain available at any time.
 
 Each reminder card has an optional **Reviewed** checkbox centered vertically at its far right. These are reading marks, not records of actions or ability usage: checking a card never hides it or changes eligibility. Marks stay on this device, are separate for each list, round, turn and phase, and can be cleared for the current phase. Starting or resetting a guide clears the marks. Moving between pages does not mark steps complete. No game resources or battlefield actions need to be entered.

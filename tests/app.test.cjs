@@ -5,13 +5,13 @@ const vm=require('node:vm');
 const fs=require('node:fs');
 function app(saved,options={}){
  const listeners={};const elements={};const store=new Map(saved||[]);
- const animations=[],idle=[];
+ const animations=[],idle=[],frames=[],timers=[];
  for(const id of ['#app','#toast','#import-feedback','#import-form button[type=submit]','#army-text','#import-dialog','#import-form'])elements[id]={innerHTML:'',textContent:'',value:'',style:{},showModal(){this.open=true},close(){this.open=false},addEventListener(type,fn){this[type]=fn}};
  function motionNode(){return {style:{},setAttribute(){},querySelectorAll:()=>[],remove(){},animate(frames,settings){let resolve,reject;const finished=new Promise((a,b)=>{resolve=a;reject=b});const animation={finished,cancel:()=>reject(new Error('cancelled'))};animations.push({frames,settings,finish:resolve});return animation;}};}
  const viewport={clientWidth:400,children:[],append(node){this.children.push(node);}},slide=motionNode();
  const document={querySelector:s=>s==='.guide-viewport'&&options.motion?viewport:s==='.guide-slide'&&options.motion?slide:elements[s],addEventListener:(type,fn)=>listeners[type]=fn};
  if(options.motion)document.createElement=()=>motionNode();
- const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,scrollTo(){},requestIdleCallback:options.warm?fn=>{idle.push(fn);return idle.length;}:undefined,cancelIdleCallback(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>options.confirm!==false,setTimeout:()=>0,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
+ const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,requestAnimationFrame:options.preload?fn=>frames.push(fn):undefined,scrollTo(){},requestIdleCallback:options.warm?fn=>{idle.push(fn);return idle.length;}:undefined,cancelIdleCallback(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>options.confirm!==false,setTimeout:fn=>{if(options.preload)timers.push(fn);return 0;},clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)}});
  vm.runInContext(fs.readFileSync(require.resolve('../dist/core.js'),'utf8'),context);
  context.WarPlan=context.window.WarPlan;
  vm.runInContext(fs.readFileSync(require.resolve('../dist/aeldari-data.js'),'utf8'),context);
@@ -25,7 +25,7 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {review(key,checked){listeners.change({target:{dataset:{reviewReminder:key},checked}})},toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(deadline){idle.shift()?.(deadline);},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {flushGuide(){for(let i=0;i<500&&(frames.length||timers.length);i++){frames.shift()?.();timers.shift()?.();}},prepared:()=>vm.runInContext('guidePrepared&&({ready:guidePrepared.ready,total:guidePrepared.total,count:guidePrepared.pages.size})',context),rejectPageBuilds(){vm.runInContext('buildGuidePageHTML=()=>{throw Error("Page rebuilt during navigation")}',context);},review(key,checked){listeners.change({target:{dataset:{reviewReminder:key},checked}})},toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(deadline){idle.shift()?.(deadline);},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).army.points,1965);
@@ -184,15 +184,16 @@ test('only the page body slides while turn controls and phase tabs stay outside 
  assert.ok(html.indexOf('class="guide-viewport"')<html.indexOf('class="lesson-focus'));
  assert.match(html,/aria-label="Next page"[^>]*><svg viewBox="0 0 24 24"/);
 });
-test('arrow animation previews the next whole page and commits only once at the end',async()=>{
+test('rapid arrow navigation settles the previous page and accepts the next input',async()=>{
  const a=app(undefined,{motion:true});a.click({action:'page-next'});
  assert.equal(a.animations.length,2);assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).open,0);
  assert.match(a.viewport.children[0].innerHTML,/<h2[^>]*>Start of Turn<\/h2>/);
  assert.doesNotMatch(a.viewport.children[0].innerHTML,/guide-turn-toggle|phase-nav|guide-fixed-header/);
  assert.equal(a.animations[0].frames[1].transform,'translate3d(-400px,0,0)');
- a.click({action:'page-next'});assert.equal(a.animations.length,2);
- a.animations.forEach(animation=>animation.finish());await new Promise(resolve=>setImmediate(resolve));
+ a.click({action:'page-next'});assert.equal(a.animations.length,4);
  assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).open,1);
+ a.animations.forEach(animation=>animation.finish());await new Promise(resolve=>setImmediate(resolve));
+ assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).open,2);
 });
 test('a touch drag follows the finger, then completes or snaps back',async()=>{
  const point=x=>({identifier:1,clientX:x,clientY:200});
@@ -456,4 +457,19 @@ test('idle preparation yields when there is insufficient idle time',()=>{
  const a=app(undefined,{motion:true,warm:true});
  a.warm({timeRemaining:()=>0});assert.equal(a.viewport.children.length,0);
  a.warm({timeRemaining:()=>20});assert.equal(a.viewport.children.length,1);
+});
+
+test('Start prepares every page for both players and reuses templates across phases and rounds',()=>{
+ const a=app(undefined,{setup:true,preload:true});a.start();
+ assert.match(a.html(),/Preparing your guide/);assert.equal(a.prepared().ready,false);
+ a.flushGuide();const prepared=a.prepared();assert.equal(prepared.ready,true);assert.equal(prepared.count,prepared.total);assert.ok(prepared.total>30);
+ a.rejectPageBuilds();
+ for(const turn of ['you','opponent']){a.click({turn});for(let phase=0;phase<5;phase++){a.click({phase:String(phase)});a.click({action:'page-next'});}}
+ a.click({action:'round-up'});a.click({action:'page-next'});assert.doesNotMatch(a.html(),/Preparing your guide/);
+});
+test('leaving during guide preparation cancels it and returning to Start can restart safely',()=>{
+ const a=app(undefined,{setup:true,preload:true});a.start();a.click({action:'choose-guide-army'});a.flushGuide();
+ assert.match(a.html(),/Start your guide/);assert.equal(a.prepared(),null);
+ a.start();a.flushGuide();assert.equal(a.prepared().ready,true);
+ a.toggle('guide-show-core-stratagems',true);assert.match(a.html(),/Preparing your guide/);a.flushGuide();assert.equal(a.prepared().ready,true);
 });

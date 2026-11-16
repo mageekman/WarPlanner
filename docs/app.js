@@ -126,7 +126,7 @@ window.addEventListener?.('resize',refreshUnitPreviews);
 function fontsReady(){unitPreviewSizes=new WeakMap();refreshUnitPreviews();}
 document.fonts?.ready?.then(fontsReady);
 document.fonts?.addEventListener?.('loadingdone',fontsReady);
-function render(focusLesson=false){const detPicker=$('#builder-detachment-picker');if(listEditor&&detPicker)listEditor.detachmentPickerOpen=detPicker.open;cancelGuideMotion();if(state.view==='admin'&&!window.WarPlannerAdminPage?.canAccess)state.view='guide';pageNavigation?.sync();save();const nav=[['overview','⌂','Study home'],['guide','▤','Guided play'],['army','◇','My army'],['practice','✧','Practice'],...(window.WarPlannerAdminPage?.canAccess?[['admin','⚙','Rules workshop']]:[])];$('#app').innerHTML=`<div class="shell${state.sidebarCollapsed?' nav-collapsed':''}"><aside class="sidebar"><button type="button" class="sidebar-toggle" data-action="toggle-nav" aria-controls="site-navigation" aria-expanded="${!state.sidebarCollapsed}" aria-label="${state.sidebarCollapsed?'Expand navigation':'Collapse navigation'}" title="${state.sidebarCollapsed?'Expand navigation':'Collapse navigation'}">${state.sidebarCollapsed?'›':'‹'}</button><div class="brand"><img class="brand-logo" src="warplanlogowht.png" width="1268" height="1241" alt=""><span class="brand-text">WARPLANNER</span></div><div class="tagline">KNOW YOUR NEXT MOVE.</div><div class="nav-label">YOUR FIELD GUIDE</div><nav id="site-navigation" class="nav" aria-label="Main navigation">${nav.map(([id,icon,label])=>`<a href="${PageNavigation?.href(id)||'#'}" data-view="${id}" aria-label="${label}" title="${label}" class="${state.view===id?'active':''}" ${state.view===id?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span><span class="nav-text">${label}</span>${id==='admin'?window.WarPlannerReports?.badgeHTML()||'':''}</a>`).join('')}<button type="button" data-auth-signout aria-label="Sign out" title="Sign out"><span class="nav-icon" aria-hidden="true">↪</span><span class="nav-text">Sign out</span></button></nav><div class="sidebar-bottom"><div class="private">◈ &nbsp; A personal study companion<br>Made for the way you learn.</div><div class="profile"><div class="avatar">WP</div><div><strong>Your study space</strong><small>Personal study · v0.28.5</small></div></div></div></aside><main><div id="list-sync-banner" class="list-sync-banner" ${cloudStatus==='error'?'':'hidden'} role="status"><span>Your lists have not saved to your account yet. Keep this page open and retry.</span><button type="button" data-action="retry-list-save">Retry</button></div>${state.view==='guide'?'':`<div class="topbar"><span>YOUR STUDY SPACE &nbsp; / &nbsp; <strong>${state.view==='guide'?'Guided play':state.view==='army'?'My army':state.view==='practice'?'Practice':state.view==='admin'?'Rules workshop':'Study home'}</strong></span><span class="top-status"><span class="dot"></span><span data-list-sync-status>${listSaveStatus()}</span></span></div>`}${state.view==='admin'?window.WarPlannerAdminPage.render():state.view==='guide'?guide():state.view==='army'?armyView():state.view==='practice'?practiceView():overview()}</main></div>`;refreshUnitPreviews();updateCloudUI();if(focusLesson)document.querySelector('#lesson-title')?.focus({preventScroll:true});queueGuideWarm();openRequestedRuleReport();}
+function render(focusLesson=false){const detPicker=$('#builder-detachment-picker');if(listEditor&&detPicker)listEditor.detachmentPickerOpen=detPicker.open;cancelGuideMotion();if(state.view==='admin'&&!window.WarPlannerAdminPage?.canAccess)state.view='guide';pageNavigation?.sync();save();const nav=[['overview','⌂','Study home'],['guide','▤','Guided play'],['army','◇','My army'],['practice','✧','Practice'],...(window.WarPlannerAdminPage?.canAccess?[['admin','⚙','Rules workshop']]:[])];$('#app').innerHTML=`<div class="shell${state.sidebarCollapsed?' nav-collapsed':''}"><aside class="sidebar"><button type="button" class="sidebar-toggle" data-action="toggle-nav" aria-controls="site-navigation" aria-expanded="${!state.sidebarCollapsed}" aria-label="${state.sidebarCollapsed?'Expand navigation':'Collapse navigation'}" title="${state.sidebarCollapsed?'Expand navigation':'Collapse navigation'}">${state.sidebarCollapsed?'›':'‹'}</button><div class="brand"><img class="brand-logo" src="warplanlogowht.png" width="1268" height="1241" alt=""><span class="brand-text">WARPLANNER</span></div><div class="tagline">KNOW YOUR NEXT MOVE.</div><div class="nav-label">YOUR FIELD GUIDE</div><nav id="site-navigation" class="nav" aria-label="Main navigation">${nav.map(([id,icon,label])=>`<a href="${PageNavigation?.href(id)||'#'}" data-view="${id}" aria-label="${label}" title="${label}" class="${state.view===id?'active':''}" ${state.view===id?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span><span class="nav-text">${label}</span>${id==='admin'?window.WarPlannerReports?.badgeHTML()||'':''}</a>`).join('')}<button type="button" data-auth-signout aria-label="Sign out" title="Sign out"><span class="nav-icon" aria-hidden="true">↪</span><span class="nav-text">Sign out</span></button></nav><div class="sidebar-bottom"><div class="private">◈ &nbsp; A personal study companion<br>Made for the way you learn.</div><div class="profile"><div class="avatar">WP</div><div><strong>Your study space</strong><small>Personal study · v0.28.5</small></div></div></div></aside><main><div id="list-sync-banner" class="list-sync-banner" ${cloudStatus==='error'?'':'hidden'} role="status"><span>Your lists have not saved to your account yet. Keep this page open and retry.</span><button type="button" data-action="retry-list-save">Retry</button></div>${state.view==='guide'?'':`<div class="topbar"><span>YOUR STUDY SPACE &nbsp; / &nbsp; <strong>${state.view==='guide'?'Guided play':state.view==='army'?'My army':state.view==='practice'?'Practice':state.view==='admin'?'Rules workshop':'Study home'}</strong></span><span class="top-status"><span class="dot"></span><span data-list-sync-status>${listSaveStatus()}</span></span></div>`}${state.view==='admin'?window.WarPlannerAdminPage.render():state.view==='guide'?guide():state.view==='army'?armyView():state.view==='practice'?practiceView():overview()}</main></div>`;syncGuideReviews(document);refreshUnitPreviews();updateCloudUI();if(focusLesson)document.querySelector('#lesson-title')?.focus({preventScroll:true});queueGuideWarm();openRequestedRuleReport();}
 function openRequestedRuleReport(){
  if(!ruleReportRequested||state.view!=='guide'||!state.guideStarted)return;
  const panel=document.querySelector('[data-report-details]');if(!panel)return;
@@ -152,11 +152,18 @@ function guideHintNotes(meta){return [...new Set(meta?.notes||[meta?.note].filte
 const guideSession=Activations.createSession();
 function guideDeck(active){return guideSession.deck(state,active);}
 // Review marks are personal reading aids, never ability-use or eligibility state.
-function reminderPrefix(){return JSON.stringify([state.activeListId||'',state.army.faction,state.round,state.turn,state.phase])+':';}
+function reminderPrefix(current=state){return JSON.stringify([current.activeListId||'',current.army.faction,current.round,current.turn,current.phase])+':';}
 function reminderKey(id){return reminderPrefix()+id;}
 function reviewReminder(id,title,html){
  const key=reminderKey(id),checked=state.reviewedReminders?.[key]===true,category=html.match(/\brule-([a-z-]+)/)?.[0]||'rule-ability';
- return `<section class="flash-card reminder-item ${category}${checked?' reminder-reviewed':''}">${html}<label class="reminder-review"><input type="checkbox" data-review-reminder="${escapeHTML(key)}" ${checked?'checked':''} aria-label="Reviewed: ${escapeHTML(title)}"></label></section>`;
+ return `<section class="flash-card reminder-item ${category}${checked?' reminder-reviewed':''}">${html}<label class="reminder-review"><input type="checkbox" data-review-id="${escapeHTML(id)}" data-review-reminder="${escapeHTML(key)}" ${checked?'checked':''} aria-label="Reviewed: ${escapeHTML(title)}"></label></section>`;
+}
+function syncGuideReviews(container,current=state){
+ for(const input of container?.querySelectorAll?.('[data-review-id]')||[]){
+  const key=reminderPrefix(current)+input.dataset.reviewId;
+  input.dataset.reviewReminder=key;input.checked=current.reviewedReminders?.[key]===true;
+  input.closest('.reminder-item')?.classList.toggle('reminder-reviewed',input.checked);
+ }
 }
 function flashBoard(active,deck=guideDeck(active)){
  if(!deck.count)return `<section class="army-lessons" aria-label="Your army at this step"><p class="ability-empty">No matching army abilities are listed for this step. Open ⓘ for the core sequence.</p></section>`;
@@ -234,7 +241,7 @@ function showGuideStart(reset=false){
  render();
 }
 function startGuide(){
- guideSession.reset();
+ guidePrepared=null;guideSession.reset();
  const selected=state.savedLists?.find(list=>list.id===(state.setupListId||state.activeListId));
  if(!selected){toast('Import and select an army list first.');return;}
  syncActiveList();
@@ -244,8 +251,44 @@ function startGuide(){
 }
 function guideSettings(){return `<details class="guide-settings"><summary aria-label="Guide settings" title="Guide settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3-.6 2.4-2 .9L4 5.6 2.5 8l1.8 1.8v2.4L2.5 14 4 16.4l2.4-.7 2 .9L9 19h3l.6-2.4 2-.9 2.4.7 1.5-2.4-1.8-1.8V9.8L18.5 8 17 5.6l-2.4.7-2-.9L12 3Z"/><circle cx="10.5" cy="11" r="3"/></svg></summary><div class="guide-settings-menu"><label class="guide-font-label" for="guide-font-size">Font size</label><select id="guide-font-size">${['small','medium','large'].map(size=>`<option value="${size}" ${size===(state.guideFontSize||'medium')?'selected':''}>${size[0].toUpperCase()+size.slice(1)}</option>`).join('')}</select><label class="guide-preview-setting"><input id="guide-show-previews" type="checkbox" ${state.guideShowPreviews!==false?'checked':''}>Show preview info</label><label class="guide-preview-setting"><input id="guide-show-core-stratagems" type="checkbox" ${state.guideShowCoreStratagems===true?'checked':''}>Show Core Stratagems</label><label class="guide-preview-setting"><input id="guide-show-deep-strike" type="checkbox" ${state.guideShowDeepStrike!==false?'checked':''}>Show Deep Strike</label><button type="button" data-action="reset-guide">Reset guide</button><button type="button" data-action="choose-guide-army">Choose another army</button></div></details>`;}
 function guideInfoPopup(){const active=lessons().steps[state.open];return `<div id="guide-info-popup" class="guide-info-popup" popover="auto" role="dialog" aria-labelledby="guide-info-title"><button type="button" class="guide-info-close" popovertarget="guide-info-popup" popovertargetaction="hide" aria-label="Close explanation" autofocus>×</button><h3 id="guide-info-title">${escapeHTML(active.title)}</h3><p class="lesson-instruction">${escapeHTML(active.body)}</p></div>`;}
-function guide(){if(!state.guideStarted)return guideStartPage();return `<section class="guide-page-shell guide-carousel" aria-label="Interactive guide" data-show-previews="${state.guideShowPreviews!==false}" data-font-size="${['small','large'].includes(state.guideFontSize)?state.guideFontSize:'medium'}"><div class="guide-frame"><button class="guide-page-arrow previous-page" data-action="page-previous" aria-label="Previous page" title="Previous page" ${canPreviousPage()?'':'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><header class="guide-fixed-header">${guideSettings()}${turnToggle()}${phaseTabs()}</header><div class="guide-viewport"><div class="guide-slide" id="guide-panel" role="tabpanel" aria-labelledby="phase-tab-${state.phase}">${guidePageHTML()}</div></div><button class="guide-page-arrow next-page" data-action="page-next" aria-label="Next page" title="Next page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>${guideInfoPopup()}</section>`;}
-function guidePageHTML(){
+function guide(){if(!state.guideStarted)return guideStartPage();if(!ensureGuidePrepared())return guidePreparationPage();return `<section class="guide-page-shell guide-carousel" aria-label="Interactive guide" data-show-previews="${state.guideShowPreviews!==false}" data-font-size="${['small','large'].includes(state.guideFontSize)?state.guideFontSize:'medium'}"><div class="guide-frame"><button class="guide-page-arrow previous-page" data-action="page-previous" aria-label="Previous page" title="Previous page" ${canPreviousPage()?'':'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><header class="guide-fixed-header">${guideSettings()}${turnToggle()}${phaseTabs()}</header><div class="guide-viewport"><div class="guide-slide" id="guide-panel" role="tabpanel" aria-labelledby="phase-tab-${state.phase}">${guidePageHTML()}</div></div><button class="guide-page-arrow next-page" data-action="page-next" aria-label="Next page" title="Next page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>${guideInfoPopup()}</section>`;}
+// Templates contain one full cycle. Round-specific review marks are bound at mount.
+let guidePrepared=null;
+function guidePreparationContext(){return JSON.stringify([KEY,state.activeListId,Library.revision,window.WarPlannerContent?.generation,state.army,state.renames,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false]);}
+function guideTemplateKey(current){return [current.turn,current.phase,current.open].join(':');}
+function ensureGuidePrepared(){
+ // Non-visual adapters can continue to render synchronously.
+ if(!window.requestAnimationFrame)return true;
+ const context=guidePreparationContext();
+ if(guidePrepared?.context===context)return guidePrepared.ready;
+ const snapshot={...state},job={context,ready:false,done:0,pages:new Map(),total:0,error:''},destinations=[];
+ guidePrepared=job;
+ for(const turn of ['you','opponent'])for(let phase=0;phase<5;phase++){
+  const current={...snapshot,turn,phase,round:1};
+  for(let open=0;open<Activations.steps(current).length;open++)destinations.push({turn,phase,open});
+ }
+ job.total=destinations.length;
+ function prepareNext(){
+  if(guidePrepared!==job||!state.guideStarted||state.view!=='guide'||guidePreparationContext()!==context){if(guidePrepared===job)guidePrepared=null;return;}
+  const destination=destinations.shift(),original=state;
+  try{
+   state={...snapshot,...destination,round:1,completed:{},reviewedReminders:{}};
+   job.pages.set(guideTemplateKey(state),buildGuidePageHTML());
+  }catch(error){job.error='Could not prepare the guide. Try starting it again.';}
+  finally{state=original;}
+  if(job.error){render();return;}
+  job.done++;
+  const progress=document.querySelector('#guide-preparing-progress');if(progress)progress.value=job.done;
+  if(destinations.length)setTimeout(prepareNext,0);
+  else{job.ready=true;render(true);}
+ }
+ // Paint the loading state first; yield between pages so Cancel stays responsive.
+ window.requestAnimationFrame(()=>setTimeout(prepareNext,0));
+ return false;
+}
+function guidePreparationPage(){return `<section class="guide-start-page guide-preparing" aria-busy="${!guidePrepared?.error}"><h1>Preparing your guide</h1><p role="status">${guidePrepared?.error||'Loading every step for both players. Your guide will open when it is ready.'}</p><progress id="guide-preparing-progress" aria-label="Guide pages prepared" max="${guidePrepared?.total||1}" value="${guidePrepared?.done||0}"></progress><button type="button" class="text-button" data-action="choose-guide-army">Back to guide setup</button></section>`;}
+function guidePageHTML(){return guidePrepared?.ready?guidePrepared.pages.get(guideTemplateKey(state))||buildGuidePageHTML():buildGuidePageHTML();}
+function buildGuidePageHTML(){
  const data=lessons();state.open=Math.max(0,Math.min(data.steps.length-1,state.open));
  const active=data.steps[state.open],deck=guideDeck(active);
  const {unsupported,phaseHasAbilities}=guideSession.coverage(state);
@@ -366,7 +409,7 @@ function clearGuideWarm(){
  for(const drag of guideWarmPages.values())drag.preview?.remove();guideWarmPages.clear();
 }
 function queueGuideWarm(){
- if(guideWarmJob!==null||state.view!=='guide'||!state.guideStarted||reducedGuideMotion()||!document.createElement)return;
+ if(guidePrepared&&!guidePrepared.ready||guideWarmJob!==null||state.view!=='guide'||!state.guideStarted||reducedGuideMotion()||!document.createElement)return;
  const epoch=guideWarmEpoch,directions=[1,-1];
  function prepare(deadline){
   if(epoch!==guideWarmEpoch)return;guideWarmJob=null;if(guideMotion||guideGesture||state.view!=='guide')return;
@@ -407,6 +450,7 @@ function buildGuideDrag(direction){
   let html;try{state={...original,...destination};html=guidePageHTML();}finally{state=original;}
   preview=document.createElement('div');preview.className='guide-slide guide-preview';preview.inert=true;preview.setAttribute('aria-hidden','true');preview.innerHTML=html;
   preview.style.transform=`translate3d(${direction*width}px,0,0)`;viewport.append(preview);
+  syncGuideReviews(preview,{...state,...destination});
   fitUnitPreviews(preview.querySelectorAll('[data-unit-preview]'));
  }
  return {current,preview,direction,destination,width,offset:0};
@@ -430,7 +474,7 @@ function commitGuidePage(destination,direction,drag=null){
   header.innerHTML=guideSettings()+turnToggle()+phaseTabs();popup.outerHTML=guideInfoPopup();
   for(const button of incoming.querySelectorAll('[data-step]')){const index=Number(button.dataset.step);button.setAttribute('aria-current',index===state.open?'step':'false');const marker=button.querySelector('span');if(marker)marker.textContent=state.completed[stepKey(index)]?'✓':String(index+1);}
   const previous=document.querySelector('.previous-page');if(previous)previous.disabled=!canPreviousPage();
-  save();refreshUnitPreviews();updateCloudUI();incoming.querySelector('#lesson-title')?.focus({preventScroll:true});queueGuideWarm();
+  syncGuideReviews(incoming);save();refreshUnitPreviews();updateCloudUI();incoming.querySelector('#lesson-title')?.focus({preventScroll:true});queueGuideWarm();
  }else render(true);
 }
 function animateGuideDrag(drag,commit){
@@ -445,7 +489,7 @@ function animateGuideDrag(drag,commit){
   animations.push(drag.current.animate([{transform:`translate3d(${drag.offset}px,0,0)`},{transform:`translate3d(${end}px,0,0)`}],options));
   if(drag.preview)animations.push(drag.preview.animate([{transform:`translate3d(${drag.offset+drag.direction*drag.width}px,0,0)`},{transform:`translate3d(${end+drag.direction*drag.width}px,0,0)`}],options));
  }catch{for(const animation of animations)animation.cancel();discardGuideDrag(drag);return false;}
- const motion={drag,animations};guideMotion=motion;
+ const motion={drag,animations,commit};guideMotion=motion;
  Promise.all(animations.map(animation=>animation.finished)).then(()=>{
   if(guideMotion!==motion)return;
   guideMotion=null;
@@ -454,8 +498,14 @@ function animateGuideDrag(drag,commit){
  },()=>{if(guideMotion===motion){guideMotion=null;discardGuideDrag(drag);}});
  return true;
 }
+function finishGuideMotion(){
+ const motion=guideMotion;if(!motion)return;
+ guideMotion=null;for(const animation of motion.animations)animation.cancel();
+ if(motion.commit)commitGuidePage(motion.drag.destination,motion.drag.direction,motion.drag);
+ else discardGuideDrag(motion.drag);
+}
 function navigateGuide(direction,drag=null){
- if(guideMotion)return false;
+ finishGuideMotion();
  document.querySelector('.guide-info-popup:popover-open')?.hidePopover();
  const destination=guideDestination(direction);
  if(!destination){if(drag&&!animateGuideDrag(drag,false))discardGuideDrag(drag);return false;}
@@ -466,6 +516,7 @@ function navigateGuide(direction,drag=null){
 }
 let guideGesture=null;
 function startGuideSwipe(event){
+ finishGuideMotion();
  if(guideGesture?.drag)discardGuideDrag(guideGesture.drag);
  guideGesture=null;
  if(guideMotion||state.view!=='guide'||$('#import-dialog').open||document.querySelector('.guide-info-popup:popover-open')||event.touches.length!==1)return;
@@ -572,7 +623,7 @@ render();
 window.setWarPlannerAccount=(user,library,service=null,idMap={},contentService=null)=>{
  pageNavigation?.pause();
  deletingListId=null;listDeleteError='';
- guideSession.reset();savedRoster=null;savedLibrary=null;
+ guidePrepared=null;guideSession.reset();savedRoster=null;savedLibrary=null;
  window.WarPlannerPracticePage?.reset();
  window.WarPlannerAdminPage?.setService(contentService);
  listEditor=null;
@@ -596,7 +647,7 @@ window.setWarPlannerAccount=(user,library,service=null,idMap={},contentService=n
 window.clearWarPlannerAccount=()=>{
  pageNavigation?.pause();
  deletingListId=null;listDeleteError='';
- guideSession.reset();savedRoster=null;savedLibrary=null;
+ guidePrepared=null;guideSession.reset();savedRoster=null;savedLibrary=null;
  window.WarPlannerPracticePage?.reset();
  window.WarPlannerAdminPage?.setService(null);
  listEditor=null;
@@ -605,4 +656,4 @@ window.clearWarPlannerAccount=()=>{
  $('#import-dialog').close();$('#army-text').value='';$('#import-feedback').innerHTML='';render();
 };
 
-window.refreshWarPlannerContent=()=>{guideSession.reset();render();};
+window.refreshWarPlannerContent=()=>{guidePrepared=null;guideSession.reset();render();};
