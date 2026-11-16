@@ -1,5 +1,15 @@
 # Research references and credits
 
+Adeptus Mechanicus readiness audit (2026-11-16): original study summaries derived
+from preserved imports and the [pinned 40kdc source](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/adeptus-mechanicus),
+Alpaca Software and community contributors, CC BY 4.0. Selected explicit
+corrections were checked against the official Adeptus Mechanicus faction pack
+v1.4, linked with its fingerprint in `tests/fixtures/admech-audit-sources.json`.
+Changes include rule wording, targets/timings, attached Support-provider gates,
+composition selectors and three Archaeopter profile updates. Original imports
+and unresolved variants remain preserved; the full official PDF is not bundled.
+See [AUDIT-ADEPTUS-MECHANICUS.md](AUDIT-ADEPTUS-MECHANICUS.md).
+
 Army-defining rule corrections (2026-11-15): original concise study wording
 checked against the current faction references and official Warhammer Community
 faction-pack updates linked per entry in `scripts/army-foundations-notes.json`.
