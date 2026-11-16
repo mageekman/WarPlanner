@@ -1,0 +1,2305 @@
+[
+  {
+    "id": "a-challenge-worthy-of-skill-emperors-children",
+    "state": "structured",
+    "summary": "Lucius can re-roll Hit and Wound rolls for his attacks against CHARACTER, MONSTER or WALKER units.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "db80b38a9fcf0c5f8894614d8f70cadb5f3bfdd7736373a6d64c8082be592dd1",
+    "pinnedHash": "db80b38a9fcf0c5f8894614d8f70cadb5f3bfdd7736373a6d64c8082be592dd1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lucius-the-Eternal"
+  },
+  {
+    "id": "absolute-sensory-overload-frenzied-host-emperors-children",
+    "state": "structured",
+    "summary": "When a friendly EC BATTLELINE unit is selected to shoot in your Shooting phase, those ranged attacks do not stop that unit being hidden. Other causes of losing hidden status still apply.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "f4177060dfd0f5569c38c8c43d9194d0645a46d34f681211c29c132ec62efe8f",
+    "pinnedHash": "597e13dc7f543186c9e3def30b67bbb9ae6ddd1c852dc82f3978ed54fa1afdfc",
+    "coreHash": "37b094f346dfbdd0beb57e9d5de6122f6433285cc55fd3f90dcb25ee1ff0c519",
+    "officialPage": 3
+  },
+  {
+    "id": "accomplished-tactician-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "Once per turn, after an enemy unit shoots in your opponent’s Shooting phase, a friendly EC unit within 9″ of the bearer that was hit can embark in a friendly TRANSPORT it can normally embark within, provided it is wholly within 6″ of that transport.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "a2d9705d85b9b20ca4c033611c4fd2a3bd42cb8a4f685bc6ddeafe361a727079",
+    "pinnedHash": "24dc7556c452be95b85d8e3eb288a8c0ad1fd687c015856f584f01424a5b6d71",
+    "coreHash": "4574b22c523cb007c23403c625fb4bcd9bbbb2ac2cc0f4b378784b117c3d4ee8"
+  },
+  {
+    "id": "advance-and-claim-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "In your Command phase, choose an EC TRANSPORT carrying at least one non-Battle-shocked TORMENTORS unit. One objective you control within that transport’s range stays yours until the opponent has greater Level of Control at the end of a phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "e1b5d5f299b990ad0e571606744ec427923fab6e628f5f4e7be799c815fe54d6",
+    "pinnedHash": "a5e9690f854cbb00647ea3bf3df8759b2695064b8bfdb23697b1796585784d0e",
+    "coreHash": "ce4977ef853f0df0fec868511a8585f50f095553e6219a64fb3d3efa8863e784"
+  },
+  {
+    "id": "agonised-cacophony-frenzied-host-emperors-children",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, choose a friendly EC BATTLELINE unit and one visible enemy within 12″ of it. Increase that enemy’s detection range by 6″. The checked faction-pack text states no separate expiry; do not invent one.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "d99f002edd1fd2c271a3ca6220d470a236dc255402dac59ac889cedd4d259766",
+    "pinnedHash": "a3cfd9f0c0d1fd354bf5e69ef1988737b2efaf34ea98f6186b83c4aa924a333c",
+    "coreHash": "67fd882fd580eccf9fae32f347764d8a7bbd44cd4a12ba003f1cb48663c97fdb",
+    "officialPage": 3
+  },
+  {
+    "id": "airborne-predator-emperors-children",
+    "state": "structured",
+    "summary": "After the Heldrake ends a Normal move, choose one enemy it moved over and roll 2D6. Add 1 to each result if that enemy can FLY; each 4+ inflicts D3 mortal wounds.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "36bb74c0b9bca8cff03b6e497634235e4ffb724fa9af74f71993b580b83d0cff",
+    "pinnedHash": "36bb74c0b9bca8cff03b6e497634235e4ffb724fa9af74f71993b580b83d0cff",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Heldrake"
+  },
+  {
+    "id": "armour-of-abhorrence-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "After an enemy selects attack targets in the opponent’s Shooting phase or either Fight phase, choose an EC unit it targeted. Worsen incoming AP by 1 until that attacking unit finishes its attacks, not for the whole phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "31320c7d20535567ba3598464daeed1b6de559b4fa8183bf94a0ed6c73559127",
+    "pinnedHash": "86db468fdad5052eed7b588bf5f9ccc336aafc091c044d8b980a963cddc08523",
+    "coreHash": "ef1ae6251fb30b7d70370b148dd485faa075cebc561c93ed2abe410a41ba1ec3",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 9
+  },
+  {
+    "id": "assault-ramp-emperors-children",
+    "state": "structured",
+    "summary": "Passengers disembarking after this Land Raider makes a Normal move make an assault disembark move under Core Rules 18.06. The benefit belongs to those passengers, subject to the core assault-disembark procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d124fb12abc3f1a6af9a71d1e75518e56bf06e9268e6c080edfb5e9edc4b5520",
+    "pinnedHash": "d124fb12abc3f1a6af9a71d1e75518e56bf06e9268e6c080edfb5e9edc4b5520",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Chaos-Land-Raider"
+  },
+  {
+    "id": "assault-vehicle-emperors-children",
+    "state": "structured",
+    "summary": "Passengers can disembark after this Rhino Advances, using a shock disembark move under Core Rules 18.07. This is not an unrestricted permission to charge; use that core disembark procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "2922db18e4b13c3be0ed48801932aac0af7fcae3a5fa4dc1e1e33f9a74df4c03",
+    "pinnedHash": "2922db18e4b13c3be0ed48801932aac0af7fcae3a5fa4dc1e1e33f9a74df4c03",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Chaos-Rhino"
+  },
+  {
+    "id": "beautiful-death-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "After enemy target selection in either Fight phase, choose a targeted EC CHARACTER unit. For this phase, each destroyed model that has not fought rolls D6, adding 1 if its unit is Favoured Champions. On 4+, it fights after the attacker finishes, then is removed.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "532eaa1156e842ef6076dd38d927bda4b4807c8ded1e647e8f4389751e30947e",
+    "pinnedHash": "148603773c8adb8ffdfa0e8572e024767dab444e473f12e9e8bd98b1e7980164",
+    "coreHash": "05928254dc5289ca92a68b3e48a7882727a7526f80b6cfa539331c242ea2435c"
+  },
+  {
+    "id": "beguiling-grotesquerie-upgrade-spectacle-of-slaughter-emperors-children",
+    "state": "structured",
+    "summary": "FLAWLESS BLADES unit upgrade: enemy units cannot use Fire Overwatch to target this unit.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d4c73f2b48d39a2756b6c967e5c4d95ec02825a9887e5b765f7640e002913040",
+    "pinnedHash": "84bc7b8cf59a545f082c3c0a13c0dfb02fa4c68480c98794ba949607c3cb9313",
+    "coreHash": "f5235e31bc7c11abe5aef45c3b1e1d5a006acbdfdc28ada0ea594abd8f0c51d8",
+    "officialPage": 4
+  },
+  {
+    "id": "blinding-speed-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "Once per battle, at the start of either Fight phase, the bearer’s unit gains Fights First for that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "4fcd7f24d87d2161eb254d13e486d99d92a4a66e58fc955da825e6b434e53de9",
+    "pinnedHash": "488984f29170646f688430f680c92ff42c9323c7bf67348c285c11cab979a1b7",
+    "coreHash": "bfb14703e504135586092d89bddd99049f6f3cd121ba6bedd83809a2b9b73267"
+  },
+  {
+    "id": "cacophonic-accompaniment-elegant-brutes-emperors-children",
+    "state": "structured",
+    "summary": "LORD KAKOPHONIST only: the bearer gains Deep Strike; ranged weapons in its unit gain Ignores Cover. Deep Strike is granted to the model, not automatically to all its companions.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8fb9f94f74b6613f53e811116c792f63db8d143c7863686e618c29aaed8014b4",
+    "pinnedHash": "3428bff12d4bfc4655ec4206c59e6cf021ec7af69ef2030bb461fba15b7a8c4a",
+    "coreHash": "86a843a60644977d373885d0806e10bbaca77b63d9d5499133d0ff0f8d9bafe4",
+    "officialPage": 2
+  },
+  {
+    "id": "capricious-reactions-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "After enemy target selection in your opponent’s Shooting phase, choose a targeted EC unit. Incoming attacks against that unit suffer -1 to Hit for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "3d89e3902fce6330b18308dbb1aef5364d1f51cbcdc697f48dd471b40d7344d8",
+    "pinnedHash": "39efe6421d4c5019037903e09638bf2fc6ab682f56ba8af456330fe52af4c4c0",
+    "coreHash": "0ee65014dbed11674f626351026e9dd85750a6f0e78bc52bc1afb05eb48629fa"
+  },
+  {
+    "id": "catalytic-stimulus-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "After an enemy shoots in the opponent’s Shooting phase, an EC unit that lost wounds to those attacks can make a surge move up to D6″, using the core surge rules.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "f4fa5cb559e6cf864c1a4c1978e3b67a8f46687e648c4222013f6ddbe9dc2c1d",
+    "pinnedHash": "1b567e4f2e61bc9efc88e8aab250333bc6e82eb86299138159ffe845527b2878",
+    "coreHash": "d531d9ffa533b3309a6e211c811cbd7cda0400d6dcede289c0c5ccef6d1db548",
+    "officialPage": 6
+  },
+  {
+    "id": "ceaseless-onslaught-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "In your Charge phase, an EC unit that disembarked from a TRANSPORT which made a Normal move this turn treats that disembarkation as an assault disembark move (Core Rules 18.06).",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "c894485206ad113cc7f33e4d97e638e251c7b580178f41db5318009396b6273b",
+    "pinnedHash": "7a0ed6b220d7ec556541493cdc4ed0d7771497bdacfec7656c1ec142501c0c07",
+    "coreHash": "bc45d559d4697fd2c813c8abef5efacc1245ae142b1a8745d70fb0173dd1c7cd"
+  },
+  {
+    "id": "close-quarters-excruciation-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "In your Shooting phase, choose an EC unit not yet selected to shoot. For the phase, attacks made by its EC models against eligible targets within 12″ gain +1 Strength and improved AP by 1. Models without the EC keyword do not receive this benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "618c92de0d2767c1eba81eea04d59954f761e4f0d967017c26a17d330d5d2b0e",
+    "pinnedHash": "4defaff0b192e678ea0ad324039c2b0b2e1ef309853ec89895dd09bdbd265f6e",
+    "coreHash": "3751450cbefba992ed772037a487080db6d44978d08b4e1687cb44b8d714f215",
+    "officialPage": 6
+  },
+  {
+    "id": "combat-stimms-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "After enemy target selection in either Fight phase, choose a targeted EC INFANTRY unit. Incoming attacks against that unit suffer -1 to Wound for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d4364ad18eea09e53bcd105fb971fb69354146993cfbab9c5fa4882b8093d74d",
+    "pinnedHash": "5b2a0588b47ebb2eadc18cc196de53758f1a318fe4e9cb133a0b5a1243790c1e",
+    "coreHash": "997c331fad6c5c5c97bc8c40f9ecd6ff9d9400e62dac9c01fc07d21c777dfd5c"
+  },
+  {
+    "id": "contemptuous-disregard-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "In the opponent’s Shooting phase or either Fight phase, choose an EC unit. For the phase, attacks targeting it suffer -1 to Wound if their Strength exceeds its Toughness.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cd5cc81e67a8e89c5d5d4822f429f99553242f7f89134ad7db828155f462b10e",
+    "pinnedHash": "4d0468e196bfd241d2218bd83d24faee735f61bc25f6a9c1ff2fbea3db415b9d",
+    "coreHash": "0fe67afbd423c6703d7bf8cf224ae5d3b1a180d2e6b594ae85b30e37eae2fb38",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 6
+  },
+  {
+    "id": "cruel-bladesman-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "In either Fight phase, choose an EC unit that charged this turn and has not fought. Improve its melee AP by 1 for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "071de029992069e252a8db66cb934f8347926affdc0637f618e7326751e43f20",
+    "pinnedHash": "b09e09cc763d8411e2c75227ad9f637bf8a639d329ae0018b75d3a47600aa230",
+    "coreHash": "4b4d38017b7ae61a6576fa1c0c113775f5442f115bf0e82e809f7a9710ccb3c7"
+  },
+  {
+    "id": "cruel-raiders-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, an EC unit wholly within 9″ of a battlefield edge and not within 3″ horizontally of enemies can be removed into Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "e529a952658243803857303d14440fbb5a22cc302e1dc5b692dce4c50b09b7ab",
+    "pinnedHash": "79de7a55b2dda4d15768865bad592f26ee1834f2d1515c60177394de2c5a9418",
+    "coreHash": "bf5fc458d781c198aef39c2713f47568cab9d46ff4ac462cac4fa3012ac036c6"
+  },
+  {
+    "id": "cut-down-the-weak-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "After an enemy Falls Back in the opponent’s Movement phase, choose an EC unit within 6″ eligible to charge that enemy as if it were your Charge phase. A VEHICLE must also be a WALKER. It can charge, must include that enemy as a target, and receives no Charge bonus this turn.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "16975ac0b4a6f54e19739253b7db8b01b6dddc373ffdf0693823a019f017a1bc",
+    "pinnedHash": "05dde6a6c3a6155f7ff2ad1676b7b1be1d50bd1634e5561e1e182d81e0c6e625",
+    "coreHash": "2bad714cd4ea98f68b38bf5ec2912241f1a4dde538cdfcc4182f2b5174d882a9"
+  },
+  {
+    "id": "daemon-lord-of-slaanesh-emperors-children",
+    "state": "structured",
+    "summary": "While a friendly LEGIONS OF EXCESS unit is within 6″ of this Keeper, improve the AP of that unit’s melee weapons by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ae4f392f1b6827e50c9c8999acdab35343d029a50bcb5b7296a24aaac471b2aa",
+    "pinnedHash": "ae4f392f1b6827e50c9c8999acdab35343d029a50bcb5b7296a24aaac471b2aa",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Keeper-of-Secrets"
+  },
+  {
+    "id": "daemon-primarch-of-slaanesh-emperors-children",
+    "state": "structured",
+    "summary": "At the start of the opponent’s Command phase, Fulgrim chooses one ability until the start of that opponent’s next Command phase: Beguiling Form (-1 to incoming Hit rolls); Daemonic Speed (Fights First); or Enthralling Hypnosis (enemy units within 6″ attempting to Fall Back take Leadership tests and must Remain Stationary instead on failure). Only the chosen ability applies.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "start",
+    "sourceHash": "776e6dfdcd0e386ba64d2c3c0f8910a1b48bcb5f553764e223e40a041c4b7991",
+    "pinnedHash": "776e6dfdcd0e386ba64d2c3c0f8910a1b48bcb5f553764e223e40a041c4b7991",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Fulgrim"
+  },
+  {
+    "id": "daemonic-destruction-emperors-children",
+    "state": "structured",
+    "summary": "After the winged Prince ends a Charge move, choose one enemy within Engagement Range. Roll one D6 per remaining wound on the Prince; each 4+ inflicts 1 mortal wound, capped at 6 mortal wounds.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "6c23380081f03eec7bcdc7ed8d5c0e5624b50f2442ca72e1b5cb1b9ee006d4ee",
+    "pinnedHash": "6c23380081f03eec7bcdc7ed8d5c0e5624b50f2442ca72e1b5cb1b9ee006d4ee",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemon-Prince-of-Slaanesh-with-Wings"
+  },
+  {
+    "id": "daemonic-empowerment-emperors-children",
+    "state": "structured",
+    "summary": "An EC unit within 6″ of friendly LEGIONS OF EXCESS, and a LEGIONS OF EXCESS unit within 6″ of friendly EC, are Empowered. Their weapons gain Sustained Hits 1; weapons already having Sustained Hits score Critical Hits on unmodified 5+ (including higher Sustained Hits values). Carnival also permits LEGIONS OF EXCESS allies up to 500/1000/1500 points in Incursion/Strike Force/Onslaught; none can be Warlord. This allowance is not shared by every EC detachment.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "bc34b30b7ffdcf8d35c5a358dd06aeec52890d2a3f82a498fb3888e172c3d90f",
+    "pinnedHash": "bc34b30b7ffdcf8d35c5a358dd06aeec52890d2a3f82a498fb3888e172c3d90f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "daemonic-icon-emperors-children",
+    "state": "structured",
+    "summary": "While the unit includes the Daemonic Icon bearer, models in that bearer’s unit have Leadership 6+. Requires the actual icon equipment.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cb3c2200420b8385c6f3ab4dce10e87d4ac8ce493f755a638681f89151bc7e62",
+    "pinnedHash": "cb3c2200420b8385c6f3ab4dce10e87d4ac8ce493f755a638681f89151bc7e62",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemonettes"
+  },
+  {
+    "id": "daemonic-patrons-callous-blades-flawless-blades-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for the Callous Blades Combat Patrol variant: the import offers Critical Wounds on 3+ when the unit fights, with a model-destruction penalty if it kills nothing. Its duration differs from the pinned record and the penalty attribution is ambiguous. Do not substitute the ordinary Flawless Blades rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "4346cd5466f994871a6e999a08131f430f36b8f69aa53700649617bc3f0b84fc",
+    "pinnedHash": "67a9048c41c64ade5ac18ec37218460a53d5fabeb9ce46dd7f4f8a045ea99b8a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "daemonic-patrons-emperors-children",
+    "state": "structured",
+    "summary": "When ordinary Flawless Blades are selected to fight, they may invoke patrons: unmodified Wound rolls of 3+ become Critical Wounds for the phase. At the end of that Fight phase, if invoked and no enemy model was destroyed by this unit’s attacks that phase, destroy one model in this unit. Another unit’s kill does not prevent the penalty.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "71041bc9c6b621a8630d9d5bb1f397dfd5d088ba33e465077c2f2857910065ff",
+    "pinnedHash": "71041bc9c6b621a8630d9d5bb1f397dfd5d088ba33e465077c2f2857910065ff",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Flawless-Blades"
+  },
+  {
+    "id": "daemonic-poisons-emperors-children",
+    "state": "structured",
+    "summary": "After Fulgrim attacks in your Shooting phase or either Fight phase, choose one enemy hit to remain poisoned for the battle. At the start of each player’s Command phase, roll D6 for each poisoned enemy still on the battlefield; on 4+, it suffers D3 mortal wounds.",
+    "phase": [
+      0,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7380c149b3cccbe60dbc6b06a46e957b53968eae1aad55e0e974b8d592f2ad80",
+    "pinnedHash": "7380c149b3cccbe60dbc6b06a46e957b53968eae1aad55e0e974b8d592f2ad80",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "start"
+      },
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "referencePage": "Fulgrim"
+  },
+  {
+    "id": "dark-apparitions-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, remove one unengaged friendly DAEMONETTES unit into Strategic Reserves. If it returns using Deep Strike in your next Movement phase’s Reinforcements step, it may deploy more than 6″ horizontally from all enemies, only if wholly within 8″ of friendly EC. Use the current 8″ standard comparison, not the historical 9″ wording.",
+    "phase": [
+      1,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "962cd5a45a5b608b4097c0d264a0ce734b5ab2afcb9601dcd469c0b3edbcc858",
+    "pinnedHash": "715e4d11881380e3533d7c3dc18ea0063c7a1a3d0dfa12cbd53628bf2a3bdc5a",
+    "coreHash": "819c56a745d223d04d659b3c9a4c8e37d34e107dae2fd7a1033fa3d9647929c1",
+    "timings": [
+      {
+        "phase": [
+          4
+        ],
+        "turn": "opponent",
+        "window": "end"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "end"
+      }
+    ]
+  },
+  {
+    "id": "dark-blessings-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "EC INFANTRY bearer only. Once per battle, just after enemy target selection, the bearer can gain a 3+ invulnerable save for the phase. This protects the bearer, not every model in its unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b7f8748a2abbce3d0cbf98dd22dd5a4253c98426d9871403f10a5167ed4ff51d",
+    "pinnedHash": "f4885370b29911232a32bf105428862234a17bd20362749eb5e66564d8aad884",
+    "coreHash": "6e55e74966b295d1dcd5274cd3d5fa68b2fcddc3b5524615895705b2c38843e6"
+  },
+  {
+    "id": "dark-vigour-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "After an enemy ends a Normal, Advance or Fall Back move in the opponent’s Movement phase, choose an EC unit within 8″ of that enemy, excluding BEASTS and VEHICLES. It may make a Normal move up to 6″ under the normal movement restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "b0151d3c582f39e72b8eadcc24bd978fb7a237049c37308d1142e39fa9a709e2",
+    "pinnedHash": "87fa45170dc004cc462996c873fe7f2c235e529c97b890be9932598b1671dc0c",
+    "coreHash": "96dcd8e7e3f7424959018a76b04e4c0293c17321c4833c3dfa7f7b59394872c7",
+    "officialPage": 9
+  },
+  {
+    "id": "death-ecstasy-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "After enemy target selection in either Fight phase, choose a targeted EC unit. For this phase, destroyed models that have not fought fight after the attacker finishes, then are removed. No success roll is required.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2874b30ed9672f0a36b8e6ea88f8bd5169ddac3dbec5cef76bedd3a072296a26",
+    "pinnedHash": "c84709c11de77bd6902e37a6d476bf423ad6493586776201fff13f707ceb59cf",
+    "coreHash": "4aac89f102e5cde988948a231437461ff95721ef52880b79d480b610eee81488"
+  },
+  {
+    "id": "deft-parry-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "In either Fight phase, after enemy target selection, choose a targeted EC unit. Incoming attacks against it suffer -1 to Hit for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "88dc93b773cf2fb3cc2558c5c8174bdba4736e1b34b3dd8b732685cace7a117e",
+    "pinnedHash": "161c0872b0a8ec075c3589e5e3ae5c357df264070711bdd17b2dd12e980fd711",
+    "coreHash": "4785218c6ec2097878f569719b2d578a8aa13306cea1ca8efd694eb82e3ff751"
+  },
+  {
+    "id": "delight-in-agony-elegant-brutes-emperors-children",
+    "state": "structured",
+    "summary": "When an enemy targets a friendly EC TERMINATOR unit in the opponent’s Shooting phase or either Fight phase, incoming attacks against it suffer -1 to Wound where Strength exceeds Toughness.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "8bef07f48257335d5cee1f720bad14fae56f41972dff8cc4b86b140f5c3f7339",
+    "pinnedHash": "a86487b599be118ded476601ad94cc3c7329a4b2bdc521a77bf1d4a26013144a",
+    "coreHash": "0336cc6d8030402e13ff836cd97e9da810d4087bdd38a51610217d1e2bbe48f3",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 2
+  },
+  {
+    "id": "devoted-duellists-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "In either Fight phase, select one or more EC CHARACTER units that have not fought and one enemy unit. For the phase, the selected units’ melee weapons gain Sustained Hits 1 only when attacking that selected enemy.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1d965b01e84f4fb9c1687c33b84c0f7081469e0fcae9eaf0fd6cbfb7c0cc4811",
+    "pinnedHash": "10776176a662297b71b5f11a11af2d57cc71de879ed0c047aa5a46d12bec416b",
+    "coreHash": "343d8d508bbdcf0d4dde9748b93f6466b546c4c47207e05d337baae30202894a"
+  },
+  {
+    "id": "diabolic-majesty-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "Once per battle round, just after an EC CHARACTER unit becomes Favoured Champions in your Shooting phase or either Fight phase, each enemy within 6″ of that unit takes a Battle-shock test at -1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e66dcd08c24561ab5482a9fa9566743519cd5594bd23673dcd2a9ec2c2e19aa7",
+    "pinnedHash": "8feeb903ebedee827750698bc75996bc2c619ea776455180a43387099f78f076",
+    "coreHash": "d59b912b2784a3cf4e3724f2de4049b57209a27ce31ccfc2bf74d27b9eb4fe6c",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "distortion-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "Improve the bearer’s melee weapons by +1 Attacks and +1 Damage. Other models in the unit do not gain these changes.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e50d64b1cbe7c21512fc2833f66cc277724712dc333521c1176453d8811a61a1",
+    "pinnedHash": "362d1df246ff3e01fa62bc82d4573d3b800739f846dd9649fa2937b5e76ded36",
+    "coreHash": "e5384ab865cb655882674302f527cb00b1a81398e296133e64ba2669e234ee2f"
+  },
+  {
+    "id": "doom-siren-emperors-children",
+    "state": "structured",
+    "summary": "After the Kakophonist’s unit shoots in your Shooting phase, choose one enemy INFANTRY unit hit. Roll 3D6; each 4+ inflicts 1 mortal wound. If any mortal wounds are inflicted by this ability, that enemy takes a Battle-shock test.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "0d545d2618e5c4f88a2be50ff2dbcc2e73004ae5fa1e6c9c258beab9f00f8650",
+    "pinnedHash": "0d545d2618e5c4f88a2be50ff2dbcc2e73004ae5fa1e6c9c258beab9f00f8650",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lord-Kakophonist"
+  },
+  {
+    "id": "duellists-death-callous-blades-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for Callous Blades Combat Patrol: targeted units receive a conditional fight-on-death effect, with a 4+ roll and +1 for FLAWLESS BLADES. The imported resolution sequence is not the ordinary detachment’s fight-on-death procedure; confirm its current Combat Patrol wording before use.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ff0b9c67f0e4ea964d8032d88619a372ab6e78e55ae7401afa085739e05cf706",
+    "pinnedHash": "e88426d26d6ee051ddd6ad5aba31ddac9fc25ed3049b27d3253b650c5a3a7756",
+    "coreHash": "dfc8643f2706a0f953645589c9e04085b1eef3fa86b74d9f7a485f45c4db5636"
+  },
+  {
+    "id": "duellists-hubris-emperors-children",
+    "state": "structured",
+    "summary": "At the start of either Fight phase, if Lucius is not leading a unit, he gains Fights First until the phase ends. This is explicitly a solo-model condition.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "ecab4bbba6bf26018c42ac1dc074694563420bc676be391f761ec046ec1ee563",
+    "pinnedHash": "ecab4bbba6bf26018c42ac1dc074694563420bc676be391f761ec046ec1ee563",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lucius-the-Eternal"
+  },
+  {
+    "id": "dynamic-breakthrough-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "In your Movement phase, choose an EC VEHICLE not yet selected to move. For the phase its models can move through enemy models other than MONSTERS/VEHICLES, crossing Engagement Range but not ending within it; their Desperate Escape tests automatically pass. This does not add a Charge-phase permission.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "390a3ea2c0a8b6786c9ff52734387cdd1466cb90bbaa01097e67f3289c7020e6",
+    "pinnedHash": "1475c344f68cd03df04f55c944c881b83cd1b7a9a2df8d7eac50693b9739b5fd",
+    "coreHash": "e896412ab5c701b5352594c49125a9a475fa0bad6369614aa2a2b685545af759"
+  },
+  {
+    "id": "eager-patrons-upgrade-spectacle-of-slaughter-emperors-children",
+    "state": "structured",
+    "summary": "FLAWLESS BLADES unit upgrade: add 2″ to the unit’s Move characteristic.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "66126739cba76ddce1462278123be1e1478953815dbf37fd7a1b6cc58c3f8b90",
+    "pinnedHash": "52036cb035fd153b7c5daf34ec26e2cd5327c065872187c3c729d86380e3f26b",
+    "coreHash": "db6ec8e6276d1f9daf5ca48f613fe080e49a4de43a338909ea25267fa41ceb0a",
+    "officialPage": 4
+  },
+  {
+    "id": "eager-to-kill-emperors-children",
+    "state": "structured",
+    "summary": "Whenever a friendly EC TERMINATOR unit is set up, add 1 to its charge rolls for the rest of that turn. The trigger is being set up, including eligible out-of-turn arrivals.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "16af96f7ec7e038f51f7cd7c6a317aa9c6df9995f42fd0c026a4418e0d0463a3",
+    "pinnedHash": "16af96f7ec7e038f51f7cd7c6a317aa9c6df9995f42fd0c026a4418e0d0463a3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 2
+  },
+  {
+    "id": "eager-to-prove-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "Re-roll Charge rolls for the bearer’s unit. While that unit is your Favoured Champions, also add 2″ to its models’ Move characteristic.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "9f3d4e874f4a9dc1f5e766dcad9d947c17abd3d2c01e51cf3e6af2adf1e36765",
+    "pinnedHash": "70cc5885eb8ccea7c9f496026c66e7fffee418632b3e6580649dc9099f656ec2",
+    "coreHash": "2ba3206a297457fb9da2c28f4e47a7be5c0f4917f3625faf2d43b967e727ee84"
+  },
+  {
+    "id": "ecstatic-death-emperors-children",
+    "state": "structured",
+    "summary": "If the foot Daemon Prince is destroyed by a melee attack before it has fought this phase, roll D6. On 2+, it fights after the attacking unit finishes, then is removed. This does not trigger for ranged destruction.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f50add55e91c35093ae5bec536775b07483fcbd022b4021f6e7bfd97f457872c",
+    "pinnedHash": "f50add55e91c35093ae5bec536775b07483fcbd022b4021f6e7bfd97f457872c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemon-Prince-of-Slaanesh"
+  },
+  {
+    "id": "ecstatic-slaughter-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "After a friendly LEGIONS OF EXCESS unit destroys an enemy in either Fight phase, select it and a friendly unengaged EC unit within 6″. The EC unit may declare a charge. If it already fought this phase, it cannot fight again this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1e6d25cbc33d6872710cddce9d1274e4bc55b28186707962b285387b6caa6cc8",
+    "pinnedHash": "560194d134fc28df4ecb26fea21f05f2a4ac7f2268d409b28fbb9d9566aed4b8",
+    "coreHash": "58d717966dcc2e4fee3ef5b72a3cf7ed1594941925e2f9b9a148637a570e5b1d"
+  },
+  {
+    "id": "embrace-the-pain-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "At the start of either Fight phase, choose an EC INFANTRY unit. For the phase, each enemy model within Engagement Range of it must direct its attacks at that unit when selecting targets. Only engaged enemy models receive this restriction.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "6970a908c1d486040dd4792b6cfd21cbf1109d79aa91dd6d1ca0c658b9ecdb8e",
+    "pinnedHash": "25e0848a0f0beed9397b7cb4ba7013d2572da91d805db689e00de6e97351bc0d",
+    "coreHash": "911d3020c194af5654d2d6f904e60f2637be5009cb6f62da24a8243abd215318"
+  },
+  {
+    "id": "empyric-suffusion-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "EC bearer only. When Heroic Intervention targets the bearer’s unit, that use costs 1CP less. This alone does not grant extra uses of the stratagem.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "1dbe2ef7006cad811e7fed45ce2bde33d37fc691a03992bd91ac441cba7af697",
+    "pinnedHash": "f1286230bd60d8f6069ffefae57eae4054c122fc72331413a01fe592cfd33d83",
+    "coreHash": "630855d3ae26c882f88cd3b0cb78bd2611b11915e0ae24f179fc6f1b094cdf63",
+    "officialPage": 9
+  },
+  {
+    "id": "entitled-to-victory-emperors-children",
+    "state": "structured",
+    "summary": "Friendly FLAWLESS BLADES units have Fights First.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "351b32b898aa6f01624860b52cef3c80904b3a80152022124778ee0fc1faa6e8",
+    "pinnedHash": "351b32b898aa6f01624860b52cef3c80904b3a80152022124778ee0fc1faa6e8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 4
+  },
+  {
+    "id": "euphoric-crown-frenzied-host-emperors-children",
+    "state": "structured",
+    "summary": "LORD EXULTANT only: increase the bearer’s melee attack Strength by 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "916a23ba7b8877cbc86dadd4ea828e7748ffe9fdb5bac2396fd9229987d7b795",
+    "pinnedHash": "5ed0e7ee6f35cd7ca344a2f5959937b84bc41f1200de0c0f6dfc29b162a8cf9b",
+    "coreHash": "a00d589c9e809582d362332741d8baaae44bca6f51d61789c399eb2cddbf8dab",
+    "officialPage": 3
+  },
+  {
+    "id": "euphoric-inspiration-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "In your Charge phase, choose an EC DAEMON unit. For that phase, friendly EC units within 6″ of it can re-roll Charge rolls.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "a7360e418f2317619713f85a37a276e67c1e9c1e02d0f8304c88dcf7e7ede3fc",
+    "pinnedHash": "72fdfc8c25fea4c0a9d7ccf64f0db05aa5c29f6fd54b917284170ed8ed546b20",
+    "coreHash": "75542c4eb9cb9077650121ba7bf3fabc80fdd7d36cbde46c76b77edc90aaefcd",
+    "officialPage": 6
+  },
+  {
+    "id": "euphoric-strikes-emperors-children",
+    "state": "structured",
+    "summary": "Once per battle, at the start of either Fight phase, the Lord Exultant can add 3 Attacks and improve AP by 1 on his melee weapons for the phase. This affects the model, not its whole unit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "ea08e9086e6364c775302c18006e6dc07b88136197d3f8531c845113dfb91996",
+    "pinnedHash": "ea08e9086e6364c775302c18006e6dc07b88136197d3f8531c845113dfb91996",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lord-Exultant"
+  },
+  {
+    "id": "exalted-patron-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "LORD EXULTANT only: add 1″ to the bearer’s Move characteristic. Do not apply this bonus to its whole unit.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8a156bd60f765788795b09514c68b3a70d3b3556cea7bf5dd00225da574d3382",
+    "pinnedHash": "fdcbc950ff398dfca5f6d17d345597a926296b7723bf301afd7cbded7fe7fcef",
+    "coreHash": "3c68b4d4a900189725adb864505f7e3c838d1e2654ad4aa6258c21a1eb4c8cf5",
+    "officialPage": 5
+  },
+  {
+    "id": "excessive-assault-callous-blades-infractors-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for Callous Blades Combat Patrol Excessive Assault. The import contains a choice between Wound re-rolls of 1 and an objective-dependent melee re-roll, with incomplete branch restrictions. Preserve this separate variant; do not assume it matches ordinary Infractors.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "6640d809772d521e514af5d78bafcefdb483d954fcd6d07a778c9c088157f369",
+    "pinnedHash": "6640d809772d521e514af5d78bafcefdb483d954fcd6d07a778c9c088157f369",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "excessive-assault-emperors-children",
+    "state": "structured",
+    "summary": "When ordinary Infractors make melee attacks, re-roll Wound rolls of 1. Against an enemy within range of an objective marker, they can re-roll the Wound roll instead.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0e2fac15ef01db95b87b86261067aa2d3af9668ae0a3cc947ee326511d14688f",
+    "pinnedHash": "0e2fac15ef01db95b87b86261067aa2d3af9668ae0a3cc947ee326511d14688f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Infractors"
+  },
+  {
+    "id": "excessive-vigour-emperors-children",
+    "state": "structured",
+    "summary": "Friendly SLAANESH units within 6″ of the foot Daemon Prince improve their melee AP by 1 if they charged this turn. Merely being in the aura is insufficient.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "2a3ea7e97d3bf5d7478a212f8e5e1fe76e13145845cf36a4850631ccee909dad",
+    "pinnedHash": "2a3ea7e97d3bf5d7478a212f8e5e1fe76e13145845cf36a4850631ccee909dad",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemon-Prince-of-Slaanesh"
+  },
+  {
+    "id": "exquisite-swordsmanship-emperors-children",
+    "state": "structured",
+    "summary": "When an EC unit that charged this turn is selected to fight, choose Lethal Hits or Sustained Hits 1 for its melee weapons while resolving those attacks. Choose one, not both.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "96008cbc9723be4bd6cef487a8bdd2a29591702ec4adc5c0a488639b3abba80b",
+    "pinnedHash": "96008cbc9723be4bd6cef487a8bdd2a29591702ec4adc5c0a488639b3abba80b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "faultless-opportunist-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "The bearer’s unit can be targeted with Heroic Intervention despite other uses that phase. That use costs 1CP less and does not prevent uses on other units that phase. All other eligibility rules still apply.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "9cb58129f4ca14129cbc216632bfe844e3424fca6738ad9f5390b22caedc512b",
+    "pinnedHash": "edcaf095dae243644378c13c32815968bfcf56d8d1d69c193f9395d39944b985",
+    "coreHash": "ae145141ccb62287833721f923b47bb08c1949d90a38a81664f0cafb2ddb5094",
+    "officialPage": 9
+  },
+  {
+    "id": "frantic-focus-emperors-children",
+    "state": "structured",
+    "summary": "When a friendly EC BATTLELINE unit is selected to Advance or Fall Back, its BATTLELINE models’ attacks gain Sustained Hits 1 until the end of the turn. Attached models without BATTLELINE do not receive the benefit.",
+    "phase": [
+      1,
+      2,
+      4
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "19e90bcc33ca41f2a2ed49aaec75c8d6f0be67bba0ff496b4712a301b017cdcb",
+    "pinnedHash": "19e90bcc33ca41f2a2ed49aaec75c8d6f0be67bba0ff496b4712a301b017cdcb",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 3
+  },
+  {
+    "id": "frenzied-ferocity-upgrade-elegant-brutes-emperors-children",
+    "state": "structured",
+    "summary": "EC TERMINATOR SQUAD unit upgrade: the unit’s attacks gain Sustained Hits 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "efd078feab981c48d113805750e59c3ee3778a3b12b2f1dec611dbd67f63531b",
+    "pinnedHash": "1d3f609655c9508ff69b25aa33ab8a2e926feff8f30b7cbc9f3bad1270100870",
+    "coreHash": "c67e90c9bf84e8d2f96ab1e353404d7cfeba29556fa11def343ab3dc9b52ce4a",
+    "officialPage": 2
+  },
+  {
+    "id": "glutton-for-punishment-emperors-children",
+    "state": "structured",
+    "summary": "When the Maulerfiend attacks while below Starting Strength, add 1 to its Hit roll; if it is also Below Half-strength, add 1 to its Wound roll. Check the Maulerfiend’s own remaining strength, not its target’s.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "12a7eb297f52b7df2ee427795066bbb01fd4cfb6b969d215794436aca2c459ba",
+    "pinnedHash": "12a7eb297f52b7df2ee427795066bbb01fd4cfb6b969d215794436aca2c459ba",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Maulerfiend"
+  },
+  {
+    "id": "heightened-jealousy-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "Just after an EC CHARACTER becomes Favoured Champions, or the current Favoured Champions destroys an enemy, in your Shooting phase or either Fight phase, target that Champions unit. For the phase, attacks by models in other friendly EC CHARACTER units gain +1 Strength. The Favoured Champions themselves are excluded.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b8acfbb28574eaf8e0741a48ea3ec6ac0f65e99a08fcae6545cdbc7042391230",
+    "pinnedHash": "b1e7fef2fdf1ce28426887b99ef02d52406ed2bcab3256aaf329d28239de454d",
+    "coreHash": "5b7c4bab2f9070eb945d12013f71f8bfb57b73e257305605816fde63a5653834",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "heretek-adept-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "EC INFANTRY bearer only. Once per battle round, after a saving throw fails for a friendly EC VEHICLE model within 6″ of the bearer, change that attack’s Damage to 0. This does not reduce every attack or grant a unit-wide phase effect.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "643596188280dde5f9492d16e263be891116461cad47849a23f37030f678c807",
+    "pinnedHash": "c192190f5426c141a013bc4e9938089d83939db00d56aa53e64ab8ee7ccdcc67",
+    "coreHash": "bb9069becb24d13b61a0f8be96298e85318363944a2f1e68abc0cc05960f4063"
+  },
+  {
+    "id": "honour-is-for-fools-spectacle-of-slaughter-emperors-children",
+    "state": "structured",
+    "summary": "When friendly FLAWLESS BLADES are selected to fight in either Fight phase, their melee attacks gain Precision.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "345787df04a3bfc43daa190459c55e84d807c13a246382b845bff0e26bf8d0b1",
+    "pinnedHash": "38d12b483331646496d10134e43fd9e2bc08c0c56254e1c517f07b35845cbef2",
+    "coreHash": "93017e3cd97438c3a100889512da4075ea3e996d3e5ce660d43d1a4a970c4d72",
+    "officialPage": 4
+  },
+  {
+    "id": "honour-the-prince-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "In your Movement phase, choose an EC INFANTRY unit not yet selected to move. If it Advances this phase, replace the Advance roll with +6″ Move for that phase.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "346443971c49286e52e6884a02f0958359f428f8a692ecd76f526063358ce932",
+    "pinnedHash": "1cf5b33b3e648210ae00d5f8f55ea868ea2938c2446454203957d85431418bd2",
+    "coreHash": "2272d096c2955d32e09c539651bda6aa41d6ced231ceea0b63dd586e20330d1f"
+  },
+  {
+    "id": "horrifying-beauty-emperors-children",
+    "state": "structured",
+    "summary": "At the start of either Fight phase, each enemy engaged with one or more friendly units having Horrifying Beauty takes one Battle-shock test. Subtract 1 if that enemy is Below Half-strength; multiple providers do not multiply this trigger.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "fe773593701e7931a3273edea68620336c2e11b63a70f458463bf0cb6c88e9ff",
+    "pinnedHash": "fe773593701e7931a3273edea68620336c2e11b63a70f458463bf0cb6c88e9ff",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemonettes"
+  },
+  {
+    "id": "howling-plate-frenzied-host-emperors-children",
+    "state": "structured",
+    "summary": "LORD EXULTANT only: improve the AP of the bearer’s unit’s ranged attacks by 1.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8c98504a9771b1a0cb8d06fa70eb8c03f37723aa7a34c4a783a412aa9104d30e",
+    "pinnedHash": "35415da43c1989d040e0281a3c5a7494bfaeff15572ee100f81247929949b3b4",
+    "coreHash": "e83b2e2076acc1f05793df284119348e33722755ba5eede40d918c14e8668a45",
+    "officialPage": 3
+  },
+  {
+    "id": "icon-of-excess-callous-blades-infractors-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for the Callous Blades Icon of Excess. Its imported trigger says the end of your Shooting phase while its condition demands the Fight phase, so its CP-generation timing is contradictory. Do not use this as the ordinary Tormentors/Infractors icon rule.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "3c5b841561e8d90f942d3306851c2f93a3a86131b1b63824713e3ff86aecbb85",
+    "pinnedHash": "3c5b841561e8d90f942d3306851c2f93a3a86131b1b63824713e3ff86aecbb85",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "icon-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "With the Icon of Excess bearer present, at the end of your Shooting phase or either Fight phase, if its unit destroyed any enemy units that phase, take one Leadership test for its unit. On a pass, gain 1CP, subject to core CP-gain limits. Killing several units does not add extra tests.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "df40aa4e9ce397fbb4474bf8df6dcf684f59c2b3be3d3215b98f1e93ab7f4234",
+    "pinnedHash": "df40aa4e9ce397fbb4474bf8df6dcf684f59c2b3be3d3215b98f1e93ab7f4234",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "end"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "end"
+      }
+    ],
+    "referencePage": "Tormentors"
+  },
+  {
+    "id": "incessant-violence-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "Just before an EC unit Consolidates in either Fight phase, its models can Consolidate up to 6″ for the phase, only if the unit ends that move within Engagement Range of enemies.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "4bbc7bf15ff68d95dd5937a806561455544c3a192e6c2646f35174a4e46018c8",
+    "pinnedHash": "24a3a3584e67133887768122cb203c7afe3efda59c9b3fee6db8b277c2119a44",
+    "coreHash": "90fc945d03426345f19f6db52444d27d18eab40a14f772440d4056766c0fc782"
+  },
+  {
+    "id": "instrument-of-chaos-emperors-children",
+    "state": "structured",
+    "summary": "While the Instrument of Chaos bearer is present, add 1 to Charge rolls for its unit. Requires the actual instrument equipment.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "7d255866a6afd704aaf028f1497ca664ea96403be5b3aa50a5293c0017098792",
+    "pinnedHash": "7d255866a6afd704aaf028f1497ca664ea96403be5b3aa50a5293c0017098792",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemonettes"
+  },
+  {
+    "id": "internal-rivalries-emperors-children",
+    "state": "structured",
+    "summary": "EC CHARACTER units can ignore modifiers to Move and to Advance/Charge rolls, not all characteristics. Begin with the Warlord’s unit as Favoured Champions. The first EC CHARACTER unit to destroy an enemy in each player’s turn becomes the new Champions after resolving its attacks, replacing the previous unit. Only models in that Champions unit gain Wound re-rolls.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "db7fcdcff128aa7711ff907f57af38702c7cfbe8cfd79cef006d85cc2cf1c587",
+    "pinnedHash": "db7fcdcff128aa7711ff907f57af38702c7cfbe8cfd79cef006d85cc2cf1c587",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "intoxicated-by-triumph-spectacle-of-slaughter-emperors-children",
+    "state": "structured",
+    "summary": "In the opponent’s Movement phase, after an enemy that was engaged with friendly FLAWLESS BLADES ends a Fall Back move, if those Blades are now unengaged they may make a Normal move up to D3+3″.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "242b5e81d9b5888753127bcc9be63ee89a73e9e9b6d122ce47c8f734d81cf0ad",
+    "pinnedHash": "b9ab25bd317b82e58be97a8f4e7acd6c6eba3d216f758ecbe706ee5b99dfbeef",
+    "coreHash": "34e4ebef9870fad01891f8370055ab51af5944f57a8d278cbc4880efaca794ec",
+    "officialPage": 4
+  },
+  {
+    "id": "intoxicating-musk-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "When a melee attack targets the bearer’s unit, subtract 1 from its Wound roll if its Strength exceeds that unit’s Toughness.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "37c81bc6b29bffb46fc6f853fc3411bc80ecbf5426cf7b02353d46c7538282f3",
+    "pinnedHash": "ed1ba01eb558cb5096cf9adbeb30564cf153328acb24d05c9eb99cb10fb10f62",
+    "coreHash": "ccbe8f3c4569c4b1f984246b811efcc73988630d290b9581b23895ccc0979c10"
+  },
+  {
+    "id": "invigorating-agonies-callous-blades-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for Callous Blades Combat Patrol. The import describes a once-per-battle D3+1″ surge after enemy shooting hits the upgraded Lord Exultant’s unit. Confirm current Combat Patrol timing and movement restrictions; do not treat this as a general matched-play enhancement.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "05bf62f5b8f7f4a9a8e82d1115237ef2a0a4bf88fdeed0f50d047cd682b4d63d",
+    "pinnedHash": "e9ed99d26332678d12ef8944e6eea2a8fa653dd8eb4d2d08f2d9eb4da379fbd8",
+    "coreHash": "e99b95f2432f51015d33bcc68f7e4316774c1951e7eac4dfd3b8ebc025081078"
+  },
+  {
+    "id": "lethal-obsession-emperors-children",
+    "state": "structured",
+    "summary": "After Chaos Terminators shoot in your Shooting phase, they may select one enemy hit by those ranged attacks. For this turn, when declaring a charge they can re-roll the charge roll, but must end the charge engaged with that selected enemy.",
+    "phase": [
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "625b8abb1dd30eb8f386e70a8539ddf928d3d5a6d2244857b638a1f1755aac60",
+    "pinnedHash": "625b8abb1dd30eb8f386e70a8539ddf928d3d5a6d2244857b638a1f1755aac60",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 10,
+    "referencePage": "Chaos-Terminators"
+  },
+  {
+    "id": "loathsome-dexterity-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "Models in the bearer’s unit can move through enemy models during Normal, Advance and Fall Back moves, crossing Engagement Range but never ending those moves within it. Their Desperate Escape tests automatically pass. This does not apply to Charge moves.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "c5ed5c2fb4bd06a31ac265e55b6337c9086e7ffd61df7f669e54633485edb0a1",
+    "pinnedHash": "377e0e22eb4284533c08ea0a17b115f2dd527bf5588b7c5ea60811d2a6bc672c",
+    "coreHash": "f7250550df246ef0d9a164e3eecbd30981f831fb0f8c6467e71d98a4cc91382c"
+  },
+  {
+    "id": "lord-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "The foot Daemon Prince gains Lone Operative while within 3″ of friendly SLAANESH INFANTRY. The protective condition must remain true; it is not a permanent grant to its neighbours.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "c56e9e0071904703df7f842de20821c9bfda81e47e38146ca619afb6e9dce540",
+    "pinnedHash": "c56e9e0071904703df7f842de20821c9bfda81e47e38146ca619afb6e9dce540",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemon-Prince-of-Slaanesh"
+  },
+  {
+    "id": "lord-of-the-host-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required: the import grants Infiltrators and Scouts 6″ to an attached EC BATTLELINE unit at Declare Battle Formations, but Lord of the Host is absent from the checked current Lord Exultant datasheet. Retained as historical reference; do not assume the deployment bonuses are current.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "b383be40d5ade6ef0978d29a005d13e6e8b94f5b3fb420a681ac5a609f940dff",
+    "pinnedHash": "b383be40d5ade6ef0978d29a005d13e6e8b94f5b3fb420a681ac5a609f940dff",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lord-Exultant"
+  },
+  {
+    "id": "martial-perfection-callous-blades-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for the Callous Blades INFRACTORS Combat Patrol unit upgrade: once per battle, when targeted in the Fight phase, the import gives -1 to incoming Hit rolls. Confirm the current Combat Patrol duration and restrictions; this is not a Character enhancement or the Coterie stratagem of the same name.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f05a52d237fb3cc11863cf1a47f5f9a5d0d766d1b59659d7c04723986933be9f",
+    "pinnedHash": "b3c83512f01940c461e4e6c8d2854ce05ce7d6475acbb8cdc14b4389ae7694b7",
+    "coreHash": "321402237f017d51febc7fb43f9002e66ad082576b33912c060d2c033fb52c46"
+  },
+  {
+    "id": "martial-perfection-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "In either Fight phase, choose an EC unit that has not fought. Re-roll its Hit rolls for the rest of that phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "5a46d3246cba8d0ca4b1490900921df34eb43d406502014aa26aeeb768352188",
+    "pinnedHash": "e94d8c278dd8253a7839b72561522f452d101abf33a06f51997be5e40eb02d5d",
+    "coreHash": "6a830d933c640de1cf13d23194e715bd8cc9d6eaabdf2f32a1f5bc1601c3a1be"
+  },
+  {
+    "id": "master-of-the-pageant-emperors-children",
+    "state": "structured",
+    "summary": "Once per battle round, when Sinuous Breach or Prideful Superiority targets your FULGRIM unit, reduce that use’s CP cost by 1. It is a cost reduction, not an unrestricted CP refund or a discount on every stratagem.",
+    "phase": [
+      1,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "325174a848afa282994a8c7455efd5cbbf084ea5ba6104b7b958e13e7c5540e9",
+    "pinnedHash": "325174a848afa282994a8c7455efd5cbbf084ea5ba6104b7b958e13e7c5540e9",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          1,
+          3
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 5
+  },
+  {
+    "id": "mechanised-murder-emperors-children",
+    "state": "structured",
+    "summary": "When an EC model attacks, re-roll Hit and Wound rolls of 1 if that model is a TRANSPORT or disembarked from a TRANSPORT this turn. Being near a transport or merely belonging to a passenger unit is insufficient.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "889715abb0ea68e1bab81699c4288bb7e370e43eddcebd1f1b00c1d68ad0f17f",
+    "pinnedHash": "889715abb0ea68e1bab81699c4288bb7e370e43eddcebd1f1b00c1d68ad0f17f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 9
+  },
+  {
+    "id": "mesmerising-form-emperors-children",
+    "state": "structured",
+    "summary": "Attacks targeting this Keeper of Secrets suffer -1 to Hit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "017c50aa3f58f985f2c51ecf876b2ab84910c25714e55dd3653ccbf804ea4d22",
+    "pinnedHash": "017c50aa3f58f985f2c51ecf876b2ab84910c25714e55dd3653ccbf804ea4d22",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Keeper-of-Secrets"
+  },
+  {
+    "id": "monarch-of-the-hunt-emperors-children",
+    "state": "structured",
+    "summary": "At the start of the first battle round, Shalaxi selects an enemy quarry. Re-roll Hit and Wound rolls for Shalaxi’s melee attacks against that quarry. Whenever the quarry is destroyed, select a new enemy quarry; the bonus is not against every target.",
+    "phase": [
+      0,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a735a1840754a16404187e781c58516cbb5150c6d7ccacb374e175f13d2a4842",
+    "pinnedHash": "a735a1840754a16404187e781c58516cbb5150c6d7ccacb374e175f13d2a4842",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Shalaxi-Helbane"
+  },
+  {
+    "id": "nimble-strikes-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for Callous Blades Combat Patrol Nimble Strikes: the import allows movement through models other than MONSTERS/VEHICLES during Normal, Advance and Charge moves. Confirm the current Combat Patrol rule and endpoint restrictions before use.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "09f55f270b22ec33cc28b40ad036d295c57e2391bea69e7183255ee49545dde6",
+    "pinnedHash": "09f55f270b22ec33cc28b40ad036d295c57e2391bea69e7183255ee49545dde6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "no-prey-can-evade-emperors-children",
+    "state": "structured",
+    "summary": "Re-roll Advance and Charge rolls for Shalaxi Helbane.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "efe32d7f2af1ec572c9fbdd723d8ee47b3cf6957b45c37838f73fe09d9bb9786",
+    "pinnedHash": "efe32d7f2af1ec572c9fbdd723d8ee47b3cf6957b45c37838f73fe09d9bb9786",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Shalaxi-Helbane"
+  },
+  {
+    "id": "objective-defiled-emperors-children",
+    "state": "structured",
+    "summary": "At the end of your Command phase, an objective you control within range of Tormentors remains yours until the opponent has greater Level of Control there at the end of a phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "41f3e0cf150ab0e2a12c2c7a2e26ec62715fd9b64cc36f3a9ac3c89002872cdd",
+    "pinnedHash": "41f3e0cf150ab0e2a12c2c7a2e26ec62715fd9b64cc36f3a9ac3c89002872cdd",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Tormentors"
+  },
+  {
+    "id": "obsessive-annunciation-emperors-children",
+    "state": "structured",
+    "summary": "While the Kakophonist leads a unit, that unit’s ranged weapons gain Sustained Hits 1. The bonus requires the leader to remain attached.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "1badeb17ff32e947009b3732ec7751492d0a9982494e0b7056eabf8996340068",
+    "pinnedHash": "1badeb17ff32e947009b3732ec7751492d0a9982494e0b7056eabf8996340068",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lord-Kakophonist"
+  },
+  {
+    "id": "on-to-the-next-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "At the end of either Fight phase, select an EC unit that destroyed an enemy that phase and a friendly TRANSPORT it can embark within. If the EC unit is wholly within 6″ of that transport, it may embark, even if it disembarked this turn. Capacity and normal passenger eligibility still apply.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "57b9551b545e628414bae55ed718717baec28355a269b96e5d111eb78c15db09",
+    "pinnedHash": "c99cea31441a55b41ed8707a5a86047097cf520e9f1f8e7ec5bd22fd024fdd67",
+    "coreHash": "0310cacb1eabe9937c47769d751b3cf823cbcfc056f10035eade8362139c4285",
+    "officialPage": 9
+  },
+  {
+    "id": "outflanking-strike-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, choose one friendly EC TRANSPORT, or up to two EC DEDICATED TRANSPORTS. Each selected transport wholly within 9″ of a battlefield edge is removed into Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "315ec4734ae47b3c43836111f2c49568fb7a8be61aabfa50b576349307563dc5",
+    "pinnedHash": "39d3e996d1a2fc9d9c623330c0aeac1d6553e96cbf3dfb22c7f883fa0187d1ad",
+    "coreHash": "9f3999d838a82ecb5f8109f48e4bdffcebb514fd0c9f4cadbbe7cf4caa36ec0a"
+  },
+  {
+    "id": "pact-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "When mustering, LEGIONS OF EXCESS cannot be your Army Faction unless another rule explicitly permits it. This restriction does not by itself permit daemons in every EC detachment; apply Carnival’s separate allowance where relevant.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "2385430813593f711ef8c3df01bf84ab22a4852aaba85c76ad6e561d71c44724",
+    "pinnedHash": "2385430813593f711ef8c3df01bf84ab22a4852aaba85c76ad6e561d71c44724",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemonettes"
+  },
+  {
+    "id": "peerless-killer-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for Lord Kaphrael’s Combat Patrol Peerless Killer: the import grants Lethal Hits to this unit but gives no attachment or weapon restriction. Confirm the current Combat Patrol wording before using that breadth.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "51349404386cb123cd58ab48833f6b6beffcabb158f872f43d35824cd63b4d15",
+    "pinnedHash": "51349404386cb123cd58ab48833f6b6beffcabb158f872f43d35824cd63b4d15",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "perfectionists-emperors-children",
+    "state": "structured",
+    "summary": "While the Lord Exultant leads a unit, weapons equipped by models in that unit gain Lethal Hits. No attachment means no unit-wide grant.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "de292a954d26c5e824da8020e20323f513be1bb716560ea5ea055f7316797be7",
+    "pinnedHash": "de292a954d26c5e824da8020e20323f513be1bb716560ea5ea055f7316797be7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Lord-Exultant"
+  },
+  {
+    "id": "pledge-of-dark-glory-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "While the bearer leads a unit, improve Leadership by 1 (a lower target number) and add 1 Objective Control to models in that unit.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cc2125c5aa3ece219f69d1e16600b39509eed2156821db724bebb3974b5b3f52",
+    "pinnedHash": "9786ca0a9ee48a3e4480c7ddb2a50458c3f97eb223bef66c245cb8447b58af5a",
+    "coreHash": "583e0d303598428d251afd2ac0240a14ddbb3a03eaba887e7f0c68b6bdd33522"
+  },
+  {
+    "id": "pledge-of-eternal-servitude-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "The first time the bearer is destroyed, take its Leadership test at the end of that phase. On a pass, return it as close as possible to where it died, outside enemy Engagement Range, with D6 wounds capped by its Wounds characteristic. This is not an unlimited resurrection or a reversed Leadership test.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "2f4236f80f29b0b5ce8a6f3a1ede0c3629386162d9b0daba419c8f6d3dc76ad1",
+    "pinnedHash": "0ffa2fd9a62ec3c2c695af9e2bd42f86c43fbece6d07a823162e064f19fae46b",
+    "coreHash": "1462871e184769af1f4b3c6fa09803342d5072d34b554ae7634126af70cc45bd"
+  },
+  {
+    "id": "pledge-of-mortal-pain-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "At the start of your Shooting phase, select one enemy within 12″ and visible to the bearer. It takes a Leadership test, subtracting 2 if Battle-shocked; failure inflicts 3 mortal wounds.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "ecbc22a684913385786853e3ae4a7a983cee5bc865178f5033a5c0049232d961",
+    "pinnedHash": "510b61ad9c232c925d19ad52776f3ba2acf9c36eae1a1e8eac71fdcb3f8c1716",
+    "coreHash": "76e2083e1a05c0296082686c75c67ab46f8c4aa13147ae4ed053b64022b67614"
+  },
+  {
+    "id": "pledge-of-unholy-fortune-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "Once per turn, just after a model in the bearer’s unit makes a Hit, Wound or saving roll, if the bearer is not Battle-shocked, treat that result as an unmodified 6. One use is shared across those roll types, not one use for each.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "e6c38c6f3cc04aec08ac9a470f5063623d08780ae1ca30a1523071780014e167",
+    "pinnedHash": "a00c92035563d080e29104e654bf4503aebc8e779d916665c90d02b695867e73",
+    "coreHash": "f9d4915ea028c8424d2600a9a4c66ab3a3fca35a5b762c10b3f298bfa75cd2bc"
+  },
+  {
+    "id": "pledges-to-the-dark-prince-emperors-children",
+    "state": "structured",
+    "summary": "At battle-round start, if your Warlord is on the battlefield, pledge how many enemy units will be destroyed that round. At round end, meeting or exceeding the pledge earns that many Pact points; otherwise earn none and the Warlord suffers D3 mortal wounds. EC units receive cumulative bonuses at 1+ points (Hit re-rolls of 1), 3+ (Wound re-rolls of 1), 5+ (melee Lethal Hits and Sustained Hits 1), and 7+ (Critical Hits on unmodified 5+). Track pledge and earned points separately.",
+    "phase": [
+      0,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "29dc3a929610b9d75864182fd1a3ebb4910a90ece045526dc70fbf29503a0ed3",
+    "pinnedHash": "29dc3a929610b9d75864182fd1a3ebb4910a90ece045526dc70fbf29503a0ed3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "start"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "turn-end"
+      }
+    ]
+  },
+  {
+    "id": "possessed-blade-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "At battle start, choose one bearer melee weapon to gain +1 Attacks. Each time the bearer fights, it may empower that same weapon for those attacks: +1 Damage, Devastating Wounds and Hazardous. Resolve the Hazardous risk; other weapons do not gain the bonuses.",
+    "phase": [
+      0,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "70212373ec98f67eb4b994eb231820d79f58d331e301397e842302c0dd8b5f52",
+    "pinnedHash": "3b6d2885e0eafbe0566f8c9c22e39d2431417c6537d069765d3078af8f0cf517",
+    "coreHash": "b964e8a605854d0cbb97378c8fea051048b829d2238c8a79b67f90c01e427331"
+  },
+  {
+    "id": "possessive-mania-frenzied-host-emperors-children",
+    "state": "structured",
+    "summary": "When an enemy targets an EC BATTLELINE unit within objective range in the opponent’s Shooting phase or either Fight phase, worsen incoming AP by 1 until that attacker finishes. The objective-range and BATTLELINE gates both apply.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ca47af2f371c4d6e8612e80e6c986ce8423e1d6cfbc269b5902555827d372351",
+    "pinnedHash": "877d1fab00ab8ec8d52c9fa52dfba116167c9cf3e1dc42cf6059417e3fc5eb16",
+    "coreHash": "24b53a2e0667d717bc31c480625624737dbea4a46b1058fd7f38bdb220d6c1a7",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 3
+  },
+  {
+    "id": "prideful-superiority-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "In either Fight phase, choose an EC unit not yet selected to fight. For the phase, its attacks against CHARACTER units can re-roll Hit and Wound rolls. Non-CHARACTER targets do not qualify.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "6eb674aed43f6f0f5a1a28ce4d9dd411ad60baf00d4c7cdf66373611c21ab881",
+    "pinnedHash": "18542feebd94388c220176a62f89a4920438d423727294b9c1a521319cfdd102",
+    "coreHash": "c34a6519c1b602ec417ff032bdcf177f2221f973f82b5cd68f092688e7261cca",
+    "officialPage": 6
+  },
+  {
+    "id": "profane-desecration-callous-blades-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for Callous Blades Combat Patrol: the import secures an objective the unit controls at the end of your Movement phase. Confirm the current Combat Patrol target and control-loss conditions; do not replace it with Tormentors’ Command-phase rule.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "61cb812228f46cdf629b86b5d65d27db4b390e3d415ebff7ad997fe60b592edd",
+    "pinnedHash": "5a012a3101ffe8c96fcbba726a4fd65c3d0b24e640e486f4c6b282b413ea419d",
+    "coreHash": "5593db884b1f8a508557cf33d347eb6fd95d38a39361ec8d93d3b9b738888be2"
+  },
+  {
+    "id": "protection-of-the-dark-prince-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "In any phase, just after an attack or mortal wound is allocated to a model in an EC unit, that unit gains Feel No Pain 6+ and Feel No Pain 4+ against mortal wounds for the phase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ae3bdaefa0015d6948f4e6e9c77904bc313d38bb6804c6f86372ffa9f42299f1",
+    "pinnedHash": "fc7d01df4b0da678a48839760f66f0265f28b4a36934495d7feebb9dba24e6d1",
+    "coreHash": "5ae08239b33dd0ab132e159bac679a37acb4a8bcd24a47fccd486d9adef7c4d7"
+  },
+  {
+    "id": "proud-and-vainglorious-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "Re-roll Battle-shock and Leadership tests for the bearer’s unit. While it is Favoured Champions, also add 1 Objective Control to its models.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "778e9bd3aa7d0a8707fd83c1c00612ebd1513945f9946b20e134f243673f0828",
+    "pinnedHash": "a10df04a2d0b379f6ccc113add40a858ad908db5ca8818111642bbb88f15bff9",
+    "coreHash": "fb79bfb7c7cb8a455ceff38729f9ccc26edb5d6ba47153edaa09d07a37652d81"
+  },
+  {
+    "id": "psychedelic-soulflame-elegant-brutes-emperors-children",
+    "state": "structured",
+    "summary": "When a friendly EC TERMINATOR unit is selected to attack in your Shooting phase or either Fight phase, its attacks gain +2 Strength.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b17123509dcd5b5e30cf574c373707a79c8fb6edd5562d3aa8d99b57a13074e6",
+    "pinnedHash": "a31e9b90c380b02571bafc2e855a9b1b210f68729f6e10642deb1fcf1aceafea",
+    "coreHash": "95c65e1ef41be800571da358b087932df694cfc64443c5d8cafb2bf8593de1f0",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "officialPage": 2
+  },
+  {
+    "id": "quicksilver-grace-emperors-children",
+    "state": "structured",
+    "summary": "Re-roll Advance rolls for friendly EC units. This does not give a Charge re-roll or a fixed Advance distance.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "25df27a630030d3b26f1446e223f90a2aff77673360666912d2e1fde65d90b4c",
+    "pinnedHash": "25df27a630030d3b26f1446e223f90a2aff77673360666912d2e1fde65d90b4c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "reactive-disembarkation-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "After enemy target selection in the opponent’s Shooting phase, choose a targeted EC TRANSPORT. One EC unit embarked inside may disembark wholly within 6″ of that transport and outside enemy Engagement Range. The permission belongs to the passengers; resolve the normal attack sequence afterwards.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "80dd4ac87369df16c951fbcbe5ce3c9db1ef5f5a443b6c084be4d6cc1292d2e1",
+    "pinnedHash": "828e4ca009a52dafdc64da68adf28ff2429388a36db273323c98506820912375",
+    "coreHash": "78b72e9851c13f5d5f6070f072ef9f2f64508ab208b4ff165ca16eea5ee37ff1"
+  },
+  {
+    "id": "refusal-to-be-outdone-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "When an EC CHARACTER unit within 12″ of an engaged enemy declares a charge in your Charge phase, it may re-roll the charge roll, but must end that charge engaged with one or more of those engaged enemy units.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "694f8bc9c29c27e552926d255068c6e69ba09b07d92a965198150f623c611d72",
+    "pinnedHash": "61f482868e04b020d8aaabdc4fff80cdcec31f93561a3cb914a6a27700584639",
+    "coreHash": "03b6774cb4f9519f451af0cd804fb9c2558dc08f1646f52db7b4868259faf2f6",
+    "officialPage": 9
+  },
+  {
+    "id": "repulsed-by-weakness-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "Enemy units other than MONSTERS/VEHICLES Falling Back from the bearer’s unit must take Desperate Escape tests. Subtract 1 from those tests if the bearer’s unit is Favoured Champions.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "987ddf8531ddd176b5d40ea151494f245d0e022bef768410976bf45254204c8c",
+    "pinnedHash": "95fd82140e7f5e554608a08fa15e4f20d952c2ffed6355bd6d71688c119b9e6d",
+    "coreHash": "522ea3d60a96b60d955ee9405e5478df514c454ec3a266d27fca958111bd3128"
+  },
+  {
+    "id": "revel-in-desecration-emperors-children",
+    "state": "structured",
+    "summary": "When this Defiler attacks an enemy that is not Below Half-strength, add 1 to its Hit roll. A Below Half-strength target does not qualify.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c62aa2481e106e7464490dbf48347a25cc1baaec13bd3a0b4ec579e6e59795c3",
+    "pinnedHash": "c62aa2481e106e7464490dbf48347a25cc1baaec13bd3a0b4ec579e6e59795c3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Defiler"
+  },
+  {
+    "id": "rise-to-the-challenge-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "Once per battle, at the end of either Fight phase, if the bearer is within Engagement Range of at least three enemy models, it may fight one additional time, applying one Exquisite Swordsmanship ability to those attacks. The count is enemy models, not enemy units.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "cdeb5b0a981f318d29a339940818c2edbf67515ec8db641b31a518afe58320da",
+    "pinnedHash": "d4bf7a92ec2bdeacdcc891109dc02edd60176bec2bd394b2efc29c849dfbea8f",
+    "coreHash": "409aaaf7c4310fd6d522f0fc0dfdf2b93b196f3f7af709ec44fa51caa93fd159"
+  },
+  {
+    "id": "scuttling-horrors-emperors-children",
+    "state": "structured",
+    "summary": "In the opponent’s Movement phase, after an enemy ends a move within 8″ of Chaos Spawn, if the Spawn are unengaged they may make a Normal move up to 6″. The checked update says any move, not only a Normal move.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "02dd748dfd8841300ce2d8d872e268782a43a4ce2aa86673144c6c5769a3ddec",
+    "pinnedHash": "02dd748dfd8841300ce2d8d872e268782a43a4ce2aa86673144c6c5769a3ddec",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 9,
+    "referencePage": "Chaos-Spawn"
+  },
+  {
+    "id": "scuttling-walker-emperors-children",
+    "state": "structured",
+    "summary": "During Normal, Advance or Fall Back moves, the Defiler can pass through non-TITANIC models and terrain. It may cross enemy Engagement Range but cannot end there; its Desperate Escape tests automatically pass. This is not a Charge-move permission.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "f10f4e212b5cc9bc3feb991ac95f050d38f12afe7cf93494d571aeed1df64adf",
+    "pinnedHash": "f10f4e212b5cc9bc3feb991ac95f050d38f12afe7cf93494d571aeed1df64adf",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Defiler"
+  },
+  {
+    "id": "sensational-performance-emperors-children",
+    "state": "structured",
+    "summary": "When an EC unit that charged this turn fights, it may gain +1 melee Strength and improve melee AP by 1 for the phase. If it does, it cannot target enemies it was engaged with at turn start, nor enemies already targeted by another unit’s attack this phase. Both exclusions apply.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "be33244452069a9e11b57349a6a72b20bffa95b3e26c67bd630555f6ba24c401",
+    "pinnedHash": "00afa9efbf33f52945cdf2f3ff851b8ca3e5372e2c301a2ae3f7c62ddc84295c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 5
+  },
+  {
+    "id": "shatter-strike-callous-blades-emperors-children",
+    "state": "needs-summary",
+    "summary": "Source review required for Callous Blades Combat Patrol Shatter Strike: the import adds 1 Damage to the selected FLAWLESS BLADES unit’s melee weapons in the Fight phase. Confirm the current Combat Patrol use and duration; do not give it to ordinary matched-play units.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "547da56f59d5de65bc4a3fa9efe05a00d5a0bdb8893f5d1d47af4b83636eaec9",
+    "pinnedHash": "0f43fa987c1f21736b8c9841381c89f385d4e2c0c326705c71a7f2803e885ade",
+    "coreHash": "5be7eeca23d320fb79f9ddf5aa5be2e35c0af167a562d27ccf6a1057e2d6dbaf"
+  },
+  {
+    "id": "shining-aegis-emperors-children",
+    "state": "structured",
+    "summary": "The Keeper carrying Shining Aegis has a 3+ armour Save. This is an equipment-dependent armour save, not a 3+ invulnerable save for its whole unit.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "ff3502df53e50f755320827f5639bcafcbe9d55fd52b175a8100e661aa807d86",
+    "pinnedHash": "ff3502df53e50f755320827f5639bcafcbe9d55fd52b175a8100e661aa807d86",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Keeper-of-Secrets"
+  },
+  {
+    "id": "single-minded-strike-spectacle-of-slaughter-emperors-children",
+    "state": "structured",
+    "summary": "When a friendly FLAWLESS BLADES unit starts a Charge move in your Charge phase, it can move through models other than MONSTERS and VEHICLES. Normal legal charge endpoints still apply.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "15c11134f0545d55f9bd006b62dc0622f407a6d9fcd978f4efa447754fa34796",
+    "pinnedHash": "28020564c754f50c490efac13bcb40b0a13423ad3f2b93128739c84889779f2f",
+    "coreHash": "f418ef99f1988f86571595acbdee8bb9bf60c02202d0ce99e59a513fbd0e38d3",
+    "officialPage": 4
+  },
+  {
+    "id": "sinuous-breach-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "In your Movement or Charge phase, choose an EC DAEMON unit not yet selected to move or charge that phase. For the phase, its Normal, Advance and Charge moves can pass horizontally through terrain features. This is not a general permission to ignore models or charge endpoints.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "6b403b56ab219a9e0dd2ce9aaa6adb463379ce06dc8f98809da79b1960e9d30e",
+    "pinnedHash": "b5bcfbad1b29d8f453e4f3f6277f5428b0c75b48b6e102e60199fcd0f65b98fa",
+    "coreHash": "6dca328823b69c850ea97ce167358e1486b986ce16a4455af6d7923f8f11adb8",
+    "timings": [
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          3
+        ],
+        "turn": "you",
+        "window": "act"
+      }
+    ],
+    "officialPage": 6
+  },
+  {
+    "id": "slayer-of-champions-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "The bearer’s melee weapons gain Precision. Its melee attacks against CHARACTER units also gain +1 Strength and improved AP by 1. Other models’ attacks do not gain these benefits.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0eda87c00e6b1cc44ed4a8af44f8bd72c2a71aa1d07a3fb180c7e4b21d6f2285",
+    "pinnedHash": "8ba606de05513c2b37dae475a6271bb2ad2764973589f769de2c1bb051924c60",
+    "coreHash": "08c4d47199f701280ed81e498a88945c4c040c6c87ede46bdf3708d690631971"
+  },
+  {
+    "id": "soporific-musk-emperors-children",
+    "state": "structured",
+    "summary": "Enemies other than MONSTERS/VEHICLES Falling Back while engaged with one or more friendly Fiends units take Desperate Escape tests. Subtract 1 if that enemy is also Battle-shocked. Multiple providers do not create additional copies of the same test.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "aa95faab8621da89bb0d47782a3cf4661904bd0638759b2259501eee903a6bea",
+    "pinnedHash": "aa95faab8621da89bb0d47782a3cf4661904bd0638759b2259501eee903a6bea",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Fiends"
+  },
+  {
+    "id": "soulstain-made-manifest-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "At the start of either Fight phase, the bearer may choose one enemy within its Engagement Range. That enemy takes a Battle-shock test with -1 to the result.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "30adeb61d1c33b63bbf24ceed43d7239f9b2de608a396cf773e85243bd6e2834",
+    "pinnedHash": "a067e49dac6b642a7057d7859a46ed01f6abb9629cecda6e2aa4c4c4d51b149a",
+    "coreHash": "ff6f7ac7d923c67569539f6fb2595546a067dc69ca77b0cc9ca52ab793884dfc",
+    "officialPage": 5
+  },
+  {
+    "id": "spearhead-striker-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "When the bearer disembarks from a TRANSPORT, for that turn it can re-roll Charge rolls and cannot be targeted by Fire Overwatch. This does not itself grant permission to charge after an otherwise restrictive disembarkation.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "ec1c68f05d64e68a5a17f908fc4ecc211f365612e7a5d87c099586d80974705f",
+    "pinnedHash": "5c5a0611ca9d8f992a97bee7d59624a99422e7a49b2ff06af96c643ea52b3cd0",
+    "coreHash": "38444864fd96aa1b8f4dfad7d33f34795a0dbcab53dd329183b4b77f92cefe49"
+  },
+  {
+    "id": "spiritsliver-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "EC DAEMON PRINCE bearer only: add 1 Strength and 1 Attacks to the bearer’s melee weapons. This does not include a differently keyworded winged Prince unless it actually meets the bearer restriction.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "9504d9db399b69cd43bd992901d2c09a8f77ddccadbeccc8a367186aa757b40d",
+    "pinnedHash": "688b8b1cf20bce8176c72526e540fbf91e6dea27e61678fdd53786a125e767a1",
+    "coreHash": "5378a9084e1b45c79837fcecaabb6d9797327e6b431486984ab8d44b6dc3df69",
+    "officialPage": 5
+  },
+  {
+    "id": "steeped-in-suffering-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "When a model in the bearer’s unit attacks an enemy below Starting Strength, add 1 to Hit; if that enemy is also Below Half-strength, add 1 to Wound. These thresholds refer to the target, unlike the Maulerfiend’s own-damage ability.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "3d736c437cfc2764e6f980e767bc9a4c8727b0fd93a49af3b0b253f60e0a0a0b",
+    "pinnedHash": "6a927ae131c108d3c18022035b80595bec08069c9d89b29d7214d51d654b6973",
+    "coreHash": "4afd0bd8edb8687e281db02a03cb8ea745ffc33bac9707b6bcb1f87b70cd4c5c"
+  },
+  {
+    "id": "stimulated-by-pain-emperors-children",
+    "state": "structured",
+    "summary": "Subtract 1 from the Damage characteristic of attacks allocated to the winged Prince, applying the core minimum-Damage rules. This does not protect other units.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "61b5b6a6238bdb4b7c68ab535d80997d109da9009798d26d7fb6f7d8110e4a38",
+    "pinnedHash": "61b5b6a6238bdb4b7c68ab535d80997d109da9009798d26d7fb6f7d8110e4a38",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Daemon-Prince-of-Slaanesh-with-Wings"
+  },
+  {
+    "id": "sublime-prescience-rapid-evisceration-emperors-children",
+    "state": "structured",
+    "summary": "In your Movement phase, select one friendly EC TRANSPORT in Strategic Reserves. Once per turn, until the end of that phase, its arrival treats the battle round as one higher. This is an arrival calculation, not an unrestricted turn-one deployment anywhere on the battlefield.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "88055ec7a9aa8fb9de911f267d491ff972116376cf2542670848c99f69132441",
+    "pinnedHash": "40d1e5af4e0ea9d6566a0c5dd882d12ba0bab57d5f5d776a416c14d2c5a7d497",
+    "coreHash": "e006ae51d4862e6c29688376f91aa50b678a477f8384e1bfad4d3f9bc59e04b7"
+  },
+  {
+    "id": "supreme-commander-emperors-children",
+    "state": "structured",
+    "summary": "If Fulgrim is in your army, he must be your Warlord.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "09295cbdeec6f8144f7f2d78f8b33cd2c53a5d1a7257f655aad922af0f9d2fc7",
+    "pinnedHash": "09295cbdeec6f8144f7f2d78f8b33cd2c53a5d1a7257f655aad922af0f9d2fc7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Fulgrim"
+  },
+  {
+    "id": "sustained-by-agony-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "After an EC unit destroys an enemy in either Fight phase, choose one friendly LEGIONS OF EXCESS unit within 6″. Heal up to 3 lost wounds on one model, or if it is DAEMONETTES return up to D3+3 destroyed models instead, using core return-model placement rules. These are alternatives, not both effects.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0f3c179078b01e052a326fc6da2c986150da3b7e71e3f053aaa329b93b914d0f",
+    "pinnedHash": "67e5a99c3607ab8af9a0bd6c20ea11bdb51e14d08ca32a4bf3015a44c6bcb8f3",
+    "coreHash": "0149a67b021cb1091a4c551a0d003e6145c811eb431a9d76d7840fd2acbae4d7"
+  },
+  {
+    "id": "sycophantic-surge-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "In your Charge phase, a friendly LEGIONS OF EXCESS unit may charge after Advancing or Falling Back this turn, only if at least one charge target is engaged with a friendly EC unit.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "71a09eb6f0c2e5619e9df6443015679edc7590e7ff6286f0266d118066242328",
+    "pinnedHash": "4a7d0f6357c80e749f0dbc5a769467a0f2c88be6c6939d5737ffc8dad7147644",
+    "coreHash": "198ca496be3fc8133cde245f3807f62009d30628a0102ef2a6e8e07467ec617f"
+  },
+  {
+    "id": "tactical-perfection-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "After both armies deploy, redeploy up to two friendly EC units. They may be placed in Strategic Reserves regardless of the usual quantity limit. Follow the core redeployment sequence.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "8ab78835bb4b1cbecbcdbc91477a040e72657f7aeac8a59563c820190b0c5419",
+    "pinnedHash": "0d898da6b958bb5bbb36f2cc09b0b039360ac9aa50b5475f487af53d6bda6769",
+    "coreHash": "043f7cf03d8dbd7397bc2aa00117f068c533489484cb806b3a60a946e2b0df75"
+  },
+  {
+    "id": "tears-of-the-phoenix-court-of-the-phoenician-emperors-children",
+    "state": "structured",
+    "summary": "For melee attacks made by models in the bearer’s unit, you may ignore any or all modifiers to Weapon Skill, Hit rolls and Wound rolls. This does not cover ranged attacks, saves or Damage.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "41049f1090db6b0c3f2e7f58d0e2a687dd75cd6c14e7fe4be1e517206c53b80d",
+    "pinnedHash": "e467780e4add77e7970ba3d473713b6966e5aea396c079661e4cfe569c7a39cb",
+    "coreHash": "2836d7c413379ffdf95677a01f7e8d70343f868288519aa632448e1463a535a4",
+    "officialPage": 5
+  },
+  {
+    "id": "terrifying-crescendo-emperors-children",
+    "state": "structured",
+    "summary": "After Noise Marines shoot in your Shooting phase, select one enemy unit hit. It suffers -1 to Battle-shock and Leadership tests until the start of your next Shooting phase. The official FAQ allows multiple applications to the same enemy to stack.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "9c8df695584464d69d4877858ca2339b25240e435fbe712d8aa1f08631e886a0",
+    "pinnedHash": "9c8df695584464d69d4877858ca2339b25240e435fbe712d8aa1f08631e886a0",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "officialPage": 10,
+    "referencePage": "Noise-Marines"
+  },
+  {
+    "id": "terrifying-spectacle-peerless-bladesmen-emperors-children",
+    "state": "structured",
+    "summary": "In the opponent’s Command phase, choose an EC unit that charged in the previous turn and destroyed an enemy in the previous Fight phase. Each enemy within 6″ takes a Battle-shock test, at -1 if Below Half-strength. Affected enemies need no other Battle-shock tests that phase.",
+    "phase": [
+      0
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "846821f88a3cf37c3288e822a77ed31b3bc5980fb45e39f52802c569c805b4e6",
+    "pinnedHash": "b2883c69420e331513a3ef78365f931d04ee71134410ae96a82b4a359456a076",
+    "coreHash": "3533988077f785ef766899d926ef06250a259aefc797bc84b71cb3c44607ebff"
+  },
+  {
+    "id": "thrill-seekers-emperors-children",
+    "state": "structured",
+    "summary": "If EC is your Army Faction, a unit with Thrill Seekers may shoot and charge after Advancing or Falling Back. When doing so, it cannot target enemies it was engaged with at the start of the turn, or enemies targeted by another unit’s attack or charge in that phase. The permission does not remove either target exclusion or grant the ability to unrelated units.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "677031b4a0953522b260c6e1fe35230f1434bdf90654a1a65065de09be48799e",
+    "pinnedHash": "677031b4a0953522b260c6e1fe35230f1434bdf90654a1a65065de09be48799e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Chaos-Land-Raider"
+  },
+  {
+    "id": "unbound-arrogance-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "Once per battle round, just after an EC unit destroys an enemy in your Shooting phase or either Fight phase, increase your pledge to Slaanesh by 1. This changes the pledge, not earned Pact points. The FAQ permits increasing it from 0 to 1 when the Warlord is absent.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "cd98f3694d424a79406c046de783fe30de23f87c71d7e83c56de26a2b472308c",
+    "pinnedHash": "07a5289ca2e01323a1900643631af577bb619d24e6494f639d9bbd3bbbd220bc",
+    "coreHash": "0fcb2e0dd8ebb7299211e989180b2e96a410e79f4f4819426ec7b2fce2a071ac",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "uncanny-reactions-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "After enemy target selection in the opponent’s Shooting phase, choose a targeted friendly SLAANESH unit. Incoming attacks against it suffer -1 to Hit for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "95cf241fb58425ae472ed5532f0f85d3914d5757551786114e468ef9b71c4174",
+    "pinnedHash": "ad1b224d3916d74a0977af581ace9754d4e3cc4e4b58325025ee356566df9450",
+    "coreHash": "f9d6423d6757340042047b7192967ec7b34752a08c729055837a12fc07473c3c"
+  },
+  {
+    "id": "unholy-speed-emperors-children",
+    "state": "structured",
+    "summary": "Re-roll Advance and Charge rolls for Seekers.",
+    "phase": [
+      1,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "6e2018ed0a6796d68075b495ffc67c495a208456820a262b91623b42442ec793",
+    "pinnedHash": "6e2018ed0a6796d68075b495ffc67c495a208456820a262b91623b42442ec793",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Seekers"
+  },
+  {
+    "id": "unshakeable-opponents-coterie-of-the-conceited-emperors-children",
+    "state": "structured",
+    "summary": "In either player’s Command phase, choose an EC unit. For that turn, its models’ attacks may ignore modifiers to Ballistic Skill/Weapon Skill, Hit rolls and Wound rolls. This does not ignore every characteristic modifier.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "c8c8910cbb9e2d8ab6c4c62011dd21a09b10192f4b3b0784f9a32c4546071c6a",
+    "pinnedHash": "83321b33b1ab1295b46817c0118ca29bae1d5e142eff7a5cb06d4362263d97c0",
+    "coreHash": "9274a3b2abd9786c08927e55cd2d6c01c94df22705c8e0f6f4d152ef26510fe3"
+  },
+  {
+    "id": "vengeful-surge-slaaneshs-chosen-emperors-children",
+    "state": "structured",
+    "summary": "After an enemy that targeted a friendly unengaged EC CHARACTER unit shoots in the opponent’s Shooting phase, that unit may surge up to D6″. If it is not Favoured Champions, re-roll the surge-distance die if desired.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "8ad6addbca03e8ccb4f91b3aa44c816a143acc024eb6ab65ef7c92a9d6d03e9f",
+    "pinnedHash": "e6b01985b214c049ef52684cc5dee87c388f39056e888741189d31a63530486e",
+    "coreHash": "3ba4e55e0f3536c1131b5d25876a642f0ec0c5c36acdae8c2e903935754cc721",
+    "officialPage": 9
+  },
+  {
+    "id": "violent-crescendo-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "In either Fight phase, choose a friendly SLAANESH BEASTS, INFANTRY or MOUNTED unit that has not fought. For the phase its models can Pile In and Consolidate up to 6″, ending as close as possible to the nearest enemy unit rather than necessarily closer to the nearest enemy model. Normal remaining move restrictions still apply.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "8525be2e892c0be3dcea18cec4cbe02c3f702c318533e35c9bd44e536ad1424b",
+    "pinnedHash": "77599f2e23359532b345030afcbbe4c176c714ed2526fb4d1ec411f6093b5e92",
+    "coreHash": "942bc3d2f1fb656c386b04ff7cfa6b620c54867e2747ed098343c24f6725f115"
+  },
+  {
+    "id": "violent-excess-mercurial-host-emperors-children",
+    "state": "structured",
+    "summary": "In either Fight phase, choose an EC unit that has not fought. Its melee weapons gain Sustained Hits 1 for the phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "8c98e426e165882625714f69a6fb91a3c41196267bde99c6095bdb4f2055ff9f",
+    "pinnedHash": "c3e9f766eccef4c55aa2df37cd7649c165dd76ed432eefbd153ce632758c8619",
+    "coreHash": "17b5d902c4ae5c1627777d79cc364aebef39b29556142ff2a10ae4ee873f2d83"
+  },
+  {
+    "id": "warp-plunge-elegant-brutes-emperors-children",
+    "state": "structured",
+    "summary": "At the end of the opponent’s Fight phase, remove one friendly unengaged EC TERMINATOR unit into Strategic Reserves.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "2e8c01d2290af43c4e39bf4a1e51da1ff55b1d6bb5934d680874fe33a86fa60c",
+    "pinnedHash": "2b190ffa31d61ab5faf8b810cf74f7b39313c73b60d1152564d0199affb551a0",
+    "coreHash": "f1cc09d725042dd401d9764d9f5bea880726df1d0b835a86f0ea8b91e84b6693",
+    "officialPage": 2
+  },
+  {
+    "id": "warp-walker-carnival-of-excess-emperors-children",
+    "state": "structured",
+    "summary": "EC or KEEPER OF SECRETS bearer only. The bearer’s unit uses a fixed +6″ Move instead of an Advance roll. Its models can move through enemies on Normal, Advance and Fall Back moves, crossing but not ending within Engagement Range, and automatically pass Desperate Escape tests. No Charge-move pass-through is granted.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "2bb4eae769ba0ddd6ff4d6cedd3a5439dbd8b3777e6675a4bd238ba59a147021",
+    "pinnedHash": "278c3f0e439b182a65b80a504e53a685500d6d088a7dfb3b8c23ed269be62098",
+    "coreHash": "f9e02444a81fa39f89b16f9b4428d7f2a6253869bc0d0f3d66f6b0c30109be81"
+  },
+  {
+    "id": "warped-interference-emperors-children",
+    "state": "structured",
+    "summary": "While the Sorcerer leads a unit, models in it receive Benefit of Cover against incoming ranged attacks. The attachment and ranged-attack conditions both apply.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "act",
+    "sourceHash": "7ae3e42551501abeaf6a4a7cc7eb21c646e14ac78077063ded3a33a9dd2d1d3b",
+    "pinnedHash": "7ae3e42551501abeaf6a4a7cc7eb21c646e14ac78077063ded3a33a9dd2d1d3b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Sorcerer"
+  },
+  {
+    "id": "wracking-agonies-emperors-children",
+    "state": "structured",
+    "summary": "After the Sorcerer shoots in your Shooting phase, select an enemy INFANTRY unit hit by its Agonising Energies. Until the start of your next turn, that enemy suffers -2″ Move and -2 to Charge rolls. Hits from other weapons or other models do not qualify.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "280b71037008ac5b43794d07b555cc26459f906e3af67d710957694ad6dec7f8",
+    "pinnedHash": "280b71037008ac5b43794d07b555cc26459f906e3af67d710957694ad6dec7f8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Sorcerer"
+  }
+]
