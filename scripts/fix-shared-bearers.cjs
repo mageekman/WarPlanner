@@ -1,0 +1,7 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto'),C=require('../dist/content.js');
+const before=require('../tests/fixtures/shared-allies-bearers-before.json');
+const stable=x=>Array.isArray(x)?'['+x.map(stable).join(',')+']':x&&typeof x==='object'?'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+stable(x[k])).join(',')+'}':JSON.stringify(x);
+function fix(rows){return before.map(old=>{const current=rows.find(r=>r.key===old.key);assert.equal(stable(current),stable(old),'Catalog entry changed: '+old.key);const row=structuredClone(old);row.data.bearerKeywords=old.name==='Incendiary Animus'?[]:['Wolf Guard Battle Leader'];row.data.bearerAudit={id:'shared-allies-2026-11-16',reference:'https://wahapedia.ru/wh40k11ed/factions/space-marines/',previousHash:crypto.createHash('sha256').update(stable(old.data)).digest('hex'),note:old.name==='Incendiary Animus'?'The explicit Chaplain or Judiciar datasheet alternatives are retained; the conflicting Chaplain-only keyword gate is removed.':'Use the actual Wolf Guard Battle Leader keyword rather than splitting its name into two absent keywords.'};C.validate(row);return row;});}
+module.exports={fix};
+if(require.main===module){const rows=JSON.parse(fs.readFileSync(process.argv[2]));fs.writeFileSync(process.argv[3],JSON.stringify(fix(rows).map(({revision,...r})=>({...r,expectedRevision:revision}))));}

@@ -145,7 +145,7 @@
   for(const row of enabled.filter(r=>r.kind==='unit'))unitIds.set(row.data.id,new Map((row.data.unitMemberships||[{faction:row.faction,unitId:row.data.id}]).map(m=>[m.faction,m.unitId])));
   const select=kind=>enabled.filter(r=>r.kind===kind).flatMap(r=>{
    const data=kind==='rule'?M.enrich(r.data):r.data;
-   if(kind==='unit'&&data.unitMemberships)return data.unitMemberships.map(m=>({...data,id:m.unitId,faction:m.faction,keywords:[...new Set([...data.keywords,...m.keywordAdditions])],abilities:copy(m.abilities),bodyguardIds:data.bodyguardIds.map(id=>unitIds.get(id)?.get(m.faction)).filter(Boolean)}));
+   if(kind==='unit'&&data.unitMemberships)return data.unitMemberships.map(m=>({...data,id:m.unitId,canonicalUnitId:data.id,faction:m.faction,keywords:[...new Set([...data.keywords,...m.keywordAdditions])],abilities:copy(m.abilities),bodyguardIds:data.bodyguardIds.map(id=>unitIds.get(id)?.get(m.faction)).filter(Boolean)}));
    return kind==='rule'&&data.memberships?data.memberships.map(m=>({...data,...(m.units!==undefined?{units:copy(m.units)}:{}),...(m.targetText!==undefined?{targetText:m.targetText}:{}),faction:m.faction,membershipFaction:m.faction})): [{...data,faction:r.faction}];
   });
   L.catalog.factions.splice(0,L.catalog.factions.length,...select('faction'));
