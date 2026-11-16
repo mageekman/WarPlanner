@@ -2,9 +2,9 @@
 
 ## In-game cheat sheet
 
-Guide cards show timing and effects before expansion. Open a card for conditions, tactical notes and sources; use **Explanations & learning** for the reasoning behind the current step. Phase tabs and turn controls remain available at any time.
+Collapsed guide cards show the name and a short unit or target preview. Open a card for timing, effects, conditions, tactical notes and sources; use **Explanations & learning** for the reasoning behind the current step. Phase tabs and turn controls remain available at any time.
 
-Each reminder card has an optional **Reviewed** checkbox. These are reading marks, not records of actions or ability usage: checking a card never hides it or changes eligibility. Marks stay on this device, are separate for each list, round, turn and phase, and can be cleared for the current phase. Starting or resetting a guide clears the marks. Moving between pages does not mark steps complete. No game resources or battlefield actions need to be entered.
+Each reminder card has an optional **Reviewed** checkbox inside its bottom-left corner. These are reading marks, not records of actions or ability usage: checking a card never hides it or changes eligibility. Marks stay on this device, are separate for each list, round, turn and phase, and can be cleared for the current phase. Starting or resetting a guide clears the marks. Moving between pages does not mark steps complete. No game resources or battlefield actions need to be entered.
 
 Necrons catalog audit: all 230 native rules reviewed across 57 datasheets
 (58 profiles) and 13 detachments. There are 158 usable summaries, 57 source issues
