@@ -36,3 +36,15 @@ test('core source preparation keeps provisional references separate from audited
  for(const r of rows){assert.ok(r.key.startsWith('rule:core-'));assert.equal(r.faction,'*');assert.equal(r.data.referenceOnly,true);assert.equal(r.data.status,'source-reference');assert.equal(r.expectedRevision,0);C.validate(r);assert.ok(r.data.importSource.record);}
  const model=W.review(rows,{faction:W.SHARED});assert.equal(model.rules.length,26);assert.deepEqual(rows.find(r=>r.data.sourceRuleId==='insane-bravery').data.importSource.stratagem.phases,['command']);assert.ok(rows.every(r=>!r.data.phase.length&&r.data.window==='prebattle'));
 });
+
+test('attention queue combines mechanics, summary, source-review and reference issues across factions',()=>{
+ const rows=[row('rule','missing-test','Missing','Aeldari',{summary:'The source has no effect mechanics for this rule. Check its full wording.',mechanicsPresentation:'missing',referenceOnly:true}),row('rule','summary-test','Summary','Grey Knights',{summary:'This rule needs a checked summary. Its imported details are under Conditions & sources.'}),row('rule','review-test','Review','*',{summary:'Check a source conflict.',sourceReview:true}),row('rule','fine-test','Fine','Aeldari',{summary:'A complete checked effect.'})];
+ const model=W.attention(rows);assert.equal(model.rows.length,3);assert.equal(model.counts.missing,1);assert.equal(model.counts['needs-summary'],1);assert.equal(model.counts.reference,1);assert.equal(model.counts['source-review'],1);
+ assert.equal(W.attention(rows,{faction:'Grey Knights'}).rows.length,1);assert.equal(W.attention(rows,{faction:W.SHARED}).rows[0].row.name,'Review');assert.equal(W.attention(rows,{reason:'missing'}).rows[0].row.name,'Missing');assert.equal(W.attention(rows,{query:'checked summary'}).rows[0].row.name,'Summary');
+ const fixed=rows.map(r=>r.data.id==='summary-test'?{...r,data:{...r.data,summary:'A checked summary of the actual effect.'}}:r);assert.equal(W.attention(fixed).counts['needs-summary'],0);
+});
+test('attention queue includes disabled rules optionally and never duplicates superseded or archived entries',()=>{
+ const base=row('rule','issue-test','Issue','Aeldari',{summary:''}),disabled={...base,key:'rule:disabled',enabled:false,data:{...base.data,id:'disabled'}},alias={...base,key:'rule:alias',data:{...base.data,id:'alias',sharedRuleId:base.data.id}},archived={...base,key:'rule:archived',data:{...base.data,id:'archived',siteExcluded:'combat-patrol'}};
+ assert.equal(W.attention([base,base,disabled,alias,archived]).rows.length,2);assert.equal(W.attention([base,disabled],{includeDisabled:false}).rows.length,1);
+ const shared={...base,data:{...base.data,memberships:[{faction:'Aeldari',detachments:[]},{faction:'Grey Knights',detachments:[]}]}};assert.equal(W.attention([shared],{faction:'Grey Knights'}).rows.length,1);
+});

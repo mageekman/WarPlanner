@@ -37,3 +37,10 @@ test('guide edits follow shared aliases and allied source keys to their canonica
  h.api.openGuideRules([{id:'legacy-alias'}]);assert.match(h.api.renderGuideEditor(),new RegExp('value="'+canonical.data.id+'"'));
  h.api.leave();h.api.openGuideRules([{id:'projected-allied-rule',sourceCatalogKey:canonical.key}]);assert.match(h.api.renderGuideEditor(),new RegExp('value="'+canonical.data.id+'"'));
 });
+
+test('global attention view opens from Workshop and keeps permission checks',async()=>{
+ const h=harness();h.api.setService(h.service);assert.match(h.api.render(),/data-admin-action="attention"/);
+ await h.click({adminAction:'attention'});const html=h.api.render();assert.match(html,/<h1>Needs attention<\/h1>/);assert.match(html,/attention-faction/);assert.match(html,/attention-reason/);assert.match(html,/attention-search/);assert.match(html,/data-review-edit=/);
+ await h.click({adminAction:'review-exit'});assert.match(h.api.render(),/<h1>Rules workshop<\/h1>/);
+ h.service.isAdmin=false;await h.click({adminAction:'attention'});assert.match(h.api.render(),/Administrator access required/);
+});

@@ -1,5 +1,9 @@
 # WarPlanner — personal study edition, v0.28
 
+## Workshop rules needing attention
+
+Open **Rules workshop → Needs attention** for a global list of rules with missing source mechanics, missing or unchecked summaries, source-review flags, or reference-only status. Filter by faction, issue, or search text; disabled rules are included by default. Shared entries appear once, superseded copies and archived Combat Patrol content are excluded, and results load in groups of 50. Open a pencil to use the existing Workshop editor. Saving refreshes the list; an entry stays listed while any issue remains.
+
 ## In-game cheat sheet
 
 Administrators can enable **Edit rules in guide (admin)** in the guide settings gear. Pencil buttons replace the optional review checkboxes. A pencil opens the Workshop rule editor in a popup; cards containing several rules first offer a rule chooser. **Save to Workshop** uses the existing catalog validation, revision checks and admin-only database permissions, then refreshes the guide at the same step. Shared and allied rule links edit their original Workshop entry. Turn editing off to restore checkboxes and their saved marks.

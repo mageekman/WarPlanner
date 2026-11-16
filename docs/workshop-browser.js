@@ -60,5 +60,25 @@
   const rules=source.filter(r=>r.kind==='rule'&&matches(r)).sort(sort);
   return {detachment,detachmentNames,units,rules,armyRules:rules.filter(r=>r.data.category==='army'&&!L.ruleDetachments({...r.data,faction:r.faction},faction).length),detachments:source.filter(r=>r.kind==='detachment').sort(sort).map(row=>({row,rules:related(rulePool,row,faction).filter(matches)})).filter(d=>matches(d.row)||d.rules.length),matches};
  }
- const api={ALL,SHARED,definitions,factions,scoped,entries,folders,related,review};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerWorkshopBrowser=api;
+ const attentionReasons={missing:'Missing source mechanics','needs-summary':'Needs checked summary','source-review':'Source needs review',reference:'Reference only'};
+ function attention(records,{faction=ALL,reason='all',query='',includeDisabled=true}={}){
+  const M=typeof module!=='undefined'&&module.exports?require('./mechanics.js'):root.WarPlannerMechanics;
+  const q=String(query).trim().toLowerCase(),unique=new Map();
+  for(const row of scoped(records,faction)){
+   if(row.kind!=='rule'||!includeDisabled&&!row.enabled||unique.has(row.key))continue;
+   const view=M.enrich(row.data),state=M.summaryState(view),reasons=[];
+   if(state==='missing'||/source has no effect mechanics|missing source mechanics|no complete mechanics record/i.test(view.summary||''))reasons.push('missing');
+   else if(state==='needs-summary'||/needs? (?:a )?(?:checked|correct|complete|reviewed) (?:rules? )?summary/i.test(view.summary||''))reasons.push('needs-summary');
+   if(view.sourceReview)reasons.push('source-review');
+   if(view.referenceOnly)reasons.push('reference');
+   if(!reasons.length)continue;
+   const haystack=[row.name,row.faction,view.summary,view.detachment,...(view.units||[]),...(view.conditions||[]),...(view.memberships||[]).flatMap(m=>[m.faction,...m.detachments]),...reasons.map(r=>attentionReasons[r])].join(' ').toLowerCase();
+   if(q&&!haystack.includes(q))continue;
+   unique.set(row.key,{row,reasons,summary:view.summary||''});
+  }
+  const all=[...unique.values()],counts=Object.fromEntries(Object.keys(attentionReasons).map(id=>[id,all.filter(x=>x.reasons.includes(id)).length]));
+  const rows=all.filter(x=>reason==='all'||x.reasons.includes(reason)).sort((a,b)=>Object.keys(attentionReasons).indexOf(a.reasons[0])-Object.keys(attentionReasons).indexOf(b.reasons[0])||a.row.faction.localeCompare(b.row.faction)||sort(a.row,b.row));
+  return {rows,counts,total:all.length};
+ }
+ const api={attention,attentionReasons,ALL,SHARED,definitions,factions,scoped,entries,folders,related,review};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerWorkshopBrowser=api;
 })(typeof window!=='undefined'?window:globalThis);
