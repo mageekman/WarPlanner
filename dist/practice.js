@@ -14,21 +14,22 @@
   // Catalog names and summaries recur in the choice/ownership loops. Keep this
   // cache local to one build so subsequent edits cannot retain stale values.
   const normalized=new Map(),norm=value=>{if(!normalized.has(value))normalized.set(value,String(value||'').toLowerCase().replace(/[^a-z0-9]/g,''));return normalized.get(value);};
-  const matches=r=>r.enabled!==false&&!!norm(faction)&&!!norm(r.faction)&&norm(r.faction)===norm(faction);
+  const matches=r=>!r.sourceReview&&(army||!r.allied)&&r.enabled!==false&&!!norm(faction)&&!!norm(r.faction)&&norm(r.faction)===norm(faction);
   const roster=army&&Array.isArray(army.units)?army.units:[],rosterNames=new Set(roster.map(u=>norm(u.name)));
   const validArmy=!army||!!roster.length&&!!norm(army.faction)&&(norm(army.faction)===norm(faction)||L?.factionMatches(army.faction,faction));
-  const factionUnits=units.filter(matches),listUnits=validArmy?factionUnits.filter(u=>!army||rosterNames.has(norm(u.name))):[];
+  const factionUnits=units.filter(matches),listUnits=validArmy?factionUnits.filter(u=>!army||roster.some(entry=>{const choices=factionUnits.filter(v=>norm(v.name)===norm(entry.name));return entry.catalogUnitId?u.id===entry.catalogUnitId:choices.length===1&&choices[0]===u;})):[];
   const detachments=new Set((army?(L?.armyDetachments?L.armyDetachments(army,catalogDetachments):Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[]):[]).map(norm));
   for(const d of catalogDetachments.filter(matches))if(detachments.has(norm(d.name)))for(const id of [d.id,d.importSource?.sourceId,d.importSource?.record?.id])if(id)detachments.add(norm(id));
   const detachmentOf=r=>r.detachment||r.importSource?.record?.detachment_id||'';
-  function equipped(r){const name=r.enhancement||r.name,ids=new Set([r.id,r.sourceRuleId,r.importSource?.sourceId,...(r.sharedRuleIds||[]),...Object.keys(L?.aliases||{}).filter(id=>L.aliases[id]===r.id)].filter(Boolean));return roster.some(u=>u.enhancementId?ids.has(u.enhancementId):(u.details||[]).some(d=>/^enhancement\s*:/i.test(d)&&norm(d.replace(/^enhancement\s*:/i,''))===norm(name)));}
+  function equipped(r){if(r.automaticForDetachment)return roster.some(u=>L.enhancementEquipped(r,u,army));const name=r.enhancement||r.name,ids=new Set([r.id,r.sourceRuleId,r.importSource?.sourceId,...(r.sharedRuleIds||[]),...Object.keys(L?.aliases||{}).filter(id=>L.aliases[id]===r.id)].filter(Boolean));return roster.some(u=>u.enhancementId?ids.has(u.enhancementId):(u.details||[]).some(d=>/^enhancement\s*:/i.test(d)&&norm(d.replace(/^enhancement\s*:/i,''))===norm(name)));}
   function relevant(r){
    if(!army)return true;
    if(!validArmy)return false;
+   if(r.allied&&!listUnits.some(u=>r.alliedUnitIds.includes(u.id)))return false;
    if(r.memberships){if(!L.ruleInArmy(r,army))return false;}
    else if(detachmentOf(r)&&!detachments.has(norm(detachmentOf(r))))return false;
    if((r.enhancement||r.category==='enhancement')&&!equipped(r))return false;
-   if(r.units?.length)return r.units.some(name=>rosterNames.has(norm(name)));
+   if(r.units?.length)return listUnits.some(u=>r.units.some(name=>norm(name)===norm(u.name))&&(!u.allied||r.allied||['core','core-stratagem'].includes(r.category)));
    if(r.category==='ability')return listUnits.some(u=>hasRule(u,r));
    if(r.category==='core'&&factionUnits.some(u=>hasRule(u,r)))return listUnits.some(u=>hasRule(u,r));
    return true;
@@ -39,8 +40,8 @@
   for(const r of eligible){const key=[r.category,norm(r.name),norm(r.detachment)].join(':');if(!unique.has(key))unique.set(key,r);}
   const all=[...unique.values()],label=r=>r.name+(r.detachment?' · '+r.detachment:''),questions=[];
   const choices=(correct,others)=>shuffle([correct,...shuffle(others,random).slice(0,3)],random).map(option=>({...option,faction}));
-  const ruleView=r=>Object.fromEntries(['id','sourceRuleId','name','faction','memberships','units','category','summary','conditions','sourceIds','sourceUrl','sourceLabel','status','referenceOnly','mechanicsDetails','targetText','triggerText','phase','turn','window','timings','detachment'].filter(key=>r[key]!==undefined).map(key=>[key,copy(r[key])]));
-  const unitView=u=>({id:u.id,name:u.name,faction:u.faction,...(u.fightsFirst?{fightsFirst:u.fightsFirst}:{})});
+  const ruleView=r=>Object.fromEntries(['id','sourceRuleId','sourceCatalogKey','originFaction','allied','name','faction','memberships','units','category','summary','conditions','sourceIds','sourceUrl','sourceLabel','status','referenceOnly','mechanicsDetails','targetText','triggerText','phase','turn','window','timings','detachment'].filter(key=>r[key]!==undefined).map(key=>[key,copy(r[key])]));
+  const unitView=u=>({id:u.id,name:u.name,faction:u.faction,...(u.sourceCatalogKey?{sourceCatalogKey:u.sourceCatalogKey,originFaction:u.originFaction}:{}),...(u.fightsFirst?{fightsFirst:u.fightsFirst}:{})});
   const explain=r=>({summary:r.summary,conditions:Array.isArray(r.conditions)?r.conditions:[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
   for(const r of all){
    const seen=new Set([norm(label(r))]),other=all.filter(a=>{if(a.category!==r.category||norm(a.summary)===norm(r.summary)||norm(a.name)===norm(r.name)||seen.has(norm(label(a))))return false;seen.add(norm(label(a)));return true;});

@@ -1,0 +1,2160 @@
+[
+  {
+    "id": "abomination-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This model has Feel No Pain 2+ against Psychic attacks.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a0bfbff73320cca818bcd0688c0369a0f5105a73c862d1a9da002194a1e6e5d7",
+    "pinnedHash": "a0bfbff73320cca818bcd0688c0369a0f5105a73c862d1a9da002194a1e6e5d7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "acrobatic-escape-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At the end of either Fight phase, if this Callidus is engaged, it may Fall Back up to D6″. At opponent-turn end, if more than 3″ from every enemy, it may enter Strategic Reserves and must make an ingress move in your next Movement phase, including your first turn. These are separate triggers.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "officialPage": 8,
+    "timings": [
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "end"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "opponent",
+        "window": "turn-end"
+      }
+    ],
+    "sourceHash": "6515b44e8542039012e2b48e43d8028178aac305b7445b7aec262dc4c36ead4d",
+    "pinnedHash": "6515b44e8542039012e2b48e43d8028178aac305b7445b7aec262dc4c36ead4d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "adaptive-tactics-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Command phase, select a friendly DEATHWATCH unit and choose one Mission Tactic. That tactic replaces the army’s active tactic for that unit until your next Command phase, even if already selected earlier in the battle.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "8fdff71790c6e25b690b9ae6398fccee6f3cfde09d926acab7b22ee0d5569c21",
+    "pinnedHash": "6bd8f75e54de3fb028831f744f7d2fe48a6120856085ec9e402776f473f1bb9c",
+    "coreHash": "3e1901e39a75c051bdafd80350512435d7403400eefe9cca940b2300285ca242"
+  },
+  {
+    "id": "amulet-of-auto-chastisement-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "WATCH MASTER bearer only. At opponent Shooting-phase start, select a visible non-TITANIC enemy VEHICLE within 12″. It takes a Leadership test: on success its Hit rolls are -1 for the phase; on failure it cannot shoot that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start",
+    "sourceHash": "41dd4f9e4f6c588d1fe678d75f1ae3b05aabd93a5c7a0a8158850421afb70c79",
+    "pinnedHash": "53df451233cdaffdba3a2b4d803a7276e3ff19ff6657fcfd36d0d44c0ec18002",
+    "coreHash": "77389e8da470d7b0189709e06f7c824e18c1035ce367bf161a91038c099e1f7d"
+  },
+  {
+    "id": "ancients-banner-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Equipment gate: an Ancient’s Banner adds 1 to the Objective Control of models in this Grey Knights Terminator unit.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "878a0532ef6950b6c4a28674730465ad943fff7c869a6cad219165c4a0171d22",
+    "pinnedHash": "878a0532ef6950b6c4a28674730465ad943fff7c869a6cad219165c4a0171d22",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "arbites-medi-kit-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At your Command-phase start, if this Exaction Squad is below Starting Strength, the equipped Medi-kit may return up to D3 destroyed Exaction Vigilants. Do not return Characters or unrelated model types.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "8cad2bd637f30fd89bd2aaf1cf2915515e1376266c3cd4c846bc067b1aed85ff",
+    "pinnedHash": "8cad2bd637f30fd89bd2aaf1cf2915515e1376266c3cd4c846bc067b1aed85ff",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "armour-of-contempt-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase or either Fight phase, just after an enemy selects a friendly DEATHWATCH unit as a target, worsen the AP of attacks against that unit by 1 until that attacker finishes attacking. It does not last the entire phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "officialPage": 8,
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "b17379f2ad952bcf1ca0440897fb0e01a2268a2bb9ff00534e7ff249f42f99c0",
+    "pinnedHash": "7cf117d0e94b4ec2ee2020f2dd5ac457e74f89452b925d68721364602e03e4fd",
+    "coreHash": "1bcbc963087b96513a646499e387c5a68e9a9fbddf7117ef55c3df6c5a272397"
+  },
+  {
+    "id": "assigned-agents-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If AGENTS OF THE IMPERIUM is your Army Faction, use its detachments normally. Otherwise, only an army whose every model has IMPERIUM may include Assigned Agents. Incursion: up to 1 CHARACTER, 1 RETINUE, 1 REQUISITIONED unit; Strike Force: 2/2/1; Onslaught: 3/3/2. Dedicated transports have their normal allowance but must start with eligible passengers embarked or cannot deploy and count as destroyed in round 1. Inquisitorial Henchmen and Navy Bodyguard have their own Retinue exemptions. Agents keep their own datasheet abilities; inclusion alone does not grant the host faction’s army rules or detachments.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "022f77d54a4f3e80ab688982e919bbfd16ecf4f64ae06046cd3d407234a5e6e2",
+    "pinnedHash": "022f77d54a4f3e80ab688982e919bbfd16ecf4f64ae06046cd3d407234a5e6e2",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "assigned-agents-inquisitors-hand-agents-of-the-imperium",
+    "state": "missing",
+    "summary": "Missing effect mechanics: Assigned Agents contains only a no-effect marker in this Inquisitor’s Hand record. Confirm its own effects, timing, targets and usage limits before use; do not borrow a same-name variant.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "0f9b711443ac4498abf792d306f3d84355f6c3cacc1aa4f094f5dd3402f1a530",
+    "pinnedHash": "0f9b711443ac4498abf792d306f3d84355f6c3cacc1aa4f094f5dd3402f1a530",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "at-all-costs-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "At your Command-phase start, choose one At All Costs mode until your next Command phase: Eliminate designates one enemy for AGENTS OF THE IMPERIUM attacks to gain +1 Hit; Acquire designates one objective and grants nearby eligible Agents improved Leadership, +1 OC and a 5+ invulnerable save. Source review: the import loses the identity of the chosen objective and uses a numeric Leadership addition; confirm the exact selected-marker and Leadership wording.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "2de0a717a08c083c9294de95a8bc3da91ed210a183deb3076a33a07e321d3821",
+    "pinnedHash": "2de0a717a08c083c9294de95a8bc3da91ed210a183deb3076a33a07e321d3821",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "atttached-unit-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "An INQUISITOR or MINISTORUM PRIEST that could attach to a SISTERS OF BATTLE SQUAD may attach to this Sanctifiers unit. During Declare Battle Formations, an attached qualifying model gains Scouts 6″ while attached. This does not permit every Character to join.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "officialPage": 7,
+    "sourceHash": "a65ca3ff3b43320b25d263939f0e05e8c79aed04a9826f788b89daa492b73954",
+    "pinnedHash": "a65ca3ff3b43320b25d263939f0e05e8c79aed04a9826f788b89daa492b73954",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "auspex-array-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "The non-wargear Auspex Array record grants Ignores Cover to the Corvus Blackstar’s weapons, but a second same-name equipped wargear record has no effect mechanics. Source review: confirm which equipped option grants the effect; do not automatically apply the unqualified duplicate.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "510ac1839b0c72fb58580e23e30771a1f84e7de019bedf1e856e4ac0a22771bd",
+    "pinnedHash": "510ac1839b0c72fb58580e23e30771a1f84e7de019bedf1e856e4ac0a22771bd",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "auspex-array-wargear-agents-of-the-imperium",
+    "state": "missing",
+    "summary": "Missing effect mechanics: Auspex Array contains only a no-effect marker in this unit record. Confirm its own effects, timing, targets and usage limits before use; do not borrow a same-name variant.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "772c582f4d4247f302a8b1464f6824422c92b278ff7c2ee38e5f6a2210c28f6d",
+    "pinnedHash": "772c582f4d4247f302a8b1464f6824422c92b278ff7c2ee38e5f6a2210c28f6d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "authority-of-the-inquisition-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "While this Inquisitor leads a unit, it may embark in a transport that its Bodyguard unit can embark in. Authority of the Inquisition follows the eligible Bodyguard’s transport permission; it does not let arbitrary Agents use every Imperial transport.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "890e2a3a81f57ab8684d75f95edede922d6435ba638164fc05a02dc8d1757073",
+    "pinnedHash": "890e2a3a81f57ab8684d75f95edede922d6435ba638164fc05a02dc8d1757073",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "backroom-deals-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If your army has one or more Rogue Trader Entourages with Backroom Deals, at Declare Battle Formations select one of them. While that selected unit leads a unit, models in the attached unit gain Infiltrators. Do not give every Entourage the benefit.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "89f562d8a62d455935c8fa8e57d0077ffc668982e60793a3a79fe427af07260a",
+    "pinnedHash": "89f562d8a62d455935c8fa8e57d0077ffc668982e60793a3a79fe427af07260a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "beacon-angelis-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "WATCH MASTER bearer only. Models in the bearer’s unit gain Deep Strike, and that unit may be targeted by Rapid Ingress for 0CP. Other Rapid Ingress timing and placement restrictions remain.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "677ce7da6e32375a87637f2edfd4511dc32641db9437610dbb7dde0423fe5bd4",
+    "pinnedHash": "cab0b7acaa3125b60c27a98a0ad701671175b9ec94a28e3c8c9c4ebc86166672",
+    "coreHash": "0ff76e9b6d737ba7a01f8d5c59975c78f133d17a6abaa38b4a97b58c0fd307b7"
+  },
+  {
+    "id": "blackstar-cluster-launcher-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "After this Corvus Blackstar makes a Normal move in your Movement phase, select up to one enemy it moved over. Roll 6D6; each 4+ causes 1 mortal wound.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "27c01acb320f362c1819dbe4c34125d63e8d34876b4f19285e6c50f5a72c88c9",
+    "pinnedHash": "27c01acb320f362c1819dbe4c34125d63e8d34876b4f19285e6c50f5a72c88c9",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "blackweave-shroud-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This model has Feel No Pain 4+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a9df1b95ad675ba69ae995b40a4f31fb9b540f39144e3c26e1a78146604ddd2b",
+    "pinnedHash": "e9e77cf407c1407a1a0c14a169c07a5184894e34a7523dfa64b9bde53a0e389b",
+    "coreHash": "beaec9a748b7c2bcbf1b128898f949d7894ae8450b0d4a8ddfa82121258729eb"
+  },
+  {
+    "id": "blessed-wardings-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "While this Inquisitor leads a unit, models in that unit gain a 6+ invulnerable save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "05ebb70cb1ad17bd97f95f7aa57819e19c15ce3436e7f0b9286d33dfb38c4662",
+    "pinnedHash": "05ebb70cb1ad17bd97f95f7aa57819e19c15ce3436e7f0b9286d33dfb38c4662",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "blind-grenades-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your opponent’s Charge phase, after an enemy declares a charge targeting an unengaged friendly AGENTS GRENADES or VINDICARE ASSASSIN unit, subtract 1 from that enemy’s Charge rolls for the phase, or 2 if the protected unit is a Vindicare. These are alternatives.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "0bf677fdc390a7665647a37f7591db5ea24a9c3ddbd76688fcb2ce0039bb513f",
+    "pinnedHash": "36eac53cb68239f89b607f727ffa4de029915bda56c83623370f1cd6c3725f30",
+    "coreHash": "25b102dcab41b4d201eafb560691d87070a44e7a032655543dd187fc7d6be6bf"
+  },
+  {
+    "id": "breaching-team-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When this Imperial Navy Breachers unit attacks, re-roll Wound rolls of 1. Re-roll any Wound roll instead if the target is within control range of an objective.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0e389116cf67501870a1b8be5e854c52f6cb917ba1bad8ddde5e43f8c2a8594e",
+    "pinnedHash": "0e389116cf67501870a1b8be5e854c52f6cb917ba1bad8ddde5e43f8c2a8594e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "cat-unit-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When this unit is selected to shoot.\nThis unit’s ranged weapons gain Ignores Cover.\nOnce per battle for this unit.\nLasts for this phase.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "select",
+    "sourceHash": "ff0be6e60f842e2975aaa83f0df5a11afde054f3e2974df5e51488ad4ea50032",
+    "pinnedHash": "ff0be6e60f842e2975aaa83f0df5a11afde054f3e2974df5e51488ad4ea50032",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "select"
+      },
+      {
+        "phase": [
+          1,
+          3
+        ],
+        "turn": "opponent",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "cherub-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per battle per equipped Sanctifiers unit, use Command Re-roll for 0CP, including when it has already been used that phase. This extra use does not consume the ordinary phase use; apply the current core restriction on re-rolling a die.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "9e1ab539bc9bc7701282fac91b3fc06121b9771c97888bcd27b051dbcf77e36e",
+    "pinnedHash": "9e1ab539bc9bc7701282fac91b3fc06121b9771c97888bcd27b051dbcf77e36e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "clandestine-operation-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, select up to three friendly AGENTS OF THE IMPERIUM INFANTRY units, excluding GREY KNIGHTS TERMINATOR SQUAD. They gain Infiltrators; a Character attached to a selected unit gains the benefit too, as confirmed by the official FAQ.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "e6a364a02c8ecbf0d9b41d5aadf0d60465484281dfb71d76025a5f55391d7c04",
+    "pinnedHash": "07650cf272fdde1abfa399774290c2d841cc682e4ea31e48e826cb7f8072b776",
+    "coreHash": "42e65b7f3071c360e4d2e2c3231aef0966ee40629ca900cf3b7ed8da5a3b0355"
+  },
+  {
+    "id": "close-quarters-barrage-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase, select a friendly VOIDFARERS unit. Its ranged attacks against targets within 12″ gain +1 Strength and improved AP by 1 for that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "bc98e62e5088466ab4791ac1a05724fc48605f25032c2973f8e3e5346757e37a",
+    "pinnedHash": "b4e0eaa8ab535ebe9d39a1f26ef5ad91033334afb5898d5a36c2adbd65a30d2c",
+    "coreHash": "80f08be23cf1d6e8a6cdc12dd5551f9d8535492f3ff45642fae99984f0a39e36"
+  },
+  {
+    "id": "combat-landers-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, choose up to three friendly VOIDFARERS units to gain Deep Strike. A Character attached to a selected unit gains it too, as confirmed by the official FAQ.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "e09609b329c064315d02a303610dd65bd24b832b9383c35febad67c2f3260f9a",
+    "pinnedHash": "ebf37991f2e36e98e071e5ec7414a4df6637440695e2ead3a7797245605a04ec",
+    "coreHash": "30d999783fa60f4a9fdecd91d0bdd17ecca1ea57f666b07cddd9e7b90a2687c5"
+  },
+  {
+    "id": "daemon-slayer-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This model’s melee weapons gain 1 Attack.\nThis model’s melee weapons gain Anti-DAEMON 3+.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1d23cfd45da29b8e1a1ae68fdca69abf697353f059cc3f533a934b2eaeed8fe7",
+    "pinnedHash": "8e0bce33dfa0c572597d6a3dfab7855ffb808765b3cfc7d2fecbbe56c7bbf9a5",
+    "coreHash": "7058419884f0c7d85f5967a86fb58d94636089ab0b84d6cb78ea99824be998ec"
+  },
+  {
+    "id": "dead-shot-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When this Vindicare is selected to shoot, until it finishes shooting, enemies do not have Lone Operative and hidden enemies have +15″ detection range for its attacks. This does not suppress those rules for the rest of your army or the whole phase.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "select",
+    "officialPage": 9,
+    "sourceHash": "4d5aee3a76c33af76e81da5f0432a692d87433498913b8778e423f0360542ac6",
+    "pinnedHash": "4d5aee3a76c33af76e81da5f0432a692d87433498913b8778e423f0360542ac6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "select"
+      },
+      {
+        "phase": [
+          1,
+          3
+        ],
+        "turn": "opponent",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "death-to-the-alien-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This Deathwatch or Aquila Kill Team can re-roll Hit rolls of 1. Against a unit that has neither IMPERIUM nor CHAOS, re-roll any Hit roll instead. Aquila’s current datasheet availability needs separate review.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0f1404d7e6a642c7c56198b60d11ada2cd8f653e2ebd0a85ee7c29527bafe77c",
+    "pinnedHash": "0f1404d7e6a642c7c56198b60d11ada2cd8f653e2ebd0a85ee7c29527bafe77c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "deathwatch-mission-tactics-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "At your Command-phase start, choose a Mission Tactic until your next Command phase; normally use each once per battle. Furor grants Sustained Hits 1 and Malleus grants Lethal Hits to DEATHWATCH weapons. Purgatus grants Precision only on a Critical Wound. Source review: Purgatus is encoded as flat Precision, and the imported unit keywords use ORDO XENOS without a DEATHWATCH alias; confirm recipients rather than equating those keywords.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "1092928c08ba98bc2a6d46257356818ee9b3aacc8299e77449b6487ef3018188",
+    "pinnedHash": "1092928c08ba98bc2a6d46257356818ee9b3aacc8299e77449b6487ef3018188",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "decoy-targets-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "CALLIDUS ASSASSIN only. Twice per battle, at most once per round, in your Movement phase, select another friendly INFANTRY model on the battlefield outside Engagement Range. Destroy it without triggering destruction rules, then set the Callidus as close as possible to its position, outside Engagement Range. Use the current Extremis cost.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "6e4181bc49d4d10ec94f1dcc9ba9d84c65288883e1a25fc74e67657840eac9fe",
+    "pinnedHash": "8667d56575b4695f3d42dd9f164c9f0f0bb2a43bccc3c5a623a5d897df2c71e4",
+    "coreHash": "c45f5b52ca392de8f5de6cb9b5339c1b8223c2b97d877ab1b1b53b23d067d29b"
+  },
+  {
+    "id": "dedication-to-duty-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When a Subductor model that has not fought this phase is destroyed, roll a D6: on 4+, it fights after the attacking unit finishes, then is removed. Already-fought models do not get another fight from this rule.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "274b3375f13af49c982199bc20cfe7784383c35d9528d7200299b89930a6ffe1",
+    "pinnedHash": "274b3375f13af49c982199bc20cfe7784383c35d9528d7200299b89930a6ffe1",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "defenders-of-the-faith-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At the end of your Command phase, if this Sisters of Battle Squad is within control range of an objective you control, that objective remains yours until the opponent’s Level of Control exceeds yours at phase end. This is its Agents datasheet ability, not Acts of Faith.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "5f1a6209b947ad49e6fb9da76a8fd3c8923f6bfef5edc109e61f742451bd8f77",
+    "pinnedHash": "5f1a6209b947ad49e6fb9da76a8fd3c8923f6bfef5edc109e61f742451bd8f77",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Sisters-of-Battle-Squad"
+  },
+  {
+    "id": "destroy-the-daemonic-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "INQUISITOR, INQUISITORIAL AGENTS and ORDO MALLEUS models re-roll Hit rolls of 1. Against DAEMON units they also re-roll Wound rolls of 1. Other Agents do not automatically qualify.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "6a29a2915e9034bf8f5817cc4cafe92187f12c38460defbdec70f37416c50184",
+    "pinnedHash": "6a29a2915e9034bf8f5817cc4cafe92187f12c38460defbdec70f37416c50184",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "digital-weapons-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "AGENTS bearer only. When the bearer is selected to fight, roll 3D6: each 4+ inflicts 1 mortal wound on one enemy within the bearer’s Engagement Range. Allocate those mortal wounds as though they had Precision.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "5876b7cc9f0601e0c556ea4af80193b579d41a5378d9df6e5c9d527596d176bd",
+    "pinnedHash": "1fc69499772f0f1b81a335d440de4bb65d3f4ff64148a135dc382b2915f1a516",
+    "coreHash": "ae6f995fdede8f8598071a058b26399dd4f9935612f094c294a9d67e0eef4e24"
+  },
+  {
+    "id": "dispense-justice-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase or either Fight phase, select an eligible ADEPTUS ARBITES, INQUISITORIAL AGENTS or ORDO HERETICUS unit not yet selected to shoot or fight. Its weapons gain Lethal Hits for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "d744582a4d001b9b927d66d5072b4c4ef924de129bf0f7e119a902d57a77796a",
+    "pinnedHash": "d126458f2128550f84de0a0f2e47dc07b078c6a314db2d5fc1dcc2c5ca0c5642",
+    "coreHash": "d4bdcefb94d6d446c1b182332594578a3f54fefdd05e19423948e73ee5150740"
+  },
+  {
+    "id": "displacer-field-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy targets a friendly AGENTS CHARACTER unit excluding OFFICIO ASSASSINORUM, it gains a 4+ invulnerable save for the phase. After that attacker finishes, if unengaged, it may make a Normal move up to 6″ as though its models have FLY.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select",
+    "sourceHash": "bb8c7312486bb36439af71ddb854db24842bbc26eda53a0d65ea062470177512",
+    "pinnedHash": "6ee6ae752077fabffa897b1b3365e69ecf4b5685a5b12c3bee349b18ed434461",
+    "coreHash": "63822fcaadf9e8ef6026a484c48181a455f1726d42ad259a45cf12a3c8b90c72"
+  },
+  {
+    "id": "dragonfire-rounds-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase, select an eligible DEATHWATCH INFANTRY unit not yet selected to shoot. Its ranged weapons gain Assault and Ignores Cover for the phase. It cannot also be targeted by Hellfire Rounds or Kraken Rounds that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "bf2b00b3c78f422b0201e68a5d3d9f4830c9a1419f03bc878d9f54a64cc45538",
+    "pinnedHash": "3c29e9e414df027b41f46a1650349e0fd58ae7f07105c195972f935da26353d6",
+    "coreHash": "c975493a776c8d4881b83eb984be51842d2f92402cfa909dc78f0f666a58c56e"
+  },
+  {
+    "id": "emperors-will-imperialis-fleet-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "Emperor’s Will grants ranged Assault and shooting after Falling Back, but the import’s scope is only the phase. Source review: confirm the Movement-phase selection and duration through the Shooting phase before using its Fall Back permission.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5d40c10b29df64659640bde1e829fe0edf1d02ca2be86643d4119a54c482d77d",
+    "pinnedHash": "7489a15dddd041fbb653b65aad3f04f0761159d8b4976c0cefa17c15cfd3c741",
+    "coreHash": "83711e8def937e885e26e5b52db2037c6ae744dc635d516da40bb794bb4a703e"
+  },
+  {
+    "id": "endurant-shield-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "The model equipped with an Endurant Shield has a 4+ invulnerable save; this is not a unit-wide save.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "54bd22322742d7297a68c55df09bec6c24edc612918b7129a934d6ae88ec0828",
+    "pinnedHash": "54bd22322742d7297a68c55df09bec6c24edc612918b7129a934d6ae88ec0828",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "ensnaring-trap-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Charge phase, select an eligible friendly AGENTS INFANTRY unit within 6″ of enemies it could charge. It may declare a charge targeting one or more of those enemies. A Callidus that makes this charge gains +1 to melee Wound rolls for the turn. Apply the normal out-of-turn Charge-bonus restriction.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "a5907cb92e46f812440e2caad4955e932c7ceb52fcb15e7fb94784c375a3588c",
+    "pinnedHash": "c9aff7a6dba44651ac913598613f7bea2be4be04f06389c2047532cc52294bc2",
+    "coreHash": "77e89a7a120d929fb94b93f51b7e723930e7e69b87421b126492ee9e90587832"
+  },
+  {
+    "id": "esoteric-explosives-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "CULEXUS ASSASSIN only. When this model uses the current Explosives Stratagem, its mortal-wound dice succeed on 3+ instead of 4+. This modifies that Stratagem; it is not a separate damage activation.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "b758ad644c0f00f5cda787afb3036b3ab21306960e083b001f061db4fc7476f6",
+    "pinnedHash": "cf709450a0717583d9c5a52d3e02c88728fd2fb472f4e62be039487319d008cb",
+    "coreHash": "d6cf0311b11737d66cc211561cdba32df87b4326175b50706dc061eb0e962623"
+  },
+  {
+    "id": "etheric-emergence-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When this Culexus arrives by Deep Strike in your Movement phase, it may use Etheric Emergence to set up more than 6″ horizontally from enemies. It cannot charge that turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals",
+    "officialPage": 8,
+    "sourceHash": "96ab1df08ea13ae5d2f979aa96c56650aeaea7e8293974323d31e1b975cb3e1b",
+    "pinnedHash": "96ab1df08ea13ae5d2f979aa96c56650aeaea7e8293974323d31e1b975cb3e1b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "exact-punishment-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy destroys a friendly AGENTS unit, choose an eligible ADEPTUS ARBITES, INQUISITORIAL AGENTS or ORDO HERETICUS unit that was within 6″ of it. That surviving unit may shoot only the enemy attacker, if eligible. The destroyed unit cannot be the Stratagem target.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "19e5ffd3f5cffba77618ce1103bc2bd8d26c7fea8c4583fed2d60de5e9efec09",
+    "pinnedHash": "b5e0a4f0e42bea7e66912ec5f933105f2b2877277129f6fcbf8fe058660b4fdf",
+    "coreHash": "b95b6e4a3fae031b51186bb7b2f8af9aae16f0ce593890755ae1b83f9f9a34ae"
+  },
+  {
+    "id": "execution-order-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Command phase, select an eligible ADEPTUS ARBITES, INQUISITORIAL AGENTS or ORDO HERETICUS INFANTRY unit, then an enemy CHARACTER unit on the battlefield. Its attacks against that specific Character unit gain Precision until your next Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "f4cc8cc057345c2a7eab7aa78edd8dd8d6b7a9b4320f045a3e06fabd70790759",
+    "pinnedHash": "ce9cca4836a677f0dfc12c1a9ae2bd44c545b27ba05d943dcf5c74df73f16419",
+    "coreHash": "087f2cc2c9cdd64cb556a7bd2c6dc9730916d7d872a6a81cdd2a59cf32721aa5"
+  },
+  {
+    "id": "extremis-sanction-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In Veiled Blade Elimination Force, OFFICIO ASSASSINORUM units may use Overkill, Soulless Horror and Shieldbreaker twice per battle, at most once per round. Each assassin also receives its specified Extremis ability and required points surcharge. This is an Agents detachment rule and never follows allied Assassins into a host army. Check current points separately.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "71786faec569ba7b0eb4f27570b7cf9791f28ce6e05eedd4f47e14ddfa8ed6b8",
+    "pinnedHash": "71786faec569ba7b0eb4f27570b7cf9791f28ce6e05eedd4f47e14ddfa8ed6b8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "fleetmaster-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "VOIDFARERS bearer only. Once per battle round, target its unit with Violent Acquisition, Masters of the Void or Close-quarters Barrage for 0CP. This is not a free use of any Stratagem.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "7af30c19a417950809dc5ae5286e7bd12ac2e1bb9ce4b15480636772fe03535e",
+    "pinnedHash": "8fd1c7010859067783c18f24fee79b0408eee660b4f89f85eed36f556ba3b248",
+    "coreHash": "974fdd896fd1b4d85e4e2116cc52ebc9b2b55f22cfd8763d97087a90c7637d33"
+  },
+  {
+    "id": "formidable-resolve-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "INQUISITOR bearer only. Improve its Wounds and Leadership by 1. Once per battle at a phase start, choose a friendly Battle-shocked unit within 12″ and remove its Battle-shocked state.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "38e64344bf811ccf4f690e0a29f435a9212849d5fe70f6158107be5df73616cc",
+    "pinnedHash": "583053353aa55c53c9c992c6df863a743a20df6183d53b4f76683bc9a65e34f8",
+    "coreHash": "ee81c0c34cc98cf71ee0198c029a63b6802543811d2a1317a6688c10a34bad9a"
+  },
+  {
+    "id": "frenzon-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This model’s ranged weapons gain Assault.\nThis model can declare a charge after advancing.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "a4b0e6022ca7d4d0203bf94aa2300d1ca4399df5150614dcf7bcf9995cd468ea",
+    "pinnedHash": "a4b0e6022ca7d4d0203bf94aa2300d1ca4399df5150614dcf7bcf9995cd468ea",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "gaze-into-the-empyrean-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Enemy units arriving from Reserves cannot be set up within 12″ of this Navigator. This does not move an enemy unit or grant it an arrival permission.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7fb6de7083a10454caabe164741300c9f2a7fc93711c00d48ad458193f427574",
+    "pinnedHash": "7fb6de7083a10454caabe164741300c9f2a7fc93711c00d48ad458193f427574",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "gheistskull-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per battle, the equipped Gheistskull lets this unit use Explosives against a visible enemy within 18″ instead of its normal range. All other Stratagem requirements still apply.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "d3de881974e9781ae0410efdac784da6c3529fc811d4c1f6f5359f1bdfab61ba",
+    "pinnedHash": "d3de881974e9781ae0410efdac784da6c3529fc811d4c1f6f5359f1bdfab61ba",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "gift-of-the-prescient-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "INQUISITOR bearer only. Once per battle while it is on the battlefield, use Rapid Ingress for 0CP on a friendly GREY KNIGHTS TERMINATOR SQUAD. That squad may set up more than 6″ from enemies. Apply the current Rapid Ingress arrival timing; it does not give the Inquisitor a free teleport.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "arrivals",
+    "sourceHash": "97ffed4559b9c79dd071c1f94cc3884f695e4ff4ee609e7685a0c22056a35ae0",
+    "pinnedHash": "235428cf02cd200815d79f17fcd92c03d2452eb409475f42a5f0424e15892faf",
+    "coreHash": "99f40b6fb317add8644a968c0fc9ac6b8288e341cadb0d75916b36ba1f99fc3d"
+  },
+  {
+    "id": "glovodan-psyber-eagle-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Command phase, Coteaz may select one enemy within 18″ of the equipped Glovodan Psyber-eagle. That enemy cannot have Benefit of Cover until your next Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "95732226987577cd8841fa235e223e87069a77cfdbbd552df4d5c9ed4f3e28ac",
+    "pinnedHash": "95732226987577cd8841fa235e223e87069a77cfdbbd552df4d5c9ed4f3e28ac",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "grimoire-of-true-names-aura-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "INQUISITOR bearer only. Enemies within 9″ worsen Leadership by 1; DAEMON units within that range also subtract 1 from Hit and Wound rolls.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "fdf4b9a7078e0f167f95e2bfa43505c79e52e1b60bf30c5a452a3648f0cb9092",
+    "pinnedHash": "76a6515c6db06293466ca8a574c42eceb57c358ddf7098ae2a88ddd65a1bb840",
+    "coreHash": "a8c2e0d98786b97c661510d1e9b5b327f7c4199dec6ca5a9ad296795e5c83ec3"
+  },
+  {
+    "id": "hammerhand-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "After this unit finishes a Charge move.\nThis unit’s melee weapons gain Lethal Hits.\nLasts for this turn.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b8981c7fad17f00017b175f38601a03135ab5e2a7a2b998ec36b6220ad54bcf8",
+    "pinnedHash": "b8981c7fad17f00017b175f38601a03135ab5e2a7a2b998ec36b6220ad54bcf8",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "healing-serum-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At your Command-phase start, if the equipped Rogue Trader Entourage is below Starting Strength, return up to D3 destroyed models excluding Characters. The Rogue Trader Character cannot be returned by Healing Serum.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "a4562e453508546d2d8b01a8cbb93302b15e1b20f3557e04cd2d7c90cb33a98a",
+    "pinnedHash": "a4562e453508546d2d8b01a8cbb93302b15e1b20f3557e04cd2d7c90cb33a98a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "hellfire-rounds-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase, select an eligible DEATHWATCH INFANTRY unit not yet selected to shoot. Its ranged weapons excluding Devastating Wounds weapons gain Anti-INFANTRY 2+ and Anti-MONSTER 5+ for the phase. It cannot also use Kraken Rounds or Dragonfire Rounds that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "4a94cbffb387098f07c4956f1e2ef729f2d273a674509b86560381088326e6b1",
+    "pinnedHash": "3e83daa4295ba9a8988b53909b73c3bbd7871859ac81406c5b3e4623133797cd",
+    "coreHash": "c267eaed04f9a1be3a40793371bbc30000587e375c7af1ccee91af54928151f9"
+  },
+  {
+    "id": "hexagrammic-wards-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In opponent Shooting or either Fight phase, after an enemy targets a friendly ORDO MALLEUS unit, the attacking unit’s Psychic weapons gain Hazardous until phase end. This affects the attacker’s Psychic weapons, not your unit’s.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "8a5bd60be3d674847da8a44e28ffb68744464cddb1d70ff847e0a4777e05e80f",
+    "pinnedHash": "bc3ca99b1b361d71cba10c95438e324a39f211523a54eab607635c2712c10445",
+    "coreHash": "75dd6b79365739f56e78b99991b1b561b0f813992f69c4a8212e7c3523b2a57e"
+  },
+  {
+    "id": "holy-hatred-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "While leading a unit, that unit’s melee weapons gain Sustained Hits 1.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "89869d8900fc87cac5b672028cba488167ab60207d592eb02881d1bb514a5508",
+    "pinnedHash": "89869d8900fc87cac5b672028cba488167ab60207d592eb02881d1bb514a5508",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "holy-hatred-preacher-teguen-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "While Preacher Teguen is attached to a unit, that unit’s melee weapons gain Sustained Hits 1. This is the named Combat Patrol version.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "leadingUnitRequired": true,
+    "sourceHash": "e7983dc116cdf86ec271cfa9bda877f9abfc1bb415fb33bc9f002d23ead9a3b3",
+    "pinnedHash": "e7983dc116cdf86ec271cfa9bda877f9abfc1bb415fb33bc9f002d23ead9a3b3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "hyperstimms-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "After an enemy targets a friendly AGENTS CHARACTER unit in your opponent’s Shooting phase or either Fight phase, models in it gain +1 Toughness until phase end. If it is an EVERSOR ASSASSIN unit, it also gains Feel No Pain 4+.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "37799f37ecc65f6ba501f253f6662fb147003560cf824f224705606ef79a894a",
+    "pinnedHash": "76c7997bc8d0fde80be9cff7975984418b5c53e272985a1801b4a782ddefc852",
+    "coreHash": "dafef19ecadfc2a9fd78456594de217670f7525e874a447e02b8ee6e2a38b3a8"
+  },
+  {
+    "id": "ignis-judicium-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This model’s ranged weapons gain Devastating Wounds, Melta 1 and Precision.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "545b9e8741bc4beb5ca448483d3be0e48fc32ea1d9a2c6ec038729519bfa7e4f",
+    "pinnedHash": "90b93766b525aafb68e5e2680b86da7eddef37c5a4f5e22cbfd429117a68ab33",
+    "coreHash": "2ac16da0238e7bf79601d2654c16f71e357c7320582347032e8909842e664c60"
+  },
+  {
+    "id": "imperial-law-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "At battle start, the source designates an enemy for Imperial Law and grants Lethal Hits and Precision, but loses the beneficiary and attack-direction scope. Source review: confirm whether the Exaction Squad or attacks against it receive each benefit before use.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "2641ebcb5555ce612d1318df28c892a571f79ee7b7eea72e31000542b4cdd238",
+    "pinnedHash": "2641ebcb5555ce612d1318df28c892a571f79ee7b7eea72e31000542b4cdd238",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "incensor-cherub-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per battle per equipped Sisters of Battle Squad, use Command Re-roll for 0CP, even if already used this phase. This is its Agents Cherub rule; it does not generate a Miracle die.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "486f48c2b840be3e6c360d5999902b47c4caa460daf5c37e8d20300fe7220f86",
+    "pinnedHash": "486f48c2b840be3e6c360d5999902b47c4caa460daf5c37e8d20300fe7220f86",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "inquisitorial-henchmen-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If your Army Faction is not AGENTS OF THE IMPERIUM, each INQUISITOR unit included permits one INQUISITORIAL AGENTS unit that does not consume your Retinue allowance. This is an allowance exemption, not a free points cost.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "officialPage": 8,
+    "sourceHash": "f4efd24852b89561c63c13345d36495f0dce6ccf98d9b0802eac4e54bf05fb61",
+    "pinnedHash": "f4efd24852b89561c63c13345d36495f0dce6ccf98d9b0802eac4e54bf05fb61",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "inquisitorial-mandate-inquisitors-hand-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At the end of your Movement phase, this eligible Inquisitor’s Hand unit may designate an objective within its control range that you control to remain yours under its current sticky-objective procedure.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end",
+    "sourceHash": "62ddc81cbe3c825cdf43618563ddc50b09c018ef8bebfe379eb848db86d7a07f",
+    "pinnedHash": "ac83853de63d271f084466f64b17cbabde994a4ee54ae54bbfd781c6ca683364",
+    "coreHash": "9038d0e61bc659bdb6b6d1f0c014ead821ca615da65e274c058cd2137435f482"
+  },
+  {
+    "id": "intraneural-biotech-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "EVERSOR ASSASSIN only. The current faction reference permits Heroic Intervention or Counter-offensive for 0CP despite another use that phase; the imported scope and historical supplement disagree about frequency and cost. Source review: verify the current Extremis version and per-round limit before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "ad6b3f2f71378ee0997f39eb19c25d962d44f264a3d3a49325f1164c0cc18dd6",
+    "pinnedHash": "34a10bf5f17d78120f135986b70f9b573aa569af46aebe975637ea59a6b05964",
+    "coreHash": "ad69c2eaa6480514e0f9ae3cf5eb845c3dd694f85ec27b926ba078101d8ca6c3"
+  },
+  {
+    "id": "inviolate-jurisdiction-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In opponent Shooting or either Fight phase, after an enemy targets a friendly ADEPTUS ARBITES, INQUISITORIAL AGENTS or ORDO HERETICUS INFANTRY unit within objective control range, that unit gains Feel No Pain 5+ until phase end.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "b6547ad375d53e71de915db42e713b6fe2e43f41be8f6da601b9c5df7947a67a",
+    "pinnedHash": "5d4754982e3ccc3f01b6234cc0a02b6e669673b5bef0b3d7f41ecc8ef1ddb21d",
+    "coreHash": "529e446c61b6093376740ac1757dc53e9b5f70207e0a00e8b28da63bab7e6b56"
+  },
+  {
+    "id": "kill-team-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "Aquila Kill Team’s import says GRAVIS models occupy two transport spaces. Source review: the current v1.3 pack removed the Aquila datasheet, and the current generic Kill Team terrain/transport procedure differs. Preserve this historical sheet but confirm its current availability and model-type procedure.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "8573d7d4493ad3670cc1e36b99cf470ee3b20221bf192f838d2f9bd3c03f3441",
+    "pinnedHash": "8573d7d4493ad3670cc1e36b99cf470ee3b20221bf192f838d2f9bd3c03f3441",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "killer-reflexes-inquisitors-hand-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "Killer Reflexes intends a 2+ fight-on-death permission during the Fight phase, but the import also destroys the bearer if it has not fought and lacks a bound destruction trigger. Confirm the Combat Patrol procedure; do not destroy an unfought bearer to activate it.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "b9a08ea1a5483a023bed11da5f98046ce4a16e64e7e8efe4fec1e94aed6d5a56",
+    "pinnedHash": "8ca9f94d03ab46586b5cd7f2ca45eb4a5fd86b7d755ede17e24b0dc45a38617d",
+    "coreHash": "4e9cda33944c7091875f906d1cd5358ae88060f3b93139040e3e4eceb86172e9"
+  },
+  {
+    "id": "kraken-rounds-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase, select an eligible DEATHWATCH INFANTRY unit not yet selected to shoot. Its ranged weapons gain +6″ Range and improved AP by 1 for the phase. It cannot also use Hellfire Rounds or Dragonfire Rounds that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8b08e4ba044c1c6ecb071362280957b1908ae08574f46a632d69df009893a233",
+    "pinnedHash": "dfee67a1057526ab495c99e9248d9e7e44467c4c846fbadcad7220c018cc5e96",
+    "coreHash": "11043d0b2bd302a880560e8240d75cedaba02f8cfc7a8201b0f36c301f8ac86a"
+  },
+  {
+    "id": "liber-heresius-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "INQUISITOR bearer only. After both players deploy, redeploy up to three friendly AGENTS units; they may enter Strategic Reserves regardless of the ordinary quantity already there. This is a choice, not a requirement to remove every selected unit.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "cdc7150e05a177d6951d6d54f153d4e13715e8e7b70f6615d0b5736a97ecc399",
+    "pinnedHash": "bc8fbce6300b680495d56c3842354ab24605b4f6cb941a32d2054c223334d433",
+    "coreHash": "dfe0466a9c01c0351be9a73761384bf89ce7027f61848c67a7aa1364cb711cf5"
+  },
+  {
+    "id": "line-of-fire-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase, select an eligible ADEPTUS ARBITES, INQUISITORIAL AGENTS or ORDO HERETICUS unit not yet selected to shoot. Its non-Blast ranged weapons may attack engaged enemy units within 12″ for the phase. Other targeting restrictions still apply.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "4d5d4cdc8b4ada973ee606f315ca50aacd3d8c301ee2b5a673cac042144597d8",
+    "pinnedHash": "a47c51c5a68059c28a9777ef5870c65e8b84b6d3e11a0667d799429304e5f6e4",
+    "coreHash": "e45cfb53835641e3116f94d77e24827d506d38dba794fd140a5499f6c07d327d"
+  },
+  {
+    "id": "loyal-henchmen-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "While this Inquisitorial Agents unit is led by an INQUISITOR, subtract 1 from enemy Wound rolls against it. An arbitrary attached Leader or Support model does not satisfy the Inquisitor gate.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "requiredLeaderKeywords": [
+      "Inquisitor"
+    ],
+    "sourceHash": "9fc31e049423745ef854d8158b99b4006250f49877539279925e92b404e72f7e",
+    "pinnedHash": "9fc31e049423745ef854d8158b99b4006250f49877539279925e92b404e72f7e",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "loyal-to-the-cause-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When an enemy targets this named Inquisitor’s Hand Inquisitorial Agents unit, subtract 1 from its Wound rolls while this unit is within objective control range.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "82dd3cb452532bc3dacfecaede35cb7de25966068a68437fbce7b18729215005",
+    "pinnedHash": "82dd3cb452532bc3dacfecaede35cb7de25966068a68437fbce7b18729215005",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "malefic-wardings-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "While Coteaz leads a unit, its models have a 6+ invulnerable save, improved to 4+ against Psychic Attacks or attacks made by DAEMON models. These are save branches, not cumulative bonuses.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "7d0be0cc32d360b628fea843693bee106a48d8f75757f84806c4f1aaea323799",
+    "pinnedHash": "7d0be0cc32d360b628fea843693bee106a48d8f75757f84806c4f1aaea323799",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "marked-for-death-agents-of-the-imperium",
+    "state": "missing",
+    "summary": "Missing effect mechanics: Marked for Death contains only a no-effect marker in this Inquisitor’s Hand record. Confirm its own effects, timing, targets and usage limits before use; do not borrow a same-name variant.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "sourceHash": "49d5d77d0d5317d7cae4edfca5547ab5951c64eca5e252a9ad1cee284c92dd01",
+    "pinnedHash": "49d5d77d0d5317d7cae4edfca5547ab5951c64eca5e252a9ad1cee284c92dd01",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "masters-of-close-confines-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This Voidsmen-at-Arms unit’s ranged attacks against the closest eligible target gain Lethal Hits.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "8413dab10ac5d7af1c1bffde556dee084335ee7b13dfd111c8b5baae47149c14",
+    "pinnedHash": "8413dab10ac5d7af1c1bffde556dee084335ee7b13dfd111c8b5baae47149c14",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "masters-of-the-void-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Movement phase, target a friendly VOIDFARERS CHARACTER. For that phase, friendly AGENTS units arriving from Strategic Reserves may set up in the enemy deployment zone; all other arrival restrictions still apply.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals",
+    "sourceHash": "d89e05b34d5f6e7b50f140fc011d873be205f092807831b1914d11421fc5350c",
+    "pinnedHash": "3fadddd5d977828e3645421745285774e6c4ce1f57e332e7853d3238366f19ce",
+    "coreHash": "a827f74674f6ce6b50aad036e6f65bcdcc90d3eaf46255150080638328ac48f5"
+  },
+  {
+    "id": "merciless-judgement-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This Vigilant Squad gains +1 to ranged Wound rolls against units below Half-strength.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "1144f19a002f4706350a76acaf55a0d105cb2d21c9443baaf5a70fa4be2f826b",
+    "pinnedHash": "1144f19a002f4706350a76acaf55a0d105cb2d21c9443baaf5a70fa4be2f826b",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "micromelta-rounds-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This model’s ranged Exitus Rifle weapons gain Anti-MONSTER 4+ and Anti-VEHICLE 4+.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "25084bf552e1005a6474f5e214e559980f99b87b2f55cc84e40b56e50cadf33a",
+    "pinnedHash": "368a2427f3686331e8593878c717c4b723017e5a42305e5c60c4703f65f75fcd",
+    "coreHash": "0ab6e5b4e33c5539c5e7f9741fa03e3d36dd54f7b85737e0e99c517f05fe17aa"
+  },
+  {
+    "id": "ministorum-sermon-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If this Sanctifiers unit contains a MINISTORUM PRIEST model, its melee attacks gain +1 to Wound rolls. This requires the actual Priest, not simply the unit’s own name.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "officialPage": 7,
+    "requiredLeaderKeywords": [
+      "Ministorum Priest"
+    ],
+    "sourceHash": "ae2ef570072191bd2fb1e0fce2ba41f33686783abdc0b23b581e93921dbc69f7",
+    "pinnedHash": "ae2ef570072191bd2fb1e0fce2ba41f33686783abdc0b23b581e93921dbc69f7",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "narthecium-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Equipment gate: in your Command phase, the Narthecium may return one destroyed non-CHARACTER model to this Grey Knights Terminator Squad. It cannot return an attached Inquisitor.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "4cfd60ace4d158a9742d4dbc1964ec6bb8e5f61818fc9c796c3cd62f8f8ba10c",
+    "pinnedHash": "4cfd60ace4d158a9742d4dbc1964ec6bb8e5f61818fc9c796c3cd62f8f8ba10c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "navy-bodyguard-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If your Army Faction is not AGENTS OF THE IMPERIUM, each VOIDFARERS CHARACTER unit included permits one VOIDSMEN-AT-ARMS unit that does not consume your Retinue allowance. This does not waive its points cost.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "officialPage": 9,
+    "sourceHash": "6fd4b3490a3c7a22a0d9c98dd236c73a06c1eb9f16352a6068aef0ee2ed7a25f",
+    "pinnedHash": "6fd4b3490a3c7a22a0d9c98dd236c73a06c1eb9f16352a6068aef0ee2ed7a25f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "no-escape-aura-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "INQUISITOR bearer only. An enemy within 6″ selected to Fall Back must take a Leadership test first; on failure it must Remain Stationary that phase.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "react",
+    "sourceHash": "89ad7d42ad8964f714bc93e77c7fbdb71f55ee50da93c302128a903a04ddc1ba",
+    "pinnedHash": "57b44d5e4392c57428d31948f58d1b7359cb187182d1c125d0aa3d0a3ba57644",
+    "coreHash": "5d51dd73271cd1f2c7b79b3298be61b8a0e72763283960ceade56f5c7fc53a8c"
+  },
+  {
+    "id": "no-mercy-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "While Greyfax leads a unit, its attacks gain +1 to Hit against targets below Half-strength.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "1ae59043afb67a6f32f7d332b30b662fed99e68a59ac0f31d4197c85dcee1027",
+    "pinnedHash": "1ae59043afb67a6f32f7d332b30b662fed99e68a59ac0f31d4197c85dcee1027",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "nuncio-acquila-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "Once per battle, the equipped Nuncio-acquila is intended to force a non-MONSTER, non-VEHICLE enemy to take a Battle-shock test. Source review: the import omits its activation timing, target range and visibility restrictions; confirm them before use.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "c382449d89903678894d1f4f8c590bbe7b6486a69c447ed1d5046077ab7fe7fd",
+    "pinnedHash": "c382449d89903678894d1f4f8c590bbe7b6486a69c447ed1d5046077ab7fe7fd",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "on-my-signal-fire-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "After Kroyle shoots, he may designate one enemy hit by those attacks. For the phase, attacks against that enemy by friendly AGENTS models or IMPERIUM INFANTRY BATTLELINE models may re-roll Hit rolls. This explicitly supports eligible host-army models; it does not grant every host model the benefit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "fc847d1d160593f91360945a735d690a3a711f00465a85d3269608e321d97f43",
+    "pinnedHash": "fc847d1d160593f91360945a735d690a3a711f00465a85d3269608e321d97f43",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "orbital-oversight-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase, after an enemy targets a friendly AGENTS INFANTRY unit, it can only be targeted by ranged attacks from models within 18″, or within 6″ if it has Lone Operative, until phase end. This is a maximum targeting distance, not permission to ignore other restrictions.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "select",
+    "sourceHash": "5caaa46f3dc63c0082d3f397c7f190fb59844e26e2affd2fdf3dbb43c3179335",
+    "pinnedHash": "03520b19c17a14379f54df0e5e14947aff40f3e9be361121fd6080c8e4eb8cd2",
+    "coreHash": "d1cc0220d7993f8db861409b436f667e06af4c6934696a6eed729c7b45332bea"
+  },
+  {
+    "id": "overkill-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per battle, in your Movement phase before this Eversor makes a Normal move, it may gain +6″ Move and +3 melee Attacks until turn end. A Veiled Blade detachment may modify its usage limit; allied Assassins do not inherit that detachment.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "before",
+    "sourceHash": "22922a9b931f6774e7876c2d50bd7801f69b8dec49f7229a596437d03b2862a3",
+    "pinnedHash": "22922a9b931f6774e7876c2d50bd7801f69b8dec49f7229a596437d03b2862a3",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "overkill-inquisitors-hand-eversor-assassin-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "The named Inquisitor’s Hand Overkill import worsens melee AP by 4 without the full decision and benefit procedure. Confirm this Combat Patrol variant; do not substitute the ordinary Eversor Move/Attack bonus.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "58f1590dd0c441afceda972a9085cd0fd0fca6c5ebc6477b4387aa9907bcbc29",
+    "pinnedHash": "58f1590dd0c441afceda972a9085cd0fd0fca6c5ebc6477b4387aa9907bcbc29",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "power-of-the-rosette-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When a Stratagem targets this Inquisitor’s unit, roll a D6: on 3+, gain 1CP. Apply the core CP-gain limit; this does not automatically make that Stratagem free.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "3fb7a5123250ef7d1f3310a057b4dcc20a8e9ce975010d759145e3502f638ef6",
+    "pinnedHash": "3fb7a5123250ef7d1f3310a057b4dcc20a8e9ce975010d759145e3502f638ef6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "prime-target-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase or either Fight phase, select an eligible AGENTS unit not yet selected to shoot or fight. Its attacks against CHARACTER units re-roll Wound rolls of 1; an OFFICIO ASSASSINORUM model attacking the enemy Warlord may re-roll any Wound roll instead.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "1215473ed655aa26f46bc29c6b5a3938e2c4cddccbd629c58635b51a4c380761",
+    "pinnedHash": "108ddd58a57c3b0ab51d36210e6d4df5bc56c19a5fd9687b46f9a796b46f6c6a",
+    "coreHash": "28d5600c8b383441a0ff43b5f3f37a3410477ba37b3f3a3c7b39a331de8ee2fe"
+  },
+  {
+    "id": "psybolt-ammunition-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase, select a friendly GREY KNIGHTS TERMINATOR SQUAD that has not been selected to shoot. Its ranged weapons gain Lethal Hits and Psychic for that phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "b3905c2d9abc3472995d3d3b82e2a50df69c1060eaac82ded1c8533c0709073a",
+    "pinnedHash": "81f0604ea878b2a54a54e0306758104a05daee3b6e446de59db7233456c097f2",
+    "coreHash": "f4b026590b79f4f7d27e83449a2053730c47e2a1bc9e2afe90b9a58483ee80a7"
+  },
+  {
+    "id": "psychic-gifts-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If the Inquisitor is equipped with its Psychic Gifts option, it gains PSYKER. Keep the equipped psychic-weapon/profile restrictions; this does not grant PSYKER to every Inquisitor by default.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "0bddbfd63222ed1d458ebde4e528c8d59823e91eb08b656bfdf61e0a9ad4d849",
+    "pinnedHash": "0bddbfd63222ed1d458ebde4e528c8d59823e91eb08b656bfdf61e0a9ad4d849",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "psychic-veil-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Command phase, Draxus may roll a D6: on 1 its unit suffers D3 mortal wounds; on 2+ that unit cannot be targeted by ranged attacks from models more than 18″ away until your next Command phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "7dc6e72a948610418c0c8f42b0250846efba587de2521856650a43fc23ff09bc",
+    "pinnedHash": "7dc6e72a948610418c0c8f42b0250846efba587de2521856650a43fc23ff09bc",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "psyoculum-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "While leading a unit, that unit’s ranged weapons gain Anti-PSYKER 4+.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "08520f579c95b8eff7ecd21a0eeae3e9841a6131081fd68125a187fc1f86b43f",
+    "pinnedHash": "08520f579c95b8eff7ecd21a0eeae3e9841a6131081fd68125a187fc1f86b43f",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "purgatus-quarry-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At first battle-round start, this Watch Master unit may designate one enemy as its hunted target. It re-rolls Wound rolls of 1 against that target. When the target is destroyed, it may designate another; only one target is active for this unit at once.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round",
+    "sourceHash": "f115d3996a58340566cfa5f8164b1efdbf08e7bab0b6900c4a27b4dbeb45f8dd",
+    "pinnedHash": "f115d3996a58340566cfa5f8164b1efdbf08e7bab0b6900c4a27b4dbeb45f8dd",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "purge-and-cleanse-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "After the Sisters of Battle Immolator shoots, select an enemy hit by those attacks; that enemy cannot have Benefit of Cover for the phase. This is the Agents sheet’s effect, not a borrowed Sororitas army rule.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "9f8d15baa5bbaad8c5db2ba51910ffb01fade930c6f2df1461310642534eec45",
+    "pinnedHash": "9f8d15baa5bbaad8c5db2ba51910ffb01fade930c6f2df1461310642534eec45",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rapid-deployment-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Passengers may disembark after this Inquisitorial Chimera Advances. They count as having made a Normal move until phase end and cannot charge that turn. Other disembark restrictions still apply.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "3f4caf4892e9770f99ecc0adbd0e651164a38b625bfb64477a0771b357dab24a",
+    "pinnedHash": "3f4caf4892e9770f99ecc0adbd0e651164a38b625bfb64477a0771b357dab24a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rapid-tactical-relocation-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At the end of your opponent’s Fight phase, select an unengaged friendly INQUISITOR or DEATHWATCH INFANTRY unit and remove it. In the Reinforcements step of your next Movement phase, return it more than 8″ horizontally from enemies.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "sourceHash": "fb55a4c70d1870f1212e77eca5e9bbce2b556cece5b865662bbfb5646e3b6b61",
+    "pinnedHash": "27f7ca1938932309d3c6cdcd8cc513d68be9f88edd137320048c24b89712dfc8",
+    "coreHash": "3c963e256c86f3d71c486f251eaa45f9718cd701cf411bd72ccbef90704a38ba"
+  },
+  {
+    "id": "reign-of-confusion-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per turn, when the opponent targets a unit within 12″ of this Callidus with a Stratagem, she may increase the CP cost of that use by 1. This is a tax on that use, not a permanent cost increase.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "officialPage": 8,
+    "sourceHash": "4ea7f489078550d020057c296e013290689cb123a33f1e2672923e5255e9d225",
+    "pinnedHash": "4ea7f489078550d020057c296e013290689cb123a33f1e2672923e5255e9d225",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "rites-of-exorcism-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase or either Fight phase, an eligible INQUISITOR, INQUISITORIAL AGENTS or ORDO MALLEUS unit selects a visible DAEMON within 12″ to take a Battle-shock test. On failure, friendly AGENTS attacks against that specific DAEMON gain Devastating Wounds for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "b0d09ec9d8f4b5f6be14712501152150c9613fdaa5e9634839ca251da5f72b30",
+    "pinnedHash": "72e4e554c12d2bce064ca6a6db2e145e875c87325b47dfa62a8a0765febaa6bc",
+    "coreHash": "de0c11dd8fbc66d1b88bcb09e820d714c830f94cc2b0df35a3bdb3c0412808c6"
+  },
+  {
+    "id": "rites-of-teleportation-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At Declare Battle Formations, INQUISITOR units attached to this Grey Knights Terminator Squad gain Deep Strike for their models. This extends its arrival permission to the attached Inquisitors, not to arbitrary leaders or the host army.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "referencePage": "Grey-Knights-Terminator-Squad",
+    "sourceHash": "b60bcd751065f8a2a4a4096decbdc717d84b444a31351d0925ae9593cd0e9e3a",
+    "pinnedHash": "b60bcd751065f8a2a4a4096decbdc717d84b444a31351d0925ae9593cd0e9e3a",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "ritual-of-warding-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At the start of either Command phase, target an eligible INQUISITOR, INQUISITORIAL AGENTS or ORDO MALLEUS unit within range of an objective you control. That objective becomes Warded and remains yours until the opponent controls it at a turn start or end. While Warded and yours, enemy DAEMON units cannot be set up within 6″ of it.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "1feed8c973475e029b3827b4ffc50fa5a235460d22e13968cb6bf7fb1168aa69",
+    "pinnedHash": "f6fde7a643022b5dcf8128cd7cad8fe4c9ee902f6fc040607bfc15a2739fa458",
+    "coreHash": "41985798294e7e9cd4b3ffdbee8575040451d312dff8355adb6a369c3c569ada"
+  },
+  {
+    "id": "root-out-heresy-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "ADEPTUS ARBITES, INQUISITOR, INQUISITORIAL AGENTS and ORDO HERETICUS models’ ranged weapons gain Ignores Cover. Their attacks against CHAOS units containing at least five models also gain Sustained Hits 1. Do not grant this to every Agent or every enemy target.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "6f8cf44cbe72457d49e70431ceb03db1a3c2a0a0ebbf01ee0ef7005880dc058d",
+    "pinnedHash": "6f8cf44cbe72457d49e70431ceb03db1a3c2a0a0ebbf01ee0ef7005880dc058d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "salvationist-medikit-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Equipment gate: in your Command phase, while the Salvationist Medikit bearer is on the battlefield, return up to D3 destroyed non-CHARACTER models to this Sanctifiers unit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "577b3c0cc712daa1b8d3e4471bd07a73123f87c626a25a8a4225c3c2d9f95805",
+    "pinnedHash": "577b3c0cc712daa1b8d3e4471bd07a73123f87c626a25a8a4225c3c2d9f95805",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "sanctic-slayers-inquisitors-hand-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per turn per unit, when the eligible Inquisitor’s Hand unit is selected to attack, add 1 to Wound rolls for its attacks whose Strength is no greater than the defender’s Toughness. Keep the named Combat Patrol bearer restrictions.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "e2bf96a8700d1bcb7900981615f1dd983c164ce6df5ef490ddb13d0ecbb50052",
+    "pinnedHash": "75af5b9ab7b960526c24937577e03349909b4af41e435a5912010a3d14611ab9",
+    "coreHash": "375df40af8c1d3168a0ba3d3cdf4bb85bf4f0476104590240f929d1ecf81c2dc"
+  },
+  {
+    "id": "self-repair-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At the start of the phase, if (it is the Command phase) and (it is your turn).\nThis model regains 1 lost wounds.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "135fdeeed747d3bf66aa9b173bc050230a67d8b59c092491b7660935ddcb0134",
+    "pinnedHash": "135fdeeed747d3bf66aa9b173bc050230a67d8b59c092491b7660935ddcb0134",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "selfless-bodyguard-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase or either Fight phase, after an enemy targets a friendly AGENTS Attached unit, each Precision attack allocated to its Character may be redirected on 2+ to a Bodyguard of your choice while any remain, until phase end.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "d1dfa602365bf82e3d09d4a2c5d2ef0248ac58aa65c30523de90207539880222",
+    "pinnedHash": "ef8f58a3bd496790cdcdb49220e3473537758beaea7de7545c21e289bd3f6663",
+    "coreHash": "8188fd91928c836b82f19ac18feaa9773c7d06dc845fb3348cfd27e97d893cff"
+  },
+  {
+    "id": "shadow-assignment-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "OFFICIO ASSASSINORUM models cannot be Warlord. In an AGENTS OF THE IMPERIUM army only, at Declare Battle Formations you may replace an Assassin with another type costing no more points. The resulting army cannot have more than one of each Assassin type; this is not a blanket one-Assassin total limit.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "referencePage": "Vindicare-Assassin",
+    "sourceHash": "a404e34b3fe4d104d026cbe1cc39f704894a3fd24a5b4f02ed3bd74bd4fa1523",
+    "pinnedHash": "a404e34b3fe4d104d026cbe1cc39f704894a3fd24a5b4f02ed3bd74bd4fa1523",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "shieldbreaker-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per battle, when choosing targets for this Vindicare’s Exitus Rifle, it may fire a Shieldbreaker round. Its attacks with that weapon gain +1 to Wound and successful Wound rolls become Critical Wounds until phase end. Detachment usage changes require that actual detachment.",
+    "phase": [
+      1,
+      2,
+      3
+    ],
+    "turn": "either",
+    "window": "select",
+    "referencePage": "Vindicare-Assassin",
+    "sourceHash": "54548ed1cb321d93c66c585443b9f00806e935829afdeaaebe88d3f5e7bcca0c",
+    "pinnedHash": "54548ed1cb321d93c66c585443b9f00806e935829afdeaaebe88d3f5e7bcca0c",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "select"
+      },
+      {
+        "phase": [
+          1,
+          3
+        ],
+        "turn": "opponent",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "simulacrum-imperialis-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Improve this unit’s Leadership by 1.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "d3fd327815570bc515390ab21f8873540b91096ccbe0e31b74c73bc8b780c0ab",
+    "pinnedHash": "d3fd327815570bc515390ab21f8873540b91096ccbe0e31b74c73bc8b780c0ab",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "soulguilt-scanner-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This unit’s ranged weapons gain Ignores Cover.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "fa800e70f6bd401dae4e3d69487906eb9d16d5dc64bbdf4d86bcafd19dc660da",
+    "pinnedHash": "fa800e70f6bd401dae4e3d69487906eb9d16d5dc64bbdf4d86bcafd19dc660da",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "soulless-horror-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per battle, at a Command-phase start, this Culexus may force each enemy within 9″ to take a Battle-shock test at -1, or -2 for PSYKER units instead. A detachment can modify the usage limit, but allies do not receive it automatically.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "f3c748b735c2bebaa5c152119da69d4249997358ff95a6fe828decf755e1b41d",
+    "pinnedHash": "f3c748b735c2bebaa5c152119da69d4249997358ff95a6fe828decf755e1b41d",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "spy-network-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When the opponent gains CP from an ability, roll a D6: on 2+, Coteaz also gains 1CP. This does not trigger from ordinary Command-phase CP and remains subject to CP-gain limits.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "referencePage": "Inquisitor-Coteaz",
+    "sourceHash": "f2719e14ceb1fa7f36b326837e29db53da787806da5ddb08da03aef9beabd947",
+    "pinnedHash": "f2719e14ceb1fa7f36b326837e29db53da787806da5ddb08da03aef9beabd947",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "steel-heart-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "After a friendly unit with GREY KNIGHTS TERMINATOR SQUAD finishes a Fall Back move.\nThis unit can shoot after falling back.\nThis unit can declare a charge after falling back.\nLasts for this turn.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "after",
+    "sourceHash": "25e8385a9c60679fb4febb3e1322fed678128ee6eede94866cace8716df6090d",
+    "pinnedHash": "05e8da441b23688d07ce9983d546b2ce1f924c5f73daca189deb63e648a780ed",
+    "coreHash": "f1b9a323ed2f872ad9d531ef66a64d3b3f2d0b48e949775e5bdeb981d376c966"
+  },
+  {
+    "id": "storm-shield-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "A model equipped with a Storm Shield has a 4+ invulnerable save. The save applies only to that model, not the whole Kill Team.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "6792972e44002b3fc9cb681b54185d1ff18c4055774d174e29fbd6ba180d72ec",
+    "pinnedHash": "6792972e44002b3fc9cb681b54185d1ff18c4055774d174e29fbd6ba180d72ec",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "strategic-acumen-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Command phase, this Watch Master may choose one Combat Doctrine for its unit until your next Command phase. This is a specific datasheet permission; it does not give all allied Agents the Space Marines army rule. Consult the current doctrine menu.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "start",
+    "referencePage": "Watch-Master",
+    "sourceHash": "417cd4421c3a85ccee82a17074bc17b213ef22806762bda98afa928ec2e39b08",
+    "pinnedHash": "417cd4421c3a85ccee82a17074bc17b213ef22806762bda98afa928ec2e39b08",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "stun-grenades-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At the start of any phase except Command, an eligible unengaged ADEPTUS ARBITES, INQUISITORIAL AGENTS or ORDO HERETICUS GRENADES unit selects a visible non-MONSTER, non-VEHICLE enemy within 8″. It takes a Battle-shock test and suffers -1 to Hit for the phase.",
+    "phase": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "start",
+    "sourceHash": "219dc614d2ea73e7c4a0a897d38599599ff2d2079e2970d03cda020e6b6beb9c",
+    "pinnedHash": "30e2edb332a35ccef21b78a42b2f809ebe8af8c239bfd02d79415d8784f0b021",
+    "coreHash": "4ac7c8bddd52e082bae2d52300608a10a60df135543509a594dff5df8721e0b4"
+  },
+  {
+    "id": "superior-weaponry-inquisitors-hand-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "When an eligible Inquisitor’s Hand unit other than its Eversor is selected to attack, improve its attacks’ AP by 1 for the phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "sourceHash": "fc09775008a75dafe9bae01dd25fac1ca79c0d6642f4b740f8db65214036e9ab",
+    "pinnedHash": "824f83a7e61cad862d92d731b6483bfffd7636cb21a4111211bfdc2d3d833cb8",
+    "coreHash": "06fb0b113599008b9a1b8cbba521bfbd02f43437cf7cd3cb8eb3c9c524345615"
+  },
+  {
+    "id": "tactical-instinct-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This Watch Captain Artemis unit’s attacks have Sustained Hits 1. This is his own datasheet permission, not a grant of the host faction’s army rule.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a46ec4d42945631f5320b95ced754f63447c13478582d6a7850f400e33c7b6ef",
+    "pinnedHash": "a46ec4d42945631f5320b95ced754f63447c13478582d6a7850f400e33c7b6ef",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Watch-Captain-Artemis"
+  },
+  {
+    "id": "third-eye-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "At your Shooting-phase start, the Navigator selects a visible enemy within 12″. It takes a Battle-shock test, at -2 if INFANTRY; on failure it suffers 3 mortal wounds.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start",
+    "sourceHash": "94e1e53c2352aa282b7f934a1c5233cada729b5839da4e130090cfc61b0bd364",
+    "pinnedHash": "94e1e53c2352aa282b7f934a1c5233cada729b5839da4e130090cfc61b0bd364",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "tome-skull-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "The equipped ordinary Tome-skull is a one-use enemy Battle-shock effect within 6″, but activation timing and visibility are omitted. Confirm the complete rule; do not copy the named Combat Patrol Tome Skull procedure.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "bd34619c548fd142df2c8c63b2cf65631a28d9602156886ec4d8d4031b9177ba",
+    "pinnedHash": "bd34619c548fd142df2c8c63b2cf65631a28d9602156886ec4d8d4031b9177ba",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "tome-skull-inquisitors-hand-inquisitorial-agents-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per battle, at a phase start, the named Combat Patrol Tome Skull may either clear Battle-shock from a friendly AGENTS unit within 6″ or force an enemy within 6″ to take a Battle-shock test. Choose one target mode.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "sourceHash": "b4a68579223acd7206d948bb7bab4043a6186b7095b2c8ae45c1f70c62e558ea",
+    "pinnedHash": "b4a68579223acd7206d948bb7bab4043a6186b7095b2c8ae45c1f70c62e558ea",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "tox-cycler-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "After Kroyle shoots, if his Jindarii Tox-cycler scored a hit, it gains +2 Strength and +2 Damage for the rest of the battle, up to Damage 6. Track earlier increases and do not exceed that cap.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "5f9211f00c506e9288340287722f252550714b1af05c253daf6e28398cbd8295",
+    "pinnedHash": "5f9211f00c506e9288340287722f252550714b1af05c253daf6e28398cbd8295",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "truesilver-armour-ordo-malleus-daemon-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your opponent’s Shooting phase or either Fight phase, after an enemy targets a friendly GREY KNIGHTS TERMINATOR SQUAD, worsen the AP of attacks against it by 1 until that enemy finishes attacking. It does not last the entire phase.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "officialPage": 8,
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      }
+    ],
+    "sourceHash": "d1f721351fafa6b54217311d1958900d04ae231accd74a8626aa7b646decdbcc",
+    "pinnedHash": "703bdbbdab2541f9aa318d5ccdae7a6478de16f35fe0377d29ab27ce5b54eb87",
+    "coreHash": "e3fbbbbee7a1e94c389601d7a552ee22d615a2d1b47ddee5285268f40b21950d"
+  },
+  {
+    "id": "universal-anathema-ordo-xenos-alien-hunters-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "This model’s melee weapons gain Anti-INFANTRY 2+ and Anti-MONSTER 4+.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "f3cc84e5d3bc4d42132c7c70760aa48d764be8a68097946f9f6470c915830d6b",
+    "pinnedHash": "98a761666463391f7e229b7d115840744d90782cbaea0767ee3d136bd2b6276f",
+    "coreHash": "13d3e73bf341b1cff20b3f771ace7623b2a07c8de601bc9f3c57ad7c740bbd90"
+  },
+  {
+    "id": "unstoppable-champion-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Once per battle per army, at the end of a phase in which Artemis was destroyed, roll a D6: on 2+, return him with 3 wounds as close as possible to his destruction point and unengaged. This is his specific return procedure, not an unlimited resurrection.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "end",
+    "sourceHash": "59942d44ddc5d02af4846b8aec482e2bb21a105c4e52b3b3ad1b05e7f2ae1aa6",
+    "pinnedHash": "59942d44ddc5d02af4846b8aec482e2bb21a105c4e52b3b3ad1b05e7f2ae1aa6",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "referencePage": "Watch-Captain-Artemis"
+  },
+  {
+    "id": "urban-enforcers-inquisitors-hand-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "After an enemy targets an eligible Inquisitor’s Hand unit, while every model is within a terrain-area footprint, worsen incoming AP by 1 for that phase. Keep the all-models terrain gate.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "sourceHash": "0e0684c42e2912c6ac220147e6c6a77a0de31a982aed35f7471c6df31936c950",
+    "pinnedHash": "0f5625168e5c44c5d1478556bc5ec47eb1270edc018513d21c549aaa4b0e75b6",
+    "coreHash": "d3afb0b3b56faccd102318e4e162e372681e0e356bfa1446c303e6bcb48d115f"
+  },
+  {
+    "id": "violent-acquisition-imperialis-fleet-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase or either Fight phase, select a friendly AGENTS unit. For attacks against an enemy in objective control range, it gains Sustained Hits 1, Lance and Ignores Cover for that phase. Lance still needs its normal charge condition.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ],
+    "sourceHash": "289247e9f495144bb0a0b745978dfd71ee906e8da128264395acb1ae4f7abf95",
+    "pinnedHash": "8e142476591c49ead4889ed34f72e266b4288bcfe32bc95cbb29066cc773355a",
+    "coreHash": "939ef318b5ad21d0cb549de149138ec0f9ba667420d7bc538bad01ebe0b9f39d"
+  },
+  {
+    "id": "warrant-of-trade-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If your army includes one or more Rogue Trader Entourages, after both players deploy, choose up to D3 friendly IMPERIUM BATTLELINE units and redeploy them, including into Strategic Reserves regardless of the usual quantity limit. Roll D3; do not always select three. This can explicitly affect eligible host-army units.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle",
+    "referencePage": "Rogue-Trader-Entourage",
+    "sourceHash": "026cecf09e6fb31a07e438f3ec209aff0a21bd0d61c3e482764b39d1f6a65214",
+    "pinnedHash": "026cecf09e6fb31a07e438f3ec209aff0a21bd0d61c3e482764b39d1f6a65214",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "watch-master-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "Against CHARACTER units, this model can re-roll Hit and Wound rolls of 1.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "a218a912a21bf3e99521083fe627978438e9dba7b9071c470779045c0a227847",
+    "pinnedHash": "a218a912a21bf3e99521083fe627978438e9dba7b9071c470779045c0a227847",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "will-sapping-salvo-veiled-blade-elimination-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "In your Shooting phase, select an eligible AGENTS INFANTRY unit not yet selected to shoot. Its ranged weapons gain Sustained Hits 1 for the phase; if it is a CULEXUS ASSASSIN unit, set those weapons’ Damage to 3 for the phase.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act",
+    "sourceHash": "e7cc3b5d5ce94b35aa8f4e49b03c81f51b6cc1f588ec2dd3d5fb513106a6b064",
+    "pinnedHash": "2762aa343cbee3ab0982a18e120fe456e3d0b751ef78349370a2bf5529ae5e73",
+    "coreHash": "bf14db5104c157bb290cbb4930988d91f386a9fe2bd2e4a11e711166b3753dce"
+  },
+  {
+    "id": "witch-hunter-ordo-hereticus-purgation-force-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If (this model is leading a unit) and (the target is a PSYKER unit), this unit can re-roll any Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "b7407071f9878abc7231a31f8c8856df25f9433e402e4007d6bdb9ca24303115",
+    "pinnedHash": "755ff433079127007788993194c4ef2eeb8c7c5ed1c844e03c3d7b8b7dee22fa",
+    "coreHash": "a737b2a658ecb7a295c000b28164617fef78d7909ac846437d36c84a963e837f"
+  },
+  {
+    "id": "xenos-hunter-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "If (this model is leading a unit) and ((not (the target is a CHAOS unit)) and (not (the target is a IMPERIUM unit))), add 1 to this unit’s Hit rolls.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "sourceHash": "eb169d89d601af36fdeadeca8e0456c86636c71cfe52c3ab4d46bb1c08215871",
+    "pinnedHash": "eb169d89d601af36fdeadeca8e0456c86636c71cfe52c3ab4d46bb1c08215871",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "zealot-agents-of-the-imperium",
+    "state": "structured",
+    "summary": "You may use this effect: if it is the Fight phase, improve this model’s melee weapons Attacks by 3.\nImprove this model’s melee weapons Strength by 3.\nOnce per battle for this unit.\nLasts for this phase.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "sourceHash": "ab9b9f7106f2d30809b0a7d8bcb51b893f1eac902072bb67a87e4840b7ecc8b2",
+    "pinnedHash": "ab9b9f7106f2d30809b0a7d8bcb51b893f1eac902072bb67a87e4840b7ecc8b2",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "id": "zealot-preacher-teguen-agents-of-the-imperium",
+    "state": "needs-summary",
+    "summary": "When Preacher Teguen is selected to fight, his melee weapons gain +3 Attacks and +3 Strength for that phase. Source review: the saved permanent scope differs from the pinned phase scope, and this named variant has no usage limit; confirm its Combat Patrol limit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "sourceHash": "a3d4bfefca48233d4cc05f6e70c1d8896710b5262d8781ec0fe3939db6ed979e",
+    "pinnedHash": "ad630f97bec91488a213d0a497052467882c5ad2aa640064197304fe539362dc",
+    "coreHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  }
+]

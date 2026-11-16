@@ -10,8 +10,8 @@
  function pageContext(state,active,deck,records){
   const options=new Map(),names=new Set(),faction=records.find(r=>r.kind==='faction'&&(norm(r.name)===norm(state.army.faction)||(r.data.aliases||[]).some(a=>norm(a)===norm(state.army.faction))))?.name||state.army.faction;
   const add=(row,group,observed={})=>{if(row&&!options.has(row.key))options.set(row.key,{key:row.key,name:row.name,kind:row.kind,group,revision:row.revision,observed:{name:row.name,...observed},timing:reportTiming(row.data,{...state,window:active.window||'act'})});};
-  const rule=a=>{const row=records.find(r=>r.kind==='rule'&&r.data.id===a.id)||records.find(r=>r.kind==='rule'&&a.sourceRuleId&&r.data.sourceRuleId===a.sourceRuleId);add(row,'Abilities',{summary:a.summary,targets:a.targetText||'',phase:a.phase,turn:a.turn,window:a.window,...(a.timings?{timings:a.timings}:{})});};
-  const unit=u=>{for(const m of u.members||[u.body])if(m?.name){names.add(m.name);add(records.find(r=>unitInFaction(r,faction)&&norm(r.name)===norm(m.name)),'Units');}};
+  const rule=a=>{const row=(a.sourceCatalogKey&&records.find(r=>r.key===a.sourceCatalogKey))||records.find(r=>r.kind==='rule'&&r.data.id===a.id)||records.find(r=>r.kind==='rule'&&a.sourceRuleId&&r.data.sourceRuleId===a.sourceRuleId);add(row,'Abilities',{summary:a.summary,targets:a.targetText||'',phase:a.phase,turn:a.turn,window:a.window,...(a.timings?{timings:a.timings}:{})});};
+  const unit=u=>{for(const m of u.members||[u.body])if(m?.name){names.add(m.name);add(records.find(r=>r.kind==='unit'&&r.key===L.unitInfo(m,state.army.faction)?.sourceCatalogKey)||records.find(r=>unitInFaction(r,faction)&&norm(r.name)===norm(m.name)),'Units');}};
   for(const card of deck.unitCards||[]){unit(card.unit);for(const a of card.items)rule(a);if(card.fightsFirst){const first=records.find(r=>r.key==='rule:fights-first');if(first)rule(first.data);}}
   for(const a of deck.shared||[]){rule(a);for(const u of a.appliesTo||[])unit(u);}
   add(records.find(r=>r.key==='step:'+active.id),'Core sequence',{summary:active.body,window:active.window});
@@ -21,15 +21,15 @@
   const options=[],snapshot=question.review||{},unit=snapshot.units?.[0],rule=snapshot.rule;
   function add(row,observed){if(!row||options.some(o=>o.key===row.key))return;options.push({key:row.key,name:row.name,kind:row.kind,group:row.kind==='unit'?'Units':'Abilities',revision:row.revision,observed:{name:row.name,...observed},timing:reportTiming(row.data)});}
   const matchingRules=records.filter(r=>r.kind==='rule'&&!r.data.sharedRuleId&&(r.data.memberships||[{faction:r.faction}]).some(m=>m.faction==='*'||norm(m.faction)===norm(question.faction)));
-  const ruleRow=rule?matchingRules.find(r=>r.data.id===rule.id)||matchingRules.find(r=>rule.sourceRuleId&&(r.data.sourceRuleId===rule.sourceRuleId||r.data.id===rule.sourceRuleId)):null;
+  const ruleRow=rule?records.find(r=>r.kind==='rule'&&r.key===rule.sourceCatalogKey)||matchingRules.find(r=>r.data.id===rule.id)||matchingRules.find(r=>rule.sourceRuleId&&(r.data.sourceRuleId===rule.sourceRuleId||r.data.id===rule.sourceRuleId)):null;
   const matchingUnits=records.filter(r=>unitInFaction(r,question.faction));
-  const findUnit=u=>matchingUnits.find(r=>r.data.id===u.id||r.data.unitMemberships?.some(m=>m.faction===question.faction&&m.unitId===u.id))||matchingUnits.find(r=>norm(r.name)===norm(u.name));
+  const findUnit=u=>records.find(r=>r.kind==='unit'&&r.key===u.sourceCatalogKey)||matchingUnits.find(r=>r.data.id===u.id||r.data.unitMemberships?.some(m=>m.faction===question.faction&&m.unitId===u.id))||matchingUnits.find(r=>norm(r.name)===norm(u.name));
   const unitRow=unit?findUnit(unit):null;
   if(ruleRow)add(ruleRow,{summary:rule.summary,targets:rule.targetText||'',phase:rule.phase,turn:rule.turn,window:rule.window,...(rule.timings?{timings:rule.timings}:{})});
   if(unitRow)add(unitRow,question.mode==='stats'?{summary:question.explanation.summary,profile:Object.fromEntries(['name','M','T','Sv','W','Ld','OC','invuln_sv'].filter(key=>snapshot.profile[key]!==undefined).map(key=>[key,copy(snapshot.profile[key])])),stat:snapshot.stat,answer:question.correct}:{summary:question.explanation.summary,ability:rule?.name||''});
   for(const related of snapshot.units||[])if(related!==unit)add(findUnit(related),{summary:question.explanation.summary,ability:rule?.name||''});
   const preferred=['stats','units'].includes(question.mode)?unitRow:ruleRow;
-  const currentRule=ruleRow?M.enrich(ruleRow.data):null,snapshotChanged=!!currentRule&&['summary','targetText','phase','turn','window','timings','units','conditions'].some(key=>(key==='timings'||rule[key]!==undefined)&&JSON.stringify(rule[key])!==JSON.stringify(currentRule[key]));
+  const currentRule=ruleRow?M.enrich(ruleRow.data):null,snapshotChanged=!!currentRule&&['summary','targetText','phase','turn','window','timings','units','conditions'].some(key=>!(rule.allied&&key==='units')&&(key==='timings'||rule[key]!==undefined)&&JSON.stringify(rule[key])!==JSON.stringify(currentRule[key]));
   return {title:'Are we wrong?',defaultKey:preferred?.key||options[0]?.key||'',defaultIssue:(preferred||options[0])?.kind==='unit'?'other':'summary',context:{origin:'practice',snapshotChanged,faction:question.faction,stepId:'practice:'+key,stepTitle:'Practice — '+question.prompt,questionId:question.id,questionType:question.mode,correctAnswer:question.options.find(o=>o.id===question.correct)?.label||'',ability:rule?.name||''},options:options.sort((a,b)=>a.group.localeCompare(b.group)||a.name.localeCompare(b.name))};
  }
  function validateSubmission(payload){

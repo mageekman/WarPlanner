@@ -24,7 +24,7 @@
   });
  }
  function orderedUnits(state){return units(state.army).map(unit=>{
-  const hints=unit.members.map(m=>L.guideMeta(L.unitInfo(m.name,state.army.faction)||{},'unit',state));
+  const hints=unit.members.map(m=>L.guideMeta(L.unitInfo(m,state.army.faction)||{},'unit',state));
   const hint=chooseOrder(hints);return {...unit,priority:hint.priority,orderHint:hint.note};
  }).sort((a,b)=>a.priority-b.priority);}
  function chooseOrder(hints){const early=hints.filter(h=>h.priority<100).sort((a,b)=>a.priority-b.priority);return early[0]||hints.filter(h=>h.priority>100).sort((a,b)=>b.priority-a.priority)[0]||{priority:100,label:'',note:'',order:'normal'};}
@@ -35,15 +35,18 @@
   if(!a||!L.guideRule(a,state)||(!armyMatched&&!L.matches(a,state.army))||!L.ruleMatchesContext(a,state))return false;
   // Native Support models can supply their own attached-unit abilities. A
   // manually assigned Support role alone cannot bypass the catalog requirement.
+  if(a.allied&&!unit.members.some(m=>a.alliedUnitIds.includes(L.unitInfo(m,state.army.faction)?.id)))return false;
+  if(!a.allied&&['army','stratagem','enhancement'].includes(a.category)&&unit.members.every(m=>L.unitInfo(m,state.army.faction)?.allied))return false;
+  if(a.requiredLeaderKeywords&&(!unit.attached||!unit.leaders.some(m=>a.requiredLeaderKeywords.every(k=>L.unitInfo(m,state.army.faction)?.keywords.some(v=>norm(v)===norm(k))))))return false;
   if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>a.units.includes(m.name)&&(m.role==='leader'||m.role==='support'&&L.unitHasRule(m,'support',state.army.faction)))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
   if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
   if(a.expanded&&a.sourceRuleId){
-   const refs=unit.members.flatMap(m=>(L.unitInfo(m.name,state.army.faction)?.abilities||[]).filter(r=>r.id===a.sourceRuleId).map(r=>({entry:m,ref:r})));
+   const refs=unit.members.flatMap(m=>(L.unitInfo(m,state.army.faction)?.abilities||[]).filter(r=>(r.id===a.sourceRuleId||r.id===a.id)).map(r=>({entry:m,ref:r})));
    if(refs.length&&refs.every(({entry,ref})=>ref.wargear&&!entry.details.some(d=>norm(d).includes(norm(ref.wargear)))))return false;
   }
   if(['swift','flitting','star-engines','opportunity','fade','sudden'].includes(a.id)&&!unit.members.every(m=>L.unitHasRule(m,'battle-focus-aeldari',state.army.faction)))return false;
-  if(L.isDeepStrike(a)&&!unit.members.every(m=>L.unitHasRule(m,'deep-strike',state.army.faction)))return false;
-  if(a.units.length&&!a.units.some(name=>has(unit,name)))return false;
+  if(L.isDeepStrike(a)&&!unit.members.every(m=>L.unitHasRule(m,'deep-strike',state.army.faction,state.army)))return false;
+  if(a.units.length&&!unit.members.some(m=>L.unitInRule(m,a,state.army)&&a.units.some(name=>norm(name)===norm(m.name))))return false;
   if(['path-warrior','khaines','final-breath','aspect-stratagems'].includes(a.id)&&!unitIsAspect(unit)&&!has(unit,'Avatar of Khaine'))return false;
   if(a.id==='warrior-focus-stratagem'&&!unitIsAspect(unit)&&!has(unit,'Avatar of Khaine'))return false;
   if(a.id==='preternatural-precision-stratagem'&&!unitIsAspect(unit))return false;
@@ -74,7 +77,7 @@
  function fightsFirst(state,unit){
   if(state.phase!==4)return false;
   return unit.members.length>0&&unit.members.every(m=>{
-   const override=L.unitInfo(m.name,state.army.faction)?.fightsFirst;
+   const override=L.unitInfo(m,state.army.faction)?.fightsFirst;
    if(override==='yes')return true;if(override==='no')return false;
    return L.isAeldari(state.army)&&leading(unit,'The Visarch')||L.unitHasRule(m,'fights-first',state.army.faction)||L.isAeldari(state.army)&&(['howlingbanshees','jainzar'].includes(norm(m.name))||(norm(m.name)==='autarch'&&leading(unit,'Autarch','Howling Banshees')));
   });
@@ -172,7 +175,7 @@
   const stepCards=step.activationMode?null:L.forStep(state,step).filter(a=>!a.sequencePreview);
   const ruleKey=a=>JSON.stringify([a.id,a.name,a.summary,a.conditions,a.sourceIds]);
   function typeFor(member){
-   const key=norm(member.name);
+   const key=norm(member.name)+(member.catalogUnitId?'|'+member.catalogUnitId:'');
    if(!types.has(key)){
     const display=units({faction:state.army.faction,units:[{...structuredClone(member),group:'',role:''}]})[0];display.id='unit-type-'+key;
     types.set(key,{unit:display,instances:[],items:new Map(),sharedIds:new Set()});
@@ -181,7 +184,7 @@
   }
   function owners(a,unit){
    if(a.enhancement)return unit.members.filter(m=>L.enhancementEquipped(a,m,state.army));
-   return a.units?.length?unit.members.filter(m=>a.units.some(name=>norm(name)===norm(m.name))):unit.members;
+   return a.units?.length?unit.members.filter(m=>L.unitInRule(m,a,state.army)&&a.units.some(name=>norm(name)===norm(m.name))):unit.members;
   }
   for(const unit of orderedUnits(state)){
    for(const member of [unit.body,...unit.members.filter(m=>m!==unit.body)]){const record=typeFor(member);if(!record.instances.some(u=>u.id===unit.id))record.instances.push(unit);}
@@ -194,7 +197,7 @@
     if(a.guideShared||['army','stratagem','core-stratagem'].includes(a.category)){
      if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[],battlefieldUnits:[]});
      const shared=sharedMap.get(key);shared.battlefieldUnits.push(unit);
-     for(const member of unit.members){const record=typeFor(member);if(!shared.appliesTo.some(u=>norm(u.body.name)===norm(member.name)))shared.appliesTo.push(record.unit);record.sharedIds.add(key);}
+     for(const member of unit.members.filter(m=>L.unitInRule(m,a,state.army))){const record=typeFor(member);if(!shared.appliesTo.some(u=>norm(u.body.name)===norm(member.name)))shared.appliesTo.push(record.unit);record.sharedIds.add(key);}
     }else{
      for(const member of owners(a,unit)){
       const record=typeFor(member);
@@ -215,7 +218,7 @@
    for(const record of entry.records){record.items.delete(key);record.sharedIds.add(sharedKey);}
   }
   const unitCards=[...types.values()].map(r=>{
-   const source=L.unitInfo(r.unit.body.name,state.army.faction)||{},unitMeta=L.guideMeta(source,'unit',state);
+   const source=L.unitInfo(r.unit.body,state.army.faction)||{},unitMeta=L.guideMeta(source,'unit',state);
    const items=[...r.items.values()].sort((a,b)=>a.guideMeta.priority-b.guideMeta.priority);
    const hints=[unitMeta,...items.map(a=>a.guideMeta)],order=chooseOrder(hints);
    const mainActivation=!!step.activationMode&&!['pile','consolidate'].includes(step.activationMode);
@@ -253,7 +256,7 @@
    if(!coverageCache.has(key)){
     if(coverageCache.size>=80)coverageCache.delete(coverageCache.keys().next().value);
     coverageCache.set(key,{
-     unsupported:state.army.units.filter(u=>!L.unitInfo(u.name,state.army.faction)),
+     unsupported:state.army.units.filter(u=>!L.unitInfo(u,state.army.faction)),
      phaseHasAbilities:L.phases[state.phase].steps.some(step=>L.forStep(state,step).some(a=>!['core','core-stratagem'].includes(a.category)))
     });
    }
