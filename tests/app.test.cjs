@@ -422,5 +422,5 @@ test('saved lists group by army alliance and alphabetize names without changing 
 });
 
 test('home development notice retains pending areas, explains accuracy checks and links to rule reports',()=>{
- const a=app(undefined,{setup:true});a.click({view:'overview'});assert.match(a.html(),/WarPlanner is still in early development/);assert.match(a.html(),/confirm it against the current official rules/);assert.match(a.html(),/Genestealer Cults.*Core Rules/s);assert.doesNotMatch(a.html(),/<p>(World Eaters|Emperor’s Children|Leagues of Votann) ·/);assert.match(a.html(),/data-view="guide" data-action="open-rule-report">Report a rule error/);a.click({view:'guide',action:'open-rule-report'});assert.match(a.html(),/start the Guide to open the rule-report form/);
+ const a=app(undefined,{setup:true});a.click({view:'overview'});assert.match(a.html(),/WarPlanner is still in early development/);assert.match(a.html(),/confirm it against the current official rules/);assert.match(a.html(),/<p>Core Rules &amp; Stratagems<\/p>/);assert.doesNotMatch(a.html(),/<p>(World Eaters|Emperor’s Children|Leagues of Votann|Genestealer Cults) ·/);assert.match(a.html(),/data-view="guide" data-action="open-rule-report">Report a rule error/);a.click({view:'guide',action:'open-rule-report'});assert.match(a.html(),/start the Guide to open the rule-report form/);
 });
