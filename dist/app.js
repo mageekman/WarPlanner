@@ -156,7 +156,7 @@ function reminderPrefix(){return JSON.stringify([state.activeListId||'',state.ar
 function reminderKey(id){return reminderPrefix()+id;}
 function reviewReminder(id,title,html){
  const key=reminderKey(id),checked=state.reviewedReminders?.[key]===true,category=html.match(/\brule-([a-z-]+)/)?.[0]||'rule-ability';
- return `<section class="flash-card reminder-item ${category}${checked?' reminder-reviewed':''}">${html}<label class="reminder-review"><input type="checkbox" data-review-reminder="${escapeHTML(key)}" ${checked?'checked':''} aria-label="Reviewed: ${escapeHTML(title)}"> Reviewed</label></section>`;
+ return `<section class="flash-card reminder-item ${category}${checked?' reminder-reviewed':''}">${html}<label class="reminder-review"><input type="checkbox" data-review-reminder="${escapeHTML(key)}" ${checked?'checked':''} aria-label="Reviewed: ${escapeHTML(title)}"></label></section>`;
 }
 function flashBoard(active,deck=guideDeck(active)){
  if(!deck.count)return `<section class="army-lessons" aria-label="Your army at this step"><p class="ability-empty">No matching army abilities are listed for this step. Open ⓘ for the core sequence.</p></section>`;
