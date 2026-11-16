@@ -61,3 +61,32 @@ test('imported detachment identifiers also restrict saved-list material when the
 test('older combined detachment imports use each selected existing detachment in list practice',()=>{
  const C=require('../dist/content.js'),L=require('../dist/lessons.js');C.reset();const source=structuredClone(L.abilities.find(r=>r.category==='army'));const rules=['Warhost','Aspect Host','Unselected'].flatMap((det,i)=>Array.from({length:4},(_,j)=>({...structuredClone(source),id:'combined-'+i+'-'+j,name:'Rule '+i+' '+j,faction:'Aeldari',category:'army',detachment:det,units:[],summary:'Distinct benefit '+i+' '+j,importSource:undefined}))),army={name:'Combined',faction:'Aeldari',detachment:'Warhost, Aspect Host',detachments:['Warhost, Aspect Host'],units:[{name:'Fire Dragons'}]};const bank=Q.buildBank({faction:'Aeldari',army,rules,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.questions.length);for(const q of bank.questions.filter(q=>q.review.rule))assert.ok(['Warhost','Aspect Host'].includes(q.review.rule.detachment));assert.ok(bank.questions.some(q=>q.review.rule?.detachment==='Warhost'));assert.ok(bank.questions.some(q=>q.review.rule?.detachment==='Aspect Host'));C.reset();
 });
+
+test('opponent timing flips the army-owner turn and skips ambiguous or incomplete timings',()=>{
+ const data=source();data.rules.forEach((r,i)=>Object.assign(r,{phase:[i%5],turn:i%2?'opponent':'you',window:i%2?'end':'start'}));
+ data.rules.push(rule('unclear','ability',{phase:[1,2],turn:'you',window:'act'}),rule('unchecked-opponent','ability',{phase:[0],turn:'you',window:'start',sourceReview:true}),rule('reference-opponent','ability',{referenceOnly:true}));
+ const before=JSON.stringify(data),bank=Q.buildOpponentBank(data),own=bank.questions.find(q=>q.id==='opponent-timing:r0'),reaction=bank.questions.find(q=>q.id==='opponent-timing:r1');
+ assert.ok(own&&reaction);assert.match(own.correct,/Command.*Opponent’s turn.*Start/);assert.match(reaction.correct,/Movement.*Your turn.*End/);assert.equal(own.review.rule.turn,'you');
+ assert.ok(!bank.questions.some(q=>q.id==='opponent-timing:unclear'));assert.ok(!bank.questions.some(q=>q.review.rule?.id==='unchecked-opponent'||q.review.rule?.id==='reference-opponent'));assert.equal(JSON.stringify(data),before);
+ for(const q of bank.questions){assert.equal(q.options.length,4);assert.equal(new Set(q.options.map(o=>o.label)).size,4);assert.equal(q.options.filter(o=>o.id===q.correct).length,1);assert.ok(q.options.every(o=>o.faction==='Test'));}
+ const session=Q.createSession(bank,{types:['timing','effects'],count:10,random:rng()});assert.equal(session.perspective,'opponent');assert.equal(new Set(session.questions.map(q=>q.mode)).size,2);
+});
+test('opponent detachment selection retains faction-wide rules and excludes other detachments',()=>{
+ const data=source();data.detachments=[{id:'chosen',name:'Chosen',faction:'Test'},{id:'other',name:'Other',faction:'Test'}];
+ data.rules.push(rule('chosen-rule','ability',{detachment:'Chosen'}),rule('other-rule','ability',{detachment:'Other'}),rule('shared-choice','ability',{memberships:[{faction:'Test',detachments:['Chosen']},{faction:'Other',detachments:[]}]}));
+ const all=Q.buildOpponentBank(data),chosen=Q.buildOpponentBank({...data,detachment:'Chosen'});assert.ok(all.studyRules.some(r=>r.id==='other-rule'));assert.ok(chosen.studyRules.some(r=>r.id==='chosen-rule'));assert.ok(chosen.studyRules.some(r=>r.id==='r0'));assert.ok(chosen.studyRules.some(r=>r.id==='shared-choice'));assert.ok(!chosen.studyRules.some(r=>r.id==='other-rule'));assert.equal(chosen.detachment,'Chosen');
+ assert.equal(Q.buildOpponentBank({...data,detachment:'Unknown'}).questions.length,0);assert.equal(Q.createSession(chosen,{types:['effects'],count:5}).detachment,'Chosen');
+});
+test('opponent effect answers remain distinct after hiding rule names and never use foreign rules',()=>{
+ const data=source();data.rules[0].summary='Rule r0 grants the same bonus.';data.rules[1].summary='Rule r1 grants the same bonus.';data.rules.push(rule('foreign-effect','ability',{faction:'Other'}));
+ const bank=Q.buildOpponentBank(data),q=bank.questions.find(q=>q.id==='opponent-effect:r0');assert.ok(q);assert.ok(!q.options.some(o=>o.id==='r1'));assert.ok(!bank.questions.some(q=>q.options.some(o=>o.id==='foreign-effect')));assert.equal(new Set(q.options.map(o=>o.label)).size,4);
+});
+test('retry missed questions preserves scope, excludes correct answers and uses fresh answer state',()=>{
+ const bank=Q.buildOpponentBank(source()),s=Q.createSession(bank,{types:['effects'],count:5,random:rng()});
+ for(let i=0;i<s.questions.length;i++){const q=s.questions[s.index];Q.answer(s,i%2?q.options.find(o=>o.id!==q.correct).id:q.correct);s.index++;}
+ const before=JSON.stringify(s),retry=Q.retryMissed(s,{random:rng(4)});assert.equal(retry.questions.length,2);assert.equal(retry.index,0);assert.deepEqual(retry.answers,[]);assert.equal(retry.perspective,'opponent');assert.deepEqual(new Set(retry.questions.map(q=>q.id)),new Set([s.questions[1].id,s.questions[3].id]));assert.equal(JSON.stringify(s),before);assert.equal(Q.answer(retry,retry.questions[0].correct),true);
+});
+test('opponent unit distractors retain ownership evidence from reference-only aliases',()=>{
+ const data=source();data.rules.push(rule('reference-owner','ability',{name:'Rule r0',summary:'Unchecked wording for the same ability.',referenceOnly:true,units:['Unit 1']}));
+ const bank=Q.buildOpponentBank(data),q=bank.questions.find(q=>q.id==='ability-unit:r0');assert.ok(q);assert.ok(!q.options.some(o=>o.id==='u1'));assert.ok(!bank.studyRules.some(r=>r.id==='reference-owner'));
+});

@@ -4,13 +4,14 @@
  const node=typeof module!=='undefined'&&module.exports,P=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles,M=node?require('./mechanics.js'):root.WarPlannerMechanics,L=node?require('./lessons.js'):root.WarPlanLessons;
  const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),text=s=>String(s||'').trim(),copy=x=>structuredClone(x);
  const modes={mixed:'Mixed practice',rules:'Match the rule',stats:'Unit stats',abilities:'Unit abilities',units:'Which unit has this ability?'};
+ const opponentModes={mixed:'Mixed opponent practice',effects:'Recognize the effect',timing:'Spot the timing',units:'Identify the opposing unit',abilities:'Know its abilities',stats:'Know its profile',rules:'Name the rule'};
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule','core-stratagem':'Core Stratagems',stratagem:'Stratagem',enhancement:'Enhancement'};
  function shuffle(items,random=Math.random){const result=[...items];for(let i=result.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;}
  function usable(rule){return !!text(rule.name)&&Object.hasOwn(categories,rule.category)&&!!text(rule.summary)&&(!M||M.summaryState(rule)==='available')&&!/needs a checked summary|no complete mechanics|no effect mechanics|check its full wording|source does not support a complete/i.test(rule.summary);}
  function format(value,key){return key==='M'?value+'″':['Sv','Ld','invuln_sv'].includes(key)?value+'+':String(value);}
  function known(value,key){return typeof value==='number'&&Number.isInteger(value)&&value>=(['Sv','Ld','invuln_sv'].includes(key)?1:0)&&value<=999||typeof value==='string'&&/^\d*D\d+(?:[+-]\d+)?$/.test(value);}
  function hideName(summary,name,replacement='this rule'){const escaped=name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return summary.replace(new RegExp('(^|[^a-z0-9])'+escaped+'(?=$|[^a-z0-9])','gi'),(_match,prefix)=>prefix+replacement);}
- function buildBank({rules=[],units=[],faction,army=null,detachments:catalogDetachments=[],random=Math.random}={}){
+ function buildBank({rules=[],units=[],faction,army=null,excludeReferenceOnly=false,detachments:catalogDetachments=[],random=Math.random}={}){
   // Catalog names and summaries recur in the choice/ownership loops. Keep this
   // cache local to one build so subsequent edits cannot retain stale values.
   const normalized=new Map(),norm=value=>{if(!normalized.has(value))normalized.set(value,String(value||'').toLowerCase().replace(/[^a-z0-9]/g,''));return normalized.get(value);};
@@ -36,7 +37,7 @@
   }
   // A repeated name within a detachment represents one possible answer.
   const unique=new Map();
-  const scoped=rules.filter(matches).map(r=>({...(M?M.enrich(r):r),faction:r.faction})),eligible=scoped.filter(relevant).filter(usable);
+  const scoped=rules.filter(matches).map(r=>({...(M?M.enrich(r):r),faction:r.faction})),eligible=scoped.filter(relevant).filter(r=>usable(r)&&(!excludeReferenceOnly||!r.referenceOnly));
   for(const r of eligible){const key=[r.category,norm(r.name),norm(r.detachment)].join(':');if(!unique.has(key))unique.set(key,r);}
   const all=[...unique.values()],label=r=>r.name+(r.detachment?' · '+r.detachment:''),questions=[];
   const choices=(correct,others)=>shuffle([correct,...shuffle(others,random).slice(0,3)],random).map(option=>({...option,faction}));
@@ -84,18 +85,51 @@
    questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),review:{kind:'stats',units:[unitView(u)],profile:copy(p),stat:f.key,sourceUrl:u.sourceUrl||'',sourceLabel:u.sourceLabel||'Current catalog unit profile'},explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
   }
   for(const q of questions)if(q.review.kind==='rule'&&['ability','core'].includes(q.review.rule.category))q.review.units=selectedUnits.filter(u=>hasRule(u,q.review.rule)).map(unitView);
-  return {faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['rules','stats','abilities','units'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
+  return {studyRules:all.map(ruleView),faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['rules','stats','abilities','units'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
+ }
+ function buildOpponentBank({detachment='',...args}={}){
+  const chosen=(args.detachments||[]).find(d=>norm(d.faction)===norm(args.faction)&&norm(d.name)===norm(detachment)&&d.enabled!==false&&d.siteExcluded!=='combat-patrol');
+  const ids=new Set(chosen?[chosen.name,chosen.id,chosen.importSource?.sourceId,chosen.importSource?.record?.id].filter(Boolean).map(norm):[]);
+  const rules=(args.rules||[]).filter(r=>(!detachment||chosen&&(r.memberships?L.ruleInArmy(r,{faction:args.faction,detachments:[chosen.name]}):!text(r.detachment||r.importSource?.record?.detachment_id)||ids.has(norm(r.detachment||r.importSource?.record?.detachment_id)))));
+  const base=buildBank({...args,army:null,excludeReferenceOnly:true,units:detachment&&!chosen?[]:args.units,rules:detachment&&!chosen?[]:rules}),material=base.studyRules||[],questions=base.questions.map(q=>({...q,prompt:q.mode==='units'?'Which opposing unit has this ability?':q.mode==='abilities'?q.prompt.replace('Which ability is listed for ','Which ability should you check on the opposing '):q.mode==='stats'?q.prompt.replace('What is ','What is the opposing '):q.prompt}));
+  const explanation=r=>({summary:r.summary,conditions:r.conditions||[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
+  const options=(correct,others)=>shuffle([correct,...shuffle(others,args.random).slice(0,3)],args.random).map(o=>({...o,faction:args.faction}));
+  const review=r=>({kind:'rule',rule:copy(r),units:[]});
+  for(const r of material){
+   const seen=new Set([norm(hideName(r.summary,r.name))]),others=material.filter(a=>{const key=norm(hideName(a.summary,a.name));if(a.category!==r.category||norm(a.name)===norm(r.name)||seen.has(key))return false;seen.add(key);return true;});
+   if(others.length<3)continue;
+   questions.push({id:'opponent-effect:'+r.id,mode:'effects',category:r.category,faction:args.faction,prompt:'What effect should you expect from your opponent’s '+r.name+'?',clue:[r.detachment?'Opponent detachment: '+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):''].filter(Boolean).join('\n')||'Recall the effect; its targets and conditions still apply.',correct:r.id,options:options({id:r.id,label:hideName(r.summary,r.name)},others.map(a=>({id:a.id,label:hideName(a.summary,a.name)}))),review:review(r),explanation:explanation(r)});
+  }
+  const flip=turn=>turn==='you'?'opponent':turn==='opponent'?'you':'either';
+  const timingRows=material.flatMap(r=>{
+   const timings=L.ruleTimings(r),unique=new Map(timings.map(t=>[JSON.stringify([t.phase,t.turn,t.window]),t]));
+   if(unique.size!==1)return [];
+   const t=[...unique.values()][0];
+   if(t.phase?.length!==1||!Number.isInteger(t.phase[0])||t.phase[0]<0||t.phase[0]>4||!['you','opponent','either'].includes(t.turn)||!L.timingWindows[t.window]||['round','round-end','prebattle'].includes(t.window))return [];
+   return [{rule:r,label:L.timingLabel({...t,turn:flip(t.turn)})}];
+  });
+  const timingChoices=[...new Set(timingRows.map(t=>t.label))];
+  for(const {rule:r,label} of timingRows){
+   const others=timingChoices.filter(t=>t!==label);if(others.length<3)continue;
+   questions.push({id:'opponent-timing:'+r.id,mode:'timing',category:r.category,faction:args.faction,prompt:'When does your opponent’s '+r.name+' apply?',clue:[r.detachment?'Opponent detachment: '+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):'','Recall its recorded phase, player turn and timing window. Turn labels are from your perspective.'].filter(Boolean).join('\n'),correct:label,options:options({id:label,label},others.map(label=>({id:label,label}))),review:review(r),explanation:{...explanation(r),opponentTiming:label}});
+  }
+  return {...base,perspective:'opponent',detachment:chosen?.name||'',invalidDetachment:!!detachment&&!chosen,questions,counts:Object.fromEntries(Object.keys(opponentModes).filter(m=>m!=='mixed').map(m=>[m,questions.filter(q=>q.mode===m).length]))};
  }
  function createSession(bank,{mode='mixed',types,count=10,random=Math.random}={}){
-  const kinds=Object.keys(modes).filter(key=>key!=='mixed');
-  if(!Object.hasOwn(modes,mode)||![5,10,20].includes(count))throw Error('Choose practice types and 5, 10 or 20 questions.');
+  const registry=bank.perspective==='opponent'?opponentModes:modes,kinds=Object.keys(registry).filter(key=>key!=='mixed');
+  if(!Object.hasOwn(registry,mode)||![5,10,20].includes(count))throw Error('Choose practice types and 5, 10 or 20 questions.');
   if(types!==undefined&&(!Array.isArray(types)||!types.length||types.some(type=>!kinds.includes(type))))throw Error('Select at least one valid question type.');
   const selected=[...new Set(types===undefined?(mode==='mixed'?kinds:[mode]):types)];
   const pools=Object.fromEntries(selected.map(m=>[m,shuffle(bank.questions.filter(q=>q.mode===m&&!!norm(bank.faction)&&norm(q.faction)===norm(bank.faction)&&q.options.length===4&&q.options.every(o=>norm(o.faction)===norm(bank.faction))),random)])),questions=[],availableTypes=selected.filter(m=>pools[m].length);
   while(questions.length<count){const available=shuffle(availableTypes.filter(m=>pools[m].length),random);if(!available.length)break;for(const m of available){if(questions.length>=count)break;questions.push(copy(pools[m].pop()));}}
-  return {faction:bank.faction,scope:bank.scope||'faction',listName:bank.listName||'',mode:availableTypes.length===1?availableTypes[0]:'mixed',types:availableTypes,requestedTypes:selected,questions,index:0,answers:[]};
+  return {perspective:bank.perspective||'army',detachment:bank.detachment||'',faction:bank.faction,scope:bank.scope||'faction',listName:bank.listName||'',mode:availableTypes.length===1?availableTypes[0]:'mixed',types:availableTypes,requestedTypes:selected,questions,index:0,answers:[]};
  }
 
  function answer(session,id){const q=session.questions[session.index];if(!q||session.answers.length!==session.index||!q.options.some(o=>o.id===id))return false;session.answers.push({id,correct:id===q.correct});return true;}
- const api={modes,categories,shuffle,buildBank,createSession,answer};if(node)module.exports=api;else root.WarPlannerPractice=api;
+ function retryMissed(session,{random=Math.random}={}){
+  const questions=shuffle(session.questions.filter((q,i)=>session.answers[i]&&!session.answers[i].correct).map(q=>({...copy(q),options:shuffle(copy(q.options),random)})),random);
+  const types=session.types.filter(type=>questions.some(q=>q.mode===type));
+  return {...session,questions,index:0,answers:[],isRetry:true,types,mode:types.length===1?types[0]:'mixed'};
+ }
+ const api={opponentModes,buildOpponentBank,retryMissed,modes,categories,shuffle,buildBank,createSession,answer};if(node)module.exports=api;else root.WarPlannerPractice=api;
 })(typeof window!=='undefined'?window:globalThis);

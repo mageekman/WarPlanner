@@ -1,5 +1,9 @@
 # WarPlanner — personal study edition, v0.28
 
+## Opponent practice
+
+In **Practice**, select **Prepare for an opponent**, choose a faction, and optionally choose a detachment. All detachments includes the faction’s checked rules; a selected detachment retains faction-wide rules while excluding unrelated detachment rules. Mix effect recognition, timing windows, opposing-unit identification, abilities, profile stats, and rule names. Timing choices use the player’s perspective; the original rule wording remains the opponent’s wording. Ambiguous timing entries, unknown stats, source-review flags and reference-only rules are skipped rather than guessed. Results show scores by question type and offer **Retry missed questions**, preserving the same material and reshuffling choices. Existing own-army and saved-list practice remain available.
+
 ## Workshop rules needing attention
 
 Open **Rules workshop → Needs attention** for a global list of rules with missing source mechanics, missing or unchecked summaries, source-review flags, or reference-only status. Filter by faction, issue, or search text; disabled rules are included by default. Shared entries appear once, superseded copies and archived Combat Patrol content are excluded, and results load in groups of 50. Open a pencil to use the existing Workshop editor. Saving refreshes the list; an entry stays listed while any issue remains.

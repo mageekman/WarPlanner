@@ -458,3 +458,6 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
 .attention-rules { display: grid; gap: 12px; margin: 16px 0; }
 .attention-rule h3 { margin-top: 0; }
 .attention-summary { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 13px; line-height: 1.6; }
+
+.practice-type-results { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+.practice-type-results p { margin: 0; padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; font-size: 12px; }
