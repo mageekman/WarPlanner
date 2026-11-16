@@ -1,0 +1,209 @@
+[
+  {
+    "id": "adaptable-fighters-genestealer-cults",
+    "summary": "Combat Patrol — Claw of Ascension Atalan Jackals only. Each time this unit is selected to attack, choose Sustained Hits 1 or Lethal Hits for those attacks. Choose one, not both; make a new choice on a later selection to attack. This is not the ordinary Jackals datasheet ability.",
+    "phase": [
+      1,
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "select",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "opponent",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "crossfire-claw-of-ascension-achilles-ridgerunner-genestealer-cults",
+    "summary": "Combat Patrol — after this Ridgerunner unit shoots in your Shooting phase, choose one enemy hit by those attacks that has not already been selected for Crossfire this turn. Friendly GENESTEALER CULTS attacks against that enemy improve AP by 1 until the turn ends. Repeated providers cannot select that enemy again that turn; do not copy the ordinary datasheet’s different limit.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "cult-ambush-claw-of-ascension-genestealer-cults",
+    "summary": "Combat Patrol starts with 2 Resurgence points. When a unit is destroyed and every model has Cult Ambush, spend 2 points to replace a five-model Claw of Ascension Atalan Jackals or Hybrid Metamorphs unit at full Starting Strength and wounds, with One Shot weapons refreshed, in Cult Ambush. No cost is listed for Shanus or the Ridgerunner; this does not permit replacing them or attached Characters. Place a 32mm marker more than 9″ horizontally from enemies, or no marker if impossible. An enemy non-AIRCRAFT model ending any move within 8″ removes the marker. At the end of the opponent’s next Movement phase, each surviving marker can bring in one Cult Ambush unit: one model touches the marker, every other model is wholly within 3″, then remove the marker. Normal ingress placement and enemy reserve-denial restrictions still apply. This can arrive in round 1. Cult Ambush is Strategic Reserves: no Rapid Ingress and no automatic round-three destruction; normal Strategic Reserves arrival in a subsequent turn is another option. These are the Combat Patrol costs and 9″ placement rule, not the ordinary army table.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "timings": [
+      {
+        "phase": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "turn": "either",
+        "window": "react"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "opponent",
+        "window": "end"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "arrivals"
+      }
+    ]
+  },
+  {
+    "id": "cult-zealotry-claw-of-ascension-genestealer-cults",
+    "summary": "1CP. In either player’s Fight phase, when a friendly CLAW OF ASCENSION unit is selected to fight, target that unit. Re-roll Wound rolls for that unit’s melee attacks in that fight. This does not grant ranged re-rolls or another selection to fight.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "dedicated-to-the-end-claw-of-ascension-genestealer-cults",
+    "summary": "1CP. In either Fight phase, when an enemy unit targets a friendly CLAW OF ASCENSION unit, target that friendly unit. When a model in it is destroyed, if the unit has not been selected to fight this phase, roll D6: on 3+, retain that model until the unit has fought or the phase ends, whichever comes first, then remove it. Use the unit’s normal fight selection; this is not an immediate extra unit activation and does not work after it has already been selected to fight.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "guerrilla-warriors-claw-of-ascension-genestealer-cults",
+    "summary": "1CP. Your Movement phase, when a friendly CLAW OF ASCENSION unit is selected to Fall Back: target that unit. That Fall Back move does not prevent it from being eligible to shoot or declare a charge this turn. Other shooting and charge restrictions still apply; this grants no extra move.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "heavy-munitions-claw-of-ascension-genestealer-cults",
+    "summary": "Combat Patrol unit upgrade for the Claw of Ascension Achilles Ridgerunner only. Its missile launcher gains +1 Attacks, +1 Strength and improved AP by 1. This affects that weapon only, not the twin heavy stubber or all vehicle weapons. It is a unit upgrade, so a CHARACTER bearer is not required.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "opponent",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "master-outrider-shanus-daskovian-genestealer-cults",
+    "summary": "Combat Patrol — after Shanus’s unit shoots in your Shooting phase, it may make one Normal move of up to 6″. If it does, that unit cannot declare a charge until the turn ends. The imported two-move sequence represents one move, not two; it is the unit, including a legal attached bodyguard, that moves.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "practiced-eye-claw-of-ascension-genestealer-cults",
+    "summary": "Combat Patrol — CLAW OF ASCENSION JACKAL ALPHUS bearer only. At the start of your Shooting phase, choose one enemy unit; friendly CLAW OF ASCENSION attacks against that enemy gain +1 to Hit. The current reference states no range or visibility requirement and no separate expiry; none is invented here. This does not grant the benefit to ordinary GSC units without CLAW OF ASCENSION.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "priority-target-shanus-daskovian-genestealer-cults",
+    "summary": "Combat Patrol — after Shanus’s unit shoots in your Shooting phase, select one enemy hit by its cult sniper rifle attacks. Friendly GENESTEALER CULTS attacks against that enemy re-roll Hit rolls of 1. Hits with the autopistol alone do not qualify. The current reference gives no separate expiry; do not substitute a different Alphus variant’s duration.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "survey-augur-claw-of-ascension-achilles-ridgerunner-genestealer-cults",
+    "summary": "Combat Patrol — after this Ridgerunner unit shoots in your Shooting phase, select one enemy hit by those attacks. Friendly GENESTEALER CULTS attacks against it gain Ignores Cover. Survey Augur is fixed equipment on this Combat Patrol datasheet; no optional equipment choice is required. The current reference states no separate expiry.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "xenos-resilience-genestealer-cults",
+    "summary": "Combat Patrol — ranged attacks targeting a friendly CLAW OF ASCENSION unit subtract 1 from their Wound rolls only when the attack’s Strength is greater than that target unit’s Toughness. Equal Strength does not qualify. This does not reduce melee Wound rolls or apply to ordinary GSC units without CLAW OF ASCENSION.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "brood-claim-claw-of-ascension-genestealer-cults",
+    "summary": "Combat Patrol — at the end of your Movement phase, if this Claw of Ascension Hybrid Metamorphs unit controls an objective, that objective becomes secured. Apply the current mission’s secured-objective rules; this is separate from Cult Ambush and does not require an enemy unit to be destroyed.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  }
+]
