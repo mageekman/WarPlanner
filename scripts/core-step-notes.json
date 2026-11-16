@@ -1,0 +1,11 @@
+{
+  "charge-start": {
+    "answer": "Check the unit\u2019s movement and every restriction still lasting this turn. An exception for one move type does not cancel unrelated charge restrictions."
+  },
+  "shooting-after": {
+    "why": "Earlier shooting can enable a later unit\u2019s benefits; check the actual provider and target."
+  },
+  "movement-activations": {
+    "body": "Select each eligible unit in turn, including units that Remain Stationary. Resolve its move and immediate effects before selecting another unit. Apply the separate rules for embarked units and arrivals."
+  }
+}

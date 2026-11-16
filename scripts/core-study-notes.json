@@ -1,0 +1,217 @@
+[
+  {
+    "id": "core-benefit-of-cover",
+    "summary": "Against a ranged attack, every model in the target unit must qualify for cover: eligible INFANTRY, BEASTS or SWARM models within terrain, or models not fully visible because of intervening terrain or obscuring models. Benefit of Cover worsens the attacking weapon’s Ballistic Skill by 1; it does not improve the saving throw or impose a Hit-roll modifier.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-command-re-roll",
+    "summary": "1CP. Either player’s turn, any phase, just after a friendly unit makes an Advance, Charge, Damage, Hazard, Hit, Save or Wound roll, or a roll determining a weapon’s number of attacks: re-roll that roll. For a multi-dice roll choose one die, except re-roll both dice of a Charge roll. This does not permit re-rolling a Battle-shock or Leadership test. A die cannot be re-rolled more than once.",
+    "state": "structured",
+    "section": "15.02",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "core-counteroffensive",
+    "summary": "2CP. Opponent’s Fight phase, during the Fight step just after an enemy unit resolves its attacks: select an eligible friendly unit. It gains Fights First until the phase ends and must be your next selection to fight. This does not make an otherwise ineligible unit eligible.",
+    "state": "structured",
+    "section": "15.12",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "core-crushing-impact",
+    "summary": "1CP. Your Charge phase, just after a friendly MONSTER or VEHICLE unit ends a Charge move: select one enemy unit engaged with it, then one model in your unit engaged with that enemy. Roll D6 equal to that model’s Toughness. Each 1 inflicts one mortal wound on your unit; each 5+ inflicts one on the enemy. Maximum 6 mortal wounds per unit. Previously called Tank Shock.",
+    "state": "structured",
+    "section": "15.06",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "after"
+  },
+  {
+    "id": "core-damaged",
+    "summary": "Damaged X: while this model has X or fewer wounds remaining, subtract 1 from its attacks’ Hit rolls. Use the threshold printed on the current datasheet; there is no universal half-wounds threshold.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-damaged-objective-control",
+    "summary": "Needs source review. This historical import does not establish a universal Damaged Objective Control rule in the current Core rules. Apply an OC reduction only if the current datasheet explicitly specifies its threshold and effect. Do not assume that every damaged vehicle loses OC.",
+    "state": "needs-summary",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-deadly-demise",
+    "summary": "When this model is destroyed, after passengers have emergency disembarked, roll one D6. On a 6, each unit within 6″ suffers the mortal wounds specified by Deadly Demise X. Roll separately for each affected unit if X is random. Friendly units are affected too; use the datasheet’s value and any explicit exception.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-deep-strike",
+    "summary": "When a unit with Deep Strike on every model arrives from Strategic Reserves, it can be set up anywhere on the battlefield more than 8″ horizontally from all enemy units, including in the enemy deployment zone. Obey battle-round arrival restrictions and enemy reserve-denial rules. This does not grant a round-one arrival or allow an attached model without Deep Strike to join the arrival.",
+    "state": "structured",
+    "section": "24; relevant core ability",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "core-epic-challenge",
+    "summary": "1CP. Either player’s Fight phase, when a friendly CHARACTER unit is selected to fight: select one CHARACTER model in that unit. Its melee weapons gain Precision until the phase ends. The benefit does not apply to every model in the attached unit.",
+    "state": "structured",
+    "section": "15.03",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "select"
+  },
+  {
+    "id": "core-explosives",
+    "summary": "1CP. Your Shooting phase: select an unengaged friendly unit with EXPLOSIVES/GRENADES that is eligible to shoot and has not Advanced. Select one equipped model and an unengaged visible enemy unit within 8″ of it. Roll six D6; each 4+ inflicts one mortal wound on that enemy. Previously called Grenade.",
+    "state": "structured",
+    "section": "15.05",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "core-feel-no-pain",
+    "summary": "Feel No Pain X+: each time this model would lose a wound, roll one D6; on X+ that wound is not lost. Roll for each wound, including mortal wounds, rather than once per attack or failed save. If more than one Feel No Pain applies, use only one. Read the datasheet for the threshold and any restricted damage types.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-fights-first",
+    "summary": "A unit with Fights First on every model fights in the Fights First part of the Fight step, provided it is eligible to fight. The active player selects first; players alternate, with the player whose selection would be next starting Remaining Combats after all eligible Fights First units have fought. Fights First alone does not create eligibility.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-fire-overwatch",
+    "summary": "1CP. End of the opponent’s Movement phase: select an unengaged friendly non-TITANIC unit to make snapshooting attacks against one eligible visible enemy within 24″. Only unmodified Hit rolls of 6 hit, regardless of Ballistic Skill or modifiers, and Hit rolls cannot be re-rolled. Current reference clarifies these hits are not Critical Hits. The unit cannot perform actions until phase end. This is not an old-edition move-start or move-end trigger.",
+    "state": "structured",
+    "section": "24; relevant core ability",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "core-firing-deck",
+    "summary": "Firing Deck X: when this TRANSPORT is selected to shoot in your Shooting phase, choose up to X embarked models whose units have not already shot this phase. Select one ranged weapon per chosen model, excluding One Shot weapons. The transport has those weapons until its attacks resolve, and those embarked units cannot shoot again this turn. The transport is the attacker; passengers’ abilities do not automatically transfer.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-heroic-intervention",
+    "summary": "1CP base. At the end of the opponent’s Charge phase, select an unengaged friendly unit within 12″ of an enemy. A VEHICLE must also be a CHARACTER or WALKER. Before rolling the charge, choose Leap to Defend: charge only enemies that charged this phase within the rolled maximum distance; or Into the Fray: increase the original cost by 1CP, cap the modified charge roll at 6, and charge enemies within both 6″ and that rolled maximum distance. Apply normal charge restrictions and complete the charge to gain its normal benefits.",
+    "state": "structured",
+    "section": "15.11",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "core-hover",
+    "summary": "When this unit Takes to the Skies, do not subtract 2 from its maximum distance. Hover does not remove AIRCRAFT or replace the model’s Move characteristic; apply the current Takes to the Skies procedure.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-infiltrators",
+    "summary": "During deployment, a unit with Infiltrators on every model can be set up outside its deployment zone, more than 8″ horizontally from the enemy deployment zone and all enemy units. Apply the mission’s deployment restrictions.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-insane-bravery",
+    "summary": "1CP. Your Command phase’s Battle-shock step, just before a friendly unit takes a Battle-shock test: it automatically passes that test. Once per battle. It is not used after failing the test.",
+    "state": "structured",
+    "section": "15.04",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "shock"
+  },
+  {
+    "id": "core-leader",
+    "summary": "During Muster Armies, attach this LEADER to an eligible bodyguard unit listed on its current datasheet. Normally a bodyguard can have one Leader and one Support, unless a specific rule permits otherwise. An Attached unit shares unit keywords, not model keywords, and uses the highest bodyguard Toughness while bodyguards remain. Leading-only effects stop when the bodyguard is destroyed.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-lone-operative",
+    "summary": "Unless part of an Attached unit, this unit is not visible to enemy models outside the Lone Operative distance (normally 12″; use a printed alternative if present). An attacker outside that distance cannot target it even with indirect shooting. This does not grant the benefit to an attached bodyguard.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-rapid-ingress",
+    "summary": "1CP. End of the opponent’s Movement phase: one friendly non-AIRCRAFT unit in Strategic Reserves arrives as if in your Movement phase. No round-one arrival. Apply normal arrival restrictions and enemy denial rules; use Deep Strike only if every model qualifies.",
+    "state": "structured",
+    "section": "15.07",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "core-scouts",
+    "summary": "Scouts X, when every model has it: a unit in Strategic Reserves can deploy wholly within your deployment zone, or a unit wholly within your deployment zone can make a Scout move up to X, ending more than 8″ from enemies. An eligible DEDICATED TRANSPORT wholly within your deployment zone may Scout when every embarked model has Scouts. Use the printed distance; there is no universal 6″ default.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-smokescreen",
+    "summary": "1CP. Start of the opponent’s Shooting phase: select one friendly SMOKE unit. Until phase end, attacks targeting it have Benefit of Cover, as do attacks against another unit not fully visible because of those smoke models. Cover worsens Ballistic Skill by 1; this does not grant Stealth or a separate Hit-roll penalty.",
+    "state": "structured",
+    "section": "15.10",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "start"
+  },
+  {
+    "id": "core-stealth",
+    "summary": "While every model in this unit has Stealth, it has Benefit of Cover against ranged attacks. Cover worsens the attacking weapon’s Ballistic Skill by 1. This is not the old -1 to Hit rule and does not stack a second cover benefit.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-super-heavy-walker",
+    "summary": "During a Normal, Advance or Fall Back move, this model can move through non-TITANIC models and horizontally through terrain up to 4″ high. Before moving, it may gain MOBILE until that move ends; if it does, roll one D6 after moving and on a 1 it becomes Battle-shocked. This is not unrestricted terrain movement and does not apply to a Charge move.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  },
+  {
+    "id": "core-support",
+    "summary": "During Muster Armies, attach this SUPPORT to an eligible bodyguard unit on its current datasheet. A bodyguard normally permits one Support alongside one Leader, subject to specific exceptions. Support is a distinct attachment role; it does not grant permission to lead every unit. Apply attached-unit and leading-effect restrictions to the actual eligible attachment.",
+    "state": "structured",
+    "section": "24; relevant core ability"
+  }
+]
