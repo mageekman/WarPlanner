@@ -142,7 +142,7 @@
   const unitIds=new Map(rows.filter(e=>!e.error&&e.kind==='unit').map(e=>[e.proposed.data.importSource?.record.id||e.proposed.data.id,e.proposed.data.id]));for(const entry of rows.filter(e=>!e.error&&e.kind==='unit'))entry.proposed.data.bodyguardIds=entry.proposed.data.bodyguardIds.map(id=>unitIds.get(id)||id);
   // Preserve the site-wide Combat Patrol exclusion for new linked records too.
   const combined=[...existing,...rows.filter(e=>!e.error).map(e=>e.proposed)],excluded=combined.filter(C.combatPatrolOnly),cpUnits=excluded.filter(r=>r.kind==='unit'),cpDets=excluded.filter(r=>r.kind==='detachment');
-  for(const entry of rows.filter(e=>!e.error&&e.kind==='rule')){const r=entry.proposed,d=r.data,own=combined.filter(u=>u.kind==='unit'&&L.factionMatches(u.faction,r.faction)&&(d.units||[]).includes(u.name)),rawIds=d.importSource?.record?.unit_ids||[];
+  for(const entry of rows.filter(e=>!e.error&&e.kind==='rule')){const r=entry.proposed,d=r.data;if(!C.siteExcluded(r)&&[d.gameModes,d.importSource?.record?.game_modes,d.importSource?.stratagem?.game_modes].filter(Array.isArray).flat().some(m=>norm(m)!=='combatpatrol'))continue;const own=combined.filter(u=>u.kind==='unit'&&L.factionMatches(u.faction,r.faction)&&(d.units||[]).includes(u.name)),rawIds=d.importSource?.record?.unit_ids||[];
    const cpDet=d.detachment&&cpDets.some(det=>L.factionMatches(det.faction,r.faction)&&norm(det.name)===norm(d.detachment)),cpOwners=own.length&&own.every(C.combatPatrolOnly),cpRaw=rawIds.length&&rawIds.every(id=>cpUnits.some(u=>u.data.id===id||u.data.importSource?.sourceId===id));
    if(cpDet||cpOwners||cpRaw)C.archiveCombatPatrol(r);
   }

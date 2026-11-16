@@ -10,4 +10,4 @@ The preserved snapshot is `tests/fixtures/combat-patrol-archive-before.json`. `s
 
 New source imports archive explicit Combat Patrol-only units/detachments and linked abilities instead of enabling them. Replacement imports, direct saves and batch writes preserve existing exclusions. The bundled online fallback’s 22 Aeldari Combat Patrol entries are also inactive.
 
-Validation: the full 700-test suite passed, followed by targeted content and archive tests for write safeguards (eight archive regressions after adding the direct-save test). Hosted checks run the final suite. Desktop/mobile browser checks cover absence from unit search, the real Guide, timeline detachment options and faction review while retaining regular GSC rules.
+Validation: the full 700-test suite passed, followed by targeted content and archive tests for write safeguards (nine archive regressions after adding direct-save and mixed-mode tests). Hosted checks run the final suite. Desktop/mobile browser checks cover absence from unit search, the real Guide, timeline detachment options and faction review while retaining regular GSC rules.
