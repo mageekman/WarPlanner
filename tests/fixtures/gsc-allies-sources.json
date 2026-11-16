@@ -1,0 +1,35 @@
+{
+  "checked": "2026-11-16",
+  "official": {
+    "url": "https://assets.warhammer-community.com/eng_22-07_warhammer_40,000_faction_pack_genestealer_cults-vmkwgeydbr-sh7picbeqo.pdf",
+    "version": "1.1",
+    "effective": "2026-07-22",
+    "checked": "2026-11-16",
+    "sha256": "045ee9f53f7b1e018e3fc06c5932cb8e1d9c308ea2e0c298a703c3ea5745d769"
+  },
+  "reference": {
+    "url": "https://wahapedia.ru/wh40k11ed/factions/genestealer-cults/",
+    "checked": "2026-11-16",
+    "sha256": "486c6d0cab5fdd21ad0e196018112314982a06e1d114f651ad1f809df8d663be"
+  },
+  "eligibilityNotes": [
+    "Ratling/Ratlings treated as the same exclusion; the current unit keyword is plural.",
+    "Current Valkyrie explicitly removes AIRCRAFT; current Taurox Prime has no MILITARUM TEMPESTUS. Do not apply older keyword assumptions.",
+    "Only current catalog entries are projected; Combat Patrol-only and Legends sheets are excluded.",
+    "Native source-review flags remain in effect; this does not certify points or all weapon profiles."
+  ],
+  "pages": [
+    {
+      "url": "https://wahapedia.ru/wh40k11ed/factions/astra-militarum/Valkyrie",
+      "sha256": "b0baba581614e6b75b351e060cbf6311945e4d162248bf695401baff14e2f4a5"
+    },
+    {
+      "url": "https://wahapedia.ru/wh40k11ed/factions/astra-militarum/Ratlings",
+      "sha256": "c06b156d5b4faf4f7b21a85c0805be6ad2f50ecf1d125b2e4e8f5bdf8d8eb7e8"
+    },
+    {
+      "url": "https://wahapedia.ru/wh40k11ed/factions/astra-militarum/Taurox-Prime",
+      "sha256": "1b788b6b0cf0b4ca33bda3cbb7cc8ae68bfeefb34e96a889ff7ac4672a95ae58"
+    }
+  ]
+}
