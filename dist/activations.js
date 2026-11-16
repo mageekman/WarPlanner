@@ -35,8 +35,7 @@
   if(!a||!L.guideRule(a,state)||(!armyMatched&&!L.matches(a,state.army))||!L.ruleMatchesContext(a,state))return false;
   // Native Support models can supply their own attached-unit abilities. A
   // manually assigned Support role alone cannot bypass the catalog requirement.
-  if(a.allied&&!unit.members.some(m=>a.alliedUnitIds.includes(L.unitInfo(m,state.army.faction)?.id)))return false;
-  if(!a.allied&&['army','stratagem','enhancement'].includes(a.category)&&unit.members.every(m=>L.unitInfo(m,state.army.faction)?.allied))return false;
+  if(!unit.members.some(m=>L.unitInRule(m,a,state.army)))return false;
   if(a.requiredLeaderKeywords&&(!unit.attached||!unit.leaders.some(m=>a.requiredLeaderKeywords.every(k=>L.unitInfo(m,state.army.faction)?.keywords.some(v=>norm(v)===norm(k))))))return false;
   if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>a.units.includes(m.name)&&(m.role==='leader'||m.role==='support'&&L.unitHasRule(m,'support',state.army.faction)))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
   if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
