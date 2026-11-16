@@ -50,7 +50,7 @@ test('all 62 unresolved records are excluded from practice answers and distracto
  const unavailable=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(unavailable.size,62);for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('restored units and audited abilities work in the real guide and detachment-filtered timeline',()=>{
- C.apply(after);const all=T.build(after,{faction:'Drukhari'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,164);assert.equal(all.index.filter(r=>r.kind==='unit').length,27);
+ C.apply(after);const all=T.build(after,{faction:'Drukhari'});assert.equal(all.index.filter(r=>r.kind==='rule'&&r.faction!=='*').length,164);assert.equal(all.index.filter(r=>r.kind==='unit').length,23);
  const state={phase:4,turn:'you',round:1,firstPlayer:'you',army:{faction:'Drukhari',detachments:['Coven of Agonies'],units:[{id:'new-wracks',name:'Coven of Agonies Wracks',models:5,details:[]}]}};
  const unit=A.units(state.army)[0],cards=A.stages(state,unit,'fight').flatMap(s=>s.cards);assert.ok(cards.some(c=>c.sourceRuleId==='experimental-enhancements-coven-of-agonies-wracks-drukhari'));
  const filtered=T.build(after,{faction:'Drukhari',detachment:'Coven of Agonies'});assert.ok(filtered.index.some(r=>r.key==='rule:agonising-onslaught-coven-of-agonies-drukhari'));assert.ok(!filtered.index.some(r=>r.key==='rule:dark-harvest-realspace-raiders-drukhari'));assert.ok(filtered.index.some(r=>r.key==='rule:power-from-pain-drukhari'));

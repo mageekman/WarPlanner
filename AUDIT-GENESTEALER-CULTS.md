@@ -1,5 +1,7 @@
 # Genestealer Cults study-data audit — 2026-11-16
 
+**Current site scope:** Combat Patrol-specific content is now archived and inactive at the owner’s request. Regular GSC has **24 active units, nine detachments and 135 rule summaries**. The Combat Patrol review below is preserved as history, not active site content. See [COMBAT-PATROL-SCOPE.md](COMBAT-PATROL-SCOPE.md).
+
 Scope: **186 uploaded records: 147 rules, 28 units with 30 named profiles, ten detachments and one faction**. The repair updates 147 rule summaries and 11 unit records (158 changes). IDs, imports, memberships, enabled states, profiles, faction and detachment records remain intact. This is a study-data audit, not certification of points, every weapon/Codex entry or full army legality.
 
 ## Completion follow-up — 2026-11-16

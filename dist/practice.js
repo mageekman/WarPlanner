@@ -14,7 +14,7 @@
   // Catalog names and summaries recur in the choice/ownership loops. Keep this
   // cache local to one build so subsequent edits cannot retain stale values.
   const normalized=new Map(),norm=value=>{if(!normalized.has(value))normalized.set(value,String(value||'').toLowerCase().replace(/[^a-z0-9]/g,''));return normalized.get(value);};
-  const matches=r=>!r.sourceReview&&(army||!r.allied)&&r.enabled!==false&&!!norm(faction)&&!!norm(r.faction)&&norm(r.faction)===norm(faction);
+  const matches=r=>r.siteExcluded!=='combat-patrol'&&!r.sourceReview&&(army||!r.allied)&&r.enabled!==false&&!!norm(faction)&&!!norm(r.faction)&&norm(r.faction)===norm(faction);
   const roster=army&&Array.isArray(army.units)?army.units:[],rosterNames=new Set(roster.map(u=>norm(u.name)));
   const validArmy=!army||!!roster.length&&!!norm(army.faction)&&(norm(army.faction)===norm(faction)||L?.factionMatches(army.faction,faction));
   const factionUnits=units.filter(matches),listUnits=validArmy?factionUnits.filter(u=>!army||roster.some(entry=>{const choices=factionUnits.filter(v=>norm(v.name)===norm(entry.name));return entry.catalogUnitId?u.id===entry.catalogUnitId:choices.length===1&&choices[0]===u;})):[];
