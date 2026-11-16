@@ -1,0 +1,1303 @@
+{
+  "checked": "2026-11-16",
+  "reference": {
+    "url": "https://wahapedia.ru/wh40k11ed/factions/astra-militarum/",
+    "sha256": "f106362ac751e79f570e9dc110eb48bc6a0b06db7231c43e4382dba9fc72aeeb"
+  },
+  "datasheets": {
+    "url": "https://wahapedia.ru/wh40k11ed/factions/astra-militarum/datasheets.html",
+    "sha256": "03786f2c326e2dd99a3e638be950d1014903b7801b941162dc60aec757398809"
+  },
+  "official": {
+    "url": "https://assets.warhammer-community.com/eng_22-07_warhammer_40000_faction_pack_astra_militarum-y4301esy7a-bsy7fkb1gw.pdf",
+    "sha256": "0746e92260f17d00fa6dfd0471d65f7d0736a0419e4a6482814db9b8d4cb20ac",
+    "version": "1.1",
+    "legal": "2026-07-22"
+  },
+  "core": {
+    "url": "https://wahapedia.ru/wh40k11ed/the-rules/core-rules/",
+    "sections": [
+      "13.09 Hidden/detection range",
+      "18.06 Assault Disembark",
+      "18.07 Shock Disembark"
+    ]
+  },
+  "checks": {
+    "adamantine-behemoth-steel-hammer-astra-militarum": {
+      "contextHash": "8a92dbd88c4ff4cadf0b14dcade0713a56888790d3a380a62e2ddeecaf645f6f",
+      "matches": [
+        {
+          "name": "ADAMANTINE BEHEMOTH",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "armour-obliteration-astra-militarum": {
+      "contextHash": "d76600f606f2c4652407eb96a28aea91f287dcb079640725e1eb714c4624bb1f",
+      "matches": [
+        {
+          "name": "Armour Obliteration",
+          "unit": "Banesword",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "armoured-fist-astra-militarum": {
+      "contextHash": "60142ab6427ef6df72621e55e0c2b11a5fe1243e814499c512da9754f8ab2ae0",
+      "matches": [
+        {
+          "name": "Armoured Fist",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "artillery-support-astra-militarum": {
+      "contextHash": "fb3073c8038003a27079d0f297574eeaf6fad9430db1f3b93dcf34879f07c549",
+      "matches": [
+        {
+          "name": "Artillery Support",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "assault-hatches-steel-hammer-astra-militarum": {
+      "contextHash": "31ceebbd3d9bb49bad1ab745229f290531da8aa7d76be2b7af3a7405d3d98c3a",
+      "matches": [
+        {
+          "name": "Assault Hatches",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "bold-leadership-mechanised-assault-astra-militarum": {
+      "contextHash": "2ae8ae8e3b1c2b70b6074699e9c5215d844816a1a7c9d9a602a713ca312cbe40",
+      "matches": [
+        {
+          "name": "Bold Leadership",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "bombast-class-vox-array-bridgehead-strike-astra-militarum": {
+      "contextHash": "93df59f39c744981235b69115d0f0431502160f6eba400cc3df2a2822d6d2df4",
+      "matches": [
+        {
+          "name": "Bombast-class Vox-array",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "born-soldiers-astra-militarum": {
+      "contextHash": "f14c87d7372e84ed5f7700ed024036141438512a670ff2589e68055ad4e9b57c",
+      "matches": [
+        {
+          "name": "Born Soldiers",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "bring-it-down-astra-militarum": {
+      "contextHash": "cf298538bf57972c0fe36a0fdac71be398c3db58eff99cf11270a4011cde1572",
+      "matches": [
+        {
+          "name": "Bring it Down!",
+          "unit": "Catachan Heavy Weapons Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "brutal-disciplinarian-astra-militarum": {
+      "contextHash": "2e5bcddc89504e153a74b11a329f105d5a6e20dded46e5a48451bffe72d08c74",
+      "matches": [
+        {
+          "name": "Brutal Disciplinarian",
+          "unit": "Commissar Graves",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "called-shots-astra-militarum": {
+      "contextHash": "3423875485be409c91164b2c0ab50a486ebe90f3f3e1b1cfdb61479364fdee12",
+      "matches": [
+        {
+          "name": "Called Shots",
+          "unit": "Rogal Dorn Commander",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "callous-sacrifice-siege-regiment-astra-militarum": {
+      "contextHash": "d642ebeb98ac1643b9f3e658ee71204c2d9146e9eda93caae8de631253629a1c",
+      "matches": [
+        {
+          "name": "CALLOUS SACRIFICE",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "calm-under-fire-hammer-of-the-emperor-astra-militarum": {
+      "contextHash": "30237c2a56f6deecf5da60b79d1320971a06a9b2d089f007126610810d9d8573",
+      "matches": [
+        {
+          "name": "Calm Under Fire",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "ceaseless-cannonade-astra-militarum": {
+      "contextHash": "cef3f48236bbf78c3fd60f0f8caa41205af838356cc78fadb5d362a97699a65a",
+      "matches": [
+        {
+          "name": "Ceaseless Cannonade",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "close-range-detection-designation-force-astra-militarum": {
+      "contextHash": "80344059b7893398735cea6570ce769083c2abcd0b0cf038b4b3681f3c21b701",
+      "matches": [
+        {
+          "name": "CLOSE-RANGE DETECTION",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "close-range-titan-killer-astra-militarum": {
+      "contextHash": "8056a8ff4c713252cbf64dc147991273d1f46432716bd40d96c4c81b2717fd81",
+      "matches": [
+        {
+          "name": "Close-range Titan Killer",
+          "unit": "Doomhammer",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "command-rod-astra-militarum": {
+      "contextHash": "8f72ef1da1570b0e7b954e09cb5c77c6aeecf0c1f29fb91920c2c55557630ddd",
+      "matches": [
+        {
+          "name": "Command Rod",
+          "unit": "Militarum Tempestus Command Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "convoy-escort-vehicle-astra-militarum": {
+      "contextHash": "b39a7ae003c00aacf87c44e9e3e6f035c677ae6e198b53874b6a030b8fab26a9",
+      "matches": [
+        {
+          "name": "Convoy Escort Vehicle",
+          "unit": "Hippogriff AFV",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "coordinated-action-combined-arms-astra-militarum": {
+      "contextHash": "0fda6e26c7e3ffcd8e7f1570aa7cb47d51a65efd3aba3d0e10043aa4c59ce214",
+      "matches": [
+        {
+          "name": "COORDINATED ACTION",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "courageous-diversion-recon-element-astra-militarum": {
+      "contextHash": "5833bff65ed4793b652c664a4b0d61468384ae92d9016f7698dd0a2d3f0522cb",
+      "matches": [
+        {
+          "name": "COURAGEOUS DIVERSION",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "covering-fire-astra-militarum": {
+      "contextHash": "e4a7120abd23a6a2f2559029b4627ee98eb06169b8fe45660cc31798eb93bd4e",
+      "matches": [
+        {
+          "name": "Covering Fire",
+          "unit": "Cadian Heavy Weapons Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "covert-stealth-team-astra-militarum": {
+      "contextHash": "f0810a1acef793c4bda91ca8f257b59402e220e2da69097ac513679996ccfdbc",
+      "matches": [
+        {
+          "name": "Covert Stealth Team",
+          "unit": "Gaunt’s Ghosts",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "crash-through-hammer-of-the-emperor-astra-militarum": {
+      "contextHash": "a56bc3709ddfaadf65ff05a6611ec2fb6f1d3f93c1fc0dbf35d02190f7b7e701",
+      "matches": [
+        {
+          "name": "CRASH THROUGH",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "death-befitting-an-officer-astra-militarum": {
+      "contextHash": "ffca85996a982c6c87ea3a42c728d509a7e56fd5cd35555fe53c59167661d41b",
+      "matches": [
+        {
+          "name": "Death Befitting An Officer",
+          "unit": "Leman Russ Commander",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "death-korps-medi-pack-astra-militarum": {
+      "contextHash": "6bb520cf9ef14de5778a8111a89462249ee8c8bf301890c030d7a163d7025892",
+      "matches": [
+        {
+          "name": "Death Korps Medi-pack",
+          "unit": "Death Korps Of Krieg",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "death-mask-of-ollanius-combined-arms-astra-militarum": {
+      "contextHash": "13ec51a2c0d4438d24d449bfd20a3f0362174188b0f9d009ff525d76b8b19531",
+      "matches": [
+        {
+          "name": "Death Mask of Ollanius",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "deathstrike-missile-astra-militarum": {
+      "contextHash": "ededbc23bef7a9a71647341cba775268d6c96b3318b1bed4984a3bbf29566dbc",
+      "matches": [
+        {
+          "name": "Deathstrike Missile",
+          "unit": "Deathstrike",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": true
+    },
+    "demolition-gear-astra-militarum": {
+      "contextHash": "812586b9ea3749004a43f6bb19a9479050a7e9a456485743a9e9997ed46dacd3",
+      "matches": [
+        {
+          "name": "Demolition Gear",
+          "unit": "Ratlings",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "deployment-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "designated-targets-astra-militarum": {
+      "contextHash": "b00867fb4a0782fcd1beb8384fd74f84c008f9167aff3f3080928168f8a2819b",
+      "matches": [
+        {
+          "name": "Designated Targets",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "drill-commander-combined-arms-astra-militarum": {
+      "contextHash": "de7e17b648e0cfcd1665aeebd3fae9e0cef12bd1b3592471fb53bd6b319c4b73",
+      "matches": [
+        {
+          "name": "Drill Commander",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "earthshaker-rounds-astra-militarum": {
+      "contextHash": "df8ed8f6922fb3a7a587a624d31b59e987eace753a2ecc027889db72dae3cc6f",
+      "matches": [
+        {
+          "name": "Earthshaker Rounds",
+          "unit": "Basilisk",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "emplacement-platform-astra-militarum": {
+      "contextHash": "cf0b524a8e20ddd9eec4df7727fa2b3d07be8001dc6137752365bcb0f8a0a673",
+      "matches": [
+        {
+          "name": "Emplacement Platform",
+          "unit": "Aegis Defence Line",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "engine-speaker-steel-hammer-astra-militarum": {
+      "contextHash": "38bd89afb97608d30ce8060b67cc7e0a3bfa4d21800e2c093ba5c5c05f7d5d9c",
+      "matches": [
+        {
+          "name": "Engine Speaker",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "exemplary-officer-armoured-infantry-astra-militarum": {
+      "contextHash": "c0bc27b7a06634e4195a390c77c1dd6b566272b74a70b700edc0dd053cbb8198",
+      "matches": [
+        {
+          "name": "Exemplary Officer",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "fields-of-fire-combined-arms-astra-militarum": {
+      "contextHash": "1e98967bc2e05ab6172e535d82104854d83d250dfdea4de6720233ee66722f7a",
+      "matches": [
+        {
+          "name": "FIELDS OF FIRE",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "fiery-vengeance-astra-militarum": {
+      "contextHash": "8257ebf3f462d8223bc1bce7cd2231273a1f6e0b9f70051276e103eb7b75193c",
+      "matches": [
+        {
+          "name": "Fiery Vengeance",
+          "unit": "Avenger Strike Fighter",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "final-duty-astra-militarum": {
+      "contextHash": "c49990de2a3cd22641c4b48339d74c1c262af6ac18abe4734874638b9e3b0571",
+      "matches": [
+        {
+          "name": "Final Duty",
+          "unit": "Krieg Heavy Weapons Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "fire-zone-purge-astra-militarum": {
+      "contextHash": "b64a04d3c3686ddfbdf68fdae8d0d5bc72762f28a2d04ac30f41deb935983455",
+      "matches": [
+        {
+          "name": "Fire Zone Purge",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "flash-grenades-siege-regiment-astra-militarum": {
+      "contextHash": "980b00619d37e5be0c26e6c150ffa0c7c82461b4f65a3045398e213c39b8ea7e",
+      "matches": [
+        {
+          "name": "Flash Grenades",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "flexible-command-combined-arms-astra-militarum": {
+      "contextHash": "2d396ed6107d0246aff7aa091f53d2375717e1c5862b55242c12ddefd10df617",
+      "matches": [
+        {
+          "name": "FLEXIBLE COMMAND",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "flush-them-out-astra-militarum": {
+      "contextHash": "b16a724aa210a777c608808f2ef443fec47b9008378c594f0c9433c7529abf8b",
+      "matches": [
+        {
+          "name": "Flush Them Out",
+          "unit": "Hellhound",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "furious-barrage-astra-militarum": {
+      "contextHash": "b2aba28333185d73bb37e3cc7ae6659154de50b984fd8b991e8125b7ef60f45e",
+      "matches": [
+        {
+          "name": "Furious Barrage",
+          "unit": "Manticore",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "grand-strategist-armoured-infantry-astra-militarum": {
+      "contextHash": "3c0c64f4362ca1626ab26740b8965c7a696f796c77864a2d2957ed0ed7146f78",
+      "matches": [
+        {
+          "name": "Grand Strategist",
+          "unit": "",
+          "kind": "enhancement"
+        },
+        {
+          "name": "Grand Strategist",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "grim-demeanour-astra-militarum": {
+      "contextHash": "1f93b20299e5db231c2b7193d5e8183c9fc65c76563629d79e3ce64421fc5a7f",
+      "matches": [
+        {
+          "name": "Grim Demeanour",
+          "unit": "Death Korps Of Krieg",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "grim-determination-astra-militarum": {
+      "contextHash": "fd6605a65fae85f7f3ac2e52e9cd70a3ca252db48af0f5070d556c1366ba2b67",
+      "matches": [
+        {
+          "name": "Grim Determination",
+          "unit": "Krieg Command Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "guerrilla-honours-recon-element-astra-militarum": {
+      "contextHash": "d85f71ff00eb5843cc1b090db6e1519d43d48991945fc014f126d98de2425aba",
+      "matches": [
+        {
+          "name": "Guerrilla Honours",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "gung-ho-command-astra-militarum": {
+      "contextHash": "e83fea00539101c9b325f4a2cf108019bb118b7be8c421897ff15cc41b1bb9b4",
+      "matches": [
+        {
+          "name": "Gung-ho Command",
+          "unit": "Catachan Command Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "hasty-extraction-mechanised-assault-astra-militarum": {
+      "contextHash": "39c45aab479318ba33753593e7634574faa329156ee10f4e0cb0a860625eec6d",
+      "matches": [
+        {
+          "name": "HASTY EXTRACTION",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "hero-of-hades-hive-astra-militarum": {
+      "contextHash": "e1622e221214014746864b506c6fe5e485f88f878dcd8d28782feaa12606874d",
+      "matches": [
+        {
+          "name": "Hero of Hades Hive",
+          "unit": "Commissar Yarrick",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": true
+    },
+    "icon-of-discipline-astra-militarum": {
+      "contextHash": "5519d3530299e46ed2266f3d895479042ba89a1ab85b5ce4693a6774b4b167c6",
+      "matches": [
+        {
+          "name": "Icon of Discipline",
+          "unit": "Commissar Graves on Foot",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "imposing-arrival-steel-hammer-astra-militarum": {
+      "contextHash": "fc4f84d7ce03bc9527a70b09b1a2f1368e3875c1f481f0d5cba3030a5152499f",
+      "matches": [
+        {
+          "name": "IMPOSING ARRIVAL",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "independent-operatives-astra-militarum": {
+      "contextHash": "1556f2a2648f5fa10099f28867d51b183db554225ea33fa13b815e9a14a24279",
+      "matches": [
+        {
+          "name": "Independent Operatives",
+          "unit": "Cadian Recon Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "iron-tread-astra-militarum": {
+      "contextHash": "fc454ab885432d7d45e613826c0a07950fa5b7008d59545986a9b0a4d9b782c0",
+      "matches": [
+        {
+          "name": "Iron Tread",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "line-breaker-astra-militarum": {
+      "contextHash": "09727c86a70e5a8a17299f16da597b54689b9636ac8646ee006e4a9f6f446b65",
+      "matches": [
+        {
+          "name": "Line-breaker",
+          "unit": "Leman Russ Demolisher",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "loner-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "lord-castellan-astra-militarum": {
+      "contextHash": "78fae2e3d532143780bc4124876fc6fe3d23ed27684a72be8761378d0266b8d9",
+      "matches": [
+        {
+          "name": "Lord Castellan",
+          "unit": "Ursula Creed",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "low-profile-abhuman-auxiliaries-astra-militarum": {
+      "contextHash": "f311870d5ebeceb08f821d1c3d7c303ada7f1380f36db83319957d29d39afc25",
+      "matches": [
+        {
+          "name": "LOW PROFILE",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "loyal-protector-ogryn-bodyguard-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "master-vox-astra-militarum": {
+      "contextHash": "864ec6c3da375004e4d033c4f7a7842cff8ae3427470a01f6495655b63e43410",
+      "matches": [
+        {
+          "name": "Master Vox",
+          "unit": "Cadian Command Squad",
+          "kind": "unit"
+        },
+        {
+          "name": "Master Vox",
+          "unit": "Catachan Command Squad",
+          "kind": "unit"
+        },
+        {
+          "name": "Master Vox",
+          "unit": "Krieg Command Squad",
+          "kind": "unit"
+        },
+        {
+          "name": "Master Vox",
+          "unit": "Militarum Tempestus Command Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "masters-of-camouflage-astra-militarum": {
+      "contextHash": "93b97c6a06475a5954befee8c8115b98b799ce053cca2023cce011a10f660a7c",
+      "matches": [
+        {
+          "name": "Masters of Camouflage",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "mechanised-spearhead-astra-militarum": {
+      "contextHash": "876211b6edace3e0744bee5179ab871bbb96c06af7c9f4bdf11f371b88efdae1",
+      "matches": [
+        {
+          "name": "Mechanised Spearhead",
+          "unit": "Commissar Graves",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "minefield-siege-regiment-astra-militarum": {
+      "contextHash": "81b6e6afae7350232727a92ae25fec52a794bcdbebafa69d6f257e15840acd71",
+      "matches": [
+        {
+          "name": "MINEFIELD",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "mobile-command-vehicle-astra-militarum": {
+      "contextHash": "5e9b3ed9ce769339e886937e06ed96a5fdbe0ffe561557e937a8680f4c047e1d",
+      "matches": [
+        {
+          "name": "Mobile Command Vehicle",
+          "unit": "Chimera",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "move-out-mechanised-assault-astra-militarum": {
+      "contextHash": "c2603a373104dcb6dda7b89604ae75fa3d877b1ebc85f2242588b2c18190afa1",
+      "matches": [
+        {
+          "name": "MOVE OUT",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "no-retreat-grizzled-company-astra-militarum": {
+      "contextHash": "8b3b99f8a771533e82deea6973c0ae68e2f3fc2efe8cee8e0b48e0b3183a7c18",
+      "matches": [
+        {
+          "name": "NO RETREAT!",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "ogryn-bodyguard-astra-militarum": {
+      "contextHash": "97d321a0e5a49200d52c591bc889eb5c5e700f12c6c21d6169450299765d2ac0",
+      "matches": [
+        {
+          "name": "Ogryn Bodyguard",
+          "unit": "Nork Deddog",
+          "kind": "unit"
+        },
+        {
+          "name": "Ogryn Bodyguard",
+          "unit": "Ogryn Bodyguard",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "order-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "order-the-advance-armoured-infantry-astra-militarum": {
+      "contextHash": "e34e0965bea30cff6537156c5a2ddbc3a9c19a716bc5b22dc362264afef97175",
+      "matches": [
+        {
+          "name": "ORDER THE ADVANCE",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "over-the-top-siege-regiment-astra-militarum": {
+      "contextHash": "9d15f1c6e36cb427492c979b82bc82b8060b923fa3d58c67f9284c8aff681993",
+      "matches": [
+        {
+          "name": "OVER THE TOP",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "political-overwatch-astra-militarum": {
+      "contextHash": "46ddb6327aaf723f781dc87c84e55fcf7698d54cf556d877625453ddc831e797",
+      "matches": [
+        {
+          "name": "Political Overwatch",
+          "unit": "Commissar",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "precision-drop-astra-militarum": {
+      "contextHash": "5fb624cee590d01f655ff1b76df71a4e1c86ddd627356df323749f7a64056c64",
+      "matches": [
+        {
+          "name": "Precision Drop",
+          "unit": "Tempestus Aquilons",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "rapid-deployment-astra-militarum": {
+      "contextHash": "f7acf741327647fdf5d82f96c61a79adf5375a12d4a32ebc6b109d15f2e7bbe8",
+      "matches": [
+        {
+          "name": "Rapid Deployment",
+          "unit": "Taurox",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "rapid-dispersal-mechanised-assault-astra-militarum": {
+      "contextHash": "25d04f0dc91750854cf89cf99dc1c9f22ef37e478230bc41a8d5da7f890565f9",
+      "matches": [
+        {
+          "name": "RAPID DISPERSAL",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "rapid-strike-vehicle-astra-militarum": {
+      "contextHash": "53527f19f6b797ce36c1e81abb8535fba977b076bc27fb20ea3bad1ef21514a2",
+      "matches": [
+        {
+          "name": "Rapid Strike Vehicle",
+          "unit": "Centaur RSV",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "reactive-command-combined-arms-astra-militarum": {
+      "contextHash": "ce04c52ab79f21a73eeabe51b0e81e4bae39282e542131632cb8bad5a454f00e",
+      "matches": [
+        {
+          "name": "Reactive Command",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "reinforced-cover-astra-militarum": {
+      "contextHash": "7803380e580dc93c617914c43c31ecf4cd2e9def339a6e566a95f5565d30ba9d",
+      "matches": [
+        {
+          "name": "Reinforced Cover",
+          "unit": "Aegis Defence Line",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "reinforcements-combined-arms-astra-militarum": {
+      "contextHash": "1be60f6d74cf2e2ce26f9a11b656282349d43a98dcfdc08b71eb215522b16128",
+      "matches": [
+        {
+          "name": "REINFORCEMENTS!",
+          "unit": "",
+          "kind": "stratagem"
+        },
+        {
+          "name": "REINFORCEMENTS!",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "remorseless-barrage-astra-militarum": {
+      "contextHash": "6a6c0e2c245171f5081eace910e6f0a805b1ed531c75353fe72fca5a3f102f8a",
+      "matches": [
+        {
+          "name": "Remorseless Barrage",
+          "unit": "Artillery Team",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "rolling-fortress-astra-militarum": {
+      "contextHash": "5c16841ceed6d3dd04ea1bdafd59c501ada0f9f5fc406d67e14b5035fc5a4f68",
+      "matches": [
+        {
+          "name": "Rolling Fortress",
+          "unit": "Baneblade",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "ruthless-discipline-astra-militarum": {
+      "contextHash": "2b5da4c1ee9b92085cb7cc6abcceb2979c41ee0eed76975f7384e9201804810e",
+      "matches": [
+        {
+          "name": "Ruthless Discipline",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "scouting-outriders-recon-element-astra-militarum": {
+      "contextHash": "b5d4001c1613f7ceecb27fba52b825676d6d8e0c752e43741c1248d8e37948d6",
+      "matches": [
+        {
+          "name": "SCOUTING OUTRIDERS",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "servo-scribes-astra-militarum": {
+      "contextHash": "cda91c6de0d212214b6b547f1b37212bf0e270dbc5c228f019636439d4eb8413",
+      "matches": [
+        {
+          "name": "Servo-scribes",
+          "unit": "Krieg Command Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "servo-sentry-astra-militarum": {
+      "contextHash": "f0c0a98bd8dc730e3e3e4b666adcff463915ffad1ff3c7b4cce7f42ffdc3fe09",
+      "matches": [
+        {
+          "name": "Servo-sentry",
+          "unit": "Tempestus Aquilons",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "sharp-eyes-upgrade-abhuman-auxiliaries-astra-militarum": {
+      "contextHash": "d0604652da296d4fc1265c129f280fc4f65c2fe3ffa6a7369706a4f8d39d8e16",
+      "matches": [
+        {
+          "name": "Sharp Eyes UPGRADE",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "shoot-sharp-and-scarper-astra-militarum": {
+      "contextHash": "0fe771fcbbdf0550fc4db964b912725c1b4ace63ecd8a89d0c3b0e3a688fd2f3",
+      "matches": [
+        {
+          "name": "Shoot Sharp and Scarper",
+          "unit": "Ratlings",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "smoke-grenades-mechanised-assault-astra-militarum": {
+      "contextHash": "95904f39cba3f140b4ec2e76cc78c342c16740e4eb759b8b80199ae6f85d5564",
+      "matches": [
+        {
+          "name": "Smoke Grenades",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "snap-to-it-grizzled-company-astra-militarum": {
+      "contextHash": "71ea898dde5431adac9dfb329b0156b63c8a5aabbbe8d745c0819e6d58b75430",
+      "matches": [
+        {
+          "name": "SNAP TO IT",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "spec-ops-veteran-grizzled-company-astra-militarum": {
+      "contextHash": "6cc92aa30c5219cdf7ec00d7fd032269d3d682e01d35566bac8f2924a02713ca",
+      "matches": [
+        {
+          "name": "Spec Ops Veteran",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "squadron-command-astra-militarum": {
+      "contextHash": "01f3fdb36b3b51bb1cf50b4e0962abdba54989cc9137d5ab4837af340cff4bbf",
+      "matches": [
+        {
+          "name": "Squadron Command",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": true
+    },
+    "stalwart-protector-combined-arms-astra-militarum": {
+      "contextHash": "e906e1f5da6e27f3709f14fe521bf2972e4efd14c91ffe7a1cf5e79822313b76",
+      "matches": [
+        {
+          "name": "STALWART PROTECTOR",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "stalwarts-honours-siege-regiment-astra-militarum": {
+      "contextHash": "7afaef8c27c7090656ee0a0f993c71b7af1459431c70553001f3947d9c09ef6d",
+      "matches": [
+        {
+          "name": "Stalwart’s Honours",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "suppression-bombardment-astra-militarum": {
+      "contextHash": "02c6da8d77bfc748834d4c7e34024e8eff61545b12a9e2914c6c60684647ef5c",
+      "matches": [
+        {
+          "name": "Suppression Bombardment",
+          "unit": "Wyvern",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "tactical-genius-astra-militarum": {
+      "contextHash": "2d02b84892bad28c479efcd45167bb8eabad72037387b20ec6fda0eb2f1fbe91",
+      "matches": [
+        {
+          "name": "Tactical Genius",
+          "unit": "Ursula Creed",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "tanglefoot-grenades-recon-element-astra-militarum": {
+      "contextHash": "8ebff4d5c4c66b88a8d74d652bd289ecd5b737b4407a290473026fe99cabaddd",
+      "matches": [
+        {
+          "name": "TANGLEFOOT GRENADES",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "tanith-camo-cloaks-astra-militarum": {
+      "contextHash": "f7edea8b84afe558f08c552f186e938af7924738ed89506e241500d232308b4f",
+      "matches": [
+        {
+          "name": "Tanith Camo-cloaks",
+          "unit": "Gaunt’s Ghosts",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "tempestor-prime-astra-militarum": {
+      "contextHash": "4411688507055be84fbca556028d16fe5a0838db95575298195662aff48ea177",
+      "matches": [
+        {
+          "name": "Tempestor Prime",
+          "unit": "Militarum Tempestus Command Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "the-collegiate-astrolex-astra-militarum": {
+      "contextHash": "a0f51f8a4b7fac7f6e09412bafe812c44deec7975a2bf8a8bf3892e3dc52b0bb",
+      "matches": [
+        {
+          "name": "The Collegiate Astrolex",
+          "unit": "Lord Solar Leontus",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "tough-to-kill-astra-militarum": {
+      "contextHash": "945b226270af36a3ac9609b54e7af1737f39e339e33b1c88a6b69f26cdec67db",
+      "matches": [
+        {
+          "name": "Tough to Kill",
+          "unit": "Lord Marshal Dreir",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "tremor-quake-astra-militarum": {
+      "contextHash": "1a61de2bc2f4230a90f4712574c45143884bbe31fd847d0204ed6b35968cbb6d",
+      "matches": [
+        {
+          "name": "Tremor Quake",
+          "unit": "Banehammer",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "trench-fighters-siege-regiment-astra-militarum": {
+      "contextHash": "10de66a0020f170505a6ebdd66cca6e4678db431313b3febd14889e45572b084",
+      "matches": [
+        {
+          "name": "TRENCH FIGHTERS",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "unstable-payload-astra-militarum": {
+      "contextHash": "3d235a3a39b4f4efb47ed0abaeeedc8024d3987532d039cc8eea23a38ff8a098",
+      "matches": [
+        {
+          "name": "Unstable Payload",
+          "unit": "Cyclops Demolition Vehicle",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "vanguard-honours-mechanised-assault-astra-militarum": {
+      "contextHash": "ae00ad08d640500a6f8bfdcb5a0474064145e5b7e27b78042331b66714e77bac",
+      "matches": [
+        {
+          "name": "Vanguard Honours",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "vengeance-for-the-omnissiah-astra-militarum": {
+      "contextHash": "a3fae6bfcb215566e3765d474b2bef6fd6ca66b0f5dcda9ad19cdb8197849a5f",
+      "matches": [
+        {
+          "name": "Vengeance for the Omnissiah",
+          "unit": "Tech-Priest Enginseer",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "voice-of-command-astra-militarum": {
+      "contextHash": "ee4eb4300378dad8633e099513727b76bca08052ce9c191d4b62343a40a67109",
+      "matches": [
+        {
+          "name": "Voice of Command",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "vox-net-astra-militarum": {
+      "contextHash": "3a42c29cfb626db6a566fd381cc70ef13cb130573303bd5dd38c3f34d905d6d2",
+      "matches": [
+        {
+          "name": "Vox-net",
+          "unit": "Leman Russ Commander",
+          "kind": "unit"
+        },
+        {
+          "name": "Vox-net",
+          "unit": "Rogal Dorn Commander",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "vox-relay-beacon-astra-militarum": {
+      "contextHash": "0aeb36c57d1032115964c15af374425a49ddd7a5510bc5999cbad4d04af0f40d",
+      "matches": [
+        {
+          "name": "Vox-relay Beacon",
+          "unit": "Cadian Recon Squad",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "vox-relay-mechanised-assault-astra-militarum": {
+      "contextHash": "ac3f48f3beb682c11b9b3af31940f61ae63c2ac0be9f10ef337bf969605828ed",
+      "matches": [
+        {
+          "name": "VOX-RELAY",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "warrior-elite-astra-militarum": {
+      "contextHash": "c83e029c763a4f0de7287cab9f90262f4f47e4a2abe45d2d4c146cecdc5cd892",
+      "matches": [
+        {
+          "name": "Warrior Elite",
+          "unit": "Kasrkin",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "will-of-iron-astra-militarum": {
+      "contextHash": "8034c552c6847d5063006f40e9748a3d33f4159e4a066d9700794ba4c3f86d76",
+      "matches": [
+        {
+          "name": "Will of Iron",
+          "unit": "Commissar Yarrick",
+          "kind": "unit"
+        }
+      ],
+      "supplementalContext": false
+    },
+    "orders-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-cadian-castellan-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-commissar-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-commissar-graves-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-commissar-graves-on-foot-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-commissar-yarrick-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-gaunts-ghosts-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-leman-russ-commander-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-lord-marshal-dreir-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "orders-lord-solar-leontus-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    },
+    "loyal-protector-astra-militarum": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "supplementalContext": true
+    }
+  }
+}
