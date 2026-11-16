@@ -1,0 +1,598 @@
+[
+  {
+    "id": "adaptive-biology-invasion-fleet-tyranids",
+    "summary": "TYRANIDS bearer only. It has Feel No Pain 5+ continuously. At any turn’s start, if it has lost wounds, replace that with Feel No Pain 4+ for the rest of the battle. Taking its first wound does not remove the 5+ before the next turn starts, and healing later does not remove the permanent 4+ upgrade.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "timings": [
+      {
+        "phase": [
+          0
+        ],
+        "turn": "either",
+        "window": "turn-start"
+      },
+      {
+        "phase": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "turn": "either",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "adrenal-surge-invasion-fleet-tyranids",
+    "summary": "2CP. Either Fight phase: choose up to two friendly TYRANIDS units in Synapse Range that are eligible to fight, or one other friendly TYRANIDS unit eligible to fight. For the phase their attacks score Critical Hits on unmodified 5+. The two-unit option requires both units in Synapse Range; this does not make an ineligible unit eligible.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "adrenalised-onslaught-unending-swarm-tyranids",
+    "summary": "TYRANIDS bearer only. Its unit’s Pile-in and Consolidation moves may be 3″ longer. Apply the extra distance while making the move, not after it ends, and retain the normal eligibility, coherency and endpoint requirements.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "alien-cunning-invasion-fleet-tyranids",
+    "summary": "TYRANIDS bearer only. After both armies deploy, redeploy up to three friendly TYRANIDS units. Each may instead enter Strategic Reserves regardless of the existing reserve count. These are alternative destinations, not two mandatory placements or permission to arrive immediately.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "biophagic-flow-aura-assimilation-swarm-tyranids",
+    "summary": "TYRANIDS bearer only. A friendly HARVESTER model within 12″ of it may use Feed the Swarm to regenerate a friendly TYRANIDS unit within 9″ of that Harvester instead of 6″. Measure healing range from the actual Harvester, not the enhancement bearer. It changes range, not the number of regenerations allowed.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "cryptophotaic-camouflage-upgrade-ambush-predators-tyranids",
+    "summary": "VON RYAN’S LEAPERS unit upgrade. Reduce that unit’s detection range by 3″. Detection range normally starts at 15″ and governs visibility of Hidden models under Core 13.09; it is not weapon range or an automatic -3″ to an enemy’s movement.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "death-blow-tyranids",
+    "summary": "When this Winged Tyranid Prime model is destroyed by a melee attack, if it has not fought that phase, roll D6. On 4+, retain it until the attacker’s unit finishes its attacks, then that destroyed model may fight and is removed. It does not destroy itself to activate, grant its whole unit an extra fight, or work after it already fought.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "feed-the-swarm-tyranids",
+    "summary": "In your Command phase, each friendly HARVESTER unit may regenerate one friendly TYRANIDS unit within 6″. Normally a recipient may regenerate once per phase. Choose one model to regain D3+1 lost wounds, or return one destroyed non-CHARACTER INFANTRY model at full wounds; if the recipient is ENDLESS MULTITUDE, return up to three destroyed models instead. Apply returned-model setup restrictions. This does not grant an automatic regeneration in every phase.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "higher-imperatives-tyranids",
+    "summary": "Friendly NORN EMISSARY and NORN ASSIMILATOR units gain Protean Purpose: once per battle per unit, in your Command phase, that unit may make a new Singular Purpose selection, replacing its previous selection. This is a specific later reselection permission, not a repeatable activation of every Singular Purpose option.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "hypersensory-adaptations-ambush-predators-tyranids",
+    "summary": "1CP. Start of your Shooting phase: choose friendly DEATHLEAPER, LICTOR, NEUROLICTOR or VON RYAN’S LEAPERS, then one enemy visible and within 12″ of that selected unit. The selected enemy has +6″ detection range. Detection normally starts at 15″ for Hidden visibility; this is not +6″ weapon range. No separate expiry is stated in the current reference.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "start"
+  },
+  {
+    "id": "irresistible-will-synaptic-nexus-tyranids",
+    "summary": "1CP. Your Shooting or either Fight phase: choose a friendly SYNAPSE unit not yet selected to shoot/fight that phase and an enemy visible and within 24″ of it. For the phase, friendly TYRANIDS attacks against that enemy re-roll Hit and Wound rolls of 1 while the attacking unit is within 6″ of the selected Synapse provider. Both provider-to-target and attacker-to-provider checks matter.",
+    "phase": [
+      2,
+      4
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "malign-presence-tyranids",
+    "summary": "Official faction pack v1.3: once per turn, when the opponent targets one of their units within 12″ of this Swarmlord with a Stratagem, increase that actual use’s cost by 1CP. The opponent pays the surcharge; it is not charged to the Swarmlord. This official replacement has no Warlord requirement. The community page’s Warlord/every-use wording conflicts with this replacement, so the official pack is followed.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "officialOverride": true
+  },
+  {
+    "id": "neuronode-vanguard-onslaught-tyranids",
+    "summary": "TYRANIDS bearer only. After both armies deploy, redeploy up to three friendly VANGUARD INVADER units. Each may instead enter Strategic Reserves, ignoring the existing reserve count. This offers alternative destinations rather than forcing battlefield placement followed by reserves.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "overrun-invasion-fleet-tyranids",
+    "summary": "1CP. Either Fight phase, just before friendly TYRANIDS Consolidates: for that phase its Consolidations may be 3″ longer only if it can end engaged with an enemy. If in Synapse Range and currently unengaged, it may instead make one Normal move up to 6″ in place of that Consolidation. Do not take both moves; the normal Consolidation endpoint conditions still govern the extra-distance branch.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "before"
+  },
+  {
+    "id": "parasitic-infection-tyranids",
+    "summary": "Each time this Parasite of Mortrex’s barbed ovipositor destroys an enemy INFANTRY model, after the Parasite completes its attacks it may add a new Ripper Swarms unit of D3 models within 3″ of itself. Those Rippers may be engaged with the destroyed model’s unit, but not any other enemy unit. It triggers per qualifying model, not only when the whole enemy unit is destroyed.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "after"
+  },
+  {
+    "id": "parasitic-payload-warrior-bioform-onslaught-tyranids",
+    "summary": "1CP. Your Shooting phase, when friendly TYRANID WARRIORS are selected to shoot: their ranged attacks gain Ignores Cover for that shooting. This targets the selected Warrior unit, not every nearby Tyranid.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "pheromone-trail-tyranids",
+    "summary": "Once per battle round across your army, one model with Pheromone Trail may be targeted with Rapid Ingress for 0CP. This names Rapid Ingress specifically; it is not any Stratagem for free and does not by itself waive arrival restrictions or grant repeat uses.",
+    "phase": [
+      1
+    ],
+    "turn": "opponent",
+    "window": "end"
+  },
+  {
+    "id": "preservation-imperative-unending-swarm-tyranids",
+    "summary": "1CP. Opponent’s Shooting phase, after enemy targets are selected: choose friendly ENDLESS MULTITUDE targeted by those attacks. For the phase treat it as fewer than five models only for Blast. Its actual model count, Starting Strength and other rules are unchanged.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "psychic-terror-tyranids",
+    "summary": "If at least one friendly Neurotyrant with Psychic Terror is on the battlefield when you unleash Shadow in the Warp, every enemy test caused by that use suffers -1. This is not a penalty to every Battle-shock test in the game, and multiple Neurotyrants do not each add another copy. Apply other distinct modifiers where legal.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "rapacious-hunger-assimilation-swarm-tyranids",
+    "summary": "1CP. Your Fight phase, after a friendly TYRANIDS unit destroys an enemy unit: that friendly unit immediately regenerates using Feed the Swarm. Source conflict remains: this Stratagem’s special HARVESTER clause refers to healing D3 wounds and fixing it at 3, while official v1.3 Feed the Swarm heals D3+1. Do not invent a fixed-4 bonus or silently apply the obsolete D3 clause; that clause needs clarification. Keep this rule out of quiz answers until resolved.",
+    "phase": [
+      4
+    ],
+    "turn": "you",
+    "window": "after",
+    "state": "needs-summary",
+    "unresolved": "Official Feed the Swarm D3+1 does not match the unchanged Rapacious Hunger D3-to-3 clause."
+  },
+  {
+    "id": "reclaim-biomass-assimilation-swarm-tyranids",
+    "summary": "1CP. Any phase when friendly TYRANIDS is destroyed, before removing its last model: select a friendly HARVESTER within 6″ of the destroyed unit. Regenerate another friendly TYRANIDS unit within 6″ of that Harvester under Feed the Swarm. The official FAQ prohibits regenerating the destroyed unit itself. The two 6″ checks are separate; normal recipient regeneration limits still apply.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "regenerating-monstrosity-assimilation-swarm-tyranids",
+    "summary": "TYRANIDS bearer other than a MONSTER. Its unit may regenerate twice per phase instead of once. This increases the recipient’s cap; it does not itself trigger a regeneration or make each Harvester activate twice.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act",
+    "bearerRestrictions": [
+      {
+        "excluded_keywords": [
+          "Monster"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "replenishing-swarms-subterranean-assault-tyranids",
+    "summary": "1CP. Your Movement phase: choose friendly TYRANIDS wholly within 9″ of one of your Tunnel Markers. Either heal one model D3+1 wounds or return up to D3+1 destroyed models whose Wounds characteristic is 1, at full wounds. Do not return multi-wound models or exceed the unit’s destroyed models.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "seed-spore-mines-tyranids",
+    "summary": "Once per turn across your army, when Biovores are selected to shoot in your Shooting phase, one unit may seed instead of making any ranged attacks. Add a Spore Mines unit with one model per model in the seeding Biovore unit, wholly within 48″ of it and more than 8″ horizontally from all enemies. It is not an unspecified-size unit or free spawning in addition to shooting.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "seeded-broods-vanguard-onslaught-tyranids",
+    "summary": "1CP. Your Movement phase: choose one friendly TYRANIDS unit in Reserves, or up to two friendly VANGUARD INVADER units in Reserves. For that phase’s setup, treat the current battle round as one higher, enabling arrival one round earlier where that round-based restriction applies. Other arrival, distance and denial restrictions remain; it is not an automatic waiver of every mission restriction.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "shadow-in-the-warp-tyranids",
+    "summary": "Only a TYRANIDS Army Faction enables this army-wide once-per-battle use. In either player’s Command phase, with at least one friendly provider on the battlefield, unleash it: every enemy unit on the battlefield takes Battle-shock. An enemy within 6″ of a friendly SYNAPSE unit subtracts 1 from its test. The 6″ condition modifies the test; it does not limit which enemies must test. Multiple providers do not grant extra uses.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "act"
+  },
+  {
+    "id": "spawn-termagants-tyranids",
+    "summary": "In your Command phase this Tervigon may choose one friendly TERMAGANTS unit within 6″ and return up to D3+3 destroyed models to it. A Termagants unit may be selected by Spawn Termagants only once that phase, even with multiple Tervigons. This returns destroyed models rather than adding a new unit.",
+    "phase": [
+      0
+    ],
+    "turn": "you",
+    "window": "act"
+  },
+  {
+    "id": "stalking-forward-tyranids",
+    "summary": "During this Hierophant’s Normal, Advance or Fall Back move it may pass over non-TITANIC models and terrain no more than 4″ high as if absent. Apply this permission during the move and finish legally. It is not a move-ended trigger, unrestricted tall-terrain movement or a Charge-move permission.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "synapse-tyranids",
+    "summary": "Only a TYRANIDS Army Faction enables Synapse. A friendly TYRANIDS unit within 6″ of a friendly SYNAPSE model is in Synapse Range. While in that range it takes Battle-shock tests on 3D6 instead of 2D6 and its models’ melee attacks gain +1 Strength. Both benefits require the actual friendly Synapse anchor and Tyranids recipient; this is not every friendly unit or every Leadership test.",
+    "phase": [
+      0,
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "timings": [
+      {
+        "phase": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "turn": "either",
+        "window": "react"
+      },
+      {
+        "phase": [
+          0
+        ],
+        "turn": "you",
+        "window": "shock"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "act"
+      }
+    ]
+  },
+  {
+    "id": "synaptic-imperatives-tyranids",
+    "summary": "At each battle-round start, optionally choose one Synaptic Imperative, lasting that round; each option may be chosen only once per battle. Only friendly TYRANIDS currently in Synapse Range benefit: Synaptic Augmentation grants 5+ invulnerable saves; Surging Vitality gives +1 Advance and Charge; Goaded to Slaughter gives +1 melee Hit. This is not an undefined 6″ aura from any model, and leaving Synapse Range removes the benefit.",
+    "phase": [
+      0
+    ],
+    "turn": "either",
+    "window": "round"
+  },
+  {
+    "id": "tremor-senses-subterranean-assault-tyranids",
+    "summary": "TYRANIDS bearer only. After both armies deploy, redeploy up to three friendly TYRANIDS units. Each may instead enter Strategic Reserves regardless of the existing reserve count. Reserve placement replaces battlefield redeployment; it does not follow it as another mandatory step.",
+    "phase": [],
+    "turn": "either",
+    "window": "prebattle"
+  },
+  {
+    "id": "tunnel-network-subterranean-assault-tyranids",
+    "summary": "1CP. Your Movement phase’s end: choose friendly TYRANIDS wholly within 9″ of one of your Tunnel Markers and unengaged. Remove it and set it up wholly within 9″ of a different Tunnel Marker you placed and more than 6″ horizontally from all enemies. Both marker checks and legal setup/denial rules apply; it does not use the same marker as its destination.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "end"
+  },
+  {
+    "id": "unending-waves-unending-swarm-tyranids",
+    "summary": "2CP, once per battle. In any phase, target friendly ENDLESS MULTITUDE just destroyed, despite destruction. Add an identical replacement at Starting Strength in Strategic Reserves; destroyed attached CHARACTER units do not return. Normal arrival restrictions remain. This is not a once-per-phase unlimited replacement.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "unseen-lurkers-vanguard-onslaught-tyranids",
+    "summary": "1CP. Opponent’s Shooting phase, after enemy targets are selected: choose friendly VANGUARD INVADER targeted by those attacks. Until phase end it can be targeted by ranged attacks only by attacking models within 18″, or within 6″ if it has Lone Operative. The opponent may choose new targets. This does not retain the obsolete general 12″ threshold.",
+    "phase": [
+      2
+    ],
+    "turn": "opponent",
+    "window": "react"
+  },
+  {
+    "id": "vanguard-intellect-subterranean-assault-tyranids",
+    "summary": "TYRANIDS bearer with Deep Strike only. Its unit may arrive using Deep Strike in your first, second or third Movement Reinforcements step regardless of mission rules. A unit still in Reserves must actually be selected for a legal setup; this is not a countdown starting when an unrelated event occurs or permission to give every Tyranid Deep Strike.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals",
+    "bearerRestrictions": [
+      {
+        "required_abilities": [
+          "deep-strike"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "will-of-the-hive-mind-tyranids",
+    "summary": "Once per battle round across your army, one Hive Tyrant or Winged Hive Tyrant with this ability may reduce the cost of a Stratagem by 1CP when it targets a friendly TYRANIDS unit within 12″ of that provider. The discount applies to that actual selected unit’s use, not automatically to the Tyrant. This does not grant free repeated Stratagem uses.",
+    "phase": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "turn": "either",
+    "window": "react"
+  },
+  {
+    "id": "reported-5faa3b2a-9155-4841-9ec9-e0203465614e",
+    "summary": "Harpooned — official faction pack v1.3. When this Norn Assimilator’s unit declares a charge, choose an enemy MONSTER or VEHICLE within 12″ that was hit by this model’s toxinjector harpoon this turn. If used, its unit gains +2 to Charge rolls until phase end and must end that Charge move engaged with that selected enemy. A hit in an earlier turn, a different weapon, or charging an unrelated target does not qualify.",
+    "phase": [
+      3
+    ],
+    "turn": "you",
+    "window": "before",
+    "officialOverride": true
+  },
+  {
+    "id": "adaptive-instincts-tyranids",
+    "summary": "Once per turn per unit, in either Fight phase when this melee Tyranid Warriors unit is selected to fight or targeted by an enemy, choose +1 Strength for its melee attacks or +1 Toughness. Choose one, not both; this does not refresh on each attack or give every Tyranid unit the benefit.",
+    "phase": [
+      4
+    ],
+    "turn": "either",
+    "window": "react",
+    "timings": [
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "select"
+      },
+      {
+        "phase": [
+          4
+        ],
+        "turn": "either",
+        "window": "react"
+      }
+    ],
+    "officialOverride": true
+  },
+  {
+    "id": "seed-mucolids-tyranids",
+    "summary": "Once per turn across your army, when a Sporocyst is selected to shoot in your Shooting phase, one unit may seed instead of making any ranged attacks. Add one Mucolid Spores unit containing one model, wholly within 18″ of that Sporocyst and strictly more than 8″ horizontally from all enemies. Exactly 8″ is not legal placement.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "select"
+  },
+  {
+    "id": "spore-mine-cysts-tyranids",
+    "summary": "At the end of the opponent’s Fight phase, this Harpy may choose one option: select a visible enemy without Lone Operative within 24″ and roll six D6, each 3+ causing one mortal wound; or add one Spore Mines unit containing D3 models within 6″ of this Harpy and more than 8″ horizontally from all enemies. The spawning option is limited to one model across your army per turn. It adds one unit of D3 models, not D3 separate units.",
+    "phase": [
+      4
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "officialOverride": true
+  },
+  {
+    "id": "aerial-seeding-tyranids",
+    "summary": "This Tyrannocyte must start in Reserves; it and its embarked units do not count toward starting reserve limits. It may arrive in your first, second or third Movement Reinforcements step regardless of mission rules. Passengers must immediately disembark and set up more than 8″ from all enemies. No unit may embark in this Tyrannocyte after it has been set up. This is not indefinite transport reuse or permission for passengers to remain aboard.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals"
+  },
+  {
+    "id": "pouncing-leap-tyranids",
+    "summary": "Von Ryan’s Leapers may be targeted with Heroic Intervention despite other uses of that named Stratagem that phase. That use costs 1CP less and does not prevent later uses on other units that phase. Apply Heroic Intervention’s normal target/mode restrictions; the Into the Fray surcharge is not waived. This is a named repeat-use exception, not every Stratagem for free.",
+    "phase": [
+      3
+    ],
+    "turn": "opponent",
+    "window": "end",
+    "officialOverride": true
+  },
+  {
+    "id": "chameleonic-vanguard-onslaught-tyranids",
+    "summary": "VANGUARD INVADER bearer only. Its unit has Stealth, using the current Core cover rules when every model qualifies. This is not the old extra -1 to Hit or a stacking cover bonus.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "react",
+    "bearerKeywords": [
+      "Vanguard Invader"
+    ],
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "foul-spores-tyranids",
+    "summary": "Friendly TYRANIDS units within 6″ of this Venomthropes unit have Stealth. Measure to the actual provider unit; it is not an army-wide aura. Current Stealth grants cover against ranged attacks rather than an additional old-edition -1 to Hit.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "react",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "opponent",
+        "window": "act"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "you",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "onslaught-tyranids",
+    "summary": "Friendly TYRANIDS units within 6″ of this Hive Tyrant model gain Assault and Lethal Hits on their ranged weapons. It is a model-centred aura, not permission for melee Lethal Hits or every unit on the battlefield.",
+    "phase": [
+      1,
+      2
+    ],
+    "turn": "either",
+    "window": "act",
+    "timings": [
+      {
+        "phase": [
+          2
+        ],
+        "turn": "you",
+        "window": "act"
+      },
+      {
+        "phase": [
+          1
+        ],
+        "turn": "opponent",
+        "window": "react"
+      }
+    ]
+  },
+  {
+    "id": "subterranean-tunnels-tyranids",
+    "summary": "In your Movement phase, when this Trygon arrives using Deep Strike, it may use a subterranean tunnel to set up more than 6″ horizontally from all enemies. If it does, it cannot charge that turn. It is not the old 3″ setup or an opponent-turn Rapid Ingress distance exception; apply other arrival and denial restrictions.",
+    "phase": [
+      1
+    ],
+    "turn": "you",
+    "window": "arrivals",
+    "officialOverride": true
+  },
+  {
+    "id": "bio-stimulus-tyranids",
+    "summary": "After this Psychophage model shoots in your Shooting phase, select an enemy hit by those attacks. Until that turn ends, friendly TYRANIDS melee attacks against that enemy improve AP by 1. The same enemy may be affected only once per turn; this is not a global limit of one provider activation regardless of different targets.",
+    "phase": [
+      2
+    ],
+    "turn": "you",
+    "window": "after",
+    "officialOverride": true
+  }
+]
