@@ -13,8 +13,12 @@
  const windows=['round','turn-start','start','core-cp','shock','act','select','before','after','react','arrivals','end','turn-end','round-end','prebattle'];
  L.catalog.factions=L.catalog.factions||[{id:'aeldari',name:'Aeldari',group:'Xenos',aliases:['Asuryani']}];
  L.sources.admin={name:'WarPlanner maintained content',version:'Edited in the site rules editor',url:'https://mageekman.github.io/WarPlanner/',status:'admin-reviewed'};
+ function siteExcluded(row){return row?.data?.siteExcluded==='combat-patrol';}
+ function combatPatrolOnly(row){const d=row?.data||{},only=m=>Array.isArray(m)&&m.length>0&&m.every(v=>norm(v)==='combatpatrol');return siteExcluded(row)||[d.gameModes,d.importSource?.record?.game_modes,d.importSource?.stratagem?.game_modes].some(only);}
+ function archiveCombatPatrol(row){row.enabled=false;row.data.siteExcluded='combat-patrol';return row;}
  function seed(){
-  const rows=[],put=(kind,data,faction)=>rows.push({key:kind+':'+data.id,kind,faction,name:data.name||data.title,data:copy(data),enabled:true,revision:1});
+  const fallbackExcluded=new Set(["detachment:kygharils-protectors", "rule:expanded-aspect-shrine-token-kygharils-protectors-dire-avengers-aeldari", "rule:expanded-battle-focus-kygharils-protectors-aeldari", "rule:expanded-bladestorm-kygharils-protectors-dire-avengers-aeldari", "rule:expanded-engulfing-flames-aeldari", "rule:expanded-fading-fusillade-kygharils-protectors-aeldari", "rule:expanded-focused-strikes-kygharils-protectors-aeldari", "rule:expanded-forceshield-kygharils-protectors-wraithblades-aeldari", "rule:expanded-graceful-warriors-aeldari", "rule:expanded-guided-jump-kygharils-protectors-aeldari", "rule:expanded-malevolent-souls-kygharils-protectors-wraithblades-aeldari", "rule:expanded-psychic-guidance-kygharils-protectors-wraithblades-aeldari", "rule:expanded-seers-hand-kygharils-protectors-aeldari", "rule:expanded-shimmershield-kygharils-protectors-dire-avengers-aeldari", "rule:expanded-spirit-mark-psychic-aeldari", "rule:expanded-spiritseer-spiritseer-kygharil-aeldari", "rule:expanded-suppressing-storm-kygharils-protectors-aeldari", "rule:expanded-tears-of-isha-spiritseer-kygharil-aeldari", "unit:kygharils-protectors-dire-avengers", "unit:kygharils-protectors-warp-spiders", "unit:kygharils-protectors-wraithblades", "unit:spiritseer-kygharil"]);
+  const rows=[],put=(kind,data,faction)=>{const row={key:kind+':'+data.id,kind,faction,name:data.name||data.title,data:copy(data),enabled:true,revision:1};if(fallbackExcluded.has(row.key))archiveCombatPatrol(row);rows.push(row);};
   L.catalog.factions.forEach(f=>put('faction',f,''));
   L.catalog.units.forEach(u=>put('unit',{...u,faction:u.faction||'Aeldari'},u.faction||'Aeldari'));
   L.catalog.detachments.forEach(d=>put('detachment',{...d,faction:d.faction||'Aeldari'},d.faction||'Aeldari'));
@@ -137,7 +141,7 @@
  function apply(rows){
   const entries=new Map(defaults.map(r=>[r.key,copy(r)]));
   for(const row of rows){validate(row);entries.set(row.key,copy(row));}
-  const enabled=[...entries.values()].filter(r=>r.enabled&&!r.data.sharedRuleId&&!r.data.sharedUnitId),unitIds=new Map();
+  const enabled=[...entries.values()].filter(r=>r.enabled&&!siteExcluded(r)&&!r.data.sharedRuleId&&!r.data.sharedUnitId),unitIds=new Map();
   for(const row of enabled.filter(r=>r.kind==='unit'))unitIds.set(row.data.id,new Map((row.data.unitMemberships||[{faction:row.faction,unitId:row.data.id}]).map(m=>[m.faction,m.unitId])));
   const select=kind=>enabled.filter(r=>r.kind===kind).flatMap(r=>{
    const data=kind==='rule'?M.enrich(r.data):r.data;
@@ -180,7 +184,7 @@
  }
  function filterRecords(records,{kind='rule',query='',reference='all'}={}){
   const text=query.trim().toLowerCase();
-  return records.filter(row=>(!kind||row.kind===kind)&&(kind!=='rule'||reference==='all'||(reference==='reference')===(row.data.referenceOnly===true))&&(!text||[row.name,row.faction,row.data.detachment,...(row.data.unitMemberships||[]).map(m=>m.faction),...(row.data.memberships||[]).flatMap(m=>[m.faction,...m.detachments]),row.data.summary,row.data.importSource?.text].filter(Boolean).join(' ').toLowerCase().includes(text))).sort((a,b)=>a.name.localeCompare(b.name));
+  return records.filter(row=>!siteExcluded(row)&&(!kind||row.kind===kind)&&(kind!=='rule'||reference==='all'||(reference==='reference')===(row.data.referenceOnly===true))&&(!text||[row.name,row.faction,row.data.detachment,...(row.data.unitMemberships||[]).map(m=>m.faction),...(row.data.memberships||[]).flatMap(m=>[m.faction,...m.detachments]),row.data.summary,row.data.importSource?.text].filter(Boolean).join(' ').toLowerCase().includes(text))).sort((a,b)=>a.name.localeCompare(b.name));
  }
  function create(client,userId){
   let records=[],isAdmin=false,disposed=false,version=0;
@@ -206,7 +210,8 @@
    async reload(){return read();},
    async save(row){
     check();if(!isAdmin)throw Error('Administrator access is required.');validate(row);
-    const payload={key:row.key,kind:row.kind,faction:row.faction,name:row.name.trim(),data:copy(row.data),enabled:row.enabled};
+    const scoped=copy(row);if(combatPatrolOnly(scoped)||siteExcluded(records.find(r=>r.key===row.key)))archiveCombatPatrol(scoped);validate(scoped);
+    const payload={key:scoped.key,kind:scoped.kind,faction:scoped.faction,name:scoped.name.trim(),data:scoped.data,enabled:scoped.enabled};
     let query;
     if(row.revision)query=client.from('rules_catalog').update(payload).eq('key',row.key).eq('revision',row.revision).select('*').maybeSingle();
     else query=client.from('rules_catalog').insert(payload).select('*').single();
@@ -216,7 +221,7 @@
    async saveBatch(rows){
     check();if(!isAdmin)throw Error('Administrator access is required.');
     if(!Array.isArray(rows)||rows.length<1||rows.length>1000)throw Error('Import between 1 and 1000 entries.');rows.forEach(validate);
-    const entries=rows.map(row=>({key:row.key,kind:row.kind,faction:row.faction,name:row.name.trim(),data:copy(row.data),enabled:row.enabled,expectedRevision:row.revision||0}));
+    const entries=rows.map(row=>{const scoped=copy(row);if(combatPatrolOnly(scoped)||siteExcluded(records.find(r=>r.key===row.key)))archiveCombatPatrol(scoped);validate(scoped);return {key:scoped.key,kind:scoped.kind,faction:scoped.faction,name:scoped.name.trim(),data:scoped.data,enabled:scoped.enabled,expectedRevision:row.revision||0};});
     const saved=result(await client.rpc('import_rules_catalog',{entries}));check();
     if(!Array.isArray(saved)||saved.length!==entries.length)throw Error('Import response was incomplete. Reload the catalog to verify before trying again.');
     saved.forEach(validate);const map=new Map(records.map(r=>[r.key,r]));for(const row of saved)map.set(row.key,row);records=[...map.values()];version++;return copy(saved);
@@ -234,6 +239,6 @@
    dispose(){disposed=true;isAdmin=false;records=[];version++;}
   };
  }
- const api={get generation(){return generation;},filterRecords,kinds,windows,seed:()=>copy(defaults),validateTimings,captureTimings,timingFields,editTimingRows,validate,apply,reset:()=>apply([]),create};
+ const api={get generation(){return generation;},filterRecords,siteExcluded,combatPatrolOnly,archiveCombatPatrol,kinds,windows,seed:()=>copy(defaults),validateTimings,captureTimings,timingFields,editTimingRows,validate,apply,reset:()=>apply([]),create};
  if(node)module.exports=api;else root.WarPlannerContent=api;
 })(typeof window!=='undefined'?window:globalThis);

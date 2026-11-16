@@ -7,7 +7,7 @@
  const copy=v=>structuredClone(v),norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const types={ability:'Unit abilities',army:'Army & detachment rules',stratagem:'Stratagems','core-stratagem':'Core Stratagems',enhancement:'Enhancements',core:'Core rules',unit:'Units',detachment:'Detachments'};
  const windows={round:'Start of battle round','turn-start':'Start of turn',start:'Start of phase','core-cp':'Gain Command Points',shock:'Battle-shock',act:'During the phase',select:'When selected',before:'Before acting',after:'After acting',react:'Reaction to an event',arrivals:'Reinforcements / arrivals',end:'End of phase','turn-end':'End of turn','round-end':'End of battle round',prebattle:'Pre-battle / reference'};
- const visible=r=>!r.data.sharedRuleId&&!r.data.sharedUnitId;
+ const visible=r=>r.data.siteExcluded!=='combat-patrol'&&!r.data.sharedRuleId&&!r.data.sharedUnitId;
  const inFaction=(r,faction)=>r.faction==='*'||(r.kind==='unit'?r.data.unitMemberships:r.data.memberships||null)?.some(m=>m.faction==='*'||L.factionMatches(m.faction,faction))||L.factionMatches(r.faction,faction);
  function build(records,{faction,detachment='',turn='both',selectedTypes=Object.keys(types),query='',showDisabled=false}={}){
   const byKey=new Map(C.seed().map(r=>[r.key,{...r,revision:0}]));for(const r of records)byKey.set(r.key,r);

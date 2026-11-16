@@ -132,7 +132,7 @@
  function plan(parsed,existing){
   const rows=[],seen=new Map();
   for(const candidate of parsed.candidates){
-   let old,proposed,error='';try{C.validate(candidate.row);old=match(candidate,existing);proposed=copy(candidate.row);if(old){proposed.key=old.key;proposed.data.id=old.data.id;proposed.revision=old.revision;if(candidate.source)proposed.faction=old.faction;}C.validate(proposed);}catch(e){error=e.message;const rejected=proposed||candidate.row;proposed={key:'invalid:'+rows.length,kind:typeof rejected?.kind==='string'?rejected.kind:'rule',faction:typeof rejected?.faction==='string'?rejected.faction:'',name:typeof rejected?.name==='string'?rejected.name:'Invalid entry '+(rows.length+1),data:{summary:'Entry rejected: '+error},enabled:false,revision:0};}
+   let old,proposed,error='';try{C.validate(candidate.row);old=match(candidate,existing);proposed=copy(candidate.row);if(old){proposed.key=old.key;proposed.data.id=old.data.id;proposed.revision=old.revision;if(candidate.source)proposed.faction=old.faction;if(C.siteExcluded(old))C.archiveCombatPatrol(proposed);}if(C.combatPatrolOnly(proposed))C.archiveCombatPatrol(proposed);C.validate(proposed);}catch(e){error=e.message;const rejected=proposed||candidate.row;proposed={key:'invalid:'+rows.length,kind:typeof rejected?.kind==='string'?rejected.kind:'rule',faction:typeof rejected?.faction==='string'?rejected.faction:'',name:typeof rejected?.name==='string'?rejected.name:'Invalid entry '+(rows.length+1),data:{summary:'Entry rejected: '+error},enabled:false,revision:0};}
    const before=old?copy(old):null,sourceOnly=old&&candidate.source?{...copy(old),data:{...copy(old.data),importSource:copy(proposed.data.importSource)}}:null;
    const action=error?'skip':old?(candidate.source&&stable(old.data.importSource)!==stable(sourceOnly.data.importSource)?'source':'skip'):'add';
    const entry={key:proposed.key,name:proposed.name,kind:proposed.kind,before,proposed,sourceOnly,action,error,source:candidate.source};
@@ -140,10 +140,16 @@
    seen.set(entry.key,entry);rows.push(entry);
   }
   const unitIds=new Map(rows.filter(e=>!e.error&&e.kind==='unit').map(e=>[e.proposed.data.importSource?.record.id||e.proposed.data.id,e.proposed.data.id]));for(const entry of rows.filter(e=>!e.error&&e.kind==='unit'))entry.proposed.data.bodyguardIds=entry.proposed.data.bodyguardIds.map(id=>unitIds.get(id)||id);
+  // Preserve the site-wide Combat Patrol exclusion for new linked records too.
+  const combined=[...existing,...rows.filter(e=>!e.error).map(e=>e.proposed)],excluded=combined.filter(C.combatPatrolOnly),cpUnits=excluded.filter(r=>r.kind==='unit'),cpDets=excluded.filter(r=>r.kind==='detachment');
+  for(const entry of rows.filter(e=>!e.error&&e.kind==='rule')){const r=entry.proposed,d=r.data,own=combined.filter(u=>u.kind==='unit'&&L.factionMatches(u.faction,r.faction)&&(d.units||[]).includes(u.name)),rawIds=d.importSource?.record?.unit_ids||[];
+   const cpDet=d.detachment&&cpDets.some(det=>L.factionMatches(det.faction,r.faction)&&norm(det.name)===norm(d.detachment)),cpOwners=own.length&&own.every(C.combatPatrolOnly),cpRaw=rawIds.length&&rawIds.every(id=>cpUnits.some(u=>u.data.id===id||u.data.importSource?.sourceId===id));
+   if(cpDet||cpOwners||cpRaw)C.archiveCombatPatrol(r);
+  }
   return {rows,warnings:parsed.warnings};
  }
  function selected(review){
-  const rows=[];for(const entry of review.rows){if(entry.action==='skip')continue;if(entry.error)throw Error(entry.name+': '+entry.error);const row=entry.action==='source'?entry.sourceOnly:entry.proposed;if(!row)throw Error('Unsupported import choice.');if(entry.before?.data.sharedRuleId&&entry.action!=='source')throw Error(entry.name+' is linked to a shared rule. Update its source only, or edit the shared rule in the Workshop.');if((entry.before?.data.sharedUnitId||entry.before?.data.unitMemberships)&&entry.action!=='source'&&!row.data.unitMemberships)throw Error(entry.name+' is linked to a shared unit. Update its source only, or edit the shared unit in the Workshop.');C.validate(row);rows.push(copy(row));}
+  const rows=[];for(const entry of review.rows){if(entry.action==='skip')continue;if(entry.error)throw Error(entry.name+': '+entry.error);const row=entry.action==='source'?entry.sourceOnly:entry.proposed;if(!row)throw Error('Unsupported import choice.');if(entry.before?.data.sharedRuleId&&entry.action!=='source')throw Error(entry.name+' is linked to a shared rule. Update its source only, or edit the shared rule in the Workshop.');if((entry.before?.data.sharedUnitId||entry.before?.data.unitMemberships)&&entry.action!=='source'&&!row.data.unitMemberships)throw Error(entry.name+' is linked to a shared unit. Update its source only, or edit the shared unit in the Workshop.');if(C.siteExcluded(entry.before)||C.combatPatrolOnly(row))C.archiveCombatPatrol(row);C.validate(row);rows.push(copy(row));}
   if(!rows.length)throw Error('Choose at least one entry to import.');if(rows.length>1000)throw Error('Import at most 1000 entries at a time. Skip some entries and retry.');return rows;
  }
  function exportCatalog(records){return JSON.stringify({format:'warplanner-rules',version:1,entries:records.map(({key,kind,faction,name,data,enabled})=>({key,kind,faction,name,data,enabled}))},null,2);}

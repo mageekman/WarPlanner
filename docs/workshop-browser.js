@@ -4,7 +4,7 @@
  const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),sort=(a,b)=>a.name.localeCompare(b.name);
  const ALL='__all__',SHARED='__shared__';
  const memberships=r=>r.kind==='unit'&&r.data.unitMemberships||r.kind==='rule'&&r.data.memberships||[{faction:r.faction,detachments:r.data.detachment?[r.data.detachment]:[]}];
- const visible=r=>!r.data.sharedRuleId&&!r.data.sharedUnitId;
+ const visible=r=>r.data.siteExcluded!=='combat-patrol'&&!r.data.sharedRuleId&&!r.data.sharedUnitId;
  const definitions=[
   {id:'faction',name:'Faction details',kind:'faction'},
   {id:'unit',name:'Units',kind:'unit'},
