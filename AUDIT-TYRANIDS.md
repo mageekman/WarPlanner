@@ -1,5 +1,21 @@
 # Tyranids description audit
 
+## Regular-army follow-up — 2026-11-16
+
+Astra Militarum was published first in PR #43, release `014f28c2f5ab4997f5e7356f30856963d5db9348`, before this Tyranids pass began.
+
+This follow-up updates **47 active regular-army rules and four unit profiles**, resolving **35 of 36 flagged entries** and refreshing eleven related/current entries, including the approved Norn harpoon correction. The uploaded active scope is **174 rules: 173 usable summaries and one explicit source conflict**, plus **52 units and ten detachments**. Combat Patrol remains archived; other unit profiles, keywords, source imports, existing guide preferences and disabled records are preserved.
+
+Sources are the current faction/datasheet references and official Tyranids faction pack **v1.3, legal October 14, 2026**. URLs, source hashes, context fingerprints and selected already-correct unit updates are in `tests/fixtures/tyranids-finish-sources.json`. Original study wording: `scripts/tyranids-finish-notes.json`. Baseline: `tests/fixtures/tyranids-finish-before.json`. `node scripts/finish-tyranids.cjs tests/fixtures/tyranids-finish-before.json /tmp/tyranids-finish` generates the offline, revision-checked update and rejects changed/added/missing Tyranids records.
+
+Corrections restore the full army-wide Shadow trigger and separate six-inch penalty, Synapse’s actual providers and both benefits, regeneration counts/caps, spawned-unit sizes and strict spacing, current reserves and deep-strike limits, named 0CP/repeat-use exceptions and model-specific death reactions. Harpy creates one Spore Mines unit with D3 models rather than D3 units. The Norn harpoon requires its same-turn hit, eligible target within 12 inches and ending the charge engaged with that target; the approved rule’s stable ID and guide settings remain intact.
+
+Overrun now appears in the Guide’s separate Consolidate step; Adrenalised Onslaught appears at Pile In and Consolidate when equipped. They are not mixed into ordinary Fight attacks. Existing before-timing values remain compatible; the Guide routes these two named movement effects to their existing core movement steps. Current profile checks also correct Harpy/Hive Crone Movement and OC to “-”, Sporocyst Movement to “-”, and Harridan Movement to 14. Original imported profiles remain preserved. Non-numeric aircraft/immobile values no longer become false numeric quiz answers. Enhancement eligibility now enforces Monster exclusions and required Deep Strike in the builder and imported Guide lists.
+
+Two source discrepancies are documented explicitly. **Malign Presence** follows the official v1.3 replacement: once per turn, +1CP paid by the opponent on the actual targeted use within 12 inches, without a Warlord gate. The community page’s Warlord/every-use wording conflicts with that replacement. **Rapacious Hunger remains needs source review:** its immediate regeneration is described, but the old D3-to-fixed-3 special clause does not match the official Feed the Swarm D3+1 heal. No fixed-4 or other invented benefit is substituted, and the rule stays out of quiz answers and distractors.
+
+This is a follow-up for the uploaded catalog, not a complete Codex/Legends/weapon import, points certification or full army-legality engine. Earlier results below are preserved as history.
+
 Reviewed all 186 enabled native Tyranids rules against their preserved imported mechanics and the [pinned 40kdc core index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/tyranids). This replaces the generic description prompts left after the earlier faction import repair. It is a source audit, not official rules verification.
 
 | Result | Entries |
@@ -62,3 +78,9 @@ The production summaries are saved in Supabase. `scripts/audit-tyranids.cjs` gen
 - Tunnel Network — Subterranean Assault
 - Unending Waves — Unending Swarm
 - Unseen Lurkers — Vanguard Onslaught
+
+## Follow-up application and validation
+
+Applied 51 revision-checked changes after exact comparison of all 260 Tyranids rows. Complete read-back matched every expected field across the 260 rows, and all 51 prior revisions remain in history. The other 9,419 catalog records kept the same revision/content digest (`780c0d11ca77ce2616d8b9c679cdb473`). No schema, authentication, saved-list or report data changed.
+
+725 tests passed, including thirteen follow-up regressions. Syntax/build/bundle checks passed. Browser checks at 1440px and 390px cover Overrun in the actual Consolidate Guide step, Shadow and Malign Presence editing, the retained Rapacious Hunger conflict, regular-only detachment scope and the corrected editable aircraft profiles. Activation checks also retain existing Aeldari movement reminders.

@@ -35,7 +35,7 @@
  const enhancement=unit=>unit.details.find(d=>/^Enhancement\s*:/i.test(d))?.replace(/^Enhancement\s*:\s*/i,'')||'';
  function enhancements(army,unit){
   const source=info(unit,army.faction);if(source?.allied&&!source.alliedKind)return [];const keys=(source?.keywords||[]).map(norm),dets=data.detachments.filter(d=>same(d.faction,army.faction)&&selectedDetachments(army).some(name=>norm(name)===norm(d.name)));
-  const eligible=data.enhancements.filter(e=>same(e.faction,army.faction)&&Allies?.allowsEnhancement(data,e,source,army)!==false&&dets.some(d=>e.detachmentId===d.id)&&(e.upgrade||keys.includes('character')&&!keys.includes('epichero'))&&e.keywords.every(k=>keys.includes(norm(k)))&&(!e.restrictions.length||e.restrictions.some(r=>(!r.unit_id||r.unit_id===(source?.sourceUnitId||source?.id))&&(!r.keywords||r.keywords.every(k=>keys.includes(norm(k))))))).sort((a,b)=>a.name.localeCompare(b.name));
+  const eligible=data.enhancements.filter(e=>same(e.faction,army.faction)&&Allies?.allowsEnhancement(data,e,source,army)!==false&&dets.some(d=>e.detachmentId===d.id)&&(e.upgrade||keys.includes('character')&&!keys.includes('epichero'))&&e.keywords.every(k=>keys.includes(norm(k)))&&(!e.restrictions.length||e.restrictions.some(r=>(!r.unit_id||r.unit_id===(source?.sourceUnitId||source?.id))&&(!r.keywords||r.keywords.every(k=>keys.includes(norm(k))))&&(!r.excluded_keywords||r.excluded_keywords.every(k=>!keys.includes(norm(k))))&&(!r.required_abilities||r.required_abilities.every(id=>source?.abilities.some(a=>a.id===id)))))).sort((a,b)=>a.name.localeCompare(b.name));
   return [...new Map(eligible.map(e=>[e.id,e])).values()];
  }
  function setEnhancement(army,id,choice){

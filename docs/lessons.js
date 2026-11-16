@@ -139,6 +139,7 @@
  function armyDetachments(army,available=catalog.detachments){const names=Array.isArray(army.detachments)?army.detachments:army.detachment?[army.detachment]:[],core=typeof module!=='undefined'&&module.exports?require('./core.js'):root.WarPlan;return core?.resolveDetachmentNames?core.resolveDetachmentNames(names,available.filter(d=>factionMatches(d.faction,army.faction)),{knownOnly:true}):[...new Map(names.filter(Boolean).map(name=>[normalized(name),name])).values()];}
  function enhancementEquipped(ability,unit,army){
   const source=unitInfo(unit,army.faction),allies=typeof module!=='undefined'&&module.exports?require('./allies.js'):root.WarPlannerAllies;if(source?.allied&&(!allies?.allowsEnhancement(catalog,ability,source,army)||(ability.bearerKeywords||[]).some(k=>!source.keywords.some(v=>normalized(v)===normalized(k)))))return false;
+  const constrained=ability.bearerRestrictions||[];if(constrained.some(r=>r.excluded_keywords||r.required_abilities)&&!constrained.some(r=>source&&(!r.unit_id||r.unit_id===(source.sourceUnitId||source.id))&&(!r.keywords||r.keywords.every(k=>source.keywords.some(v=>normalized(v)===normalized(k))))&&(!r.excluded_keywords||r.excluded_keywords.every(k=>!source.keywords.some(v=>normalized(v)===normalized(k))))&&(!r.required_abilities||r.required_abilities.every(id=>source.abilities.some(a=>a.id===id)))))return false;
   if(ability.automaticForDetachment){const source=unitInfo(unit,army.faction);return !source?.allied&&ruleInArmy(ability,army)&&(ability.bearerKeywords||[]).every(k=>source?.keywords.some(v=>normalized(v)===normalized(k)));}
   if(!ability.enhancement||!unit.details.some(d=>/^enhancement\s*:/i.test(d)&&normalized(d.replace(/^enhancement\s*:/i,'')).includes(normalized(ability.enhancement))))return false;
   const sourceId=ability.sourceRuleId||Object.keys(aliases).find(id=>aliases[id]===ability.id)||ability.id;
@@ -167,10 +168,11 @@
  function timingsFor(a,state){return ruleTimings(a).filter(t=>timingContextMatches(t,state));}
  function timingLabel(t){return [(t.phase||[]).map(i=>phases[i]?.name).filter(Boolean).join(' / ')||'No phase assigned',t.turn==='you'?'Your turn':t.turn==='opponent'?'Opponent’s turn':'Either turn',timingWindows[t.window]||t.window].join(' · ');}
  function ruleTimingLabel(a){return ruleTimings(a).map(timingLabel).join('; ');}
+ function fightMovementWindows(a){if(a.window!=='before')return [];const id=a.sourceRuleId||a.id;return id==='adrenalised-onslaught-unending-swarm-tyranids'?['pile','consolidate']:id==='overrun-invasion-fleet-tyranids'?['consolidate']:[];}
  function timingMatches(a,state,step){
   if(!ruleMatchesContext(a,state))return false;
   return timingsFor(a,state).some(t=>{
-   const window=t.window;
+   const window=t.window,moves=state.phase===4?fightMovementWindows({...a,window}):[];if(moves.length)return moves.includes(step.window);
    if(a.timings||a.timingOverride)return window===step.window||(state.phase===4&&step.id==='fight-resolve'&&window==='select')||(window==='react'&&step.window==='act');
    const timing=(window===step.window&&!(state.phase===0&&step.window==='act'&&a.sourceRuleId?.startsWith('psychic-guidance')))||(state.phase===0&&step.window==='shock'&&a.sourceRuleId?.startsWith('psychic-guidance'))||(state.phase===4&&step.id==='fight-resolve'&&window==='select')||(a.id==='flitting'&&step.id==='movement-select')||(window==='react'&&step.window==='act');
    const preview=!a.adminManaged&&state.phase===2&&state.turn==='you'&&sequencing[a.id]?.steps.includes(step.id);
@@ -248,6 +250,6 @@
  }
  const stepOverrides=new Map();
  const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
- const api={isDeepStrike,guideRule,guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitInRule,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={isDeepStrike,guideRule,guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,fightMovementWindows,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitInRule,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

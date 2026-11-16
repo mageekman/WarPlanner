@@ -149,8 +149,8 @@
  function activationCandidates(state){return L.abilities.map(a=>L.guideRule(a,state)).filter(Boolean).filter(a=>a.expanded&&L.ruleMatchesContext(a,state)&&L.matches(a,state.army)).flatMap(a=>L.timingsFor(a,state).filter(t=>['act','select','before','react','after','arrivals'].includes(t.window)).map(t=>a.timings?{...a,window:t.window}:a));}
  function stages(state,unit,mode,candidates){
   const rows=baseStages(state,unit,mode);
-  if(!unit||!rows.length||['pile','consolidate'].includes(mode))return rows;
-  const cards=(candidates||activationCandidates(state)).filter(a=>fits(a,state,unit,true));
+  if(!unit||!rows.length)return rows;
+  const moving=['pile','consolidate'].includes(mode),cards=(candidates||activationCandidates(state)).filter(a=>fits(a,state,unit,true)&&(moving?(L.fightMovementWindows?.(a)||[]).includes(mode):!(L.fightMovementWindows?.(a)||[]).length));
   for(const card of cards){const row=card.window==='after'?rows[rows.length-1]:card.window==='select'||card.window==='before'||card.window==='arrivals'?rows[0]:rows.find(r=>r.id==='attacks')||rows[0];row.cards.push({...card,targetUnits:unit.members});}
   return rows;
  }

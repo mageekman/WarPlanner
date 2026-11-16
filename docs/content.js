@@ -103,7 +103,7 @@
    for(const key of ['sourceRuleId','detachment','enhancement','leadingBodyguard'])if(d[key]!=null&&(typeof d[key]!=='string'||d[key].length>180))throw Error(key+' must be a short text value.');
    if(d.requiredLeaderKeywords!==undefined)stringList(d.requiredLeaderKeywords,'Required attached Leader keywords');
    if(d.bearerKeywords!==undefined)stringList(d.bearerKeywords,'Bearer keywords');
-   if(d.bearerRestrictions!==undefined&&(!Array.isArray(d.bearerRestrictions)||d.bearerRestrictions.some(r=>!r||typeof r!=='object'||Array.isArray(r)||r.keywords!==undefined&&(!Array.isArray(r.keywords)||r.keywords.some(k=>typeof k!=='string')))))throw Error('Review the enhancement bearer restrictions.');
+   if(d.bearerRestrictions!==undefined&&(!Array.isArray(d.bearerRestrictions)||d.bearerRestrictions.some(r=>!r||typeof r!=='object'||Array.isArray(r)||['keywords','excluded_keywords','required_abilities'].some(k=>r[k]!==undefined&&(!Array.isArray(r[k])||r[k].some(v=>typeof v!=='string'))))))throw Error('Review the enhancement bearer restrictions.');
    for(const key of ['leadingUnitRequired','referenceOnly','enhancementUpgrade','timingOverride','automaticForDetachment'])if(d[key]!==undefined&&typeof d[key]!=='boolean')throw Error(key+' must be true or false.');
    if(!Object.hasOwn(L.categories,d.category)||!['you','opponent','either'].includes(d.turn)||!windows.includes(d.window))throw Error('Choose a valid category, player turn and timing.');
    if(!Array.isArray(d.phase)||d.phase.some(n=>!Number.isInteger(n)||n<0||n>4))throw Error('Choose valid phases.');

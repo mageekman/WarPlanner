@@ -1,0 +1,1113 @@
+{
+  "checked": "2026-11-16",
+  "reference": {
+    "url": "https://wahapedia.ru/wh40k11ed/factions/tyranids/",
+    "sha256": "915937856c0e3fb6db9e875a244163d4a6787f690d2742499c84936a59c057dc"
+  },
+  "datasheets": {
+    "url": "https://wahapedia.ru/wh40k11ed/factions/tyranids/datasheets.html",
+    "sha256": "5058ef6417825fc5b335bceb98e5d895fb3f8294f9cddd03a7f406d6d678553c"
+  },
+  "official": {
+    "url": "https://assets.warhammer-community.com/eng_14-10_wh40k_faction_pack_tyranids-an12izciwp-np2hnkcsje.pdf",
+    "sha256": "b8af0df04063acc6e935c8b8c29a2e722367b4b90bf5023e06f441e2b8de8e6f",
+    "version": "1.3",
+    "legal": "2026-10-14"
+  },
+  "checks": {
+    "adaptive-biology-invasion-fleet-tyranids": {
+      "contextHash": "7fea2ca6a0bd83ee4a22daae0922457bbe8af11d48c3c2e02eb535ac89717968",
+      "matches": [
+        {
+          "name": "Adaptive Biology",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "adrenal-surge-invasion-fleet-tyranids": {
+      "contextHash": "13930de03629bf24a6da73712b1460cc9469b63d2d42294b79284b095f212f57",
+      "matches": [
+        {
+          "name": "ADRENAL SURGE",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "adrenalised-onslaught-unending-swarm-tyranids": {
+      "contextHash": "28fbb8e7b428c0ed51d2bc50141c44132b569a6ab9f47926d5adf739abcbfa1b",
+      "matches": [
+        {
+          "name": "Adrenalised Onslaught",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "alien-cunning-invasion-fleet-tyranids": {
+      "contextHash": "441ba74f23821dcf9ede9517b39afb9b6cc187f4b7b85a4d03ea8cce5eaa1918",
+      "matches": [
+        {
+          "name": "Alien Cunning",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "biophagic-flow-aura-assimilation-swarm-tyranids": {
+      "contextHash": "08ba2b51d6e6f9c7d7a08f6883c01a261d20032ffdb15e5addb5ea82deff0287",
+      "matches": [
+        {
+          "name": "Biophagic Flow (Aura)",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "cryptophotaic-camouflage-upgrade-ambush-predators-tyranids": {
+      "contextHash": "13a0de0996b72ed123955038e80667e6d52d065d0f0cabd826c08a82b776792d",
+      "matches": [
+        {
+          "name": "Cryptophotaic Camouflage UPGRADE",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "death-blow-tyranids": {
+      "contextHash": "47fa4d1c9b832aff20160bccb32b56d11e80af7ccdabafe12a522087c7599878",
+      "matches": [
+        {
+          "name": "Death Blow",
+          "unit": "Winged Tyranid Prime",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "feed-the-swarm-tyranids": {
+      "contextHash": "bccb6761f5c230676c5847b26b63a1700544e8ca0abcd98fb89a494460082d1c",
+      "matches": [
+        {
+          "name": "Feed the Swarm",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "higher-imperatives-tyranids": {
+      "contextHash": "3764014742b894193a363b65453f26302b1e9b3a7569aa267f307d00fd5dadd5",
+      "matches": [
+        {
+          "name": "Higher Imperatives",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "hypersensory-adaptations-ambush-predators-tyranids": {
+      "contextHash": "94464e31a944ce6be714e982cc7acc045274797c365a4c36d29e33b6cb955e50",
+      "matches": [
+        {
+          "name": "HYPERSENSORY ADAPTATIONS",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "irresistible-will-synaptic-nexus-tyranids": {
+      "contextHash": "fc6cab46b117b6f4446b154c1ad3a18c4331b85c05c52e42972547a9e742c0ab",
+      "matches": [
+        {
+          "name": "IRRESISTIBLE WILL",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "malign-presence-tyranids": {
+      "contextHash": "496d02df0a12aacd1022ea66c5aa3d042b20d1ccf2653d073336972cde0645e6",
+      "matches": [
+        {
+          "name": "Malign Presence (Aura)",
+          "unit": "The Swarmlord",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": true,
+      "supplementalContext": false
+    },
+    "neuronode-vanguard-onslaught-tyranids": {
+      "contextHash": "f5cbd70d9ea8da2f8bb4f6684051b9df98314c85341ad4839b0effa3963773b1",
+      "matches": [
+        {
+          "name": "Neuronode",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "overrun-invasion-fleet-tyranids": {
+      "contextHash": "6beb18e3ccda04b3ecae5d49092a857489e9b4f6f975c4b0e7f8d3b9ec0d04cc",
+      "matches": [
+        {
+          "name": "OVERRUN",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "parasitic-infection-tyranids": {
+      "contextHash": "7ba4e43dd8307d4820882b087352b2b91060dd7510c3be37bc242509f8fd539b",
+      "matches": [
+        {
+          "name": "Parasitic Infection",
+          "unit": "Parasite Of Mortrex",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "parasitic-payload-warrior-bioform-onslaught-tyranids": {
+      "contextHash": "93eae2441d97363cf7e36f3793d772781f1b886df1444087f3af9fd97c5188e3",
+      "matches": [
+        {
+          "name": "PARASITIC PAYLOAD",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "pheromone-trail-tyranids": {
+      "contextHash": "b5d541238d3ccfd8fc22e568e639f6385f7f911fd8177d3bfb1060089321bb6f",
+      "matches": [
+        {
+          "name": "Pheromone Trail",
+          "unit": "Lictor",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "preservation-imperative-unending-swarm-tyranids": {
+      "contextHash": "432cd16573b44e4a623ad19f01254a4c3d10e9b5c2e66e887a4c50ca4db82f98",
+      "matches": [
+        {
+          "name": "PRESERVATION IMPERATIVE",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "psychic-terror-tyranids": {
+      "contextHash": "b30059ba9f55c9209dc5a7daac1e997f52294d84aae551730536757b4d5f7022",
+      "matches": [
+        {
+          "name": "Psychic Terror (Psychic)",
+          "unit": "Neurotyrant",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "rapacious-hunger-assimilation-swarm-tyranids": {
+      "contextHash": "62056c3eed24f4685b306b862dafba175f2db66766a34069317befca5e443ce2",
+      "matches": [
+        {
+          "name": "RAPACIOUS HUNGER",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "reclaim-biomass-assimilation-swarm-tyranids": {
+      "contextHash": "8e209bb6363469d18d735d2c8b4913155b188861bb62c41605ff95f8252881bd",
+      "matches": [
+        {
+          "name": "RECLAIM BIOMASS",
+          "unit": "",
+          "kind": "stratagem"
+        },
+        {
+          "name": "RECLAIM BIOMASS",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "regenerating-monstrosity-assimilation-swarm-tyranids": {
+      "contextHash": "4846f3ea16ec48310043b6714176c824dfb89a1d0195e5087a27ce9a34a047b4",
+      "matches": [
+        {
+          "name": "Regenerating Monstrosity",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "replenishing-swarms-subterranean-assault-tyranids": {
+      "contextHash": "9471c22f6e1dd6b94c6721964ae4d2fe623080d9670a5aa5af36e79b6a4387d6",
+      "matches": [
+        {
+          "name": "REPLENISHING SWARMS",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "seed-spore-mines-tyranids": {
+      "contextHash": "17d1c81e11d2d3933feca2ca78340c88dd2a9ac4a993d56363fcf91cbfae1460",
+      "matches": [
+        {
+          "name": "Seed Spore Mines",
+          "unit": "Biovores",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "seeded-broods-vanguard-onslaught-tyranids": {
+      "contextHash": "9eee18c347e1d5be52b211eaeedfbd560131da68fe0fafb107cfa366e2b633c7",
+      "matches": [
+        {
+          "name": "SEEDED BROODS",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "shadow-in-the-warp-tyranids": {
+      "contextHash": "fb2d513ec9c96c777c76abb97de5ea6a48bd07cfd69f85d7a29b1ef2a33385e3",
+      "matches": [
+        {
+          "name": "Shadow in the Warp",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "spawn-termagants-tyranids": {
+      "contextHash": "10373a48b345d8d177b861e0d533a98dc3d841063b13df6ebefae62ca42a664a",
+      "matches": [
+        {
+          "name": "Spawn Termagants",
+          "unit": "Tervigon",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "stalking-forward-tyranids": {
+      "contextHash": "d35048e03f19b179758b75901ba0f50fbd0dc85e5b9ce7e1792ede6620758130",
+      "matches": [
+        {
+          "name": "Stalking Forward",
+          "unit": "Hierophant",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "synapse-tyranids": {
+      "contextHash": "a6a371b160bb7bd96830999720547155747d4d48f4491cc8deadfd4e6d3205ac",
+      "matches": [
+        {
+          "name": "Synapse",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "synaptic-imperatives-tyranids": {
+      "contextHash": "3b11b1e62e94bbec4d3d0746200211581f94d2837f92b8423401aab22b74232b",
+      "matches": [
+        {
+          "name": "Synaptic Imperatives",
+          "unit": "",
+          "kind": "army"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "tremor-senses-subterranean-assault-tyranids": {
+      "contextHash": "356cf92d51fd3d177d12ec65d49bbaa0f755ea987e40848f4d39be1ba48e1b98",
+      "matches": [
+        {
+          "name": "Tremor Senses",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "tunnel-network-subterranean-assault-tyranids": {
+      "contextHash": "0c95a33d04337b5fb3bbf98047086051c96c3c18816290410df4b2de958fa9ea",
+      "matches": [
+        {
+          "name": "TUNNEL NETWORK",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "unending-waves-unending-swarm-tyranids": {
+      "contextHash": "bec403af4f252829ca27775dd872e1b64d78f95e7311d4f3c94930661bf05e26",
+      "matches": [
+        {
+          "name": "UNENDING WAVES",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "unseen-lurkers-vanguard-onslaught-tyranids": {
+      "contextHash": "cf923ff7486f0bfe68d585336d1c540241ef5eed0ad54bddece84f37d37d802a",
+      "matches": [
+        {
+          "name": "UNSEEN LURKERS",
+          "unit": "",
+          "kind": "stratagem"
+        },
+        {
+          "name": "UNSEEN LURKERS",
+          "unit": "",
+          "kind": "stratagem"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "vanguard-intellect-subterranean-assault-tyranids": {
+      "contextHash": "314d4177b75275793ee2177d3d3dd9559287a26e8b49eb8dc75bc1920e7f9924",
+      "matches": [
+        {
+          "name": "Vanguard Intellect",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "will-of-the-hive-mind-tyranids": {
+      "contextHash": "cbeae124b5fee44c048bdb04a8e5b004e25d7373a3e4d93ff7ea98412a34b8db",
+      "matches": [
+        {
+          "name": "Will of the Hive Mind",
+          "unit": "Hive Tyrant",
+          "kind": "unit"
+        },
+        {
+          "name": "Will of the Hive Mind",
+          "unit": "Winged Hive Tyrant",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "reported-5faa3b2a-9155-4841-9ec9-e0203465614e": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "officialOverride": true,
+      "supplementalContext": true
+    },
+    "adaptive-instincts-tyranids": {
+      "contextHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "matches": [],
+      "officialOverride": true,
+      "supplementalContext": true
+    },
+    "seed-mucolids-tyranids": {
+      "contextHash": "c7aace82797e85ff9f75260bb0b3be0de2181567f1ae6c99c43ece3d2a29a65b",
+      "matches": [
+        {
+          "name": "Seed Mucolids",
+          "unit": "Sporocyst",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "spore-mine-cysts-tyranids": {
+      "contextHash": "e35da4a1ca25681a749d578d3d12b9056068fbfaec31fca6a7602a3d630b7c70",
+      "matches": [
+        {
+          "name": "Spore Mine Cysts",
+          "unit": "Harpy",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": true,
+      "supplementalContext": false
+    },
+    "aerial-seeding-tyranids": {
+      "contextHash": "15d77468db52f0e296e6fc30fc017386e74306f16e7e945929d625dc61d86e96",
+      "matches": [
+        {
+          "name": "Aerial Seeding",
+          "unit": "Tyrannocyte",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "pouncing-leap-tyranids": {
+      "contextHash": "e9509cc8f1f27dd0f5582af222a1b94d4672e6617e653b66b3f87060947a62e7",
+      "matches": [
+        {
+          "name": "Pouncing Leap",
+          "unit": "Von Ryan’s Leapers",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": true,
+      "supplementalContext": false
+    },
+    "chameleonic-vanguard-onslaught-tyranids": {
+      "contextHash": "40ff0977fb8b63977c762cd32198823b996b2f0a0487108494a02eb321f30f21",
+      "matches": [
+        {
+          "name": "Chameleonic",
+          "unit": "",
+          "kind": "enhancement"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "foul-spores-tyranids": {
+      "contextHash": "61ce3cf27d3b4f0606adc08b568d78a293b538dcf62986297276828b383d43f3",
+      "matches": [
+        {
+          "name": "Foul Spores (Aura)",
+          "unit": "Venomthropes",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "onslaught-tyranids": {
+      "contextHash": "0b7f26af1880abe58971eb96448c972a2df386f757b781a9cf8d5774a9c3fb12",
+      "matches": [
+        {
+          "name": "Onslaught (Aura, Psychic)",
+          "unit": "Hive Tyrant",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": false,
+      "supplementalContext": false
+    },
+    "subterranean-tunnels-tyranids": {
+      "contextHash": "ebaf4fabb662e946877651efd1306e20d5280e34047b9c8b50eb6141246ac814",
+      "matches": [
+        {
+          "name": "Subterranean Tunnels",
+          "unit": "Trygon",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": true,
+      "supplementalContext": false
+    },
+    "bio-stimulus-tyranids": {
+      "contextHash": "eeb0f9fbba74761eabafc43a83bb86b6210aee046a37b23477297d13d2d047bd",
+      "matches": [
+        {
+          "name": "Bio-stimulus",
+          "unit": "Psychophage",
+          "kind": "unit"
+        }
+      ],
+      "officialOverride": true,
+      "supplementalContext": false
+    }
+  },
+  "conflicts": {
+    "malign-presence-tyranids": "Official v1.3 replaces the ability with once per turn and no Warlord gate; the community reference instead says Warlord/every use. Follow the explicit official replacement.",
+    "rapacious-hunger-assimilation-swarm-tyranids": "Official v1.3 Feed the Swarm heals D3+1, while the unchanged stratagem clause refers to D3 fixed at 3. Immediate regeneration is described, but the special clause is unresolved and remains excluded from quiz content."
+  },
+  "checkedUnits": {
+    "psychophage": {
+      "M": 12,
+      "keywords": [
+        "Smoke"
+      ]
+    },
+    "norn-assimilator": {
+      "keywords": [
+        "Harvester"
+      ]
+    },
+    "broodlord": {
+      "keywords": [
+        "Synapse"
+      ],
+      "abilities": [
+        "shadow-in-the-warp-tyranids"
+      ]
+    },
+    "parasite-of-mortrex": {
+      "keywords": [
+        "Synapse"
+      ],
+      "abilities": [
+        "shadow-in-the-warp-tyranids"
+      ]
+    },
+    "neurolictor": {
+      "keywords": [
+        "Synapse"
+      ]
+    },
+    "mawloc": {
+      "keywords": [
+        "Vanguard Invader"
+      ]
+    },
+    "raveners": {
+      "keywords": [
+        "Vanguard Invader"
+      ]
+    },
+    "trygon": {
+      "keywords": [
+        "Vanguard Invader"
+      ]
+    }
+  },
+  "checkedProfiles": {
+    "Deathleaper": {
+      "M": 8,
+      "T": 6,
+      "Sv": 3,
+      "W": 7,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Old One Eye": {
+      "M": 8,
+      "T": 9,
+      "Sv": 2,
+      "W": 9,
+      "Ld": 8,
+      "OC": 3
+    },
+    "The Red Terror": {
+      "M": 10,
+      "T": 8,
+      "Sv": 3,
+      "W": 9,
+      "Ld": 8,
+      "OC": 3
+    },
+    "The Swarmlord": {
+      "M": 8,
+      "T": 10,
+      "Sv": 2,
+      "W": 10,
+      "Ld": 7,
+      "OC": 3
+    },
+    "Broodlord": {
+      "M": 8,
+      "T": 5,
+      "Sv": 4,
+      "W": 6,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Hyperadapted Raveners": {
+      "M": 10,
+      "T": 5,
+      "Sv": 4,
+      "W": 6,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Parasite Of Mortrex": {
+      "M": 12,
+      "T": 5,
+      "Sv": 4,
+      "W": 5,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Tyranid Prime with Lash Whip": {
+      "M": 10,
+      "T": 5,
+      "Sv": 3,
+      "W": 6,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Winged Tyranid Prime": {
+      "M": 12,
+      "T": 5,
+      "Sv": 4,
+      "W": 6,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Malanthrope": {
+      "M": 6,
+      "T": 5,
+      "Sv": 4,
+      "W": 10,
+      "Ld": 7,
+      "OC": 3
+    },
+    "Hive Tyrant": {
+      "M": 8,
+      "T": 10,
+      "Sv": 2,
+      "W": 10,
+      "Ld": 7,
+      "OC": 3
+    },
+    "Neurotyrant": {
+      "M": 6,
+      "T": 8,
+      "Sv": 4,
+      "W": 9,
+      "Ld": 7,
+      "OC": 3
+    },
+    "Tervigon": {
+      "M": 8,
+      "T": 11,
+      "Sv": 2,
+      "W": 16,
+      "Ld": 7,
+      "OC": 5
+    },
+    "Winged Hive Tyrant": {
+      "M": 12,
+      "T": 9,
+      "Sv": 2,
+      "W": 10,
+      "Ld": 7,
+      "OC": 3
+    },
+    "Gargoyles": {
+      "M": 12,
+      "T": 3,
+      "Sv": 6,
+      "W": 1,
+      "Ld": 8,
+      "OC": 2
+    },
+    "Hormagaunts": {
+      "M": 10,
+      "T": 3,
+      "Sv": 5,
+      "W": 1,
+      "Ld": 8,
+      "OC": 2
+    },
+    "Termagants": {
+      "M": 6,
+      "T": 3,
+      "Sv": 5,
+      "W": 1,
+      "Ld": 8,
+      "OC": 2
+    },
+    "Tyrannocyte": {
+      "M": 8,
+      "T": 9,
+      "Sv": 3,
+      "W": 10,
+      "Ld": 8,
+      "OC": 2
+    },
+    "Mucolid Spores": {
+      "M": 4,
+      "T": 4,
+      "Sv": 7,
+      "W": 3,
+      "Ld": 8,
+      "OC": 0
+    },
+    "Spore Mines": {
+      "M": 4,
+      "T": 1,
+      "Sv": 7,
+      "W": 1,
+      "Ld": 8,
+      "OC": 0
+    },
+    "Barbgaunts": {
+      "M": 6,
+      "T": 4,
+      "Sv": 4,
+      "W": 2,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Biovores": {
+      "M": 5,
+      "T": 6,
+      "Sv": 3,
+      "W": 5,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Genestealers": {
+      "M": 8,
+      "T": 4,
+      "Sv": 5,
+      "W": 2,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Hive Guard": {
+      "M": 6,
+      "T": 7,
+      "Sv": 3,
+      "W": 4,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Lictor": {
+      "M": 8,
+      "T": 6,
+      "Sv": 4,
+      "W": 6,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Neurogaunts": {
+      "M": 6,
+      "T": 3,
+      "Sv": 6,
+      "W": 1,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Neurolictor": {
+      "M": 8,
+      "T": 5,
+      "Sv": 4,
+      "W": 7,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Pyrovores": {
+      "M": 5,
+      "T": 6,
+      "Sv": 3,
+      "W": 5,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Raveners": {
+      "M": 10,
+      "T": 5,
+      "Sv": 4,
+      "W": 3,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Tyranid Warriors  With Melee Bio-weapons": {
+      "M": 6,
+      "T": 5,
+      "Sv": 4,
+      "W": 3,
+      "Ld": 7,
+      "OC": 2
+    },
+    "Tyranid Warriors  With Ranged Bio-weapons": {
+      "M": 6,
+      "T": 5,
+      "Sv": 4,
+      "W": 3,
+      "Ld": 7,
+      "OC": 2
+    },
+    "Tyrant Guard": {
+      "M": 6,
+      "T": 8,
+      "Sv": 3,
+      "W": 4,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Venomthropes": {
+      "M": 6,
+      "T": 5,
+      "Sv": 4,
+      "W": 3,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Von Ryan’s Leapers": {
+      "M": 10,
+      "T": 5,
+      "Sv": 4,
+      "W": 3,
+      "Ld": 8,
+      "OC": 1
+    },
+    "Zoanthropes": {
+      "M": 5,
+      "T": 5,
+      "Sv": 5,
+      "W": 3,
+      "Ld": 7,
+      "OC": 1
+    },
+    "Carnifexes": {
+      "M": 8,
+      "T": 9,
+      "Sv": 2,
+      "W": 8,
+      "Ld": 8,
+      "OC": 3
+    },
+    "Exocrine": {
+      "M": 8,
+      "T": 10,
+      "Sv": 3,
+      "W": 14,
+      "Ld": 8,
+      "OC": 4
+    },
+    "Harpy": {
+      "M": "-",
+      "T": 9,
+      "Sv": 3,
+      "W": 12,
+      "Ld": 8,
+      "OC": "-"
+    },
+    "Haruspex": {
+      "M": 8,
+      "T": 11,
+      "Sv": 3,
+      "W": 14,
+      "Ld": 8,
+      "OC": 4
+    },
+    "Hive Crone": {
+      "M": "-",
+      "T": 9,
+      "Sv": 3,
+      "W": 12,
+      "Ld": 8,
+      "OC": "-"
+    },
+    "Maleceptor": {
+      "M": 8,
+      "T": 11,
+      "Sv": 3,
+      "W": 14,
+      "Ld": 7,
+      "OC": 4
+    },
+    "Mawloc": {
+      "M": 10,
+      "T": 10,
+      "Sv": 3,
+      "W": 14,
+      "Ld": 8,
+      "OC": 4
+    },
+    "Norn Assimilator": {
+      "M": 10,
+      "T": 11,
+      "Sv": 2,
+      "W": 16,
+      "Ld": 7,
+      "OC": 5
+    },
+    "Norn Emissary": {
+      "M": 10,
+      "T": 11,
+      "Sv": 2,
+      "W": 16,
+      "Ld": 7,
+      "OC": 5
+    },
+    "Psychophage": {
+      "M": 12,
+      "T": 9,
+      "Sv": 3,
+      "W": 10,
+      "Ld": 8,
+      "OC": 3
+    },
+    "Screamer-killer": {
+      "M": 8,
+      "T": 9,
+      "Sv": 2,
+      "W": 10,
+      "Ld": 8,
+      "OC": 3
+    },
+    "Sporocyst": {
+      "M": "-",
+      "T": 10,
+      "Sv": 3,
+      "W": 10,
+      "Ld": 8,
+      "OC": 0
+    },
+    "Toxicrene": {
+      "M": 8,
+      "T": 11,
+      "Sv": 3,
+      "W": 14,
+      "Ld": 8,
+      "OC": 4
+    },
+    "Trygon": {
+      "M": 10,
+      "T": 10,
+      "Sv": 3,
+      "W": 14,
+      "Ld": 8,
+      "OC": 4
+    },
+    "Tyrannofex": {
+      "M": 9,
+      "T": 12,
+      "Sv": 2,
+      "W": 16,
+      "Ld": 8,
+      "OC": 5
+    },
+    "Harridan": {
+      "M": 14,
+      "T": 10,
+      "Sv": 3,
+      "W": 30,
+      "Ld": 8,
+      "OC": 0
+    },
+    "Hierophant": {
+      "M": 12,
+      "T": 14,
+      "Sv": 2,
+      "W": 30,
+      "Ld": 8,
+      "OC": 12
+    },
+    "Barbed Hierodule": {
+      "M": 8,
+      "T": 12,
+      "Sv": 2,
+      "W": 18,
+      "Ld": 8,
+      "OC": 5
+    },
+    "Dimachaeron": {
+      "M": 12,
+      "T": 10,
+      "Sv": 3,
+      "W": 16,
+      "Ld": 7,
+      "OC": 5
+    },
+    "Scythed Hierodule": {
+      "M": 12,
+      "T": 12,
+      "Sv": 2,
+      "W": 18,
+      "Ld": 8,
+      "OC": 5
+    },
+    "Ripper Swarms": {
+      "M": 6,
+      "T": 2,
+      "Sv": 6,
+      "W": 4,
+      "Ld": 8,
+      "OC": 0
+    },
+    "Sky-slasher Swarms": {
+      "M": 12,
+      "T": 2,
+      "Sv": 6,
+      "W": 4,
+      "Ld": 8,
+      "OC": 0
+    }
+  },
+  "profileCorrections": {
+    "harpy": {
+      "M": "-",
+      "OC": "-"
+    },
+    "hive-crone": {
+      "M": "-",
+      "OC": "-"
+    },
+    "sporocyst": {
+      "M": "-"
+    },
+    "harridan": {
+      "M": 14
+    }
+  }
+}
