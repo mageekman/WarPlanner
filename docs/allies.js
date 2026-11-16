@@ -20,11 +20,12 @@
  function projectAgents(catalog,rules){
   const p=policy(catalog);if(!p?.enabled)return;
   const native=catalog.units.filter(u=>agent(u.faction)&&!u.allied&&has(u,'Imperium')&&has(u,'Agents of the Imperium')&&!p.excludedUnitIds.includes(u.id));
+  const nativeIds=new Set(native.map(u=>u.id));
   const sources=rules.filter(r=>agent(r.faction)&&!r.allied);if(!sources.some(r=>r.id===p.sourceRuleId))return;const factions=catalog.factions.filter(f=>imperial(catalog,f.name));
   for(const f of factions){
    const prefix='assigned-'+f.id+'-',id=x=>prefix+x,projected=[];
    for(const u of native){const slot=has(u,'Dedicated Transport')?'transport':has(u,'Character')?'character':has(u,'Retinue')?'retinue':has(u,'Requisitioned')?'requisitioned':null;if(!slot)continue;
-    projected.push({...u,id:id(u.id),faction:f.name,originFaction:u.faction,sourceUnitId:u.id,sourceCatalogKey:u.sourceCatalogKey||'unit:'+u.id,allied:true,alliedSlot:slot,bodyguardIds:u.bodyguardIds.map(id),abilities:u.abilities.map(a=>({...a}))});
+    projected.push({...u,id:id(u.id),faction:f.name,originFaction:u.faction,sourceUnitId:u.id,sourceCatalogKey:u.sourceCatalogKey||'unit:'+u.id,allied:true,alliedSlot:slot,bodyguardIds:u.bodyguardIds.filter(b=>nativeIds.has(b)).map(id),abilities:u.abilities.map(a=>({...a}))});
    }
    const ruleMap=new Map();
    for(const r of sources){if(r.detachment||r.enhancement||!['ability','core','army'].includes(r.category))continue;
@@ -94,6 +95,8 @@
   if(rule.allied)return !!source&&rule.alliedUnitIds.includes(source.id);
   if(source?.allied)return rule.faction==='*';return true;
  }
+ // Match only explicit runtime/canonical identities; similar names never grant eligibility.
+ function bearerRestrictionMatches(source,restriction){return !!source&&(!restriction.unit_id||[source.id,source.sourceUnitId,source.canonicalUnitId].includes(restriction.unit_id))&&(!restriction.keywords||restriction.keywords.every(k=>has(source,k)))&&(!restriction.excluded_keywords||restriction.excluded_keywords.every(k=>!has(source,k)))&&(!restriction.required_abilities||restriction.required_abilities.every(id=>source.abilities.some(a=>a.id===id)));}
  function allowsEnhancement(catalog,enhancement,source,army){if(!source?.allied)return true;if(source.alliedKind!=='gsc'||!eligible(catalog,source,army)||!has(source,'Character')||has(source,'Epic Hero'))return false;return ['synaptic-auger-final-day-genestealer-cults','vanguard-tyrant-final-day-genestealer-cults'].includes(enhancement.sourceRuleId||enhancement.id)&&hostTarget(enhancement,source)===true;}
  function assessGsc(army,catalog){if(!gsc(army.faction))return null;const entries=army.units.map(entry=>({entry,source:resolve(catalog,entry,army.faction)})),allies=entries.filter(x=>x.source?.alliedKind==='gsc'),notes=[],limit=Number(army.limit)||2000,cap=limit<=1000?500:limit<=2000?1000:1500,totals={};
   for(const mode of gscModes){const members=allies.filter(x=>x.source.alliedDetachment===mode.detachment),known=members.filter(x=>Number.isInteger(Number(x.entry.points))&&Number(x.entry.points)>0),points=known.reduce((n,x)=>n+Number(x.entry.points),0);totals[mode.detachment]={points,unknown:members.length-known.length,cap};if(points>cap)notes.push(mode.detachment+' allies exceed the '+cap+'-point allowance.');if(members.length>known.length)notes.push(mode.detachment+': enter current total points (including enhancements) for every allied unit; allowance is not yet verified.');}
@@ -103,5 +106,5 @@
  }
  function assess(army,catalog){return assessGsc(army,catalog)||assessAgents(army,catalog);}
  function grantsDeepStrike(catalog,army,member){if(!member.group||!['leader','support'].includes(member.role))return false;const source=resolve(catalog,member,army.faction);if(!has(source,'Inquisitor'))return false;return army.units.some(b=>b.group===member.group&&b.role==='bodyguard'&&(resolve(catalog,b,army.faction)?.abilities||[]).some(a=>a.id.endsWith('rites-of-teleportation-agents-of-the-imperium')));}
- const api={invalidate,grantsDeepStrike,policy,imperial,resolve,project,assess,eligible,allowsRule,allowsEnhancement,gscModes};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerAllies=api;
+ const api={bearerRestrictionMatches,invalidate,grantsDeepStrike,policy,imperial,resolve,project,assess,eligible,allowsRule,allowsEnhancement,gscModes};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlannerAllies=api;
 })(typeof window!=='undefined'?window:globalThis);
