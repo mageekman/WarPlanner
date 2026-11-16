@@ -1,5 +1,9 @@
 # Imperial Knights readiness audit — 2026-11-15
 
+Follow-up: [Army-defining rule corrections](ARMY-FOUNDATIONS.md) supersede this
+audit’s original warnings for Bondsman, Code Chivalric and Valour’s Reward.
+The counts below describe the original audit snapshot.
+
 Source-derived study audit against the preserved Imperial Knights imports and pinned community source. This is not certification against the current official Codex. Empty, partial, conflicting and provisional mechanics retain their source status and specific review explanations.
 
 ## Coverage

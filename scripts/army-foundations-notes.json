@@ -1,0 +1,102 @@
+[
+  {
+    "key": "rule:power-from-pain-drukhari",
+    "checked": "2026-11-15",
+    "summary": "For a DRUKHARI army, add 1 Pain token at the start of your Command phase, whenever an enemy unit is destroyed, and whenever an enemy unit fails a Battle-shock test. Keep these in your pool and deduct tokens when spent. Pay a Pain ability’s stated cost at its stated timing to Empower its unit until the phase ends. All of that unit’s Pain abilities then apply. An Attached unit activates both its Leader and Bodyguard Pain abilities together without paying separately for each. Other rules can also spend tokens; apply their own costs and restrictions.",
+    "targetText": "Army Faction DRUKHARI. Empower only an eligible unit with a Pain ability, at that ability’s stated timing and cost.",
+    "triggerText": "Own Command start: gain a token. Either turn: enemy destruction or failed Battle-shock gains a token; spend at the relevant ability’s timing.",
+    "timings": [{"phase":[0],"turn":"you","window":"start"},{"phase":[0,1,2,3,4],"turn":"either","window":"react"}],
+    "conditions": ["Starting-token bonuses belong to their specific detachment or other rule; do not assume a universal starting allocation.","Empowered expires at phase end. Becoming Empowered does not give every unit the same re-roll or weapon bonus; read its Pain abilities.","The existing saved reminder’s three token-generation triggers are retained and expanded."],
+    "sources": [{"label":"Current Drukhari reference — Power from Pain","url":"https://wahapedia.ru/wh40k11ed/factions/drukhari/#Power-from-Pain"}]
+  },
+  {
+    "key": "rule:bondsman-imperial-knights",
+    "checked": "2026-11-15",
+    "summary": "In your Command phase, each model using a Bondsman ability selects one friendly ARMIGER model within 12″ that is not already affected by a Bondsman ability. That Armiger receives the issuing model’s named Bondsman benefit until the start of your next Command phase. The issuing Knight does not also receive that benefit.",
+    "targetText": "Issuer: a model with a Bondsman ability. Recipient: one friendly ARMIGER model within 12″ of that issuer, not already affected by any Bondsman ability.",
+    "triggerText": "Your Command phase: assign Bondsman benefits; expire them at the start of your next Command phase.",
+    "timings": [{"phase":[0],"turn":"you","window":"act"}],
+    "conditions": ["Use the issuer’s specific Duty/Bondsman rule for the actual benefit. Do not grant the benefit to every Armiger or to the issuing Knight.","Any range, recipient-count or other exception requires its own applicable rule."],
+    "sources": [{"label":"Current Imperial Knights reference — Bondsman","url":"https://wahapedia.ru/wh40k11ed/factions/imperial-knights/#Bondsman"},{"label":"Official Imperial Knights index — Bondsman procedure (earlier edition; corroboration only)","url":"https://assets.warhammer-community.com/eng_jun25_wh40k_index_imperial_knights-kzqf9zl7sn-9u9daxxedg.pdf"}]
+  },
+  {
+    "key": "rule:code-chivalric-imperial-knights",
+    "checked": "2026-11-15",
+    "summary": "For an IMPERIAL KNIGHTS army, after Read Mission Objectives choose or separately roll D6 for one Deed and one Quality. Each table uses 1–2 / 3–4 / 5–6 in the order below. Qualities benefit models with Code Chivalric throughout the battle. Deeds: Lay Low the Tyrant — nominate an enemy CHARACTER at battle start; check its destruction at turn end. Reclaim the Realm — at opponent turn end, control more objectives than the opponent. Reap a Great Tally — at round end, enemy units destroyed that round must exceed the round number, including those later returned. Qualities: Martial Valour — one Hit AND one Wound re-roll per shoot/fight selection; Eager for Challenge — +2″ Move AND +1 Advance/Charge; Legacy Unsullied — +2 OC AND improve Leadership by 1. First completion fulfils the Oath: become Honoured for the rest of the battle and gain 2CP, or 3CP if either part was random, exempt from the normal extra-CP cap.",
+    "targetText": "Army Faction IMPERIAL KNIGHTS. The selected Quality affects models with Code Chivalric. Lay Low the Tyrant nominates one enemy CHARACTER model, not necessarily the Warlord.",
+    "triggerText": "Prebattle: choose the Oath. Turn/round ends: check the selected Deed and first-completion reward.",
+    "timings": [{"phase":[],"turn":"either","window":"prebattle"},{"phase":[0,1,2,3,4],"turn":"either","window":"act"},{"phase":[4],"turn":"either","window":"turn-end"},{"phase":[4],"turn":"either","window":"round-end"}],
+    "conditions": ["A Quality’s listed bonuses apply together; they are not a menu of alternative sub-benefits. Martial Valour re-rolls one Hit and one Wound, not every roll of 1.","Improve Leadership means a better characteristic, not a worse test requirement. Keep the selected Quality after fulfilling the Oath.","The basic Oath pays its reward on first completion only. Additional Oaths and their rewards require a separate detachment rule.","Tally example: round 1 needs at least two enemy units destroyed; round 2 needs at least three."],
+    "sources": [{"label":"Current Imperial Knights reference — Code Chivalric","url":"https://wahapedia.ru/wh40k11ed/factions/imperial-knights/#Code-Chivalric"},{"label":"Official Imperial Knights faction pack v1.2 — tally erratum","url":"https://assets.warhammer-community.com/eng_wh40k_faction_pack_imperial_knights-n1irjnjygs-w8jfnk8kdn.pdf"}]
+  },
+  {
+    "key": "rule:valours-reward-imperial-knights",
+    "checked": "2026-11-15",
+    "summary": "Questoris Companions’ expendable Enhancements cannot be used while expended. Whenever you fulfil an Oath, clear their expended state so they can be used again under their own activation rules. The refresh is an Oath event, not an Oath of Moment target event.",
+    "targetText": "The expendable Enhancements supplied by Questoris Companions; each remains restricted to its eligible bearer and activation conditions.",
+    "triggerText": "When an Oath is fulfilled: refresh the detachment’s expended Enhancements.",
+    "timings": [{"phase":[0,1,2,3,4],"turn":"either","window":"react"},{"phase":[4],"turn":"either","window":"turn-end"},{"phase":[4],"turn":"either","window":"round-end"}],
+    "conditions": ["This does not refresh unrelated once-per-battle rules. The relevant Enhancement must belong to Questoris Companions and be one of its expendable Enhancements."],
+    "sources": [{"label":"Current Imperial Knights reference — Valour’s Reward","url":"https://wahapedia.ru/wh40k11ed/factions/imperial-knights/#Valour-s-Reward"}]
+  },
+  {
+    "key": "rule:for-the-greater-good-tau-empire",
+    "checked": "2026-11-15",
+    "summary": "For a T’AU EMPIRE army, choose units with For the Greater Good as Observers at the start of your Shooting phase. During that phase, each Observer that is eligible to shoot and has not been selected to shoot may mark one visible enemy as Spotted; FORTIFICATION and Battle-shocked units cannot do this. Each enemy can be Spotted only once per phase. Non-Observer units with For the Greater Good count as Guided while targeting Spotted enemies. Their attacks against a Spotted enemy improve Ballistic Skill by 1 and gain Ignores Cover only if that enemy’s Observer has MARKERLIGHT. The mark and bonuses expire at phase end. This is not a one-Observer/one-shooter pairing and does not grant +1 to Hit rolls.",
+    "targetText": "Observers and Guided units must have For the Greater Good. Spot an enemy visible to the Observer; exclude FORTIFICATION/Battle-shocked Observers and Observers already selected to shoot or otherwise ineligible. Apply bonuses only against Spotted enemies.",
+    "triggerText": "Your Shooting start: designate Observers. Before an Observer shoots: mark its visible enemy. Guided attacks use the resulting Spotted marks.",
+    "timings": [{"phase":[2],"turn":"you","window":"start"},{"phase":[2],"turn":"you","window":"act"}],
+    "conditions": ["An Observer cannot also be Guided. The army rule does not say Observing forfeits shooting; spot while still eligible and before selecting that Observer to shoot.","There is no army-rule penalty for attacking an unspotted target; those attacks simply lack this rule’s Guided benefit.","A MARKERLIGHT Observer grants Ignores Cover against the enemy it marked; a non-MARKERLIGHT Observer does not.","This correction covers the ordinary army rule, not Sudden Dawn Cadre’s separate Combat Patrol version."],
+    "sources": [{"label":"Official T’au Empire faction pack v1.2 — replacement army rule","url":"https://assets.warhammer-community.com/eng_wh40k_faction_pack_tau_empire-sxhzmfrlud-mpzjzuhupn.pdf"}]
+  },
+  {
+    "key": "rule:acts-of-faith-adepta-sororitas",
+    "checked": "2026-11-15",
+    "summary": "For an ADEPTA SORORITAS army, each unit with Acts of Faith may perform one Act per phase unless another rule changes that limit. Gain one Miracle die at the start of each player’s turn and when a friendly ADEPTA SORORITAS unit is destroyed. Roll D6 when gaining it and keep that value in your pool; only a specific exception can alter or re-roll it. Before an eligible roll, spend one pooled die to replace one die with its stored value, treated as unmodified; roll the remaining dice normally. Eligible rolls: Advance, Battle-shock, Charge, Damage, Hit, Save and Wound. For a multi-die roll, replace only one die. Remove the spent die from the pool. It is not an automatic 6. If the roll is re-rolled, that spent die stays lost and the Act still counts as used.",
+    "targetText": "Army Faction ADEPTA SORORITAS; the rolling model/unit must have Acts of Faith. One Act per unit per phase, subject to explicit exceptions. Ordinary faction version only; Sanctuary Guardians remains separate.",
+    "triggerText": "Each player’s turn start or friendly Sororitas unit destruction: gain a Miracle die. Before an eligible roll: optionally substitute one stored die.",
+    "timings": [{"phase":[0],"turn":"either","window":"turn-start"},{"phase":[0,1,2,3,4],"turn":"either","window":"react"}],
+    "conditions": ["The current eligible-roll list includes Damage and Battle-shock; it does not add Hazardous, Desperate Escape or every Leadership test.","Choose the substitution before rolling. A Charge or Battle-shock test still rolls its other die; do not replace the entire 2D6 result.","The FAQ permits a Miracle die in a re-roll, subject to the unit’s remaining Act allowance or a specific exception. A spent die is never refunded by re-rolling.","Generation at each turn start includes the opponent’s turn; this is not once per round."],
+    "sources": [{"label":"Current Adepta Sororitas reference — Acts of Faith and FAQ","url":"https://wahapedia.ru/wh40k11ed/factions/adepta-sororitas/#Acts-of-Faith"},{"label":"Official Adepta Sororitas faction pack v1.4 — generation and FAQ updates","url":"https://assets.warhammer-community.com/eng_14-10_wh40k_-faction_pack_adepta_sororitas-kby0nywexj-dg7kvr3iiy.pdf"}]
+  },
+  {
+    "key": "rule:gate-of-infinity-grey-knights",
+    "checked": "2026-11-15",
+    "summary": "For a GREY KNIGHTS army, at the end of your opponent’s Fight phase select up to 2 units in Incursion, 3 in Strike Force or 4 in Onslaught. Each must be on the battlefield, outside Engagement Range of every enemy, and have Gate of Infinity on every model. Put them in Strategic Reserves. They may make an ingress move in your next Movement phase, including your first turn. Eligibility uses the ordinary Gate of Infinity ability, not the Crowe’s Sanctifiers replacement.",
+    "targetText": "Friendly on-battlefield units with ordinary Gate of Infinity on every model, outside enemy Engagement Range. Base maximum 2/3/4 for Incursion/Strike Force/Onslaught; apply any valid modifier separately.",
+    "triggerText": "Opponent Fight end: select eligible units for Strategic Reserves. Your next Movement: ingress, including your first turn.",
+    "timings": [{"phase":[4],"turn":"opponent","window":"end"},{"phase":[1],"turn":"you","window":"arrivals"}],
+    "conditions": ["The first-turn permission does not waive the ingress move’s other placement restrictions.","Check every model, including attached models; a GREY KNIGHTS keyword alone does not replace the ability requirement.","The separate Crowe’s Sanctifiers Combat Patrol record and its unit pool are unchanged."],
+    "sources": [{"label":"Current Grey Knights reference — Gate of Infinity","url":"https://wahapedia.ru/wh40k11ed/factions/grey-knights/#Gate-of-Infinity"},{"label":"Official Grey Knights faction pack v1.1 — ingress and first-turn erratum","url":"https://assets.warhammer-community.com/eng_22-07_warhammer_40%2C000_faction_pack_grey_knights-dlzvusufhy-uialb3pko4.pdf"}]
+  },
+  {
+    "key": "rule:prescient-redeployment-grey-knights",
+    "checked": "2026-11-15",
+    "summary": "From battle round 2, at the start of your Movement phase, if you used fewer than your maximum Gate of Infinity selections at the end of the opponent’s previous turn, you may put one eligible GREY KNIGHTS unit from the battlefield into Strategic Reserves. It must satisfy the ordinary Gate of Infinity requirements, including no enemy Engagement Range and the ability on every model. This permits one extra pickup, not one per unused slot; the unit can then return in the Reinforcements step under the applicable arrival rules.",
+    "targetText": "Augurium Task Force: one on-battlefield GREY KNIGHTS unit eligible for ordinary Gate of Infinity, only from round 2 and only if the previous opponent-turn selection allowance was not fully used.",
+    "triggerText": "Your Movement start, round 2 onward: check previous opponent-turn Gate selections before picking up one eligible unit.",
+    "timings": [{"phase":[1],"turn":"you","window":"start"}],
+    "conditions": ["Determine the actual Gate of Infinity maximum using applicable modifiers, including Tome of Forbidden Ways where equipped and active.","An unused allowance is required; this does not create a pickup if the previous allowance was fully used."],
+    "sources": [{"label":"Current Grey Knights reference — Prescient Redeployment","url":"https://wahapedia.ru/wh40k11ed/factions/grey-knights/#Prescient-Redeployment"}]
+  },
+  {
+    "key": "rule:tome-of-forbidden-ways-brotherhood-strike-grey-knights",
+    "checked": "2026-11-15",
+    "summary": "While the eligible GREY KNIGHTS bearer is on the battlefield or in Strategic Reserves, increase your Gate of Infinity selection limit by one: the base 2/3/4 limits become 3/4/5 for Incursion/Strike Force/Onslaught. This changes the maximum, not unit eligibility, pickup timing or arrival restrictions.",
+    "targetText": "Brotherhood Strike Enhancement on its eligible GREY KNIGHTS bearer. The bearer must be on the battlefield or in Strategic Reserves; selected units still meet ordinary Gate of Infinity requirements.",
+    "triggerText": "When determining the Gate of Infinity selection allowance, check the equipped bearer’s location.",
+    "timings": [{"phase":[4],"turn":"opponent","window":"end"},{"phase":[1],"turn":"you","window":"start"}],
+    "conditions": ["No bonus while the bearer is destroyed or otherwise outside the two permitted locations. Do not grant it just because the Enhancement exists in the faction catalog.","For Prescient Redeployment, compare previous selections against the applicable maximum; this Enhancement does not itself grant a separate pickup."],
+    "sources": [{"label":"Current Grey Knights reference — Tome of Forbidden Ways","url":"https://wahapedia.ru/wh40k11ed/factions/grey-knights/#Tome-of-Forbidden-Ways"}]
+  },
+  {
+    "key": "rule:puretides-teachings-tau-empire",
+    "checked": "2026-11-15",
+    "summary": "Once per battle round, when Commander Farsight’s unit is targeted with a Stratagem, you may reduce that use’s CP cost by 1CP. This applies to his unit and does not require the Necron My Will Be Done ability.",
+    "targetText": "Commander Farsight’s unit when it is targeted with a Stratagem; apply the once-per-battle-round limit and the Stratagem’s normal eligibility restrictions.",
+    "triggerText": "When Farsight’s unit is targeted with a Stratagem: optional 1CP discount, once per battle round.",
+    "timings": [{"phase":[0,1,2,3,4],"turn":"either","window":"react"}],
+    "conditions": ["A discount does not itself grant permission to use an otherwise illegal Stratagem or repeat a restricted use."],
+    "sources": [{"label":"Current Commander Farsight datasheet — Puretide’s Teachings","url":"https://wahapedia.ru/wh40k11ed/factions/t-au-empire/Commander-Farsight"}]
+  }
+]

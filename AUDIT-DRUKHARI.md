@@ -1,5 +1,9 @@
 # Drukhari readiness audit — 14 November 2026
 
+Follow-up: [Army-defining rule corrections](ARMY-FOUNDATIONS.md) supersede this
+audit’s original warnings for Power From Pain.
+The counts below describe the original audit snapshot.
+
 Audited 164 native rules and 10 detachments against their preserved imported
 40kdc mechanics and the pinned core index at
 `6ea813f7706bc9a492026d8b4403af99a965162b`. This community-source audit does not

@@ -1,5 +1,11 @@
 # Research references and credits
 
+Army-defining rule corrections (2026-11-15): original concise study wording
+checked against the current faction references and official Warhammer Community
+faction-pack updates linked per entry in `scripts/army-foundations-notes.json`.
+Original 40kdc imports and their CC BY 4.0 attribution remain intact. See
+[ARMY-FOUNDATIONS.md](ARMY-FOUNDATIONS.md) for scope and source fingerprints.
+
 Grey Knights readiness audit: original study summaries derived from preserved
 40kdc mechanics and the [pinned Grey Knights index](https://github.com/wn-mitch/40kdc-data/tree/6ea813f7706bc9a492026d8b4403af99a965162b/data/core/grey-knights),
 Alpaca Software and community contributors, CC BY 4.0. Changes include teleport
