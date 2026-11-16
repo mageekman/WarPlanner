@@ -9,7 +9,7 @@ const Builder=WarPlannerListBuilder;
 let listEditor=null,pageNavigation=null,ruleReportRequested=false,guideSettingsDraft=null;
 const Dispositions=window.WarPlannerDispositions;
 const PageNavigation=window.WarPlannerNavigation;
-const initialState=army=>({view:'guide',sidebarCollapsed:false,guideStarted:false,guideFontSize:'medium',guideShowPreviews:true,guideShowCoreStratagems:false,guideShowDeepStrike:true,guideRuleEditing:false,guideRuleTypes:{},guideDisposition:{enabled:false,opponent:''},army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},reviewedReminders:{},flowRevision:'flashcards-v1'});
+const initialState=army=>({view:'guide',sidebarCollapsed:false,guideStarted:false,guideFontSize:'medium',guideShowPreviews:true,guideShowCoreStratagems:false,guideShowDeepStrike:true,guideRuleEditing:false,guideSkipEmptySteps:false,guideRuleTypes:{},guideDisposition:{enabled:false,opponent:''},army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},reviewedReminders:{},flowRevision:'flashcards-v1'});
 let state=initialState(window.WARPLANNER_CONFIG?EMPTY_ARMY:sample);
 let storageOK=true;
 function normalizeLists(){
@@ -259,12 +259,12 @@ function startGuide(){
  Object.assign(state,{army:structuredClone(selected.army),activeListId:selected.id,renames:{...selected.renames},warnings:[...(selected.warnings||[])],firstPlayer:first,turn:first,round:1,phase:0,open:0,completed:{},revealed:{},history:[],reviewedReminders:{},guideStarted:true,view:'guide',guideDisposition:{enabled:state.setupAddDisposition===true,opponent:state.setupOpponentDisposition||''}});
  render(true);
 }
-function pendingGuideSettings(){return guideSettingsDraft||{guideFontSize:state.guideFontSize,guideShowPreviews:state.guideShowPreviews!==false,guideShowCoreStratagems:state.guideShowCoreStratagems===true,guideShowDeepStrike:state.guideShowDeepStrike!==false,guideRuleEditing:state.guideRuleEditing===true,guideRuleTypes:{...(state.guideRuleTypes||{})}};}
+function pendingGuideSettings(){return guideSettingsDraft||{guideFontSize:state.guideFontSize,guideShowPreviews:state.guideShowPreviews!==false,guideShowCoreStratagems:state.guideShowCoreStratagems===true,guideShowDeepStrike:state.guideShowDeepStrike!==false,guideRuleEditing:state.guideRuleEditing===true,guideSkipEmptySteps:state.guideSkipEmptySteps===true,guideRuleTypes:{...(state.guideRuleTypes||{})}};}
 function stageGuideSetting(key,value){guideSettingsDraft={...pendingGuideSettings(),[key]:value};}
 function reloadGuide(){
  Object.assign(state,pendingGuideSettings());guideSettingsDraft=null;guidePrepared=null;guideSession.reset();clearGuideWarm();render(true);
 }
-function guideSettings(){const settings=pendingGuideSettings();return `<details class="guide-settings"><summary aria-label="Guide settings" title="Guide settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3-.6 2.4-2 .9L4 5.6 2.5 8l1.8 1.8v2.4L2.5 14 4 16.4l2.4-.7 2 .9L9 19h3l.6-2.4 2-.9 2.4.7 1.5-2.4-1.8-1.8V9.8L18.5 8 17 5.6l-2.4.7-2-.9L12 3Z"/><circle cx="10.5" cy="11" r="3"/></svg></summary><div class="guide-settings-menu"><label class="guide-font-label" for="guide-font-size">Font size</label><select id="guide-font-size">${['small','medium','large'].map(size=>`<option value="${size}" ${size===(settings.guideFontSize||'medium')?'selected':''}>${size[0].toUpperCase()+size.slice(1)}</option>`).join('')}</select><label class="guide-preview-setting"><input id="guide-show-previews" type="checkbox" ${settings.guideShowPreviews?'checked':''}>Show preview info</label><fieldset class="guide-type-filters"><legend>Rule types</legend>${[['army','Army / Detachment'],['ability','Abilities'],['stratagem','Stratagems'],['enhancement','Enhancements'],['core','Core rules'],['disposition','Disposition actions']].map(([type,label])=>`<label class="guide-preview-setting"><input type="checkbox" data-guide-rule-type="${type}" ${settings.guideRuleTypes[type]!==false?'checked':''}>${label}</label>`).join('')}</fieldset><label class="guide-preview-setting"><input id="guide-show-core-stratagems" type="checkbox" ${settings.guideShowCoreStratagems?'checked':''}>Show Core Stratagems</label><label class="guide-preview-setting"><input id="guide-show-deep-strike" type="checkbox" ${settings.guideShowDeepStrike?'checked':''}>Show Deep Strike</label>${window.WarPlannerAdminPage?.canAccess?`<label class="guide-preview-setting"><input id="guide-rule-editing" type="checkbox" ${settings.guideRuleEditing?'checked':''}>Edit rules in guide (admin)</label>`:''}<p class="guide-settings-note">Changes apply when you reload. The phase sequence always stays available.</p><button type="button" class="guide-reload-button" data-action="reload-guide">Reload Guide</button><button type="button" data-action="reset-guide">Reset guide</button><button type="button" data-action="choose-guide-army">Choose another army</button></div></details>`;}
+function guideSettings(){const settings=pendingGuideSettings();return `<details class="guide-settings"><summary aria-label="Guide settings" title="Guide settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3-.6 2.4-2 .9L4 5.6 2.5 8l1.8 1.8v2.4L2.5 14 4 16.4l2.4-.7 2 .9L9 19h3l.6-2.4 2-.9 2.4.7 1.5-2.4-1.8-1.8V9.8L18.5 8 17 5.6l-2.4.7-2-.9L12 3Z"/><circle cx="10.5" cy="11" r="3"/></svg></summary><div class="guide-settings-menu"><label class="guide-font-label" for="guide-font-size">Font size</label><select id="guide-font-size">${['small','medium','large'].map(size=>`<option value="${size}" ${size===(settings.guideFontSize||'medium')?'selected':''}>${size[0].toUpperCase()+size.slice(1)}</option>`).join('')}</select><label class="guide-preview-setting"><input id="guide-show-previews" type="checkbox" ${settings.guideShowPreviews?'checked':''}>Show preview info</label><label class="guide-preview-setting"><input id="guide-skip-empty-steps" type="checkbox" ${settings.guideSkipEmptySteps?'checked':''}>Skip empty steps</label><p class="guide-settings-note">Swipes and arrows skip steps without visible reminders. You can still open any step from the phase list.</p><fieldset class="guide-type-filters"><legend>Rule types</legend>${[['army','Army / Detachment'],['ability','Abilities'],['stratagem','Stratagems'],['enhancement','Enhancements'],['core','Core rules'],['disposition','Disposition actions']].map(([type,label])=>`<label class="guide-preview-setting"><input type="checkbox" data-guide-rule-type="${type}" ${settings.guideRuleTypes[type]!==false?'checked':''}>${label}</label>`).join('')}</fieldset><label class="guide-preview-setting"><input id="guide-show-core-stratagems" type="checkbox" ${settings.guideShowCoreStratagems?'checked':''}>Show Core Stratagems</label><label class="guide-preview-setting"><input id="guide-show-deep-strike" type="checkbox" ${settings.guideShowDeepStrike?'checked':''}>Show Deep Strike</label>${window.WarPlannerAdminPage?.canAccess?`<label class="guide-preview-setting"><input id="guide-rule-editing" type="checkbox" ${settings.guideRuleEditing?'checked':''}>Edit rules in guide (admin)</label>`:''}<p class="guide-settings-note">Changes apply when you reload. The phase sequence always stays available.</p><button type="button" class="guide-reload-button" data-action="reload-guide">Reload Guide</button><button type="button" data-action="reset-guide">Reset guide</button><button type="button" data-action="choose-guide-army">Choose another army</button></div></details>`;}
 function dispositionGuideHTML(active){
  const cards=Dispositions.reminders(state,active);if(!cards.length)return '';
  return `<section class="disposition-reminders" aria-label="Your disposition primary mission">${cards.map(card=>reviewReminder(card.id,card.title,`<details class="flash-card collapsible-flash rule-disposition"><summary class="flash-summary"><span class="flash-title-row"><h3>${escapeHTML(card.title)}</h3><span class="rule-badge rule-disposition">Disposition / Primary</span></span><p class="flash-preview">${escapeHTML(card.mission)}</p><span class="flash-chevron" aria-hidden="true">+</span></summary><div class="flash-expanded"><p class="flash-timing">${escapeHTML(Dispositions.resolve(state.army.disposition))} vs ${escapeHTML(state.guideDisposition.opponent)} · ${escapeHTML(card.mission)}</p><p class="flash-fact">${escapeHTML(card.text)}</p><a href="${card.sourceUrl}" target="_blank" rel="noopener noreferrer">Mission Deck 2026–27 reference ↗</a></div></details>`)).join('')}</section>`;
@@ -274,14 +274,14 @@ function guideInfoPopup(){const active=lessons().steps[state.open];return `<div 
 function guide(){if(!state.guideStarted)return guideStartPage();if(!ensureGuidePrepared())return guidePreparationPage();return `<section class="guide-page-shell guide-carousel" aria-label="Interactive guide" data-show-previews="${state.guideShowPreviews!==false}" data-font-size="${['small','large'].includes(state.guideFontSize)?state.guideFontSize:'medium'}"><div class="guide-frame"><button class="guide-page-arrow previous-page" data-action="page-previous" aria-label="Previous page" title="Previous page" ${canPreviousPage()?'':'disabled'}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><header class="guide-fixed-header">${guideSettings()}${turnToggle()}${phaseTabs()}</header><div class="guide-viewport"><div class="guide-slide" id="guide-panel" role="tabpanel" aria-labelledby="phase-tab-${state.phase}">${guidePageHTML()}</div></div><button class="guide-page-arrow next-page" data-action="page-next" aria-label="Next page" title="Next page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>${guideInfoPopup()}</section>`;}
 // Templates contain one full cycle. Round-specific review marks are bound at mount.
 let guidePrepared=null;
-function guidePreparationContext(){return JSON.stringify([KEY,state.activeListId,Library.revision,window.WarPlannerContent?.generation,state.army,state.renames,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false,state.guideRuleTypes,state.guideDisposition,guideRuleEditingEnabled()]);}
+function guidePreparationContext(){return JSON.stringify([KEY,state.activeListId,Library.revision,window.WarPlannerContent?.generation,state.army,state.renames,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false,state.guideRuleTypes,state.guideDisposition,state.guideSkipEmptySteps===true,guideRuleEditingEnabled()]);}
 function guideTemplateKey(current){return [current.turn,current.phase,current.open].join(':');}
 function ensureGuidePrepared(){
  // Non-visual adapters can continue to render synchronously.
  if(!window.requestAnimationFrame)return true;
  const context=guidePreparationContext();
  if(guidePrepared?.context===context)return guidePrepared.ready;
- const snapshot={...state},job={context,ready:false,done:0,pages:new Map(),total:0,error:''},destinations=[];
+ const snapshot={...state},job={context,ready:false,done:0,pages:new Map(),content:new Map(),total:0,error:''},destinations=[];
  guidePrepared=job;
  for(const turn of ['you','opponent'])for(let phase=0;phase<5;phase++){
   const current={...snapshot,turn,phase,round:1};
@@ -294,6 +294,7 @@ function ensureGuidePrepared(){
   try{
    state={...snapshot,...destination,round:1,completed:{},reviewedReminders:{}};
    job.pages.set(guideTemplateKey(state),buildGuidePageHTML());
+   job.content.set(guideTemplateKey(state),guideDeck(lessons().steps[state.open]).count);
   }catch(error){job.error='Could not prepare the guide. Try starting it again.';}
   finally{state=original;}
   if(job.error){render();return;}
@@ -405,22 +406,41 @@ function prebattleView(){const cards=Library.prebattle.filter(a=>!a.units.length
 function overview(){return `<header class="heading"><div><div class="eyebrow">KNOW YOUR NEXT MOVE</div><h1>Confidence comes with practice.</h1><p>Your army. Your pace. One decision at a time.</p></div></header><aside class="development-notice" aria-labelledby="development-notice-title"><h2 id="development-notice-title">Early development</h2><p class="development-notice-help">WarPlanner is still in early development. If something seems wrong, confirm it against the current official rules. You can report a rule error for review: <a href="${PageNavigation?.href('guide')||'#/guide'}" data-view="guide" data-action="open-rule-report">Report a rule error</a>.</p></aside>${armyStrip()}<div class="phase-hero"><div class="hero-kicker">YOUR PERSONAL FIELD GUIDE</div><h2>Learn it at the table.</h2><p>Walk through each phase, pause at the choices, and understand what to consider before you act.</p><div style="margin-top:24px"><button class="primary" data-view="guide">Resume guided play <span>→</span></button></div></div><div class="overview-cards"><div class="aside-card"><span class="eyebrow">PICK UP HERE</span><h3>${phases[state.phase]} Phase</h3><p>Round ${state.round} · ${state.turn==='you'?'Your turn':'Opponent’s turn'}</p></div><div class="aside-card"><span class="eyebrow">YOUR ROSTER</span><h3>${escapeHTML(Library.armyDetachments(state.army).join(' · '))}</h3><p>${state.army.units.length} units</p></div><div class="aside-card"><span class="eyebrow">THE APPROACH</span><h3>Understand, then act.</h3><p>Expandable prompts. No pressure to rush.</p></div></div><div class="banner">Personal study edition: core sequences and roster-specific timing reminders are available. Expand a lesson’s reference for its source and review status.</div>${prebattleView()}<div class="button-row"><button class="outline" data-action="import">Import an army</button><button class="text-button" data-action="restart">Start a fresh walkthrough</button></div><p class="footnote">WarPlanner is an independent, unofficial personal study companion.<br>Not affiliated with or endorsed by Games Workshop. Referenced trademarks belong to their owners.</p><details class="sequence-outline"><summary>References & credits</summary><p style="margin-top:14px;font-size:11px">Powered by <a href="https://40kdc.alpacasoft.dev" target="_blank" rel="noopener noreferrer">40kdc-data</a>. Community mechanics by Alpaca Software and the 40kdc community contributors, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Adaptations: selected roster coverage, rewritten study summaries, explicit timing prompts, and token-scope corrections. <a href="https://wahapedia.ru/wh40k11ed/the-rules/data-export/" target="_blank" rel="noopener noreferrer">Wahapedia</a> was also consulted. Official references and review dates are linked within each lesson.</p></details>`;}
 function practiceView(){return window.WarPlannerPracticePage?.render({catalog:Library.catalog,rules:Library.abilities,faction:state.army.faction,savedLists:state.savedLists||[],activeListId:state.activeListId})||'<p>Practice is unavailable. Please reload the app.</p>'; }
 function canPreviousPage(){return state.open>0||state.phase>0||state.turn!==state.firstPlayer||state.round>1;}
-function guideDestination(direction){
- const target={round:state.round,turn:state.turn,phase:state.phase,open:state.open};
+function adjacentGuidePage(current,direction){
+ const target={round:current.round,turn:current.turn,phase:current.phase,open:current.open};
  if(direction>0){
-  if(target.open<lessons().steps.length-1)target.open++;
-  else{const following=next(state);Object.assign(target,{round:following.round,turn:following.turn,phase:following.phase,open:0});}
+  if(target.open<Activations.steps(current).length-1)target.open++;
+  else{const following=next(current);Object.assign(target,{round:following.round,turn:following.turn,phase:following.phase,open:0});}
  }else{
-  if(!canPreviousPage())return null;
+  if(!(target.open>0||target.phase>0||target.turn!==current.firstPlayer||target.round>1))return null;
   if(target.open>0)target.open--;
   else{
    if(target.phase>0)target.phase--;
-   else{target.phase=4;if(target.turn===state.firstPlayer){target.round--;target.turn=state.firstPlayer==='you'?'opponent':'you';}else target.turn=state.firstPlayer;}
-   target.open=Activations.steps({...state,...target}).length-1;
+   else{target.phase=4;if(target.turn===current.firstPlayer){target.round--;target.turn=current.firstPlayer==='you'?'opponent':'you';}else target.turn=current.firstPlayer;}
+   target.open=Activations.steps({...current,...target}).length-1;
   }
  }
  return target;
 }
+function guideStepHasReminders(current){
+ const active=Activations.steps(current)[current.open];if(!active)return false;
+ const count=guidePrepared?.ready?guidePrepared.content.get(guideTemplateKey(current)):undefined;
+ return (count===undefined?guideSession.deck(current,active).count:count)>0||Dispositions.reminders(current,active).length>0;
+}
+function guideDestination(direction){
+ const immediate=adjacentGuidePage(state,direction);if(!immediate||state.guideSkipEmptySteps!==true)return immediate;
+ let candidate=immediate,boundary=null,last=immediate;
+ // Search at most one full round. An entirely filtered guide must still move.
+ const limit=['you','opponent'].reduce((n,turn)=>n+[0,1,2,3,4].reduce((v,phase)=>v+Activations.steps({...state,turn,phase}).length,0),0);
+ for(let i=0;candidate&&i<limit;i++){
+  const current={...state,...candidate};last=candidate;
+  if(!boundary&&(candidate.phase!==state.phase||candidate.turn!==state.turn||candidate.round!==state.round))boundary=candidate;
+  if(guideStepHasReminders(current))return candidate;
+  candidate=adjacentGuidePage(current,direction);
+ }
+ return boundary||last;
+}
+
 let guideMotion=null,guideWarmJob=null,guideWarmEpoch=0;
 const guideWarmPages=new Map();
 function clearGuideWarm(){
@@ -634,7 +654,7 @@ document.addEventListener('keydown',event=>{
 });
 document.addEventListener('input',e=>{if(listEditor){if(e.target.id==='builder-unit-search'){listEditor.query=e.target.value;$('#builder-search-results').innerHTML=builderSearchResults();}if(e.target.dataset.listField){if(e.target.dataset.listField==='detachmentList')Builder.setDetachments(listEditor.army,e.target.value.split(/\r?\n/));else if(e.target.dataset.listField==='detachment')Builder.setDetachments(listEditor.army,[e.target.value]);else listEditor.army[e.target.dataset.listField]=e.target.value;markEditorDirty();}if(e.target.dataset.unitField==='label'){listEditor.renames[e.target.dataset.editorUnit]=e.target.value;markEditorDirty();}if(e.target.dataset.unitField==='details'){const unit=listEditor.army.units.find(u=>u.id===e.target.dataset.editorUnit);if(unit){const hasToken=Builder.info(unit,listEditor.army.faction)?.abilities.some(a=>a.id==='aspect-shrine-token-aeldari');const controlled=unit.details.filter(d=>/^Enhancement\s*:/i.test(d)||(hasToken&&/aspect shrine token/i.test(d)));unit.details=[...e.target.value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean),...controlled];markEditorDirty();}}}if(e.target.id==='unit-search'){const q=e.target.value.toLowerCase();document.querySelectorAll('.unit-card').forEach(c=>c.hidden=!c.dataset.unitName.includes(q)&&!c.querySelector('h3').textContent.toLowerCase().includes(q));}if(e.target.id==='army-text'){pendingImport=null;$('#import-feedback').innerHTML='';$('#import-form button[type=submit]').innerHTML='Review army <span>→</span>';}});
 document.addEventListener('change',e=>{
- const optionKeys={'guide-rule-editing':'guideRuleEditing','guide-show-core-stratagems':'guideShowCoreStratagems','guide-show-deep-strike':'guideShowDeepStrike','guide-show-previews':'guideShowPreviews'};
+ const optionKeys={'guide-skip-empty-steps':'guideSkipEmptySteps','guide-rule-editing':'guideRuleEditing','guide-show-core-stratagems':'guideShowCoreStratagems','guide-show-deep-strike':'guideShowDeepStrike','guide-show-previews':'guideShowPreviews'};
  if(optionKeys[e.target.id]){if(e.target.id==='guide-rule-editing'&&!window.WarPlannerAdminPage?.canAccess)return;stageGuideSetting(optionKeys[e.target.id],e.target.checked);return;}
  if(e.target.dataset.guideRuleType){stageGuideSetting('guideRuleTypes',{...pendingGuideSettings().guideRuleTypes,[e.target.dataset.guideRuleType]:e.target.checked});return;}
  if(e.target.id==='guide-font-size'){if(['small','medium','large'].includes(e.target.value))stageGuideSetting('guideFontSize',e.target.value);return;}

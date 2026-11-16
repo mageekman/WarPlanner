@@ -512,3 +512,35 @@ test('round-specific disposition reminders update from preloaded templates witho
  a.click({phase:'4'});a.at('turn-end');assert.match(a.html(),/Round 5 primary scoring/);
  a.click({turn:'opponent'});a.at('round-end');assert.match(a.html(),/End-of-battle primary scoring/);
 });
+
+test('skip empty steps is opt-in, deferred until reload, and works in both directions',()=>{
+ const a=app();a.at('command-cp');a.click({action:'page-next'});assert.match(a.html(),/>Battle-shock<\/h2>/);
+ a.at('command-cp');a.toggle('guide-skip-empty-steps',true);a.click({action:'page-next'});assert.match(a.html(),/>Battle-shock<\/h2>/);
+ a.at('command-cp');a.click({action:'reload-guide'});a.click({action:'page-next'});assert.match(a.html(),/>Command Abilities<\/h2>/);
+ a.click({action:'page-previous'});assert.match(a.html(),/>Start of Command<\/h2>/);
+ a.at('command-cp');assert.match(a.html(),/>Gain Command Points<\/h2>/); // Manual access remains available.
+ const b=app([...a.store]);assert.match(b.html(),/id="guide-skip-empty-steps" type="checkbox" checked/);
+});
+test('skip empty steps counts mission reminders and honors rule filters without losing review marks',()=>{
+ const a=app(undefined,{setup:true});a.toggle('guide-add-disposition',true);a.change('guide-opponent-disposition','Disruption');a.start();
+ for(const type of ['army','ability','stratagem','enhancement','core'])a.ruleType(type,false);
+ a.toggle('guide-show-deep-strike',false);a.toggle('guide-show-core-stratagems',false);a.toggle('guide-skip-empty-steps',true);a.click({action:'reload-guide'});
+ a.click({phase:'2'});a.at('shooting-start');a.click({action:'page-next'});assert.match(a.html(),/Sensor Sweep/);assert.match(a.html(),/>Unit Shooting<\/h2>/);
+ a.review('keep-this-review',true);
+ a.ruleType('disposition',false);a.click({action:'reload-guide'});assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).reviewedReminders['keep-this-review'],true);
+ a.click({phase:'2'});a.at('shooting-start');a.click({action:'page-next'});assert.equal(JSON.parse(a.store.get('warplan.prototype.v1')).phase,3);
+});
+test('an entirely empty guide advances by phase and stops safely at its beginning',()=>{
+ const a=app();for(const type of ['army','ability','stratagem','enhancement','core','disposition'])a.ruleType(type,false);
+ a.toggle('guide-show-core-stratagems',false);a.toggle('guide-skip-empty-steps',true);a.click({action:'reload-guide'});
+ a.click({action:'page-previous'});let s=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(s.round,1);assert.equal(s.phase,0);assert.equal(s.open,0);
+ a.click({action:'page-next'});s=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(s.phase,1);assert.equal(s.open,0);
+ a.click({action:'page-previous'});s=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(s.phase,0);
+});
+test('skip empty steps reuses preloaded reminder counts while handling rapid navigation',()=>{
+ const a=app(undefined,{setup:true,preload:true});a.start();a.flushGuide();a.toggle('guide-skip-empty-steps',true);a.click({action:'reload-guide'});a.flushGuide();a.rejectPageBuilds();
+ for(let i=0;i<15;i++)a.click({action:'page-next'});
+ assert.doesNotMatch(a.html(),/Preparing your guide/);assert.ok(a.prepared().ready);
+ for(let i=0;i<5;i++)a.click({action:'page-previous'});
+ assert.doesNotMatch(a.html(),/Preparing your guide/);
+});
