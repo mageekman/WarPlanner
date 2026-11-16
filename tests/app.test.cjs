@@ -64,7 +64,7 @@ test('personal rule confirmation survives reload without changing source status'
 });
 test('one instruction surface is rendered and detailed phase list starts closed',()=>{
  const a=app();assert.equal((a.html().match(/class="lesson-focus rule-core"/g)||[]).length,1);
- assert.match(a.html(),/<details class="sequence-outline">/);
+ assert.match(a.html(),/<details id="guide-phase-overview" class="guide-phase-overview" >/);
  assert.doesNotMatch(a.html(),/class="aside"/);
  a.click({phase:'1'});a.click({step:'1'});
  assert.match(a.html(),/<section class="army-lessons flash-board" aria-label="Your army at this phase">/);
@@ -121,7 +121,7 @@ test('unit previews use actual two-line height and restore the list when space i
 });
 test('visible turn toggle stays above rule labels and preserves the phase and matching step',()=>{
  const a=app();a.click({phase:'2'});a.click({step:'1'});
- assert.ok(a.html().indexOf('class="guide-turn-toggle"')<a.html().indexOf('class="lesson-kind"'));
+ assert.ok(a.html().indexOf('class="guide-turn-toggle"')<a.html().indexOf('class="guide-title-row"'));
  assert.match(a.html(),/data-turn="you" class="selected" aria-pressed="true"/);
  a.click({turn:'opponent'});assert.match(a.html(),/id="phase-tab-2"[^>]*aria-selected="true"/);assert.match(a.html(),/Opponent’s Shooting/);
  assert.match(a.html(),/data-turn="opponent" class="selected" aria-pressed="true"/);
@@ -131,7 +131,7 @@ test('visible turn toggle stays above rule labels and preserves the phase and ma
 });
 test('small order button swaps toggle order without resetting the current phase',()=>{
  const a=app();a.click({phase:'2'});a.click({step:'1'});a.click({action:'swap-turn-order'});
- const toggle=a.html().match(/class="guide-turn-toggle"[\s\S]*?class="lesson-kind"/)[0];
+ const toggle=a.html().match(/class="guide-turn-toggle"[\s\S]*?class="guide-title-row"/)[0];
  assert.ok(toggle.indexOf('data-turn="opponent"')<toggle.indexOf('data-turn="you"'));
  assert.match(a.html(),/aria-label="Put you first in the turn order"/);assert.match(a.html(),/>⇄<\/button>/);assert.match(a.html(),/Unit Shooting/);
  const saved=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(saved.firstPlayer,'opponent');assert.equal(saved.phase,2);assert.equal(saved.turn,'you');assert.equal(saved.round,1);
@@ -139,7 +139,7 @@ test('small order button swaps toggle order without resetting the current phase'
 });
 test('phase navigation sits between turn controls and rule labels without session clutter',()=>{
  const a=app();const html=a.html();
- const turn=html.indexOf('class="guide-turn-toggle"'),timeline=html.indexOf('class="phase-nav"'),rules=html.indexOf('class="lesson-kind"');
+ const turn=html.indexOf('class="guide-turn-toggle"'),timeline=html.indexOf('class="phase-nav"'),rules=html.indexOf('class="guide-title-row"');
  assert.ok(turn>=0&&timeline>turn&&rules>timeline);
  assert.equal((html.match(/class="phase-nav"/g)||[]).length,1);
  assert.doesNotMatch(html,/Session details|class="session-top"|YOUR TURN.*ROUND 1/);
@@ -450,7 +450,7 @@ test('optional review marks persist without changing reminders or blocking navig
 test('forward page navigation does not mark gameplay or reading as complete',()=>{
  const a=app();a.click({action:'page-next'});a.click({action:'page-next'});
  assert.equal(Object.keys(JSON.parse(a.store.get('warplan.prototype.v1')).completed).length,0);
- assert.match(a.html(),/review marks are optional/);
+ assert.doesNotMatch(a.html(),/Use this as a cheat sheet/);
  assert.match(a.html(),/Explanations &amp; learning|Explanations & learning/);
 });
 
@@ -560,4 +560,31 @@ test('Cancel and Escape discard setup-setting edits without starting the guide',
  a.click({action:'open-setup-settings'});a.saveGuideSettings();let s=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(s.guideSkipEmptySteps,false);assert.notEqual(s.guideRuleTypes.ability,false);
  a.click({action:'open-setup-settings'});a.change('guide-font-size','large');a.cancelGuideSettings();a.click({action:'open-setup-settings'});a.saveGuideSettings();
  s=JSON.parse(a.store.get('warplan.prototype.v1'));assert.equal(s.guideStarted,false);assert.equal(s.guideFontSize,'medium');
+});
+
+test('phase overview replaces header clutter and lists every step with reminder counts',()=>{
+ const a=app();a.click({phase:'2'});a.at('shooting-activations');
+ assert.doesNotMatch(a.html(),/class="lesson-kind"|class="checklist-help"|Use this as a cheat sheet|See the whole phase/);
+ assert.match(a.html(),/<details id="guide-phase-overview" class="guide-phase-overview" >/);
+ assert.equal((a.html().match(/data-overview-step/g)||[]).length,3);
+ assert.match(a.html(),/class="overview-rule-count">[1-9][0-9]* rules/);
+ assert.ok(a.html().indexOf('id="guide-phase-overview"')<a.html().indexOf('id="lesson-title"'));
+ a.click({step:'0'});assert.match(a.html(),/>Start of Shooting<\/h2>/);
+});
+test('overview counts honor active filters and current-round mission reminders',()=>{
+ const a=app(undefined,{setup:true});a.toggle('guide-add-disposition',true);a.change('guide-opponent-disposition','Disruption');a.start();a.click({phase:'2'});
+ assert.match(a.html(),/class="overview-primary-count">1 primary/);
+ for(const type of ['army','ability','stratagem','enhancement','core','disposition'])a.ruleType(type,false);
+ assert.match(a.html(),/class="overview-primary-count">1 primary/);a.click({action:'reload-guide'});
+ assert.doesNotMatch(a.html(),/class="overview-primary-count"|class="overview-rule-count"/);assert.equal((a.html().match(/<span>No reminders<\/span>/g)||[]).length,3);
+ const b=app(undefined,{setup:true,preload:true});b.toggle('guide-add-disposition',true);b.change('guide-opponent-disposition','Disruption');b.start();b.flushGuide();b.rejectPageBuilds();
+ b.at('command-end');assert.doesNotMatch(b.html(),/class="overview-primary-count"/);
+ b.click({action:'round-up'});b.at('command-end');assert.match(b.html(),/class="overview-primary-count">1 primary/);
+});
+test('overview open preference survives renders and does not trigger page preloading',()=>{
+ const a=app();const saved=JSON.parse(a.store.get('warplan.prototype.v1'));saved.guideOverviewOpen=true;
+ const b=app([['warplan.prototype.v1',JSON.stringify(saved)]],{preload:true});b.flushGuide();b.rejectPageBuilds();
+ assert.match(b.html(),/<details id="guide-phase-overview" class="guide-phase-overview" open>/);
+ b.click({action:'page-next'});assert.match(b.html(),/<details id="guide-phase-overview" class="guide-phase-overview" open>/);
+ b.click({phase:'2'});assert.match(b.html(),/<details id="guide-phase-overview" class="guide-phase-overview" open>/);
 });

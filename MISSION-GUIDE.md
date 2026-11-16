@@ -16,4 +16,6 @@ Skip empty steps is opt-in and also applies through Reload Guide. Sequential swi
 
 The Start screen places Settings beside Start. Its native dialog uses the same settings fields as the active guide. Save settings applies choices before Start prepares the pages; Cancel, the close button and Escape restore the prior preferences. Start does not begin until explicitly pressed. Account changes clear pending dialog state.
 
+The collapsible Phase overview above the current step replaces the older bottom-of-phase list. It starts closed and remembers its open/closed preference across navigation and reloads. Each row links directly to a step and shows its visible rule and primary-reminder counts, independent of review marks. Empty steps remain accessible. Rule counts are preloaded; mission counts use the current turn and round. The removed top-level Core Rule/Core Sequence labels and cheat-sheet help sentence do not affect the actual rule-card category badges or source references.
+
 Validation includes all 25 source matchups, action eligibility reminders, completion timing, scoring round ranges, both first-player orders, pending settings across navigation, account reset, preload reuse and review preservation. Browser checks cover mobile and desktop setup, yellow mission cards, deferred settings, round-five scoring and horizontal overflow.
