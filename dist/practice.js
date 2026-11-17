@@ -11,6 +11,13 @@
  function format(value,key){return key==='M'?value+'″':['Sv','Ld','invuln_sv'].includes(key)?value+'+':String(value);}
  function known(value,key){return typeof value==='number'&&Number.isInteger(value)&&value>=(['Sv','Ld','invuln_sv'].includes(key)?1:0)&&value<=999||typeof value==='string'&&/^\d*D\d+(?:[+-]\d+)?$/.test(value);}
  function hideName(summary,name,replacement='this rule'){const escaped=name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return summary.replace(new RegExp('(^|[^a-z0-9])'+escaped+'(?=$|[^a-z0-9])','gi'),(_match,prefix)=>prefix+replacement);}
+ // Redact quiz clues only; source records and answer reveals keep their wording.
+ function clueRedactor(units,rules){
+  const names=[...new Set([...units.map(u=>u.name),...rules.flatMap(r=>r.units||[])].filter(Boolean))].sort((a,b)=>b.length-a.length);
+  if(!names.length)return value=>value;
+  const pattern=new RegExp('(^|[^a-z0-9])(?:'+names.map(name=>name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?=$|[^a-z0-9])','gi');
+  return value=>String(value||'').replace(pattern,(_match,prefix)=>prefix+'[REDACTED]');
+ }
  function buildBank({rules=[],units=[],faction,army=null,excludeReferenceOnly=false,detachments:catalogDetachments=[],random=Math.random}={}){
   // Catalog names and summaries recur in the choice/ownership loops. Keep this
   // cache local to one build so subsequent edits cannot retain stale values.
@@ -71,7 +78,7 @@
    const others=selectedUnits.filter(u=>!allOwners.includes(u));
    if(!owners.length||others.length<3)continue;
    const owner=shuffle(owners,random)[0];
-   let description=r.summary;for(const u of [...allOwners].sort((a,b)=>b.name.length-a.name.length))description=hideName(description,u.name,'this unit');
+   const description=r.summary;
    questions.push({id:'ability-unit:'+r.id,mode:'units',category:r.category,prompt:'Which unit has this ability?',clue:r.name+'\n\n'+description,correct:owner.id,options:choices({id:owner.id,label:owner.name},others.map(u=>({id:u.id,label:u.name}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(owner)]},explanation:{...explain(r),summary:owner.name+' — '+r.name+'\n'+r.summary}});
   }
   const profiles=[];
@@ -85,6 +92,8 @@
    questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),review:{kind:'stats',units:[unitView(u)],profile:copy(p),stat:f.key,sourceUrl:u.sourceUrl||'',sourceLabel:u.sourceLabel||'Current catalog unit profile'},explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
   }
   for(const q of questions)if(q.review.kind==='rule'&&['ability','core'].includes(q.review.rule.category))q.review.units=selectedUnits.filter(u=>hasRule(u,q.review.rule)).map(unitView);
+  const redact=clueRedactor(factionUnits,scoped);
+  for(const q of questions)q.clue=redact(q.clue);
   return {studyRules:all.map(ruleView),faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['rules','stats','abilities','units'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
  }
  function buildOpponentBank({detachment='',...args}={}){
@@ -92,6 +101,8 @@
   const ids=new Set(chosen?[chosen.name,chosen.id,chosen.importSource?.sourceId,chosen.importSource?.record?.id].filter(Boolean).map(norm):[]);
   const rules=(args.rules||[]).filter(r=>(!detachment||chosen&&(r.memberships?L.ruleInArmy(r,{faction:args.faction,detachments:[chosen.name]}):!text(r.detachment||r.importSource?.record?.detachment_id)||ids.has(norm(r.detachment||r.importSource?.record?.detachment_id)))));
   const base=buildBank({...args,army:null,excludeReferenceOnly:true,units:detachment&&!chosen?[]:args.units,rules:detachment&&!chosen?[]:rules}),material=base.studyRules||[],questions=base.questions.map(q=>({...q,prompt:q.mode==='units'?'Which opposing unit has this ability?':q.mode==='abilities'?q.prompt.replace('Which ability is listed for ','Which ability should you check on the opposing '):q.mode==='stats'?q.prompt.replace('What is ','What is the opposing '):q.prompt}));
+  const redact=clueRedactor(args.units||[],rules),byId=new Map(material.map(r=>[r.id,r]));
+  for(const q of questions)if(q.mode==='abilities')q.options=q.options.map(o=>({...o,description:redact(byId.get(o.id)?.summary||'')}));
   const explanation=r=>({summary:r.summary,conditions:r.conditions||[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
   const options=(correct,others)=>shuffle([correct,...shuffle(others,args.random).slice(0,3)],args.random).map(o=>({...o,faction:args.faction}));
   const review=r=>({kind:'rule',rule:copy(r),units:[]});
@@ -113,6 +124,7 @@
    const others=timingChoices.filter(t=>t!==label);if(others.length<3)continue;
    questions.push({id:'opponent-timing:'+r.id,mode:'timing',category:r.category,faction:args.faction,prompt:'When does your opponent’s '+r.name+' apply?',clue:[r.detachment?'Opponent detachment: '+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):'','Recall its recorded phase, player turn and timing window. Turn labels are from your perspective.'].filter(Boolean).join('\n'),correct:label,options:options({id:label,label},others.map(label=>({id:label,label}))),review:review(r),explanation:{...explanation(r),opponentTiming:label}});
   }
+  for(const q of questions)q.clue=redact(q.clue);
   return {...base,perspective:'opponent',detachment:chosen?.name||'',invalidDetachment:!!detachment&&!chosen,questions,counts:Object.fromEntries(Object.keys(opponentModes).filter(m=>m!=='mixed').map(m=>[m,questions.filter(q=>q.mode===m).length]))};
  }
  function createSession(bank,{mode='mixed',types,count=10,random=Math.random}={}){

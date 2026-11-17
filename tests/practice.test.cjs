@@ -90,3 +90,23 @@ test('opponent unit distractors retain ownership evidence from reference-only al
  const data=source();data.rules.push(rule('reference-owner','ability',{name:'Rule r0',summary:'Unchecked wording for the same ability.',referenceOnly:true,units:['Unit 1']}));
  const bank=Q.buildOpponentBank(data),q=bank.questions.find(q=>q.id==='ability-unit:r0');assert.ok(q);assert.ok(!q.options.some(o=>o.id==='u1'));assert.ok(!bank.studyRules.some(r=>r.id==='reference-owner'));
 });
+test('opponent ability choices include their own descriptions without changing source rules or answer reveals',()=>{
+ const data=source();data.rules[0].summary='Unit 0 can move after shooting.';const before=JSON.stringify(data);
+ const q=Q.buildOpponentBank(data).questions.find(q=>q.id==='unit-rule:u0:r0');assert.ok(q);
+ for(const o of q.options){const original=data.rules.find(r=>r.id===o.id);assert.equal(o.description,original.summary.replace(/Unit 0/g,'[REDACTED]'));assert.equal(o.label,original.name);}
+ assert.equal(q.review.rule.summary,data.rules[0].summary);assert.match(q.explanation.summary,/Unit 0/);assert.equal(JSON.stringify(data),before);
+ const own=Q.buildBank(data).questions.find(item=>item.id===q.id);assert.ok(own.options.every(o=>!o.description));
+});
+test('quiz clues redact catalog unit names with boundaries, longest matches and regex punctuation',()=>{
+ const data=source();data.units[0].name='Rider';data.units[1].name='Rider Captain';data.units[2].name='Drone (Heavy)';
+ data.rules[0].summary='Rider Captain helps RIDER and Drone (Heavy). Riders remain nearby.';
+ for(const build of [Q.buildBank,Q.buildOpponentBank]){
+  const bank=build(data),q=bank.questions.find(q=>q.id==='rule:r0');
+  assert.equal(q.clue,'[REDACTED] helps [REDACTED] and [REDACTED]. Riders remain nearby.');
+  const unit=bank.questions.find(q=>q.id==='ability-unit:r0');assert.match(unit.clue,/\[REDACTED\]/);assert.equal(unit.options.find(o=>o.id===unit.correct).label,'Rider');assert.match(unit.review.rule.summary,/Rider Captain/);
+ }
+});
+test('opponent effect and timing clues redact units named only in rule applicability',()=>{
+ const data=source();data.rules.forEach((r,i)=>Object.assign(r,{units:['Uncatalogued '+i],phase:[i%5],turn:'you',window:'start'}));
+ const bank=Q.buildOpponentBank(data);for(const mode of ['effects','timing']){const questions=bank.questions.filter(q=>q.mode===mode);assert.ok(questions.length);for(const q of questions){assert.match(q.clue,/Applies to: \[REDACTED\]/);assert.doesNotMatch(q.clue,/Uncatalogued/);}}
+});

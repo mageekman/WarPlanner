@@ -519,3 +519,5 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
 .learn-core .learn-check>summary::after,.learn-core .learn-glossary>summary::after{content:'⌄';font-size:16px;line-height:1;margin-left:auto}
 .learn-core .learn-check[open]>summary::after,.learn-core .learn-glossary[open]>summary::after{transform:rotate(180deg)}
 @media(pointer:coarse){.learn-core .learn-check>summary,.learn-core .learn-glossary>summary{min-height:44px}}
+
+.practice-option-description{display:block;margin-top:5px;font-size:12px;line-height:1.6;color:inherit;white-space:pre-wrap}
