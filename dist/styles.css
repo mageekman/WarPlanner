@@ -528,3 +528,7 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
 .learn-support .learn-why[open]>summary::after{transform:rotate(180deg)}
 .learn-support .learn-why p{white-space:pre-wrap}
 @media(pointer:coarse){.learn-support .learn-why>summary{min-height:44px}}
+
+.welcome-dialog{width:min(580px,calc(100vw - 28px));max-height:90dvh;overflow:auto;overscroll-behavior:contain;padding:26px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink)}
+.welcome-dialog::backdrop{background:#000b}.welcome-dialog header,.welcome-dialog footer,.welcome-dialog footer>div{display:flex;justify-content:space-between;align-items:center;gap:12px}.welcome-dialog h2{font-size:26px;margin:20px 0 12px}.welcome-dialog p,.welcome-dialog li{font-size:14px;line-height:1.75}.welcome-dialog ol{padding-left:22px;display:grid;gap:12px}.welcome-dialog .welcome-note,.welcome-dialog small{color:var(--muted)}.welcome-dialog footer{margin:24px 0 16px}.welcome-dialog small{display:block;font-size:11px;line-height:1.6}.welcome-dialog button{min-height:44px}.welcome-dialog .icon-button{flex-shrink:0}.welcome-dialog footer button{white-space:nowrap}
+@media(max-width:500px){.welcome-dialog{padding:18px}.welcome-dialog h2{font-size:23px}.welcome-dialog footer{flex-wrap:wrap}.welcome-dialog footer>div{margin-left:auto}.welcome-dialog .eyebrow{letter-spacing:1px}}
