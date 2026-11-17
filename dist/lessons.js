@@ -174,6 +174,7 @@
   if(!ruleMatchesContext(a,state))return false;
   return timingsFor(a,state).some(t=>{
    const window=t.window,moves=state.phase===4?fightMovementWindows({...a,window}):[];if(moves.length)return moves.includes(step.window);
+   if(state.guideMode==='learn'&&((step.id==='movement-select'&&['select','before','after'].includes(window))||(['shooting-select','charge-declare'].includes(step.id)&&window==='before')||(step.id==='charge-move'&&window==='after')||(step.id==='fight-resolve'&&['select','before','after'].includes(window))))return true;
    if(a.timings||a.timingOverride)return window===step.window||(state.phase===4&&step.id==='fight-resolve'&&window==='select')||(window==='react'&&step.window==='act');
    const timing=(window===step.window&&!(state.phase===0&&step.window==='act'&&a.sourceRuleId?.startsWith('psychic-guidance')))||(state.phase===0&&step.window==='shock'&&a.sourceRuleId?.startsWith('psychic-guidance'))||(state.phase===4&&step.id==='fight-resolve'&&window==='select')||(a.id==='flitting'&&step.id==='movement-select')||(window==='react'&&step.window==='act');
    const preview=!a.adminManaged&&state.phase===2&&state.turn==='you'&&sequencing[a.id]?.steps.includes(step.id);
@@ -252,8 +253,49 @@
   const faction=catalog.factions?.find(f=>factionMatches(f.name,state.army.faction));
   return guideMeta(rule.guide?rule:det?.guide?det:faction?.guide?faction:rule,'rule',state);
  }
+ // Beginner prompts supplement the current, editable core step; they do not track actions.
+ const learningPrompts={
+  'round-start':['Confirm which player takes the first turn this battle round.','Resolve rules that say “start of the battle round” before the turn begins.'],
+  'turn-start':['Identify whose turn is starting.','Resolve start-of-turn effects before entering the Command phase.'],
+  'command-start':['Read any start-of-Command abilities in the army reminders below.','Resolve those opening effects before moving on to Command Points.'],
+  'command-cp':['Both players gain the Core Command Points described above.','Keep any extra CP from army rules separate; the app does not track your balance.'],
+  'command-shock':['Identify the active player’s units that must take a Battle-shock test.','Use the test and recovery instructions above for each affected unit.','Apply the result on the tabletop before continuing.'],
+  'command-abilities':['Resolve the remaining Command-phase abilities you choose to use.','Check the rule’s eligible unit, range, cost and restrictions.'],
+  'command-end':['Resolve end-of-Command abilities.','Check your mission for instructions at this timing.'],
+  'movement-start':['Resolve start-of-Movement effects before moving any unit.','Look at objectives and decide which units need to change position.'],
+  'movement-select':['Choose one unit that has not been selected for movement.','Choose a legal move type, including remaining stationary when appropriate.','Resolve that unit’s move and its immediate effects, then repeat for other units.'],
+  'movement-arrivals':['For passengers or reserves, check whether the unit may use the move type now.','Read the placement restrictions and what the unit may do afterward.','These are movement choices, not an automatic extra move for every unit.'],
+  'movement-end':['Check that movement selections are complete.','Resolve end-of-Movement effects before starting Shooting.'],
+  'shooting-start':['Resolve start-of-Shooting effects.','Consider which units could help later shooters through their abilities.'],
+  'shooting-select':['Choose an eligible unit that has not shot this phase.','Check how its movement and current position affect its shooting options.','Check each selected weapon’s eligible targets, range and visibility.'],
+  'shooting-attacks':['Read the selected weapon’s characteristics and relevant modifiers.','Resolve Hit rolls, Wound rolls, attack allocation and saving throws in the current attack sequence.','Apply damage and remove destroyed models as instructed, resolving immediate triggers.'],
+  'shooting-after':['Resolve effects that trigger after this unit shoots.','If another unit can shoot, return to Unit Shooting and repeat.','Only enter End of Shooting when you are ready to finish the phase.'],
+  'shooting-end':['Resolve end-of-Shooting abilities.','Check any effects that end now, then continue to Charge.'],
+  'charge-start':['Resolve start-of-Charge abilities.','Check whether earlier moves or effects restrict your charge options.'],
+  'charge-declare':['Choose an eligible unit that has not declared a charge.','Check the restrictions above before making the Charge roll.','Use that roll when checking the legal charge move on the next step.'],
+  'charge-move':['Check target selection and the possible final position using the roll and current charge rules.','Make the move only if it satisfies all restrictions.','Resolve effects after the completed move; repeat charge choices for other units if appropriate.'],
+  'charge-end':['Resolve end-of-Charge effects.','Distinguish units that completed charge moves from units that only declared one.'],
+  'fight-start':['Both players check their start-of-Fight effects.','Keep the separate Pile In, fighting and Consolidate steps in order.'],
+  'fight-pile':['The active player resolves chosen eligible pile-in moves, then the other player does so.','Check the move’s target, positioning and model restrictions.','Do not add another routine pile-in before each unit fights.'],
+  'fight-resolve':['Follow the current Fights First and unit-selection order.','Resolve one selected unit’s eligible melee attacks and immediate effects.','Continue the fight selections before moving to the separate Consolidate step.'],
+  'fight-consolidate':['Resolve consolidation using the current player order and eligibility rules.','Check the permitted destination and final positioning for each move.'],
+  'fight-end':['Resolve end-of-Fight effects.','Check which effects actually expire now; longer effects keep their stated duration.'],
+  'turn-end':['Resolve end-of-turn effects in the order described above.','Consult the mission’s end-of-turn instructions before passing the turn.'],
+  'round-end':['Resolve end-of-battle-round effects after the second player’s turn.','Check the mission before beginning another round.']
+ };
+ function learningStep(step,state){
+  const actions=[...(learningPrompts[step.id]||['Read the current core instructions above.','Resolve their requirements before moving to the next step.'])];
+  if(state.turn==='opponent')actions.unshift('Follow the active player’s actions; your imported list supplies your own responses, not the opponent’s abilities.');
+  const repeat=state.turn==='you'?({'shooting-after':{id:'shooting-select',label:'Choose another shooting unit'},'charge-move':{id:'charge-declare',label:'Choose another charging unit'},'movement-arrivals':{id:'movement-select',label:'Return to movement choices'}}[step.id]||null):null;
+  return {actions,repeat,glossary:[
+   ['Command Points (CP)','A resource spent on Stratagems. Each Stratagem specifies its cost and timing.'],
+   ['Datasheet','The unit’s characteristics, weapons and abilities. Use it alongside these core instructions.'],
+   ['Eligible','Allowed to act or be chosen after applying all relevant conditions and restrictions.']
+  ]};
+ }
+
  const stepOverrides=new Map();
  const applyStep=step=>{const data=stepOverrides.get(step.id);if(!data)return step;const result={...step};for(const key of ['title','body','why','question','answer','section','sourceIds','status','sourceUrl','sourceLabel'])if(data[key]!==undefined)result[key]=data[key];return result;};
- const api={isDeepStrike,guideRule,guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,fightMovementWindows,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitInRule,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
+ const api={learningStep,isDeepStrike,guideRule,guideSettings,guideMeta,ruleGuideMeta,stepOverrides,applyStep,timingWindows,ruleTimings,timingsFor,ruleMatchesContext,timingLabel,ruleTimingLabel,timingMatches,fightMovementWindows,ruleMemberships,ruleFactions,ruleDetachments,ruleInFaction,ruleInArmy,factionMatches,armyDetachments,enhancementEquipped,catalog,aliases,unitInfo,unitInRule,unitHasRule,revision,sources,categories,phases,abilities,prebattle,getSteps,forStep,matches,isAeldari};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WarPlanLessons=api;
 })(typeof window!=='undefined'?window:globalThis);

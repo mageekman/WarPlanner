@@ -161,6 +161,7 @@
  }
  function baseSteps(state){
   const base=L.getSteps(state);const p=state.phase;
+  if(state.guideMode==='learn'){const modes={'movement-select':state.turn==='opponent'?'response':'movement','shooting-select':state.turn==='opponent'?'response':'shooting','shooting-attacks':state.turn==='opponent'?'response':'shooting','shooting-after':state.turn==='opponent'?'response':'shooting','charge-declare':state.turn==='you'?'charge':null,'charge-move':state.turn==='you'?'charge':null,'fight-pile':'pile','fight-resolve':'fight','fight-consolidate':'consolidate'};return base.map(step=>modes[step.id]?{...step,activationMode:modes[step.id],learningWindowed:true}:step);}
   if(![1,2,3,4].includes(p))return base;
   if(p===4)return base.map(s=>s.id==='fight-pile'?{...s,activationMode:'pile'}:s.id==='fight-resolve'?{...s,id:'fight-activations',title:'Unit Fights',activationMode:'fight'}:s.id==='fight-consolidate'?{...s,activationMode:'consolidate'}:s);
   const first=base[0],last=base[base.length-1];
@@ -197,6 +198,7 @@
    const rows=step.activationMode?stages(state,unit,step.activationMode,candidates):[{title:step.anyTime?'Throughout this phase — check trigger':'At this step',cards:stepCards.filter(a=>fits(a,state,unit,true))}];
    const seen=new Set();
    for(const row of rows)for(const a of row.cards){
+    if(step.learningWindowed&&!a.borrowedEffect&&!L.timingMatches(a,state,step))continue;
     if(prepared?.skipAnyTime&&isAnyTimeRule(a,state)||step.anyTime&&!isAnyTimeRule(a,state))continue;
     if(state.guideRuleTypes?.[a.category]===false)continue;
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
@@ -246,7 +248,7 @@
   function reset(){context=null;armyRules=[];decks.clear();coverageCache.clear();activationCache.clear();}
   function prepare(state){
    const generation=root.WarPlannerContent?.generation;
-   const next=JSON.stringify([generation??null,state.army,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false,state.guideRuleTypes]);
+   const next=JSON.stringify([generation??null,state.army,state.firstPlayer,state.guideMode,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false,state.guideRuleTypes]);
    if(context!==next){reset();context=next;armyRules=L.abilities.filter(a=>L.matches(a,state.army));}
   }
   function deck(state,step,skipAnyTime=false){

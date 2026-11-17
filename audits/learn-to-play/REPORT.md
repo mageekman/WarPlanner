@@ -1,0 +1,13 @@
+# Learn to play: first turn-sequence release
+
+Added a Guide mode choice on the start screen: Quick guide remains the default; Learn to play uses the existing reviewed core turn sequence instead of merging its unit-selection, attack and aftermath windows. The requested first version covers the turn sequence, not setup/deployment.
+
+The learning view displays the current editable core instructions, short Do this now prompts, the existing explanation, an optional understanding question with a separate answer reveal, basic key terms, and visible Back/Next controls. Optional unit-repeat shortcuts cover shooting, charging and movement choices. They do not record which units acted. Fight retains this project's reviewed separate pile-in/fight/consolidate sequence, rather than importing another edition's ordering.
+
+The same imported list supplies army reminders. Selection/before/after windows are presented at their corresponding learning steps; faction/roster/equipment restrictions and Any time grouping remain in force. Core instructions stay visible even if core reminder cards are disabled. Empty steps are never skipped in Learn to play. Players with no imported list can start with core rules only, and that state restores after reload.
+
+Live mode changes are staged until Reload Guide. Switching maps the current step to the corresponding step in the other mode while retaining the army, phase, turn and review marks. Existing Quick guide preferences remain saved. Mode and position use the existing small progress cache. Core teaching text uses the current step bodies and their references; workshop edits remain authoritative for those bodies, explanations and questions. Supplemental prompts avoid inventing numeric restrictions.
+
+Learning preloads 52 pages for both turn sequences. Browser checks confirmed the phone layout, question/answer reveal, unit-repeat navigation, staged mode switching, core-only reload and navigation with the page builder disabled after preload. There were no page errors or mobile horizontal overflow. Source fixtures also retained all quick-guide rule identities through a full learning cycle for the Aeldari sample and Space Marine test roster. These browser checks use local assets with account sign-in bypassed; they are not an authenticated production latency measurement.
+
+Validation: full suite 809 passing tests, plus the final 82 app checks including the opponent-Charge mode-switch case. Syntax checks, build, source/build parity and whitespace checks passed. No database rules or account data were changed by implementation/testing. The build is prepared in docs/ and has not been published.
