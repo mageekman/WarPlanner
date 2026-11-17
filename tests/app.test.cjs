@@ -26,7 +26,7 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/list-builder.js'),'utf8'),context);
  context.WarPlannerListBuilder=context.window.WarPlannerListBuilder;
  if(options.admin)context.window.WarPlannerAdminPage={canAccess:true,openGuideRules:rules=>context.window.openedGuideRules=rules};
- for(const name of ['dispositions.js','navigation.js','unit-profiles.js','study-cards.js','practice.js','practice-ui.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+name),'utf8'),context);
+ for(const name of ['dispositions.js','navigation.js','unit-profiles.js','study-cards.js','practice.js','practice-ui.js','import-review.js'])vm.runInContext(fs.readFileSync(require.resolve('../dist/'+name),'utf8'),context);
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
