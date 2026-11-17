@@ -183,6 +183,8 @@
  // Guide preferences affect reminders only; keep Workshop/catalog records intact.
  function isDeepStrike(rule){return rule.category==='core'&&(rule.id==='deep-strike'||rule.sourceRuleId==='deep-strike'||rule.importSource?.sourceId==='deep-strike');}
  function guideRule(rule,state){
+  const sourceId=rule.sourceRuleId||rule.importSource?.sourceId||rule.importSource?.record?.ability_id||rule.id.replace(/^core-/,'');
+  if(rule.category==='core'&&['benefit-of-cover','deadly-demise'].includes(sourceId))return null;
   if(state.guideRuleTypes?.[rule.category]===false)return null;
   if(isDeepStrike(rule)){
    if(state.guideShowDeepStrike===false)return null;

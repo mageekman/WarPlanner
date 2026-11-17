@@ -56,3 +56,18 @@ test('Draw secondaries is one shared editable reminder at own Command start for 
  }
  const row=structuredClone(seed);row.data.summary='Saved mission-specific reminder';C.apply([row]);assert.equal(cards(state(0),'start').find(c=>c.id==='draw-secondaries').summary,row.data.summary);
 });
+
+test('Benefit of Cover and Deadly Demise remain in the catalog but never appear as guide reminders',()=>{
+ const core=require('../scripts/audit-core.cjs').audit(require('./fixtures/core-audit-before.json')).changes.filter(r=>['benefit-of-cover','deadly-demise'].includes(r.data.sourceRuleId)).map(r=>({...r,data:{...r.data,phase:[2],turn:'either',window:'act',timings:[{phase:[2],turn:'either',window:'act'}],referenceOnly:false,guideShared:true}}));
+ C.apply(core);const s=state(2,'you');s.army=roster('Falcon');
+ for(const id of ['benefit-of-cover','deadly-demise']){
+  const imported=L.abilities.find(r=>r.sourceRuleId===id);assert.ok(imported);assert.equal(L.guideRule(imported,s),null);
+  assert.ok(L.catalog.rules.some(r=>r.id===id));
+ }
+ const native=L.abilities.find(r=>r.id==='deadly-demise');assert.ok(native);assert.equal(L.guideRule(native,s),null);
+ for(const step of A.steps(s)){
+  const deck=A.createSession().deck(s,step),all=[...deck.shared,...deck.unitCards.flatMap(c=>c.items)];
+  assert.ok(!all.some(c=>['core-benefit-of-cover','core-deadly-demise','deadly-demise'].includes(c.id)));
+ }
+ assert.ok(L.guideRule(L.abilities.find(r=>r.id==='deep-strike'),s));
+});
