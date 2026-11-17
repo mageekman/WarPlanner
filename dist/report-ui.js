@@ -9,7 +9,7 @@
  function contextKey(page){return JSON.stringify([page.context.faction,page.context.phase,page.context.turn,page.context.stepId,page.options.map(o=>o.key)]);}
  function guideHTML(page){
   if(!service?.submitReport)return '';
-  const key=contextKey(page);if(!drafts.has(key))drafts.set(key,{page,selected:page.defaultKey||'',issue:page.defaultIssue||'summary',text:'',missing:'',window:page.options.find(o=>o.key===page.defaultKey)?.timing.window||'act',phase:'keep',turn:'keep',open:false,id:uid(),busy:false,message:'',error:''});
+  const key=contextKey(page);if(!drafts.has(key))drafts.set(key,{page,selected:page.defaultKey||'',issue:page.defaultIssue||'summary',text:'',missing:'',window:page.options.find(o=>o.key===page.defaultKey)?.timing.window||'act',phase:'keep',turn:'keep',open:!!page.defaultOpen,id:uid(),busy:false,message:'',error:''});
   const d=drafts.get(key);if(!d.busy)d.page=page;
   const selected=d.page.options.find(o=>o.key===d.selected),missing=d.selected==='__missing__';
   const options=['<option value="">Select a unit or rule…</option>'];let group='';
@@ -80,7 +80,10 @@
  });
  root.addEventListener?.('focus',()=>{void reload();});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)void reload();});
- root.WarPlannerReports={practiceForQuestion(question){if(!service)return '';if(!practiceKeys.has(question))practiceKeys.set(question,uid());return guideHTML(R.practiceContext(question,service.records,practiceKeys.get(question)));},guideForStep(state,active,deck){return service?guideHTML(R.pageContext(state,active,deck,service.records)):'';},guideHTML,badgeHTML,queueHTML,count,reviewBanner,get editing(){return editing;},clearEditing(){editing=null;},async approveEdited(draft){if(!editing)throw Error('No report is being edited.');const result=await decide(editing,'approve',draft,'edited');editing=null;return result.entry;},
-  setService(next){epoch++;if(timer)clearInterval(timer);timer=null;service=next;pending=[];drafts.clear();practiceKeys=new WeakMap();editing=null;queueError='';queueBusy=false;loading=false;queueOpen=false;if(next?.isAdmin&&next.listReports){void reload();timer=setInterval(()=>{if(!document.hidden)void reload();},30000);}},reload
+ root.WarPlannerReports={get reportRecords(){return service?.records||[];},get canReport(){return !!service?.submitReport;},catalogForRule(row,faction){
+   const rule=root.WarPlannerMechanics.enrich(row.data),timing=R.reportTiming(rule);
+   return guideHTML({title:'Report this rule',defaultKey:row.key,defaultOpen:true,context:{origin:'catalog',faction:faction||row.faction,stepId:'catalog:'+row.key,stepTitle:'Rule search — '+row.name},options:[{key:row.key,name:row.name,kind:row.kind,group:'Rules',revision:row.revision,observed:{name:row.name,summary:rule.summary,targets:rule.targetText||'',phase:rule.phase,turn:rule.turn,window:rule.window,...(rule.timings?{timings:rule.timings}:{})},timing}]});
+  },practiceForQuestion(question){if(!service)return '';if(!practiceKeys.has(question))practiceKeys.set(question,uid());return guideHTML(R.practiceContext(question,service.records,practiceKeys.get(question)));},guideForStep(state,active,deck){return service?guideHTML(R.pageContext(state,active,deck,service.records)):'';},guideHTML,badgeHTML,queueHTML,count,reviewBanner,get editing(){return editing;},clearEditing(){editing=null;},async approveEdited(draft){if(!editing)throw Error('No report is being edited.');const result=await decide(editing,'approve',draft,'edited');editing=null;return result.entry;},
+  setService(next){root.WarPlannerReportPicker?.close();epoch++;if(timer)clearInterval(timer);timer=null;service=next;pending=[];drafts.clear();practiceKeys=new WeakMap();editing=null;queueError='';queueBusy=false;loading=false;queueOpen=false;if(next?.isAdmin&&next.listReports){void reload();timer=setInterval(()=>{if(!document.hidden)void reload();},30000);}},reload
  };
 })(window);

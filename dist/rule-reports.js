@@ -67,5 +67,5 @@
   if(report.issue_type==='other'||current.kind==='unit'||current.kind==='step'&&report.issue_type!=='summary')return 'Use Edit to choose the exact fields to change.';
   return '';
  }
- const api={types,windows,pageContext,practiceContext,validateSubmission,proposal,directReviewReason};if(node)module.exports=api;else root.WarPlannerRuleReports=api;
+ const api={types,windows,reportTiming,pageContext,practiceContext,validateSubmission,proposal,directReviewReason};if(node)module.exports=api;else root.WarPlannerRuleReports=api;
 })(typeof window!=='undefined'?window:globalThis);
