@@ -22,7 +22,7 @@ with sync_playwright() as p:
   printable=result.value;printable.wait_for_load_state()
   assert printable.locator('.phase').count()==10
   assert printable.locator('.rule').count()>0
-  assert printable.locator('h1').inner_text().endswith('— Guide')
+  assert printable.locator('h1').inner_text().endswith('— Checklist')
   printable.locator('#print-scope').select_option('current');assert printable.locator('.phase:visible').count()==1
   printable.emulate_media(media='print');assert not printable.locator('.toolbar').is_visible()
   pdf=printable.pdf(format='A4');assert pdf.startswith(b'%PDF') and len(pdf)>1000
