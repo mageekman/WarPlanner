@@ -1,0 +1,12 @@
+{
+  "checked": "2026-11-16",
+  "totalRows": 9683,
+  "runtimeRows": 5700,
+  "fullJsonBytes": 28913822,
+  "importSourceBytes": 11527109,
+  "historicalMechanicsBytes": 309250,
+  "summaryAuditBytes": 3733211,
+  "enabledFullJsonBytes": 16785900,
+  "estimatedSlimRuntimeJsonBytes": 7183406,
+  "notes": "Read-only SQL measurements of JSON text before HTTP compression. Slim size excludes provenance/history/audit fields and is an estimate requiring runtime enrichment parity before implementation."
+}

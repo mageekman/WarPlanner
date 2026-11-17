@@ -1,0 +1,162 @@
+[
+  {
+    "file": "vendor/supabase.js",
+    "bytes": 219856,
+    "gzipBytes": 56032
+  },
+  {
+    "file": "config.js",
+    "bytes": 181,
+    "gzipBytes": 175
+  },
+  {
+    "file": "core.js",
+    "bytes": 5817,
+    "gzipBytes": 2471
+  },
+  {
+    "file": "aeldari-data.js",
+    "bytes": 338772,
+    "gzipBytes": 38658
+  },
+  {
+    "file": "allies.js",
+    "bytes": 16270,
+    "gzipBytes": 5048
+  },
+  {
+    "file": "lessons.js",
+    "bytes": 57707,
+    "gzipBytes": 18638
+  },
+  {
+    "file": "activations.js",
+    "bytes": 24690,
+    "gzipBytes": 7816
+  },
+  {
+    "file": "list-builder.js",
+    "bytes": 8735,
+    "gzipBytes": 2866
+  },
+  {
+    "file": "admech-notes.js",
+    "bytes": 130106,
+    "gzipBytes": 17797
+  },
+  {
+    "file": "rule-notes.js",
+    "bytes": 63832,
+    "gzipBytes": 9693
+  },
+  {
+    "file": "rule-summaries.js",
+    "bytes": 22975,
+    "gzipBytes": 7180
+  },
+  {
+    "file": "aeldari-audit.js",
+    "bytes": 973886,
+    "gzipBytes": 109024
+  },
+  {
+    "file": "mechanics.js",
+    "bytes": 11696,
+    "gzipBytes": 3791
+  },
+  {
+    "file": "unit-profiles.js",
+    "bytes": 2217,
+    "gzipBytes": 1055
+  },
+  {
+    "file": "content.js",
+    "bytes": 26848,
+    "gzipBytes": 8404
+  },
+  {
+    "file": "rule-reports.js",
+    "bytes": 10051,
+    "gzipBytes": 3606
+  },
+  {
+    "file": "report-ui.js",
+    "bytes": 14386,
+    "gzipBytes": 4648
+  },
+  {
+    "file": "rules-import.js",
+    "bytes": 24630,
+    "gzipBytes": 7988
+  },
+  {
+    "file": "import-ui.js",
+    "bytes": 12121,
+    "gzipBytes": 4236
+  },
+  {
+    "file": "workshop-browser.js",
+    "bytes": 8343,
+    "gzipBytes": 2641
+  },
+  {
+    "file": "timeline.js",
+    "bytes": 32793,
+    "gzipBytes": 10140
+  },
+  {
+    "file": "admin.js",
+    "bytes": 55704,
+    "gzipBytes": 15170
+  },
+  {
+    "file": "study-cards.js",
+    "bytes": 7145,
+    "gzipBytes": 2649
+  },
+  {
+    "file": "practice.js",
+    "bytes": 18045,
+    "gzipBytes": 5780
+  },
+  {
+    "file": "practice-ui.js",
+    "bytes": 15913,
+    "gzipBytes": 5291
+  },
+  {
+    "file": "navigation.js",
+    "bytes": 3767,
+    "gzipBytes": 1403
+  },
+  {
+    "file": "dispositions.js",
+    "bytes": 13791,
+    "gzipBytes": 3795
+  },
+  {
+    "file": "app.js",
+    "bytes": 101421,
+    "gzipBytes": 28956
+  },
+  {
+    "file": "cloud-lists.js",
+    "bytes": 8069,
+    "gzipBytes": 2531
+  },
+  {
+    "file": "auth.js",
+    "bytes": 8017,
+    "gzipBytes": 2659
+  },
+  {
+    "file": "styles.css",
+    "bytes": 92506,
+    "gzipBytes": 19003
+  },
+  {
+    "file": "WPlogowhtol.png",
+    "bytes": 484499,
+    "gzipBytes": 415759
+  }
+]

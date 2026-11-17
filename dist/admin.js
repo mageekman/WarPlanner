@@ -3,7 +3,7 @@
  'use strict';
  const C=root.WarPlannerContent,L=root.WarPlanLessons,W=root.WarPlannerWorkshopBrowser,P=root.WarPlannerUnitProfiles;
  let service=null,draft=null,dirty=false,busy=false,message='',failure='',query='',referenceFilter='all',summaryFilter='all',history=[],factionScope=null,folder=null,browserLevel='factions',parentKey=null;
- let snapshot=null,snapshotService=null,snapshotVersion=null;
+ let snapshot=null,snapshotService=null,snapshotVersion=null,workshopLoad=null,workshopFailure='';
  let unitContext=null,reviewActive=false,reviewFaction='',reviewDetachment='',reviewQuery='',reviewOpener=null,reviewSearchTimer=null;
  let attentionActive=false,attentionFaction=W.ALL,attentionReason='all',attentionQuery='',attentionDisabled=true,attentionLimit=50;
  let guideEditing=false,guideChoices=[];
@@ -107,7 +107,16 @@
   if(draft)queueMicrotask(()=>{const dialog=document.querySelector('#review-editor-dialog');if(dialog&&!dialog.open)dialog.showModal();});
   return `<section id="admin-content-page" class="workshop-review"><button class="text-button" type="button" data-admin-action="review-exit">← Rules workshop</button><header class="heading"><div><div class="eyebrow">RULES WORKSHOP</div><h1>Faction review</h1><p>Browse a faction’s units and rules. Use a pencil to edit an entry.</p></div></header><div class="admin-notice ${failure?'admin-error':''}" role="status">${e(failure||message)}</div><div class="review-controls"><label>Faction<select id="review-faction"><option value="">Choose a faction</option><option value="${W.SHARED}" ${reviewFaction===W.SHARED?'selected':''}>Core rules & stratagems</option>${W.factions(all).map(f=>`<option value="${e(f.id)}" ${reviewFaction===f.id?'selected':''}>${e(f.name)}</option>`).join('')}</select></label><label>Detachment<select id="review-detachment" ${!reviewFaction||reviewFaction===W.SHARED?'disabled':''}><option value="">All detachments</option>${model.detachmentNames.map(d=>`<option value="${e(d)}" ${d===reviewDetachment?'selected':''}>${e(d)}</option>`).join('')}</select></label><label>Search units or rules<input id="review-search" type="search" value="${e(reviewQuery)}" placeholder="Search names, rules or keywords…"></label></div><div id="review-results">${reviewResults(model)}</div>${draft?`<dialog id="review-editor-dialog" class="review-editor-dialog" aria-label="Edit ${e(draft.name)}"><div class="admin-notice ${failure?'admin-error':''}" role="status">${e(failure)}</div>${editor()}</dialog>`:''}</section>`;
  }
+ function loadWorkshop(){
+  const current=service;if(!current?.ensureWorkshop||current.workshopReady!==false)return Promise.resolve();
+  if(!workshopLoad)workshopLoad=current.ensureWorkshop().then(()=>{if(service===current){snapshot=null;workshopFailure='';}}).catch(error=>{if(service===current)workshopFailure=error.message;}).finally(()=>{if(service===current){workshopLoad=null;refresh();}});
+  return workshopLoad;
+ }
  function render(){
+  if(service?.isAdmin&&service.workshopReady===false){
+   if(!workshopFailure)void loadWorkshop();
+   return `<section class="empty-card" aria-busy="${!workshopFailure}"><h1>Rules workshop</h1><p role="status">${e(workshopFailure||'Loading complete Workshop records…')}</p>${workshopFailure?'<button type="button" data-admin-action="load-workshop">Retry</button>':''}</section>`;
+  }
   if(root.WarPlannerTimeline?.active)return root.WarPlannerTimeline.render();
   if(root.WarPlannerImportUI?.active)return root.WarPlannerImportUI.render();
   if(!service?.isAdmin)return '<section class="empty-card"><h1>Administrator access required</h1></section>';
@@ -135,6 +144,9 @@
  }
  function closeGuideEditor(){guideEditing=false;guideChoices=[];draft=null;dirty=false;history=[];failure='';root.refreshWarPlannerGuideEditor?.();}
  function openGuideRules(rules){
+  if(service?.isAdmin&&service.workshopReady===false){
+   const current=service;void loadWorkshop().then(()=>{if(service===current&&current.workshopReady!==false)openGuideRules(rules);else if(service===current)root.alert?.(workshopFailure||'Could not load the rule editor.');});return true;
+  }
   if(!service?.isAdmin||busy||!Array.isArray(rules)||!canLeave())return false;
   root.WarPlannerReports?.clearEditing();guideChoices=guideRows(rules);guideEditing=true;reviewActive=false;unitContext=null;parentKey=null;dirty=false;history=[];failure='';
   draft=guideChoices.length===1?structuredClone(guideChoices[0]):null;refresh();return true;
@@ -202,6 +214,7 @@
   const rawSummary=event.target.closest('.review-raw-fields > summary');if(rawSummary?.tagName==='SUMMARY'&&!rawSummary.parentElement.open){try{rawSummary.parentElement.querySelector('[name=reviewData]').value=JSON.stringify(capture(rawSummary.closest('form'),false).data,null,2);}catch(error){failure=error.message;}}
   const timingButton=event.target.closest('button');if(service?.isAdmin&&timingButton&&('ruleTimingAdd' in timingButton.dataset||'ruleTimingRemove' in timingButton.dataset)&&C.editTimingRows(timingButton,timingButton.closest('#admin-content-form'))){markDirty();return;}
   const button=event.target.closest('button');if(!button||!service?.isAdmin||busy)return;
+  if(button.dataset.adminAction==='load-workshop'){workshopFailure='';void loadWorkshop();refresh();return;}
   if(draft?.kind==='rule'&&(['share-rule','add-membership'].includes(button.dataset.adminAction)||button.dataset.adminRemoveMembership!==undefined)){
    try{const next=capture(document.querySelector('#admin-content-form'),false),d=next.data;
     if(button.dataset.adminAction==='share-rule'){d.memberships=[{faction:next.faction,detachments:d.detachment?[d.detachment]:[]}];d.detachment='';}
@@ -259,6 +272,6 @@
  document.addEventListener('toggle',event=>{if(event.target.dataset.reviewDetails){if(event.target.open)reviewOpened.add(event.target.dataset.reviewDetails);else reviewOpened.delete(event.target.dataset.reviewDetails);}},true);
  document.addEventListener('cancel',event=>{if(event.target.id==='guide-rule-editor-dialog'){event.preventDefault();if(canLeave())closeGuideEditor();return;}if(event.target.id!=='review-editor-dialog')return;event.preventDefault();if(canLeave()){draft=null;dirty=false;failure='';refresh();restoreReviewFocus();}},true);
  root.WarPlannerAdminPage={openGuideRules,renderGuideEditor,get guideEditorActive(){return guideEditing;},discardReport(){draft=null;dirty=false;history=[];failure='';browserLevel=folder?'entries':'factions';},openReport(report){if(!service?.isAdmin||busy||!canLeave())return false;draft=root.WarPlannerRuleReports.proposal(report,records());dirty=true;history=[];failure='';parentKey=null;browserLevel='editor';factionScope=!draft.faction||draft.faction==='*'?W.SHARED:draft.faction;folder=draft.kind;query='';return true;},render,get canAccess(){return !!service?.isAdmin;},get hasDraft(){return !!root.WarPlannerTimeline?.hasDraft||!!(draft&&dirty)||busy||!!root.WarPlannerImportUI?.hasDraft;},canLeave,leave(){if(!canLeave())return false;attentionActive=false;if(guideEditing)closeGuideEditor();reviewActive=false;root.WarPlannerTimeline?.leave();root.WarPlannerImportUI?.discard();root.WarPlannerReports?.clearEditing();draft=null;parentKey=null;dirty=false;history=[];browserLevel=folder?'entries':factionScope?'groups':'factions';return true;},
-  setService(next){attentionActive=false;attentionQuery='';attentionLimit=50;guideEditing=false;guideChoices=[];root.refreshWarPlannerGuideEditor?.();root.clearTimeout?.(reviewSearchTimer);reviewOpened.clear();reviewActive=false;reviewFaction='';reviewDetachment='';reviewQuery='';unitContext=null;root.WarPlannerTimeline?.setService(next);root.WarPlannerImportUI?.setService(next);service?.dispose();service=next;snapshot=null;snapshotService=null;snapshotVersion=null;root.WarPlannerReports?.setService(next);draft=null;dirty=false;busy=false;message='';failure='';query='';referenceFilter='all';summaryFilter='all';history=[];factionScope=null;folder=null;parentKey=null;browserLevel='factions';if(next)C.apply(records());else C.reset();}
+  setService(next,{apply=true}={}){attentionActive=false;attentionQuery='';attentionLimit=50;guideEditing=false;guideChoices=[];root.refreshWarPlannerGuideEditor?.();root.clearTimeout?.(reviewSearchTimer);reviewOpened.clear();reviewActive=false;reviewFaction='';reviewDetachment='';reviewQuery='';unitContext=null;root.WarPlannerTimeline?.setService(next);root.WarPlannerImportUI?.setService(next);service?.dispose();service=next;workshopLoad=null;workshopFailure='';snapshot=null;snapshotService=null;snapshotVersion=null;root.WarPlannerReports?.setService(next);draft=null;dirty=false;busy=false;message='';failure='';query='';referenceFilter='all';summaryFilter='all';history=[];factionScope=null;folder=null;parentKey=null;browserLevel='factions';if(apply){if(next?.applyToLibrary)next.applyToLibrary();else if(next)C.apply(records());else C.reset();}}
  };
 })(window);

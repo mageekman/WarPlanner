@@ -204,8 +204,8 @@
   const timings=[{phase,turn,window}];
   return {...rule,phase,turn,window,timings,timingOverride:true,triggerText:timings.map(timingLabel).join('; ')};
  }
- function forStep(state,step){return abilities.map(a=>guideRule(a,state)).filter(Boolean).filter(a=>{
-  return timingMatches(a,state,step)&&matches(a,state.army);
+ function forStep(state,step,candidates=abilities,armyMatched=false){return candidates.map(a=>guideRule(a,state)).filter(Boolean).filter(a=>{
+  return timingMatches(a,state,step)&&(armyMatched||matches(a,state.army));
  }).map(a=>!a.adminManaged&&sequencing[a.id]&&sequencing[a.id].steps.includes(step.id)?{...a,sequencePreview:true,sequence:sequencing[a.id]}:a)
  .sort((a,b)=>(sequencing[a.id]?.priority??100)-(sequencing[b.id]?.priority??100));}
  function getSteps(state){

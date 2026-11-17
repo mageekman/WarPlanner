@@ -1,0 +1,38 @@
+[
+  {
+    "scenario": "seed-aeldari",
+    "units": 18,
+    "pages": 45,
+    "applyMs": 0,
+    "prepareMs": 964.5,
+    "navigationCallP95Ms": 12,
+    "navigationSettleP95Ms": 223.5,
+    "longTasksDuringPreparation": 1,
+    "maxPreparationLongTaskMs": 80,
+    "saveStress100ListsMedianMs": 14.4
+  },
+  {
+    "scenario": "catalog-aeldari",
+    "units": 18,
+    "pages": 45,
+    "applyMs": 3265.1,
+    "prepareMs": 2461.4,
+    "navigationCallP95Ms": 10.5,
+    "navigationSettleP95Ms": 226.5,
+    "longTasksDuringPreparation": 13,
+    "maxPreparationLongTaskMs": 181,
+    "saveStress100ListsMedianMs": 8.1
+  },
+  {
+    "scenario": "catalog-marines",
+    "units": 20,
+    "pages": 45,
+    "applyMs": 2856.4,
+    "prepareMs": 2205.0,
+    "navigationCallP95Ms": 8.3,
+    "navigationSettleP95Ms": 204,
+    "longTasksDuringPreparation": 12,
+    "maxPreparationLongTaskMs": 112,
+    "saveStress100ListsMedianMs": 6.4
+  }
+]

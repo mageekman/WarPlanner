@@ -40,7 +40,7 @@
    if(identityError||!identity.user||identity.user.id!==request.id)throw new Error('Please sign in again.');
    showLoading('Loading your study space…','Your account is verified. Loading your lists and rules…');
    request.service=window.WarPlannerCloudLists.create(client,identity.user.id,{status:status=>window.setWarPlannerCloudStatus?.(status),saved:result=>window.applyWarPlannerCloudSave?.(result),deleted:id=>window.applyWarPlannerCloudDeletion?.(id)});
-   if(window.WarPlannerContent)request.content=window.WarPlannerContent.create(client,identity.user.id);
+   if(window.WarPlannerContent)request.content=window.WarPlannerContent.create(client,identity.user.id,{runtime:true});
    const local=window.getWarPlannerLocalLists?.(identity.user)||[];
    const [{lists,idMap}]=await Promise.all([request.service.load(local),request.content?.load()]);
    if(!current()){request.service.dispose();request.content?.dispose();return;}

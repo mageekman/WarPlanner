@@ -73,7 +73,7 @@
  document.addEventListener('click',async event=>{
   const button=event.target.closest?.('[data-report-action]');if(!button||!service?.isAdmin)return;const action=button.dataset.reportAction;
   if(action==='reload'){void reload();return;}const report=pending.find(r=>r.id===button.dataset.reportId);if(!report||queueBusy)return;
-  try{if(action==='edit'){const current=service,session=epoch;queueBusy=true;updateQueue();try{await current.reload();if(session!==epoch)return;C.apply(current.records);if(root.WarPlannerAdminPage.openReport(report)){editing=report;root.refreshWarPlannerContent?.();}}finally{if(session===epoch){queueBusy=false;updateQueue();}}return;}
+  try{if(action==='edit'){const current=service,session=epoch;queueBusy=true;updateQueue();try{if(current.workshopReady===false&&current.ensureWorkshop)await current.ensureWorkshop();else await current.reload();if(session!==epoch)return;C.apply(current.records);if(root.WarPlannerAdminPage.openReport(report)){editing=report;root.refreshWarPlannerContent?.();}}finally{if(session===epoch){queueBusy=false;updateQueue();}}return;}
    if(action==='approve'){const reason=R.directReviewReason(report,service.records);if(reason)throw Error(reason);await decide(report,'approve',R.proposal(report,service.records));}
    if(action==='reject'){await decide(report,'reject');if(editing?.id===report.id){root.WarPlannerAdminPage.discardReport();editing=null;root.refreshWarPlannerContent?.();}}
   }catch(error){queueError=error.message;updateQueue();}

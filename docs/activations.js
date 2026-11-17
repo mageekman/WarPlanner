@@ -146,7 +146,7 @@
   }
   return [];
  }
- function activationCandidates(state){return L.abilities.map(a=>L.guideRule(a,state)).filter(Boolean).filter(a=>a.expanded&&L.ruleMatchesContext(a,state)&&L.matches(a,state.army)).flatMap(a=>L.timingsFor(a,state).filter(t=>['act','select','before','react','after','arrivals'].includes(t.window)).map(t=>a.timings?{...a,window:t.window}:a));}
+ function activationCandidates(state,rules=L.abilities,armyMatched=false){return rules.map(a=>L.guideRule(a,state)).filter(Boolean).filter(a=>a.expanded&&L.ruleMatchesContext(a,state)&&(armyMatched||L.matches(a,state.army))).flatMap(a=>L.timingsFor(a,state).filter(t=>['act','select','before','react','after','arrivals'].includes(t.window)).map(t=>a.timings?{...a,window:t.window}:a));}
  function stages(state,unit,mode,candidates){
   const rows=baseStages(state,unit,mode);
   if(!unit||!rows.length)return rows;
@@ -168,10 +168,10 @@
   return [first,merged,last];
  }
  function steps(state){return baseSteps(state).map(step=>{const result=L.applyStep(step);return state.turn==='opponent'?{...result,body:result.body.replace(/your unit/g,'the active unit')}:result;});}
- function flashcards(state,step){
+ function flashcards(state,step,prepared=null){
   const sharedMap=new Map(),types=new Map();
-  const candidates=step.activationMode?activationCandidates(state):null;
-  const stepCards=step.activationMode?null:L.forStep(state,step).filter(a=>!a.sequencePreview);
+  const candidates=step.activationMode?(prepared?.activation||activationCandidates(state)):null;
+  const stepCards=step.activationMode?null:L.forStep(state,step,prepared?.rules,!!prepared).filter(a=>!a.sequencePreview);
   const ruleKey=a=>JSON.stringify([a.id,a.name,a.summary,a.conditions,a.sourceIds]);
   function typeFor(member){
    const key=norm(member.name)+(member.catalogUnitId?'|'+member.catalogUnitId:'');
@@ -234,19 +234,21 @@
 
  // Each Guide owns a bounded cache. Catalog revisions and roster changes discard it.
  function createSession(){
-  let context=null;const decks=new Map(),coverageCache=new Map();
-  function reset(){context=null;decks.clear();coverageCache.clear();}
+  let context=null,armyRules=[];const decks=new Map(),coverageCache=new Map(),activationCache=new Map();
+  function reset(){context=null;armyRules=[];decks.clear();coverageCache.clear();activationCache.clear();}
   function prepare(state){
    const generation=root.WarPlannerContent?.generation;
    const next=JSON.stringify([generation??null,state.army,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false,state.guideRuleTypes]);
-   if(context!==next){reset();context=next;}
+   if(context!==next){reset();context=next;armyRules=L.abilities.filter(a=>L.matches(a,state.army));}
   }
   function deck(state,step){
    prepare(state);
    const key=JSON.stringify([state.phase,state.turn,state.round,step]);
    if(!decks.has(key)){
     if(decks.size>=80)decks.delete(decks.keys().next().value);
-    decks.set(key,flashcards(state,step));
+    const phaseKey=JSON.stringify([state.phase,state.turn,state.round]);
+    if(!activationCache.has(phaseKey)){if(activationCache.size>=80)activationCache.delete(activationCache.keys().next().value);activationCache.set(phaseKey,activationCandidates(state,armyRules,true));}
+    decks.set(key,flashcards(state,step,{rules:armyRules,activation:activationCache.get(phaseKey)}));
    }
    return decks.get(key);
   }
@@ -257,7 +259,7 @@
     if(coverageCache.size>=80)coverageCache.delete(coverageCache.keys().next().value);
     coverageCache.set(key,{
      unsupported:state.army.units.filter(u=>!L.unitInfo(u,state.army.faction)),
-     phaseHasAbilities:L.phases[state.phase].steps.some(step=>L.forStep(state,step).some(a=>!['core','core-stratagem'].includes(a.category)))
+     phaseHasAbilities:L.phases[state.phase].steps.some(step=>L.forStep(state,step,armyRules,true).some(a=>!['core','core-stratagem'].includes(a.category)))
     });
    }
    return coverageCache.get(key);
