@@ -514,10 +514,17 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
 .learn-core-caret{font-size:18px;color:var(--teal);flex-shrink:0}
 .learn-core[open]>.learn-core-toggle .learn-core-caret{transform:rotate(180deg)}
 .learn-core-content{padding-bottom:16px}
-.learn-core .learn-check:not([open]),.learn-core .learn-glossary:not([open]){margin-top:6px;padding:0}
-.learn-core .learn-check>summary,.learn-core .learn-glossary>summary{min-height:32px;padding:5px 0;gap:10px}
-.learn-core .learn-check>summary::after,.learn-core .learn-glossary>summary::after{content:'⌄';font-size:16px;line-height:1;margin-left:auto}
-.learn-core .learn-check[open]>summary::after,.learn-core .learn-glossary[open]>summary::after{transform:rotate(180deg)}
-@media(pointer:coarse){.learn-core .learn-check>summary,.learn-core .learn-glossary>summary{min-height:44px}}
+.learn-core .learn-check:not([open]),.learn-support .learn-glossary:not([open]){margin-top:6px;padding:0}
+.learn-core .learn-check>summary,.learn-support .learn-glossary>summary{min-height:32px;padding:5px 0;gap:10px}
+.learn-core .learn-check>summary::after,.learn-support .learn-glossary>summary::after{content:'⌄';font-size:16px;line-height:1;margin-left:auto}
+.learn-core .learn-check[open]>summary::after,.learn-support .learn-glossary[open]>summary::after{transform:rotate(180deg)}
+@media(pointer:coarse){.learn-core .learn-check>summary,.learn-support .learn-glossary>summary{min-height:44px}}
 
 .practice-option-description{display:block;margin-top:5px;font-size:12px;line-height:1.6;color:inherit;white-space:pre-wrap}
+
+.learn-support .learn-why{margin-top:6px;padding:0}
+.learn-support .learn-why>summary{font-size:calc(12px * var(--guide-font-scale,1));min-height:32px;padding:5px 0;display:flex;align-items:center;gap:10px}
+.learn-support .learn-why>summary::after{content:'⌄';font-size:16px;line-height:1;margin-left:auto}
+.learn-support .learn-why[open]>summary::after{transform:rotate(180deg)}
+.learn-support .learn-why p{white-space:pre-wrap}
+@media(pointer:coarse){.learn-support .learn-why>summary{min-height:44px}}
