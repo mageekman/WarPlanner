@@ -1,0 +1,9 @@
+{
+  "drawerBelowClear": true,
+  "collapsedByDefault": true,
+  "openStatePersists": true,
+  "checkboxPersistsAcrossSteps": true,
+  "phaseClearIncludesDrawer": true,
+  "navigationRebuilds": 0,
+  "errors": []
+}

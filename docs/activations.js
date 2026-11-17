@@ -173,6 +173,7 @@
   return [first,merged,last];
  }
  function steps(state){return baseSteps(state).map(step=>{const result=L.applyStep(step);return state.turn==='opponent'?{...result,body:result.body.replace(/your unit/g,'the active unit')}:result;});}
+ function isAnyTimeRule(rule,state){const projected=L.guideRule(rule,state);return !!projected&&L.timingsFor(projected,state).some(t=>t.window==='react'||t.window==='act'&&(projected.category==='core'||[0,1,2,3,4].every(phase=>t.phase?.includes(phase))));}
  function flashcards(state,step,prepared=null){
   const sharedMap=new Map(),types=new Map();
   const candidates=step.activationMode?(prepared?.activation||activationCandidates(state)):null;
@@ -193,9 +194,10 @@
   }
   for(const unit of orderedUnits(state)){
    for(const member of [unit.body,...unit.members.filter(m=>m!==unit.body)]){const record=typeFor(member);if(!record.instances.some(u=>u.id===unit.id))record.instances.push(unit);}
-   const rows=step.activationMode?stages(state,unit,step.activationMode,candidates):[{title:'At this step',cards:stepCards.filter(a=>fits(a,state,unit,true))}];
+   const rows=step.activationMode?stages(state,unit,step.activationMode,candidates):[{title:step.anyTime?'Throughout this phase — check trigger':'At this step',cards:stepCards.filter(a=>fits(a,state,unit,true))}];
    const seen=new Set();
    for(const row of rows)for(const a of row.cards){
+    if(prepared?.skipAnyTime&&isAnyTimeRule(a,state)||step.anyTime&&!isAnyTimeRule(a,state))continue;
     if(state.guideRuleTypes?.[a.category]===false)continue;
     if(a.borrowedEffect&&['walker','falcon','avatar-aura'].includes(a.id))continue;
     const key=ruleKey(a);if(seen.has(key))continue;seen.add(key);
@@ -247,14 +249,14 @@
    const next=JSON.stringify([generation??null,state.army,state.firstPlayer,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false,state.guideRuleTypes]);
    if(context!==next){reset();context=next;armyRules=L.abilities.filter(a=>L.matches(a,state.army));}
   }
-  function deck(state,step){
+  function deck(state,step,skipAnyTime=false){
    prepare(state);
-   const key=JSON.stringify([state.phase,state.turn,state.round,step]);
+   const key=JSON.stringify([state.phase,state.turn,state.round,step,skipAnyTime]);
    if(!decks.has(key)){
     if(decks.size>=80)decks.delete(decks.keys().next().value);
     const phaseKey=JSON.stringify([state.phase,state.turn,state.round]);
     if(!activationCache.has(phaseKey)){if(activationCache.size>=80)activationCache.delete(activationCache.keys().next().value);activationCache.set(phaseKey,activationCandidates(state,armyRules,true));}
-    decks.set(key,flashcards(state,step,{rules:armyRules,activation:activationCache.get(phaseKey)}));
+    decks.set(key,flashcards(state,step,{rules:armyRules,activation:activationCache.get(phaseKey),skipAnyTime}));
    }
    return decks.get(key);
   }
@@ -270,7 +272,7 @@
    }
    return coverageCache.get(key);
   }
-  return {deck,coverage,reset};
+  return {deck,stepDeck:(state,step)=>deck(state,step,true),anyTime:state=>deck(state,{id:'guide-any-time',window:'act',anyTime:true}),coverage,reset};
  }
 
  const api={units,orderedUnits,stages,steps,rangeBonus,leading,support,has,flashcards,fightsFirst,targeting,createSession};

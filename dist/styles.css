@@ -469,3 +469,15 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
 /* The overview is navigation, not a completion checklist. */
 .guide-phase-overview{margin:0 0 16px;border:1px solid var(--line);border-radius:8px;background:#142830}.guide-phase-overview>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;padding:10px 12px;list-style:none;font-size:12px;color:var(--ink);box-sizing:border-box}.guide-phase-overview>summary::-webkit-details-marker{display:none}.overview-total{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:11px}.guide-phase-overview[open] .overview-total>span{transform:rotate(180deg)}.guide-phase-overview nav{display:grid;gap:3px;padding:0 5px 5px}.guide-phase-overview nav button{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:44px;text-align:left;padding:9px 8px;border:0;border-radius:5px;background:transparent;color:var(--ink);font-size:12px}.guide-phase-overview nav button:hover,.guide-phase-overview nav button[aria-current=step]{background:#28423f}.overview-step-title{min-width:0}.overview-counts{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;flex-shrink:0;font-size:11px;color:var(--muted)}.overview-rule-count::before,.overview-primary-count::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:#8cd5bd;margin-right:5px;vertical-align:middle}.overview-primary-count::before{background:#eee566}.guide-page-shell .guide-title-row h2{margin-top:0}@media(max-width:420px){.guide-phase-overview nav button{gap:6px;flex-wrap:wrap}.overview-counts{margin-left:auto}}
 .guide-carousel .guide-phase-overview :is(summary,nav button){font-size:calc(12px * var(--guide-font-scale,1))}.guide-carousel .guide-phase-overview :is(.overview-total,.overview-counts){font-size:calc(11px * var(--guide-font-scale,1))}
+
+/* Phase-wide rules stay available without repeating them on every step. */
+.guide-anytime{margin:14px 0 18px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.guide-anytime>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px;padding:12px 14px;list-style:none;font-size:calc(13px * var(--guide-font-scale,1));color:var(--ink)}
+.guide-anytime>summary::-webkit-details-marker{display:none}
+.anytime-count{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:calc(11px * var(--guide-font-scale,1))}
+.anytime-caret{display:inline-block;font-size:16px;color:var(--teal)}
+.guide-anytime[open] .anytime-caret{transform:rotate(180deg)}
+.guide-anytime-content{padding:0 12px 12px;min-width:0}
+.guide-anytime-note{font-size:calc(11px * var(--guide-font-scale,1));line-height:1.7;color:var(--muted);margin:0 0 12px}
+.guide-anytime .flash-board{margin-top:0}.guide-anytime .flash-grid{margin-top:0}
+@media(max-width:650px){.guide-anytime-content{padding:0 8px 8px}.guide-anytime>summary{padding:12px}}

@@ -30,7 +30,7 @@ function app(saved,options={}){
  vm.runInContext(fs.readFileSync(require.resolve('../dist/app.js'),'utf8'),context);
  // Existing navigation tests explicitly enter an active guide; setup tests opt out.
  if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);
- return {rename(id,value){listeners.change({target:{dataset:{rename:id},value,closest:()=>({querySelector:()=>({})})}})},ruleType(type,checked){listeners.change({target:{checked,dataset:{guideRuleType:type}}})},at(id){vm.runInContext('state.open=lessons().steps.findIndex(s=>s.id==='+JSON.stringify(id)+');render();',context)},flushGuide(){for(let i=0;i<500&&(frames.length||timers.length);i++){frames.shift()?.();timers.shift()?.();}},prepared:()=>vm.runInContext('guidePrepared&&({ready:guidePrepared.ready,total:guidePrepared.total,count:guidePrepared.pages.size})',context),rejectPageBuilds(){vm.runInContext('buildGuidePageHTML=()=>{throw Error("Page rebuilt during navigation")}',context);},review(key,checked){listeners.change({target:{dataset:{reviewReminder:key},checked}})},toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(deadline){idle.shift()?.(deadline);},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveGuideSettings(){listeners.submit({target:{id:'guide-setup-settings-form'},preventDefault(){}})},cancelGuideSettings(){listeners.cancel({target:{id:'guide-setup-settings'},preventDefault(){}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,writes,run:code=>vm.runInContext(code,context),animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
+ return {anyTime(open){elements['#guide-panel']={contains:()=>true};listeners.toggle({target:{id:'guide-anytime',open,closest:()=>null}})},rename(id,value){listeners.change({target:{dataset:{rename:id},value,closest:()=>({querySelector:()=>({})})}})},ruleType(type,checked){listeners.change({target:{checked,dataset:{guideRuleType:type}}})},at(id){vm.runInContext('state.open=lessons().steps.findIndex(s=>s.id==='+JSON.stringify(id)+');render();',context)},flushGuide(){for(let i=0;i<500&&(frames.length||timers.length);i++){frames.shift()?.();timers.shift()?.();}},prepared:()=>vm.runInContext('guidePrepared&&({ready:guidePrepared.ready,total:guidePrepared.total,count:guidePrepared.pages.size})',context),rejectPageBuilds(){vm.runInContext('buildGuidePageHTML=()=>{throw Error("Page rebuilt during navigation")}',context);},review(key,checked){listeners.change({target:{dataset:{reviewReminder:key},checked}})},toggle(id,checked){listeners.change({target:{id,checked,dataset:{}}})},warm(deadline){idle.shift()?.(deadline);},toggleDetachment(name,checked){listeners.change({target:{id:'',checked,dataset:{editorDetachment:name}}})},editorInput(field,value){listeners.input({target:{id:'',value,dataset:{listField:field}}})},editorChange(field,value){listeners.change({target:{id:'',value,dataset:{listField:field}}})},saveGuideSettings(){listeners.submit({target:{id:'guide-setup-settings-form'},preventDefault(){}})},cancelGuideSettings(){listeners.cancel({target:{id:'guide-setup-settings'},preventDefault(){}})},saveEditor(){listeners.submit({target:{id:'list-editor-form'},preventDefault(){}})},cloudAccount:(user,lists,service,idMap)=>context.window.setWarPlannerAccount(user,lists,service,idMap),localLists:user=>context.window.getWarPlannerLocalLists(user),cloudStatus:status=>context.window.setWarPlannerCloudStatus(status),start(){listeners.submit({target:{id:'guide-start-form'},preventDefault(){}})},change(id,value){listeners.change({target:{id,value,dataset:{}}})},account:(user,army)=>{context.window.setWarPlannerAccount(user,army);if(!options.setup)vm.runInContext('state.guideStarted=true;render();',context);},clearAccount:()=>context.window.clearWarPlannerAccount(),elements,store,writes,run:code=>vm.runInContext(code,context),animations,slide,viewport,fitPreview:element=>context.fitUnitPreview(element),click(dataset){listeners.click({preventDefault(){},target:{closest:()=>({dataset})}})},touch(type,options={}){let prevented=false;listeners[type]({target:{closest:selector=>selector==='.guide-page-shell'?{}:null},touches:[],changedTouches:[],cancelable:true,preventDefault(){prevented=true},...options});return prevented;},submit(){elements['#import-form'].submit({preventDefault(){}})},html:()=>elements['#app'].innerHTML};
 }
 test('guide navigation, study bookmarks, player turns and persistence',()=>{
  const a=app();assert.match(a.html(),/id="phase-tab-0"[^>]*aria-selected="true"/);assert.equal(savedState(a.store,'warplan.prototype.v1').army.points,1965);
@@ -77,7 +77,7 @@ test('one instruction surface is rendered and detailed phase list starts closed'
 test('empty steps keep the army section open and show an explicit message',()=>{
  const a=app();a.click({step:'3'}); // Core CP, no unit ability window.
  assert.match(a.html(),/<section class="army-lessons" aria-label="Your army at this step">/);
- assert.match(a.html(),/No matching army abilities are listed for this step/);
+ assert.match(a.html(),/No matching army abilities are listed for this step|No step-specific rules here/);
  assert.ok(a.html().indexOf('Your army at this step')<a.html().indexOf('Why this matters'));
 });
 test('phase cards show relevant units without dropdowns or per-unit completion',()=>{
@@ -520,7 +520,7 @@ test('round-specific disposition reminders update from preloaded templates witho
 test('skip empty steps is opt-in, deferred until reload, and works in both directions',()=>{
  const a=app();a.at('command-cp');a.click({action:'page-next'});assert.match(a.html(),/>Battle-shock<\/h2>/);
  a.at('command-cp');a.toggle('guide-skip-empty-steps',true);a.click({action:'page-next'});assert.match(a.html(),/>Battle-shock<\/h2>/);
- a.at('command-cp');a.click({action:'reload-guide'});a.click({action:'page-next'});assert.match(a.html(),/>Command Abilities<\/h2>/);
+ a.at('command-cp');a.click({action:'reload-guide'});a.click({action:'page-next'});assert.match(a.html(),/>Start of Movement<\/h2>/); // Phase-wide reactions keep one stop at phase entry.
  a.click({action:'page-previous'});assert.match(a.html(),/>Start of Command<\/h2>/);
  a.at('command-cp');assert.match(a.html(),/>Gain Command Points<\/h2>/); // Manual access remains available.
  const b=app([...a.store]);assert.match(b.html(),/id="guide-skip-empty-steps" type="checkbox" checked/);
@@ -644,3 +644,26 @@ test('account progress remains isolated and sign-out cannot write another accoun
  assert.notEqual(a.store.get('warplan.prototype.v1'),before);const saved=savedState(a.store);assert.equal(saved.renames[id],'My captain');assert.equal(saved.savedLists.find(l=>l.id===saved.activeListId).renames[id],'My captain');
  const b=app([...a.store]);assert.equal(savedState(b.store).renames[id],'My captain');assert.equal(savedState(b.store).reviewedReminders['before-rename'],true);
  });
+
+test('Any time is collapsed directly below Clear review marks and opening it survives preloaded navigation',()=>{
+ const a=app(undefined,{preload:true});a.flushGuide();a.rejectPageBuilds();
+ assert.ok(a.html().indexOf('id="guide-anytime"')>a.html().indexOf('Clear this phase’s review marks</button>'));
+ assert.match(a.html(),/<details id="guide-anytime" class="guide-anytime">/);
+ a.anyTime(true);a.run('render()');assert.match(a.html(),/<details id="guide-anytime" class="guide-anytime" open>/);
+ a.click({action:'page-next'});assert.match(a.html(),/<details id="guide-anytime" class="guide-anytime" open>/);
+ assert.equal(savedState(a.store).guideAnyTimeOpen,true);
+ const b=app([...a.store]);assert.match(b.html(),/<details id="guide-anytime" class="guide-anytime" open>/);
+});
+test('phase-wide and step-specific cards for the same unit have independent checklist keys',()=>{
+ const a=app();a.run("Library.abilities.push({...Library.abilities.find(a=>a.id==='token'),id:'all-phase-example',name:'All phase example',units:['Fire Dragons'],phase:[0,1,2,3,4],window:'act',turn:'either',category:'ability'});state.phase=2;state.open=1;guideSession.reset();guidePrepared=null;render();");
+ const keys=[...a.html().matchAll(/data-review-id="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(keys).size,keys.length);
+ assert.ok(keys.includes('anytime:unit:unit-type-firedragons'));assert.ok(keys.includes('unit:unit-type-firedragons'));
+});
+
+test('Skip empty steps retains a phase entry when only Any time rules remain',()=>{
+ const a=app(undefined,{preload:true});a.flushGuide();a.run("state.guideSkipEmptySteps=true;state.phase=1;state.open=0;render();");a.flushGuide();
+ assert.equal(a.run('guideSession.stepDeck(state,lessons().steps[0]).count'),0);
+ assert.ok(a.run('guideSession.anyTime(state).count')>0);
+ assert.equal(a.run('guideStepHasReminders(state)'),true);
+ a.rejectPageBuilds();a.run('render()');assert.match(a.html(),/id="guide-anytime"/);
+});

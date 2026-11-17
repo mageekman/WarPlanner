@@ -9,7 +9,7 @@ const Builder=WarPlannerListBuilder;
 let listEditor=null,pageNavigation=null,ruleReportRequested=false,guideSettingsDraft=null,setupGuideSettingsPrevious=null;
 const Dispositions=window.WarPlannerDispositions;
 const PageNavigation=window.WarPlannerNavigation;
-const initialState=army=>({view:'guide',sidebarCollapsed:false,guideStarted:false,guideFontSize:'medium',guideShowPreviews:true,guideShowCoreStratagems:false,guideShowDeepStrike:true,guideRuleEditing:false,guideSkipEmptySteps:false,guideOverviewOpen:false,guideRuleTypes:{},guideDisposition:{enabled:false,opponent:''},army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},reviewedReminders:{},flowRevision:'flashcards-v1'});
+const initialState=army=>({view:'guide',sidebarCollapsed:false,guideStarted:false,guideFontSize:'medium',guideShowPreviews:true,guideShowCoreStratagems:false,guideShowDeepStrike:true,guideRuleEditing:false,guideSkipEmptySteps:false,guideOverviewOpen:false,guideAnyTimeOpen:false,guideRuleTypes:{},guideDisposition:{enabled:false,opponent:''},army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},reviewedReminders:{},flowRevision:'flashcards-v1'});
 let state=initialState(window.WARPLANNER_CONFIG?EMPTY_ARMY:sample);
 let storageOK=true,libraryDirty=true,rosterRefs=null,storageRevision=0,savedProgress=null,savedLibrary=null;
 function normalizeLists(){
@@ -168,7 +168,7 @@ function flashDetails(items){return `<details class="flash-details"><summary>Con
 function guideHintBadges(meta){return `${meta?.label?`<span class="flash-priority${meta.order==='late'?' flash-late':''}">${escapeHTML(meta.label)} ${meta.order==='late'?'↘':'↗'}</span>`:''}${(meta?.flags||[]).map(label=>`<span class="flash-guide-flag">${escapeHTML(label)}</span>`).join('')}`;}
 function guideHintNotes(meta){return [...new Set(meta?.notes||[meta?.note].filter(Boolean))].map(note=>`<p class="flash-order">${escapeHTML(note)}</p>`).join('');}
 const guideSession=Activations.createSession();
-function guideDeck(active){return guideSession.deck(state,active);}
+function guideDeck(active){return guideSession.stepDeck(state,active);}
 // Review marks are personal reading aids, never ability-use or eligibility state.
 function reminderPrefix(current=state){return JSON.stringify([current.activeListId||'',current.army.faction,current.round,current.turn,current.phase])+':';}
 function reminderKey(id){return reminderPrefix()+id;}
@@ -186,21 +186,26 @@ function syncGuideReviews(container,current=state){
   input.closest('.reminder-item')?.classList.toggle('reminder-reviewed',input.checked);
  }
 }
+function anyTimeGuideHTML(deck=guideSession.anyTime(state)){
+ const count=overviewRuleCount(deck);
+ return `<details id="guide-anytime" class="guide-anytime"><summary><span>Any time</span><span class="anytime-count">${count} ${count===1?'rule':'rules'} <span class="anytime-caret" aria-hidden="true">⌄</span></span></summary><div class="guide-anytime-content"><p class="guide-anytime-note">Available throughout this phase. Check each rule’s trigger, eligible units and conditions before using it.</p>${deck.count?flashBoard({id:'guide-any-time',window:'act'},deck):'<p class="ability-empty">No phase-wide rules are listed for this phase and turn.</p>'}</div></details>`;
+}
 function flashBoard(active,deck=guideDeck(active)){
- if(!deck.count)return `<section class="army-lessons" aria-label="Your army at this step"><p class="ability-empty">No matching army abilities are listed for this step. Open ⓘ for the core sequence.</p></section>`;
+ const reviewScope=active.id==='guide-any-time'?'anytime:':'';
+ if(!deck.count)return `<section class="army-lessons" aria-label="Your army at this step"><p class="ability-empty">${active.id!=='guide-any-time'&&guideSession.anyTime(state).count?'No step-specific rules here. Phase-wide reminders are under Any time.':'No matching army abilities are listed for this step. Open ⓘ for the core sequence.'}</p></section>`;
  const sharedNames=new Map(deck.shared.map(a=>[a.key,a.name]));
  const userLabel=(_a,u)=>activationLabel(u);
  const sharedCards=deck.shared.map(a=>{
   const target=Activations.targeting(a,state);
   const users=a.appliesTo.map(u=>userLabel(a,u));
   const preview=target?target.label+': '+target.text:users.join(' · ');
-  return reviewReminder('shared:'+a.key,a.name,`<details class="flash-card collapsible-flash rule-${a.category}" data-shared-rule="${escapeHTML(a.id)}"><summary class="flash-summary"><span class="flash-title-row"><h3>${escapeHTML(a.name)}</h3>${categoryBadge(a)}${guideHintBadges(a.guideMeta)}</span><p class="flash-preview">${escapeHTML(preview)}</p><span class="flash-chevron" aria-hidden="true">+</span></summary><div class="flash-expanded"><p class="flash-timing">${escapeHTML(a.timing)}</p><p class="flash-fact">${escapeHTML(a.summary)}</p>${guideHintNotes(a.guideMeta)}${target?`<div class="flash-expanded-target"><span>${target.label}</span><p>${escapeHTML(target.text)}</p></div>`:`<div class="flash-unit-list"><span>Units that can use this rule, subject to its conditions</span><ul>${users.map(name=>`<li>${escapeHTML(name)}</li>`).join('')}</ul></div>`}${a.promoted?'<p class="flash-applies">Each listed unit keeps its own equipment, conditions, and usage limits.</p>':''}${flashDetails([a])}</div></details>`,[a]);
+  return reviewReminder(reviewScope+'shared:'+a.key,a.name,`<details class="flash-card collapsible-flash rule-${a.category}" data-shared-rule="${escapeHTML(a.id)}"><summary class="flash-summary"><span class="flash-title-row"><h3>${escapeHTML(a.name)}</h3>${categoryBadge(a)}${guideHintBadges(a.guideMeta)}</span><p class="flash-preview">${escapeHTML(preview)}</p><span class="flash-chevron" aria-hidden="true">+</span></summary><div class="flash-expanded"><p class="flash-timing">${escapeHTML(a.timing)}</p><p class="flash-fact">${escapeHTML(a.summary)}</p>${guideHintNotes(a.guideMeta)}${target?`<div class="flash-expanded-target"><span>${target.label}</span><p>${escapeHTML(target.text)}</p></div>`:`<div class="flash-unit-list"><span>Units that can use this rule, subject to its conditions</span><ul>${users.map(name=>`<li>${escapeHTML(name)}</li>`).join('')}</ul></div>`}${a.promoted?'<p class="flash-applies">Each listed unit keeps its own equipment, conditions, and usage limits.</p>':''}${flashDetails([a])}</div></details>`,[a]);
  }).join('');
  const unitCards=deck.unitCards.map(card=>{
   const title=card.unit.body.name;
   const first=card.fightsFirst,allied=Library.unitInfo(card.unit.body,state.army.faction);
   const ruleNames=[...new Set([...(first?['Fights First']:[]),...card.guideMeta.flags,...(card.guideMeta.label?[card.guideMeta.label]:[]),...card.items.map(a=>a.name),...card.sharedIds.map(id=>sharedNames.get(id)).filter(Boolean)])];
-  return reviewReminder('unit:'+card.unit.id,title,window.WarPlannerStudyCards.unitCard({id:card.unit.id,title,preview:ruleNames.join(' · '),badges:`${allied?.allied?'<span class="rule-badge reference-only">'+escapeHTML(allied.originFaction)+' ally</span>':''}${first?'<span class="flash-fights-first">Fights First</span>':''}${guideHintBadges(card.guideMeta)}`,body:`${guideHintNotes(card.guideMeta)}${card.items.map(a=>`<div class="flash-rule"><div>${categoryBadge(a)}${guideHintBadges(a.guideMeta)}<h4>${escapeHTML(a.name)}</h4></div><p class="flash-timing">${escapeHTML(a.timing)}</p><p class="flash-fact">${escapeHTML(a.summary)}</p></div>`).join('')}${card.sharedIds.length?`<p class="flash-shared-links">Shared options above: ${escapeHTML(card.sharedIds.map(id=>sharedNames.get(id)).filter(Boolean).join(' · '))}</p>`:''}${card.items.length?flashDetails(card.items):''}`}),[...card.items,...deck.shared.filter(a=>card.sharedIds.includes(a.key))]);
+  return reviewReminder(reviewScope+'unit:'+card.unit.id,title,window.WarPlannerStudyCards.unitCard({id:card.unit.id,title,preview:ruleNames.join(' · '),badges:`${allied?.allied?'<span class="rule-badge reference-only">'+escapeHTML(allied.originFaction)+' ally</span>':''}${first?'<span class="flash-fights-first">Fights First</span>':''}${guideHintBadges(card.guideMeta)}`,body:`${guideHintNotes(card.guideMeta)}${card.items.map(a=>`<div class="flash-rule"><div>${categoryBadge(a)}${guideHintBadges(a.guideMeta)}<h4>${escapeHTML(a.name)}</h4></div><p class="flash-timing">${escapeHTML(a.timing)}</p><p class="flash-fact">${escapeHTML(a.summary)}</p></div>`).join('')}${card.sharedIds.length?`<p class="flash-shared-links">Shared options above: ${escapeHTML(card.sharedIds.map(id=>sharedNames.get(id)).filter(Boolean).join(' · '))}</p>`:''}${card.items.length?flashDetails(card.items):''}`}),[...card.items,...deck.shared.filter(a=>card.sharedIds.includes(a.key))]);
  }).join('');
  const coreHelp=active.coreHelp||[];
  return `<section class="army-lessons flash-board" aria-label="Your army at this ${active.activationMode?'phase':'step'}">${sharedCards?`<div class="flash-grid shared-flash-grid">${sharedCards}</div>`:''}${unitCards?`<div class="flash-grid unit-flash-grid">${unitCards}</div>`:''}</section>${coreHelp.length?`<details class="think-details"><summary>Core help for this phase</summary>${coreHelp.map(s=>`<h3 class="activation-help-title">${escapeHTML(s.title)}</h3><p>${escapeHTML(s.body)}</p>`).join('')}</details>`:''}`;
@@ -313,7 +318,7 @@ function ensureGuidePrepared(){
  if(!window.requestAnimationFrame)return true;
  const context=guidePreparationContext();
  if(guidePrepared?.context===context)return guidePrepared.ready;
- const snapshot={...state},job={context,ready:false,done:0,pages:new Map(),content:new Map(),ruleCounts:new Map(),total:0,error:''},destinations=[];
+ const snapshot={...state},job={context,ready:false,done:0,pages:new Map(),content:new Map(),ruleCounts:new Map(),anyTimeCounts:new Map(),total:0,error:''},destinations=[];
  guidePrepared=job;
  for(const turn of ['you','opponent'])for(let phase=0;phase<5;phase++){
   const current={...snapshot,turn,phase,round:1};
@@ -329,6 +334,7 @@ function ensureGuidePrepared(){
    const deck=guideDeck(lessons().steps[state.open]);
    job.content.set(guideTemplateKey(state),deck.count);
    job.ruleCounts.set(guideTemplateKey(state),overviewRuleCount(deck));
+   job.anyTimeCounts.set([state.turn,state.phase].join(':'),guideSession.anyTime(state).count);
   }catch(error){job.error='Could not prepare the guide. Try starting it again.';}
   finally{state=original;}
   if(job.error){render();return;}
@@ -348,17 +354,18 @@ function phaseOverviewHTML(){
  return `<details id="guide-phase-overview" class="guide-phase-overview" ${state.guideOverviewOpen===true?'open':''}><summary><span>Phase overview</span><span class="overview-total">${steps.length} steps <span aria-hidden="true">⌄</span></span></summary><nav aria-label="Jump to a step in ${escapeHTML(phases[state.phase])}">${steps.map((step,index)=>{
   const current={...state,open:index};
   const stored=guidePrepared?.ready?guidePrepared.ruleCounts.get(guideTemplateKey(current)):undefined;
-  const rules=stored??overviewRuleCount(guideSession.deck(current,step)),primary=Dispositions.reminders(current,step).length;
+  const rules=stored??overviewRuleCount(guideSession.stepDeck(current,step)),primary=Dispositions.reminders(current,step).length;
   return `<button type="button" data-step="${index}" data-overview-step aria-current="${index===state.open?'step':'false'}"><span class="overview-step-title">${escapeHTML(step.title)}</span><span class="overview-counts">${rules?`<span class="overview-rule-count">${rules} ${rules===1?'rule':'rules'}</span>`:''}${primary?`<span class="overview-primary-count">${primary} primary</span>`:''}${!rules&&!primary?'<span>No reminders</span>':''}</span></button>`;
  }).join('')}</nav></details>`;
 }
-function guidePageHTML(){const html=guidePrepared?.ready?guidePrepared.pages.get(guideTemplateKey(state))||buildGuidePageHTML():buildGuidePageHTML();return html.replace('<div data-overview-slot></div>',phaseOverviewHTML()).replace('<div data-disposition-slot></div>',dispositionGuideHTML(lessons().steps[state.open]));}
+function guidePageHTML(){const html=guidePrepared?.ready?guidePrepared.pages.get(guideTemplateKey(state))||buildGuidePageHTML():buildGuidePageHTML();return html.replace('<details id="guide-anytime" class="guide-anytime"','<details id="guide-anytime" class="guide-anytime"'+(state.guideAnyTimeOpen===true?' open':'')).replace('<div data-overview-slot></div>',phaseOverviewHTML()).replace('<div data-disposition-slot></div>',dispositionGuideHTML(lessons().steps[state.open]));}
 
 function buildGuidePageHTML(){
  const data=lessons();state.open=Math.max(0,Math.min(data.steps.length-1,state.open));
- const active=data.steps[state.open],deck=guideDeck(active);
+ const active=data.steps[state.open],deck=guideDeck(active),anyTime=guideSession.anyTime(state);
+ const reportDeck={shared:[...deck.shared,...anyTime.shared],unitCards:[...deck.unitCards,...anyTime.unitCards],count:deck.count+anyTime.count};
  const {unsupported,phaseHasAbilities}=guideSession.coverage(state);
- return `<div class="focus-layout"><article class="lesson-focus rule-${active.category}" aria-labelledby="lesson-title"><div data-overview-slot></div><div class="guide-title-row"><h2 id="lesson-title" tabindex="-1">${escapeHTML(active.title)}</h2><button type="button" class="guide-info-button" popovertarget="guide-info-popup" aria-label="About ${escapeHTML(active.title)}" title="Step explanation"><span aria-hidden="true">ⓘ</span></button></div><button type="button" class="text-button" data-action="clear-phase-reviews">Clear this phase’s review marks</button><div data-disposition-slot></div>${flashBoard(active,deck)}${!phaseHasAbilities?`<p class="coverage-note">${unsupported.length?'Army-ability coverage is incomplete for this phase.':'No army abilities are listed for this phase in this turn.'}</p>`:''}<details class="think-details guide-more"><summary>Explanations & learning</summary><div class="guide-more-content"><details class="think-details"><summary>Why this matters</summary><p>${escapeHTML(active.why)}</p></details><details class="think-details"><summary>Test your understanding</summary><p class="question">${escapeHTML(active.question)}</p><p>${escapeHTML(active.answer)}</p></details><div data-report-container>${window.WarPlannerReports?.guideForStep(state,active,deck)||''}</div>${referenceDetails(active)}</div></details></article>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
+ return `<div class="focus-layout"><article class="lesson-focus rule-${active.category}" aria-labelledby="lesson-title"><div data-overview-slot></div><div class="guide-title-row"><h2 id="lesson-title" tabindex="-1">${escapeHTML(active.title)}</h2><button type="button" class="guide-info-button" popovertarget="guide-info-popup" aria-label="About ${escapeHTML(active.title)}" title="Step explanation"><span aria-hidden="true">ⓘ</span></button></div><button type="button" class="text-button" data-action="clear-phase-reviews">Clear this phase’s review marks</button>${anyTimeGuideHTML(anyTime)}<div data-disposition-slot></div>${flashBoard(active,deck)}${!phaseHasAbilities?`<p class="coverage-note">${unsupported.length?'Army-ability coverage is incomplete for this phase.':'No army abilities are listed for this phase in this turn.'}</p>`:''}<details class="think-details guide-more"><summary>Explanations & learning</summary><div class="guide-more-content"><details class="think-details"><summary>Why this matters</summary><p>${escapeHTML(active.why)}</p></details><details class="think-details"><summary>Test your understanding</summary><p class="question">${escapeHTML(active.question)}</p><p>${escapeHTML(active.answer)}</p></details><div data-report-container>${window.WarPlannerReports?.guideForStep(state,active,reportDeck)||''}</div>${referenceDetails(active)}</div></details></article>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
 }
 function catalogCard(entry){
  const reviewed=Library.abilities.find(a=>a.id===Library.aliases[entry.id]);
@@ -470,7 +477,8 @@ function adjacentGuidePage(current,direction){
 function guideStepHasReminders(current){
  const active=Activations.steps(current)[current.open];if(!active)return false;
  const count=guidePrepared?.ready?guidePrepared.content.get(guideTemplateKey(current)):undefined;
- return (count===undefined?guideSession.deck(current,active).count:count)>0||Dispositions.reminders(current,active).length>0;
+ const anyTimeCount=current.open===0?(guidePrepared?.ready?guidePrepared.anyTimeCounts.get([current.turn,current.phase].join(':')):undefined):0;
+ return (count===undefined?guideSession.stepDeck(current,active).count:count)>0||Dispositions.reminders(current,active).length>0||current.open===0&&(anyTimeCount??guideSession.anyTime(current).count)>0;
 }
 function guideDestination(direction){
  const immediate=adjacentGuidePage(state,direction);if(!immediate||state.guideSkipEmptySteps!==true)return immediate;
@@ -709,6 +717,7 @@ document.addEventListener('change',e=>{
  if(e.target.id==='guide-opponent-disposition'){state.setupOpponentDisposition=Dispositions.resolve(e.target.value)||'';render();$('#guide-opponent-disposition')?.focus?.();return;}
  if(e.target.dataset.reviewReminder){clearGuideWarm();state.reviewedReminders=state.reviewedReminders||{};if(e.target.checked)state.reviewedReminders[e.target.dataset.reviewReminder]=true;else delete state.reviewedReminders[e.target.dataset.reviewReminder];save();e.target.closest?.('.reminder-item')?.classList.toggle('reminder-reviewed',e.target.checked);queueGuideWarm();return;}if(listEditor){try{if(e.target.dataset.editorDetachment){const names=Builder.selectedDetachments(listEditor.army).filter(name=>name.toLowerCase().replace(/[^a-z0-9]/g,'')!==e.target.dataset.editorDetachment.toLowerCase().replace(/[^a-z0-9]/g,''));if(e.target.checked)names.push(e.target.dataset.editorDetachment);Builder.setDetachments(listEditor.army,names);markEditorDirty();render();}if(e.target.dataset.listField){if(e.target.dataset.listField==='detachmentList')Builder.setDetachments(listEditor.army,e.target.value.split(/\r?\n/));else if(e.target.dataset.listField==='detachment')Builder.setDetachments(listEditor.army,[e.target.value]);else listEditor.army[e.target.dataset.listField]=e.target.value;markEditorDirty();if(e.target.dataset.listField==='faction'){Builder.setDetachments(listEditor.army,[]);listEditor.army.disposition='';listEditor.query='';render();}if(['detachment','limit'].includes(e.target.dataset.listField))render();}if(e.target.dataset.editorUnit){const id=e.target.dataset.editorUnit,unit=listEditor.army.units.find(u=>u.id===id);if(unit){const field=e.target.dataset.unitField;if(field==='catalogUnitId')Builder.setSource(listEditor.army,unit,e.target.value);if(field==='attachment')Builder.attach(listEditor.army,id,e.target.value);if(field==='enhancement')Builder.setEnhancement(listEditor.army,id,e.target.value);if(field==='tokens')Builder.setTokens(unit,Number(e.target.value));if(field==='points'){const points=e.target.value===''?0:Number(e.target.value);if(!Number.isInteger(points)||points<0||points>10000)throw Error('Enter whole unit points from 1 to 10000, or leave blank to review.');unit.points=points;}if(field==='modelCount'){if(e.target.value)unit.modelCount=Number(e.target.value);else delete unit.modelCount;}markEditorDirty();if(['attachment','enhancement','tokens','catalogUnitId','points'].includes(field)){listEditor.expandedUnitId=id;render();}}}}catch(error){listEditor.error=error.message;$('#builder-error').textContent=error.message;}}if(e.target.id==='guide-army-list'){state.setupListId=e.target.value;render();}if(e.target.id==='guide-first-player'){state.setupFirstPlayer=e.target.value;save();}if(e.target.dataset.rename){const value=e.target.value.trim();if(value){state.renames[e.target.dataset.rename]=value;libraryDirty=true;syncActiveList();save();e.target.closest('.unit-card').querySelector('h3').textContent=value;}else e.target.value=unitName(state.army.units.find(u=>u.id===e.target.dataset.rename));}});
 document.addEventListener('toggle',event=>{
+ if(event.target.id==='guide-anytime'){if(!document.querySelector('#guide-panel')?.contains(event.target)||event.target.closest('.guide-preview')||state.guideAnyTimeOpen===event.target.open)return;state.guideAnyTimeOpen=event.target.open;clearGuideWarm();save();queueGuideWarm();return;}
  if(event.target.id!=='guide-phase-overview'||!document.querySelector('#guide-panel')?.contains(event.target)||event.target.closest('.guide-preview')||state.guideOverviewOpen===event.target.open)return;
  state.guideOverviewOpen=event.target.open;clearGuideWarm();save();queueGuideWarm();
 },true);
