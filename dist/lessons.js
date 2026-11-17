@@ -185,6 +185,8 @@
  function isDeepStrike(rule){return rule.category==='core'&&(rule.id==='deep-strike'||rule.sourceRuleId==='deep-strike'||rule.importSource?.sourceId==='deep-strike');}
  function guideRule(rule,state){
   const sourceId=rule.sourceRuleId||rule.importSource?.sourceId||rule.importSource?.record?.ability_id||rule.id.replace(/^core-/,'');
+  // Fights First belongs on qualifying unit cards, not a separate reminder.
+  if(sourceId==='fights-first'||rule.category==='core'&&normalized(rule.name)==='fightsfirst')return null;
   if(rule.category==='core'&&['benefit-of-cover','deadly-demise'].includes(sourceId))return null;
   if(state.guideRuleTypes?.[rule.category]===false)return null;
   if(isDeepStrike(rule)){

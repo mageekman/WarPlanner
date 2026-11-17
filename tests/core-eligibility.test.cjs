@@ -23,3 +23,16 @@ test('an attached bearer never grants its model-only core ability to its bodygua
 test('unknown units do not acquire core abilities from their names or Vehicle keywords',()=>{
  C.apply(rules(true));const deck=A.flashcards(state(['Unmatched Transport','Unmatched Vehicle','Shroud Runners']),{id:'core-test',window:'act'});for(const id of ids)assert.deepEqual(targets(deck,id),[]);
 });
+
+test('Fights First is shown on eligible units rather than as a standalone guide rule',()=>{
+ for(const guideMode of ['quick','learn'])for(const turn of ['you','opponent']){
+  const s={...state(['Howling Banshees','Shroud Runners','Autarch']),phase:4,turn,guideMode,firstPlayer:'you'};
+  const session=A.createSession(),decks=[session.anyTime(s),...A.steps(s).map(step=>session.stepDeck(s,step))];
+  for(const deck of decks){assert.ok(!deck.shared.some(r=>r.id==='fights-first'||r.sourceRuleId==='fights-first'));for(const card of deck.unitCards){assert.ok(!card.items.some(r=>r.id==='fights-first'||r.sourceRuleId==='fights-first'));if(['Shroud Runners','Autarch'].includes(card.unit.body.name))assert.equal(card.fightsFirst,false);}}
+  assert.ok(decks.some(deck=>deck.unitCards.some(card=>card.unit.body.name==='Howling Banshees'&&card.fightsFirst)));
+ }
+});
+test('canonical and imported Fights First cards are hidden without deleting their source records',()=>{
+ const s=state(['Howling Banshees']);for(const rule of [{id:'fights-first',category:'core'},{id:'imported-first',sourceRuleId:'fights-first',category:'core'},{id:'core-fights-first',category:'core'},{id:'core-imported-123',name:'Fights First',category:'core'}])assert.equal(L.guideRule(rule,s),null);
+ assert.ok(L.abilities.some(r=>r.id==='fights-first'));
+});
