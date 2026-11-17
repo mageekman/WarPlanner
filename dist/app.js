@@ -681,7 +681,7 @@ window.addEventListener?.('resize',()=>{cancelGuideMotion();queueGuideWarm();});
 function advancePhase(){const target=next(state);transition({round:target.round,turn:target.turn,phase:target.phase});}
 function transition(change){state.history.push({round:state.round,turn:state.turn,phase:state.phase,open:state.open});state.history=state.history.slice(-100);Object.assign(state,change);state.open=0;render(true);window.scrollTo({top:0,behavior:'smooth'});}
 let pendingImport=null;
-document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-view]');if(!b)return;if(b.tagName==='A'){if(e.button>0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();}
+document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-view],a[data-action]');if(!b)return;if(b.tagName==='A'){if(e.button>0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();}
  if(b.dataset.action==='toggle-nav'){state.sidebarCollapsed=!state.sidebarCollapsed;save();$('.shell')?.classList?.toggle('nav-collapsed',state.sidebarCollapsed);const label=state.sidebarCollapsed?'Expand navigation':'Collapse navigation';b.setAttribute?.('aria-expanded',String(!state.sidebarCollapsed));b.setAttribute?.('aria-label',label);b.title=label;b.textContent=state.sidebarCollapsed?'›':'‹';refreshUnitPreviews();return;}
  if(b.dataset.guideEdit!==undefined){if(guideRuleEditingEnabled())window.WarPlannerAdminPage?.openGuideRules(JSON.parse(b.dataset.guideEdit));return;}
  if(b.dataset.deleteList){void deleteSavedList(b.dataset.deleteList);return;}
