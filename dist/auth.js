@@ -3,6 +3,7 @@
 (function () {
  const screen=document.querySelector('#auth-screen'), app=document.querySelector('#app');
  const form=document.querySelector('#auth-form'), email=document.querySelector('#auth-email'), password=document.querySelector('#auth-password');
+ const confirmPassword=document.querySelector('#auth-password-confirm');
  const message=document.querySelector('#auth-message'), submit=document.querySelector('#auth-submit');
  const loading=document.querySelector('#auth-loading'),entry=document.querySelector('#auth-entry');
  let mode='signin',busy=false,accountId=null,sessionRevision=0,pendingAccount=null,authEventVersion=0,latestAuthUser;
@@ -13,6 +14,9 @@
  function disposePending(){pendingAccount?.service?.dispose();pendingAccount?.content?.dispose();pendingAccount=null;}
  function setMode(value){
   mode=value; report('');
+  confirmPassword.value='';confirmPassword.hidden=mode!=='signup';confirmPassword.disabled=mode!=='signup';confirmPassword.required=mode==='signup';
+  document.querySelector('label[for="auth-password-confirm"]').hidden=mode!=='signup';
+  confirmPassword.removeAttribute('aria-invalid');
   document.querySelector('#auth-title').textContent={signin:'Your study space',signup:'Create your account',reset:'Reset your password',update:'Choose a new password'}[mode];
   submit.textContent={signin:'Sign in',signup:'Create account',reset:'Send reset email',update:'Save new password'}[mode];
   password.hidden=mode==='reset';password.required=mode!=='reset';
@@ -73,8 +77,11 @@
    finally{busy=false;}
   }
  });
+ for(const field of [password,confirmPassword])field.addEventListener('input',()=>{if(mode==='signup'){confirmPassword.removeAttribute('aria-invalid');report('');}});
  form.addEventListener('submit',async event=>{
-  event.preventDefault();if(busy)return;busy=true;submit.disabled=true;report('');
+  event.preventDefault();if(busy)return;
+  if(mode==='signup'&&(!confirmPassword.value||confirmPassword.value!==password.value)){report(confirmPassword.value?"Passwords don’t match. Please enter the same password in both fields.":'Please confirm your password.');confirmPassword.setAttribute('aria-invalid','true');confirmPassword.focus();return;}
+  busy=true;submit.disabled=true;report('');
   const operationVersion=authEventVersion;
   try{
    let result;
@@ -85,7 +92,7 @@
    else if(mode==='update')result=await client.auth.updateUser({password:credentials.password});
    else result=await client.auth.signInWithPassword(credentials);
    if(result.error)throw result.error;
-   password.value='';
+   password.value='';confirmPassword.value='';confirmPassword.removeAttribute('aria-invalid');
    if(mode==='signup'&&!result.data.session){showView('entry');report('Check your email to confirm your account, then sign in.');}
    else if(mode==='reset'){showView('entry');report('If an account exists for that email, you will receive a password reset link.');}
    else if(mode==='update'){setMode('signin');await showSession((await client.auth.getSession()).data.session);}

@@ -4,7 +4,7 @@ const vm=require('node:vm');
 const fs=require('node:fs');
 function boot(methods={},options={}){
  const nodes=new Map(),events={};let callback,redirect;const loaded=[];
- for(const id of ['#auth-screen','#app','#auth-form','#auth-email','#auth-password','#auth-message','#auth-submit','#auth-title','#auth-loading','#auth-entry','#auth-loading-title','#auth-loading-message','label[for="auth-password"]','label[for="auth-email"]'])nodes.set(id,{value:'',hidden:false,textContent:'',addEventListener:(type,fn)=>events[id+type]=fn});
+ for(const id of ['#auth-screen','#app','#auth-form','#auth-email','#auth-password','#auth-password-confirm','label[for="auth-password-confirm"]','#auth-message','#auth-submit','#auth-title','#auth-loading','#auth-entry','#auth-loading-title','#auth-loading-message','label[for="auth-password"]','label[for="auth-email"]'])nodes.set(id,{value:'',hidden:false,textContent:'',setAttribute(name,value){this[name]=value;},removeAttribute(name){delete this[name];},focus(){this.focused=true;},addEventListener:(type,fn)=>events[id+type]=fn});
  const auth={onAuthStateChange(fn){callback=fn;},getSession:async()=>({data:{session:null}}),getUser:async()=>({data:{user:{id:'one'}}}),signInWithPassword:async()=>({data:{session:{user:{id:'one'}}}}),signUp:async args=>{redirect=args.options.emailRedirectTo;return {data:{session:null}}},resetPasswordForEmail:async()=>({}),signOut:async()=>({}),...methods};
  vm.runInNewContext(fs.readFileSync('dist/auth.js','utf8'),{document:{querySelector:s=>nodes.get(s),addEventListener:(t,f)=>events[t]=f},window:{WarPlannerContent:options.content,flushWarPlannerLists:options.flush,WarPlannerCloudLists:{create:()=>({load:options.load|| (async()=>({lists:[],idMap:{}})),dispose(){}})},WARPLANNER_CONFIG:{supabaseUrl:'https://example.supabase.co',supabasePublishableKey:'sb_publishable_test'},setWarPlannerAccount:(user,army)=>loaded.push({user,army}),supabase:{createClient:()=>({auth,from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:null,error:null})})})})})},location:{href:'https://mageekman.github.io/WarPlanner/?test=1'},alert(){}},URL,setTimeout});
  return {signout:()=>events.click({target:{closest:s=>s==='[data-auth-signout]'?{}:null}}),nodes,events,loaded,callback:(...args)=>callback(...args),redirect:()=>redirect,mode(value){return events.click({target:{closest:s=>s==='[data-auth-mode]'?{dataset:{authMode:value}}:null}})},submit:()=>events['#auth-formsubmit']({preventDefault(){}})};
@@ -18,7 +18,7 @@ test('signed-out entry gates the app and a valid sign-in unlocks it',async()=>{
  a.callback('SIGNED_OUT',null);await new Promise(r=>setTimeout(r,5));assert.equal(a.nodes.get('#app').hidden,true);
 });
 test('signup keeps the app gated pending confirmation and uses the Pages subpath',async()=>{
- const a=boot();await flush();await a.mode('signup');await a.submit();
+ const a=boot();await flush();await a.mode('signup');a.nodes.get('#auth-password').value='test-password';a.nodes.get('#auth-password-confirm').value='test-password';await a.submit();
  assert.equal(a.nodes.get('#app').hidden,true);assert.match(a.nodes.get('#auth-message').textContent,/confirm/);
  assert.equal(a.redirect(),'https://mageekman.github.io/WarPlanner/');
 });
@@ -97,4 +97,18 @@ test('switching accounts during loading cannot publish the old account library',
 });
 test('restoration errors leave the loader and show a usable sign-in form',async()=>{
  const a=boot({getSession:async()=>({error:{message:'Offline'}})});await flush();assert.equal(a.nodes.get('#auth-loading').hidden,true);assert.equal(a.nodes.get('#auth-entry').hidden,false);assert.match(a.nodes.get('#auth-message').textContent,/Could not restore/);
+});
+
+test('signup requires matching confirmation before making an account request',async()=>{
+ let calls=0;const a=boot({signUp:async()=>{calls++;return {data:{session:null}};}});await flush();await a.mode('signup');
+ const password=a.nodes.get('#auth-password'),confirmation=a.nodes.get('#auth-password-confirm');
+ assert.equal(confirmation.hidden,false);assert.equal(confirmation.disabled,false);assert.equal(confirmation.required,true);
+ password.value='test-password';confirmation.value='different-password';await a.submit();assert.equal(calls,0);assert.match(a.nodes.get('#auth-message').textContent,/don’t match/);assert.equal(confirmation.focused,true);assert.equal(confirmation['aria-invalid'],'true');
+ confirmation.value='';await a.submit();assert.equal(calls,0);assert.match(a.nodes.get('#auth-message').textContent,/confirm your password/);
+ confirmation.value=password.value;a.events['#auth-password-confirminput']();assert.equal(confirmation['aria-invalid'],undefined);
+ await a.submit();assert.equal(calls,1);assert.equal(password.value,'');assert.equal(confirmation.value,'');
+});
+test('confirmation is cleared and excluded from sign-in and password recovery',async()=>{
+ const a=boot();await flush();await a.mode('signup');const confirmation=a.nodes.get('#auth-password-confirm');confirmation.value='private-password';
+ for(const mode of ['signin','reset','update']){await a.mode(mode);assert.equal(confirmation.hidden,true);assert.equal(confirmation.disabled,true);assert.equal(confirmation.required,false);assert.equal(confirmation.value,'');assert.equal(a.nodes.get('label[for="auth-password-confirm"]').hidden,true);}
 });
