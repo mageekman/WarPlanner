@@ -1,0 +1,16 @@
+{
+  "legacy": {
+    "medianMs": 9.700000002980232,
+    "writtenChars": 227599
+  },
+  "split": {
+    "medianMs": 0.20000000298023224,
+    "writtenChars": 37484
+  },
+  "restored": {
+    "lists": 100,
+    "marks": 2000,
+    "open": 29
+  },
+  "errors": []
+}

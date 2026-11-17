@@ -11,7 +11,7 @@ const Dispositions=window.WarPlannerDispositions;
 const PageNavigation=window.WarPlannerNavigation;
 const initialState=army=>({view:'guide',sidebarCollapsed:false,guideStarted:false,guideFontSize:'medium',guideShowPreviews:true,guideShowCoreStratagems:false,guideShowDeepStrike:true,guideRuleEditing:false,guideSkipEmptySteps:false,guideOverviewOpen:false,guideRuleTypes:{},guideDisposition:{enabled:false,opponent:''},army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},reviewedReminders:{},flowRevision:'flashcards-v1'});
 let state=initialState(window.WARPLANNER_CONFIG?EMPTY_ARMY:sample);
-let storageOK=true;
+let storageOK=true,libraryDirty=true,rosterRefs=null,storageRevision=0,savedProgress=null,savedLibrary=null;
 function normalizeLists(){
  if(!Array.isArray(state.savedLists))state.savedLists=state.army.units.length?[{id:'list-1',army:structuredClone(state.army),warnings:state.warnings||[],renames:state.renames||{}}]:[];
  if(!state.activeListId&&state.savedLists.length)state.activeListId=state.savedLists[0].id;
@@ -19,7 +19,7 @@ function normalizeLists(){
  for(const list of state.savedLists)if(!list.army.disposition&&list.army.units[0]?.id.startsWith('sample'))list.army.disposition='Priority Assets';
  if(!state.army.disposition&&state.army.units[0]?.id.startsWith('sample'))state.army.disposition='Priority Assets';
 }
-function syncActiveList(){const list=state.savedLists?.find(l=>l.id===state.activeListId);if(list){list.army=structuredClone(state.army);list.renames={...state.renames};list.warnings=[...state.warnings];}}
+function syncActiveList(){libraryDirty=true;const list=state.savedLists?.find(l=>l.id===state.activeListId);if(list){list.army=structuredClone(state.army);list.renames={...state.renames};list.warnings=[...state.warnings];}}
 function openSavedList(id){
  const list=state.savedLists.find(l=>l.id===id);if(!list)return;
  syncActiveList();
@@ -52,24 +52,41 @@ async function deleteSavedList(id){
  }catch(error){if(KEY===account&&cloudLists===service)listDeleteError='Could not delete this list. '+(error.message||'Please try again.');}
  finally{if(KEY===account&&cloudLists===service){deletingListId=null;render();}}
 }
-function loadAccountState(key,army){guideSettingsDraft=null;setupGuideSettingsPrevious=null;ruleReportRequested=false;KEY=key;state=initialState(army);storageOK=true;
-try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved&&Array.isArray(saved.army?.units)&&Number.isInteger(saved.phase)&&saved.phase>=0&&saved.phase<5){state={...state,...saved};state.view=['guide','army','overview','practice'].includes(state.view)?state.view:'guide';state.sidebarCollapsed=state.sidebarCollapsed===true;state.round=Math.max(1,Number(state.round)||1);state.turn=state.turn==='opponent'?'opponent':'you';state.firstPlayer=state.firstPlayer==='opponent'?'opponent':'you';state.confirmed=state.confirmed||{};delete state.activationSelections;delete state.activationReviewed;if(!['unit-activations-v1','flashcards-v1'].includes(saved.flowRevision)){state.open=0;state.history=[];}state.flowRevision='flashcards-v1';}}catch{storageOK=false;}
+function loadAccountState(key,army){guideSettingsDraft=null;setupGuideSettingsPrevious=null;ruleReportRequested=false;KEY=key;state=initialState(army);storageOK=true;libraryDirty=true;rosterRefs=null;storageRevision=0;savedProgress=null;savedLibrary=null;
+try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved&&Array.isArray(saved.army?.units)&&Number.isInteger(saved.phase)&&saved.phase>=0&&saved.phase<5){storageRevision=typeof saved._storageRevision==='string'||Number.isInteger(saved._storageRevision)?saved._storageRevision:0;
+ let progress;try{progress=JSON.parse(localStorage.getItem(KEY+'.progress.v1'));}catch{storageOK=false;}
+ const overlay=progress?.format===1&&progress.revision===storageRevision&&progress.state&&typeof progress.state==='object'&&!Array.isArray(progress.state)&&Number.isInteger(progress.state.phase)&&progress.state.phase>=0&&progress.state.phase<5?progressState(progress.state):{};
+ state={...state,...saved,...overlay};delete state._storageRevision;state.view=['guide','army','overview','practice'].includes(state.view)?state.view:'guide';state.sidebarCollapsed=state.sidebarCollapsed===true;state.round=Math.max(1,Number(state.round)||1);state.turn=state.turn==='opponent'?'opponent':'you';state.firstPlayer=state.firstPlayer==='opponent'?'opponent':'you';state.confirmed=state.confirmed||{};delete state.activationSelections;delete state.activationReviewed;if(!['unit-activations-v1','flashcards-v1'].includes(saved.flowRevision)){state.open=0;state.history=[];}state.flowRevision='flashcards-v1';}}catch{storageOK=false;}
 normalizeLists();
 }
 if(!window.WARPLANNER_CONFIG)loadAccountState('warplan.prototype.v1',sample);
 
 const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function persistStateCache(){if(!KEY)return;try{localStorage.setItem(KEY,JSON.stringify(state));}catch{storageOK=false;}}
-let savedRoster=null,savedLibrary=null;
+// Roster snapshots retain the legacy key so existing local armies need no destructive migration.
+// Progress is small, immediate, and tied to a snapshot revision to survive interrupted writes.
+function progressState(value){const {army,savedLists,renames,warnings,_storageRevision,...progress}=value;return progress;}
+function currentRosterRefs(){return [KEY,state.activeListId,state.army,state.renames,state.warnings,state.savedLists];}
+function persistStateCache(){
+ if(!KEY)return false;
+ libraryDirty=true;
+ try{const revision=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);localStorage.setItem(KEY,JSON.stringify({...state,_storageRevision:revision}));storageRevision=revision;savedProgress=null;return true;}catch{storageOK=false;return false;}
+}
 function save(){
- const roster=JSON.stringify([KEY,state.activeListId,state.army,state.renames,state.warnings]);
- const changed=roster!==savedRoster;
- if(changed){syncActiveList();savedRoster=roster;}
  if(!KEY)return;
- persistStateCache();
- const library=JSON.stringify(state.savedLists||[]);
- if(library!==savedLibrary){savedLibrary=library;cloudLists?.schedule(state.savedLists||[]);}
+ const refs=currentRosterRefs();
+ if(!rosterRefs||refs.some((value,i)=>value!==rosterRefs[i])){syncActiveList();rosterRefs=refs;}
+ let canSaveProgress=true;
+ if(libraryDirty){
+  canSaveProgress=persistStateCache();
+  const library=JSON.stringify(state.savedLists||[]);
+  if(library!==savedLibrary){savedLibrary=library;cloudLists?.schedule(state.savedLists||[]);}
+  if(canSaveProgress)libraryDirty=false;
+ }
+ if(canSaveProgress)try{
+  const progress=JSON.stringify({format:1,revision:storageRevision,state:progressState(state)});
+  if(progress!==savedProgress){localStorage.setItem(KEY+'.progress.v1',progress);savedProgress=progress;}
+ }catch{storageOK=false;}
 }
 function listSaveStatus(){return cloudLists?({loading:'Loading account lists…',saving:'Saving lists to account…',saved:'Lists saved to account',error:'Lists not saved — retry'}[cloudStatus]||'Saving lists…'):window.WARPLANNER_CONFIG?'Loading account lists…':storageOK?'Saved on this device':'Browser storage unavailable';}
 function updateCloudUI(){
@@ -690,7 +707,7 @@ document.addEventListener('change',e=>{
  if(e.target.id==='guide-font-size'){if(['small','medium','large'].includes(e.target.value))stageGuideSetting('guideFontSize',e.target.value);return;}
  if(e.target.id==='guide-add-disposition'){state.setupAddDisposition=e.target.checked;render();return;}
  if(e.target.id==='guide-opponent-disposition'){state.setupOpponentDisposition=Dispositions.resolve(e.target.value)||'';render();$('#guide-opponent-disposition')?.focus?.();return;}
- if(e.target.dataset.reviewReminder){clearGuideWarm();state.reviewedReminders=state.reviewedReminders||{};if(e.target.checked)state.reviewedReminders[e.target.dataset.reviewReminder]=true;else delete state.reviewedReminders[e.target.dataset.reviewReminder];save();e.target.closest?.('.reminder-item')?.classList.toggle('reminder-reviewed',e.target.checked);queueGuideWarm();return;}if(listEditor){try{if(e.target.dataset.editorDetachment){const names=Builder.selectedDetachments(listEditor.army).filter(name=>name.toLowerCase().replace(/[^a-z0-9]/g,'')!==e.target.dataset.editorDetachment.toLowerCase().replace(/[^a-z0-9]/g,''));if(e.target.checked)names.push(e.target.dataset.editorDetachment);Builder.setDetachments(listEditor.army,names);markEditorDirty();render();}if(e.target.dataset.listField){if(e.target.dataset.listField==='detachmentList')Builder.setDetachments(listEditor.army,e.target.value.split(/\r?\n/));else if(e.target.dataset.listField==='detachment')Builder.setDetachments(listEditor.army,[e.target.value]);else listEditor.army[e.target.dataset.listField]=e.target.value;markEditorDirty();if(e.target.dataset.listField==='faction'){Builder.setDetachments(listEditor.army,[]);listEditor.army.disposition='';listEditor.query='';render();}if(['detachment','limit'].includes(e.target.dataset.listField))render();}if(e.target.dataset.editorUnit){const id=e.target.dataset.editorUnit,unit=listEditor.army.units.find(u=>u.id===id);if(unit){const field=e.target.dataset.unitField;if(field==='catalogUnitId')Builder.setSource(listEditor.army,unit,e.target.value);if(field==='attachment')Builder.attach(listEditor.army,id,e.target.value);if(field==='enhancement')Builder.setEnhancement(listEditor.army,id,e.target.value);if(field==='tokens')Builder.setTokens(unit,Number(e.target.value));if(field==='points'){const points=e.target.value===''?0:Number(e.target.value);if(!Number.isInteger(points)||points<0||points>10000)throw Error('Enter whole unit points from 1 to 10000, or leave blank to review.');unit.points=points;}if(field==='modelCount'){if(e.target.value)unit.modelCount=Number(e.target.value);else delete unit.modelCount;}markEditorDirty();if(['attachment','enhancement','tokens','catalogUnitId','points'].includes(field)){listEditor.expandedUnitId=id;render();}}}}catch(error){listEditor.error=error.message;$('#builder-error').textContent=error.message;}}if(e.target.id==='guide-army-list'){state.setupListId=e.target.value;render();}if(e.target.id==='guide-first-player'){state.setupFirstPlayer=e.target.value;save();}if(e.target.dataset.rename){const value=e.target.value.trim();if(value){state.renames[e.target.dataset.rename]=value;save();e.target.closest('.unit-card').querySelector('h3').textContent=value;}else e.target.value=unitName(state.army.units.find(u=>u.id===e.target.dataset.rename));}});
+ if(e.target.dataset.reviewReminder){clearGuideWarm();state.reviewedReminders=state.reviewedReminders||{};if(e.target.checked)state.reviewedReminders[e.target.dataset.reviewReminder]=true;else delete state.reviewedReminders[e.target.dataset.reviewReminder];save();e.target.closest?.('.reminder-item')?.classList.toggle('reminder-reviewed',e.target.checked);queueGuideWarm();return;}if(listEditor){try{if(e.target.dataset.editorDetachment){const names=Builder.selectedDetachments(listEditor.army).filter(name=>name.toLowerCase().replace(/[^a-z0-9]/g,'')!==e.target.dataset.editorDetachment.toLowerCase().replace(/[^a-z0-9]/g,''));if(e.target.checked)names.push(e.target.dataset.editorDetachment);Builder.setDetachments(listEditor.army,names);markEditorDirty();render();}if(e.target.dataset.listField){if(e.target.dataset.listField==='detachmentList')Builder.setDetachments(listEditor.army,e.target.value.split(/\r?\n/));else if(e.target.dataset.listField==='detachment')Builder.setDetachments(listEditor.army,[e.target.value]);else listEditor.army[e.target.dataset.listField]=e.target.value;markEditorDirty();if(e.target.dataset.listField==='faction'){Builder.setDetachments(listEditor.army,[]);listEditor.army.disposition='';listEditor.query='';render();}if(['detachment','limit'].includes(e.target.dataset.listField))render();}if(e.target.dataset.editorUnit){const id=e.target.dataset.editorUnit,unit=listEditor.army.units.find(u=>u.id===id);if(unit){const field=e.target.dataset.unitField;if(field==='catalogUnitId')Builder.setSource(listEditor.army,unit,e.target.value);if(field==='attachment')Builder.attach(listEditor.army,id,e.target.value);if(field==='enhancement')Builder.setEnhancement(listEditor.army,id,e.target.value);if(field==='tokens')Builder.setTokens(unit,Number(e.target.value));if(field==='points'){const points=e.target.value===''?0:Number(e.target.value);if(!Number.isInteger(points)||points<0||points>10000)throw Error('Enter whole unit points from 1 to 10000, or leave blank to review.');unit.points=points;}if(field==='modelCount'){if(e.target.value)unit.modelCount=Number(e.target.value);else delete unit.modelCount;}markEditorDirty();if(['attachment','enhancement','tokens','catalogUnitId','points'].includes(field)){listEditor.expandedUnitId=id;render();}}}}catch(error){listEditor.error=error.message;$('#builder-error').textContent=error.message;}}if(e.target.id==='guide-army-list'){state.setupListId=e.target.value;render();}if(e.target.id==='guide-first-player'){state.setupFirstPlayer=e.target.value;save();}if(e.target.dataset.rename){const value=e.target.value.trim();if(value){state.renames[e.target.dataset.rename]=value;libraryDirty=true;syncActiveList();save();e.target.closest('.unit-card').querySelector('h3').textContent=value;}else e.target.value=unitName(state.army.units.find(u=>u.id===e.target.dataset.rename));}});
 document.addEventListener('toggle',event=>{
  if(event.target.id!=='guide-phase-overview'||!document.querySelector('#guide-panel')?.contains(event.target)||event.target.closest('.guide-preview')||state.guideOverviewOpen===event.target.open)return;
  state.guideOverviewOpen=event.target.open;clearGuideWarm();save();queueGuideWarm();
@@ -707,7 +724,7 @@ render();
 window.setWarPlannerAccount=(user,library,service=null,idMap={},contentService=null)=>{
  pageNavigation?.pause();
  deletingListId=null;listDeleteError='';
- guidePrepared=null;guideSession.reset();savedRoster=null;savedLibrary=null;
+ guidePrepared=null;guideSession.reset();rosterRefs=null;libraryDirty=true;savedLibrary=null;savedProgress=null;
  window.WarPlannerPracticePage?.reset();
  window.WarPlannerAdminPage?.setService(contentService);
  listEditor=null;
@@ -731,7 +748,7 @@ window.setWarPlannerAccount=(user,library,service=null,idMap={},contentService=n
 window.clearWarPlannerAccount=()=>{
  pageNavigation?.pause();
  deletingListId=null;listDeleteError='';
- guidePrepared=null;guideSession.reset();savedRoster=null;savedLibrary=null;
+ guidePrepared=null;guideSession.reset();rosterRefs=null;libraryDirty=true;savedLibrary=null;savedProgress=null;
  window.WarPlannerPracticePage?.reset();
  window.WarPlannerAdminPage?.setService(null);
  listEditor=null;
