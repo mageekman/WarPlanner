@@ -1,0 +1,11 @@
+# Learn to play copy and core-instruction audit — 17 November 2026
+
+The first release repeated the same glossary in every phase, frequently asked players to check another rule without explaining the action, and used edition-comparison wording that was unhelpful to beginners. Learning intros and explanations now use shorter, direct language. Do this now gives the actual core actions; Quick question replaces the formal quiz label. The duplicated explanation/quiz under More context was removed in learning mode, retaining reports and references.
+
+Concrete additions cover both players gaining 1 Core CP; Battle-shock selection, 2D6 tests, recovery and consequences; Normal/Advance/Fall Back distances and restrictions; range/visibility and Assault shooting; Hit, Wound, allocation-group, Save and damage steps; charge eligibility, 2D6 and legal final positioning; Fights First selection order, separate pile-in/consolidation steps and their positioning requirements; end-of-turn coherency. Short examples illustrate CP, exact half-strength, an Advance, a Hit roll and a charge roll. Key terms now match the phase.
+
+Mechanics were checked against the project's 16 November Wahapedia source archive, not inferred from another edition: source-blocks.json, source-excerpts.json and the stored core-rules HTML. Sections checked include 01.06–01.07, 03.03, 05.01–05.04, 08.02–08.03, 09.05–09.07, 10.04–10.05, 11.02/11.04, and 12.02–12.08. Hit-roll die faces were confirmed from the archived table markup. This was a wording audit against the recently archived sources, not a fresh online rules audit.
+
+The maintained core step body remains authoritative. Friendly replacements and fixed examples apply only when its body still matches the bundled baseline; edited bodies are displayed directly. Edited explanations also retain precedence. Quick-guide core wording, catalog rules, eligibility logic and database records were not changed.
+
+Validation: 812 tests passed, 0 failed. Syntax, build, source/build parity and whitespace checks passed. Browser checks confirmed the revised mobile lesson, 52-page preload, answer reveals, repeat navigation, mode changes, core-only reload and no page errors/horizontal overflow. Screenshots and the browser harness are included. The build is ready in docs/ and has not been published.

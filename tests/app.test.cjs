@@ -672,7 +672,7 @@ test('Learn to play is optional and preloads a complete core turn before navigat
  const a=app(undefined,{setup:true,preload:true});assert.match(a.html(),/value="quick" data-guide-mode checked/);
  a.guideMode('learn');a.start();a.flushGuide();assert.equal(savedState(a.store).guideMode,'learn');assert.equal(a.prepared().ready,true);assert.equal(a.prepared().count,a.prepared().total);assert.equal(a.prepared().total,52);
  a.rejectPageBuilds();a.click({phase:'2'});a.click({step:'1'});assert.match(a.html(),/Core rules walkthrough/);assert.match(a.html(),/>Do this now<\/h3>/);assert.match(a.html(),/>Unit Shooting<\/h2>/);
- a.click({action:'page-next'});assert.match(a.html(),/>Attacks<\/h2>/);assert.match(a.html(),/Hit rolls, Wound rolls/);
+ a.click({action:'page-next'});assert.match(a.html(),/>Attacks<\/h2>/);assert.match(a.html(),/Ballistic Skill/);assert.match(a.html(),/For example/);
  a.click({action:'page-next'});assert.match(a.html(),/>After Shooting<\/h2>/);a.click({learningRepeat:'shooting-select'});assert.match(a.html(),/>Unit Shooting<\/h2>/);
 });
 test('switching learning modes is deferred until Reload and preserves army, phase and review marks',()=>{

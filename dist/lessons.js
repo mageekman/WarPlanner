@@ -211,7 +211,7 @@
   return timingMatches(a,state,step)&&(armyMatched||matches(a,state.army));
  }).map(a=>!a.adminManaged&&sequencing[a.id]&&sequencing[a.id].steps.includes(step.id)?{...a,sequencePreview:true,sequence:sequencing[a.id]}:a)
  .sort((a,b)=>(sequencing[a.id]?.priority??100)-(sequencing[b.id]?.priority??100));}
- function getSteps(state){
+ function getSteps(state,{applyOverrides=true}={}){
   const steps=phases[state.phase].steps.map(s=>({...s}));
   if(state.turn==='opponent'){
    for(const step of steps){step.kind='Opponent’s core sequence';step.body=step.body.replace(/your unit/g,'the active unit');}
@@ -229,7 +229,7 @@
    }
   }
   // Movement selection and charge declaration share the Flitting Shadows trigger.
-  return steps.map(applyStep);
+  return applyOverrides?steps.map(applyStep):steps;
  }
  // Editable presentation hints do not change a rule's legal timing window.
  const defaultUnitGuides={
@@ -254,44 +254,333 @@
   return guideMeta(rule.guide?rule:det?.guide?det:faction?.guide?faction:rule,'rule',state);
  }
  // Beginner prompts supplement the current, editable core step; they do not track actions.
- const learningPrompts={
-  'round-start':['Confirm which player takes the first turn this battle round.','Resolve rules that say “start of the battle round” before the turn begins.'],
-  'turn-start':['Identify whose turn is starting.','Resolve start-of-turn effects before entering the Command phase.'],
-  'command-start':['Read any start-of-Command abilities in the army reminders below.','Resolve those opening effects before moving on to Command Points.'],
-  'command-cp':['Both players gain the Core Command Points described above.','Keep any extra CP from army rules separate; the app does not track your balance.'],
-  'command-shock':['Identify the active player’s units that must take a Battle-shock test.','Use the test and recovery instructions above for each affected unit.','Apply the result on the tabletop before continuing.'],
-  'command-abilities':['Resolve the remaining Command-phase abilities you choose to use.','Check the rule’s eligible unit, range, cost and restrictions.'],
-  'command-end':['Resolve end-of-Command abilities.','Check your mission for instructions at this timing.'],
-  'movement-start':['Resolve start-of-Movement effects before moving any unit.','Look at objectives and decide which units need to change position.'],
-  'movement-select':['Choose one unit that has not been selected for movement.','Choose a legal move type, including remaining stationary when appropriate.','Resolve that unit’s move and its immediate effects, then repeat for other units.'],
-  'movement-arrivals':['For passengers or reserves, check whether the unit may use the move type now.','Read the placement restrictions and what the unit may do afterward.','These are movement choices, not an automatic extra move for every unit.'],
-  'movement-end':['Check that movement selections are complete.','Resolve end-of-Movement effects before starting Shooting.'],
-  'shooting-start':['Resolve start-of-Shooting effects.','Consider which units could help later shooters through their abilities.'],
-  'shooting-select':['Choose an eligible unit that has not shot this phase.','Check how its movement and current position affect its shooting options.','Check each selected weapon’s eligible targets, range and visibility.'],
-  'shooting-attacks':['Read the selected weapon’s characteristics and relevant modifiers.','Resolve Hit rolls, Wound rolls, attack allocation and saving throws in the current attack sequence.','Apply damage and remove destroyed models as instructed, resolving immediate triggers.'],
-  'shooting-after':['Resolve effects that trigger after this unit shoots.','If another unit can shoot, return to Unit Shooting and repeat.','Only enter End of Shooting when you are ready to finish the phase.'],
-  'shooting-end':['Resolve end-of-Shooting abilities.','Check any effects that end now, then continue to Charge.'],
-  'charge-start':['Resolve start-of-Charge abilities.','Check whether earlier moves or effects restrict your charge options.'],
-  'charge-declare':['Choose an eligible unit that has not declared a charge.','Check the restrictions above before making the Charge roll.','Use that roll when checking the legal charge move on the next step.'],
-  'charge-move':['Check target selection and the possible final position using the roll and current charge rules.','Make the move only if it satisfies all restrictions.','Resolve effects after the completed move; repeat charge choices for other units if appropriate.'],
-  'charge-end':['Resolve end-of-Charge effects.','Distinguish units that completed charge moves from units that only declared one.'],
-  'fight-start':['Both players check their start-of-Fight effects.','Keep the separate Pile In, fighting and Consolidate steps in order.'],
-  'fight-pile':['The active player resolves chosen eligible pile-in moves, then the other player does so.','Check the move’s target, positioning and model restrictions.','Do not add another routine pile-in before each unit fights.'],
-  'fight-resolve':['Follow the current Fights First and unit-selection order.','Resolve one selected unit’s eligible melee attacks and immediate effects.','Continue the fight selections before moving to the separate Consolidate step.'],
-  'fight-consolidate':['Resolve consolidation using the current player order and eligibility rules.','Check the permitted destination and final positioning for each move.'],
-  'fight-end':['Resolve end-of-Fight effects.','Check which effects actually expire now; longer effects keep their stated duration.'],
-  'turn-end':['Resolve end-of-turn effects in the order described above.','Consult the mission’s end-of-turn instructions before passing the turn.'],
-  'round-end':['Resolve end-of-battle-round effects after the second player’s turn.','Check the mission before beginning another round.']
- };
+ const learningLessons={
+ "round-start": {
+  "intro": "A new battle round is starting. Before the first player begins their turn, check for rules that happen now.",
+  "actions": [
+   "Confirm who takes the first turn this round. The order normally stays the same throughout the game.",
+   "Use any “start of the battle round” rules, then begin that player’s turn."
+  ],
+  "why": "A battle round contains both players’ turns. An ability that happens once per round does not refresh at the start of each turn."
+ },
+ "turn-start": {
+  "intro": "Start with anything that happens at the start of this player’s turn. The Command phase comes next.",
+  "actions": [
+   "Check for start-of-turn abilities or effects that end now.",
+   "Once those are finished, move into the Command phase."
+  ],
+  "why": "“Start of your turn” and “start of your Command phase” are different timings."
+ },
+ "command-start": {
+  "intro": "Before anyone collects CP, take a moment to check for start-of-Command abilities.",
+  "actions": [
+   "Look for abilities that specifically say “at the start of the Command phase”.",
+   "Resolve those first. Other Command abilities have their own step later."
+  ],
+  "why": "Doing these in order helps you avoid missing a choice before its window closes."
+ },
+ "command-cp": {
+  "intro": "Both players collect 1 Command Point now—even the player whose turn it isn’t.",
+  "actions": [
+   "Add 1 CP to each player’s total.",
+   "Then handle any extra CP from army rules at the timing those rules specify."
+  ],
+  "why": "You can spend CP on Stratagems during either player’s turn, provided the Stratagem allows it.",
+  "example": "If you had 2 CP and your opponent had none, you now have 3 CP and they have 1, before any additional army-rule CP."
+ },
+ "command-shock": {
+  "intro": "Check which of the active player’s units need a Battle-shock test. A unit can need a test even if it has not lost another model this turn.",
+  "actions": [
+   "Test each unit that is already battle-shocked or is at or below half-strength.",
+   "Roll 2D6 for each unit. A result that meets or beats an applicable Leadership (Ld) value passes. A unit that was already battle-shocked recovers here if it passes.",
+   "A battle-shocked unit cannot contribute Objective Control, be targeted by your Stratagems, or start or complete an action. Apply those effects until it recovers."
+  ],
+  "why": "Being exactly at half-strength counts. You also do not simply clear Battle-shock because a new turn has started.",
+  "example": "A unit that started with 6 models and now has 3 is at half-strength, so it needs a test. Check the separate starting-strength rules for Attached units."
+ },
+ "command-abilities": {
+  "intro": "Now work through your other Command-phase abilities. You do not have to use every optional ability.",
+  "actions": [
+   "Choose any remaining Command abilities you want to use.",
+   "Check their targets, range and costs before resolving them. Keep start- and end-of-phase rules in their own steps."
+  ],
+  "why": "An ability is not automatically usable just because its card mentions the Command phase."
+ },
+ "command-end": {
+  "intro": "Finish your Command abilities, then check whether your mission asks you to do anything at the end of this phase.",
+  "actions": [
+   "Resolve end-of-Command abilities first.",
+   "Then follow the mission’s instructions for this timing, including any scoring."
+  ],
+  "why": "Different missions score at different times. The mission you are playing decides what happens here."
+ },
+ "movement-start": {
+  "intro": "Before moving your first unit, check the opening abilities and think about where you want your army to end up.",
+  "actions": [
+   "Resolve any start-of-Movement abilities.",
+   "Look at the objectives and your next shooting or charging choices before choosing a unit to move."
+  ],
+  "why": "A good move sets up the rest of the turn. Start-of-phase abilities need to happen before you begin those moves."
+ },
+ "movement-select": {
+  "intro": "Choose one unit and decide how it will move. Finish its move and immediate effects before choosing the next unit.",
+  "actions": [
+   "Select a unit that has not been selected to move yet. Even units staying still, in reserve, or in a transport need a movement choice.",
+   "For an unengaged unit, a Normal move is up to its Move (M) characteristic. To Advance, roll one D6 and add it to M. An Advance normally prevents charging and starting actions for the rest of the turn.",
+   "An engaged unit can Fall Back up to M. Choose the appropriate fall-back mode; it normally cannot shoot, charge or start an action for the rest of that turn.",
+   "Measure each model’s path, follow terrain and engagement restrictions, and finish in coherency. Then choose another unit."
+  ],
+  "why": "Moving farther can close off options later in the turn. Pick the move type before you move the models.",
+  "example": "With M 6″ and an Advance roll of 4, the maximum move is 10″. That is a limit, not a requirement to move the full distance."
+ },
+ "movement-arrivals": {
+  "intro": "Passengers and reserves have their own movement choices. Check these before putting the models on the table.",
+  "actions": [
+   "For a unit leaving a transport, check its disembark mode and whether the transport has already moved. That can change what the passengers can do afterward.",
+   "For a unit arriving from reserves, check the allowed battle round and placement restrictions before setting up every model.",
+   "Finish in coherency and follow the setup restrictions. Do not add another move unless a rule allows it."
+  ],
+  "why": "Disembarking and arriving are move types here, not a free extra movement step after the rest of your army has moved."
+ },
+ "movement-end": {
+  "intro": "Once every unit has had its movement choice, wrap up the phase.",
+  "actions": [
+   "Check that every unit has been selected, including those remaining stationary.",
+   "Resolve end-of-Movement abilities and any effects that were waiting for this moment."
+  ],
+  "why": "An effect that happens after one unit moves is not the same as an end-of-phase effect."
+ },
+ "shooting-start": {
+  "intro": "Before choosing a shooter, check your opening abilities and think about your firing order.",
+  "actions": [
+   "Resolve start-of-Shooting abilities.",
+   "Consider whether one unit can help another by shooting first. Check the exact ability rather than assuming the benefit applies."
+  ],
+  "why": "Some shooting abilities set up a later attack. The firing order can make a difference."
+ },
+ "shooting-select": {
+  "intro": "Pick a unit that has not shot yet, then check which of its weapons can attack.",
+  "actions": [
+   "Check the shooting type your unit can use. Normal shooting requires it to be unengaged and not to have Advanced.",
+   "An unengaged unit that Advanced can use Assault shooting if it has an Assault weapon; only its Assault weapons can fire. Falling Back normally prevents shooting unless a rule makes an exception.",
+   "For each weapon, check the target, range and visibility. Being able to shoot with the unit does not mean every model or weapon can reach the same target."
+  ],
+  "why": "Your earlier movement choices matter here. Engaged units and indirect attacks also have their own shooting rules."
+ },
+ "shooting-attacks": {
+  "intro": "Work through one weapon profile at a time. Keep its characteristics and any weapon abilities beside your dice.",
+  "actions": [
+   "Use the weapon’s Attacks (A) value to find how many attacks it makes. Keep different attack profiles separate.",
+   "Roll one D6 per attack to hit: an unmodified 1 fails and an unmodified 6 is a Critical Hit. Otherwise, match or beat Ballistic Skill (BS) for shooting, or Weapon Skill (WS) for melee, after modifiers. Apply any specific exception.",
+   "Roll one D6 for each hit to wound: an unmodified 1 fails and an unmodified 6 is a Critical Wound. Otherwise, compare the weapon’s Strength (S) with the target’s Toughness (T) on the Wound-roll table, applying relevant modifiers and exceptions.",
+   "The defender sets up their allocation groups and declares the order, then rolls one Save for each wound. AP affects armour saves; an invulnerable save can apply as described in the rules.",
+   "Work through Save results from lowest to highest. In the current allocation group, choose a model that has already lost wounds if possible. For each unsaved attack, apply the weapon’s Damage (D) to that model. Apply any relevant damage-prevention rules, remove models that reach 0 wounds, and continue through the allocation groups."
+  ],
+  "why": "Hit rolls, Wound rolls and Save rolls answer different questions. Finish each stage before moving to the next.",
+  "example": "With BS 3+ and no modifiers or special rules, a Hit roll of 4 hits. It still needs a successful Wound roll before the defender makes a Save."
+ },
+ "shooting-after": {
+  "intro": "The unit has finished shooting. Check its after-shooting effects before you choose another shooter.",
+  "actions": [
+   "Resolve any abilities triggered by that unit finishing its shooting.",
+   "After Normal or Assault shooting, that unit cannot start an action for the rest of the phase.",
+   "If another unit can shoot, choose it and repeat. Otherwise, continue to End of Shooting."
+  ],
+  "why": "An after-shooting effect may help your next unit. It cannot normally wait until the end of the phase."
+ },
+ "shooting-end": {
+  "intro": "Finished shooting? Check the end-of-phase abilities before moving on to charges.",
+  "actions": [
+   "Resolve effects that specifically happen at the end of the Shooting phase.",
+   "End effects whose duration finishes now. Keep longer-lasting effects in mind for the next phase."
+  ],
+  "why": "A rule lasting until the end of the turn keeps working after Shooting ends."
+ },
+ "charge-start": {
+  "intro": "Check your charge options before picking up the dice.",
+  "actions": [
+   "Resolve start-of-Charge abilities.",
+   "Look back at your movement choices. An Advance or Fall Back normally prevents a charge unless another rule allows it."
+  ],
+  "why": "Rolling well does not make an otherwise illegal charge legal."
+ },
+ "charge-declare": {
+  "intro": "Choose a unit that can charge, then roll to find out how far its charge move can be.",
+  "actions": [
+   "Pick a unit that has not declared a charge this phase. It normally must be unengaged, must not have Advanced or Fallen Back, and needs an enemy unit within 12″.",
+   "Roll 2D6. The total is the maximum distance of its charge move.",
+   "Next, check the targets and whether you can make a legal move. In this sequence, the detailed target selection happens after the roll."
+  ],
+  "why": "The declaration, the roll and the completed move are separate parts of a charge.",
+  "example": "A 3 and a 4 give a maximum charge move of 7″. You still need a legal route and final position; the roll alone does not guarantee a successful charge."
+ },
+ "charge-move": {
+  "intro": "Use the charge roll to check where the unit can legally finish before moving any models.",
+  "actions": [
+   "Choose charge targets within both 12″ and the rolled maximum distance.",
+   "Check the whole move: the unit must finish engaged with every charge target and no non-target enemy unit, while meeting model-level movement and coherency requirements.",
+   "If no legal move is possible, do not move the unit. You may also choose not to move. After a completed charge move, the unit gains Fights First until the turn ends.",
+   "Resolve any after-charge effects, then choose another charging unit if you want to."
+  ],
+  "why": "A successful charge needs a legal final position, not just enough inches on the dice."
+ },
+ "charge-end": {
+  "intro": "Wrap up the charges before the Fight phase begins.",
+  "actions": [
+   "Resolve end-of-Charge abilities.",
+   "Remember which units completed charge moves and gained Fights First. A declaration on its own does not grant it."
+  ],
+  "why": "Fight begins with its own opening and Pile In steps. Do not jump straight to rolling melee attacks."
+ },
+ "fight-start": {
+  "intro": "Both players take part in Fight, even during the other player’s turn.",
+  "actions": [
+   "Resolve start-of-Fight abilities.",
+   "Follow the separate steps: Pile In, resolve fights, then Consolidate."
+  ],
+  "why": "This is not a phase where only the active player gets to attack."
+ },
+ "fight-pile": {
+  "intro": "First, both players make any pile-in moves they choose with units allowed to do so.",
+  "actions": [
+   "The player whose turn it is resolves their pile-ins first, followed by the other player.",
+   "A pile-in is normally up to 3″. Select its targets first; models already in base contact cannot move. Moved models must finish closer to the closest selected target and engaged with it if possible.",
+   "The unit must finish engaged and in coherency. Each unit can pile in only once in this step."
+  ],
+  "why": "Pile In is a separate step. Do not repeat it every time a unit is selected to fight."
+ },
+ "fight-resolve": {
+  "intro": "Now choose units to fight in the correct order, finishing one unit’s attacks before selecting another.",
+  "actions": [
+   "Start with the player whose turn it is and alternate eligible Fights First units. If a player has none to choose, the other player chooses.",
+   "When no eligible Fights First units remain, the player whose selection is next starts the remaining combats. Keep alternating eligible units. Return to Fights First if a new eligible Fights First unit appears.",
+   "For each selected unit, check which models and melee weapons can attack, then work through Hit rolls, Wound rolls, Save rolls and damage.",
+   "Keep going until all eligible units have been selected. A unit cannot be selected to fight again just because it has more than one melee weapon."
+  ],
+  "why": "Fights First changes the selection order; it does not let an otherwise ineligible unit fight."
+ },
+ "fight-consolidate": {
+  "intro": "Once the fight selections are finished, work through the separate consolidation step.",
+  "actions": [
+   "The active player resolves their chosen consolidations, then the other player. A consolidation is normally up to 3″ for a unit that was eligible to fight.",
+   "Choose the required mode in order: stay with an ongoing combat, engage a nearby enemy, or move toward a nearby objective if the earlier modes do not apply.",
+   "Follow the mode’s final-position rules and keep coherency. After an Ongoing or Engaging consolidation, your opponent must select engaged enemy units that have not yet been selected to fight, one at a time; those units become eligible and fight."
+  ],
+  "why": "Consolidation is not a free move in any direction. The required mode and destination depend on the unit’s position."
+ },
+ "fight-end": {
+  "intro": "Check the end-of-Fight rules before you pass the turn.",
+  "actions": [
+   "Resolve end-of-Fight abilities.",
+   "Clear effects that end with this phase. Keep effects that last longer until their stated end point."
+  ],
+  "why": "End of Fight, end of turn and end of battle round are separate timings."
+ },
+ "turn-end": {
+  "intro": "Before the other player starts, finish the end-of-turn checks.",
+  "actions": [
+   "Resolve non-mission end-of-turn rules, then follow the mission’s end-of-turn instructions.",
+   "Check coherency. Units out of coherency must remove models until they are coherent again. Those removals do not trigger “when destroyed” effects.",
+   "Pass the turn only after these checks are finished."
+  ],
+  "why": "The end of the Fight phase does not automatically finish every end-of-turn requirement."
+ },
+ "round-end": {
+  "intro": "Both players have taken a turn. Finish the battle-round effects before starting another round.",
+  "actions": [
+   "Resolve end-of-battle-round rules, then the mission’s instructions for this timing.",
+   "Check whether the mission ends the battle here. If it continues, begin the next round with the same first-player order."
+  ],
+  "why": "Some resources and effects last for a whole battle round, rather than a single player’s turn."
+ }
+};
+ const learningGlossary=[
+ [
+  [
+   "Command Points (CP)",
+   "Points you spend on Stratagems. Check each Stratagem’s cost and timing."
+  ],
+  [
+   "Leadership (Ld)",
+   "The number a Leadership roll must meet or beat. Battle-shock uses a Leadership roll."
+  ],
+  [
+   "Battle-shock",
+   "A condition that limits a unit’s objective control, actions and access to your Stratagems."
+  ]
+ ],
+ [
+  [
+   "Move (M)",
+   "The distance a Normal move can cover. An Advance adds a D6 roll to it."
+  ],
+  [
+   "Coherency",
+   "The spacing that keeps a unit together. For a unit with more than one model, every model must be within 2″ horizontally and 5″ vertically of another model, and within 9″ horizontally and 5″ vertically of every other model in its unit."
+  ],
+  [
+   "Fall Back",
+   "A move for an engaged unit. Its restrictions still matter in later phases."
+  ]
+ ],
+ [
+  [
+   "Attacks (A)",
+   "How many attacks a weapon makes. Some profiles use a dice roll for this value."
+  ],
+  [
+   "Ballistic Skill (BS)",
+   "The number a ranged Hit roll must normally meet or beat. Melee attacks use Weapon Skill (WS)."
+  ],
+  [
+   "Strength (S) and Toughness (T)",
+   "Compare these on the Wound-roll table to find the required result."
+  ],
+  [
+   "Armour Penetration (AP)",
+   "A modifier to the armour Save roll. An invulnerable save is handled separately."
+  ],
+  [
+   "Damage (D)",
+   "The wounds an unsaved attack removes from the selected model."
+  ]
+ ],
+ [
+  [
+   "Charge roll",
+   "Roll 2D6 to find the maximum distance for a charge move."
+  ],
+  [
+   "Engaged",
+   "A position where enemy models are within engagement range. It affects which moves and attacks are allowed."
+  ],
+  [
+   "Charge move",
+   "The move after the charge roll. Its targets, route and final position must all be legal."
+  ]
+ ],
+ [
+  [
+   "Fights First",
+   "A priority in choosing units to fight. The unit must still be eligible."
+  ],
+  [
+   "Pile In",
+   "A separate movement step before the Fight step, with its own targets and positioning rules."
+  ],
+  [
+   "Consolidate",
+   "A separate movement step after the Fight step. Its required mode depends on nearby enemies and objectives."
+  ]
+ ]
+];
  function learningStep(step,state){
-  const actions=[...(learningPrompts[step.id]||['Read the current core instructions above.','Resolve their requirements before moving to the next step.'])];
-  if(state.turn==='opponent')actions.unshift('Follow the active player’s actions; your imported list supplies your own responses, not the opponent’s abilities.');
+  const original=getSteps(state,{applyOverrides:false}).find(item=>item.id===step.id),note=learningLessons[step.id];
+  const unchanged=!!note&&original?.body===step.body;
+  const actions=unchanged?[...note.actions]:['Read the maintained step reminder above.','Work through its instructions before moving on.'];
+  const perspective=state.turn==='opponent'?(state.phase===4?'You both take part in Fight, even during your opponent’s turn.':step.id==='command-cp'?'You both gain CP here, whoever is taking the turn.':"It’s your opponent’s turn. They work through this step; your army’s response rules are below."):'';
   const repeat=state.turn==='you'?({'shooting-after':{id:'shooting-select',label:'Choose another shooting unit'},'charge-move':{id:'charge-declare',label:'Choose another charging unit'},'movement-arrivals':{id:'movement-select',label:'Return to movement choices'}}[step.id]||null):null;
-  return {actions,repeat,glossary:[
-   ['Command Points (CP)','A resource spent on Stratagems. Each Stratagem specifies its cost and timing.'],
-   ['Datasheet','The unit’s characteristics, weapons and abilities. Use it alongside these core instructions.'],
-   ['Eligible','Allowed to act or be chosen after applying all relevant conditions and restrictions.']
-  ]};
+  return {intro:unchanged?note.intro:step.body,why:unchanged&&original.why===step.why?note.why:step.why,actions,perspective,example:unchanged?note.example||'':'',repeat,glossary:learningGlossary[state.phase]||[]};
  }
 
  const stepOverrides=new Map();
