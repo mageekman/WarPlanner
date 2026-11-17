@@ -31,11 +31,16 @@
 
  function sourceUnit(state,unit,name){return units(state.army).filter(u=>u.id!==unit.id&&has(u,name));}
  function leading(unit,name,bodyguard){return unit.attached&&unit.leaders.some(m=>m.role==='leader'&&norm(m.name)===norm(name))&&(!bodyguard||norm(unit.body.name)===norm(bodyguard));}
+ // These are datasheet abilities, not permissions granted to every roster entry.
+ const datasheetCoreIds=new Set(['damaged','damaged-objective-control','deadly-demise','feel-no-pain','firing-deck','hover','infiltrators','leader','lone-operative','scouts','stealth','super-heavy-walker','support']);
+ function datasheetCoreId(rule){if(rule?.category!=='core')return null;const id=rule.sourceRuleId||rule.importSource?.sourceId||rule.id.replace(/^core-/,'');return datasheetCoreIds.has(id)?id:null;}
+ function coreBearers(rule,state,unit){const id=datasheetCoreId(rule);return id?unit.members.filter(m=>L.unitInRule(m,rule,state.army)&&(!rule.units?.length||rule.units.some(name=>norm(name)===norm(m.name)))&&(L.unitHasRule(m,id,state.army.faction,state.army)||L.unitHasRule(m,rule.id,state.army.faction,state.army))):unit.members;}
  function fits(a,state,unit,armyMatched=false){
   if(!a||!L.guideRule(a,state)||(!armyMatched&&!L.matches(a,state.army))||!L.ruleMatchesContext(a,state))return false;
   // Native Support models can supply their own attached-unit abilities. A
   // manually assigned Support role alone cannot bypass the catalog requirement.
   if(!unit.members.some(m=>L.unitInRule(m,a,state.army)))return false;
+  if(datasheetCoreId(a)&&!coreBearers(a,state,unit).length)return false;
   if(a.requiredLeaderKeywords&&(!unit.attached||!unit.leaders.some(m=>a.requiredLeaderKeywords.every(k=>L.unitInfo(m,state.army.faction)?.keywords.some(v=>norm(v)===norm(k))))))return false;
   if(a.leadingUnitRequired&&(!unit.attached||!unit.leaders.some(m=>a.units.includes(m.name)&&(m.role==='leader'||m.role==='support'&&L.unitHasRule(m,'support',state.army.faction)))||(a.leadingBodyguard&&norm(a.leadingBodyguard)!==norm(unit.body.name))))return false;
   if(a.enhancement&&!unit.members.some(m=>L.enhancementEquipped(a,m,state.army)))return false;
@@ -182,6 +187,7 @@
    return types.get(key);
   }
   function owners(a,unit){
+   if(datasheetCoreId(a))return coreBearers(a,state,unit);
    if(a.enhancement)return unit.members.filter(m=>L.enhancementEquipped(a,m,state.army));
    return a.units?.length?unit.members.filter(m=>L.unitInRule(m,a,state.army)&&a.units.some(name=>norm(name)===norm(m.name))):unit.members;
   }
@@ -196,8 +202,8 @@
     const item={...a,guideMeta:L.ruleGuideMeta(a,state),timing:a.timings?L.ruleTimingLabel(a):a.expanded?(a.triggerText||row.title):row.title};
     if(a.guideShared||['army','stratagem','core-stratagem'].includes(a.category)){
      if(!sharedMap.has(key))sharedMap.set(key,{...item,key,appliesTo:[],battlefieldUnits:[]});
-     const shared=sharedMap.get(key);shared.battlefieldUnits.push(unit);
-     for(const member of unit.members.filter(m=>L.unitInRule(m,a,state.army))){const record=typeFor(member);if(!shared.appliesTo.some(u=>norm(u.body.name)===norm(member.name)))shared.appliesTo.push(record.unit);record.sharedIds.add(key);}
+     const shared=sharedMap.get(key);const bearers=owners(a,unit),display=datasheetCoreId(a)?{...unit,members:bearers,body:bearers.includes(unit.body)?unit.body:bearers[0]}:unit;shared.battlefieldUnits.push(display);
+     for(const member of (datasheetCoreId(a)?bearers:unit.members).filter(m=>L.unitInRule(m,a,state.army))){const record=typeFor(member);if(!shared.appliesTo.some(u=>norm(u.body.name)===norm(member.name)))shared.appliesTo.push(record.unit);record.sharedIds.add(key);}
     }else{
      for(const member of owners(a,unit)){
       const record=typeFor(member);

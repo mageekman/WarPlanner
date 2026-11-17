@@ -1,0 +1,12 @@
+{
+  "coreTargets": {
+    "damaged": [
+      "Falcon",
+      "Wave Serpent"
+    ],
+    "firing-deck": [
+      "Starweaver"
+    ]
+  },
+  "errors": []
+}
