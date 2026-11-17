@@ -1,0 +1,25 @@
+{
+  "results": [
+    {
+      "viewport": "desktop",
+      "defaultOpen": true,
+      "toggleWorks": true,
+      "nextLessonOpen": true,
+      "collapsedHeights": {
+        "learn-check": 33,
+        "learn-glossary": 33
+      }
+    },
+    {
+      "viewport": "mobile",
+      "defaultOpen": true,
+      "toggleWorks": true,
+      "nextLessonOpen": true,
+      "collapsedHeights": {
+        "learn-check": 45,
+        "learn-glossary": 45
+      }
+    }
+  ],
+  "errors": []
+}

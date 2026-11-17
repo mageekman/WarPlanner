@@ -505,3 +505,17 @@ main:has(#admin-content-page){padding-left:24px;padding-right:24px}
 .learn-perspective{font-size:calc(12px * var(--guide-font-scale,1));line-height:1.75;color:var(--muted);margin-top:12px}
 .learn-example{font-size:calc(12px * var(--guide-font-scale,1));line-height:1.8;padding:12px 14px;border-left:2px solid var(--teal);background:#8cd5bd08;margin:16px 0 0;border-radius:0 5px 5px 0}
 .learn-example strong{color:var(--teal);font-weight:500}
+
+/* Learning instructions can fold away; each new lesson starts open. */
+.learn-core{padding:0}
+.learn-core>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:12px 0;list-style:none}
+.learn-core>summary::-webkit-details-marker{display:none}
+.learn-core-toggle .eyebrow{margin:0;text-transform:uppercase}
+.learn-core-caret{font-size:18px;color:var(--teal);flex-shrink:0}
+.learn-core[open]>.learn-core-toggle .learn-core-caret{transform:rotate(180deg)}
+.learn-core-content{padding-bottom:16px}
+.learn-core .learn-check:not([open]),.learn-core .learn-glossary:not([open]){margin-top:6px;padding:0}
+.learn-core .learn-check>summary,.learn-core .learn-glossary>summary{min-height:32px;padding:5px 0;gap:10px}
+.learn-core .learn-check>summary::after,.learn-core .learn-glossary>summary::after{content:'⌄';font-size:16px;line-height:1;margin-left:auto}
+.learn-core .learn-check[open]>summary::after,.learn-core .learn-glossary[open]>summary::after{transform:rotate(180deg)}
+@media(pointer:coarse){.learn-core .learn-check>summary,.learn-core .learn-glossary>summary{min-height:44px}}
