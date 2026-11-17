@@ -206,7 +206,7 @@
    }else if(first.rows.length===pageSize){
     for(let start=pageSize;;start+=pageSize){const next=await page(start);all.push(...next.rows);if(next.rows.length<pageSize)break;}
    }
-   all.forEach(validate);check();records=all;excludedKeys=[];workshopReady=true;version++;
+   all.forEach(validate);await root.WarPlannerAeldariAudit?.ensure?.(all);check();records=all;excludedKeys=[];workshopReady=true;version++;
   }
   function validateRuntime(rows,manifest){
    if(rows.length!==manifest.count||new Set(rows.map(r=>r.key)).size!==rows.length)throw Error('Incomplete runtime catalog.');
@@ -235,7 +235,7 @@
       validateRuntime(all,manifest);check();
       void cacheCall('put',cacheKey,{format:1,version:manifest.version,rows:all});
      }
-     check();records=all;excludedKeys=manifest.excludedKeys;workshopReady=false;version++;return;
+     await root.WarPlannerAeldariAudit?.ensure?.(all);check();records=all;excludedKeys=manifest.excludedKeys;workshopReady=false;version++;return;
     }catch(error){if(attempt===0&&error.code==='40001')continue;throw error;}
    }
   }
@@ -254,7 +254,7 @@
    async reload(){check();if(runtime&&!workshopReady)await readRuntime();else await read();invalidateCache();return copy(records);},
    async save(row){
     check();if(!isAdmin)throw Error('Administrator access is required.');if(!workshopReady)throw Error('Load the Workshop before editing rules.');validate(row);
-    const scoped=copy(row);if(combatPatrolOnly(scoped)||siteExcluded(records.find(r=>r.key===row.key)))archiveCombatPatrol(scoped);validate(scoped);
+    const scoped=copy(row);if(combatPatrolOnly(scoped)||siteExcluded(records.find(r=>r.key===row.key)))archiveCombatPatrol(scoped);validate(scoped);await root.WarPlannerAeldariAudit?.ensure?.([scoped]);check();
     const payload={key:scoped.key,kind:scoped.kind,faction:scoped.faction,name:scoped.name.trim(),data:scoped.data,enabled:scoped.enabled};
     let query;
     if(row.revision)query=client.from('rules_catalog').update(payload).eq('key',row.key).eq('revision',row.revision).select('*').maybeSingle();
@@ -267,6 +267,7 @@
     if(!workshopReady)throw Error('Load the Workshop before editing rules.');
     if(!Array.isArray(rows)||rows.length<1||rows.length>1000)throw Error('Import between 1 and 1000 entries.');rows.forEach(validate);
     const entries=rows.map(row=>{const scoped=copy(row);if(combatPatrolOnly(scoped)||siteExcluded(records.find(r=>r.key===row.key)))archiveCombatPatrol(scoped);validate(scoped);return {key:scoped.key,kind:scoped.kind,faction:scoped.faction,name:scoped.name.trim(),data:scoped.data,enabled:scoped.enabled,expectedRevision:row.revision||0};});
+    await root.WarPlannerAeldariAudit?.ensure?.(entries);check();
     const saved=result(await client.rpc('import_rules_catalog',{entries}));check();
     if(!Array.isArray(saved)||saved.length!==entries.length)throw Error('Import response was incomplete. Reload the catalog to verify before trying again.');
     saved.forEach(validate);const map=new Map(records.map(r=>[r.key,r]));for(const row of saved)map.set(row.key,row);records=[...map.values()];version++;invalidateCache();return copy(saved);

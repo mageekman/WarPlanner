@@ -33,3 +33,14 @@ test('admin editing waits for full records and retains source provenance',async(
 test('disposed accounts cannot publish a catalog finishing in the background',async()=>{
  const h=setup();const rpc=h.client.rpc;let finish;h.client.rpc=async(name,args)=>{if(name==='runtime_catalog_page')await new Promise(r=>finish=r);return rpc(name,args)};const loading=h.service.load();while(!finish)await new Promise(r=>setImmediate(r));h.service.dispose();finish();await assert.rejects(loading,/session has ended/);assert.deepEqual(h.service.records,[]);
 });
+
+test('catalog publication waits for required compatibility data, including cached loads',async()=>{
+ const prior=global.WarPlannerAeldariAudit;let finish;
+ global.WarPlannerAeldariAudit={ensure:()=>new Promise(resolve=>finish=resolve)};
+ try{
+  const h=setup(),loading=h.service.load();while(!finish)await new Promise(r=>setImmediate(r));assert.deepEqual(h.service.records,[]);finish();await loading;
+  finish=null;const pages=h.calls.filter(n=>n==='runtime_catalog_page').length,cached=C.create(h.client,'one',{runtime:true,cache:h.storage}),warm=cached.load();
+  while(!finish)await new Promise(r=>setImmediate(r));assert.deepEqual(cached.records,[]);assert.equal(h.calls.filter(n=>n==='runtime_catalog_page').length,pages);finish();await warm;assert.equal(cached.records[0].data.id,'runtime-test');
+  global.WarPlannerAeldariAudit.ensure=async()=>{throw Error('Compatibility download failed')};h.change();await assert.rejects(h.service.load(),/Compatibility/);assert.equal(h.service.records[0].data.id,'runtime-test');
+ }finally{if(prior===undefined)delete global.WarPlannerAeldariAudit;else global.WarPlannerAeldariAudit=prior;}
+});
