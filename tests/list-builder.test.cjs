@@ -58,3 +58,17 @@ test('enhancement choices include each selected detachment and distinguish dupli
 test('editing an older combined import selects existing detachments without altering the original export',()=>{
  const original={...army(),detachment:'Warhost, Aspect Host',detachments:['Warhost, Aspect Host'],originalExport:'The original upload',units:[]};B.add(original,'fire-dragons');const snapshot=structuredClone(original);assert.deepEqual(B.selectedDetachments(original),['Warhost','Aspect Host']);const saved=B.commit(original,snapshot);assert.deepEqual(saved.detachments,['Warhost','Aspect Host']);assert.equal(saved.originalExport,'The original upload');assert.deepEqual(original,snapshot);
 });
+test('dispositions are limited to selected detachments and combine multiple selections',()=>{
+ assert.deepEqual(B.dispositions('Aeldari',[]),[]);assert.deepEqual(B.dispositions('Aeldari',['Aspect Host']),['Priority Assets']);assert.deepEqual(B.dispositions('Aeldari',['Aspect Host','Armoured Warhost']),['Priority Assets','Reconnaissance']);assert.deepEqual(B.dispositions('Aeldari',['Unknown']),[]);
+});
+test('duplicating a configured unit creates independent options without an attachment or Warlord assignment',()=>{
+ const a=army();B.add(a,'farseer','one');const original=a.units[0];original.group='attached';original.role='leader';original.details=['Attached as: Leader','Warlord','Equipment note'];original.warlord=true;
+ const copy=B.duplicate(a,'one','two');assert.equal(copy.id,'two');assert.equal(copy.modelCount,original.modelCount);assert.equal(copy.group,'');assert.equal(copy.role,'');assert.deepEqual(copy.details,['Equipment note']);assert.equal(copy.warlord,undefined);copy.details.push('Copy only');assert.equal(original.details.length,3);assert.equal(original.group,'attached');assert.throws(()=>B.duplicate(a,'one','two'));
+});
+test('roster grouping uses datasheet keywords, sorts names and preserves the original array',()=>{
+ const a=army();for(const [i,id] of ['shroud-runners','guardian-defenders','farseer','autarch'].entries())B.add(a,id,String(i));const before=JSON.stringify(a);
+ const groups=B.rosterGroups(a);assert.deepEqual(groups.map(g=>g.name),['Characters','Battle Line','Other Datasheets']);assert.deepEqual(groups[0].units.map(u=>u.name),['Autarch','Farseer']);assert.equal(JSON.stringify(a),before);
+});
+test('factions are grouped using catalog group names without changing the catalog',()=>{
+ const before=JSON.stringify(B.factions()),groups=B.factionGroups();assert.equal(groups.flatMap(g=>g.factions).length,B.factions().length);for(const g of groups)assert.deepEqual(g.factions.map(f=>f.name),g.factions.map(f=>f.name).sort((a,b)=>a.localeCompare(b)));assert.equal(JSON.stringify(B.factions()),before);
+});

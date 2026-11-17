@@ -698,3 +698,9 @@ test('mode changes retain the current opponent Charge step when it exists in bot
  a.change('guide-mode','learn');a.click({action:'reload-guide'});assert.equal(a.run('lessons().steps[state.open].id'),'charge-declare');
  a.change('guide-mode','quick');a.click({action:'reload-guide'});assert.equal(a.run('lessons().steps[state.open].id'),'charge-declare');assert.equal(savedState(a.store).turn,'opponent');
 });
+test('adding and duplicating a builder unit clears search and displays feedback',()=>{
+ const a=app();a.click({action:'create-list'});a.run("listEditor.query='Farseer'");a.click({addUnit:'farseer'});assert.equal(a.run('listEditor.query'),'');assert.match(a.html(),/Farseer added to your roster/);const id=a.run('listEditor.army.units[0].id');a.click({duplicateUnit:id});assert.equal(a.run('listEditor.army.units.length'),2);assert.match(a.html(),/duplicated as a separate unit/);assert.match(a.html(),/>Characters<\/h3>/);
+});
+test('builder detachment choices constrain dispositions and clear stale selections',()=>{
+ const a=app();a.click({action:'create-list'});a.toggleDetachment('Aspect Host',true);assert.match(a.html(),/value="Priority Assets"/);assert.doesNotMatch(a.html(),/<option value="Reconnaissance"/);a.editorChange('disposition','Priority Assets');a.toggleDetachment('Aspect Host',false);assert.equal(a.run('listEditor.army.disposition'),'');assert.match(a.html(),/Choose a detachment first/);
+});
