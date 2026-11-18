@@ -92,12 +92,12 @@ test('opponent unit distractors retain ownership evidence from reference-only al
  const data=source();data.rules.push(rule('reference-owner','ability',{name:'Rule r0',summary:'Unchecked wording for the same ability.',referenceOnly:true,units:['Unit 1']}));
  const bank=Q.buildOpponentBank(data),q=bank.questions.find(q=>q.id==='ability-unit:r0');assert.ok(q);assert.ok(!q.options.some(o=>o.id==='u1'));assert.ok(!bank.studyRules.some(r=>r.id==='reference-owner'));
 });
-test('opponent ability choices include their own descriptions without changing source rules or answer reveals',()=>{
+test('own and opponent ability choices show effects without titles or changes to answer reveals',()=>{
  const data=source();data.rules[0].summary='Unit 0 can move after shooting.';const before=JSON.stringify(data);
  const q=Q.buildOpponentBank(data).questions.find(q=>q.id==='unit-rule:u0:r0');assert.ok(q);
- for(const o of q.options){const original=data.rules.find(r=>r.id===o.id);assert.equal(o.description,original.summary.replace(/Unit 0/g,'[REDACTED]'));assert.equal(o.label,original.name);}
+ for(const o of q.options){const original=data.rules.find(r=>r.id===o.id);assert.equal(o.label,original.summary.replace(/Unit 0/g,'[REDACTED]'));assert.equal(o.description,undefined);assert.notEqual(o.label,original.name);}
  assert.equal(q.review.rule.summary,data.rules[0].summary);assert.match(q.explanation.summary,/Unit 0/);assert.equal(JSON.stringify(data),before);
- const own=Q.buildBank(data).questions.find(item=>item.id===q.id);assert.ok(own.options.every(o=>!o.description));
+ const own=Q.buildBank(data).questions.find(item=>item.id===q.id);assert.ok(own.options.every(o=>!o.description));for(const o of own.options)assert.equal(o.label,data.rules.find(r=>r.id===o.id).summary.replace(/Unit 0/g,'[REDACTED]'));
 });
 test('quiz clues redact catalog unit names with boundaries, longest matches and regex punctuation',()=>{
  const data=source();data.units[0].name='Rider';data.units[1].name='Rider Captain';data.units[2].name='Drone (Heavy)';
@@ -152,4 +152,25 @@ test('timing clues redact event triggers and embedded rule names without losing 
 test('timing effect clues handle labelled exports and omit timing-only summaries',()=>{
  const data=timedSource();data.rules[0].summary='WHEN: Your Shooting phase. TARGET: One friendly unit. EFFECT: Ranged weapons gain Sustained Hits 1 until the end of that phase.';data.rules[1].summary='At the end of your Movement phase.';
  const bank=Q.buildBank(data),q=bank.questions.find(q=>q.id==='timing:r0');assert.match(q.clue,/Ranged weapons gain Sustained Hits 1/);assert.doesNotMatch(q.clue,/Shooting|TARGET:|that phase/);assert.doesNotMatch(bank.questions.find(q=>q.id==='timing:r1').clue,/Effect:/);
+});
+
+test('ability effect options redact rule and unit names with no duplicate displayed answers',()=>{
+ const data=source(),original=JSON.stringify(data);data.rules[0].summary='Rule r0 lets Unit 0 re-roll Wound rolls.';data.rules[1].summary='Rule r1 lets Unit 1 re-roll Wound rolls.';data.rules[2].summary='Rule r2 lets Unit 2 re-roll Wound rolls.';
+ const before=JSON.stringify(data);
+ for(const build of [Q.buildBank,Q.buildOpponentBank]){const q=build(data).questions.find(q=>q.id==='unit-rule:u0:r0');assert.ok(q);assert.match(q.options.find(o=>o.id===q.correct).label,/re-roll Wound rolls/);assert.equal(q.options.length,4);assert.equal(new Set(q.options.map(o=>o.label)).size,4);for(const o of q.options){assert.doesNotMatch(o.label,/Rule r\d|Unit \d/);assert.ok(!['r1','r2'].includes(o.id));}assert.equal(q.review.rule.summary,data.rules[0].summary);}
+ assert.equal(JSON.stringify(data),before);assert.notEqual(before,original);
+});
+test('ability effect practice skips indistinguishable choices and descriptions consisting only of spoilers',()=>{
+ const data=source();for(const r of data.rules)r.summary=r.name+' belongs to Unit 0 and improves its attacks.';assert.equal(Q.buildBank(data).counts.abilities,0);
+ const blank=source();blank.rules[0].summary='Rule r0 Unit 0';assert.ok(!Q.buildBank(blank).questions.some(q=>q.id==='unit-rule:u0:r0'));
+});
+
+test('timing audits exclude passive or unsupported rules in both perspectives without hiding their effects',()=>{
+ const data=timedSource();data.rules[0].timingAudit={quizEligible:false,status:'passive-or-contextual',timingKeys:[JSON.stringify([[0],'you','select'])]};
+ for(const build of [Q.buildBank,Q.buildOpponentBank]){const bank=build(data);assert.ok(bank.studyRules.some(r=>r.id==='r0'));assert.ok(!bank.questions.some(q=>q.mode==='timing'&&q.review.rule.id==='r0'));assert.ok(bank.counts.timing>0);}
+});
+test('source-verified timing metadata survives review snapshots and rejects stale timing edits',()=>{
+ const data=timedSource(),r=data.rules[0];r.timingAudit={quizEligible:true,timingKeys:[JSON.stringify([[0],'you','select'])]};
+ for(const build of [Q.buildBank,Q.buildOpponentBank]){const q=build(data).questions.find(q=>q.mode==='timing'&&q.review.rule.id==='r0');assert.ok(q);assert.deepEqual(q.review.rule.timingAudit,r.timingAudit);}
+ r.window='end';for(const build of [Q.buildBank,Q.buildOpponentBank])assert.ok(!build(data).questions.some(q=>q.mode==='timing'&&q.review.rule.id==='r0'));
 });

@@ -41,6 +41,7 @@
   const single=r=>{
    if(r.referenceOnly||r.sourceReview)return null;
    const unique=new Map(L.ruleTimings(r).map(t=>[JSON.stringify([t.phase,t.turn,t.window]),t]));if(unique.size!==1)return null;
+   if(r.timingAudit&&(!r.timingAudit.quizEligible||JSON.stringify([...unique.keys()].sort())!==JSON.stringify(r.timingAudit.timingKeys)))return null;
    const t=[...unique.values()][0];
    return t.phase?.length===1&&Number.isInteger(t.phase[0])&&t.phase[0]>=0&&t.phase[0]<=4&&['you','opponent','either'].includes(t.turn)&&L.timingWindows[t.window]&&!['round','round-end','prebattle'].includes(t.window)?t:null;
   };
@@ -86,9 +87,9 @@
   const unique=new Map();
   const scoped=rules.filter(matches).map(r=>({...(M?M.enrich(r):r),faction:r.faction})),eligible=scoped.filter(relevant).filter(r=>usable(r)&&(!excludeReferenceOnly||!r.referenceOnly));
   for(const r of eligible){const key=[r.category,norm(r.name),norm(r.detachment)].join(':');if(!unique.has(key))unique.set(key,r);}
-  const all=[...unique.values()],label=r=>r.name+(r.detachment?' · '+r.detachment:''),questions=[];
+  const all=[...unique.values()],questions=[];
   const choices=(correct,others)=>shuffle([correct,...shuffle(others,random).slice(0,3)],random).map(option=>({...option,faction}));
-  const ruleView=r=>Object.fromEntries(['id','sourceRuleId','sourceCatalogKey','originFaction','allied','name','faction','memberships','units','category','summary','conditions','sourceIds','sourceUrl','sourceLabel','status','referenceOnly','mechanicsDetails','targetText','triggerText','phase','turn','window','timings','detachment'].filter(key=>r[key]!==undefined).map(key=>[key,copy(r[key])]));
+  const ruleView=r=>Object.fromEntries(['id','sourceRuleId','sourceCatalogKey','originFaction','allied','name','faction','memberships','units','category','summary','conditions','sourceIds','sourceUrl','sourceLabel','status','referenceOnly','mechanicsDetails','targetText','triggerText','phase','turn','window','timings','timingAudit','detachment'].filter(key=>r[key]!==undefined).map(key=>[key,copy(r[key])]));
   const unitView=u=>({id:u.id,name:u.name,faction:u.faction,...(u.sourceCatalogKey?{sourceCatalogKey:u.sourceCatalogKey,originFaction:u.originFaction}:{}),...(u.fightsFirst?{fightsFirst:u.fightsFirst}:{})});
   const explain=r=>({summary:r.summary,conditions:Array.isArray(r.conditions)?r.conditions:[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
   const unitNames=new Map();for(const u of listUnits){const key=norm(u.name);if(!unitNames.has(key))unitNames.set(key,u);}
@@ -97,16 +98,21 @@
    if(r.units?.length)return r.units.some(n=>norm(n)===norm(u.name));
    const ids=new Set([r.id,r.sourceRuleId].filter(Boolean));return (u.abilities||[]).some(a=>ids.has(a.id));
   }
+  const redact=clueRedactor(factionUnits,scoped),effects=new Map();
+  const effectFor=r=>{if(!effects.has(r))effects.set(r,hideName(redact(r.summary),r.name,'[REDACTED]'));return effects.get(r);};
+  const meaningful=value=>value.replace(/\[REDACTED\]/g,'').replace(/[^a-z0-9]/gi,'').length>=12;
   for(const u of selectedUnits){
    const owned=all.filter(r=>['ability','core'].includes(r.category)&&hasRule(u,r));
-   const ownedNames=new Set(owned.map(r=>norm(r.name))),ownedSummaries=new Set(owned.map(r=>norm(r.summary)));
+   const evidence=scoped.filter(r=>hasRule(u,r)),ownedNames=new Set(evidence.map(r=>norm(r.name))),ownedSummaries=new Set(evidence.map(r=>norm(r.summary))),ownedEffects=new Set(evidence.map(r=>norm(effectFor(r)))),ownedSources=new Set(evidence.flatMap(r=>[r.id,r.sourceRuleId].filter(Boolean)));
+   const asked=new Set();
    for(const r of owned){
-    const seen=new Set(),other=all.filter(a=>{const key=norm(label(a));if(a.category!==r.category||ownedNames.has(norm(a.name))||ownedSummaries.has(norm(a.summary))||hasRule(u,a)||seen.has(key))return false;seen.add(key);return true;});
-    if(other.length<3)continue;
-    questions.push({id:'unit-rule:'+u.id+':'+r.id,mode:'abilities',category:r.category,prompt:'Which ability is listed for '+u.name+'?',clue:'Choose the ability associated with this unit. Its normal conditions still apply.',correct:r.id,options:choices({id:r.id,label:label(r)},other.map(a=>({id:a.id,label:label(a)}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(u)]},explanation:{...explain(r),summary:u.name+' — '+r.name+'\n'+r.summary}});
+    const description=effectFor(r),key=norm(description);if(!meaningful(description)||asked.has(key))continue;
+    const seen=new Set(),other=all.filter(a=>{const description=effectFor(a),key=norm(description);if(a.category!==r.category||!meaningful(description)||ownedNames.has(norm(a.name))||ownedSummaries.has(norm(a.summary))||ownedEffects.has(key)||[a.id,a.sourceRuleId].some(id=>id&&ownedSources.has(id))||hasRule(u,a)||seen.has(key))return false;seen.add(key);return true;});
+    if(other.length<3)continue;asked.add(key);
+    questions.push({id:'unit-rule:'+u.id+':'+r.id,mode:'abilities',category:r.category,prompt:'Which ability is listed for '+u.name+'?',clue:'Choose the effect this unit has. Names that could give away the answer are redacted; normal conditions still apply.',correct:r.id,options:choices({id:r.id,label:description},other.map(a=>({id:a.id,label:effectFor(a)}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(u)]},explanation:{...explain(r),summary:u.name+' — '+r.name+'\n'+r.summary}});
    }
   }
-  const redact=clueRedactor(factionUnits,scoped),clues=new Map(),unitClues=new Set();
+  const clues=new Map(),unitClues=new Set();
   const clueFor=r=>{if(!clues.has(r))clues.set(r,hideName(redact(r.summary),r.name));return clues.get(r);};
   for(const r of all.filter(r=>['ability','core'].includes(r.category))){
    const owners=selectedUnits.filter(u=>hasRule(u,r));
@@ -138,8 +144,7 @@
   const ids=new Set(chosen?[chosen.name,chosen.id,chosen.importSource?.sourceId,chosen.importSource?.record?.id].filter(Boolean).map(norm):[]);
   const rules=(args.rules||[]).filter(r=>(!detachment||chosen&&(r.memberships?L.ruleInArmy(r,{faction:args.faction,detachments:[chosen.name]}):!text(r.detachment||r.importSource?.record?.detachment_id)||ids.has(norm(r.detachment||r.importSource?.record?.detachment_id)))));
   const base=buildBank({...args,army:null,excludeReferenceOnly:true,units:detachment&&!chosen?[]:args.units,rules:detachment&&!chosen?[]:rules}),material=base.studyRules||[],questions=base.questions.filter(q=>q.mode!=='timing').map(q=>({...q,prompt:q.mode==='units'?'Which of these opposing units has this rule?':q.mode==='abilities'?q.prompt.replace('Which ability is listed for ','Which ability should you check on the opposing '):q.mode==='stats'?q.prompt.replace('What is ','What is the opposing '):q.prompt}));
-  const redact=clueRedactor(args.units||[],rules),byId=new Map(material.map(r=>[r.id,r]));
-  for(const q of questions)if(q.mode==='abilities')q.options=q.options.map(o=>({...o,description:redact(byId.get(o.id)?.summary||'')}));
+  const redact=clueRedactor(args.units||[],rules);
   const explanation=r=>({summary:r.summary,conditions:r.conditions||[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
   const options=(correct,others)=>shuffle([correct,...shuffle(others,args.random).slice(0,3)],args.random).map(o=>({...o,faction:args.faction}));
   const review=r=>({kind:'rule',rule:copy(r),units:[]});
