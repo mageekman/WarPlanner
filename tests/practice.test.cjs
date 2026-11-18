@@ -174,3 +174,8 @@ test('source-verified timing metadata survives review snapshots and rejects stal
  for(const build of [Q.buildBank,Q.buildOpponentBank]){const q=build(data).questions.find(q=>q.mode==='timing'&&q.review.rule.id==='r0');assert.ok(q);assert.deepEqual(q.review.rule.timingAudit,r.timingAudit);}
  r.window='end';for(const build of [Q.buildBank,Q.buildOpponentBank])assert.ok(!build(data).questions.some(q=>q.mode==='timing'&&q.review.rule.id==='r0'));
 });
+
+test('opponent timing checks retain unverified duplicate evidence just like own-army practice',()=>{
+ const data=timedSource();data.rules.push({...data.rules[0],id:'reference-copy',referenceOnly:true,phase:[3]});
+ for(const build of [Q.buildBank,Q.buildOpponentBank]){const bank=build(data);assert.ok(bank.counts.timing>0);assert.ok(!bank.questions.some(q=>q.mode==='timing'&&q.review.rule.id==='r0'));assert.ok(bank.timingEvidence.some(r=>r.name===data.rules[0].name&&r.referenceOnly));}
+});

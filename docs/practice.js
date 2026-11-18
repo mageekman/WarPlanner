@@ -125,7 +125,8 @@
    const description=clueFor(r);
    questions.push({id:'ability-unit:'+r.id,mode:'units',category:r.category,prompt:'Which of these units has this rule?',clue:description,correct:owner.id,options:choices({id:owner.id,label:owner.name},others.map(u=>({id:u.id,label:u.name}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(owner)]},explanation:{...explain(r),summary:owner.name+' — '+r.name+'\n'+r.summary}});
   }
-  questions.push(...timingQuestions(all,{faction,random,evidence:eligible,review:r=>({kind:'rule',rule:ruleView(r),units:selectedUnits.filter(u=>hasRule(u,r)).map(unitView)})}));
+  const timingEvidence=scoped.filter(relevant).map(r=>Object.fromEntries(['name','detachment','referenceOnly','sourceReview','timingAudit','phase','turn','window','timings'].filter(k=>r[k]!==undefined).map(k=>[k,copy(r[k])])));
+  questions.push(...timingQuestions(all,{faction,random,evidence:timingEvidence,review:r=>({kind:'rule',rule:ruleView(r),units:selectedUnits.filter(u=>hasRule(u,r)).map(unitView)})}));
   const profiles=[];
   for(const u of selectedUnits){const read=P?P.read(u):[],names=new Map();for(const p of read){const key=norm(p.name||u.name);names.set(key,(names.get(key)||0)+1);}for(const p of read){if(names.get(norm(p.name||u.name))>1)continue;for(const f of P.fields)if(known(p[f.key],f.key))profiles.push({unit:u,profile:p,field:f,value:format(p[f.key],f.key)});}}
   const statSeen=new Set();
@@ -137,7 +138,7 @@
    questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),review:{kind:'stats',units:[unitView(u)],profile:copy(p),stat:f.key,sourceUrl:u.sourceUrl||'',sourceLabel:u.sourceLabel||'Current catalog unit profile'},explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
   }
   for(const q of questions)if(q.mode!=='units')q.clue=redact(q.clue);
-  return {studyRules:all.map(ruleView),faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['units','timing','abilities','stats'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
+  return {studyRules:all.map(ruleView),timingEvidence,faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['units','timing','abilities','stats'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
  }
  function buildOpponentBank({detachment='',...args}={}){
   const chosen=(args.detachments||[]).find(d=>norm(d.faction)===norm(args.faction)&&norm(d.name)===norm(detachment)&&d.enabled!==false&&d.siteExcluded!=='combat-patrol');
@@ -153,7 +154,7 @@
    if(others.length<3)continue;
    questions.push({id:'opponent-effect:'+r.id,mode:'effects',category:r.category,faction:args.faction,prompt:'What effect should you expect from your opponent’s '+r.name+'?',clue:[r.detachment?'Opponent detachment: '+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):''].filter(Boolean).join('\n')||'Recall the effect; its targets and conditions still apply.',correct:r.id,options:options({id:r.id,label:hideName(r.summary,r.name)},others.map(a=>({id:a.id,label:hideName(a.summary,a.name)}))),review:review(r),explanation:explanation(r)});
   }
-  questions.push(...timingQuestions(material,{faction:args.faction,random:args.random,opponent:true,review}));
+  questions.push(...timingQuestions(material,{faction:args.faction,random:args.random,opponent:true,evidence:base.timingEvidence||material,review}));
   for(const q of questions)q.clue=redact(q.clue);
   return {...base,perspective:'opponent',detachment:chosen?.name||'',invalidDetachment:!!detachment&&!chosen,questions,counts:Object.fromEntries(Object.keys(opponentModes).filter(m=>m!=='mixed').map(m=>[m,questions.filter(q=>q.mode===m).length]))};
  }
