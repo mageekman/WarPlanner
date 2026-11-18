@@ -272,6 +272,17 @@
     if(!Array.isArray(saved)||saved.length!==entries.length)throw Error('Import response was incomplete. Reload the catalog to verify before trying again.');
     saved.forEach(validate);const map=new Map(records.map(r=>[r.key,r]));for(const row of saved)map.set(row.key,row);records=[...map.values()];version++;invalidateCache();return copy(saved);
    },
+   async submitFeedback(payload){
+    check();const {data,error}=await client.from('user_feedback').insert(copy(payload)).select('*').single();check();
+    if(error?.code==='23505'){
+     const saved=result(await client.from('user_feedback').select('*').eq('id',payload.id).single());check();
+     if(!saved||Object.keys(payload).some(key=>key==='context'?Object.keys(payload.context).length!==Object.keys(saved.context||{}).length||Object.keys(payload.context).some(k=>payload.context[k]!==saved.context[k]):saved[key]!==payload[key]))throw Error('This report changed. Please send it as a new submission.');
+     return saved;
+    }
+    if(error)throw Error(error.message||'Could not send feedback.');return data;
+   },
+   async listFeedback(filter='open'){check();if(!isAdmin)throw Error('Administrator access is required.');let query=client.from('user_feedback').select('*').order('created_at',{ascending:false}).order('id');if(filter==='open')query=query.in('status',['new','in-progress']);else if(filter==='resolved')query=query.eq('status','resolved');else if(filter!=='all')throw Error('Choose a valid feedback view.');const rows=result(await query.limit(100))||[];check();return rows;},
+   async setFeedbackStatus(id,status){check();if(!isAdmin)throw Error('Administrator access is required.');if(!['new','in-progress','resolved'].includes(status))throw Error('Choose a valid feedback status.');const saved=result(await client.from('user_feedback').update({status}).eq('id',id).select('*').single());check();return saved;},
    async submitReport(payload){check();const saved=result(await client.rpc('submit_rule_report',{payload:copy(payload)}));check();return saved;},
    async listReports(status='pending'){
     check();if(!isAdmin)throw Error('Administrator access is required.');const all=[];
