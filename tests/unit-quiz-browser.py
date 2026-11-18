@@ -20,6 +20,7 @@ with sync_playwright() as p:
   assert page.locator('[name=practice_modes][value=rules]').count()==0
   assert page.locator('[name=practice_modes][value=units]').is_checked()
   assert not page.locator('[name=practice_modes][value=abilities]').is_checked()
+  page.locator('[name=practice_modes][value=timing]').uncheck()
   page.locator('#practice-setup button[type=submit]').click()
   question=page.evaluate('quizTest.questions[0]');assert question['mode']=='units'
   assert page.locator('.practice-clue').inner_text()==question['clue']

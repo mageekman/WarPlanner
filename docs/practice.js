@@ -3,7 +3,7 @@
  'use strict';
  const node=typeof module!=='undefined'&&module.exports,P=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles,M=node?require('./mechanics.js'):root.WarPlannerMechanics,L=node?require('./lessons.js'):root.WarPlanLessons;
  const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),text=s=>String(s||'').trim(),copy=x=>structuredClone(x);
- const modes={mixed:'Mixed practice',units:'Match rule text to a unit',abilities:'Unit abilities',stats:'Unit stats'};
+ const modes={mixed:'Mixed practice',units:'Match rule text to a unit',timing:'Timing & triggers',abilities:'Unit abilities',stats:'Unit stats'};
  const opponentModes={mixed:'Mixed opponent practice',effects:'Recognize the effect',timing:'Spot the timing',units:'Match opponent rule text to a unit',abilities:'Know its abilities',stats:'Know its profile'};
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule','core-stratagem':'Core Stratagems',stratagem:'Stratagem',enhancement:'Enhancement'};
  function shuffle(items,random=Math.random){const result=[...items];for(let i=result.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;}
@@ -17,6 +17,28 @@
   if(!names.length)return value=>value;
   const pattern=new RegExp('(^|[^a-z0-9])(?:'+names.map(name=>name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?=$|[^a-z0-9])','gi');
   return value=>String(value||'').replace(pattern,(_match,prefix)=>prefix+'[REDACTED]');
+ }
+ // A question must have one recorded timing, including all equivalent named entries.
+ function timingQuestions(material,{faction,random,opponent=false,evidence=material,review}={}){
+  const turn=value=>opponent?(value==='you'?'opponent':value==='opponent'?'you':'either'):value;
+  const single=r=>{
+   if(r.referenceOnly||r.sourceReview)return null;
+   const unique=new Map(L.ruleTimings(r).map(t=>[JSON.stringify([t.phase,t.turn,t.window]),t]));if(unique.size!==1)return null;
+   const t=[...unique.values()][0];
+   return t.phase?.length===1&&Number.isInteger(t.phase[0])&&t.phase[0]>=0&&t.phase[0]<=4&&['you','opponent','either'].includes(t.turn)&&L.timingWindows[t.window]&&!['round','round-end','prebattle'].includes(t.window)?t:null;
+  };
+  const signature=t=>t?JSON.stringify([t.phase,t.turn,t.window]):null,byName=new Map();
+  const nameKey=r=>norm(r.name)+'|'+norm(r.detachment);
+  for(const r of evidence){const key=nameKey(r);if(!byName.has(key))byName.set(key,new Set());byName.get(key).add(signature(single(r)));}
+  const rows=material.flatMap(r=>{
+   const t=single(r),variants=byName.get(nameKey(r));if(!t||variants?.size!==1||!variants.has(signature(t)))return [];
+   return [{rule:r,label:L.timingLabel({...t,turn:turn(t.turn)})}];
+  }),labels=[...new Set(rows.map(row=>row.label))];
+  return rows.flatMap(({rule:r,label})=>{
+   const others=labels.filter(value=>value!==label);if(others.length<3)return [];
+   const options=shuffle([{id:label,label},...shuffle(others,random).slice(0,3).map(label=>({id:label,label}))],random).map(option=>({...option,faction}));
+   return [{id:(opponent?'opponent-timing:':'timing:')+r.id,mode:'timing',category:r.category,faction,prompt:opponent?'When does your opponent’s '+r.name+' apply?':'When can you use '+r.name+'?',clue:[r.detachment?(opponent?'Opponent detachment: ':'Detachment: ')+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):'',opponent?'Recall its recorded phase, player turn and timing window. Turn labels are from your perspective.':'Choose the phase, player turn and trigger window recorded for this rule.'].filter(Boolean).join('\n'),correct:label,options,review:review(r),explanation:{summary:r.summary,conditions:r.conditions||[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||'',...(opponent?{opponentTiming:label}:{timing:label})}}];
+  });
  }
  function buildBank({rules=[],units=[],faction,army=null,excludeReferenceOnly=false,detachments:catalogDetachments=[],random=Math.random}={}){
   // Catalog names and summaries recur in the choice/ownership loops. Keep this
@@ -79,6 +101,7 @@
    const description=clueFor(r);
    questions.push({id:'ability-unit:'+r.id,mode:'units',category:r.category,prompt:'Which of these units has this rule?',clue:description,correct:owner.id,options:choices({id:owner.id,label:owner.name},others.map(u=>({id:u.id,label:u.name}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(owner)]},explanation:{...explain(r),summary:owner.name+' — '+r.name+'\n'+r.summary}});
   }
+  questions.push(...timingQuestions(all,{faction,random,evidence:eligible,review:r=>({kind:'rule',rule:ruleView(r),units:selectedUnits.filter(u=>hasRule(u,r)).map(unitView)})}));
   const profiles=[];
   for(const u of selectedUnits){const read=P?P.read(u):[],names=new Map();for(const p of read){const key=norm(p.name||u.name);names.set(key,(names.get(key)||0)+1);}for(const p of read){if(names.get(norm(p.name||u.name))>1)continue;for(const f of P.fields)if(known(p[f.key],f.key))profiles.push({unit:u,profile:p,field:f,value:format(p[f.key],f.key)});}}
   const statSeen=new Set();
@@ -90,13 +113,13 @@
    questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),review:{kind:'stats',units:[unitView(u)],profile:copy(p),stat:f.key,sourceUrl:u.sourceUrl||'',sourceLabel:u.sourceLabel||'Current catalog unit profile'},explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
   }
   for(const q of questions)if(q.mode!=='units')q.clue=redact(q.clue);
-  return {studyRules:all.map(ruleView),faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['units','abilities','stats'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
+  return {studyRules:all.map(ruleView),faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['units','timing','abilities','stats'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
  }
  function buildOpponentBank({detachment='',...args}={}){
   const chosen=(args.detachments||[]).find(d=>norm(d.faction)===norm(args.faction)&&norm(d.name)===norm(detachment)&&d.enabled!==false&&d.siteExcluded!=='combat-patrol');
   const ids=new Set(chosen?[chosen.name,chosen.id,chosen.importSource?.sourceId,chosen.importSource?.record?.id].filter(Boolean).map(norm):[]);
   const rules=(args.rules||[]).filter(r=>(!detachment||chosen&&(r.memberships?L.ruleInArmy(r,{faction:args.faction,detachments:[chosen.name]}):!text(r.detachment||r.importSource?.record?.detachment_id)||ids.has(norm(r.detachment||r.importSource?.record?.detachment_id)))));
-  const base=buildBank({...args,army:null,excludeReferenceOnly:true,units:detachment&&!chosen?[]:args.units,rules:detachment&&!chosen?[]:rules}),material=base.studyRules||[],questions=base.questions.map(q=>({...q,prompt:q.mode==='units'?'Which of these opposing units has this rule?':q.mode==='abilities'?q.prompt.replace('Which ability is listed for ','Which ability should you check on the opposing '):q.mode==='stats'?q.prompt.replace('What is ','What is the opposing '):q.prompt}));
+  const base=buildBank({...args,army:null,excludeReferenceOnly:true,units:detachment&&!chosen?[]:args.units,rules:detachment&&!chosen?[]:rules}),material=base.studyRules||[],questions=base.questions.filter(q=>q.mode!=='timing').map(q=>({...q,prompt:q.mode==='units'?'Which of these opposing units has this rule?':q.mode==='abilities'?q.prompt.replace('Which ability is listed for ','Which ability should you check on the opposing '):q.mode==='stats'?q.prompt.replace('What is ','What is the opposing '):q.prompt}));
   const redact=clueRedactor(args.units||[],rules),byId=new Map(material.map(r=>[r.id,r]));
   for(const q of questions)if(q.mode==='abilities')q.options=q.options.map(o=>({...o,description:redact(byId.get(o.id)?.summary||'')}));
   const explanation=r=>({summary:r.summary,conditions:r.conditions||[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
@@ -107,19 +130,7 @@
    if(others.length<3)continue;
    questions.push({id:'opponent-effect:'+r.id,mode:'effects',category:r.category,faction:args.faction,prompt:'What effect should you expect from your opponent’s '+r.name+'?',clue:[r.detachment?'Opponent detachment: '+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):''].filter(Boolean).join('\n')||'Recall the effect; its targets and conditions still apply.',correct:r.id,options:options({id:r.id,label:hideName(r.summary,r.name)},others.map(a=>({id:a.id,label:hideName(a.summary,a.name)}))),review:review(r),explanation:explanation(r)});
   }
-  const flip=turn=>turn==='you'?'opponent':turn==='opponent'?'you':'either';
-  const timingRows=material.flatMap(r=>{
-   const timings=L.ruleTimings(r),unique=new Map(timings.map(t=>[JSON.stringify([t.phase,t.turn,t.window]),t]));
-   if(unique.size!==1)return [];
-   const t=[...unique.values()][0];
-   if(t.phase?.length!==1||!Number.isInteger(t.phase[0])||t.phase[0]<0||t.phase[0]>4||!['you','opponent','either'].includes(t.turn)||!L.timingWindows[t.window]||['round','round-end','prebattle'].includes(t.window))return [];
-   return [{rule:r,label:L.timingLabel({...t,turn:flip(t.turn)})}];
-  });
-  const timingChoices=[...new Set(timingRows.map(t=>t.label))];
-  for(const {rule:r,label} of timingRows){
-   const others=timingChoices.filter(t=>t!==label);if(others.length<3)continue;
-   questions.push({id:'opponent-timing:'+r.id,mode:'timing',category:r.category,faction:args.faction,prompt:'When does your opponent’s '+r.name+' apply?',clue:[r.detachment?'Opponent detachment: '+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):'','Recall its recorded phase, player turn and timing window. Turn labels are from your perspective.'].filter(Boolean).join('\n'),correct:label,options:options({id:label,label},others.map(label=>({id:label,label}))),review:review(r),explanation:{...explanation(r),opponentTiming:label}});
-  }
+  questions.push(...timingQuestions(material,{faction:args.faction,random:args.random,opponent:true,review}));
   for(const q of questions)q.clue=redact(q.clue);
   return {...base,perspective:'opponent',detachment:chosen?.name||'',invalidDetachment:!!detachment&&!chosen,questions,counts:Object.fromEntries(Object.keys(opponentModes).filter(m=>m!=='mixed').map(m=>[m,questions.filter(q=>q.mode===m).length]))};
  }

@@ -41,5 +41,5 @@ test('saved source corrections stay distinct from the pinned source and original
 });
 test('all factions have faction-scoped rule, stat and unit quiz material; unresolved effects never become answers',()=>{
  C.apply(after);
- for(const faction of Object.values(names)){const bank=Q.buildBank({faction,rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});for(const k of Object.keys(Q.modes).filter(mode=>mode!=='mixed'))assert.ok(bank.counts[k]>0,faction+' '+k);for(const q of bank.questions){assert.equal(q.faction,faction);assert.ok(q.options.every(o=>o.faction===faction));if(q.review.rule)assert.equal(M.summaryState(q.review.rule),'available');}}
+ for(const faction of Object.values(names)){const bank=Q.buildBank({faction,rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});for(const k of ['units','stats','abilities'])assert.ok(bank.counts[k]>0,faction+' '+k);for(const q of bank.questions){assert.equal(q.faction,faction);assert.ok(q.options.every(o=>o.faction===faction));if(q.review.rule)assert.equal(M.summaryState(q.review.rule),'available');}}
 });

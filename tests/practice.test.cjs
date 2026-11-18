@@ -117,3 +117,25 @@ test('matching text cannot use equivalent effects or redacted unit-specific copi
  const data=source();data.rules[0].summary='Rule r0: Unit 0 can reroll one save.';data.rules[1].summary='Rule r1: Unit 1 can reroll one save.';
  const bank=Q.buildBank(data),q=bank.questions.find(q=>q.id==='ability-unit:r0');assert.ok(q);assert.equal(q.clue,'this rule: [REDACTED] can reroll one save.');assert.ok(!q.options.some(o=>o.id==='u1'));assert.equal(bank.questions.filter(other=>other.mode==='units'&&other.clue===q.clue).length,1);
 });
+function timedSource(){const data=source();data.rules.forEach((r,i)=>Object.assign(r,{phase:[i%5],turn:i%2?'opponent':'you',window:i%2?'after':'select'}));return data;}
+test('own-army timing questions teach phase, player turn and trigger window without flipping perspective',()=>{
+ const data=timedSource(),before=JSON.stringify(data),bank=Q.buildBank(data),questions=bank.questions.filter(q=>q.mode==='timing');assert.equal(questions.length,8);assert.equal(bank.counts.timing,8);
+ const q=questions.find(q=>q.id==='timing:r0');assert.match(q.prompt,/When can you use Rule r0/);assert.match(q.correct,/Command.*Your turn.*When selected/);assert.equal(q.review.rule.turn,'you');assert.equal(q.review.rule.id,'r0');assert.match(questions.find(q=>q.id==='timing:r1').correct,/Movement.*Opponent’s turn.*After acting/);
+ for(const q of questions){assert.equal(q.options.length,4);assert.equal(new Set(q.options.map(o=>o.label)).size,4);assert.equal(q.options.filter(o=>o.id===q.correct).length,1);assert.ok(q.options.every(o=>o.faction==='Test'));}
+ assert.equal(JSON.stringify(data),before);const session=Q.createSession(bank,{types:['units','timing'],count:10,random:rng()});assert.equal(session.questions.filter(q=>q.mode==='timing').length,5);assert.equal(session.scope,'faction');
+});
+test('timing practice skips missing, invalid, reference-only and ambiguous timing records',()=>{
+ const data=timedSource(),invalid=[{id:'no-phase',phase:[]},{id:'multi-phase',phase:[0,1]},{id:'bad-phase',phase:[8]},{id:'bad-turn',turn:'unknown'},{id:'reference',referenceOnly:true},{id:'prebattle',window:'prebattle'},{id:'multiple',timings:[{phase:[0],turn:'you',window:'start'},{phase:[2],turn:'you',window:'after'}]}];
+ data.rules.push(...invalid.map(extra=>rule(extra.id,'army',{phase:[0],turn:'you',window:'start',...extra})));const bank=Q.buildBank(data);for(const {id} of invalid)assert.ok(!bank.questions.some(q=>q.id==='timing:'+id),id);
+});
+test('same-named rules with conflicting timings cannot create a misleading timing question',()=>{
+ const data=timedSource();data.rules.push({...data.rules[0],id:'different-timing',phase:[3]});const bank=Q.buildBank(data);assert.ok(!bank.questions.some(q=>q.id==='timing:r0'));assert.ok(bank.counts.timing>0);
+});
+test('saved-list timing questions respect chosen detachments and equipped enhancements',()=>{
+ const data=timedSource();data.rules.push(rule('chosen','army',{detachment:'Chosen',phase:[1],turn:'you',window:'start'}),rule('unselected','army',{detachment:'Other',phase:[1],turn:'you',window:'start'}),rule('equipped','enhancement',{detachment:'Chosen',enhancement:'Useful boon',phase:[4],turn:'you',window:'before'}));
+ const army={name:'Timing list',faction:'Test',detachments:['Chosen'],units:data.units.map((u,i)=>({name:u.name,details:i===0?['Enhancement: Useful boon']:[]}))};let bank=Q.buildBank({...data,army});assert.ok(bank.questions.some(q=>q.id==='timing:chosen'));assert.ok(bank.questions.some(q=>q.id==='timing:equipped'));assert.ok(!bank.questions.some(q=>q.id==='timing:unselected'));
+ assert.equal(Q.createSession(bank,{types:['timing'],count:5}).listName,'Timing list');army.units[0].details=[];bank=Q.buildBank({...data,army});assert.ok(!bank.questions.some(q=>q.id==='timing:equipped'));
+});
+test('opponent timing questions retain the opposite perspective without duplicating own-army questions',()=>{
+ const bank=Q.buildOpponentBank(timedSource());assert.ok(bank.counts.timing>0);assert.ok(!bank.questions.some(q=>q.id.startsWith('timing:')));assert.equal(new Set(bank.questions.filter(q=>q.mode==='timing').map(q=>q.id)).size,bank.counts.timing);assert.match(bank.questions.find(q=>q.id==='opponent-timing:r0').correct,/Opponent’s turn/);
+});
