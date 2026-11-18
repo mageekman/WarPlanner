@@ -15,7 +15,7 @@ with sync_playwright() as p:
    elif f.is_file():r.fulfill(path=str(f))
    else:r.fulfill(body='')
   page.route('**/*',route);page.goto('http://localhost/');page.locator('nav [data-view=overview]').click()
-  page.evaluate("""() => {WarPlannerContent.apply(WarPlannerContent.seed());refreshWarPlannerContent();const original=WarPlannerPractice.createSession;WarPlannerPractice.createSession=(bank,options)=>{const session=original(bank,options);window.quizTest=session;return session;};}""")
+  page.evaluate("""() => {WarPlannerContent.apply(WarPlannerContent.seed());refreshWarPlannerContent();const original=WarPlannerPractice.createSession;WarPlannerPractice.createSession=(bank,options)=>{const session=original(bank,options);const index=session.questions.findIndex(q=>q.mode==='timing'&&q.clue.startsWith('Effect:'));if(index>0)[session.questions[0],session.questions[index]]=[session.questions[index],session.questions[0]];window.quizTest=session;return session;};}""")
   page.locator('nav [data-view=practice]').click()
   assert page.locator('[name=practice_modes][value=timing]').is_checked()
   page.locator('[name=practice_scope]').select_option('list');page.locator('[name=practice_modes][value=units]').uncheck()
@@ -23,12 +23,16 @@ with sync_playwright() as p:
   question=page.evaluate('quizTest.questions[0]');assert question['mode']=='timing';assert page.evaluate('quizTest.scope')=='list'
   assert page.locator('[data-practice-answer]').count()==4
   assert question['prompt'].startswith('When can you use ')
+  assert question['clue'].startswith('Effect:');assert page.locator('.practice-clue').inner_text()==question['clue']
+  import re
+  assert not re.search(r'\b(phase|turn|round|when|after|before|until)\b',question['clue'].split('\n')[0],re.I)
   page.locator('[data-practice-answer]').nth(next(i for i,o in enumerate(question['options']) if o['id']==question['correct'])).click()
   assert question['review']['rule']['name'] in page.locator('.practice-explanation').inner_text()
   page.locator('[data-practice-action=reset]').click();page.locator('[name=practice_goal]').select_option('opponent')
   page.locator('[data-practice-action=no-types]').click();page.locator('[name=practice_modes][value=timing]').check()
   page.locator('#practice-setup button[type=submit]').click();question=page.evaluate('quizTest.questions[0]');assert question['mode']=='timing';assert question['id'].startswith('opponent-timing:')
   assert question['prompt'].startswith('When does your opponent')
+  assert question['clue'].startswith('Effect:');assert page.locator('.practice-clue').inner_text()==question['clue']
   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth');assert not errors,errors
   print(str(width)+': timing default, own-list timing questions, answer reveals and opponent perspective pass')
   page.close()

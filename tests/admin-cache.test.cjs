@@ -44,3 +44,9 @@ test('global attention view opens from Workshop and keeps permission checks',asy
  await h.click({adminAction:'review-exit'});assert.match(h.api.render(),/<h1>Rules workshop<\/h1>/);
  h.service.isAdmin=false;await h.click({adminAction:'attention'});assert.match(h.api.render(),/Administrator access required/);
 });
+
+test('Workshop rule editor offers unverified targeting fields without changing rule ownership',()=>{
+ const h=harness(),one=h.service.records.find(r=>r.kind==='rule');h.api.setService(h.service);h.api.openGuideRules([{id:one.data.id}]);
+ const html=h.api.renderGuideEditor();for(const name of ['side','scope','requiredKeywords','excludedKeywords','range','visibility','conditions','verified'])assert.ok(html.includes('name="targeting-'+name+'"'),name);
+ assert.match(html,/Applies to these unit names/);assert.match(html,/Every keyword must match/);assert.doesNotMatch(html,/name="targeting-verified" checked/);
+});

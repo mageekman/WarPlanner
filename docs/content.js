@@ -35,6 +35,40 @@
  }
  const defaults=seed(),defaultEnhancements=copy(L.catalog.enhancements);
  function stringList(value,label){if(!Array.isArray(value)||value.some(s=>typeof s!=='string'||s.length>2000))throw Error(label+' must be a list of text values.');}
+ // Optional structured targeting is separate from the units that own a rule.
+ function targetingReviewKey(data){
+  const {verified,reviewKey,...criteria}=data.targeting||{};
+  const stable=value=>Array.isArray(value)?value.map(stable):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(k=>[k,stable(value[k])])):value;
+  return JSON.stringify(stable([criteria,...['name','category','summary','conditions','targetText','memberships','sourceUrl','units','leadingUnitRequired','leadingBodyguard','phase','turn','window','timings'].map(k=>data[k]??null)]));
+ }
+ function validateTargeting(data){
+  const t=data.targeting;if(t===undefined)return;
+  const keys=['version','side','scope','requiredKeywords','excludedKeywords','range','visibility','conditions','verified','reviewKey'];
+  if(!t||typeof t!=='object'||Array.isArray(t)||Object.keys(t).some(k=>!keys.includes(k))||t.version!==1)throw Error('Use version 1 structured targeting fields.');
+  if(!['','friendly','enemy','either'].includes(t.side)||!['','unit','model','bearer'].includes(t.scope)||!['','required','not-required'].includes(t.visibility))throw Error('Choose valid target side, scope and visibility.');
+  for(const key of ['requiredKeywords','excludedKeywords','conditions']){
+   stringList(t[key],'Target '+key);
+   if(t[key].length>30||t[key].some(s=>!s.trim()||s.length>(key==='conditions'?2000:100))||new Set(t[key].map(norm)).size!==t[key].length)throw Error('Use up to 30 distinct target '+key+' entries.');
+  }
+  if(t.requiredKeywords.some(k=>t.excludedKeywords.some(x=>norm(x)===norm(k))))throw Error('A target keyword cannot be both required and excluded.');
+  if(t.range!==null&&(typeof t.range!=='number'||!Number.isFinite(t.range)||t.range<=0||t.range>240))throw Error('Target range must be blank or a number greater than 0 and up to 240 inches.');
+  if(typeof t.verified!=='boolean'||(t.reviewKey!==undefined&&typeof t.reviewKey!=='string'))throw Error('Choose whether targeting has been verified.');
+  if(t.verified){
+   if(!t.side||!t.scope||!t.visibility)throw Error('Choose target side, scope and visibility before verifying targeting.');
+   if(data.referenceOnly)throw Error('Review reference-only rules before verifying targeting.');
+   if(!data.summary?.trim())throw Error('Add a rule summary before verifying targeting.');
+   if(t.scope==='bearer'&&t.side!=='friendly')throw Error('The bearer must be a friendly target.');
+   if(t.reviewKey!==targetingReviewKey(data))throw Error('The rule or targeting has changed. Review and verify targeting again.');
+  }
+ }
+ function captureTargeting(data,fd){
+  // Older forms and imports keep their existing metadata intact.
+  if(!fd.has('targeting-fields'))return;
+  const get=k=>String(fd.get('targeting-'+k)||'').trim(),list=k=>get(k).split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  const t={version:1,side:get('side'),scope:get('scope'),requiredKeywords:list('requiredKeywords'),excludedKeywords:list('excludedKeywords'),range:get('range')===''?null:Number(get('range')),visibility:get('visibility'),conditions:list('conditions'),verified:fd.has('targeting-verified')};
+  if(!t.side&&!t.scope&&!t.visibility&&!t.requiredKeywords.length&&!t.excludedKeywords.length&&t.range===null&&!t.conditions.length&&!t.verified){delete data.targeting;return;}
+  data.targeting=t;if(t.verified)t.reviewKey=targetingReviewKey(data);
+ }
  function validateTimings(timings){
   if(!Array.isArray(timings)||!timings.length||timings.length>20)throw Error('Add between 1 and 20 timings.');
   const seen=new Set();for(const t of timings){
@@ -91,6 +125,7 @@
   if(d.sourceUrl&&!/^https?:\/\//i.test(d.sourceUrl))throw Error('Source links must start with https:// or http://.');
   if(JSON.stringify(d).length>100000)throw Error('This entry is too large.');
   if(row.kind==='rule'){
+   validateTargeting(d);
    if(d.sharedRuleId!==undefined&&(typeof d.sharedRuleId!=='string'||!/^[a-zA-Z0-9_-]{1,180}$/.test(d.sharedRuleId)||d.sharedRuleId===d.id))throw Error('Choose a different shared rule ID.');
    if(d.sharedRuleIds!==undefined){stringList(d.sharedRuleIds,'Linked rule IDs');if(d.sharedRuleIds.some(id=>!/^[a-zA-Z0-9_-]{1,180}$/.test(id)))throw Error('Invalid linked rule ID.');}
    if(d.memberships!==undefined){
@@ -296,6 +331,6 @@
    dispose(){disposed=true;isAdmin=false;records=[];version++;}
   };
  }
- const api={get generation(){return generation;},filterRecords,siteExcluded,combatPatrolOnly,archiveCombatPatrol,kinds,windows,seed:()=>copy(defaults),validateTimings,captureTimings,timingFields,editTimingRows,validate,apply,reset:()=>apply([]),create};
+ const api={get generation(){return generation;},filterRecords,siteExcluded,combatPatrolOnly,archiveCombatPatrol,kinds,windows,seed:()=>copy(defaults),validateTargeting,targetingReviewKey,captureTargeting,validateTimings,captureTimings,timingFields,editTimingRows,validate,apply,reset:()=>apply([]),create};
  if(node)module.exports=api;else root.WarPlannerContent=api;
 })(typeof window!=='undefined'?window:globalThis);

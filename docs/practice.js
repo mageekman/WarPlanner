@@ -18,6 +18,23 @@
   const pattern=new RegExp('(^|[^a-z0-9])(?:'+names.map(name=>name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?=$|[^a-z0-9])','gi');
   return value=>String(value||'').replace(pattern,(_match,prefix)=>prefix+'[REDACTED]');
  }
+ // Show only the effect before an answer. Trigger clauses, duration, frequency,
+ // phase labels and repeated rule titles belong in the unchanged answer reveal.
+ function timingEffect(rule){
+  let value=hideName(text(rule.summary),rule.name,'[REDACTED]');
+  if(/\bEFFECT\s*:/i.test(value))value=value.split(/\bEFFECT\s*:/i).slice(1).join(' ');
+  value=value.replace(/\b(?:WHEN|TIMING|TRIGGER|DURATION|USAGE|RESTRICTIONS?)\s*:[^\n]*(?:\n|$)/gi,'[REDACTED] ');
+  // Removing the whole qualifying clause avoids leaving an event or turn as a hint.
+  value=value.replace(/\b(?:when(?:ever)?|each time|every time|(?:just\s+|immediately\s+)?after|before|while|if|unless)\b[^,;:.!?\n]*/gi,'[REDACTED]');
+  value=value.replace(/\b(?:once|twice|three times)\b[^,;:.!?\n]*/gi,'[REDACTED]');
+  value=value.replace(/\b(?:until|during|throughout)\b[^,;:.!?\n]*/gi,'[REDACTED]');
+  value=value.replace(/\b(?:at|in|for|from|since)\s+(?=(?:(?:the|your|their|our|either|any|each|every|this|that|same|current|next|previous|opponent[’']s|player[’']s|a|an)\s+)*(?:start|end|beginning|command|movement|shooting|charge|fight|phase|turn|round|battle|reinforcements?|arrivals?)\b)[^,;:.!?\n]*/gi,'[REDACTED]');
+  value=value.replace(/\b(?:(?:the|your|their|our|either|any|each|every|this|that|same|current|next|previous|opponent[’']s|player[’']s)\s+)*(?:(?:start|end|beginning)\s+of\s+)?(?:(?:the|your|their|our|either|any|each|every|this|that|same|current|next|previous|opponent[’']s|player[’']s)\s+)*(?:(?:Command|Movement|Shooting|Charge|Fight)\s+phase|(?:battle\s+)?round|turn|phase)(?:\s+\d+)?\b/gi,'[REDACTED]');
+  value=value.replace(/\b(?:has|have|had|just)\s+(?:shot|fought|charged|advanced|fallen back)|\bselected to (?:shoot|fight|move)|\b(?:reinforcements? step|start of turn|end of turn)\b/gi,'[REDACTED]');
+  value=value.replace(/(?:\[REDACTED\][\s,;:.–—-]*){2,}/g,'[REDACTED] ').replace(/[ \t]+/g,' ').trim();
+  // A timing-only summary should not turn into a wall of redaction markers.
+  return value.replace(/\[REDACTED\]/g,'').replace(/[^a-z0-9]/gi,'').length>=12?value:'';
+ }
  // A question must have one recorded timing, including all equivalent named entries.
  function timingQuestions(material,{faction,random,opponent=false,evidence=material,review}={}){
   const turn=value=>opponent?(value==='you'?'opponent':value==='opponent'?'you':'either'):value;
@@ -36,8 +53,9 @@
   }),labels=[...new Set(rows.map(row=>row.label))];
   return rows.flatMap(({rule:r,label})=>{
    const others=labels.filter(value=>value!==label);if(others.length<3)return [];
+   const effect=timingEffect(r);
    const options=shuffle([{id:label,label},...shuffle(others,random).slice(0,3).map(label=>({id:label,label}))],random).map(option=>({...option,faction}));
-   return [{id:(opponent?'opponent-timing:':'timing:')+r.id,mode:'timing',category:r.category,faction,prompt:opponent?'When does your opponent’s '+r.name+' apply?':'When can you use '+r.name+'?',clue:[r.detachment?(opponent?'Opponent detachment: ':'Detachment: ')+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):'',opponent?'Recall its recorded phase, player turn and timing window. Turn labels are from your perspective.':'Choose the phase, player turn and trigger window recorded for this rule.'].filter(Boolean).join('\n'),correct:label,options,review:review(r),explanation:{summary:r.summary,conditions:r.conditions||[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||'',...(opponent?{opponentTiming:label}:{timing:label})}}];
+   return [{id:(opponent?'opponent-timing:':'timing:')+r.id,mode:'timing',category:r.category,faction,prompt:opponent?'When does your opponent’s '+r.name+' apply?':'When can you use '+r.name+'?',clue:[effect?'Effect: '+effect:'',r.detachment?(opponent?'Opponent detachment: ':'Detachment: ')+r.detachment:'',r.units?.length?'Applies to: '+r.units.join(' · '):'',opponent?'Recall its recorded phase, player turn and timing window. Turn labels are from your perspective.':'Choose the phase, player turn and trigger window recorded for this rule.'].filter(Boolean).join('\n'),correct:label,options,review:review(r),explanation:{summary:r.summary,conditions:r.conditions||[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||'',...(opponent?{opponentTiming:label}:{timing:label})}}];
   });
  }
  function buildBank({rules=[],units=[],faction,army=null,excludeReferenceOnly=false,detachments:catalogDetachments=[],random=Math.random}={}){

@@ -139,3 +139,17 @@ test('saved-list timing questions respect chosen detachments and equipped enhanc
 test('opponent timing questions retain the opposite perspective without duplicating own-army questions',()=>{
  const bank=Q.buildOpponentBank(timedSource());assert.ok(bank.counts.timing>0);assert.ok(!bank.questions.some(q=>q.id.startsWith('timing:')));assert.equal(new Set(bank.questions.filter(q=>q.mode==='timing').map(q=>q.id)).size,bank.counts.timing);assert.match(bank.questions.find(q=>q.id==='opponent-timing:r0').correct,/Opponent’s turn/);
 });
+
+test('own and opponent timing clues show the effect but redact explicit timing, duration, usage and unit names',()=>{
+ const data=timedSource();const r=data.rules[0];r.units=['Unit 0'];r.summary='Once per battle, at the end of your Movement phase, Unit 0 selects one visible enemy within 18 inches. Until the start of your next Command phase, friendly models add 1 to Wound rolls against that enemy.';const original=JSON.stringify(data);
+ for(const build of [Q.buildBank,Q.buildOpponentBank]){const q=build(data).questions.find(q=>q.mode==='timing'&&q.review.rule.id===r.id);assert.ok(q);assert.match(q.clue,/Effect:/);assert.match(q.clue,/visible enemy within 18 inches/);assert.match(q.clue,/add 1 to Wound rolls/);assert.match(q.clue,/\[REDACTED\]/);const effect=q.clue.split('\n')[0];assert.doesNotMatch(effect,/Movement|Command|phase|once|per battle|Unit 0/i);assert.equal(q.review.rule.summary,r.summary);assert.equal(q.explanation.summary,r.summary);}
+ assert.equal(JSON.stringify(data),original);
+});
+test('timing clues redact event triggers and embedded rule names without losing the effect',()=>{
+ const data=timedSource();Object.assign(data.rules[0],{summary:'Rule r0: When an enemy unit has selected its targets, subtract 1 from Hit rolls until the end of the phase. Each time this unit is selected to shoot, gain Lethal Hits.'});
+ const q=Q.buildBank(data).questions.find(q=>q.id==='timing:r0');assert.match(q.clue,/subtract 1 from Hit rolls/);assert.match(q.clue,/gain Lethal Hits/);assert.doesNotMatch(q.clue,/Rule r0|enemy unit has selected|selected to shoot|end of the phase/);assert.equal(q.review.rule.name,'Rule r0');
+});
+test('timing effect clues handle labelled exports and omit timing-only summaries',()=>{
+ const data=timedSource();data.rules[0].summary='WHEN: Your Shooting phase. TARGET: One friendly unit. EFFECT: Ranged weapons gain Sustained Hits 1 until the end of that phase.';data.rules[1].summary='At the end of your Movement phase.';
+ const bank=Q.buildBank(data),q=bank.questions.find(q=>q.id==='timing:r0');assert.match(q.clue,/Ranged weapons gain Sustained Hits 1/);assert.doesNotMatch(q.clue,/Shooting|TARGET:|that phase/);assert.doesNotMatch(bank.questions.find(q=>q.id==='timing:r1').clue,/Effect:/);
+});

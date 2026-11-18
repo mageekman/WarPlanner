@@ -107,3 +107,37 @@ test('canonical faction names keep distinct factions isolated even if normalized
 test('indexed links retain the built-in Asuryani alias even when its faction entry is disabled',()=>{
  const disabled=row('faction:aeldari');disabled.enabled=false;const unit={key:'unit:alias-test',kind:'unit',faction:'Asuryani',name:'Alias test unit',enabled:true,data:{id:'alias-test',name:'Alias test unit',keywords:[],abilities:[],bodyguardIds:[],modelCounts:[1]}},r=row('rule:walker');r.key='rule:alias-effect';Object.assign(r.data,{id:'alias-effect',name:'Alias effect',sourceRuleId:'',units:['Alias test unit']});C.apply([disabled,unit,r]);assert.deepEqual(L.catalog.units.find(u=>u.id==='alias-test').abilities,[{id:'alias-effect'}]);
 });
+
+test('structured targeting is optional, validates constraints and keeps owners separate from targets',()=>{
+ const r=row('rule:walker'),owners=structuredClone(r.data.units);
+ C.validate(r);
+ r.data.targeting={version:1,side:'enemy',scope:'unit',requiredKeywords:['Vehicle'],excludedKeywords:['Titanic'],range:6,visibility:'required',conditions:['Measure from this model.'],verified:false};
+ C.validate(r);C.apply([r]);assert.deepEqual(L.abilities.find(x=>x.id===r.data.id).targeting,r.data.targeting);assert.deepEqual(r.data.units,owners);
+ for(const patch of [{version:2},{side:'opponent'},{scope:'army'},{visibility:'maybe'},{range:0},{range:-1},{range:Infinity},{range:'6'},{range:241},{verified:'yes'},{requiredKeywords:['']},{requiredKeywords:['Vehicle','VEHICLE']},{excludedKeywords:['Vehicle']},{conditions:'within range'},{unexpected:true}]){
+  const invalid=structuredClone(r);Object.assign(invalid.data.targeting,patch);assert.throws(()=>C.validate(invalid),/target|Target|structured/);
+ }
+ r.data.targeting.range=null;C.validate(r);r.data.targeting.range=6.5;C.validate(r);
+});
+test('target verification is bound to current rule details and survives JSON object key reordering',()=>{
+ const r=row('rule:walker');r.data.referenceOnly=false;
+ r.data.targeting={version:1,side:'friendly',scope:'unit',requiredKeywords:['Infantry'],excludedKeywords:[],range:6,visibility:'not-required',conditions:[],verified:true};
+ assert.throws(()=>C.validate(r),/verify targeting again/);
+ r.data.targeting.reviewKey=C.targetingReviewKey(r.data);C.validate(r);
+ const reorder=v=>Array.isArray(v)?v.map(reorder):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).reverse().map(([k,x])=>[k,reorder(x)])):v;
+ C.validate(reorder(r));
+ for(const key of ['summary','targetText','sourceUrl']){const changed=structuredClone(r);changed.data[key]=key==='sourceUrl'?'https://example.com/new-source':(changed.data[key]||'')+' changed';assert.throws(()=>C.validate(changed),/verify targeting again/);}
+ const changed=structuredClone(r);changed.data.targeting.range=12;assert.throws(()=>C.validate(changed),/verify targeting again/);
+ r.data.referenceOnly=true;assert.throws(()=>C.validate(r),/reference-only/);
+ r.data.referenceOnly=false;r.data.targeting.scope='bearer';r.data.targeting.side='enemy';assert.throws(()=>C.validate(r),/friendly target/);
+ r.data.targeting.side='';assert.throws(()=>C.validate(r),/before verifying/);
+});
+test('targeting form capture supports drafts, verification, clearing and legacy forms',()=>{
+ const d=row('rule:walker').data;d.referenceOnly=false;
+ const form=values=>({has:k=>Object.hasOwn(values,k),get:k=>values[k]??null});
+ const values={'targeting-fields':'1','targeting-side':'friendly','targeting-scope':'unit','targeting-requiredKeywords':'Infantry\n Character ','targeting-excludedKeywords':'Vehicle','targeting-range':'6','targeting-visibility':'required','targeting-conditions':'Measure from bearer.','targeting-verified':'on'};
+ C.captureTargeting(d,form(values));C.validateTargeting(d);assert.deepEqual(d.targeting.requiredKeywords,['Infantry','Character']);assert.equal(d.targeting.verified,true);
+ const previous=structuredClone(d.targeting);C.captureTargeting(d,form({}));assert.deepEqual(d.targeting,previous);
+ delete values['targeting-verified'];C.captureTargeting(d,form(values));assert.equal(d.targeting.verified,false);assert.equal(d.targeting.reviewKey,undefined);
+ values['targeting-range']='not a distance';C.captureTargeting(d,form(values));assert.throws(()=>C.validateTargeting(d),/range/);
+ C.captureTargeting(d,form({'targeting-fields':'1'}));assert.equal(d.targeting,undefined);
+});

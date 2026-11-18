@@ -19,11 +19,20 @@
  const valueLabels={early:'Early',normal:'Normal order',late:'Late',auto:'Automatic from current rules',yes:'Has Fights First',no:'Does not have Fights First',you:'Your turn',opponent:'Opponent’s turn',either:'Either turn',round:'Start of battle round','turn-start':'Start of turn',start:'Start of phase','core-cp':'Gain Command Points',shock:'Battle-shock',act:'During the phase',select:'When a unit is selected',before:'Before the unit acts',after:'After the unit acts',react:'Reaction to an event',arrivals:'Reinforcements / arrivals',end:'End of phase','turn-end':'End of turn','round-end':'End of battle round',prebattle:'Pre-battle / reference'};
  const labels={rule:'Rules & abilities',unit:'Units',detachment:'Detachments',faction:'Factions',step:'Core guide pages'};
  const options=(values,current,empty='')=>(empty?`<option value="">${e(empty)}</option>`:'')+[...new Set([...values,...(current?[current]:[])])].map(v=>`<option value="${e(v)}" ${v===current?'selected':''}>${e(v==='*'?'All factions':valueLabels[v]||L.categories[v]||v)}</option>`).join('');
- function field(name,label,value,{area=false,help='',type='text',readonly=false}={}){return `<label class="admin-field">${label}${area?`<textarea name="${name}" rows="${['summary','body'].includes(name)?6:3}">${e(value)}</textarea>`:`<input name="${name}" type="${type}" value="${e(value)}" ${readonly?'readonly':''}>`}${help?`<small>${help}</small>`:''}</label>`;}
+ function field(name,label,value,{area=false,help='',type='text',readonly=false}={}){return `<label class="admin-field">${label}${area?`<textarea name="${name}" rows="${['summary','body'].includes(name)?6:3}">${e(value)}</textarea>`:`<input name="${name}" type="${type}" ${name==='targeting-range'?'min="0.01" max="240" step="any"':''} value="${e(value)}" ${readonly?'readonly':''}>`}${help?`<small>${help}</small>`:''}</label>`;}
  const select=(name,label,values,current,empty='')=>`<label class="admin-field">${label}<select name="${name}">${options(values,current,empty)}</select></label>`;
  function guideFields(data,kind){
   const g=L.guideSettings(data,kind);
   return `<details class="admin-guide-settings" ${data.guide||g.order!=='normal'?'open':''}><summary>Guide order & badges</summary><div class="admin-fields">${select('guideOrder','Suggested activation order',['normal','early','late'],g.order)}${field('guideRank','Order within this priority group',g.rank,{type:'number',help:'1 comes first, 99 comes last. Normal-order cards ignore this number.'})}<fieldset class="admin-phases"><legend>Show hints in these phases</legend>${L.phases.map((p,i)=>`<label><input type="checkbox" name="guidePhase" value="${i}" ${g.phases.includes(i)?'checked':''}>${p.name}</label>`).join('')}</fieldset>${select('guideTurn','Show hints during',['you','opponent','either'],g.turn)}${field('guideLabel','Priority badge (optional)',g.label,{help:'Leave blank for Move early, Shoot early, Fight early, or the matching late label.'})}${field('guideNote','Sequencing / badge explanation',g.note,{area:true,help:'Explain why this should happen early or late, or what to remember about a badge.'})}${field('guideFlags','Extra guide badges',g.flags.join('\n'),{area:true,help:'One per line, e.g. Deep Strike, Once per battle, Keep in range. These are reminders; add the actual rule separately.'})}<p class="admin-guide-note">These settings change guide hints and card order. The rule still resolves at its saved timing window. Faction and detachment hints provide defaults for their rules.</p></div></details>`;
+ }
+ function targetingFields(data){
+  const t=data.targeting||{},choice=(name,label,values)=>`<label class="admin-field">${label}<select name="targeting-${name}"><option value="">Not recorded</option>${values.map(([v,label])=>`<option value="${v}" ${t[name]===v?'selected':''}>${label}</option>`).join('')}</select></label>`;
+  const verified=t.verified&&t.reviewKey===C.targetingReviewKey(data);
+  return `<details class="admin-targeting" ${data.targeting?'open':''}><summary>Target eligibility for quizzes${verified?' · Verified':''}</summary><input type="hidden" name="targeting-fields" value="1"><p class="admin-guide-note">Describe what this rule can affect, separately from the units that have it. Leave unknown details unrecorded. These fields prepare future targeting questions; they do not change the guide.</p><div class="admin-fields">${choice('side','Target side',[['friendly','Friendly'],['enemy','Enemy'],['either','Friendly or enemy']])}${choice('scope','Target scope',[['unit','Unit'],['model','Model'],['bearer','Bearer only']])}${field('targeting-requiredKeywords','Required target keywords',(t.requiredKeywords||[]).join('\n'),{area:true,help:'One per line. Every keyword must match (AND). Leave blank only when there are no keyword requirements. Keep alternatives or complex expressions in additional restrictions.'})}${field('targeting-excludedKeywords','Excluded target keywords',(t.excludedKeywords||[]).join('\n'),{area:true,help:'One per line. A target with any of these keywords is excluded.'})}${field('targeting-range','Maximum range (inches)',t.range??'',{type:'number',help:'Blank means no range limit is encoded. Record whose position range is measured from in additional restrictions; do not guess unknown distances.'})}${choice('visibility','Visibility requirement',[['required','Must be visible'],['not-required','Visibility not required']])}${field('targeting-conditions','Additional target restrictions',(t.conditions||[]).join('\n'),{area:true,help:'One per line. Include selection counts, range origin, leading requirements, exceptions and any conditions the quiz must supply. These are not automatically evaluated.'})}<label class="admin-check"><input type="checkbox" name="targeting-verified" ${verified?'checked':''}>I checked all targeting details against the source</label><small>Verify only when all restrictions are recorded. Changes to the rule or targeting clear this check. Complex restrictions will need explicit support before they can generate questions.</small></div></details>`;
+ }
+ function clearTargetingVerification(target){
+  const form=target.closest('#admin-content-form');if(!form||target.name==='targeting-verified')return;
+  const box=form.querySelector?.('[name="targeting-verified"]');if(box){box.checked=false;const heading=form.querySelector('.admin-targeting > summary');if(heading)heading.textContent='Target eligibility for quizzes';}
  }
  function profileFields(data){
   const profiles=P.read(data);if(!Object.hasOwn(data,'profiles')&&!profiles.length)profiles.push({name:data.name||''});
@@ -61,6 +70,7 @@
    fields+=field('summary','Rule text / study summary',d.summary,{area:true,help:'Write a short reminder: when it happens, who it affects, and what changes. Keep important limits and conditions. Save to database preserves your wording; source-only imports keep it. A source-derived summary still needs checking against your current rules.'})+field('conditions','Conditions & restrictions',(d.conditions||[]).join('\n'),{area:true,help:'One condition per line.'});
    fields+=field('units','Applies to these unit names',(d.units||[]).join('\n'),{area:true,help:'One exact roster name per line. Leave empty for an army-wide or detachment rule.'});
    fields+=field('targetText','Eligible targets',d.targetText||root.WarPlanActivations.targeting(d,{phase:d.phase[0]||0,turn:'you'})?.text||'',{area:true})+field('triggerText','Timing reminder',d.triggerText||'');
+   fields+=targetingFields(d);
    fields+=`<label class="admin-check"><input name="leadingUnitRequired" type="checkbox" ${d.leadingUnitRequired?'checked':''}>Requires the character to be leading a unit</label>`+field('leadingBodyguard','Required bodyguard unit (optional)',d.leadingBodyguard||'');
    fields+=field('enhancement','Equipped enhancement name (enhancements only)',d.enhancement||'')+field('bearerKeywords','Required bearer keywords (enhancements only)',(d.bearerKeywords||[]).join('\n'),{area:true});
    fields+=`<label class="admin-check"><input name="referenceOnly" type="checkbox" ${d.referenceOnly?'checked':''}>Reference reminder — effect still needs review</label>`;
@@ -178,6 +188,7 @@
   if(row.kind==='unit')d.fightsFirst=get('fightsFirst');
   d.sourceUrl=get('sourceUrl');d.sourceLabel=get('sourceLabel');d.faction=row.faction;
   if(['rule','step'].includes(row.kind)){d.status='admin-reviewed';d.sourceIds=[...new Set([...(d.sourceIds||[]),'admin'])];}
+  if(row.kind==='rule')C.captureTargeting(d,fd);
   row.enabled=row.kind==='step'||fd.has('enabled');return check?C.validate(row):row;
  }
  function newEntry(kind){
@@ -193,7 +204,7 @@
   if(event.target.id==='attention-search'){attentionQuery=event.target.value;attentionLimit=50;root.clearTimeout?.(reviewSearchTimer);reviewSearchTimer=setTimeout(()=>{const results=document.querySelector('#attention-results');if(attentionActive&&results)results.innerHTML=attentionResults();},150);return;}
   if(event.target.id==='review-search'){reviewQuery=event.target.value;root.clearTimeout?.(reviewSearchTimer);reviewSearchTimer=setTimeout(()=>{const results=document.querySelector('#review-results');if(reviewActive&&results)results.innerHTML=reviewResults();},150);return;}
   if(event.target.id==='admin-search'){query=event.target.value;document.querySelector('#admin-results').innerHTML=results();}
-  else if(event.target.closest('#admin-content-form')){if(event.target.name==='reviewData')event.target.dataset.pending='true';markDirty();}
+  else if(event.target.closest('#admin-content-form')){if(event.target.name==='reviewData')event.target.dataset.pending='true';clearTargetingVerification(event.target);markDirty();}
  });
  document.addEventListener('change',event=>{
   if(!service?.isAdmin)return;
@@ -206,7 +217,7 @@
   const membership=event.target.name?.match(/^membership-(\d+)-faction$/);if(membership&&draft?.data.memberships){draft=capture(event.target.form,false);draft.data.memberships[Number(membership[1])].detachments=[];dirty=true;refresh();return;}
   if(event.target.id==='admin-summary-filter'){summaryFilter=event.target.value;document.querySelector('#admin-results').innerHTML=results();}
   if(event.target.id==='admin-reference-filter'){referenceFilter=event.target.value;document.querySelector('#admin-results').innerHTML=results();}
-  if(event.target.closest('#admin-content-form')){markDirty();if(event.target.name==='faction'){
+  if(event.target.closest('#admin-content-form')){clearTargetingVerification(event.target);markDirty();if(event.target.name==='faction'){
    const det=event.target.form.elements.detachment;if(det)det.innerHTML=options(L.catalog.detachments.filter(d=>L.factionMatches(d.faction,event.target.value)).map(d=>d.name),'','None / faction-wide');
   }}
  });
