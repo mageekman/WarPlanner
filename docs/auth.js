@@ -26,12 +26,12 @@
   password.autocomplete=mode==='signup'||mode==='update'?'new-password':'current-password';
  }
  function showSession(session){
-  if(!session){const hadAccount=!!accountId||!!pendingAccount;++sessionRevision;disposePending();accountId=null;if(hadAccount)window.clearWarPlannerAccount?.();showView('entry');return Promise.resolve();}
-  if(accountId===session.user.id){showView('app');return Promise.resolve();}
+  if(!session){window.WarPlannerAccount?.setService(null);const hadAccount=!!accountId||!!pendingAccount;++sessionRevision;disposePending();accountId=null;if(hadAccount)window.clearWarPlannerAccount?.();showView('entry');return Promise.resolve();}
+  if(accountId===session.user.id){window.WarPlannerAccount?.setUser(session.user);showView('app');return Promise.resolve();}
   // INITIAL_SESSION, SIGNED_IN and the password response can describe the same
   // login. They share one verified load instead of cancelling each other.
   if(pendingAccount?.id===session.user.id)return pendingAccount.promise;
-  const hadAccount=!!accountId;disposePending();accountId=null;if(hadAccount)window.clearWarPlannerAccount?.();
+  const hadAccount=!!accountId;disposePending();accountId=null;window.WarPlannerAccount?.setService(null);if(hadAccount)window.clearWarPlannerAccount?.();
   const request={id:session.user.id,revision:++sessionRevision,eventVersion:authEventVersion,service:null,content:null,promise:null};pendingAccount=request;
   showLoading('Opening your study space…','Verifying your account…');
   request.promise=loadAccount(request).finally(()=>{if(pendingAccount===request)pendingAccount=null;});return request.promise;
@@ -48,10 +48,16 @@
    const local=window.getWarPlannerLocalLists?.(identity.user)||[];
    const [{lists,idMap}]=await Promise.all([request.service.load(local),request.content?.load()]);
    if(!current()){request.service.dispose();request.content?.dispose();return;}
+   window.WarPlannerAccount?.setService(window.WarPlannerAccountService?.create({client,createClient:window.supabase.createClient,config,getAccountId:()=>accountId,onDeleted:async user=>{
+    await client.auth.signOut({scope:'local'}).catch(()=>{});setMode('signin');showSession(null);
+    try{const prefix='warplanner.account.'+user.id+'.';for(const key of Object.keys(localStorage))if(key.startsWith(prefix)||key==='warplanner.onboarding.'+user.id+'.v1')localStorage.removeItem(key);}catch{}
+    await window.WarPlannerRuntimeCache?.remove('runtime-v1:'+config.supabaseUrl+':'+user.id).catch(()=>{});
+    report('Your account has been deleted.');
+   }}),identity.user);
    window.setWarPlannerAccount?.(identity.user,lists,request.service,idMap,request.content);
    report('');
    accountId=identity.user.id;showView('app');
-  }catch(error){request.service?.dispose();request.content?.dispose();if(current()){accountId=null;window.clearWarPlannerAccount?.();showView('entry');report(error.message||'Could not load your study space. Please reload and try again.');}}
+  }catch(error){request.service?.dispose();request.content?.dispose();if(current()){accountId=null;window.WarPlannerAccount?.setService(null);window.clearWarPlannerAccount?.();showView('entry');report(error.message||'Could not load your study space. Please reload and try again.');}}
  }
  showLoading('Restoring your session…','Checking whether you are already signed in…');
  if(!config?.supabaseUrl||!window.supabase){showView('entry');report('Account service is unavailable. Please reload and try again.');submit.disabled=true;return;}
@@ -70,6 +76,7 @@
   const toggle=event.target.closest('[data-auth-mode]');
   if(toggle&&!busy){setMode(toggle.dataset.authMode);return;}
   if(event.target.closest('[data-auth-signout]')&&!busy){
+   if(window.WarPlannerAccount?.busy){window.alert('Please wait for your account change to finish.');return;}
    if(window.hasUnsavedListDraft?.()){window.alert('Save or cancel your edits before signing out.');return;}
    busy=true;
    try{await window.flushWarPlannerLists?.();const {error}=await client.auth.signOut();if(error)throw error;setMode('signin');showSession(null);}

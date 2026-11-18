@@ -16,7 +16,7 @@ create table public.rule_reports (
  status text not null default 'pending' check(status in ('pending','approved','rejected')),
  created_at timestamptz not null default now(),
  reviewed_at timestamptz,
- reviewed_by uuid references auth.users(id),
+ reviewed_by uuid references auth.users(id) on delete set null,
  applied_entry jsonb,
  check((issue_type='missing' and entity_key is null and base_revision is null and missing_name is not null) or (issue_type<>'missing' and entity_key is not null and base_revision>0 and missing_name is null)),
  check((status='pending' and reviewed_at is null and reviewed_by is null and applied_entry is null) or (status<>'pending' and reviewed_at is not null and reviewed_by is not null and (status<>'approved' or applied_entry is not null)))

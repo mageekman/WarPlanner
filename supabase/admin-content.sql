@@ -35,7 +35,7 @@ create table public.rules_catalog_history (
  revision bigint not null,
  entry jsonb not null,
  changed_at timestamptz not null default now(),
- changed_by uuid not null default auth.uid() references auth.users(id),
+ changed_by uuid default auth.uid() references auth.users(id) on delete set null,
  primary key(key,revision)
 );
 alter table public.rules_catalog_history enable row level security;

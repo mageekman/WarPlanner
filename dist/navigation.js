@@ -1,7 +1,7 @@
 /* Shareable tab URLs and browser history for static hosting. */
 (function(root){
  'use strict';
- const pages={overview:{slug:'overview',label:'Study home'},guide:{slug:'guide',label:'Guided play'},army:{slug:'army',label:'My army'},practice:{slug:'practice',label:'Practice'},admin:{slug:'workshop',label:'Rules workshop'}};
+ const pages={overview:{slug:'overview',label:'Study home'},guide:{slug:'guide',label:'Guided play'},army:{slug:'army',label:'My army'},practice:{slug:'practice',label:'Practice'},admin:{slug:'workshop',label:'Rules workshop'},account:{slug:'account',label:'My Account'}};
  const href=view=>'#/'+(pages[view]||pages.guide).slug;
  function read(hash){return Object.keys(pages).find(view=>hash===href(view)||hash===href(view)+'/')||null;}
  function create({window:win,getView,apply,canAccess=()=>true,canLeave=()=>true}){
