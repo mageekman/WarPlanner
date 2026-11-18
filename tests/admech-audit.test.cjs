@@ -86,7 +86,7 @@ test('normal and Combat Patrol variants retain their scopes, equipment and disti
  assert.equal(M.summaryState(get('omnispex-purge-corps-skitarii-vanguard')),'needs-summary');
 });
 test('43 unresolved rules stay outside practice and official dash stats are not fabricated quiz answers',()=>{
- C.apply(after);const bad=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(bad.size,43);const bank=Q.buildBank({faction:'Adeptus Mechanicus',rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.counts.rules>0);assert.ok(bank.counts.stats>0);
+ C.apply(after);const bad=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(bad.size,43);const bank=Q.buildBank({faction:'Adeptus Mechanicus',rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.studyRules.length>0);assert.ok(bank.counts.stats>0);
  for(const q of bank.questions){assert.ok(!bad.has(q.review?.rule?.id));for(const choice of q.options)assert.ok(!bad.has(choice.id));if(q.review?.kind==='stats')assert.ok(!q.options.some(o=>o.label==='-'));}
  const aircraft=new Set(['archaeopter-fusilave','archaeopter-stratoraptor']);assert.ok(!bank.questions.some(q=>q.review?.kind==='stats'&&aircraft.has(q.review.units[0]?.id)&&['M','OC'].includes(q.review.stat)));assert.ok(bank.questions.some(q=>q.review?.kind==='stats'&&aircraft.has(q.review.units[0]?.id)&&q.review.stat==='T'));
 });

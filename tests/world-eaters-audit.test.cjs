@@ -54,7 +54,7 @@ test('Blood Tithe, Idols, equipment, alternative branches and usage caps remain 
  for(const row of result.changes.filter(r=>r.data.category==='stratagem')){const core=sources['core-stratagems.json'].find(c=>c.ability_id===row.data.id);assert.ok(row.data.conditions.some(c=>c.includes(core.cp_cost+'CP')));}
 });
 test('nine unresolved source issues stay out of all practice answers and distractors',()=>{
- C.apply(after);const bad=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(bad.size,9);const bank=Q.buildBank({faction:'World Eaters',rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.counts.rules>100);assert.ok(bank.counts.stats>0);for(const q of bank.questions){assert.ok(!bad.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!bad.has(o.id));}
+ C.apply(after);const bad=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(bad.size,9);const bank=Q.buildBank({faction:'World Eaters',rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.studyRules.length>100);assert.ok(bank.counts.stats>0);for(const q of bank.questions){assert.ok(!bad.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!bad.has(o.id));}
 });
 test('the timeline and actual Guide show reviewed rules in the correct turn and source state',()=>{
  C.apply(after);const model=T.build(after,{faction:'World Eaters'});assert.ok(model.phases.length);const s=state(army(['Khorne Berzerkers'],'Berzerker Warband'),2,'opponent'),steps=A.steps(s);assert.ok(steps.length);assert.ok(steps.some(step=>cards(s,step).some(c=>c.id===get('blood-surge').id)));assert.deepEqual(get('punishing-suppression').guide.phases,[2]);

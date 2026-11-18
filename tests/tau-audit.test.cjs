@@ -42,7 +42,7 @@ test('changed text, timing, source, stats, revisions and added/deleted rows reje
  for(const edit of [r=>r[0].revision++,r=>r.find(x=>x.kind==='rule').data.summary='My saved wording',r=>r.find(x=>x.kind==='rule').data.phase=[3],r=>r.find(x=>x.kind==='unit').data.profiles=[],r=>r.find(x=>x.kind==='rule').data.importSource.record.effect={type:'changed'},r=>r.push({...r[0],key:'new'}),r=>r.pop()]){const snapshot=structuredClone(before);edit(snapshot);assert.throws(()=>audit(snapshot),/changed|Missing entry/i);}
 });
 test('all 84 unresolved T’au records are excluded from practice answers and distractors',()=>{
- C.apply(after);const bank=Q.buildBank({faction:"T'au Empire",units:L.catalog.units,rules:L.abilities,detachments:L.catalog.detachments});assert.ok(bank.counts.rules>0);assert.ok(bank.counts.stats>0);const unavailable=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(unavailable.size,84);
+ C.apply(after);const bank=Q.buildBank({faction:"T'au Empire",units:L.catalog.units,rules:L.abilities,detachments:L.catalog.detachments});assert.ok(bank.studyRules.length>0);assert.ok(bank.counts.stats>0);const unavailable=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(unavailable.size,84);
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('filtered T’au timeline retains army rules and actual guide places Fieldcraft at Command end',()=>{

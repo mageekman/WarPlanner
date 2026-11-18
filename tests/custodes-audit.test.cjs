@@ -36,7 +36,7 @@ test('stance readiness, weapon scope, defensive comparisons and limits remain ex
 test('conflicting records and the empty detachment remain identifiable and out of practice pools',()=>{
  for(const prefix of ['castellans-mark-guardians-of-the-throne','huntress-eye-null-maiden-vigil','inspirational-exemplar-auric-champions','vigil-unending-lions-of-the-emperor','swift-as-the-eagle-guardians-of-the-throne'])assert.equal(M.summaryState(get(prefix)),'needs-summary',prefix);
  assert.equal(M.summaryState(get('fearless-and-unrelenting')),'missing');C.apply(after);
- const bank=Q.buildBank({faction:'Adeptus Custodes',units:L.catalog.units,rules:L.abilities,detachments:L.catalog.detachments});assert.ok(bank.counts.rules>0);assert.ok(bank.counts.stats>0);
+ const bank=Q.buildBank({faction:'Adeptus Custodes',units:L.catalog.units,rules:L.abilities,detachments:L.catalog.detachments});assert.ok(bank.studyRules.length>0);assert.ok(bank.counts.stats>0);
  const unavailable=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));for(const q of bank.questions||[])assert.ok(!unavailable.has(q.review?.rule?.id));
 });
 test('same-name shield and reserve abilities retain their distinct mechanics and datasheet scope',()=>{

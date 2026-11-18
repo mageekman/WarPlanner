@@ -85,7 +85,7 @@ test('saved wording, profiles, timing, source effects, revisions and membership 
  for(const edit of [r=>r[0].revision++,r=>r.find(x=>x.kind==='rule').data.summary='Saved wording',r=>r.find(x=>x.kind==='rule').data.phase=[3],r=>r.find(x=>x.kind==='unit').data.profiles=[],r=>r.find(x=>x.kind==='rule').data.importSource.record.effect={type:'changed'},r=>r.push({...r[0],key:'new'}),r=>r.pop()]){const snapshot=structuredClone(before);edit(snapshot);assert.throws(()=>audit(snapshot),/changed|Missing entry/i);}
 });
 test('all 54 unresolved entries are excluded from practice answers and distractors',()=>{
- C.apply(after);const bank=Q.buildBank({faction:'Chaos Knights',units:L.catalog.units,rules:L.abilities,detachments:L.catalog.detachments});assert.ok(bank.counts.rules>0);assert.ok(bank.counts.stats>0);const unavailable=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(unavailable.size,54);
+ C.apply(after);const bank=Q.buildBank({faction:'Chaos Knights',units:L.catalog.units,rules:L.abilities,detachments:L.catalog.detachments});assert.ok(bank.studyRules.length>0);assert.ok(bank.counts.stats>0);const unavailable=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(unavailable.size,54);
  for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const o of q.options)assert.ok(!unavailable.has(o.id));}
 });
 test('timeline filters detachments and every one of the 110 rules is reachable in real Guide decks',()=>{

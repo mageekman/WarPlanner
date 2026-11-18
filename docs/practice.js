@@ -3,8 +3,8 @@
  'use strict';
  const node=typeof module!=='undefined'&&module.exports,P=node?require('./unit-profiles.js'):root.WarPlannerUnitProfiles,M=node?require('./mechanics.js'):root.WarPlannerMechanics,L=node?require('./lessons.js'):root.WarPlanLessons;
  const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),text=s=>String(s||'').trim(),copy=x=>structuredClone(x);
- const modes={mixed:'Mixed practice',rules:'Match the rule',stats:'Unit stats',abilities:'Unit abilities',units:'Which unit has this ability?'};
- const opponentModes={mixed:'Mixed opponent practice',effects:'Recognize the effect',timing:'Spot the timing',units:'Identify the opposing unit',abilities:'Know its abilities',stats:'Know its profile',rules:'Name the rule'};
+ const modes={mixed:'Mixed practice',units:'Match rule text to a unit',abilities:'Unit abilities',stats:'Unit stats'};
+ const opponentModes={mixed:'Mixed opponent practice',effects:'Recognize the effect',timing:'Spot the timing',units:'Match opponent rule text to a unit',abilities:'Know its abilities',stats:'Know its profile'};
  const categories={ability:'Ability',army:'Army / Detachment',core:'Core Rule','core-stratagem':'Core Stratagems',stratagem:'Stratagem',enhancement:'Enhancement'};
  function shuffle(items,random=Math.random){const result=[...items];for(let i=result.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;}
  function usable(rule){return !!text(rule.name)&&Object.hasOwn(categories,rule.category)&&!!text(rule.summary)&&(!M||M.summaryState(rule)==='available')&&!/needs a checked summary|no complete mechanics|no effect mechanics|check its full wording|source does not support a complete/i.test(rule.summary);}
@@ -51,11 +51,6 @@
   const ruleView=r=>Object.fromEntries(['id','sourceRuleId','sourceCatalogKey','originFaction','allied','name','faction','memberships','units','category','summary','conditions','sourceIds','sourceUrl','sourceLabel','status','referenceOnly','mechanicsDetails','targetText','triggerText','phase','turn','window','timings','detachment'].filter(key=>r[key]!==undefined).map(key=>[key,copy(r[key])]));
   const unitView=u=>({id:u.id,name:u.name,faction:u.faction,...(u.sourceCatalogKey?{sourceCatalogKey:u.sourceCatalogKey,originFaction:u.originFaction}:{}),...(u.fightsFirst?{fightsFirst:u.fightsFirst}:{})});
   const explain=r=>({summary:r.summary,conditions:Array.isArray(r.conditions)?r.conditions:[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});
-  for(const r of all){
-   const seen=new Set([norm(label(r))]),other=all.filter(a=>{if(a.category!==r.category||norm(a.summary)===norm(r.summary)||norm(a.name)===norm(r.name)||seen.has(norm(label(a))))return false;seen.add(norm(label(a)));return true;});
-   if(other.length<3)continue;
-   const id='rule:'+r.id;questions.push({id,mode:'rules',category:r.category,prompt:'Which '+(categories[r.category]||'rule').toLowerCase()+' matches this description?',clue:hideName(r.summary,r.name),correct:r.id,options:choices({id:r.id,label:label(r)},other.map(a=>({id:a.id,label:label(a)}))),review:{kind:'rule',rule:ruleView(r),units:[]},explanation:explain(r)});
-  }
   const unitNames=new Map();for(const u of listUnits){const key=norm(u.name);if(!unitNames.has(key))unitNames.set(key,u);}
   const selectedUnits=[...unitNames.values()];
   function hasRule(u,r){
@@ -71,15 +66,18 @@
     questions.push({id:'unit-rule:'+u.id+':'+r.id,mode:'abilities',category:r.category,prompt:'Which ability is listed for '+u.name+'?',clue:'Choose the ability associated with this unit. Its normal conditions still apply.',correct:r.id,options:choices({id:r.id,label:label(r)},other.map(a=>({id:a.id,label:label(a)}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(u)]},explanation:{...explain(r),summary:u.name+' — '+r.name+'\n'+r.summary}});
    }
   }
+  const redact=clueRedactor(factionUnits,scoped),clues=new Map(),unitClues=new Set();
+  const clueFor=r=>{if(!clues.has(r))clues.set(r,hideName(redact(r.summary),r.name));return clues.get(r);};
   for(const r of all.filter(r=>['ability','core'].includes(r.category))){
-   const owners=selectedUnits.filter(u=>hasRule(u,r)&&hideName(r.name,u.name)===r.name);
-   const equivalent=scoped.filter(a=>norm(a.name)===norm(r.name)||norm(a.summary)===norm(r.summary)||(a.sourceRuleId||a.id)===(r.sourceRuleId||r.id));
+   const owners=selectedUnits.filter(u=>hasRule(u,r));
+   const equivalent=scoped.filter(a=>norm(a.name)===norm(r.name)||norm(a.summary)===norm(r.summary)||norm(clueFor(a))===norm(clueFor(r))||(a.sourceRuleId||a.id)===(r.sourceRuleId||r.id));
    const allOwners=selectedUnits.filter(u=>equivalent.some(a=>hasRule(u,a)));
    const others=selectedUnits.filter(u=>!allOwners.includes(u));
-   if(!owners.length||others.length<3)continue;
+   if(!owners.length||others.length<3||unitClues.has(norm(clueFor(r))))continue;
+   unitClues.add(norm(clueFor(r)));
    const owner=shuffle(owners,random)[0];
-   const description=r.summary;
-   questions.push({id:'ability-unit:'+r.id,mode:'units',category:r.category,prompt:'Which unit has this ability?',clue:r.name+'\n\n'+description,correct:owner.id,options:choices({id:owner.id,label:owner.name},others.map(u=>({id:u.id,label:u.name}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(owner)]},explanation:{...explain(r),summary:owner.name+' — '+r.name+'\n'+r.summary}});
+   const description=clueFor(r);
+   questions.push({id:'ability-unit:'+r.id,mode:'units',category:r.category,prompt:'Which of these units has this rule?',clue:description,correct:owner.id,options:choices({id:owner.id,label:owner.name},others.map(u=>({id:u.id,label:u.name}))),review:{kind:'ability',rule:ruleView(r),units:[unitView(owner)]},explanation:{...explain(r),summary:owner.name+' — '+r.name+'\n'+r.summary}});
   }
   const profiles=[];
   for(const u of selectedUnits){const read=P?P.read(u):[],names=new Map();for(const p of read){const key=norm(p.name||u.name);names.set(key,(names.get(key)||0)+1);}for(const p of read){if(names.get(norm(p.name||u.name))>1)continue;for(const f of P.fields)if(known(p[f.key],f.key))profiles.push({unit:u,profile:p,field:f,value:format(p[f.key],f.key)});}}
@@ -91,16 +89,14 @@
    const profileLabel=p.name&&norm(p.name)!==norm(u.name)?' ('+p.name+' profile)':'';
    questions.push({id,mode:'stats',category:'stats',prompt:'What is '+u.name+'’s '+f.label+profileLabel+'?',clue:'Choose the value in the saved unit profile.',correct:value,options:choices({id:value,label:value},values.map(v=>({id:v,label:v}))),review:{kind:'stats',units:[unitView(u)],profile:copy(p),stat:f.key,sourceUrl:u.sourceUrl||'',sourceLabel:u.sourceLabel||'Current catalog unit profile'},explanation:{summary:u.name+profileLabel+': '+f.label+' '+value+'.',conditions:[],sourceUrl:/^https?:\/\//i.test(u.sourceUrl||'')?u.sourceUrl:'',sourceLabel:u.sourceLabel||'Current catalog unit profile'}});
   }
-  for(const q of questions)if(q.review.kind==='rule'&&['ability','core'].includes(q.review.rule.category))q.review.units=selectedUnits.filter(u=>hasRule(u,q.review.rule)).map(unitView);
-  const redact=clueRedactor(factionUnits,scoped);
-  for(const q of questions)q.clue=redact(q.clue);
-  return {studyRules:all.map(ruleView),faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['rules','stats','abilities','units'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
+  for(const q of questions)if(q.mode!=='units')q.clue=redact(q.clue);
+  return {studyRules:all.map(ruleView),faction,scope:army?'list':'faction',listName:army?.name||'',unmatchedUnits:army?[...rosterNames].filter(name=>!factionUnits.some(u=>norm(u.name)===name)).map(name=>roster.find(u=>norm(u.name)===name).name):[],questions:questions.map(q=>({...q,faction})),counts:Object.fromEntries(['units','abilities','stats'].map(mode=>[mode,questions.filter(q=>q.mode===mode).length]))};
  }
  function buildOpponentBank({detachment='',...args}={}){
   const chosen=(args.detachments||[]).find(d=>norm(d.faction)===norm(args.faction)&&norm(d.name)===norm(detachment)&&d.enabled!==false&&d.siteExcluded!=='combat-patrol');
   const ids=new Set(chosen?[chosen.name,chosen.id,chosen.importSource?.sourceId,chosen.importSource?.record?.id].filter(Boolean).map(norm):[]);
   const rules=(args.rules||[]).filter(r=>(!detachment||chosen&&(r.memberships?L.ruleInArmy(r,{faction:args.faction,detachments:[chosen.name]}):!text(r.detachment||r.importSource?.record?.detachment_id)||ids.has(norm(r.detachment||r.importSource?.record?.detachment_id)))));
-  const base=buildBank({...args,army:null,excludeReferenceOnly:true,units:detachment&&!chosen?[]:args.units,rules:detachment&&!chosen?[]:rules}),material=base.studyRules||[],questions=base.questions.map(q=>({...q,prompt:q.mode==='units'?'Which opposing unit has this ability?':q.mode==='abilities'?q.prompt.replace('Which ability is listed for ','Which ability should you check on the opposing '):q.mode==='stats'?q.prompt.replace('What is ','What is the opposing '):q.prompt}));
+  const base=buildBank({...args,army:null,excludeReferenceOnly:true,units:detachment&&!chosen?[]:args.units,rules:detachment&&!chosen?[]:rules}),material=base.studyRules||[],questions=base.questions.map(q=>({...q,prompt:q.mode==='units'?'Which of these opposing units has this rule?':q.mode==='abilities'?q.prompt.replace('Which ability is listed for ','Which ability should you check on the opposing '):q.mode==='stats'?q.prompt.replace('What is ','What is the opposing '):q.prompt}));
   const redact=clueRedactor(args.units||[],rules),byId=new Map(material.map(r=>[r.id,r]));
   for(const q of questions)if(q.mode==='abilities')q.options=q.options.map(o=>({...o,description:redact(byId.get(o.id)?.summary||'')}));
   const explanation=r=>({summary:r.summary,conditions:r.conditions||[],sourceUrl:/^https?:\/\//i.test(r.sourceUrl||'')?r.sourceUrl:'',sourceLabel:r.sourceLabel||'Current catalog study summary',detachment:r.detachment||''});

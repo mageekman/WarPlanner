@@ -29,7 +29,7 @@ test('mechanical source checks reject changed effects despite unchanged digests 
 });
 test('source problems and absent effects remain excluded from practice; live stats and reviewed fixes are usable',()=>{
  assert.equal(M.summaryState(row('expanded-suppressing-storm-kygharils-protectors-aeldari')),'needs-summary');assert.match(row('expanded-suppressing-storm-kygharils-protectors-aeldari').summary,/shooting unit/);assert.equal(M.summaryState(row('doom-inescapable-stratagem')),'missing');
- C.apply(after);const bank=Q.buildBank({faction:'Aeldari',rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments}),blocked=new Set(after.filter(r=>r.kind==='rule'&&M.summaryState(r.data)!=='available').map(r=>r.data.id));assert.ok(bank.counts.rules>200);assert.equal(bank.counts.stats,530);for(const q of bank.questions){assert.ok(q.options.every(o=>o.faction==='Aeldari'));assert.ok(!blocked.has(q.review.rule?.id));}
+ C.apply(after);const bank=Q.buildBank({faction:'Aeldari',rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments}),blocked=new Set(after.filter(r=>r.kind==='rule'&&M.summaryState(r.data)!=='available').map(r=>r.data.id));assert.ok(bank.studyRules.length>200);assert.equal(bank.counts.stats,530);for(const q of bank.questions){assert.ok(q.options.every(o=>o.faction==='Aeldari'));assert.ok(!blocked.has(q.review.rule?.id));}
 });
 test('unit profiles, timings, guide hints, detachments and uploaded source records are never overwritten',()=>{
  const original=JSON.stringify(before);refresh(before);assert.equal(JSON.stringify(before),original);

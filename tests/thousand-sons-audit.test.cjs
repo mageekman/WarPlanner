@@ -44,7 +44,7 @@ test('known source differences are retained and disclosed, never silently replac
  assert.match(get('split').summary,/one Brimstone Horror/);assert.match(get('split-pink-horrors').summary,/two Blue Horrors/);assert.match(get('devastating-sorcery-grand-coven').summary,/\+9″/);
 });
 test('unresolved rules are excluded from practice answers and distractors while both empty effects remain visible',()=>{
- C.apply(after);const bank=Q.buildBank({faction:'Thousand Sons',units:L.catalog.units,rules:L.abilities,detachments:L.catalog.detachments});assert.ok(bank.counts.rules>0);assert.ok(bank.counts.stats>0);
+ C.apply(after);const bank=Q.buildBank({faction:'Thousand Sons',units:L.catalog.units,rules:L.abilities,detachments:L.catalog.detachments});assert.ok(bank.studyRules.length>0);assert.ok(bank.counts.stats>0);
  const unavailable=new Set(notes.filter(n=>['needs-summary','missing'].includes(n.state)).map(n=>n.id));for(const q of bank.questions){assert.ok(!unavailable.has(q.review?.rule?.id));for(const option of q.options)assert.ok(!unavailable.has(option.id));}
  assert.equal(M.summaryState(get('committed-to-the-ritual')),'missing');assert.equal(M.summaryState(get('spirit-snare-zadophon-the-soul-eater')),'missing');
 });

@@ -74,5 +74,5 @@ test('only reviewed ordinary variants enter practice; missing Combat Patrol vers
  const full=[...require('../scripts/audit-sororitas.cjs').audit(require('./fixtures/sororitas-audit-before.json')).changes,...require('../scripts/audit-tau.cjs').audit(require('./fixtures/tau-audit-before.json')).changes];
  C.apply(full.map(r=>byKey.get(r.key)||r));
  const excluded=new Set(['acts-of-faith-sanctuary-guardians-adepta-sororitas','for-the-greater-good-sudden-dawn-cadre-tau-empire']);
- for(const faction of ['Adepta Sororitas','T’au Empire']){const bank=Q.buildBank({faction,rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.counts.rules>0);for(const q of bank.questions){assert.ok(!excluded.has(q.review?.rule?.id));for(const choice of q.options)assert.ok(!excluded.has(choice.id));}}
+ for(const faction of ['Adepta Sororitas','T’au Empire']){const bank=Q.buildBank({faction,rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.studyRules.length>0);for(const q of bank.questions){assert.ok(!excluded.has(q.review?.rule?.id));for(const choice of q.options)assert.ok(!excluded.has(choice.id));}}
 });

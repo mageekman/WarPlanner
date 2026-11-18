@@ -23,8 +23,9 @@ test('one edit reaches chapter practice, original links resolve, and reports sel
  const updated=structuredClone(catalog),row=updated.find(r=>r.key===shared.key);row.data.summary='Shared updated study wording for every listed chapter.';C.apply(updated);
  for(const faction of ['Space Marines','Blood Angels','Deathwatch']){
   const rules=L.abilities.filter(r=>r.name===shared.name&&r.faction===faction);assert.equal(rules.length,1);assert.equal(rules[0].summary,row.data.summary);
-  const bank=Q.buildBank({faction,rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments,random:()=>0.5});const questions=bank.questions.filter(q=>q.review.rule?.id===shared.data.id&&q.mode==='rules');assert.equal(questions.length,1);
-  const report=R.practiceContext(questions[0],updated);assert.equal(report.defaultKey,shared.key);assert.equal(report.context.snapshotChanged,false);
+  const bank=Q.buildBank({faction,rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments,random:()=>0.5});const material=bank.studyRules.filter(r=>r.id===shared.data.id);assert.equal(material.length,1);
+  const snapshot={id:'shared-snapshot',mode:'effects',faction,prompt:'Recall the effect',correct:shared.data.id,options:[{id:shared.data.id,label:shared.name}],review:{kind:'rule',rule:material[0],units:[]},explanation:{summary:material[0].summary}};
+  const report=R.practiceContext(snapshot,updated);assert.equal(report.defaultKey,shared.key);assert.equal(report.context.snapshotChanged,false);
   const det=L.catalog.detachments.find(d=>d.faction===faction&&d.name==='Gladius Task Force');assert.ok(det.stratagems.includes(shared.data.id));assert.ok(!det.stratagems.some(id=>before.some(r=>r.data.id===id)));
  }
 });

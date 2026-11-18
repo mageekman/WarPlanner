@@ -67,7 +67,7 @@ test('the timeline and Guide use end-of-Command, enemy Fight end, arrival and af
  const m=timeline.phases[1].lanes.find(l=>l.turn==='you');assert.ok(m.steps.some(st=>[...st.items,...st.slots.flatMap(x=>x.items)].some(x=>x.row.key==='rule:gate-of-infinity-grey-knights')));
 });
 test('29 unresolved rules are excluded from practice answers and distractors',()=>{
- C.apply(after);const bad=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(bad.size,29);const bank=Q.buildBank({faction:'Grey Knights',rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.counts.rules>0);assert.ok(bank.counts.stats>0);for(const q of bank.questions){assert.ok(!bad.has(q.review?.rule?.id));for(const choice of q.options)assert.ok(!bad.has(choice.id));}
+ C.apply(after);const bad=new Set(notes.filter(n=>n.state!=='structured').map(n=>n.id));assert.equal(bad.size,29);const bank=Q.buildBank({faction:'Grey Knights',rules:L.abilities,units:L.catalog.units,detachments:L.catalog.detachments});assert.ok(bank.studyRules.length>0);assert.ok(bank.counts.stats>0);for(const q of bank.questions){assert.ok(!bad.has(q.review?.rule?.id));for(const choice of q.options)assert.ok(!bad.has(choice.id));}
  for(const n of notes)assert.equal(M.summaryState(get(n.id.replace(/-grey-knights$/,''))),n.state==='structured'?'available':n.state);
 });
 test('incomplete event bindings and phase-duration problems keep specific review notes',()=>{

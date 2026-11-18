@@ -70,7 +70,7 @@ test('session cache refreshes when a saved catalog revision changes timing combi
 
 test('practice snapshots retain timing alternatives and detect added or removed timing arrays',()=>{
  const row=armour(),others=['Alpha','Beta','Gamma'].map((name,i)=>{const r=structuredClone(row);r.key='rule:timing-choice-'+i;Object.assign(r.data,{id:'timing-choice-'+i,name,summary:name+' has a distinct study effect.',sourceRuleId:'timing-choice-'+i});r.name=name;delete r.data.memberships;delete r.data.sharedRuleIds;r.data.detachment='';return r;});C.apply([row,...others]);
- const bank=Q.buildBank({faction:'Space Marines',rules:L.abilities,units:[],random:()=>0.5});const q=bank.questions.find(q=>q.mode==='rules'&&q.correct===row.data.id);assert.ok(q);assert.deepEqual(q.review.rule.timings,timings);assert.equal(R.practiceContext(q,[row],'timing-question').context.snapshotChanged,false);
+ const bank=Q.buildBank({faction:'Space Marines',rules:L.abilities,units:[],random:()=>0.5}),material=bank.studyRules.find(r=>r.id===row.data.id);const q=material&&{id:'timing-snapshot',mode:'effects',faction:'Space Marines',prompt:'Recall the effect',correct:material.id,options:[{id:material.id,label:material.name}],review:{kind:'rule',rule:material,units:[]},explanation:{summary:material.summary}};assert.ok(q);assert.deepEqual(q.review.rule.timings,timings);assert.equal(R.practiceContext(q,[row],'timing-question').context.snapshotChanged,false);
  const changed=structuredClone(row);delete changed.data.timings;assert.equal(R.practiceContext(q,[changed],'timing-question').context.snapshotChanged,true);
  const legacy=structuredClone(q);delete legacy.review.rule.timings;assert.equal(R.practiceContext(legacy,[row],'legacy-question').context.snapshotChanged,true);
 });
