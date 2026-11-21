@@ -22,10 +22,14 @@ with sync_playwright() as p:
   printable=result.value;printable.wait_for_load_state()
   assert printable.locator('.phase').count()==10
   assert printable.locator('.rule').count()>0
+  assert printable.locator('.unit .rule-names').count()>0
+  assert printable.locator('.rule-type,.meta,.source').count()==0
+  assert printable.locator('.rule').evaluate_all('(els)=>els.every(el=>el.children.length===1&&el.firstElementChild.tagName==="H4")')
   assert printable.locator('h1').inner_text().endswith('— Checklist')
   printable.locator('#print-scope').select_option('current');assert printable.locator('.phase:visible').count()==1
   printable.emulate_media(media='print');assert not printable.locator('.toolbar').is_visible()
   pdf=printable.pdf(format='A4');assert pdf.startswith(b'%PDF') and len(pdf)>1000
+  Path('/tmp/warplanner-guide-'+str(width)+'.pdf').write_bytes(pdf)
   printable.emulate_media(media='screen')
   with printable.expect_download() as download:printable.locator('#save-button').click()
   artifact=download.value;assert artifact.suggested_filename=='warplanner-guide.html'
