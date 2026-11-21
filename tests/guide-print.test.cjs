@@ -16,3 +16,9 @@ test('print output contains only names and categories, without rule mechanics or
  const L=require('../dist/lessons.js'),a=L.abilities.find(r=>r.id==='walker'),saved={summary:a.summary,conditions:a.conditions};
  try{a.summary='PRIVATE_RULE_MECHANICS_SENTINEL';a.conditions=['PRIVATE_CONDITION_SENTINEL'];const printed=P.build(state());assert.ok(!printed.includes('PRIVATE_RULE_MECHANICS_SENTINEL'));assert.ok(!printed.includes('PRIVATE_CONDITION_SENTINEL'));}finally{Object.assign(a,saved);}
 });
+
+
+test('empty timing sections are omitted from the PDF by default and can be included explicitly',()=>{
+ const empty=state({army:{name:'Empty roster',faction:'Aeldari',units:[]}}),hidden=P.build(empty),shown=P.build({...empty,guideShowEmptyTimings:true});
+ assert.doesNotMatch(hidden,/<section class="step">/);assert.match(shown,/<section class="step">/);assert.equal((hidden.match(/class="phase"/g)||[]).length,10);
+});

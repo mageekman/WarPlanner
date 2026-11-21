@@ -12,7 +12,7 @@
    const s={...snapshot,turn,phase},any=session.anyTime(s),steps=A.steps(s),pages=[];
    if(any.count)pages.push(`<section><h3>Any time in this phase</h3>${deckHTML(any,s)}</section>`);
    for(const step of steps){const deck=session.stepDeck(s,step),missions=D.reminders(s,step);
-    if(s.guideMode!=='learn'&&s.guideSkipEmptySteps&&deck.count===0&&!missions.length)continue;
+    if(s.guideMode!=='learn'&&s.guideShowEmptyTimings!==true&&deck.count===0&&!missions.length)continue;
     pages.push(`<section class="step"><h3>${e(step.title)} <span class="rule-type">Core sequence</span></h3>${missions.map(m=>ruleHTML({name:m.title,category:'disposition'})).join('')}${deckHTML(deck,s)}</section>`);
    }
    sections.push(`<section class="phase" data-current="${phase===snapshot.phase&&turn===snapshot.turn}"><h2>${turn==='you'?'Your turn':'Opponent’s turn'} · ${phases[phase]} phase</h2>${pages.join('')||'<p>No reminders match the current guide settings for this phase.</p>'}</section>`);

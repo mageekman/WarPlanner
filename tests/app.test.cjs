@@ -13,7 +13,7 @@ function app(saved,options={}){
  for(const id of ['#app','#toast','#import-feedback','#import-form button[type=submit]','#army-text','#import-dialog','#import-form','#guide-setup-settings'])elements[id]={innerHTML:'',textContent:'',value:'',style:{},showModal(){this.open=true},close(){this.open=false},addEventListener(type,fn){this[type]=fn}};
  function motionNode(){return {style:{},setAttribute(){},querySelectorAll:()=>[],remove(){},animate(frames,settings){let resolve,reject;const finished=new Promise((a,b)=>{resolve=a;reject=b});const animation={finished,cancel:()=>reject(new Error('cancelled'))};animations.push({frames,settings,finish:resolve});return animation;}};}
  const viewport={clientWidth:400,children:[],append(node){this.children.push(node);}},slide=motionNode();
- const document={querySelector:s=>s==='.guide-viewport'&&options.motion?viewport:s==='.guide-slide'&&options.motion?slide:elements[s],addEventListener:(type,fn)=>listeners[type]=fn};
+ const document={querySelector:s=>s.startsWith('#guide-panel [data-guide-step=')?(elements['#app'].innerHTML.includes('data-guide-step='+s.split('data-guide-step=')[1].slice(0,-1))?{querySelector:()=>({focus(){}})}:undefined):s==='.guide-viewport'&&options.motion?viewport:s==='.guide-slide'&&options.motion?slide:elements[s],addEventListener:(type,fn)=>listeners[type]=fn};
  if(options.motion)document.createElement=()=>motionNode();
  const context=vm.createContext({document,window:{WARPLANNER_CONFIG:options.hosted?{}:undefined,requestAnimationFrame:options.preload?fn=>frames.push(fn):undefined,scrollTo(){},requestIdleCallback:options.warm?fn=>{idle.push(fn);return idle.length;}:undefined,cancelIdleCallback(){},matchMedia:()=>({matches:!!options.reducedMotion})},getComputedStyle:()=>({lineHeight:'16.5px'}),structuredClone,console,confirm:()=>options.confirm!==false,setTimeout:fn=>{if(options.preload)timers.push(fn);return 0;},clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>{if(options.failStorage?.(k))throw Error('Storage unavailable');writes.push({key:k,bytes:v.length});store.set(k,v)}}});
  vm.runInContext(fs.readFileSync(require.resolve('../dist/core.js'),'utf8'),context);
@@ -66,20 +66,20 @@ test('personal rule confirmation survives reload without changing source status'
  b.click({confirmRule:'battle-focus'});
  const c=app([...b.store]);assert.doesNotMatch(c.html(),/You also marked this checked/);
 });
-test('one instruction surface is rendered and detailed phase list starts closed',()=>{
- const a=app();assert.equal((a.html().match(/class="lesson-focus rule-core"/g)||[]).length,1);
+test('one phase surface contains its timing groups and the overview starts closed',()=>{
+ const a=app();assert.equal((a.html().match(/class="lesson-focus"/g)||[]).length,1);
  assert.match(a.html(),/<details id="guide-phase-overview" class="guide-phase-overview" >/);
- assert.doesNotMatch(a.html(),/class="aside"/);
- a.click({phase:'1'});a.click({step:'1'});
- assert.match(a.html(),/<section class="army-lessons flash-board" aria-label="Your army at this phase">/);
- assert.ok(a.html().indexOf('Your army at this phase') < a.html().indexOf('<summary>Why this matters</summary>'));
+ assert.doesNotMatch(a.html(),/class="aside"/);a.click({phase:'1'});
+ assert.match(a.html(),/>Movement phase<\/h2>/);assert.match(a.html(),/>During Movement<\/h3>/);assert.match(a.html(),/>End of Movement<\/h3>/);
+ assert.ok(a.html().indexOf('Your army at this phase')<a.html().indexOf('<summary>Why this matters</summary>'));
 });
-test('empty steps keep the army section open and show an explicit message',()=>{
- const a=app();a.click({step:'3'}); // Core CP, no unit ability window.
- assert.match(a.html(),/<section class="army-lessons" aria-label="Your army at this step">/);
- assert.match(a.html(),/No matching army abilities are listed for this step|No step-specific rules here/);
- assert.ok(a.html().indexOf('Your army at this step')<a.html().indexOf('Why this matters'));
+
+test('empty timings are hidden by default and can be enabled on reload',()=>{
+ const a=app();assert.doesNotMatch(a.html(),/data-guide-step="3"/);
+ a.toggle('guide-show-empty-timings',true);assert.equal(savedState(a.store).guideShowEmptyTimings,false);
+ a.click({action:'reload-guide'});assert.match(a.html(),/data-guide-step="3"/);assert.match(a.html(),/No reminders for this timing/);
 });
+
 test('phase cards show relevant units without dropdowns or per-unit completion',()=>{
  const a=app();a.click({phase:'1'});a.click({step:'1'});
  assert.match(a.html(),/<h3>Swift as the Wind<\/h3>/);
@@ -149,32 +149,32 @@ test('phase navigation sits between turn controls and rule labels without sessio
  assert.doesNotMatch(html,/Session details|class="session-top"|YOUR TURN.*ROUND 1/);
  a.click({phase:'3'});assert.match(a.html(),/id="phase-tab-3"[^>]*aria-selected="true"/);
 });
-test('side arrows replace footer buttons and navigate back across phase boundaries',()=>{
- const a=app();assert.match(a.html(),/aria-label="Previous page" title="Previous page" disabled/);assert.match(a.html(),/aria-label="Next page"/);
+test('footer arrows navigate directly between whole phases',()=>{
+ const a=app();assert.match(a.html(),/class="guide-phase-navigation"/);assert.match(a.html(),/aria-label="Previous phase" disabled/);assert.match(a.html(),/aria-label="Next phase"/);
  assert.doesNotMatch(a.html(),/data-action="study-next"|data-action="step-back"|data-action="skip-step"/);
- a.click({action:'page-previous'});assert.match(a.html(),/<h2[^>]*>Start of Battle Round<\/h2>/);
- a.click({action:'page-next'});assert.match(a.html(),/<h2[^>]*>Start of Turn<\/h2>/);
- a.click({action:'page-previous'});assert.match(a.html(),/<h2[^>]*>Start of Battle Round<\/h2>/);
- a.click({phase:'1'});a.click({action:'page-previous'});assert.match(a.html(),/<h2[^>]*>End of Command<\/h2>/);
- a.click({action:'page-next'});assert.match(a.html(),/<h2[^>]*>Start of Movement<\/h2>/);
+ a.click({action:'page-previous'});assert.equal(savedState(a.store).phase,0);
+ a.click({action:'page-next'});assert.equal(savedState(a.store).phase,1);assert.equal(savedState(a.store).open,0);
+ a.click({action:'page-previous'});assert.equal(savedState(a.store).phase,0);
+ a.click({phase:'4'});a.click({action:'page-previous'});assert.equal(savedState(a.store).phase,3);
 });
+
 test('page arrows cross player turns and rounds in both directions',()=>{
  const a=app();a.click({phase:'4'});a.click({step:'5'});a.click({action:'page-next'});
  let saved=savedState(a.store,'warplan.prototype.v1');assert.equal(saved.turn,'opponent');assert.equal(saved.phase,0);assert.equal(saved.round,1);
- a.click({action:'page-previous'});assert.match(a.html(),/<h2[^>]*>End of Turn<\/h2>/);
+ a.click({action:'page-previous'});assert.match(a.html(),/<h2[^>]*>Fight phase<\/h2>/);
  a.click({turn:'opponent'});a.click({step:'6'});a.click({action:'page-next'});
  saved=savedState(a.store,'warplan.prototype.v1');assert.equal(saved.turn,'you');assert.equal(saved.round,2);
  a.click({action:'page-previous'});saved=savedState(a.store,'warplan.prototype.v1');assert.equal(saved.turn,'opponent');assert.equal(saved.round,1);assert.equal(saved.phase,4);
- assert.match(a.html(),/<h2[^>]*>End of Battle Round<\/h2>/);
+ assert.match(a.html(),/<h2[^>]*>Fight phase<\/h2>/);
 });
 test('swipes navigate horizontally but ignore scrolling, short gestures, controls and multiple touches',()=>{
  const a=app(),point=(x,y)=>({identifier:1,clientX:x,clientY:y});
  a.touch('touchstart',{touches:[point(130,200)]});assert.ok(a.touch('touchend',{changedTouches:[point(45,205)]}));
- assert.match(a.html(),/<h2[^>]*>Start of Turn<\/h2>/);
+ assert.match(a.html(),/<h2[^>]*>Movement phase<\/h2>/);
  a.touch('touchstart',{touches:[point(90,200)]});a.touch('touchend',{changedTouches:[point(180,203)]});
- assert.match(a.html(),/<h2[^>]*>Start of Battle Round<\/h2>/);
+ assert.match(a.html(),/<h2[^>]*>Command phase<\/h2>/);
  a.touch('touchstart',{touches:[point(130,200)]});a.touch('touchmove',{touches:[point(135,260)]});a.touch('touchend',{changedTouches:[point(45,205)]});
- assert.match(a.html(),/<h2[^>]*>Start of Battle Round<\/h2>/);
+ assert.match(a.html(),/<h2[^>]*>Command phase<\/h2>/);
  a.touch('touchstart',{touches:[point(130,200)]});assert.equal(a.touch('touchend',{changedTouches:[point(110,200)]}),false);
  a.touch('touchstart',{touches:[point(130,200)],target:{closest:()=>({})}});assert.equal(a.touch('touchend',{changedTouches:[point(45,200)]}),false);
  a.touch('touchstart',{touches:[point(130,200),{...point(160,200),identifier:2}]});assert.equal(a.touch('touchend',{changedTouches:[point(45,200)]}),false);
@@ -187,18 +187,18 @@ test('only the page body slides while turn controls and phase tabs stay outside 
  assert.ok(html.indexOf('class="phase-nav"')<html.indexOf('class="guide-viewport"'));
  assert.doesNotMatch(html,/class="focus-heading"|class="focus-meta"|class="focus-progress"|class="topbar"/);
  assert.ok(html.indexOf('class="guide-viewport"')<html.indexOf('class="lesson-focus'));
- assert.match(html,/aria-label="Next page"[^>]*><svg viewBox="0 0 24 24"/);
+ assert.match(html,/class="guide-phase-navigation"[\s\S]*aria-label="Next phase"/);
 });
 test('rapid arrow navigation settles the previous page and accepts the next input',async()=>{
  const a=app(undefined,{motion:true});a.click({action:'page-next'});
  assert.equal(a.animations.length,2);assert.equal(savedState(a.store,'warplan.prototype.v1').open,0);
- assert.match(a.viewport.children[0].innerHTML,/<h2[^>]*>Start of Turn<\/h2>/);
+ assert.match(a.viewport.children[0].innerHTML,/<h2[^>]*>Movement phase<\/h2>/);
  assert.doesNotMatch(a.viewport.children[0].innerHTML,/guide-turn-toggle|phase-nav|guide-fixed-header/);
  assert.equal(a.animations[0].frames[1].transform,'translate3d(-400px,0,0)');
  a.click({action:'page-next'});assert.equal(a.animations.length,4);
- assert.equal(savedState(a.store,'warplan.prototype.v1').open,1);
+ assert.equal(savedState(a.store,'warplan.prototype.v1').phase,1);
  a.animations.forEach(animation=>animation.finish());await new Promise(resolve=>setImmediate(resolve));
- assert.equal(savedState(a.store,'warplan.prototype.v1').open,2);
+ assert.equal(savedState(a.store,'warplan.prototype.v1').phase,2);
 });
 test('a touch drag follows the finger, then completes or snaps back',async()=>{
  const point=x=>({identifier:1,clientX:x,clientY:200});
@@ -207,7 +207,7 @@ test('a touch drag follows the finger, then completes or snaps back',async()=>{
  assert.equal(a.viewport.children[0].style.transform,'translate3d(350px,0,0)');
  a.touch('touchend',{changedTouches:[point(45)]});assert.equal(a.animations[0].frames[0].transform,'translate3d(-85px,0,0)');
  a.animations.forEach(animation=>animation.finish());await new Promise(resolve=>setImmediate(resolve));
- assert.equal(savedState(a.store,'warplan.prototype.v1').open,1);
+ assert.equal(savedState(a.store,'warplan.prototype.v1').phase,1);
  const b=app(undefined,{motion:true});b.touch('touchstart',{touches:[point(130)]});b.touch('touchmove',{touches:[point(100)]});b.touch('touchend',{changedTouches:[point(100)]});
  assert.equal(b.animations[0].frames[1].transform,'translate3d(0px,0,0)');
  b.animations.forEach(animation=>animation.finish());await new Promise(resolve=>setImmediate(resolve));
@@ -215,7 +215,7 @@ test('a touch drag follows the finger, then completes or snaps back',async()=>{
 });
 test('reduced motion skips animation and leaving the guide cancels a pending transition',async()=>{
  const a=app(undefined,{motion:true,reducedMotion:true});a.click({action:'page-next'});
- assert.equal(a.animations.length,0);assert.equal(savedState(a.store,'warplan.prototype.v1').open,1);
+ assert.equal(a.animations.length,0);assert.equal(savedState(a.store,'warplan.prototype.v1').phase,1);
  const b=app(undefined,{motion:true});b.click({action:'page-next'});b.click({view:'army'});
  await new Promise(resolve=>setImmediate(resolve));
  const saved=savedState(b.store,'warplan.prototype.v1');assert.equal(saved.view,'army');assert.equal(saved.open,0);
@@ -233,17 +233,14 @@ test('Fight cards show Fights First and army/stratagem cards show targeting inst
  const strat=a.html().match(/data-shared-rule="preternatural-precision-stratagem"[\s\S]*?<p class="flash-timing">/)[0];
  assert.match(strat,/Target: One friendly Aspect Warriors unit/);assert.doesNotMatch(strat,/flash-unit-list|data-unit-preview/);
 });
-test('empty phase notice excludes round-boundary reminders and distinguishes missing coverage',()=>{
- const {sample}=require('../dist/core.js');
- const army={...sample,units:sample.units.filter(u=>u.name==='Dire Avengers')};
- const a=app([['warplan.prototype.v1',JSON.stringify({army,phase:0,turn:'you',round:1})]]);
- assert.match(a.html(),/No army abilities are listed for this phase in this turn/);
- assert.match(a.html(),/Battle Focus/); // Before the phase, not a Command ability.
- const unknown={...army,faction:'Space Marines'};
- const b=app([['warplan.prototype.v1',JSON.stringify({army:unknown,phase:0,turn:'you',round:1})]]);
- assert.match(b.html(),/Army-ability coverage is incomplete for this phase/);
- assert.doesNotMatch(b.html(),/No army abilities are listed for this phase in this turn/);
+test('filtered phases retain a readable empty state and missing coverage stays visible',()=>{
+ const a=app();for(const type of ['army','ability','stratagem','enhancement','core','disposition'])a.ruleType(type,false);a.click({action:'reload-guide'});
+ assert.match(a.html(),/No reminders for this phase with the current guide settings/);assert.doesNotMatch(a.html(),/data-guide-step=/);
+ assert.match(a.html(),/Core sequence for Command/);a.click({action:'page-next'});assert.equal(savedState(a.store).phase,1);
+ const {sample}=require('../dist/core.js'),army={...sample,faction:'Space Marines'};
+ const b=app([['warplan.prototype.v1',JSON.stringify({army,phase:0,turn:'you',round:1})]]);assert.match(b.html(),/no unit-specific lesson coverage/);
 });
+
 test('import review is required and untrusted content is escaped',()=>{
  const a=app();a.click({action:'import'});assert.equal(a.elements['#import-dialog'].open,true);
  a.elements['#army-text'].value='Test (100 points)\nAeldari\nAspect Host (3 Detachment Points)\nCHARACTERS\n<img src=x onerror=alert(1)> (100 points)\n • <script>alert(1)</script>';
@@ -393,12 +390,12 @@ test('swipe settlement shortens with the distance remaining instead of adding a 
  const point=x=>({identifier:1,clientX:x,clientY:200});
  const arrow=app(undefined,{motion:true});arrow.click({action:'page-next'});assert.equal(arrow.animations[0].settings.duration,140);
  const swipe=app(undefined,{motion:true});swipe.touch('touchstart',{touches:[point(350)]});swipe.touch('touchmove',{touches:[point(50)]});swipe.touch('touchend',{changedTouches:[point(50)]});assert.equal(swipe.animations[0].settings.duration,60);assert.ok(swipe.animations[0].settings.duration<arrow.animations[0].settings.duration);
- swipe.animations.forEach(a=>a.finish());await new Promise(r=>setImmediate(r));assert.equal(savedState(swipe.store,'warplan.prototype.v1').open,1);
+ swipe.animations.forEach(a=>a.finish());await new Promise(r=>setImmediate(r));assert.equal(savedState(swipe.store,'warplan.prototype.v1').phase,1);
  const cancelled=app(undefined,{motion:true});cancelled.touch('touchstart',{touches:[point(180)]});cancelled.touch('touchmove',{touches:[point(150)]});cancelled.touch('touchend',{changedTouches:[point(150)]});assert.equal(cancelled.animations[0].settings.duration,110);cancelled.animations.forEach(a=>a.finish());await new Promise(r=>setImmediate(r));assert.equal(savedState(cancelled.store,'warplan.prototype.v1').open,0);
 });
 
 test('idle preparation reuses the neighboring page and invalidates it when leaving the guide',async()=>{
- const a=app(undefined,{motion:true,warm:true});a.warm();const preview=a.viewport.children[0];assert.ok(preview);const count=a.viewport.children.length;a.click({action:'page-next'});assert.equal(a.viewport.children.length,count);assert.equal(a.animations.length,2);a.animations.forEach(animation=>animation.finish());await new Promise(r=>setImmediate(r));assert.equal(savedState(a.store,'warplan.prototype.v1').open,1);
+ const a=app(undefined,{motion:true,warm:true});a.warm();const preview=a.viewport.children[0];assert.ok(preview);const count=a.viewport.children.length;a.click({action:'page-next'});assert.equal(a.viewport.children.length,count);assert.equal(a.animations.length,2);a.animations.forEach(animation=>animation.finish());await new Promise(r=>setImmediate(r));assert.equal(savedState(a.store,'warplan.prototype.v1').phase,1);
  const b=app(undefined,{motion:true,warm:true});b.click({view:'army'});b.warm();assert.equal(b.viewport.children.length,0);assert.equal(savedState(b.store,'warplan.prototype.v1').view,'army');
 });
 
@@ -467,7 +464,7 @@ test('idle preparation yields when there is insufficient idle time',()=>{
 test('Start prepares every page for both players and reuses templates across phases and rounds',()=>{
  const a=app(undefined,{setup:true,preload:true});a.start();
  assert.match(a.html(),/Preparing your guide/);assert.equal(a.prepared().ready,false);
- a.flushGuide();const prepared=a.prepared();assert.equal(prepared.ready,true);assert.equal(prepared.count,prepared.total);assert.ok(prepared.total>30);
+ a.flushGuide();const prepared=a.prepared();assert.equal(prepared.ready,true);assert.equal(prepared.count,prepared.total);assert.equal(prepared.total,10);
  a.rejectPageBuilds();
  for(const turn of ['you','opponent']){a.click({turn});for(let phase=0;phase<5;phase++){a.click({phase:String(phase)});a.click({action:'page-next'});}}
  a.click({action:'round-up'});a.click({action:'page-next'});assert.doesNotMatch(a.html(),/Preparing your guide/);
@@ -517,32 +514,31 @@ test('round-specific disposition reminders update from preloaded templates witho
  a.click({turn:'opponent'});a.at('round-end');assert.match(a.html(),/End-of-battle primary scoring/);
 });
 
-test('skip empty steps is opt-in, deferred until reload, and works in both directions',()=>{
- const a=app();a.at('command-cp');a.click({action:'page-next'});assert.match(a.html(),/>Battle-shock<\/h2>/);
- a.at('command-cp');a.toggle('guide-skip-empty-steps',true);a.click({action:'page-next'});assert.match(a.html(),/>Battle-shock<\/h2>/);
- a.at('command-cp');a.click({action:'reload-guide'});a.click({action:'page-next'});assert.match(a.html(),/>Start of Movement<\/h2>/); // Phase-wide reactions keep one stop at phase entry.
- a.click({action:'page-previous'});assert.match(a.html(),/>Start of Command<\/h2>/);
- a.at('command-cp');assert.match(a.html(),/>Gain Command Points<\/h2>/); // Manual access remains available.
- const b=app([...a.store]);assert.match(b.html(),/id="guide-skip-empty-steps" type="checkbox" checked/);
+test('show empty timings is opt-in and never changes phase navigation',()=>{
+ const a=app();a.click({phase:'1'});assert.doesNotMatch(a.html(),/data-guide-step="0"/);
+ a.toggle('guide-show-empty-timings',true);assert.doesNotMatch(a.html(),/data-guide-step="0"/);
+ a.click({action:'reload-guide'});assert.match(a.html(),/data-guide-step="0"/);
+ a.click({action:'page-next'});assert.equal(savedState(a.store).phase,2);a.click({action:'page-previous'});assert.equal(savedState(a.store).phase,1);
+ const b=app([...a.store]);assert.match(b.html(),/id="guide-show-empty-timings" type="checkbox" checked/);
 });
-test('skip empty steps counts mission reminders and honors rule filters without losing review marks',()=>{
+
+test('mission reminders keep their timing visible and filters preserve review marks',()=>{
  const a=app(undefined,{setup:true});a.toggle('guide-add-disposition',true);a.change('guide-opponent-disposition','Disruption');a.start();
- for(const type of ['army','ability','stratagem','enhancement','core'])a.ruleType(type,false);
- a.toggle('guide-show-deep-strike',false);a.toggle('guide-show-core-stratagems',false);a.toggle('guide-skip-empty-steps',true);a.click({action:'reload-guide'});
- a.click({phase:'2'});a.at('shooting-start');a.click({action:'page-next'});assert.match(a.html(),/Sensor Sweep/);assert.match(a.html(),/>Unit Shooting<\/h2>/);
- a.review('keep-this-review',true);
- a.ruleType('disposition',false);a.click({action:'reload-guide'});assert.equal(savedState(a.store,'warplan.prototype.v1').reviewedReminders['keep-this-review'],true);
- a.click({phase:'2'});a.at('shooting-start');a.click({action:'page-next'});assert.equal(savedState(a.store,'warplan.prototype.v1').phase,3);
+ for(const type of ['army','ability','stratagem','enhancement','core'])a.ruleType(type,false);a.click({action:'reload-guide'});a.click({phase:'2'});
+ assert.match(a.html(),/Sensor Sweep/);assert.match(a.html(),/data-guide-step="1"/);a.review('keep-this-review',true);
+ a.ruleType('disposition',false);a.click({action:'reload-guide'});assert.equal(savedState(a.store).reviewedReminders['keep-this-review'],true);assert.doesNotMatch(a.html(),/data-guide-step=/);
+ a.click({action:'page-next'});assert.equal(savedState(a.store).phase,3);
 });
+
 test('an entirely empty guide advances by phase and stops safely at its beginning',()=>{
  const a=app();for(const type of ['army','ability','stratagem','enhancement','core','disposition'])a.ruleType(type,false);
- a.toggle('guide-show-core-stratagems',false);a.toggle('guide-skip-empty-steps',true);a.click({action:'reload-guide'});
+ a.toggle('guide-show-core-stratagems',false);a.toggle('guide-show-empty-timings',true);a.click({action:'reload-guide'});
  a.click({action:'page-previous'});let s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.round,1);assert.equal(s.phase,0);assert.equal(s.open,0);
  a.click({action:'page-next'});s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.phase,1);assert.equal(s.open,0);
  a.click({action:'page-previous'});s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.phase,0);
 });
 test('skip empty steps reuses preloaded reminder counts while handling rapid navigation',()=>{
- const a=app(undefined,{setup:true,preload:true});a.start();a.flushGuide();a.toggle('guide-skip-empty-steps',true);a.click({action:'reload-guide'});a.flushGuide();a.rejectPageBuilds();
+ const a=app(undefined,{setup:true,preload:true});a.start();a.flushGuide();a.toggle('guide-show-empty-timings',true);a.click({action:'reload-guide'});a.flushGuide();a.rejectPageBuilds();
  for(let i=0;i<15;i++)a.click({action:'page-next'});
  assert.doesNotMatch(a.html(),/Preparing your guide/);assert.ok(a.prepared().ready);
  for(let i=0;i<5;i++)a.click({action:'page-previous'});
@@ -553,34 +549,33 @@ test('start screen settings are beside Start and can be saved before preload',()
  const a=app(undefined,{setup:true});assert.match(a.html(),/class="guide-start-actions"[\s\S]*>Start [\s\S]*id="guide-open-settings"/);
  assert.match(a.html(),/id="guide-setup-settings"[\s\S]*Save settings/);assert.doesNotMatch(a.html(),/>Reload Guide</);
  a.click({action:'open-setup-settings'});assert.equal(a.elements['#guide-setup-settings'].open,true);
- a.toggle('guide-skip-empty-steps',true);a.ruleType('army',false);a.change('guide-font-size','large');
- assert.equal(savedState(a.store,'warplan.prototype.v1').guideSkipEmptySteps,false);
+ a.toggle('guide-show-empty-timings',true);a.ruleType('army',false);a.change('guide-font-size','large');
+ assert.equal(savedState(a.store,'warplan.prototype.v1').guideShowEmptyTimings,false);
  a.saveGuideSettings();assert.equal(a.elements['#guide-setup-settings'].open,false);
- let s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.guideStarted,false);assert.equal(s.guideSkipEmptySteps,true);assert.equal(s.guideRuleTypes.army,false);assert.equal(s.guideFontSize,'large');
- a.start();s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.guideStarted,true);assert.equal(s.guideSkipEmptySteps,true);assert.match(a.html(),/data-font-size="large"/);
+ let s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.guideStarted,false);assert.equal(s.guideShowEmptyTimings,true);assert.equal(s.guideRuleTypes.army,false);assert.equal(s.guideFontSize,'large');
+ a.start();s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.guideStarted,true);assert.equal(s.guideShowEmptyTimings,true);assert.match(a.html(),/data-font-size="large"/);
 });
 test('Cancel and Escape discard setup-setting edits without starting the guide',()=>{
- const a=app(undefined,{setup:true});a.click({action:'open-setup-settings'});a.ruleType('ability',false);a.toggle('guide-skip-empty-steps',true);a.click({action:'cancel-setup-settings'});
- a.click({action:'open-setup-settings'});a.saveGuideSettings();let s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.guideSkipEmptySteps,false);assert.notEqual(s.guideRuleTypes.ability,false);
+ const a=app(undefined,{setup:true});a.click({action:'open-setup-settings'});a.ruleType('ability',false);a.toggle('guide-show-empty-timings',true);a.click({action:'cancel-setup-settings'});
+ a.click({action:'open-setup-settings'});a.saveGuideSettings();let s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.guideShowEmptyTimings,false);assert.notEqual(s.guideRuleTypes.ability,false);
  a.click({action:'open-setup-settings'});a.change('guide-font-size','large');a.cancelGuideSettings();a.click({action:'open-setup-settings'});a.saveGuideSettings();
  s=savedState(a.store,'warplan.prototype.v1');assert.equal(s.guideStarted,false);assert.equal(s.guideFontSize,'medium');
 });
 
-test('phase overview replaces header clutter and lists every step with reminder counts',()=>{
- const a=app();a.click({phase:'2'});a.at('shooting-activations');
- assert.doesNotMatch(a.html(),/class="lesson-kind"|class="checklist-help"|Use this as a cheat sheet|See the whole phase/);
+test('phase overview lists visible timing groups and anchors without changing phase',()=>{
+ const a=app();a.click({phase:'1'});assert.doesNotMatch(a.html(),/class="lesson-kind"|class="checklist-help"|Use this as a cheat sheet/);
  assert.match(a.html(),/<details id="guide-phase-overview" class="guide-phase-overview" >/);
- assert.equal((a.html().match(/data-overview-step/g)||[]).length,3);
+ assert.equal((a.html().match(/data-overview-step/g)||[]).length,a.run('phaseTimingEntries().filter(e=>e.visible).length'));
  assert.match(a.html(),/class="overview-rule-count">[1-9][0-9]* rules/);
- assert.ok(a.html().indexOf('id="guide-phase-overview"')<a.html().indexOf('id="lesson-title"'));
- a.click({step:'0'});assert.match(a.html(),/>Start of Shooting<\/h2>/);
+ const before=a.prepared();a.click({step:'2'});assert.equal(savedState(a.store).phase,1);assert.equal(savedState(a.store).open,2);assert.equal(a.prepared(),before);
 });
+
 test('overview counts honor active filters and current-round mission reminders',()=>{
  const a=app(undefined,{setup:true});a.toggle('guide-add-disposition',true);a.change('guide-opponent-disposition','Disruption');a.start();a.click({phase:'2'});
  assert.match(a.html(),/class="overview-primary-count">1 primary/);
  for(const type of ['army','ability','stratagem','enhancement','core','disposition'])a.ruleType(type,false);
  assert.match(a.html(),/class="overview-primary-count">1 primary/);a.click({action:'reload-guide'});
- assert.doesNotMatch(a.html(),/class="overview-primary-count"|class="overview-rule-count"/);assert.equal((a.html().match(/<span>No reminders<\/span>/g)||[]).length,3);
+ assert.doesNotMatch(a.html(),/class="overview-primary-count"|class="overview-rule-count"/);assert.equal((a.html().match(/data-guide-step=/g)||[]).length,0);
  const b=app(undefined,{setup:true,preload:true});b.toggle('guide-add-disposition',true);b.change('guide-opponent-disposition','Disruption');b.start();b.flushGuide();b.rejectPageBuilds();
  b.at('command-end');assert.doesNotMatch(b.html(),/class="overview-primary-count"/);
  b.click({action:'round-up'});b.at('command-end');assert.match(b.html(),/class="overview-primary-count">1 primary/);
@@ -660,27 +655,26 @@ test('phase-wide and step-specific cards for the same unit have independent chec
  assert.ok(keys.includes('anytime:unit:unit-type-firedragons'));assert.ok(keys.includes('unit:unit-type-firedragons'));
 });
 
-test('Skip empty steps retains a phase entry when only Any time rules remain',()=>{
- const a=app(undefined,{preload:true});a.flushGuide();a.run("state.guideSkipEmptySteps=true;state.phase=1;state.open=0;render();");a.flushGuide();
- assert.equal(a.run('guideSession.stepDeck(state,lessons().steps[0]).count'),0);
- assert.ok(a.run('guideSession.anyTime(state).count')>0);
- assert.equal(a.run('guideStepHasReminders(state)'),true);
- a.rejectPageBuilds();a.run('render()');assert.match(a.html(),/id="guide-anytime"/);
+test('Any time remains available while empty timing sections are omitted',()=>{
+ const a=app(undefined,{preload:true});a.flushGuide();a.run("state.phase=1;state.open=0;render();");
+ assert.equal(a.run('guideSession.stepDeck(state,lessons().steps[0]).count'),0);assert.ok(a.run('guideSession.anyTime(state).count')>0);
+ a.rejectPageBuilds();a.run('render()');assert.match(a.html(),/id="guide-anytime"/);assert.doesNotMatch(a.html(),/data-guide-step="0"/);
+ a.click({action:'page-next'});assert.equal(savedState(a.store).phase,2);
 });
 
 test('Learn to play is optional and preloads a complete core turn before navigation',()=>{
- const a=app(undefined,{setup:true,preload:true});assert.match(a.html(),/value="quick" data-guide-mode checked/);
- a.guideMode('learn');a.start();a.flushGuide();assert.equal(savedState(a.store).guideMode,'learn');assert.equal(a.prepared().ready,true);assert.equal(a.prepared().count,a.prepared().total);assert.equal(a.prepared().total,52);
- a.rejectPageBuilds();a.click({phase:'2'});a.click({step:'1'});assert.match(a.html(),/Core rules walkthrough/);assert.match(a.html(),/>Do this now<\/h3>/);assert.match(a.html(),/>Unit Shooting<\/h2>/);
- a.click({action:'page-next'});assert.match(a.html(),/>Attacks<\/h2>/);assert.match(a.html(),/Ballistic Skill/);assert.match(a.html(),/For example/);
- a.click({action:'page-next'});assert.match(a.html(),/>After Shooting<\/h2>/);a.click({learningRepeat:'shooting-select'});assert.match(a.html(),/>Unit Shooting<\/h2>/);
+ const a=app(undefined,{setup:true,preload:true});a.guideMode('learn');a.start();a.flushGuide();assert.equal(savedState(a.store).guideMode,'learn');assert.equal(a.prepared().ready,true);assert.equal(a.prepared().total,10);
+ a.rejectPageBuilds();a.click({phase:'2'});assert.match(a.html(),/Core rules walkthrough/);assert.match(a.html(),/>Unit Shooting<\/h3>/);assert.match(a.html(),/>Attacks<\/h3>/);assert.match(a.html(),/>After Shooting<\/h3>/);assert.match(a.html(),/Ballistic Skill/);
+ a.click({learningRepeat:'shooting-select'});assert.equal(savedState(a.store).phase,2);assert.equal(savedState(a.store).open,1);
+ a.click({action:'page-next'});assert.equal(savedState(a.store).phase,3);
 });
+
 test('switching learning modes is deferred until Reload and preserves army, phase and review marks',()=>{
- const a=app();a.click({phase:'2'});a.click({step:'1'});a.review('keep-mode-review',true);a.toggle('guide-skip-empty-steps',true);a.click({action:'reload-guide'});const army=savedState(a.store).army;
+ const a=app();a.click({phase:'2'});a.click({step:'1'});a.review('keep-mode-review',true);a.toggle('guide-show-empty-timings',true);a.click({action:'reload-guide'});const army=savedState(a.store).army;
  a.change('guide-mode','learn');assert.equal(savedState(a.store).guideMode,'quick');a.click({action:'reload-guide'});
  assert.equal(savedState(a.store).guideMode,'learn');assert.equal(savedState(a.store).phase,2);assert.equal(a.run('lessons().steps[state.open].id'),'shooting-select');assert.deepEqual(savedState(a.store).army,army);assert.equal(savedState(a.store).reviewedReminders['keep-mode-review'],true);
- a.click({phase:'0'});a.at('command-cp');a.click({action:'page-next'});assert.match(a.html(),/>Battle-shock<\/h2>/); // Learning never skips an empty core lesson.
- a.change('guide-mode','quick');a.click({action:'reload-guide'});assert.equal(savedState(a.store).guideMode,'quick');assert.equal(savedState(a.store).guideSkipEmptySteps,true);
+ a.click({phase:'0'});a.at('command-cp');assert.match(a.html(),/>Battle-shock<\/h3>/);a.click({action:'page-next'});assert.equal(savedState(a.store).phase,1); // Core lessons share a phase slide.
+ a.change('guide-mode','quick');a.click({action:'reload-guide'});assert.equal(savedState(a.store).guideMode,'quick');assert.equal(savedState(a.store).guideShowEmptyTimings,true);
 });
 test('a new player can learn core rules without importing or tracking an army',()=>{
  const a=app(undefined,{hosted:true,setup:true});a.cloudAccount({id:'beginner'},[],{schedule(){},dispose(){}});a.click({view:'guide'});a.guideMode('learn');
@@ -694,7 +688,7 @@ test('learning core instructions stay visible when army rule types are hidden',(
 });
 
 test('mode changes retain the current opponent Charge step when it exists in both modes',()=>{
- const a=app();a.click({turn:'opponent'});a.click({phase:'3'});a.click({step:'1'});assert.equal(a.run('lessons().steps[state.open].id'),'charge-declare');
+ const a=app();a.toggle('guide-show-empty-timings',true);a.click({action:'reload-guide'});a.click({turn:'opponent'});a.click({phase:'3'});a.click({step:'1'});assert.equal(a.run('lessons().steps[state.open].id'),'charge-declare');
  a.change('guide-mode','learn');a.click({action:'reload-guide'});assert.equal(a.run('lessons().steps[state.open].id'),'charge-declare');
  a.change('guide-mode','quick');a.click({action:'reload-guide'});assert.equal(a.run('lessons().steps[state.open].id'),'charge-declare');assert.equal(savedState(a.store).turn,'opponent');
 });
@@ -703,4 +697,32 @@ test('adding and duplicating a builder unit clears search and displays feedback'
 });
 test('builder detachment choices constrain dispositions and clear stale selections',()=>{
  const a=app();a.click({action:'create-list'});a.toggleDetachment('Aspect Host',true);assert.match(a.html(),/value="Priority Assets"/);assert.doesNotMatch(a.html(),/<option value="Reconnaissance"/);a.editorChange('disposition','Priority Assets');a.toggleDetachment('Aspect Host',false);assert.equal(a.run('listEditor.army.disposition'),'');assert.match(a.html(),/Choose a detachment first/);
+});
+
+
+test('start, during and end rules remain together on one preloaded phase slide',()=>{
+ const a=app(undefined,{preload:true});a.run("for(const [window,name] of [['start','Opening sentinel'],['act','Middle sentinel'],['end','Closing sentinel']])Library.abilities.push({id:'sentinel-'+window,expanded:true,name,phase:[2],turn:'you',window,category:'army',faction:'Aeldari',units:[],summary:'Sentinel effect',conditions:[],sourceIds:[],question:'Check?',answer:'Check.'});guideSession.reset();guidePrepared=null;render();");a.flushGuide();a.click({phase:'2'});
+ for(const name of ['Opening sentinel','Middle sentinel','Closing sentinel'])assert.ok(a.html().includes(name),name);
+ assert.equal((a.html().match(/class="guide-slide"/g)||[]).length,1);assert.equal(a.prepared().total,10);
+ a.rejectPageBuilds();a.click({action:'page-next'});assert.equal(savedState(a.store).phase,3);a.click({action:'page-previous'});assert.equal(savedState(a.store).phase,2);assert.ok(a.html().includes('Closing sentinel'));
+});
+test('old skip-empty preferences do not expose empty timing sections after upgrade',()=>{
+ const base=app().run('structuredClone(state)');delete base.guideShowEmptyTimings;
+ for(const old of [false,true]){const a=app([['warplan.prototype.v1',JSON.stringify({...base,guideSkipEmptySteps:old,phase:1,open:0})]]);assert.equal(savedState(a.store).guideShowEmptyTimings,false);assert.doesNotMatch(a.html(),/data-guide-step="0"/);}
+});
+test('an existing timing bookmark survives loading the new phase layout without changing army or review marks',()=>{
+ const a=app();a.click({phase:'1'});a.click({step:'2'});a.review('retained-phase-review',true);const before=savedState(a.store),b=app([...a.store]);
+ assert.equal(savedState(b.store).phase,1);assert.equal(savedState(b.store).open,2);assert.equal(savedState(b.store).reviewedReminders['retained-phase-review'],true);assert.deepEqual(savedState(b.store).army,before.army);assert.match(b.html(),/>Movement phase<\/h2>/);
+});
+
+
+test('phase footer labels distinguish the previous player’s Fight from the next Command',()=>{
+ const a=app();a.click({phase:'4'});assert.match(a.html(),/Opponent Command →/);a.click({action:'page-next'});assert.match(a.html(),/← Your Fight/);
+ a.click({phase:'4'});assert.match(a.html(),/Your Command →/);a.click({action:'page-next'});assert.match(a.html(),/← Opponent Fight/);
+});
+
+
+test('phase-wide rules retain their own rule-report entry point in the combined guide',()=>{
+ const a=app();a.run("window.WarPlannerReports={guideForStep:(_state,step)=>'<p>Report context: '+step.id+'</p>'};state.phase=1;state.open=0;guidePrepared=null;render();");
+ assert.match(a.html(),/Report context: guide-any-time/);assert.match(a.html(),/Report context: movement-activations/);
 });
