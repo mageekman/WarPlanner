@@ -9,7 +9,7 @@ const Builder=WarPlannerListBuilder;
 let listEditor=null,pageNavigation=null,ruleReportRequested=false,guideSettingsDraft=null,setupGuideSettingsPrevious=null;
 const Dispositions=window.WarPlannerDispositions;
 const PageNavigation=window.WarPlannerNavigation;
-const initialState=army=>({view:'guide',sidebarCollapsed:false,guideStarted:false,guideMode:'quick',guideFontSize:'medium',guideShowPreviews:true,guideShowCoreStratagems:false,guideShowDeepStrike:true,guideRuleEditing:false,guideShowEmptyTimings:false,guideOverviewOpen:false,guideAnyTimeOpen:false,guideRuleTypes:{},guideDisposition:{enabled:false,opponent:''},army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},reviewedReminders:{},flowRevision:'flashcards-v1'});
+const initialState=army=>({view:'guide',sidebarCollapsed:false,guideStarted:false,guideMode:'quick',guideFontSize:'medium',guideShowPreviews:true,guideShowCoreStratagems:false,guideShowDeepStrike:true,guideRuleEditing:false,guideShowEmptyTimings:false,guideCollapsedTimings:{},guideAnyTimeOpen:false,guideRuleTypes:{},guideDisposition:{enabled:false,opponent:''},army:structuredClone(army),round:1,turn:'you',phase:0,open:0,completed:{},revealed:{},history:[],renames:{},warnings:[],firstPlayer:'you',confirmed:{},reviewedReminders:{},flowRevision:'flashcards-v1'});
 let state=initialState(window.WARPLANNER_CONFIG?EMPTY_ARMY:sample);
 let storageOK=true,libraryDirty=true,rosterRefs=null,storageRevision=0,savedProgress=null,savedLibrary=null;
 function normalizeLists(){
@@ -202,7 +202,7 @@ function syncGuideReviews(container,current=state){
 }
 function anyTimeGuideHTML(deck=guideSession.anyTime(state)){
  const count=overviewRuleCount(deck);
- return `<details id="guide-anytime" class="guide-anytime"><summary><span>Any time</span><span class="anytime-count">${count} ${count===1?'rule':'rules'} <span class="anytime-caret" aria-hidden="true">⌄</span></span></summary><div class="guide-anytime-content"><p class="guide-anytime-note">Available throughout this phase. Check each rule’s trigger, eligible units and conditions before using it.</p>${deck.count?flashBoard({id:'guide-any-time',window:'act'},deck):'<p class="ability-empty">No phase-wide rules are listed for this phase and turn.</p>'}<div data-report-container>${deck.count?window.WarPlannerReports?.guideForStep(state,{id:'guide-any-time',title:'Any time · '+phases[state.phase]},deck)||'':''}</div></div></details>`;
+ return `<details id="guide-anytime" class="guide-anytime"><summary><span>Any time</span><span class="anytime-count">${count} ${count===1?'rule':'rules'} <span class="anytime-caret" aria-hidden="true">⌄</span></span></summary><div class="guide-anytime-content"><p class="guide-anytime-note">Available throughout this phase. Check each rule’s trigger, eligible units and conditions before using it.</p>${deck.count?flashBoard({id:'guide-any-time',window:'act'},deck):'<p class="ability-empty">No phase-wide rules are listed for this phase and turn.</p>'}</div></details>`;
 }
 function flashBoard(active,deck=guideDeck(active)){
  const reviewScope=active.id==='guide-any-time'?'anytime:':'';
@@ -221,8 +221,7 @@ function flashBoard(active,deck=guideDeck(active)){
   const ruleNames=[...new Set([...(first?['Fights First']:[]),...card.guideMeta.flags,...(card.guideMeta.label?[card.guideMeta.label]:[]),...card.items.map(a=>a.name),...card.sharedIds.map(id=>sharedNames.get(id)).filter(Boolean)])];
   return reviewReminder(reviewScope+'unit:'+card.unit.id,title,window.WarPlannerStudyCards.unitCard({id:card.unit.id,title,preview:ruleNames.join(' · '),badges:`${allied?.allied?'<span class="rule-badge reference-only">'+escapeHTML(allied.originFaction)+' ally</span>':''}${first?'<span class="flash-fights-first">Fights First</span>':''}${guideHintBadges(card.guideMeta)}`,body:`${guideHintNotes(card.guideMeta)}${card.items.map(a=>`<div class="flash-rule"><div>${categoryBadge(a)}${guideHintBadges(a.guideMeta)}<h4>${escapeHTML(a.name)}</h4></div><p class="flash-timing">${escapeHTML(a.timing)}</p><p class="flash-fact">${escapeHTML(a.summary)}</p></div>`).join('')}${card.sharedIds.length?`<p class="flash-shared-links">Shared options above: ${escapeHTML(card.sharedIds.map(id=>sharedNames.get(id)).filter(Boolean).join(' · '))}</p>`:''}${card.items.length?flashDetails(card.items):''}`}),[...card.items,...deck.shared.filter(a=>card.sharedIds.includes(a.key))]);
  }).join('');
- const coreHelp=active.coreHelp||[];
- return `<section class="army-lessons flash-board" aria-label="Your army at this ${active.activationMode?'phase':'step'}">${sharedCards?`<div class="flash-grid shared-flash-grid">${sharedCards}</div>`:''}${unitCards?`<div class="flash-grid unit-flash-grid">${unitCards}</div>`:''}</section>${coreHelp.length?`<details class="think-details"><summary>Core help for this phase</summary>${coreHelp.map(s=>`<h3 class="activation-help-title">${escapeHTML(s.title)}</h3><p>${escapeHTML(s.body)}</p>`).join('')}</details>`:''}`;
+ return `<section class="army-lessons flash-board" aria-label="Your army at this ${active.activationMode?'phase':'step'}">${sharedCards?`<div class="flash-grid shared-flash-grid">${sharedCards}</div>`:''}${unitCards?`<div class="flash-grid unit-flash-grid">${unitCards}</div>`:''}</section>`;
 }
 function turnToggle(){
  const order=state.firstPlayer==='opponent'?['opponent','you']:['you','opponent'];
@@ -331,13 +330,12 @@ function dispositionGuideHTML(active){
  return `<section class="disposition-reminders" aria-label="Your disposition primary mission">${cards.map(card=>reviewReminder(card.id,card.title,`<details class="flash-card collapsible-flash rule-disposition"><summary class="flash-summary"><span class="flash-title-row"><h3>${escapeHTML(card.title)}</h3><span class="rule-badge rule-disposition">Disposition / Primary</span></span><p class="flash-preview">${escapeHTML(card.mission)}</p><span class="flash-chevron" aria-hidden="true">+</span></summary><div class="flash-expanded"><p class="flash-timing">${escapeHTML(Dispositions.resolve(state.army.disposition))} vs ${escapeHTML(state.guideDisposition.opponent)} · ${escapeHTML(card.mission)}</p><p class="flash-fact">${escapeHTML(card.text)}</p><a href="${card.sourceUrl}" target="_blank" rel="noopener noreferrer">Mission Deck 2026–27 reference ↗</a></div></details>`)).join('')}</section>`;
 }
 
-function guideInfoPopup(){return `<div id="guide-info-popup" class="guide-info-popup" popover="auto" role="dialog" aria-labelledby="guide-info-title"><button type="button" class="guide-info-close" popovertarget="guide-info-popup" popovertargetaction="hide" aria-label="Close explanation" autofocus>×</button><h3 id="guide-info-title">${escapeHTML(phases[state.phase])} phase · Core sequence</h3>${Activations.steps(state).map(step=>`<h4>${escapeHTML(step.title)}</h4><p class="lesson-instruction">${escapeHTML(step.body)}</p>`).join('')}</div>`;}
 function phaseNavigationHTML(){
  const previous=adjacentGuidePage(state,-1),following=adjacentGuidePage(state,1);
  const label=target=>target.turn!==state.turn||target.round!==state.round?(target.turn==='you'?'Your ':'Opponent ')+phases[target.phase]:phases[target.phase];
  return `<footer class="guide-phase-navigation"><button type="button" class="outline previous-page" data-action="page-previous" aria-label="Previous phase" ${previous?'':'disabled'}>← ${previous?label(previous):'Previous'}</button><span>Phase ${state.phase+1} of 5</span><button type="button" class="primary next-page" data-action="page-next" aria-label="Next phase">${label(following)} →</button></footer>`;
 }
-function guide(){if(!state.guideStarted)return guideStartPage();if(!ensureGuidePrepared())return guidePreparationPage();return `<section class="guide-page-shell guide-carousel" aria-label="Interactive guide" data-show-previews="${state.guideShowPreviews!==false}" data-font-size="${['small','large'].includes(state.guideFontSize)?state.guideFontSize:'medium'}"><div class="guide-frame"><header class="guide-fixed-header">${guideSettings()}${turnToggle()}${phaseTabs()}</header><div class="guide-viewport"><div class="guide-slide" id="guide-panel" role="tabpanel" aria-labelledby="phase-tab-${state.phase}">${guidePageHTML()}</div></div>${phaseNavigationHTML()}</div>${guideInfoPopup()}</section>`;}
+function guide(){if(!state.guideStarted)return guideStartPage();if(!ensureGuidePrepared())return guidePreparationPage();return `<section class="guide-page-shell guide-carousel" aria-label="Interactive guide" data-show-previews="${state.guideShowPreviews!==false}" data-font-size="${['small','large'].includes(state.guideFontSize)?state.guideFontSize:'medium'}"><div class="guide-frame"><header class="guide-fixed-header">${guideSettings()}${turnToggle()}${phaseTabs()}</header><div class="guide-viewport"><div class="guide-slide" id="guide-panel" role="tabpanel" aria-labelledby="phase-tab-${state.phase}">${guidePageHTML()}</div></div>${phaseNavigationHTML()}</div></section>`;}
 // Templates contain one full cycle. Round-specific review marks are bound at mount.
 let guidePrepared=null;
 function guidePreparationContext(){return JSON.stringify([KEY,state.activeListId,Library.revision,window.WarPlannerContent?.generation,state.army,state.renames,state.firstPlayer,state.guideMode,state.guideShowCoreStratagems===true,state.guideShowDeepStrike!==false,state.guideRuleTypes,state.guideDisposition,state.guideShowEmptyTimings===true,guideRuleEditingEnabled()]);}
@@ -382,23 +380,19 @@ function phaseTimingEntries(){return Activations.steps(state).map((step,index)=>
  const primary=Dispositions.reminders(state,step).length;
  return {step,index,rules,primary,visible:state.guideMode==='learn'||state.guideShowEmptyTimings===true||rules>0||primary>0};
 });}
-function phaseOverviewHTML(){
- const entries=phaseTimingEntries().filter(entry=>entry.visible),any=guidePrepared?.ready?guidePrepared.anyTimeCounts.get(guideTemplateKey(state)):overviewRuleCount(guideSession.anyTime(state));
- const count=entries.reduce((n,entry)=>n+entry.rules+entry.primary,any||0);
- return `<details id="guide-phase-overview" class="guide-phase-overview" ${state.guideOverviewOpen===true?'open':''}><summary><span>Phase overview</span><span class="overview-total">${count} reminders <span aria-hidden="true">⌄</span></span></summary><nav aria-label="Jump to a timing in ${escapeHTML(phases[state.phase])}">${any?'<button type="button" data-action="jump-anytime"><span>Any time</span><span class="overview-counts">'+any+' '+(any===1?'rule':'rules')+'</span></button>':''}${entries.map(({step,index,rules,primary})=>`<button type="button" data-step="${index}" data-overview-step><span class="overview-step-title">${escapeHTML(timingTitle(step))}</span><span class="overview-counts">${rules?`<span class="overview-rule-count">${rules} ${rules===1?'rule':'rules'}</span>`:''}${primary?`<span class="overview-primary-count">${primary} primary</span>`:''}${!rules&&!primary?(state.guideMode==='learn'?'<span>Core lesson</span>':'<span>No reminders</span>'):''}</span></button>`).join('')}${!entries.length&&!any?'<p class="phase-empty-note">No reminders with the current guide settings.</p>':''}</nav></details>`;
-}
+function timingCollapseKey(id){return JSON.stringify([state.activeListId||'',state.army.faction,state.turn,state.phase,state.guideMode,id]);}
 function guidePageHTML(){
  const entries=phaseTimingEntries(),html=guidePrepared?.ready?guidePrepared.pages.get(guideTemplateKey(state))||buildGuidePageHTML():buildGuidePageHTML();
  return html.replace(/<!--timing:(\d+)-->([\s\S]*?)<!--end-timing-->/g,(_match,index,section)=>entries[Number(index)]?.visible?section:'')
  .replace('<details id="guide-anytime" class="guide-anytime"','<details id="guide-anytime" class="guide-anytime"'+(state.guideAnyTimeOpen===true?' open':''))
- .replace('<div data-overview-slot></div>',phaseOverviewHTML())
+ .replace(/data-timing-open="([^"]+)"/g,(_match,id)=>state.guideCollapsedTimings?.[timingCollapseKey(id)]===true?'':'open')
  .replace(/<div data-disposition-slot="(\d+)"><\/div>/g,(_match,index)=>dispositionGuideHTML(entries[Number(index)].step))
  .replace(/<div data-empty-timing="(\d+)"><\/div>/g,(_match,index)=>!entries[Number(index)].rules&&!entries[Number(index)].primary&&state.guideMode!=='learn'?'<p class="phase-empty-note">No reminders for this timing.</p>':'')
- .replace('<div data-phase-empty-slot></div>',entries.some(entry=>entry.visible)||guideSession.anyTime(state).count?'':'<p class="phase-empty-note">No reminders for this phase with the current guide settings. Open the info button for the core sequence, or continue to the next phase.</p>');
+ .replace('<div data-phase-empty-slot></div>',entries.some(entry=>entry.visible)||guideSession.anyTime(state).count?'':'<p class="phase-empty-note">No reminders for this phase with the current guide settings. Expand Explanations & core help below, or continue to the next phase.</p>');
 }
 function jumpToGuideTiming(index,{focus=true}={}){
  const section=document.querySelector('#guide-panel [data-guide-step="'+index+'"]');
- if(!section)return false;state.open=index;save();
+ if(!section)return false;if(focus)section.open=true;state.open=index;save();
  const panel=document.querySelector('#guide-panel');
  if(panel?.getBoundingClientRect&&section.getBoundingClientRect)panel.scrollTo({top:Math.max(0,panel.scrollTop+section.getBoundingClientRect().top-panel.getBoundingClientRect().top-12),behavior:'instant'});
  if(focus)section.querySelector('h3')?.focus?.({preventScroll:true});return true;
@@ -420,15 +414,24 @@ function learningNavigationHTML(active){
  const repeat=Library.learningStep(active,state).repeat;
  return repeat?`<button type="button" class="outline learn-repeat" data-learning-repeat="${escapeHTML(repeat.id)}">${escapeHTML(repeat.label)}</button>`:'';
 }
+function phaseHelpHTML(steps,anyTime){
+ const original=state;
+ const help=steps.map((active,index)=>{
+  try{state={...original,open:index};const deck=guideDeck(active);
+   return `<section class="phase-help-step"><h3>${escapeHTML(active.title)}</h3><p>${escapeHTML(active.body)}</p>${(active.coreHelp||[]).map(step=>`<h4>${escapeHTML(step.title)}</h4><p>${escapeHTML(step.body)}</p>`).join('')}${state.guideMode==='learn'?learningSupportHTML(active):`<details class="think-details"><summary>Why this matters</summary><p>${escapeHTML(active.why)}</p></details><details class="think-details"><summary>Test your understanding</summary><p>${escapeHTML(active.question)}</p><p>${escapeHTML(active.answer)}</p></details>`}<div data-report-container>${window.WarPlannerReports?.guideForStep(state,active,deck)||''}</div>${referenceDetails(active)}</section>`;
+  }finally{state=original;}
+ }).join('');
+ return `<details id="guide-phase-help" class="think-details guide-more phase-help"><summary>Explanations & core help</summary><div class="guide-more-content">${help}${anyTime.count?`<div data-report-container>${window.WarPlannerReports?.guideForStep(state,{id:'guide-any-time',title:'Any time · '+phases[state.phase]},anyTime)||''}</div>`:''}</div></details>`;
+}
 function buildGuidePageHTML(){
  const original=state,steps=Activations.steps(state),anyTime=guideSession.anyTime(state),{unsupported}=guideSession.coverage(state);
  const sections=steps.map((active,index)=>{
   try{
    state={...original,open:index};const deck=guideDeck(active);
-   return `<!--timing:${index}--><section class="phase-timing rule-${active.category}" data-guide-step="${index}" aria-labelledby="timing-${active.id}"><h3 id="timing-${active.id}" tabindex="-1" class="phase-timing-title">${escapeHTML(timingTitle(active))}</h3>${learningLessonHTML(active)}<div data-disposition-slot="${index}"></div>${deck.count?flashBoard(active,deck):`<div data-empty-timing="${index}"></div>`}${learningSupportHTML(active)}${learningNavigationHTML(active)}<details class="think-details guide-more"><summary>${state.guideMode==='learn'?'More context & sources':'Explanations & learning'}</summary><div class="guide-more-content">${state.guideMode==='learn'?'':`<p>${escapeHTML(active.body)}</p><details class="think-details"><summary>Why this matters</summary><p>${escapeHTML(active.why)}</p></details><details class="think-details"><summary>Test your understanding</summary><p>${escapeHTML(active.question)}</p><p>${escapeHTML(active.answer)}</p></details>`}<div data-report-container>${window.WarPlannerReports?.guideForStep(state,active,deck)||''}</div>${referenceDetails(active)}</div></details></section><!--end-timing-->`;
+   return `<!--timing:${index}--><details class="phase-timing rule-${active.category}" data-guide-step="${index}" data-timing-id="${escapeHTML(active.id)}" data-timing-open="${escapeHTML(active.id)}" aria-labelledby="timing-${active.id}"><summary class="phase-timing-summary"><h3 id="timing-${active.id}" tabindex="-1" class="phase-timing-title">${escapeHTML(timingTitle(active))}</h3><span class="phase-timing-caret" aria-hidden="true">⌄</span></summary><div class="phase-timing-content">${learningLessonHTML(active)}<div data-disposition-slot="${index}"></div>${deck.count?flashBoard(active,deck):`<div data-empty-timing="${index}"></div>`}${learningNavigationHTML(active)}</div></details><!--end-timing-->`;
   }finally{state=original;}
  }).join('');
- return `<div class="focus-layout phase-layout"><article class="lesson-focus" aria-labelledby="lesson-title"><div class="guide-title-row"><h2 id="lesson-title" tabindex="-1">${escapeHTML(phases[state.phase])} phase</h2><button type="button" class="guide-info-button" popovertarget="guide-info-popup" aria-label="Core sequence for ${escapeHTML(phases[state.phase])}" title="Core sequence"><span aria-hidden="true">ⓘ</span></button></div><div data-overview-slot></div><button type="button" class="text-button" data-action="clear-phase-reviews">Clear this phase’s review marks</button>${anyTime.count||state.guideShowEmptyTimings===true?anyTimeGuideHTML(anyTime):''}${sections}<div data-phase-empty-slot></div></article>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
+ return `<div class="focus-layout phase-layout"><article class="lesson-focus" aria-labelledby="lesson-title"><div class="guide-title-row"><h2 id="lesson-title" tabindex="-1">${escapeHTML(phases[state.phase])} phase</h2></div><button type="button" class="text-button" data-action="clear-phase-reviews">Clear this phase’s review marks</button>${anyTime.count||state.guideShowEmptyTimings===true?anyTimeGuideHTML(anyTime):''}${sections}<div data-phase-empty-slot></div>${phaseHelpHTML(steps,anyTime)}</article>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
 }
 
 function catalogCard(entry){
@@ -601,11 +604,11 @@ function paintGuideDrag(gesture,dx){
 function commitGuidePage(destination,direction,drag=null){
  if(destination.phase!==state.phase||destination.turn!==state.turn||destination.round!==state.round){state.history.push({round:state.round,turn:state.turn,phase:state.phase,open:state.open});state.history=state.history.slice(-100);}
  Object.assign(state,destination);
- const header=document.querySelector('.guide-fixed-header'),popup=document.querySelector('#guide-info-popup');
- if(drag?.preview?.removeAttribute&&drag.current?.remove&&header&&popup){
+ const header=document.querySelector('.guide-fixed-header');
+ if(drag?.preview?.removeAttribute&&drag.current?.remove&&header){
   clearGuideWarm();drag.current.remove();
   const incoming=drag.preview;for(const node of incoming.querySelectorAll('[data-guide-preview-id]')){node.id=node.dataset.guidePreviewId;delete node.dataset.guidePreviewId;}incoming.classList.remove('guide-preview');incoming.id='guide-panel';incoming.setAttribute('role','tabpanel');incoming.setAttribute('aria-labelledby','phase-tab-'+state.phase);incoming.removeAttribute('aria-hidden');incoming.inert=false;incoming.style.transform='';
-  header.innerHTML=guideSettings()+turnToggle()+phaseTabs();popup.outerHTML=guideInfoPopup();document.querySelector('.guide-phase-navigation').outerHTML=phaseNavigationHTML();
+  header.innerHTML=guideSettings()+turnToggle()+phaseTabs();document.querySelector('.guide-phase-navigation').outerHTML=phaseNavigationHTML();
   for(const button of incoming.querySelectorAll('[data-step]')){const index=Number(button.dataset.step);button.setAttribute('aria-current',index===state.open?'step':'false');if(button.dataset.overviewStep!==undefined)continue;const marker=button.querySelector('span');if(marker)marker.textContent=state.completed[stepKey(index)]?'✓':String(index+1);}
   const previous=document.querySelector('.previous-page');if(previous)previous.disabled=!canPreviousPage();
   syncGuideReviews(incoming);save();refreshUnitPreviews();updateCloudUI();incoming.querySelector('#lesson-title')?.focus({preventScroll:true});queueGuideWarm();
@@ -679,15 +682,6 @@ function endGuideSwipe(event){
  const moved=navigateGuide(dx<0?1:-1,gesture.drag);
  if((moved||gesture.drag)&&event.cancelable)event.preventDefault();
 }
-document.addEventListener('toggle',event=>{
- const popup=event.target;if(popup.id!=='guide-info-popup'||event.newState!=='open')return;
- const button=document.querySelector('#guide-panel .guide-info-button');if(!button)return;
- const anchor=button.getBoundingClientRect(),box=popup.getBoundingClientRect();
- const left=Math.max(16,Math.min(anchor.right-box.width,window.innerWidth-box.width-16));
- const top=Math.max(16,Math.min(anchor.bottom+8+box.height<=window.innerHeight-16?anchor.bottom+8:anchor.top-box.height-8,window.innerHeight-box.height-16));
- popup.style.left=left+'px';popup.style.top=top+'px';
-},true);
-window.addEventListener?.('resize',()=>document.querySelector('.guide-info-popup:popover-open')?.hidePopover());
 document.addEventListener('touchstart',startGuideSwipe,{passive:true});
 document.addEventListener('touchmove',moveGuideSwipe,{passive:true});
 document.addEventListener('touchend',endGuideSwipe,{passive:false});
@@ -715,7 +709,6 @@ document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-vi
  if(b.dataset.reveal!==undefined){const k=stepKey(Number(b.dataset.reveal));state.revealed[k]=!state.revealed[k];render();}
  if(b.dataset.complete!==undefined){const i=Number(b.dataset.complete),k=stepKey(i);state.completed[k]=!state.completed[k];if(state.completed[k]&&i<lessons().steps.length-1)state.open=i+1;render();}
  switch(b.dataset.action){
- case 'jump-anytime':{const section=document.querySelector('#guide-anytime');if(section){section.open=true;section.scrollIntoView?.({block:'start',behavior:'instant'});}break;}
  case 'clear-phase-reviews':{const prefix=reminderPrefix();for(const key of Object.keys(state.reviewedReminders||{}))if(key.startsWith(prefix))delete state.reviewedReminders[key];render();break;}
  case 'open-rule-picker':window.WarPlannerReportPicker?.open();break;
  case 'open-onboarding':window.WarPlannerOnboarding?.open();break;
@@ -780,8 +773,13 @@ document.addEventListener('change',e=>{
  if(e.target.dataset.reviewReminder){clearGuideWarm();state.reviewedReminders=state.reviewedReminders||{};if(e.target.checked)state.reviewedReminders[e.target.dataset.reviewReminder]=true;else delete state.reviewedReminders[e.target.dataset.reviewReminder];save();e.target.closest?.('.reminder-item')?.classList.toggle('reminder-reviewed',e.target.checked);syncGuideReviews(document);queueGuideWarm();return;}if(listEditor){try{if(e.target.dataset.editorDetachment){const names=Builder.selectedDetachments(listEditor.army).filter(name=>name.toLowerCase().replace(/[^a-z0-9]/g,'')!==e.target.dataset.editorDetachment.toLowerCase().replace(/[^a-z0-9]/g,''));if(e.target.checked)names.push(e.target.dataset.editorDetachment);Builder.setDetachments(listEditor.army,names);if(!Builder.dispositions(listEditor.army.faction,Builder.selectedDetachments(listEditor.army)).includes(listEditor.army.disposition))listEditor.army.disposition='';markEditorDirty();render();}if(e.target.dataset.listField){if(e.target.dataset.listField==='detachmentList')Builder.setDetachments(listEditor.army,e.target.value.split(/\r?\n/));else if(e.target.dataset.listField==='detachment')Builder.setDetachments(listEditor.army,[e.target.value]);else listEditor.army[e.target.dataset.listField]=e.target.value;markEditorDirty();if(e.target.dataset.listField==='faction'){Builder.setDetachments(listEditor.army,[]);listEditor.army.disposition='';listEditor.query='';render();}if(['detachment','detachmentList','limit'].includes(e.target.dataset.listField)){if(e.target.dataset.listField!=='limit'&&!Builder.dispositions(listEditor.army.faction,Builder.selectedDetachments(listEditor.army)).includes(listEditor.army.disposition))listEditor.army.disposition='';render();}}if(e.target.dataset.editorUnit){const id=e.target.dataset.editorUnit,unit=listEditor.army.units.find(u=>u.id===id);if(unit){const field=e.target.dataset.unitField;if(field==='catalogUnitId')Builder.setSource(listEditor.army,unit,e.target.value);if(field==='attachment')Builder.attach(listEditor.army,id,e.target.value);if(field==='enhancement')Builder.setEnhancement(listEditor.army,id,e.target.value);if(field==='tokens')Builder.setTokens(unit,Number(e.target.value));if(field==='points'){const points=e.target.value===''?0:Number(e.target.value);if(!Number.isInteger(points)||points<0||points>10000)throw Error('Enter whole unit points from 1 to 10000, or leave blank to review.');unit.points=points;}if(field==='modelCount'){if(e.target.value)unit.modelCount=Number(e.target.value);else delete unit.modelCount;}markEditorDirty();if(['attachment','enhancement','tokens','catalogUnitId','points'].includes(field)){listEditor.expandedUnitId=id;render();}}}}catch(error){listEditor.error=error.message;$('#builder-error').textContent=error.message;}}if(e.target.id==='guide-army-list'){state.setupListId=e.target.value;render();}if(e.target.id==='guide-first-player'){state.setupFirstPlayer=e.target.value;save();}if(e.target.dataset.rename){const value=e.target.value.trim();if(value){state.renames[e.target.dataset.rename]=value;libraryDirty=true;syncActiveList();save();e.target.closest('.unit-card').querySelector('h3').textContent=value;}else e.target.value=unitName(state.army.units.find(u=>u.id===e.target.dataset.rename));}});
 document.addEventListener('toggle',event=>{
  if(event.target.id==='guide-anytime'){if(!document.querySelector('#guide-panel')?.contains(event.target)||event.target.closest('.guide-preview')||state.guideAnyTimeOpen===event.target.open)return;state.guideAnyTimeOpen=event.target.open;clearGuideWarm();save();queueGuideWarm();return;}
- if(event.target.id!=='guide-phase-overview'||!document.querySelector('#guide-panel')?.contains(event.target)||event.target.closest('.guide-preview')||state.guideOverviewOpen===event.target.open)return;
- state.guideOverviewOpen=event.target.open;clearGuideWarm();save();queueGuideWarm();
+ const id=event.target.dataset?.timingId;
+ if(!id||!document.querySelector('#guide-panel')?.contains(event.target)||event.target.closest('.guide-preview'))return;
+ const key=timingCollapseKey(id),collapsed=!event.target.open;
+ if((state.guideCollapsedTimings?.[key]===true)===collapsed)return;
+ state.guideCollapsedTimings={...(state.guideCollapsedTimings||{})};
+ if(collapsed)state.guideCollapsedTimings[key]=true;else delete state.guideCollapsedTimings[key];
+ clearGuideWarm();save();queueGuideWarm();
 },true);
 document.addEventListener('cancel',e=>{if(e.target.id==='guide-setup-settings'){e.preventDefault();closeSetupGuideSettings();}},true);
 document.addEventListener('submit',e=>{if(e.target.id==='guide-setup-settings-form'){e.preventDefault();closeSetupGuideSettings(true);return;}if(e.target.id==='list-editor-form'){e.preventDefault();saveListEditor();return;}if(e.target.id==='guide-start-form'){e.preventDefault();startGuide();}});

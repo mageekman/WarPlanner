@@ -35,14 +35,22 @@ with sync_playwright() as p:
   assert page.locator('#guide-panel [data-guide-step="0"]').count()==0
   assert page.locator('#guide-panel [data-guide-step="1"]').count()==1
   assert page.locator('#guide-panel [data-guide-step="2"]').count()==1
-  page.locator('#guide-phase-overview>summary').click()
+  assert page.locator('#guide-phase-overview').count()==0
+  assert page.locator('#guide-panel #guide-phase-help').count()==1
+  assert page.locator('#guide-panel .phase-timing .guide-more').count()==0
+  timing=page.locator('#guide-panel [data-guide-step="1"]')
+  assert timing.evaluate('(el)=>el.open')
   page.evaluate('window.testPrepared=guidePrepared')
-  page.locator('#guide-panel [data-overview-step][data-step="2"]').click()
-  assert page.evaluate('state.phase')==1
+  timing.locator(':scope>summary').click();page.wait_for_function('Object.keys(state.guideCollapsedTimings).length>0')
+  assert not timing.evaluate('(el)=>el.open')
   assert page.evaluate('guidePrepared===window.testPrepared')
-  assert page.locator('#guide-panel [data-guide-step="2"] h3').first.is_visible()
+  page.locator('.next-page').click();page.wait_for_function('state.phase===2')
+  page.locator('.previous-page').click();page.wait_for_function('state.phase===1')
+  assert not page.locator('#guide-panel [data-guide-step="1"]').evaluate('(el)=>el.open')
+  page.reload();page.locator('#guide-panel').wait_for();page.wait_for_function('guidePrepared?.ready')
+  assert not page.locator('#guide-panel [data-guide-step="1"]').evaluate('(el)=>el.open')
+  page.locator('#guide-panel [data-guide-step="1"]>summary').click()
   page.locator('#guide-panel').evaluate('(el)=>el.scrollTop=0')
-  page.locator('#guide-phase-overview>summary').click()
   page.locator('#guide-anytime>summary').click()
   review=page.locator('#guide-panel [data-review-id]').first
   review.check();key=review.get_attribute('data-review-id')
@@ -78,8 +86,7 @@ with sync_playwright() as p:
   page.wait_for_function('guideMotion===null')
   assert page.evaluate('[state.phase,state.turn,state.round]')==[0,'you',2]
   page.locator('[data-phase="1"]').click()
-  if not page.locator('#guide-phase-overview').evaluate('(el)=>el.open'):page.locator('#guide-phase-overview>summary').click()
-  page.locator('#guide-panel [data-overview-step]').last.click()
+  page.evaluate('jumpToGuideTiming(Activations.steps(state).length-1)')
   bookmark=page.evaluate('state.open')
   page.reload();page.locator('#guide-panel').wait_for();page.wait_for_function('guidePrepared?.ready')
   assert page.evaluate('state.open')==bookmark
@@ -94,6 +101,6 @@ with sync_playwright() as p:
   printed=info.value;printed.wait_for_load_state();assert printed.locator('.phase').count()==10;printed.close()
   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   assert not errors,errors
-  print(str(width)+': ten preloaded phase slides, timing visibility, anchors, phase arrows, review marks, staged settings and learning lessons verified')
+  print(str(width)+': collapsible timings, saved choices, one bottom help group, phase navigation, settings and learning verified')
   page.close()
  b.close()
