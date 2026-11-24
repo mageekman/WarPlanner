@@ -18,7 +18,7 @@
   const snapshot=structuredClone(state),session=A.createSession(),sections=[];
   for(const turn of ['you','opponent'])for(let phase=0;phase<5;phase++){
    const s={...snapshot,turn,phase},any=session.anyTime(s),steps=A.steps(s),pages=[];
-   const anyCards=deckHTML(any,s);if(anyCards)pages.push(`<section class="step"><h3>Any time</h3><div class="cards">${anyCards}</div></section>`);
+   const anyCards=deckHTML(any,s);if(anyCards)pages.push(`<section class="step"><h3>Any time this phase</h3><div class="cards">${anyCards}</div></section>`);
    for(const step of steps){const deck=session.stepDeck(s,step),missions=D.reminders(s,step);
     const cards=missions.map(m=>ruleHTML({name:m.title})).join('')+deckHTML(deck,s);
     if(s.guideShowEmptyTimings!==true&&!cards)continue;

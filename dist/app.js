@@ -202,11 +202,11 @@ function syncGuideReviews(container,current=state){
 }
 function anyTimeGuideHTML(deck=guideSession.anyTime(state)){
  const count=overviewRuleCount(deck);
- return `<details id="guide-anytime" class="guide-anytime"><summary><span>Any time</span><span class="anytime-count">${count} ${count===1?'rule':'rules'} <span class="anytime-caret" aria-hidden="true">⌄</span></span></summary><div class="guide-anytime-content"><p class="guide-anytime-note">Available throughout this phase. Check each rule’s trigger, eligible units and conditions before using it.</p>${deck.count?flashBoard({id:'guide-any-time',window:'act'},deck):'<p class="ability-empty">No phase-wide rules are listed for this phase and turn.</p>'}</div></details>`;
+ return `<details id="guide-anytime" class="guide-anytime"><summary><span>Any time this phase</span><span class="anytime-count">${count} ${count===1?'rule':'rules'} <span class="anytime-caret" aria-hidden="true">⌄</span></span></summary><div class="guide-anytime-content"><p class="guide-anytime-note">Available throughout this phase. Check each rule’s trigger, eligible units and conditions before using it.</p>${deck.count?flashBoard({id:'guide-any-time',window:'act'},deck):'<p class="ability-empty">No phase-wide rules are listed for this phase and turn.</p>'}</div></details>`;
 }
 function flashBoard(active,deck=guideDeck(active)){
  const reviewScope=active.id==='guide-any-time'?'anytime:':'';
- if(!deck.count)return `<section class="army-lessons" aria-label="Your army at this step"><p class="ability-empty">${state.guideMode==='learn'?'No army-specific rules to add here. Carry on with the steps above.':active.id!=='guide-any-time'&&guideSession.anyTime(state).count?'No step-specific rules here. Phase-wide reminders are under Any time.':'No matching army abilities are listed for this step. Open ⓘ for the core sequence.'}</p></section>`;
+ if(!deck.count)return `<section class="army-lessons" aria-label="Your army at this step"><p class="ability-empty">${state.guideMode==='learn'?'No army-specific rules to add here. Carry on with the steps above.':active.id!=='guide-any-time'&&guideSession.anyTime(state).count?'No step-specific rules here. Phase-wide reminders are under Any time this phase.':'No matching army abilities are listed for this step. Open ⓘ for the core sequence.'}</p></section>`;
  const sharedNames=new Map(deck.shared.map(a=>[a.key,a.name]));
  const userLabel=(_a,u)=>activationLabel(u);
  const sharedCards=deck.shared.map(a=>{
@@ -431,7 +431,7 @@ function buildGuidePageHTML(){
    return `<!--timing:${index}--><details class="phase-timing rule-${active.category}" data-guide-step="${index}" data-timing-id="${escapeHTML(active.id)}" data-timing-open="${escapeHTML(active.id)}" aria-labelledby="timing-${active.id}"><summary class="phase-timing-summary"><h3 id="timing-${active.id}" tabindex="-1" class="phase-timing-title">${escapeHTML(timingTitle(active))}</h3><span class="phase-timing-caret" aria-hidden="true">⌄</span></summary><div class="phase-timing-content">${learningLessonHTML(active)}<div data-disposition-slot="${index}"></div>${deck.count?flashBoard(active,deck):`<div data-empty-timing="${index}"></div>`}${learningNavigationHTML(active)}</div></details><!--end-timing-->`;
   }finally{state=original;}
  }).join('');
- return `<div class="focus-layout phase-layout"><article class="lesson-focus" aria-labelledby="lesson-title"><div class="guide-title-row"><h2 id="lesson-title" tabindex="-1">${escapeHTML(phases[state.phase])} phase</h2></div><button type="button" class="text-button" data-action="clear-phase-reviews">Clear this phase’s review marks</button>${anyTime.count||state.guideShowEmptyTimings===true?anyTimeGuideHTML(anyTime):''}${sections}<div data-phase-empty-slot></div>${phaseHelpHTML(steps,anyTime)}</article>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
+ return `<div class="focus-layout phase-layout"><article class="lesson-focus" aria-labelledby="lesson-title"><div class="guide-title-row"><h2 id="lesson-title" tabindex="-1">${escapeHTML(phases[state.phase])} phase</h2></div>${anyTime.count||state.guideShowEmptyTimings===true?anyTimeGuideHTML(anyTime):''}${sections}<div data-phase-empty-slot></div>${phaseHelpHTML(steps,anyTime)}<button type="button" class="text-button" data-action="clear-phase-reviews">Clear this phase’s review marks</button></article>${unsupported.length?`<p class="coverage-note">${unsupported.length} roster ${unsupported.length===1?'entry has':'entries have'} no unit-specific lesson coverage yet. Core guidance remains available.</p>`:''}</div>`;
 }
 
 function catalogCard(entry){
@@ -709,7 +709,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-vi
  if(b.dataset.reveal!==undefined){const k=stepKey(Number(b.dataset.reveal));state.revealed[k]=!state.revealed[k];render();}
  if(b.dataset.complete!==undefined){const i=Number(b.dataset.complete),k=stepKey(i);state.completed[k]=!state.completed[k];if(state.completed[k]&&i<lessons().steps.length-1)state.open=i+1;render();}
  switch(b.dataset.action){
- case 'clear-phase-reviews':{const prefix=reminderPrefix();for(const key of Object.keys(state.reviewedReminders||{}))if(key.startsWith(prefix))delete state.reviewedReminders[key];render();break;}
+ case 'clear-phase-reviews':{const prefix=reminderPrefix();for(const key of Object.keys(state.reviewedReminders||{}))if(key.startsWith(prefix))delete state.reviewedReminders[key];clearGuideWarm();syncGuideReviews(document);save();queueGuideWarm();break;}
  case 'open-rule-picker':window.WarPlannerReportPicker?.open();break;
  case 'open-onboarding':window.WarPlannerOnboarding?.open();break;
  case 'create-list':beginListEditor(true);break;

@@ -640,9 +640,9 @@ test('account progress remains isolated and sign-out cannot write another accoun
  const b=app([...a.store]);assert.equal(savedState(b.store).renames[id],'My captain');assert.equal(savedState(b.store).reviewedReminders['before-rename'],true);
  });
 
-test('Any time is collapsed directly below Clear review marks and opening it survives preloaded navigation',()=>{
+test('Any time this phase stays near the top while Clear review marks sits below the help group',()=>{
  const a=app(undefined,{preload:true});a.flushGuide();a.rejectPageBuilds();
- assert.ok(a.html().indexOf('id="guide-anytime"')>a.html().indexOf('Clear this phase’s review marks</button>'));
+ assert.ok(a.html().indexOf('id="guide-anytime"')<a.html().indexOf('Clear this phase’s review marks</button>'));assert.ok(a.html().indexOf('id="guide-phase-help"')<a.html().indexOf('data-action="clear-phase-reviews"'));assert.match(a.html(),/<summary><span>Any time this phase<\/span>/);
  assert.match(a.html(),/<details id="guide-anytime" class="guide-anytime">/);
  a.anyTime(true);a.run('render()');assert.match(a.html(),/<details id="guide-anytime" class="guide-anytime" open>/);
  a.click({action:'page-next'});assert.match(a.html(),/<details id="guide-anytime" class="guide-anytime" open>/);
